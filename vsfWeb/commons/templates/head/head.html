@@ -1,4 +1,8 @@
 {% load static %}
+{% load compress %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -7,3 +11,8 @@
         
 <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
 <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+
+{% compress css %}
+<link rel="stylesheet" href="{% static 'scss/base/base.scss'%}" type="text/x-sass" charset="utf-8">
+{% endcompress %}
+

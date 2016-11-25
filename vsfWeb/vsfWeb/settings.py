@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'compressor',
+    'widget_tweaks'
 ]
 STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
@@ -107,7 +108,17 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+STATICFILES_FINDERS = (  
+    'compressor.finders.CompressorFinder',
+)
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "commons/static")
+]
+
+COMPRESS_PRECOMPILERS = (
+    ('text/x-sass', 'sass {infile} {outfile}'),
+)
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
@@ -124,6 +135,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-
+COMPRESS_ROOT = 'commons/static'
 STATIC_ROOT = 'commons/static'
 STATIC_URL = '/commons/static/'

@@ -57,7 +57,12 @@ ROOT_URLCONF = 'vsfWeb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'cases/templates'),
+                 os.path.join(BASE_DIR, 'commons/templates'),
+                 os.path.join(BASE_DIR, 'general/templates'),
+                 os.path.join(BASE_DIR, 'provider/templates'),
+                 os.path.join(BASE_DIR, 'summary/templates'),
+                 ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

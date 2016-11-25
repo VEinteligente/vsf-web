@@ -1,9 +1,75 @@
 $turpial_color: #FFF00;
-$squareLength_icon: 250px;
+$squareLength_icon: 20px;
 
-body{
-    color: $turpial_color;
-    width: $squareLength_icon;
-    height: $squareLength_icon;
-  }
+$xl_fontSize: 44px;
+$lg_fontSize: 26px;
+$md_fontSize: 18px;
+$sm_fontSize: 14px;
+$xs_fontSize: 12px;
+
+$medium_fontWeight: 500;
+
+$black_fontColor: #000;
+$darkGray_fontColor: #808184;
+$gray_fontColor: #58595B;
+$lightGray_fontColor: #666666;
+
+$primary_fontFamily: Roboto;
+
+body {
+    font-family: $primary_fontFamily;   
+    
+}
+
+h1 {
+    font-size: $xl_fontSize;
+    color: $black_fontColor;
+    font-weight: $medium_fontWeight;
+}
+
+h2 {
+    font-size: $lg_fontSize;
+    color:$black_fontColor;
+    font-weight: $medium_fontWeight;
+}
+
+h3 {
+    font-size: $md_fontSize;
+    color: $darkGray_fontColor;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: $sm_fontSize;
+    color: $darkGray_fontColor;
+    font-weight: $medium_fontWeight;
+}
+
+h5 {
+    font-size: $xs_fontSize;
+    color: $gray_fontColor;
+    font-weight:  $medium_fontWeight;
+}
+
+.headline {
+    font-size: $sm_fontSize;
+    color: $gray_fontColor;
+    font-weight: bold;
+}
+
+.subtitle {
+    font-size: $xs_fontSize;
+    color: $gray_fontColor;
+    font-weight: $medium_fontWeight;
+    
+}
+
+p {
+    font-size: $sm_fontSize;
+    color: $lightGray_fontColor;
+    font-weight: $medium_fontWeight;
+    
+}
+
+
 

@@ -63,6 +63,7 @@ TEMPLATES = [
                  os.path.join(BASE_DIR, 'general/templates'),
                  os.path.join(BASE_DIR, 'provider/templates'),
                  os.path.join(BASE_DIR, 'summary/templates'),
+                 os.path.join(BASE_DIR, 'stylingGuide/templates'),
                  ],
         'APP_DIRS': True,
         'OPTIONS': {

@@ -1,5 +1,13 @@
-$turpial_color: #FFF00;
-$squareLength_icon: 20px;
+/* RESPONSIVE */
+
+$xs_only:   "(min-width:0) and (max-width: 543px)";
+$sm_only:  "(min-width:544px) and (max-width:767px)";
+$sm_down:  "(max-width:767px)";
+$md_only:   "(min-width:768px) and (max-width:991px)";
+$md_down:  "(max-width:991px)";
+$lg_only:  "(min-width:992px) and (max-width:1199px)";
+$lg_down:  "(max-width:1199px)";
+$xl_only: "(min-width:1200px)";
 
 $xl_fontSize: 44px;
 $lg_fontSize: 26px;
@@ -70,6 +78,41 @@ p {
     font-weight: $medium_fontWeight;
     
 }
+ 
+/* RESPONSIVE */
 
 
 
+@media #{$xs_only} {
+
+}
+
+@media #{$sm_only} {
+
+}
+
+@media #{$xs_down} {
+    p {
+        font-size: $lg_fontSize;
+    } 
+}
+
+@media #{$md_only} {
+ 
+}
+
+@media #{$md_down} {
+
+}
+
+@media #{$lg_only} {
+
+}
+
+@media #{$xl_down} {
+
+}
+
+@media #{$xl_only} {
+      
+}

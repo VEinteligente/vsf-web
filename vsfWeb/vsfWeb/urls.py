@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^general/', include('general.urls')),
     url(r'^provider/', include('provider.urls')),
     url(r'^summary/', include('summary.urls')),
+    url(r'^styling-guide/', include('stylingGuide.urls')),
 ]

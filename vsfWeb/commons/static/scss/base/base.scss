@@ -125,17 +125,19 @@ button {
 
 
 .contextualButtonFixedSize {
-    width: $contextualButtonWidthSize;
+    width: $contextualButtonWidthSize !important;
     height: $contextualButtonHeightSize;
     border: 1px solid $lightGray;
     outline: none;
     background-color: $contextualButtonColor;
     border-radius: 5px;
+    padding:0;
     
     &:hover {
         border:none;
         font-weight: regular;
-        background-color: $lightGray;
+        background-color: $lightGray;  
+             
     }
     
     &:active {
@@ -259,6 +261,94 @@ button {
         text-transform: uppercase;
     }
     
+}
+
+.timelineBar{
+    color: white;
+    height: 20px;
+    padding: 0;
+    .timelineLeft{
+        padding:0px;
+        width: 0; 
+        height: 0; 
+        border-top: 10px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-right: 11px solid $green-tag;
+        
+    }
+    .timelineContent{
+        padding:0px;
+        background-color: $green-tag;
+        width: 99.4%;
+        .date{
+            font-weight: bold;
+            padding:0px;
+            padding-left:5px;         
+        }
+        .status{
+            text-align: right;
+            padding:0;
+            padding-right:16px;
+        }
+    }
+}
+.toolbar {
+    border: 2px solid $gray;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 0px;
+}
+
+.updateBar{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: $lightGray;
+    display: flex;
+    align-items: center;
+    
+    .content{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: $sm_fontSize;
+        color: $gray_fontColor;
+        font-weight: $medium_fontWeight;
+        
+    }
+
+    .dateYear{
+        font-size: $xs_fontSize;
+        color: $lightGray_fontColor;
+        font-weight:  $medium_fontWeight;
+        
+    }
+
+    .symbolBlocked {
+         width: 24px; 
+         height:24px; 
+         background: $red_tag;
+         -webkit-transform: rotate(45deg);
+         -moz-transform: rotate(45deg);
+         -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+         transform: rotate(45deg);
+    }
+
+    .share{
+        text-align: right;
+        
+        a {
+            color: $darkGray;
+            text-decoration: none;
+            
+            i {
+                font-size: $md_fontSize;
+            }
+            
+        }
+    }
+
 }
 
 

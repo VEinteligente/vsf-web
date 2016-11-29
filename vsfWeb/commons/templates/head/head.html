@@ -1,4 +1,4 @@
-{% load static %}
+ {% load static %}
 {% load compress %}
 {% load staticfiles %}
 {% load widget_tweaks %}
@@ -11,11 +11,9 @@
         
 <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
 <link rel="stylesheet" href="{% static 'css/fonts/roboto.css' %}">
-<script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
-<script src="{% static 'js/tether/tether.min.js' %}"></script>
-<script src="{% static 'js/jquery/jquery.min.js' %}"></script>
+
 
 {% compress css %}
-<link rel="stylesheet" href="{% static 'scss/base/base.scss'%}" type="text/x-sass" charset="utf-8">
+<link rel="stylesheet" href="{% static 'scss/main.scss'%}" type="text/x-sass" charset="utf-8">
 {% endcompress %}
 

@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from general import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -23,4 +24,7 @@ urlpatterns = [
     url(r'^provider/', include('provider.urls')),
     url(r'^summary/', include('summary.urls')),
     url(r'^styling-guide/', include('stylingGuide.urls')),
+    url(r'^i18n/',include('django.conf.urls.i18n')),
+    url(r'^set-language/', views.set_language, name='set-language'),
+
 ]

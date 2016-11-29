@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
 <html>
-
+{% load static %}
     <head>
-     
+      
         {% include "head/head.html" %}       
     </head>
     
@@ -27,5 +27,9 @@
         {% include "footer/footer.html" %}       
        
         </footer>
+        
+<script src="{% static 'js/tether/tether.min.js' %}"></script>
+<script src="{% static 'js/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
     </body>
 </html>

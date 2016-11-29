@@ -9,7 +9,3 @@ class AboutUs(TemplateView):
     
 class Dashboard(TemplateView):
     template_name = "dashboard.html"
-
-def setlanguage(request):
-    return render(request, 'set-language.html', {'LANGUAGES':settings.LANGUAGES,
-                                                 'SELECTEDLANG':request.LANGUAGE_CODE})

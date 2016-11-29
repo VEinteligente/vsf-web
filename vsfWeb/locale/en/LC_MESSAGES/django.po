@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-29 14:44-0400\n"
+"POT-Creation-Date: 2016-11-29 16:54-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,9 +17,57 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: commons/templates/navbar/navbar.html:14
+#: commons/templates/navbar/navbar.html:19
 msgid "Reportar"
 msgstr "Report"
+
+#: commons/templates/navbar/navbar.html:22
+msgid "Información"
+msgstr "Information"
+
+#: commons/templates/navbar/navbar.html:25
+msgid "Casos"
+msgstr "Cases"
+
+#: commons/templates/navbar/navbar.html:27
+msgid "URL's Bloqueados"
+msgstr "Blocked URL's"
+
+#: commons/templates/navbar/navbar.html:28
+msgid "Dominios Bloquedos"
+msgstr "Blocked Domains"
+
+#: commons/templates/navbar/navbar.html:29
+msgid "Probador de Velocidad"
+msgstr "Speed Test"
+
+#: commons/templates/navbar/navbar.html:34
+msgid "Evade Los Bloqueos"
+msgstr "Evade The Blockade"
+
+#: commons/templates/navbar/navbar.html:36
+msgid "Tutoriales"
+msgstr "Tutorials"
+
+#: commons/templates/navbar/navbar.html:42
+msgid "Comunidad"
+msgstr "Community"
+
+#: commons/templates/navbar/navbar.html:44
+msgid "Sobre Nosotros"
+msgstr "About Us"
+
+#: commons/templates/navbar/navbar.html:45
+msgid "GitHub"
+msgstr "GitHub"
+
+#: commons/templates/navbar/navbar.html:46
+msgid "Guías"
+msgstr "Guides"
+
+#: commons/templates/navbar/navbar.html:51
+msgid "Languages"
+msgstr ""
 
 #: vsfWeb/settings.py:131
 msgid "English"

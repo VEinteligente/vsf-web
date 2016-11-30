@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
 <html>
-
+{% load static %}
     <head>
-     
+      
         {% include "head/head.html" %}       
     </head>
     
@@ -18,14 +18,18 @@
         {% block content %}
         {% endblock %}
         
-        {% include "components/notifications.html" %} 
+     <!--   {% include "components/notifications.html" %} 
         {% include "components/share-social-media.html" %} 
-        {% include "components/trending-twitter.html" %} 
+        {% include "components/trending-twitter.html" %} -->
         
         <footer>
         
         {% include "footer/footer.html" %}       
        
         </footer>
+        
+<script src="{% static 'js/tether/tether.min.js' %}"></script>
+<script src="{% static 'js/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
     </body>
 </html>

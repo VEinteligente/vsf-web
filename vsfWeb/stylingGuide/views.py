@@ -5,3 +5,7 @@ from django.views.generic import (TemplateView)
 
 class Typography(TemplateView):
     template_name = "typography.html"
+    
+    
+class Elements(TemplateView):
+    template_name = "elements.html"

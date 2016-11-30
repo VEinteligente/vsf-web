@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^provider/', include('provider.urls')),
     url(r'^summary/', include('summary.urls')),
     url(r'^styling-guide/', include('stylingGuide.urls')),
+    url(r'^i18n/',include('django.conf.urls.i18n')),
 ]

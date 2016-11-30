@@ -5,15 +5,16 @@
 
     About us here!
     Under construction!
-      {{ probando }}
     <br> 
 
-    {% for key,value in probando.items %} 
+<h2>Blocked Sites</h2>
+<ul class="list-group float-xs-left">
 
-    		{{ value }}
+{% for prueba in pruebas %}
+<li class="list-group-item">
+<span class="tag tag-default tag-pill float-xs-right">14</span>
+The site {{prueba.site}} with url {{prueba.url}} is blocked
+</li>
+{% endfor %}
 
-
-	{% endfor%}
-    
-    
 {% endblock %}

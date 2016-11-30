@@ -1,44 +1,70 @@
+  {% load static %}
+  {% load i18n %}
+  {% get_current_language as LANGUAGE_CODE %}
+  {% get_language_info for LANGUAGE_CODE as lang %}
+  {% get_available_languages as LANGUAGES %}
+  {% get_language_info_list for LANGUAGES as languages %}
+  {{ lang.name_local|capfirst }}
+
 <nav class="navbar navbar-fixed-top navbar-dark bg-inverse" id="navbars">
   <button class="navbar-toggler hidden-lg-up float-xs-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
   <a class="navbar-brand" href="#"> 
-    <img src="long_veSinFiltro.svg" width="221" height="50" alt="">
+    <img src="{% static 'img/long_veSinFiltro.svg' %}" width="221" height="50" alt="">
   </a>
         <div class="collapse navbar-toggleable-md float-md-right" id="navbarResponsive">
         
         <ul class="nav navbar-nav float-xs-right">
 
           <li class="nav-item">
-            <a class="nav-link" href="#">Reportar</a>
+            <a class="nav-link" href="#">{% trans "Reportar" %}</a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="#">Información</a>
+            <a class="nav-link" href="#">{% trans "Información" %}</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Casos</a>
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "Casos" %}</a>
                     <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
-                    <a class="dropdown-item" href="#">URL's Bloqueados</a>
-                    <a class="dropdown-item" href="#">Dominios Bloquedos</a>
-                    <a class="dropdown-item" href="#">Probador de Velocidad</a>
+                    <a class="dropdown-item" href="#">{% trans "URL's Bloqueados" %}</a>
+                    <a class="dropdown-item" href="#">{% trans "Dominios Bloquedos" %}</a>
+                    <a class="dropdown-item" href="#">{% trans "Probador de Velocidad" %}</a>
                       
                     </div>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Evade Los Bloqueos</a>
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "Evade Los Bloqueos" %}</a>
                   <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
-                    <a class="dropdown-item" href="#">Tutoriales</a>
+                    <a class="dropdown-item" href="#">{% trans "Tutoriales" %}</a>
                     <a class="dropdown-item" href="#">VPN's</a>
                     <a class="dropdown-item" href="#">Proxy's</a>
                   </div>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Comunidad</a>
+            <a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "Comunidad" %}</a>
                     <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
-                      <a class="dropdown-item" href="#">Sobre Nosotros</a>
-                      <a class="dropdown-item" href="#">GitHub</a>
-                      <a class="dropdown-item" href="#">Guías</a>
+                      <a class="dropdown-item" href="#">{% trans "Sobre Nosotros" %}</a>
+                      <a class="dropdown-item" href="#">{% trans "GitHub"%}</a>
+                      <a class="dropdown-item" href="#">{% trans "Guías" %}</a>
                     </div>
           </li>
 
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "Languages" %}</a>
+
+          
+                                        {% for language in languages %}
+                                            <div>
+                                            <a href="#" onclick="document.ui.language.value='{{ language.code}}'; document.ui.submit();">{% trans language.name_local|capfirst %}</a>
+                                            </div>
+                                        {% endfor %}
+            
+          </li>
+
         </ul>
+        </div>
+        <div class="hidden">
+                        <form name="ui" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                            <input name="next" type="hidden" value="{{ redirect_to }}" />
+                            <input name="language" type="hidden"/>
+                        </form>
         </div>
 </nav>

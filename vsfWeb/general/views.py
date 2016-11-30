@@ -9,4 +9,3 @@ class AboutUs(TemplateView):
     
 class Dashboard(TemplateView):
     template_name = "dashboard.html"
-    

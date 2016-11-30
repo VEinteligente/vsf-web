@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
-
+from django.utils.translation import ugettext_lazy as _
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -38,19 +38,21 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'compressor',
-    'widget_tweaks'
+    'widget_tweaks',
 ]
 STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+#Middleware For Translating Pages For End User
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'vsfWeb.urls'
@@ -123,7 +125,12 @@ COMPRESS_PRECOMPILERS = (
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es' 
+
+LANGUAGES = (
+    ('en',_('English')),
+    ('es',_('Spanish')),
+    )
 
 TIME_ZONE = 'UTC'
 
@@ -139,3 +146,4 @@ USE_TZ = True
 COMPRESS_ROOT = 'commons/static'
 STATIC_ROOT = 'commons/static'
 STATIC_URL = '/commons/static/'
+LOCALE_PATHS = (os.path.join(BASE_DIR,'locale'),)

@@ -4,7 +4,7 @@
   {% get_language_info for LANGUAGE_CODE as lang %}
   {% get_available_languages as LANGUAGES %}
   {% get_language_info_list for LANGUAGES as languages %}
-  {{ lang.name_local|capfirst }}
+  
 
 <nav class="navbar navbar-fixed-top navbar-dark bg-inverse" id="navbars">
   <button class="navbar-toggler hidden-lg-up float-xs-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
@@ -48,15 +48,15 @@
           </li>
 
           <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "Languages" %}</a>
-
+              <a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "Languages" %}</a>
+              <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
           
-                                        {% for language in languages %}
-                                            <div>
-                                            <a href="#" onclick="document.ui.language.value='{{ language.code}}'; document.ui.submit();">{% trans language.name_local|capfirst %}</a>
-                                            </div>
-                                        {% endfor %}
-            
+                        {% for language in languages %}
+                                            
+                          <a href="#" onclick="document.ui.language.value='{{ language.code}}'; document.ui.submit();">{% trans language.name_local|capfirst %}</a>
+                                          
+                        {% endfor %}
+              </div>
           </li>
 
         </ul>

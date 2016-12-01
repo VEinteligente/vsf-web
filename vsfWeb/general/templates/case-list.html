@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h2>Case List</h2>
+{{probando}}
+
+	<ul class="list-group float-xs-left">
+
+		{% for prueba in pruebas %}
+			<li class="list-group-item">
+			The URL {{prueba.url}} is blocked
+			</li>
+		{% endfor %}
+	</ul>
+
+{% endblock %}

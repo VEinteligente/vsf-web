@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h2>Blocked Sites</h2>
+<ul class="list-group float-xs-left">
+
+{% for prueba in pruebas %}
+<li class="list-group-item">
+The site {{prueba.site}} is blocked
+</li>
+{% endfor %}
+
+{% endblock %}

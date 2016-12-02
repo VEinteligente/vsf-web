@@ -1,5 +1,6 @@
 /* RESPONSIVE */
 
+
 $xs_only:   "(min-width:0) and (max-width: 543px)";
 $sm_only:  "(min-width:544px) and (max-width:767px)";
 $sm_down:  "(max-width:767px)";
@@ -25,6 +26,10 @@ $gray_fontColor: #666666;
 $darkGray: #808080;
 $gray: #A0A0A0;
 $lightGray: #CCCCFF;
+
+$darkGrayButton: #BBBBBB;
+$grayButton: #E8E8E8;
+$lightGrayButton: #CCCCCC;
 
 $primary_fontFamily: Roboto;
 
@@ -105,11 +110,11 @@ button {
     border: none;
     outline: none;
     font-size: $sm_fontSize;
-    background-color: $lightGray;
+    background-color: $grayButton;
     
     &:hover {
         font-weight: regular;
-        background-color: $gray;
+        background-color: $lightGray;
     }
     
     &:active {
@@ -136,13 +141,13 @@ button {
     &:hover {
         border:none;
         font-weight: regular;
-        background-color: $lightGray;  
+        background-color: $lightGrayButton;  
              
     }
     
     &:active {
         font-weight: medium;
-        background-color: $darkGray;
+        background-color: $darkGrayButton;
         color: $contextualButtonColor;
         outline: none; 
     }
@@ -196,7 +201,7 @@ button {
     }
     .contentTag{
         background: $green_tag;
-        height: 18px;
+        line-height: 1.00;
         padding: 0px $md_padding;
         color: $contentColorTag;
     }
@@ -221,7 +226,7 @@ button {
     }
     .contentTag{
         background: $red_tag;
-        height: 18px;
+        line-height: 1.00;
         padding: 0px $md_padding;
         color:$contentColorTag;
     }
@@ -243,9 +248,8 @@ button {
     border: 2px solid $gray;
     padding:0;
     .title{
-        padding: 0 $md_padding 0 $lg_padding;
-        border-top: 8px solid $lightGray;
-        border-bottom: 8px solid $lightGray;
+        padding: 8px $md_padding 8px $lg_padding;
+
         margin: 0;
     }
     
@@ -265,21 +269,11 @@ button {
 
 .timelineBar{
     color: white;
-    height: 20px;
+    height: 24px;
     padding: 0;
-    .timelineLeft{
-        padding:0px;
-        width: 0; 
-        height: 0; 
-        border-top: 10px solid transparent;
-        border-bottom: 15px solid transparent;
-        border-right: 11px solid $green-tag;
-        
-    }
-    .timelineContent{
-        padding:0px;
-        background-color: $green-tag;
-        width: 99.4%;
+    
+    background-color: $green-tag;
+       
         .date{
             font-weight: bold;
             padding:0px;
@@ -290,7 +284,21 @@ button {
             padding:0;
             padding-right:16px;
         }
-    }
+    
+        &:after{
+            right: 100%;
+            top: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            border-color: transparent;
+            border-right-color: $green-tag;
+            border-width: 12px;
+            margin-top: -12px;
+        }
+    
 }
 .toolbar {
     border: 2px solid $gray;
@@ -301,8 +309,8 @@ button {
 }
 
 .updateBar{
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 14px;
+    padding-bottom: 14px;
     background-color: $lightGray;
     display: flex;
     align-items: center;
@@ -341,6 +349,7 @@ button {
         a {
             color: $darkGray;
             text-decoration: none;
+            padding-left: 10px;
             
             i {
                 font-size: $md_fontSize;
@@ -389,10 +398,4 @@ button {
 
 @media #{$xl_only} {
       
-}
-
-#probando{
-    
-    -webkit-clip-path: polygon(25% 0%, 100% 0, 100% 100%, 25% 100%, 0% 50%);
-    clip-path: polygon(25% 0%, 100% 0, 100% 100%, 25% 100%, 0% 50%);
 }

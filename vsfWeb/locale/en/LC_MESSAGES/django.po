@@ -18,39 +18,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: commons/templates/navbar/navbar.html:19
-msgid "Reportar"
+msgid "Report"
 msgstr "Report"
 
 #: commons/templates/navbar/navbar.html:22
-msgid "Información"
+msgid "Information"
 msgstr "Information"
 
 #: commons/templates/navbar/navbar.html:25
-msgid "Casos"
+msgid "Cases"
 msgstr "Cases"
 
 #: commons/templates/navbar/navbar.html:27
-msgid "URL's Bloqueados"
+msgid "Blocked URLs"
 msgstr "Blocked URL's"
 
 #: commons/templates/navbar/navbar.html:28
-msgid "Dominios Bloquedos"
+msgid "Blocked Domains"
 msgstr "Blocked Domains"
 
 #: commons/templates/navbar/navbar.html:29
-msgid "Probador de Velocidad"
+msgid "Speed Test"
 msgstr "Speed Test"
 
 #: commons/templates/navbar/navbar.html:34
-msgid "Evade Los Bloqueos"
+msgid "Evade The Blockade"
 msgstr "Evade The Blockade"
 
 #: commons/templates/navbar/navbar.html:36
-msgid "Tutoriales"
+msgid "Tutorials"
 msgstr "Tutorials"
 
 #: commons/templates/navbar/navbar.html:42
-msgid "Comunidad"
+msgid "Community"
 msgstr "Community"
 
 #: commons/templates/navbar/navbar.html:44
@@ -66,13 +66,67 @@ msgid "Guías"
 msgstr "Guides"
 
 #: commons/templates/navbar/navbar.html:51
-msgid "Idiomas"
+msgid "Languages"
 msgstr "Languages"
 
 #: vsfWeb/settings.py:131
 msgid "English"
-msgstr ""
+msgstr "English"
 
 #: vsfWeb/settings.py:132
 msgid "Spanish"
-msgstr ""
+msgstr "Spanish"
+
+msgid "Buttons"
+msgstr "Buttons"
+
+msgid "Typography"
+msgstr "Typography"
+
+msgid "Size"
+msgstr "Size"
+
+msgid "Color"
+msgstr "Color"
+
+msgid "Style"
+msgstr "Style"
+
+msgid "Size per style"
+msgstr "Size per style"
+
+
+msgid "and"
+msgstr "and"
+
+msgid "Continue"
+msgstr "Continue"
+
+msgid "Blocked"
+msgstr "Blocked"
+
+msgid "Contextual buttons (static)"
+msgstr "Contextual buttons (static)"
+
+msgid "Contextual buttons"
+msgstr "Contextual buttons"
+
+msgid "Bars"
+msgstr "Bars"
+
+msgid "Title bar"
+msgstr "Title bar"
+
+msgid "Subtitle bar"
+msgstr "Subtitle bar"
+
+msgid "Small bar"
+msgstr "Small bar"
+
+msgid "Height"
+msgstr "Height"
+
+msgid "View more..."
+msgstr "View more..."
+
+

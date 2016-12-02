@@ -2,16 +2,16 @@
 
 
 {% block content %}
-<h2>Case List</h2>
-{{probando}}
-
+<h2> Case List </h2>
 	<ul class="list-group float-xs-left">
 
-		{% for prueba in pruebas %}
+		{% for case in cases %}
 			<li class="list-group-item">
-			The URL {{prueba.url}} is blocked
+			{{case.title}}
 			</li>
 		{% endfor %}
 	</ul>
+
+
 
 {% endblock %}

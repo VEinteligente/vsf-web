@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<h2> {{cases.title}} </h2>
+<h3>{{cases.description}}</h3>
+
+<p>Pertence a la categoría de {{cases.category}}</p>
+<p> La primera falla se reporto el {{date.day}}-{{date.month}} a las {{date.hour}}:{{date.minute}}</p>
+
+
+
+
+
+{% endblock %}

@@ -1,7 +1,8 @@
-from django.shortcuts import render
 import json
 import requests
 import datetime
+from django.shortcuts import render
+
 
 # Create your views here.
 from django.views.generic import (TemplateView)
@@ -59,8 +60,6 @@ class CaseDetail(TemplateView):
 	    	context['cases'] = probando2["results"][0]
 	    	aux = datetime.datetime.strptime(probando2["results"][0]["start_date"],'%Y-%m-%dT%H:%M:%SZ')
 	    	context['date'] = aux
-
-	    	return context
 
 
 class Dashboard(TemplateView):

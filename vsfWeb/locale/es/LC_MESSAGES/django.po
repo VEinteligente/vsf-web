@@ -128,3 +128,6 @@ msgstr "Height"
 
 msgid "View more..."
 msgstr "Ver más..."
+
+msgid "News"
+msgstr "Noticias"

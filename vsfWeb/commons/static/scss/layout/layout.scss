@@ -1,29 +1,12 @@
 body{
-	margin-top: 75px;
+    
+    font-family: $primary_fontFamily;   
+	margin-top: 70px;
 }
 
-#navbars {
+.navbar {
 	background-image: url("/commons/static/img/graphbackground.svg");
 	background-position: center;
 	background-repeat: no-repeat;
 }
 
-#flecha{
-	position: relative;
-	background-color: #28d54b;
-
-}
-#flecha:after {
-	right: 100%;
-	top: 50%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-	border-color: rgba(40, 213, 75, 0);
-	border-right-color: #28d54b;
-	border-width: 90px;
-	margin-top: -90px;
-}

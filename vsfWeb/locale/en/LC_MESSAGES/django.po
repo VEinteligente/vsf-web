@@ -129,4 +129,5 @@ msgstr "Height"
 msgid "View more..."
 msgstr "View more..."
 
-
+msgid "News"
+msgstr "News"

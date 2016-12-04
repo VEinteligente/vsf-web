@@ -5,5 +5,26 @@
 
     One element case here!
     Under construction!
-    
+
+<h2> {{cases.title}} </h2>
+<h3>{{cases.description}}</h3>
+
+<p>Pertence a la categoría de {{cases.category}}</p>
+<p> La primera falla se reporto el {{date_case.day}}-{{date_case.month}} a las {{date_case.hour}}:{{date_case.minute}}</p>
+<p> Los eventos asociados son: <p>
+	<ul class="list-group float-xs-left">
+
+		{% for event in events %}
+			<li class="list-group-item">
+				El evento fue registrado con el ISP:{{event.isp}} bajo la categoria de {{event.type}} el dia de {{date_event.day}}
+			</li>
+		{% endfor %}
+
+	</ul>
+
+
+
+
+
+
 {% endblock %}

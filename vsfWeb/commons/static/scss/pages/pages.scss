@@ -1,0 +1,128 @@
+/* RESPONSIVE */
+
+$xl_fontSize: 44px;
+$lg_fontSize: 26px;
+$md_fontSize: 18px;
+$sm_fontSize: 14px;
+$xs_fontSize: 12px;
+
+$medium_fontWeight: 500;
+
+$black_fontColor: #000;
+$darkGray_fontColor: #808184;
+$lightGray_fontColor: #58595B;
+$gray_fontColor: #666666;
+
+$darkGray: #808080;
+$gray: #A0A0A0;
+$lightGray: #CCCCFF;
+
+$darkGrayButton: #BBBBBB;
+$grayButton: #E8E8E8;
+$lightGrayButton: #CCCCCC;
+
+$primary_fontFamily: Roboto;
+
+$sm_padding: 8px;
+$md_padding: 16px;
+$lg_padding: 24px;
+
+$buttonHeightSize: 28px;
+
+$contextualButtonHeightSize: 24px;
+$contextualButtonWidthSize: 80px;
+$contextualButtonColor: #fff; 
+
+$green_tag: #00CC00;
+$red_tag: #FF0000;
+$contentColorTag: #fff;
+
+#listBlocked{
+    background:white; 
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 0;
+    
+    > div:first-child{
+        border-bottom: 1px solid $grayButton;
+        color: black;
+        text-transform: uppercase; 
+        padding-top: 5px;
+        
+        h4{
+            display: inline;
+            font-weight: unset;
+            color: black;
+        }
+    }
+}
+
+#blockedSitesList{
+    div{
+        border-bottom: 2px solid $grayButton;
+        padding: 0;
+        
+        span{
+            padding: 0;
+            
+            a i {
+                color: red;
+            }
+        }
+    }
+}
+
+#count{
+    float: none;
+    padding: 0;
+    border: 1px solid red;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 10px;
+
+}
+
+
+
+
+/* RESPONSIVE */
+
+
+
+@media #{$xs_only} {
+
+}
+
+@media #{$sm_only} {
+
+}
+
+@media #{$sm_down} {
+    p {
+        font-size: $lg_fontSize;
+    } 
+}
+
+@media #{$md_only} {
+ 
+}
+
+@media #{$md_down} {
+
+}
+
+@media #{$lg_only} {
+
+}
+
+@media #{$lg_down} {
+
+}
+
+@media #{$xl_only} {
+      
+}

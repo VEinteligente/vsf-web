@@ -1,41 +1,3 @@
-/* RESPONSIVE */
-
-$xl_fontSize: 44px;
-$lg_fontSize: 26px;
-$md_fontSize: 18px;
-$sm_fontSize: 14px;
-$xs_fontSize: 12px;
-
-$medium_fontWeight: 500;
-
-$black_fontColor: #000;
-$darkGray_fontColor: #808184;
-$lightGray_fontColor: #58595B;
-$gray_fontColor: #666666;
-
-$darkGray: #808080;
-$gray: #A0A0A0;
-$lightGray: #CCCCFF;
-
-$darkGrayButton: #BBBBBB;
-$grayButton: #E8E8E8;
-$lightGrayButton: #CCCCCC;
-
-$primary_fontFamily: Roboto;
-
-$sm_padding: 8px;
-$md_padding: 16px;
-$lg_padding: 24px;
-
-$buttonHeightSize: 28px;
-
-$contextualButtonHeightSize: 24px;
-$contextualButtonWidthSize: 80px;
-$contextualButtonColor: #fff; 
-
-$green_tag: #00CC00;
-$red_tag: #FF0000;
-$contentColorTag: #fff;
 
 #listBlocked{
     background:white; 
@@ -62,6 +24,7 @@ $contentColorTag: #fff;
     div{
         border-bottom: 2px solid $grayButton;
         padding: 0;
+        padding-top: 5px;
         
         span{
             padding: 0;

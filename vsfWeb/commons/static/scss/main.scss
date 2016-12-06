@@ -1,3 +1,20 @@
 @import 'base/base.scss';
 @import 'layout/layout.scss';
 @import 'pages/pages.scss';
+
+
+
+.map g:hover {
+  fill: #8CC63F !important;
+}
+
+.info_panel{
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  height: 12px;
+  padding: 8px;
+  font: 10px sans-serif;
+  background: #ddd;
+  pointer-events: none;
+}

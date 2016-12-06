@@ -13,7 +13,11 @@ class Elements(TemplateView):
     
 class List(TemplateView):
     template_name = "list.html"
+
+class MapVenezuela(TemplateView):
+    template_name = "maps/venezuela.html"
     
+        
 class ListApi(APIView):
 
        

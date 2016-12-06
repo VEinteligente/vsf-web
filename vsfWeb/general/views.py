@@ -15,7 +15,7 @@ class BlockedSites(TemplateView):
     template_name = "blocked-sites.html"
     
     def get_context_data(self,**kwargs ):
-    	r = requests.get('http://192.168.0.114:8000/events/api/blocked_domains/')
+    	r = requests.get('http://192.168.0.130:8000/events/api/blocked_domains/')
     	context= super(BlockedSites,self).get_context_data(**kwargs)
     	#context test not necessary
     	context['test'] = json.loads(r.text)
@@ -28,7 +28,7 @@ class BlockedUrls(TemplateView):
     template_name = "blocked-urls.html"
     
     def get_context_data(self,**kwargs ):
-    	r = requests.get('http://192.168.0.114:8000/events/api/blocked_domains/')
+    	r = requests.get('http://192.168.0.130:8000/events/api/blocked_domains/')
     	context= super(BlockedUrls,self).get_context_data(**kwargs)
     	#context test not necessary
     	context['test'] = json.loads(r.text)
@@ -40,7 +40,7 @@ class BlockedUrls(TemplateView):
 class CaseList(TemplateView):
 	template_name = "case-list.html"
 	def get_context_data(self, **kwargs):
-		r = requests.get('http://192.168.0.114:8000/cases/api/list/')
+		r = requests.get('http://192.168.0.130:8000/cases/api/list/')
 	    	context= super(CaseList,self).get_context_data(**kwargs)
 	    	#context test not necessary
 	    	context['test'] = json.loads(r.text)
@@ -52,7 +52,7 @@ class CaseList(TemplateView):
 class CaseDetail(TemplateView):
 	template_name = "case-detail.html"
 	def get_context_data(self, **kwargs):
-		r = requests.get('http://192.168.0.114:8000/cases/api/list/')
+		r = requests.get('http://192.168.0.130:8000/cases/api/list/')
 	    	context= super(CaseDetail,self).get_context_data(**kwargs)
 	    	#context test not necessary
 	    	context['test'] = json.loads(r.text)

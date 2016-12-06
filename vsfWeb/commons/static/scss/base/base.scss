@@ -233,7 +233,9 @@ button {
 /* Bars */
 
 .titleBar{
-    border: 2px solid $lightGray;
+    background-color:white;
+    border: 1px solid white;
+    border-radius: 5px;
     padding: $md_padding $md_padding $sm_padding $lg_padding;
     .date{
         text-align: right;      
@@ -254,6 +256,7 @@ button {
 
 .subtitleBar{
     border: 2px solid $gray;
+    background-color: $gray;
     padding:0;
     height: 36px;
     .title{

@@ -1,0 +1,100 @@
+//One Element Case Page Style
+
+
+#caseImage{
+	background-color: $lightGray;
+    border: 1px solid $lightGray;
+    border-radius: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
+
+    img{
+    	
+
+    }
+}
+
+#caseDateBar{
+	background-color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    height: 35px;
+    padding-top: 5px;
+    padding-bottom: 7px;
+}
+
+
+#caseInfo{
+	margin-left: 10px;
+}
+
+#caseProvider{
+	margin-top:	5px;
+	background-color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+#caseDescription{
+	background-color:white;
+	border: 1px solid white;
+}
+
+#updateTitle{
+	color:white;
+	margin-top:8px;
+	padding-left:125px;
+}
+
+#subGraphDiv{
+	background-color: $lightGray;
+	padding-left: 175px;
+	
+}
+
+#subGraph1{
+	background-color: white;
+	margin-right: 100px;
+	margin-top: 25px;
+}
+
+#subGraph1Title{
+	border-top: 1px solid gray;
+}
+
+#subGraph1Description{
+	border-top: 1px solid gray;
+	background-color: gray;
+}
+
+#subGraph2{
+	background-color: white;
+    margin-right: 100px;
+    margin-top: 25px;
+}
+
+#subGraph2Title{
+	border-top: 1px solid gray;
+}
+
+#subGraph2Description{
+	border-top: 1px solid gray;
+	background-color: gray;
+}
+
+#subGraph3{
+	background-color: white;
+    margin-right: 100px;
+    margin-top: 25px;
+}
+
+#subGraph3Title{
+	border-top: 1px solid gray;	
+}
+
+#subGraph3Description{
+	border-top: 1px solid gray;
+	background-color: gray;
+}

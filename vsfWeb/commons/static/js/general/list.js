@@ -12,21 +12,54 @@ $( document ).ready(function() {
         
         // When select function is invoked the list is emptied  
         $("#blockedSitesList").empty();
+        // Order of the title blocks depending on the language
+
+        var language = $("#language").val();
+    
+        
+        if(language=="es"){
+              
+            $("#order2").css("-webkit-box-ordinal-group","2");
+            $("#order2").css("-moz-box-ordinal-group","2");
+            $("#order2").css("box-ordinal-group","2");
+            
+            $("#order1").css("-webkit-box-ordinal-group","3");
+            $("#order1").css("-moz-box-ordinal-group","3");
+            $("#order1").css("box-ordinal-group","3");
+
+           
+        }
+        else{
+        
+            $("#order1").css("-webkit-box-ordinal-group","2");
+            $("#order1").css("-moz-box-ordinal-group","2");
+            $("#order1").css("box-ordinal-group","2");
+            
+            $("#order2").css("-webkit-box-ordinal-group","3");
+            $("#order2").css("-moz-box-ordinal-group","3");
+            $("#order2").css("box-ordinal-group","3");
+            
+    
+            
+        }
         
         // Depending on selected option we need to load the corresponding title and variable key of the result we want to show
         if(option=="sites"){
-            $("#title").html("Sites");
+            var sites=$("#sites").val();
+            $("#title").html(sites);
             url_data=url_data_sites
             showResult = "name"
             
         }
         else {
-            $("#title").html("Domains");
+            var domain=$("#domains").val();            
+            $("#title").html(domain);
             url_data = url_data_domains
             showResult = "site"
             
         }
         
+ 
         // This AJAX call corresponds to the request of the JSON data from Pandora project API.
         $.ajax({
                 url: url_data,

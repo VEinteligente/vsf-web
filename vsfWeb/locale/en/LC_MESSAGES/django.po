@@ -105,6 +105,15 @@ msgstr "Continue"
 msgid "Blocked"
 msgstr "Blocked"
 
+msgid "BlockedMultiple"
+msgstr "Blocked"
+
+msgid "Sites"
+msgstr " Sites"
+
+msgid "Domains"
+msgstr " Domains"
+
 msgid "Contextual buttons (static)"
 msgstr "Contextual buttons (static)"
 

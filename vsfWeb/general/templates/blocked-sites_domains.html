@@ -7,9 +7,12 @@
 {% block content %}
 
 {% get_current_language as language_code %}
+<div id="probando"></div>
 
 <input type="hidden" id="hiddenID" value="" />
 <input type="hidden" id="hiddenLinkID" value="" />
+<input type="hidden" id="hiddenDomainID" value="" />
+<input type="hidden" id="hiddenDomainLinkID" value="" />
 <input type="hidden" id="language" value="{{ language_code }}" />
 <input type="hidden" id="sites" value="{% trans 'Sites' %}" />
 <input type="hidden" id="domains" value="{% trans 'Domains' %}" />

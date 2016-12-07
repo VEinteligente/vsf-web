@@ -47,15 +47,15 @@ $( document ).ready(function() {
         if(option=="sites"){
             var sites=$("#sites").val();
             $("#title").html(sites);
-            url_data=url_data_sites
-            showResult = "name"
+            url_data=url_data_sites;
+            showResult = "name";
             
         }
         else {
             var domain=$("#domains").val();            
             $("#title").html(domain);
-            url_data = url_data_domains
-            showResult = "site"
+            url_data = url_data_domains;
+            showResult = "url";
             
         }
         
@@ -68,11 +68,18 @@ $( document ).ready(function() {
                 contentType: 'application/json'
                 }).done( function( data ) {
                 
-                    var dataJson=JSON.parse(data);
                     var oldID =null;
-                    
+                    var oldLinkID =null;
+                    var temporal = ""; 
                     // For each element in the JSON we need to collect their values
-                    
+                    for(var i=0; i<data.length; i++)
+                        temporal=temporal.concat(data[i])
+                        
+                        var dataJson=JSON.parse(temporal);
+                        console.log(temporal)
+                        console.log(data)                
+                        console.log(dataJson)    
+                        
                     $.each(dataJson , function(key , value){ // First Level 
                         
                         if(key=="count"){     
@@ -81,16 +88,76 @@ $( document ).ready(function() {
                         
                         // We need to access this element to get each site/domain data
                         if(key=="results"){                   
-                                           
+                            $('#hiddenID').val("");               
                             $.each(dataJson.results , function(secondLevelKey, secondLevelValue){ // Second Level 
                             
                                 $.each(secondLevelValue , function(thirdLevelKey , thirdLevelValue){ // Third Level 
-                                    
-                                     if(thirdLevelKey=="id"){
+                                                    
                                         
+                                                    
+                                     if(thirdLevelKey=="id" || thirdLevelKey=="id,"){
+                             
+                                                    
                                         // This AJAX call corresponds to the request of the HTML of the elements of the list.
                                         // Note that the async: false because we are not validating or using the post method.
                                         $.ajax({
+                                                                            
+                                                url: url_style_list,
+                                                context: document.body,
+                                                data: thirdLevelValue,
+                                                async: false,                                                         
+                                                }).done( function( result ) 
+                                                {   
+                                                    // We have a generic ID for the list element and the anchor tag in the HTML 
+                                                    // template that we need to change to a specific one for each element to then
+                                                    // load the value of showResult there.
+                                                    $('#blockedSitesList').append(result);
+                                                    oldID = document.getElementById("value");
+                                                    oldID.id = "iden" + thirdLevelValue;
+                                                    $('#hiddenID').val("iden" + thirdLevelValue);
+                                                                                                    
+                                                    oldLinkID = document.getElementById("list-html");
+                                                    oldLinkID.id = "link" + thirdLevelValue;                                        
+                                                    $('#hiddenLinkID').val("link" + thirdLevelValue);
+                                                    
+                                                    $("#"+ $('#hiddenID').val()).closest(".subtitleBar").addClass($('#hiddenID').val());
+                                                    
+                                                    
+                                                    
+                                          
+                                                }).fail( function( jqXHR, textStatus, errorThrown ) {
+                                                    $('#blockedSitesList').html(" ");
+                                        });
+                                    }
+                                    
+                                    if(thirdLevelKey==showResult){
+                                                // We load the showResult value in the specific ID. 
+                                       
+                                                
+                                                $('#'+ $('#hiddenID').val()).html(thirdLevelValue);
+                                                if(showResult!="name")
+                                                    $("#"+$('#hiddenLinkID').val()).find("a").attr("href","http://"+thirdLevelValue);
+                                                else
+                                                {
+                                                    $("#"+$('#hiddenLinkID').val()).find("a").find("i").removeClass("fa-lock");
+                                                    $("#"+$('#hiddenLinkID').val()).find("a").find("i").addClass("fa-external-link");
+                                                    $("#"+$('#hiddenLinkID').val()).find("a").find("i").css("color","blue");
+                                                }
+                                                    
+
+                                    }
+                                    
+                                    
+                                    if(thirdLevelKey=="domains"){
+                                    
+                                        $.each(thirdLevelValue , function(fourthLevelKey , fourthLevelValue){ // Third Level 
+                                        $.each(fourthLevelValue , function(fifthLevelKey, fifthLevelValue){ // Second Level 
+                                             // This AJAX call corresponds to the request of the HTML of the elements of the list.
+                                            // Note that the async: false because we are not validating or using the post method.
+                                           
+                                           if(fifthLevelKey=="id"){
+                                        
+                                            $.ajax({
                                                                             
                                                 url: url_style_list,
                                                 context: document.body,
@@ -103,25 +170,66 @@ $( document ).ready(function() {
                                                     // load the value of showResult there.
                                                     $('#blockedSitesList').append(result);
                                                     oldID = document.getElementById("value");
-                                                    oldID.id = "iden" + thirdLevelValue;
-                                                    $('#hiddenID').val("iden" + thirdLevelValue);
-                                                                                                    
+                                                    oldID.id = "idenDomain" + fifthLevelValue;
+                                                    $('#hiddenDomainID').val("idenDomain" + fifthLevelValue );
+                                                                                           
                                                     oldLinkID = document.getElementById("list-html");
-                                                    oldLinkID.id = "link" + thirdLevelValue;                                        
-                                                    $('#hiddenLinkID').val("link" + thirdLevelValue);
+                                                    oldLinkID.id = "linkDomain" + fifthLevelValue;   
+                                                                        
+                                                    $('#hiddenDomainLinkID').val("linkDomain"  + fifthLevelValue);
+                                                    
+                                                    $("#"+$('#hiddenDomainLinkID').val()).closest(".subtitleBar").addClass("domain");
+                                                    $("#"+$('#hiddenDomainLinkID').val()).closest(".subtitleBar").addClass($('#hiddenLinkID').val());
+                                                    
+                                                    $(".domain").hide();
+                                                    
+                                                    var parentID= $("#"+$('#hiddenID').val()).parent(".subtitleBar");
+                                                    var childID =$("."+$('#hiddenLinkID').val());
+                                                    var count=0;
+                                                    
+                                                    parentID.click(function(){
+                                                     count++;
+                                                        if(count % 2 != 0) {
+                                                            childID.show();
+                                                            parentID.css("background","#CCCCFF");
+                                                            childID.css("background","#A0A0A0");
+                                                        }else{
+                                                            childID.hide();
+                                                            parentID.css("background","white");
+                                                            childID.css("background","white");
+                                                        }    
+                                                        
+                                                    });
                                           
                                                 }).fail( function( jqXHR, textStatus, errorThrown ) {
                                                     $('#blockedSitesList').html(" ");
-                                        });
-                                    }
-                                    
-                                    if(thirdLevelKey==showResult){
+                                            });
+                                            }
+                                            
+                                            if(fifthLevelKey=="url"){
+                                         
                                                 // We load the showResult value in the specific ID. 
-                                                $('#'+ $('#hiddenID').val()).html(thirdLevelValue);
-                                                $("#"+$('#hiddenLinkID').val()).find("a").attr("href","http://"+thirdLevelValue);
+                                                $('#'+ $('#hiddenDomainID').val()).html(fifthLevelValue);
+                                                $("#"+$('#hiddenDomainLinkID').val()).find("a").attr("href",fifthLevelValue);
+                                               
+                                                $("#"+$('#hiddenLinkID').val()).find("a").attr("href",fifthLevelValue);
+                                                
+                                                
+                                                
+
 
                                     }
-                           
+                                        
+                                        });
+                                        });
+                                        
+                                        
+                                        
+                                        
+                                    }
+                                
+                                
+                                    
                                 });
                             });
                         }  

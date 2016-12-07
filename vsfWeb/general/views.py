@@ -18,14 +18,15 @@ class AboutUs(TemplateView):
 class BlockedSitesApi(APIView):
    
    def get(self, request, format=None):
-       snippet = requests.get('http://192.168.0.100:8000/events/api/blocked_sites/')
+       snippet = requests.get('http://192.168.0.114:8000/events/api/blocked_sites/')
        return Response(snippet)
 
 # This view obtains the blocked domains json data from the API of the Pandora project
 class BlockedDomainsApi(APIView):
    
    def get(self, request, format=None):
-       snippet = requests.get('http://192.168.0.100:8000/events/api/blocked_domains/')
+       snippet = requests.get('http://192.168.0.114:8000/events/api/blocked_domains/?format=json')
+       
        return Response(snippet)
 
 # This view renders the HTML containing information about the blocked sites and domains.

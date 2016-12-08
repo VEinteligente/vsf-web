@@ -1,6 +1,18 @@
 {% extends "base.html" %}
+{% load static %}
+{% load i18n %}
 
 {% block content %}
+
+<div class="informationPanel"></div>
+<br>
+
+<div>
+  <span>Estados</span>
+  <select id="mapSelector">
+
+  </select>
+</div>
 
 
 <div class="map">
@@ -942,7 +954,7 @@
                     l-3.886-6.726C303.413,197.971,303.248,197.875,303.069,197.875L303.069,197.875z"/>
             </g>
         </g>
-        <g id="Yaracuy_1_">
+        <g id="Yaracuy">
             <g>
                 <polygon stroke="#4C4C4C" stroke-width="0.5" stroke-miterlimit="10" points="264.238,198.749 256.47,198.749 260.354,191.835 
                     264.238,185.018 268.119,191.881 272.004,198.749         "/>
@@ -1063,7 +1075,7 @@
                     h-7.475l-3.743-6.475l-3.88-6.726l-3.882-6.728l-3.883-6.724C357.782,184.52,357.617,184.424,357.438,184.424L357.438,184.424z"/>
             </g>
         </g>
-        <g id="Yaracuy">
+        <g id="Trujillo">
             <g>
                 <polygon stroke="#4C4C4C" stroke-width="0.5" stroke-miterlimit="10" points="171.037,225.921 163.269,225.921 167.155,218.873 
                     171.037,211.986 174.917,218.955 178.805,225.921         "/>
@@ -1110,6 +1122,7 @@
                 <polygon stroke="#4C4C4C" stroke-width="0.5" stroke-miterlimit="10" points="190.639,258.675 194.519,252.16 198.409,258.571 
                     202.291,264.983 194.519,264.983 186.758,264.983         "/>
             </g>
+          
             <g>
                 <path fill="#006497" d="M186.568,211.826l8.144,13.638h7.579h7.686h0.077l-0.038,0.066v0.002l0.038-0.068l3.884,6.727l3.778,6.54
                     l0.107,0.188h-0.079l-0.107-0.188l-0.109,0.188l-3.778,6.539l-3.839,6.66l-0.045,0.068h0.005l-3.888,6.726l-3.879,6.726v-0.001
@@ -5088,26 +5101,19 @@
     </svg>
 
 </div>
+ 
 
 <script>
+       
+// These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here 
+// because of DJango configuration
+ 
+    var url_data="{% url 'General:MapApi' %}"   
 
- $('.map g').mouseover(function (e) {
-      
-        $('<div class="informationPanel">'+ $(this).attr('id')+ '</div>').appendTo('body');
-    })
-    .mouseleave(function () {
-        $('.info_panel').remove();
-    })
-    .mousemove(function(e) {
-        var mouseX = e.pageX, //X coordinates of mouse
-            mouseY = e.pageY; //Y coordinates of mouse
-
-        $('.info_panel').css({
-            top: mouseY-50,
-            left: mouseX - ($('.info_panel').width()/2)
-        });
-    });
-  
+    
 </script>
+
+<script src="{% static 'js/general/map.js' %}"></script>
+
 
 {% endblock %}

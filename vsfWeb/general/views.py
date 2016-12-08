@@ -34,6 +34,16 @@ class BlockedUrlsSites(TemplateView):
     template_name = "blocked-sites_domains.html"
 
 
+class MapVenezuela(TemplateView):
+    template_name = "maps/venezuela.html"
+    
+class MapApi(APIView):
+       
+   def get(self, request, format=None):
+       snippet = requests.get('http://192.168.0.114:8000/cases/api/list/region/')
+       
+       return Response(snippet)
+    
 
 class CaseList(TemplateView):
 	template_name = "case-list.html"

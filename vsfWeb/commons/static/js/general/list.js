@@ -191,12 +191,16 @@ $( document ).ready(function() {
                                                      count++;
                                                         if(count % 2 != 0) {
                                                             childID.show();
-                                                            parentID.css("background","#CCCCFF");
-                                                            childID.css("background","#A0A0A0");
+                                                            parentID.css("background","#A0A0A0");
+                                                            childID.css("background","#808080");
+                                                            parentID.css("color","white");
+                                                            childID.css("color","white");
                                                         }else{
                                                             childID.hide();
                                                             parentID.css("background","white");
                                                             childID.css("background","white");
+                                                            parentID.css("color","#373a3c");
+                                                            childID.css("color","#373a3c");
                                                         }    
                                                         
                                                     });

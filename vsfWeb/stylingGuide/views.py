@@ -13,14 +13,10 @@ class Elements(TemplateView):
     
 class List(TemplateView):
     template_name = "list.html"
-
-class MapVenezuela(TemplateView):
-    template_name = "maps/venezuela.html"
     
         
 class ListApi(APIView):
 
-       
    def get(self, request, format=None):
        thirdLevelValue= request.POST['thirdLevelValue']
        snippet = requests.get('localhost:8000/styling-guide/list')

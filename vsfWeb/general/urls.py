@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from general.views import (Dashboard, AboutUs, BlockedSitesApi, BlockedDomainsApi, BlockedUrlsSites)
+from general.views import (Dashboard, AboutUs, BlockedSitesApi, BlockedDomainsApi, BlockedUrlsSites, MapApi, MapVenezuela)
 
 
 urlpatterns = [
@@ -9,4 +9,6 @@ urlpatterns = [
     url(r'^blocked-sites-api$',BlockedSitesApi.as_view(),name="BlockedSitesApi"),
     url(r'^blocked-domains-api$',BlockedDomainsApi.as_view(),name="BlockedDomainsApi"),
     url(r'^blocked-domains_sites$',BlockedUrlsSites.as_view(), name="BlockedUrlsSites"),
+    url(r'^map-Venezuela',MapVenezuela.as_view(), name="MapVenezuela"),
+    url(r'^map-api',MapApi.as_view(), name="MapApi"),
 ] 

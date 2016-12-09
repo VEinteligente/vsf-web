@@ -114,6 +114,12 @@ msgstr " Sitios"
 msgid "Domains"
 msgstr " Dominios"
 
+msgid "Blocked Sites Strong"
+msgstr "<strong>Sitios</strong> Bloqueados"
+
+msgid "Blocked Domains Strong"
+msgstr "<strong>Dominios</strong> Bloqueados"
+
 msgid "Contextual buttons (static)"
 msgstr "Botones contextuales (estáticos)"
 

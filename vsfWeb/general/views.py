@@ -18,14 +18,14 @@ class AboutUs(TemplateView):
 class BlockedSitesApi(APIView):
    
    def get(self, request, format=None):
-       snippet = requests.get('http://192.168.0.114:8000/events/api/blocked_sites/')
+       snippet = requests.get('http://192.168.0.100:8000/events/api/blocked_sites/')
        return Response(snippet)
 
 # This view obtains the blocked domains json data from the API of the Pandora project
 class BlockedDomainsApi(APIView):
    
    def get(self, request, format=None):
-       snippet = requests.get('http://192.168.0.114:8000/events/api/blocked_domains/?format=json')
+       snippet = requests.get('http://192.168.0.100:8000/events/api/blocked_domains/?format=json')
        
        return Response(snippet)
 
@@ -33,14 +33,15 @@ class BlockedDomainsApi(APIView):
 class BlockedUrlsSites(TemplateView):
     template_name = "blocked-sites_domains.html"
 
-
+# This view renders the HTML containing information about map with its cases per region.
 class MapVenezuela(TemplateView):
     template_name = "maps/venezuela.html"
-    
+
+# This view obtains the maps json data from the API of the Pandora project  
 class MapApi(APIView):
        
    def get(self, request, format=None):
-       snippet = requests.get('http://192.168.0.114:8000/cases/api/list/region/')
+       snippet = requests.get('http://192.168.0.100:8000/cases/api/list/region/')
        
        return Response(snippet)
     

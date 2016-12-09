@@ -1,158 +1,147 @@
+// array_class defines the class of the list of cases per state so it can be hidden if the state is not the selecter one 
+var array_class = null;
+// array_name defines the state name per state
+var array_name = [];
+// array_total defines the total of cases per state
+var array_total = [];  
+// array_counter is used to add an ID to each element of the list cases per state depending on the state and the number of cases
+var array_counter = [];
+// counter is used to know which element of the arrays is being iterated on
+var counter = 1;
+// Similar to counter but with each case
+var counterCase = 1;
+// element_hover indicates the id of the hovered element
+var element_hover= null;
+// element_hoverSpace is the name of the hover element without spaces to compare it to the ID of the svg elements
+var element_hoverSpace = ""; 
+// mouseX and mouseY are the X and Y coordinates of the mouse
+var mouseX = null; //X coordinates of mouse
+var mouseY = null;  //Y coordinates of mouse
+
+// The commands inside the $(document).ready are all the commands that will be loaded 
+// after the rest of the page is loaded. 
+
 $( document ).ready(function() {
-
-
-   $('.informationPanel').hide();
-   $("#count").html("0");
-   //Step 1: initialize the array making it a global variable
-    var myarr = [];
+    
+    // This sections allows you to use a map of any country if you use a SVG image and loads the states in the select options.
+    
+    // arraySelectOptions is the array for the dropdown of the "select" and making it a global variable
+    var arraySelectOptions = [];
+    // element is each element of the arraySelectOptions
     var element=0;
-    //Step 2: Search for all IDs and add them to the array
+    
+    // This function searches for all IDs of your map (svg image) and add them to the arraySelectOptions
     $(function(){
     
-        $("svg > g").each(function(){
-            
-            myarr[element] = $(this).attr('id');
-
-            $('#mapSelector').append('<option value="'+ myarr[element] + '">' + myarr[element] + '</option>');
-            
-            element=myarr.length;
-
-
-        });
-    });     
-   
- 
+        $("svg > g").each(function(){        
+            arraySelectOptions[element] = $(this).attr('id');
+            $('#mapSelector').append('<option value="'+ arraySelectOptions[element] + '">' + arraySelectOptions[element] + '</option>');            
+            element=arraySelectOptions.length;
+    });
     
+    // The tooltip is hidden by default 
+    $('.informationPanel').hide();
+    
+    // Correspond to the number of elements in the JSON. Its default value is "0"
+    $("#count").html("0");
+  
+});     
 
-    $('select').on('change', function (e) {
+// When the user changes the selected option in the "select" element
+// the state will be hovered, the list of cases and the tooltip will be updated
+$('select').on('change', function(e) {
+        
         var optionSelected = $("option:selected", this);
         var valueSelected = this.value;
         
         $("select option").each(function(){
-        if ($(this).text() == valueSelected){
-            $("#"+valueSelected).addClass("hover");
-            $(this).attr("selected","selected");
-            $('.informationPanel1').html(valueSelected);
-            $(".informationPanel2").html("");
-            var elementHoverSpace = valueSelected.replace(/([A-Z])/g, ' $1').trim();
-            for(var i=0; i<arrayName.length;i++){
+            if ($(this).text() == valueSelected){
+                
+                $("#"+valueSelected).addClass("hover");
+                $(this).attr("selected","selected");
+                $('.informationPanelState').html(valueSelected);
+                $(".informationPanelTotalCases").html("");
+                var element_hoverSpace = valueSelected.replace(/([A-Z])/g, ' $1').trim();
+                
+                for(var i=0; i<array_name.length;i++){
         
-                if(arrayName[i]==elementHoverSpace){
-                $(".informationPanel2").html(arrayTotal[i]);
-            }
-        
-    }
+                    if(array_name[i]==element_hoverSpace){
+                        $(".informationPanelTotalCases").html(array_total[i]);
+                    }
+                }
    
-    if($('.informationPanel2').is(':empty')){
-        $(".informationPanel2").html("0");
-    }
-
-    $('.informationPanel').css({
-            top: $(".map").offset().top,
-            left: $(".map").clientWidth/2
-        });
+                if($('.informationPanelTotalCases').is(':empty')){
+                    $(".informationPanelTotalCases").html("0");
+                }
+                
+                // If a state is selected the position of the tooltip will be fixed
+                $('.informationPanel').css({
+                    top: 4.5*$(".map").offset().top,
+                    left: 3*$(".map").offset().left
+                });
 
  
-            $('.informationPanel').show();
-        }
-        
-        else{
-            $("#"+$(this).text()).removeClass("hover");
-            $(this).removeAttr("selected");
-        }
+                $('.informationPanel').show();
+            }        
+            else{
+                $("#"+$(this).text()).removeClass("hover");
+                $(this).removeAttr("selected");
+            }
         });
 
-    });
+});
     
- var arrayClass  =null;
-var arrayName = [];
-var arrayTotal = [];  
-var arrayList  = [];
-var arrayCounter = [];
-var counter = 1;
-var counterCase = 1;
 
-       $.ajax({
-                url: url_data,
-                method: "GET",
-                dataType: 'json',
-                contentType: 'application/json'
-                }).done( function( data ) {
+// This AJAX call corresponds to the request of the HTML of the total of cases and lists of cases per states.
+$.ajax({
+    url: url_data,
+    method: "GET",
+    dataType: 'json',
+    contentType: 'application/json'
+    }).done( function( data ) {
                   
-                    var temporal = ""; 
-                    // For each element in the JSON we need to collect their values
-                    for(var i=0; i<data.length; i++)
-                        temporal=temporal.concat(data[i]);
-                        
-                        var dataJson=JSON.parse(temporal);
-                  
-           
-                    $.each(dataJson , function(key , value){ // First Level 
-                    
+        var temporal = ""; 
+        // For each element in the JSON we need to collect their values
+        for(var i=0; i<data.length; i++)
+            temporal=temporal.concat(data[i]);
+            var dataJson=JSON.parse(temporal);
+        
+            $.each(dataJson , function(key , value){ // First Level             
                       
-                        if(key=="results"){
-                            
-                            $.each(value, function(secondKey,secondValue){
-                            
-                                             
-                                            
-                                 
+                if(key=="results"){                    
+                    
+                    $.each(value, function(secondKey,secondValue){ // Second Level   
+                        
+                        $.each(secondValue, function(thirdKey,thirdValue){ // Third Level   
                                   
-                                  
+                            if(thirdKey=="name"){
+                                array_name[array_name.length]=thirdValue;       
+                                array_counter[array_counter.length]=counter;           
+                            }
                                             
-                                            $.each(secondValue, function(thirdKey,thirdValue){
-                                  
-                                            if(thirdKey=="name"){
-                                                arrayName[arrayName.length]=thirdValue;
-                                                arrayList[arrayList.length]=thirdValue.replace(/([A-Z])/g, ' $1').trim();
-                                                arrayCounter[arrayCounter.length]=counter;
-                                             //   $(".informationPanel2").html(thirdValue);
-                                            }
-                                            
-                                            if(thirdKey=="number_cases"){
-                                                arrayTotal[arrayTotal.length]=thirdValue; 
-                                             //   $(".informationPanel2").html(thirdValue);
-                                            }
+                            if(thirdKey=="number_cases"){
+                                array_total[array_total.length]=thirdValue; 
+                            }
                                               
-                                            if(thirdKey=="cases"){
-                                            
-                                
+                            if(thirdKey=="cases"){
                             
-                                             
-                                            
-                                                $.each(thirdValue, function(fourthKey,fourthValue){
+                                $.each(thirdValue, function(fourthKey,fourthValue){ // Fourth Level 
+                                 
+                                    // This AJAX call corresponds to the request of the HTML of the elements of the list.
+                                    // Note that the async: false because we are not validating or using the post method. 
+                                    $.ajax({
+                                        url: url_style_list,
+                                        context: document.body,
+                                        async: false,                                                         
+                                        }).done( function( result ) {                                                                                        
+                                            $("#caseregionList").append(result);                                                        
+                                        });
+                                        
+                                        $.each(fourthValue, function(fifthKey,fifthValue){ // Fifth Level 
                                                     
+                                                    if(fifthKey=="title"){
                                                     
-                                                     
-                                                    
-                                                    
-                                                    $.ajax({
-                                                                            
-                                                    url: url_style_list,
-                                                    context: document.body,
-                                                    data: arrayList,
-                                                    async: false,                                                         
-                                                    }).done( function( result ) 
-                                                    {
-                                                        //  
-                                                                                                            
-                                                        $("#caseregionList").append(result);
-                                                        
-                                                    });
-                                                     $.each(fourthValue, function(fithKey,fithValue){
-                                                    
-                                                    
-                                                    
-                                                   
-                                                   
-                                                    
-                                                    if(fithKey=="title"){
-                                                    
-                                                        $('#value').html(fithValue);
-                                                        console.log(counter);
-                                                        
-                                                        
-                                                        
+                                                        $('#value').html(fifthValue);
                                                         counterCase=counterCase+1;
                                                         $('#value').closest(".subtitleBar").hide();
                                                         oldLinkID = $('#value').closest(".subtitleBar");
@@ -171,19 +160,19 @@ var counterCase = 1;
                                                     }
                                                     
                                                     
-                                                    });
+                                        });
                                                     
                                                     
                                                         
                                                         
-                                                });
-                                                }
-                                            });
+                                });
+                            }
+                        });
                                                 
-                                  count=count +1;
+                        count=count +1;
 
-                            });
-                        }
+                    });
+                }
                             
                                           
                         
@@ -191,63 +180,68 @@ var counterCase = 1;
                     
                     
 
-                });
+            });
 
 
-                });
+    });
    
      
-
-
+// This section enables the hover options of the map and when a state is selected the tooltip, list of cases and 
+// selected option in select are updated
  
- $('.map g').mouseover(function (e) {
-    $("#count").html("0");
-
-    $('.informationPanel').show();
-    var elementHover= $(this).attr('id');
+$('.map g').mouseover(function (e) {
     
-    var elementHoverSpace = elementHover.replace(/([A-Z])/g, ' $1').trim();
-    
-    $(".informationPanel2").html("");
-    
-    for(var i=0; i<arrayName.length;i++){
+        // Reset the total of cases viewed in the page
+        $("#count").html("0");
         
-        if(arrayName[i]==elementHoverSpace){
-            $(".informationPanel2").html(arrayTotal[i]);
-            $(".class"+arrayCounter[i]).show();
-            $("#count").html(arrayTotal[i]);
-
-        }
-        else{
-            $(".class"+arrayCounter[i]).hide();
+        // Show the tooltip
+        $('.informationPanel').show();
+        
+        var element_hover= $(this).attr('id');
+        
+        if (element_hover != null){
+            var element_hoverSpace = element_hover.replace(/([A-Z])/g, ' $1').trim();
+        
+            $(".informationPanelTotalCases").html("");
+            
+            for(var i=0; i<array_name.length;i++){
+                
+                if(array_name[i]==element_hoverSpace){
+                    $(".informationPanelTotalCases").html(array_total[i]);
+                    $(".class"+array_counter[i]).show();
+                    $("#count").html(array_total[i]);
+        
+                }
+                else{
+                    $(".class"+array_counter[i]).hide();
+                }
+                
+            }
+           
+            if($('.informationPanelTotalCases').is(':empty')){
+                $(".informationPanelTotalCases").html("0");
+            }
+            
+            $('.informationPanelState').html(element_hover);
+            
+            $("select option").each(function(){
+                if ($(this).text() == element_hover){
+                    $("#"+element_hover).addClass("hover");
+                    $(this).attr("selected","selected");
+                    $("select").val(element_hover).change();
+                }
+                
+                else{
+                    $("#"+$(this).text()).removeClass("hover");
+                    $(this).removeAttr("selected");
+                }
+            });
+         
         }
         
-    }
-   
-    if($('.informationPanel2').is(':empty')){
-        $(".informationPanel2").html("0");
-    }
-    
-    $('.informationPanel1').html(elementHover);
-    
-    $("select option").each(function(){
-        if ($(this).text() == elementHover){
-            $("#"+elementHover).addClass("hover");
-            $(this).attr("selected","selected");
-            $("select").val(elementHover).change();
-        }
-        
-        else{
-            $("#"+$(this).text()).removeClass("hover");
-            $(this).removeAttr("selected");
-        }
-    });
- 
-    
-    })
-    .mousemove(function(e) {
-        var mouseX = e.pageX, //X coordinates of mouse
-            mouseY = e.pageY; //Y coordinates of mouse
+    }).mousemove(function(e) {
+        mouseX = e.pageX;
+        mouseY = e.pageY;
 
         $('.informationPanel').css({
             top: mouseY-50,
@@ -255,7 +249,6 @@ var counterCase = 1;
         });
     });
   
-
 });
 
  

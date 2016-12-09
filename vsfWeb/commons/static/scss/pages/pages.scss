@@ -52,6 +52,39 @@
 
 // Maps
 
+.mapContainer {
+    padding: 20px; 
+    background:#292424; 
+    heigth:800px;
+    
+    > div:first-child{
+        height: 580px; 
+        background: rgba(236, 238, 239, 0.37);
+        border: 1px solid transparent;
+        border-radius: 8px;
+    }
+    
+    .map {
+        
+        svg {
+            margin-top: -70px; 
+            margin-left: -50px;
+            height: 690px;
+            width: 690px;
+        }
+        
+        #mapSelectorContainer{
+            z-index:50; 
+            margin-top:-135px; 
+            margin-left: 50px;
+        }
+        
+    }
+
+    
+    
+}
+
 .map g.hover {
   fill: #8CC63F !important;
 }
@@ -59,7 +92,7 @@
 .map {
     
     select {
-        background: transparent;
+        background: #716f6f;
         border: none;
         border-bottom: blue 1px solid;
         color: white;
@@ -68,16 +101,18 @@
 }
 
 .informationPanel {
-  position: absolute;
-  text-align: center;
-  width: auto;
-  height: auto;
-  border: black 1px solid;
-  border-radius: 5px;
-  padding: 8px;
-  font: 10px sans-serif;
-  background: #ddd;
-  pointer-events: none; }
+    z-index:100;
+    position: absolute;
+    text-align: center;
+    width: auto;
+    height: auto;
+    border: black 1px solid;
+    border-radius: 5px;
+    padding: 8px;
+    font: 10px sans-serif;
+    background: #ddd;
+    pointer-events: none; 
+}
   
 #listRegion{
     background:white; 
@@ -101,6 +136,15 @@
     .subtitleBar > span {
         padding: 0;
     }
+
+    .title{
+        padding-left: 5px;
+    }
+}
+
+#caseRegionListContainer{
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 

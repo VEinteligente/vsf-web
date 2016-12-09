@@ -56,6 +56,17 @@
   fill: #8CC63F !important;
 }
 
+.map {
+    
+    select {
+        background: transparent;
+        border: none;
+        border-bottom: blue 1px solid;
+        color: white;
+        outline: none;
+    }
+}
+
 .informationPanel {
   position: absolute;
   text-align: center;
@@ -67,6 +78,32 @@
   font: 10px sans-serif;
   background: #ddd;
   pointer-events: none; }
+  
+#listRegion{
+    background:white; 
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 0;
+    margin-left: 10px;
+    
+    > div:first-child{
+        border-bottom: 1px solid $grayButton;
+        color: black;
+        text-transform: uppercase; 
+        padding-top: 5px;
+        
+        h4{
+            display: inline;
+            font-weight: unset;
+            color: black;
+        }
+    }
+    .subtitleBar > span {
+        padding: 0;
+    }
+}
+
+
 
 /* RESPONSIVE */
 

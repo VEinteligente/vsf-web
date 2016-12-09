@@ -140,3 +140,6 @@ msgstr "Ver más..."
 
 msgid "News"
 msgstr "Noticias"
+
+msgid "Featured Cases"
+msgstr "<strong>Casos</strong> Destacados"

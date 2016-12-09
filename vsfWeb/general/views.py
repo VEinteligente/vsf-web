@@ -48,7 +48,7 @@ class MapApi(APIView):
 class CaseList(TemplateView):
 	template_name = "case-list.html"
 	def get_context_data(self, **kwargs):
-		r = requests.get('http://192.168.0.114:8000/cases/api/list/')
+		r = requests.get('http://192.168.0.100:8000/cases/api/list/')
 	    	context= super(CaseList,self).get_context_data(**kwargs)
 	    	#context test not necessary
 	    	context['test'] = json.loads(r.text)

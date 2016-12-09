@@ -4,20 +4,29 @@
 
 {% block content %}
 
-<div class="informationPanel"></div>
-<br>
+<div class="col-xs-12" style="padding: 20px; background:#292424; heigth:800px">
 
-<div>
-  <span>Estados</span>
-  <select id="mapSelector">
+<div class="col-xs-8" style="height: 580px; background: rgba(236, 238, 239, 0.37);border: 1px solid transparent;border-radius: 35px;/* opacity: 0.5; */">
 
-  </select>
+<div class="informationPanel" style="z-index:100">
+    <div class="informationPanel1"></div>
+    <div class="informationPanel2"></div>
+    
 </div>
 
 
-<div class="map">
 
-    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="800px"
+
+
+
+<div class="map col-xs-12">
+
+    <svg style="
+    margin-top: -70px; 
+    margin-left: -50px;
+    height: 690px;
+    width: 690px;
+" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="800px"
          height="800px" viewBox="0 0 800 800" enable-background="new 0 0 800 800" xml:space="preserve">
          
         <g id="Merida">
@@ -2205,7 +2214,7 @@
                     C645.15,171.064,644.985,170.969,644.807,170.969L644.807,170.969z"/>
             </g>
         </g>
-        <g id="Delta">
+        <g id="DeltaAmacuro">
             <g>
                 <polygon stroke="#4C4C4C" stroke-width="0.5" stroke-miterlimit="10" points="621.502,225.921 613.735,225.921 617.617,218.873 
                     621.502,211.986 625.389,218.955 629.266,225.921         "/>
@@ -4659,7 +4668,7 @@
                     C629.609,305.587,629.444,305.492,629.266,305.492L629.266,305.492z"/>
             </g>
         </g>
-        <g id="Federal">
+        <g id="Vargas">
             <g>
                 <polygon stroke="#4C4C4C" stroke-width="0.5" stroke-miterlimit="10" points="369.083,191.77 365.203,198.434 361.321,191.799 
                     357.438,185.162 365.203,185.162 372.971,185.162         "/>
@@ -4691,7 +4700,7 @@
                      M380.736,171.469L380.736,171.469"/>
             </g>
         </g>
-        <g id="Capital">
+        <g id="DistritoFederal">
             <g>
                 <polygon stroke="#4C4C4C" stroke-width="0.5" stroke-miterlimit="10" points="372.971,198.749 365.203,198.749 369.083,191.835 
                     372.971,185.018 376.852,191.881 380.735,198.749         "/>
@@ -5099,9 +5108,53 @@
             </g>
         </g>
     </svg>
+    
+    
+    
+<div style="z-index:50; margin-top:-135px; margin-left: 50px;">
+
+  <select id="mapSelector">
+
+  </select>
+</div>
+
 
 </div>
- 
+
+
+</div>
+
+
+<div class="col-xs-3" id="listRegion">
+     <div class="col-xs-12 subtitleBar">
+        
+        <h4>
+            <span class="col-xs-1" id="count"></span >
+            <span id="title" style="padding-left: 5px;">{% trans "Featured Cases" %}</span> 
+      
+        
+     
+        </h4>
+               
+    </div>
+    
+
+    
+    <div style="padding-left: 10px;padding-right: 10px;">
+        <div id="caseregionList">
+      
+            
+        </div>
+        
+        
+    </div>
+
+    
+</div>
+
+   
+</div>
+
 
 <script>
        
@@ -5109,6 +5162,7 @@
 // because of DJango configuration
  
     var url_data="{% url 'General:MapApi' %}"   
+    var url_style_list =  "{% url 'StylingGuide:ListApi' %}"
 
     
 </script>

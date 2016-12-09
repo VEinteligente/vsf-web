@@ -1,6 +1,7 @@
 $( document ).ready(function() {
         var url_data = null;
         var showResult = null;
+        $("#count").html("0");
         select("sites");
         
     });
@@ -193,6 +194,7 @@ $( document ).ready(function() {
                                                             childID.show();
                                                             parentID.css("background","#A0A0A0");
                                                             childID.css("background","#808080");
+                                                            childID.css("font-size","0.95em");
                                                             parentID.css("color","white");
                                                             childID.css("color","white");
                                                         }else{

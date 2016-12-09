@@ -25,7 +25,7 @@ class BlockedSitesApi(APIView):
 class BlockedDomainsApi(APIView):
    
    def get(self, request, format=None):
-       snippet = requests.get('http://192.168.0.100:8000/events/api/blocked_domains/?format=json')
+       snippet = requests.get('http://192.168.0.100:8000/events/api/blocked_domains/')
        
        return Response(snippet)
 
@@ -44,19 +44,28 @@ class MapApi(APIView):
        snippet = requests.get('http://192.168.0.100:8000/cases/api/list/region/')
        
        return Response(snippet)
-    
-
+  
+# This view renders the HTML containing information about list of cases
 class CaseList(TemplateView):
-	template_name = "case-list.html"
-	def get_context_data(self, **kwargs):
-		r = requests.get('http://192.168.0.100:8000/cases/api/list/')
-	    	context= super(CaseList,self).get_context_data(**kwargs)
-	    	#context test not necessary
-	    	context['test'] = json.loads(r.text)
-	    	probando2 = json.loads(r.text)
-	    	context['cases'] = probando2["results"]
+    template_name = "case-list.html"
+    
+# This view obtains the list of cases json data from the API of the Pandora project  
+class CaseListApi(APIView):
+       
+   def get(self, request, format=None):
+       snippet = requests.get('http://192.168.0.100:8000/cases/api/list/')
+       
+       return Response(snippet)
+   
+# This view obtains the filtered list of cases json data from the API of the Pandora project  
+class AdvancedSearchApi(APIView):
+       
+   def get(self, request, format=None):
+       snippet = requests.get('http://192.168.0.100:8000/cases/api/list-case-filter/')
+       
+       return Response(snippet)
 
-	    	return context
+
 
 class CaseDetail(TemplateView):
 	template_name = "case-detail.html"

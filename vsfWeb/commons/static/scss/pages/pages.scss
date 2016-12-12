@@ -93,4 +93,97 @@
 #subGraph3Description{
 	border-top: 1px solid gray;
 	background-color: gray;
+
+
+#listBlocked{
+    background:white; 
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 0;
+    
+    div:first-child{
+        border-bottom: 1px solid $grayButton;
+        color: black;
+        text-transform: uppercase; 
+        padding-top: 5px;
+       
+        h4{
+            display: inline;
+            font-weight: unset;
+            color: black;
+        }
+    }
+}
+
+#blockedSitesList{
+    div{
+        border-bottom: 2px solid $grayButton;
+        padding: 0;
+        padding-top: 5px;
+        
+        span{
+            padding: 0;
+            
+            a i {
+                color: red;
+            }
+        }
+    }
+}
+
+#count{
+    float: none;
+    padding: 0;
+    border: 1px solid red;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 10px;
+
+}
+
+
+
+
+/* RESPONSIVE */
+
+
+
+@media #{$xs_only} {
+
+}
+
+@media #{$sm_only} {
+
+}
+
+@media #{$sm_down} {
+    p {
+        font-size: $lg_fontSize;
+    } 
+}
+
+@media #{$md_only} {
+ 
+}
+
+@media #{$md_down} {
+
+}
+
+@media #{$lg_only} {
+
+}
+
+@media #{$lg_down} {
+
+}
+
+@media #{$xl_only} {
+      
+
+}
 }

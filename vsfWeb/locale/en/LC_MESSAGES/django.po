@@ -98,7 +98,19 @@ msgstr "Continue"
 msgid "Blocked"
 msgstr "Blocked"
 
+<<<<<<< HEAD
 #: stylingGuide/templates/elements.html:83
+=======
+msgid "BlockedMultiple"
+msgstr "Blocked"
+
+msgid "Sites"
+msgstr " Sites"
+
+msgid "Domains"
+msgstr " Domains"
+
+>>>>>>> dbe675223a24645b3052d3dc2a21378319fcfcca
 msgid "Contextual buttons (static)"
 msgstr "Contextual buttons (static)"
 

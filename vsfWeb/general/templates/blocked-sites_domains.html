@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+
+
+{% block content %}
+
+{% get_current_language as language_code %}
+
+<input type="hidden" id="hiddenID" value="" />
+<input type="hidden" id="hiddenLinkID" value="" />
+<input type="hidden" id="language" value="{{ language_code }}" />
+<input type="hidden" id="sites" value="{% trans 'Sites' %}" />
+<input type="hidden" id="domains" value="{% trans 'Domains' %}" />
+
+<div class="col-xs-12" style="background: gray">
+<div class="col-xs-3" id="listBlocked">
+     <div class="col-xs-12 subtitleBar">
+        
+        <h4 style="display: -webkit-box; display: -moz-box; display: box;">
+            <span class="col-xs-1" id="count"></span >
+            <div id="order1" style="padding-left: 5px;">{% trans "BlockedMultiple" %} </div> 
+            <div id="order2" style="padding-left: 5px;"> 
+      
+                <strong id="title"></strong>
+            </div>       
+        </h4>
+               
+    </div>
+    
+    <div>
+        
+        
+        
+    </div>
+    
+    
+    <div style="padding-left: 10px;padding-right: 10px;">
+        <div id="blockedSitesList" >
+      
+            
+        </div>
+        
+         <button class="contextualButtonFixedSize" onclick="select('sites')" style="margin-top: 10px;margin-bottom: 5px;">
+            Sites
+        </button>
+        
+        <button class="contextualButtonFixedSize" onclick="select('domains')" style="margin-top: 10px;margin-bottom: 5px;">
+            Domains
+        </button>
+    </div>
+
+    
+</div>
+    
+</div>
+
+
+<script>
+       
+// These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here 
+// because of DJango configuration
+ 
+    var url_data_sites="{% url 'General:BlockedSitesApi' %}"
+    var url_data_domains = "{% url 'General:BlockedDomainsApi' %}"
+    var url_style_list =  "{% url 'StylingGuide:ListApi' %}"
+    
+
+    
+</script>
+
+<script src="{% static 'js/general/list.js' %}"></script>
+
+{% endblock %}

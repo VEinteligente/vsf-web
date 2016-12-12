@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% load i18n %}
-
+{% load static %}
 {% block content %}
+
+
 
 <div style = "background-color:gray">
 			<div class="container-fluid" id="title">
@@ -10,8 +12,8 @@
 				
 					<div class="col-xs-12 titleBar">
 				
-						<h2 class="title"> {{cases.title}} </h2>
-						<h4 class="date"> {{date_case.day}}/{{date_case.month}}/{{date_case.year}}</h4>
+						<h2 class="title" id="titleAjax"></h2>
+						<h4 class="date" id="titleDateAjax"> </h4>
 					</div>
 
 				</div>
@@ -35,8 +37,8 @@
 						    	<div class="row">
 						    		<div class="container-fluid" id="caseDateBar">
 							    		<div class="col-xs-12 timelineBar" style=" margin-left: 15px;">
-					           			<div class="date col-xs-9">{{date_case.day}}-{{date_case.month}}-{{date_case.year}}</div>
-					           			<div class="status col-xs-3">Status-Caso</div>   
+					           			<div class="date col-xs-9" id="statusDateAjax"></div>
+					           			<div class="status col-xs-3" id="statusAjax"></div>   
 							    		</div>
 						    	
 						    		</div>
@@ -46,7 +48,7 @@
 						    	
 						    		<div class="container-fluid">
 						    	
-						    		    <p> Target @ {{event.target}}</p>	
+						    		    <p> Target @</p>	
 						    	
 						    		</div>
 						    	
@@ -56,26 +58,8 @@
 						    	
 						    		<div class="container-fluid" id="caseProvider">
 						    	
-						    		    <div class="col-xs-12" style="text-align: center;">
-									        <button class="contextualButtonFixedSize">
-									            CANTV
-									        </button>
-									        
-									        <button class="contextualButtonFixedSize">
-									            Digitel
-									        </button>
-									        
-									        <button class="contextualButtonFixedSize">
-									            inter
-									        </button>
-
-									        <button class="contextualButtonFixedSize">
-									        	Movistar
-									        </button>
-
-									        <button class="contextualButtonFixedSize">
-									        	SuperCable
-									        </button>
+						    		    <div class="col-xs-12" style="text-align: center;" id="ispAjax">
+								
 				    					</div>	
 						    	
 						    		</div>
@@ -98,7 +82,7 @@
 		<div class="col-xs-6 offset-xs-2" >
 
 		<h3> Descripción:</h3>
-			<p>{{cases.description}}</p>
+			<p id="descriptionAjax"></p>
 
 		</div>		
 
@@ -120,46 +104,8 @@
 	</div>
 
 
-	<div class="row">
+	<div class="row" id="eventListAjax">
 
-
-				{% for event in events %}
-
-					<div class="col-xs-12 updateBar" style="margin-bottom: 15px; padding-left:115px; padding-right: 100px">
-       				<div class="col-xs-2" style="padding-left: 0;padding-right: 0;" >
-            		<div class="col-xs-7" style="padding-right: 0;padding-left: 0;">
-                	<div class="col-xs-12 dateDayMonth headline">
-                	27 JUN
-                	</div>
-                	<div class="col-xs-12 dateYear">
-                	2016
-                	</div>
-            		</div>
-            		<div class="col-xs-2" style="padding-left: 0;">
-                	<div class="symbolBlocked"></div>
-            		</div>
-            
-        			</div>
-
-        
-			        <div class="col-xs-7 content" style="padding-left: 0;">
-			            Descripción Evento
-			        </div>
-			        
-			        <div class="col-xs-3 share">
-			            <a href="#">View more...</a>
-			            <a href="#" target="_blank"><i class="fa fa-facebook-square "></i></a>
-			            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-			            <a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>
-			                       
-			        </div>
-			               
-
-			    	</div>
-					
-			
-
-				{% endfor %}
 
 	</div>		
 
@@ -256,6 +202,19 @@
 
 	</div>
 </div>
+
+<script>
+       
+// These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here 
+// because of DJango configuration
+ 
+    var url_one_case="{% url 'Cases:OneElementCaseApi' %}"
+    
+
+    
+</script>
+
+<script src="{% static 'js/cases/case.js' %}"></script>
 
 
 

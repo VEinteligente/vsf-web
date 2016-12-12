@@ -23,7 +23,7 @@ msgstr ""
 
 #: commons/templates/navbar/navbar.html:23
 msgid "News"
-msgstr "News"
+msgstr ""
 
 #: commons/templates/navbar/navbar.html:29
 msgid "Guides"
@@ -104,12 +104,11 @@ msgid "BlockedMultiple"
 msgstr "Blocked"
 
 msgid "Sites"
-msgstr " Sites"
+msgstr ""
 
 msgid "Domains"
-msgstr " Domains"
+msgstr "Domains"
 
-<<<<<<< HEAD
 msgid "Blocked Sites Strong"
 msgstr "Blocked <strong>Sites</strong>"
 

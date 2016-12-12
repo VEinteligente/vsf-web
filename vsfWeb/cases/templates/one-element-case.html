@@ -1,28 +1,220 @@
 {% extends "base.html" %}
-
-
+{% load i18n %}
+{% load static %}
 {% block content %}
 
-    One element case here!
-    Under construction!
-
-<h2> {{cases.title}} </h2>
-<h3>{{cases.description}}</h3>
-
-<p>Pertence a la categoría de {{cases.category}}</p>
-<p> La primera falla se reporto el {{date_case.day}}-{{date_case.month}} a las {{date_case.hour}}:{{date_case.minute}}</p>
-<p> Los eventos asociados son: <p>
-	<ul class="list-group float-xs-left">
-
-		{% for event in events %}
-			<li class="list-group-item">
-				El evento fue registrado con el ISP:{{event.isp}} bajo la categoria de {{event.type}} el dia de {{date_event.day}}
-			</li>
-		{% endfor %}
-
-	</ul>
 
 
+<div style = "background-color:gray">
+			<div class="container-fluid" id="title">
+				
+				<div class="row">
+				
+					<div class="col-xs-12 titleBar">
+				
+						<h2 class="title" id="titleAjax"></h2>
+						<h4 class="date" id="titleDateAjax"> </h4>
+					</div>
+
+				</div>
+				
+			</div>
+
+
+			<div class="container-fluid" style="padding-top:10px; padding-bottom:10px">
+				
+				<div class="row">
+					    
+					    <div class="col-xs-5 offset-xs-1"  id="caseImage">
+					    
+					     	<img src="https://dolartoday.com/images/dolar_big_image.jpg" class="img-fluid">
+					    
+					    </div>
+					    
+
+					    <div class="col-xs-5" id="caseInfo">
+					    	
+						    	<div class="row">
+						    		<div class="container-fluid" id="caseDateBar">
+							    		<div class="col-xs-12 timelineBar" style=" margin-left: 15px;">
+					           			<div class="date col-xs-9" id="statusDateAjax"></div>
+					           			<div class="status col-xs-3" id="statusAjax"></div>   
+							    		</div>
+						    	
+						    		</div>
+						    	</div>
+						    	
+						    	<div class="row">
+						    	
+						    		<div class="container-fluid">
+						    	
+						    		    <p> Target @</p>	
+						    	
+						    		</div>
+						    	
+						    	</div>
+						    	
+						    	<div class="row">
+						    	
+						    		<div class="container-fluid" id="caseProvider">
+						    	
+						    		    <div class="col-xs-12" style="text-align: center;" id="ispAjax">
+								
+				    					</div>	
+						    	
+						    		</div>
+						    	
+						    	</div>	
+
+						    </div>
+				
+						</div>
+
+			</div>
+		</div>
+</div>
+
+
+<div class="container-fluid" id="caseDescriptiion">
+
+	<div class="row">
+
+		<div class="col-xs-6 offset-xs-2" >
+
+		<h3> Descripción:</h3>
+			<p id="descriptionAjax"></p>
+
+		</div>		
+
+	</div>
+
+</div>
+
+
+<div class="container-fluid">
+	
+	<div class="row">
+		
+		<div class="col-xs-12 subtitleBar ">
+			
+			<h4 id="updateTitle">ACTUALIZACIONES</h4>
+		
+		</div>
+
+	</div>
+
+
+	<div class="row" id="eventListAjax">
+
+
+	</div>		
+
+</div>
+
+
+<div class="container-fluid">
+
+	<div class="row">
+		
+		<div class="col-xs-12 subtitleBar ">
+			<h4 id="updateTitle">GRAPH</h4>
+		</div>
+
+	</div>
+
+	<div class="row">
+		
+			<div class="col-xs-10 offset-xs-1">
+				
+			<h1>Graph Area</h1>
+
+			</div>
+
+	</div>
+	
+</div>
+
+<div class ="container-fluid">
+
+	<div class="row">
+		
+		<div class="col-xs-12 subtitleBar ">
+			<h4 id="updateTitle">SUBGRAPH</h4>
+		</div>
+
+	</div>
+
+	<div class="row" id="subGraphDiv">
+	
+		<div class="col-xs-3 " id="subGraph1">
+			<div class="row">
+				
+				<div class="container-fluid" id="subGraph1">
+					SubGraph 1
+				</div>
+
+				<div class="container-fluid" id="subGraph1Title">
+					 Subgraph 1 Title
+				</div>
+
+				<div class="container-fluid" id="subGraph1Description">
+					 Subgraph 1 Description
+				</div>
+
+			</div>
+		</div>
+
+		<div class="col-xs-3 " id="subGraph2">
+			<div class="row">
+				
+				<div class="container-fluid" id="subGraph2">
+					SubGraph 2
+				</div>
+
+				<div class="container-fluid" id="subGraph2Title">
+					 Subgraph 2 Title
+				</div>
+
+				<div class="container-fluid" id="subGraph2Description">
+					 Subgraph 2 Description
+				</div>
+
+			</div>
+		</div>
+
+		<div class="col-xs-3 " id="subGraph3">
+			<div class="row">
+				
+				<div class="container-fluid" id="subGraph3">
+					SubGraph 3
+				</div>
+
+				<div class="container-fluid" id="subGraph3Title">
+					 Subgraph 3 Title
+				</div>
+
+				<div class="container-fluid" id="subGraph3Description">
+					 Subgraph 3 Description
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<script>
+       
+// These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here 
+// because of DJango configuration
+ 
+    var url_one_case="{% url 'Cases:OneElementCaseApi' %}"
+    
+
+    
+</script>
+
+<script src="{% static 'js/cases/case.js' %}"></script>
 
 
 

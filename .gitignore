@@ -1,4 +1,9 @@
 .sass-cache/
 *.css.map
 /vsfWeb/commons/static/CACHE/*
+<<<<<<< HEAD
 *.pyc
+=======
+/vsfWeb/general/admin.pyc
+/vsfWeb/general/models.pyc
+>>>>>>> CaseDetail

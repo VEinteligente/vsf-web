@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="col-xs-12" style="background: gray">
+<div class="col-xs-3" style="background:white; border: 1px solid white;border-radius: 5px;/*! height: 100px; *//*! width: auto; */margin: 10px;padding: 0;">
+    <div style="text-transform:uppercase; border-bottom: 1px solid;padding-left: 10px;">
+        Blocked 
+        <strong>Sites</strong>       
+    </div>
+    
+    <div style="padding-left: 10px;padding-right: 10px;">
+        {% for site in sites %}
+            <div class="col-xs-12" style="border-bottom: 1px solid;padding: 0;">
+                <span class="col-xs-11" style="padding: 0;">
+                    {{site.site}}
+                </span> 
+                <span class="col-xs-1" style="padding:0; color:blue">
+                    <a href="{{site.site}}"><i class="fa fa-external-link" aria-hidden="true"></i></a>
+                </span>
+
+            </div>
+        {% endfor %}
+         <button class="contextualButtonFixedSize" style="margin-top: 10px;margin-bottom: 5px;">
+            {% trans "Sites" %}
+        </button>
+    </div>
+
+    
+</div>
+    
+</div>
+{% endblock %}

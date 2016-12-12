@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-30 16:37-0400\n"
+"POT-Creation-Date: 2016-12-05 11:49-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,92 +18,87 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: commons/templates/navbar/navbar.html:19
-msgid "Report"
-msgstr "Report"
+msgid "Home"
+msgstr ""
 
-#: commons/templates/navbar/navbar.html:22
-msgid "Information"
-msgstr "Information"
-
-#: commons/templates/navbar/navbar.html:25
-msgid "Cases"
-msgstr "Cases"
-
-#: commons/templates/navbar/navbar.html:27
-msgid "Blocked URLs"
-msgstr "Blocked URL's"
-
-#: commons/templates/navbar/navbar.html:28
-msgid "Blocked Domains"
-msgstr "Blocked Domains"
+#: commons/templates/navbar/navbar.html:23
+msgid "News"
+msgstr "News"
 
 #: commons/templates/navbar/navbar.html:29
-msgid "Speed Test"
-msgstr "Speed Test"
+msgid "Guides"
+msgstr "Guides"
 
-#: commons/templates/navbar/navbar.html:34
+#: commons/templates/navbar/navbar.html:33
 msgid "Evade The Blockade"
 msgstr "Evade The Blockade"
 
-#: commons/templates/navbar/navbar.html:36
-msgid "Tutorials"
-msgstr "Tutorials"
+#: commons/templates/navbar/navbar.html:39
+msgid "Cases"
+msgstr "Cases"
+
+#: commons/templates/navbar/navbar.html:41
+msgid "Blocked URLs"
+msgstr "Blocked URL's"
 
 #: commons/templates/navbar/navbar.html:42
+msgid "Blocked Domains"
+msgstr "Blocked Domains"
+
+#: commons/templates/navbar/navbar.html:43
+msgid "Speed Test"
+msgstr "Speed Test"
+
+#: commons/templates/navbar/navbar.html:49
 msgid "Community"
 msgstr "Community"
 
-#: commons/templates/navbar/navbar.html:44
-msgid "Sobre Nosotros"
+#: commons/templates/navbar/navbar.html:51
+msgid "About Us"
 msgstr "About Us"
 
-#: commons/templates/navbar/navbar.html:45
-msgid "GitHub"
-msgstr "GitHub"
+#: commons/templates/navbar/navbar.html:53
+msgid "Forum"
+msgstr "Forum"
 
-#: commons/templates/navbar/navbar.html:46
-msgid "Guías"
-msgstr "Guides"
+#: commons/templates/navbar/navbar.html:58
+msgid "Report"
+msgstr "Report"
 
-#: commons/templates/navbar/navbar.html:51
-msgid "Languages"
-msgstr "Languages"
+#: general/templates/blocked-sites.html:25
+msgid "Sites"
+msgstr "Sites"
 
-#: vsfWeb/settings.py:131
-msgid "English"
-msgstr "English"
+#: general/templates/blocked-urls.html:26
+#, fuzzy
+#| msgid "Blocked Domains"
+msgid "Domains"
+msgstr "Blocked Domains"
 
-#: vsfWeb/settings.py:132
-msgid "Spanish"
-msgstr "Spanish"
-
+#: stylingGuide/templates/elements.html:13
 msgid "Buttons"
 msgstr "Buttons"
 
-msgid "Typography"
-msgstr "Typography"
-
-msgid "Size"
-msgstr "Size"
-
-msgid "Color"
-msgstr "Color"
-
-msgid "Style"
-msgstr "Style"
-
-msgid "Size per style"
-msgstr "Size per style"
-
-
+#: stylingGuide/templates/elements.html:17
+#: stylingGuide/templates/elements.html:23
+#: stylingGuide/templates/elements.html:93
+#: stylingGuide/templates/elements.html:118
+#: stylingGuide/templates/elements.html:122
 msgid "and"
 msgstr "and"
 
+#: stylingGuide/templates/elements.html:59
+#: stylingGuide/templates/elements.html:204
+#: stylingGuide/templates/elements.html:228
+#: stylingGuide/templates/elements.html:240
 msgid "Continue"
 msgstr "Continue"
 
+#: stylingGuide/templates/elements.html:69
 msgid "Blocked"
 msgstr "Blocked"
+
+#: stylingGuide/templates/elements.html:83
 
 msgid "BlockedMultiple"
 msgstr "Blocked"
@@ -114,6 +109,7 @@ msgstr " Sites"
 msgid "Domains"
 msgstr " Domains"
 
+<<<<<<< HEAD
 msgid "Blocked Sites Strong"
 msgstr "Blocked <strong>Sites</strong>"
 
@@ -123,24 +119,36 @@ msgstr "Blocked <strong>Domains</strong>"
 msgid "Contextual buttons (static)"
 msgstr "Contextual buttons (static)"
 
+#: stylingGuide/templates/elements.html:114
 msgid "Contextual buttons"
 msgstr "Contextual buttons"
 
+#: stylingGuide/templates/elements.html:145
 msgid "Bars"
 msgstr "Bars"
 
+#: stylingGuide/templates/elements.html:157
 msgid "Title bar"
 msgstr "Title bar"
 
-msgid "Subtitle bar"
-msgstr "Subtitle bar"
-
-msgid "Small bar"
+#: stylingGuide/templates/elements.html:176
+#, fuzzy
+#| msgid "Small bar"
+msgid "Small bars"
 msgstr "Small bar"
 
+#: stylingGuide/templates/elements.html:184
+#: stylingGuide/templates/elements.html:196
+#: stylingGuide/templates/elements.html:211
+#: stylingGuide/templates/elements.html:249
 msgid "Height"
 msgstr "Height"
 
+#: stylingGuide/templates/elements.html:189
+msgid "Subtitle bar"
+msgstr "Subtitle bar"
+
+#: stylingGuide/templates/elements.html:279
 msgid "View more..."
 msgstr "View more..."
 
@@ -149,3 +157,70 @@ msgstr "News"
 
 msgid "Featured Cases"
 msgstr "Featured <strong>Cases</strong>"
+
+#: stylingGuide/templates/typography.html:13
+msgid "Typography"
+msgstr "Typography"
+
+#: stylingGuide/templates/typography.html:19
+msgid "Size per style"
+msgstr "Size per style"
+
+#: stylingGuide/templates/typography.html:41
+#: stylingGuide/templates/typography.html:66
+#: stylingGuide/templates/typography.html:91
+#: stylingGuide/templates/typography.html:116
+#: stylingGuide/templates/typography.html:141
+#: stylingGuide/templates/typography.html:167
+#: stylingGuide/templates/typography.html:192
+#: stylingGuide/templates/typography.html:215
+msgid "Size"
+msgstr "Size"
+
+#: stylingGuide/templates/typography.html:42
+#: stylingGuide/templates/typography.html:67
+#: stylingGuide/templates/typography.html:92
+#: stylingGuide/templates/typography.html:117
+#: stylingGuide/templates/typography.html:142
+#: stylingGuide/templates/typography.html:168
+#: stylingGuide/templates/typography.html:193
+#: stylingGuide/templates/typography.html:216
+msgid "Color"
+msgstr "Color"
+
+#: stylingGuide/templates/typography.html:43
+#: stylingGuide/templates/typography.html:68
+#: stylingGuide/templates/typography.html:93
+#: stylingGuide/templates/typography.html:118
+#: stylingGuide/templates/typography.html:143
+#: stylingGuide/templates/typography.html:169
+#: stylingGuide/templates/typography.html:194
+#: stylingGuide/templates/typography.html:217
+msgid "Style"
+msgstr "Style"
+
+#: vsfWeb/settings.py:131
+msgid "English"
+msgstr "English"
+
+#: vsfWeb/settings.py:132
+msgid "Spanish"
+msgstr "Spanish"
+
+#~ msgid "Information"
+#~ msgstr "Information"
+
+#~ msgid "Tutorials"
+#~ msgstr "Tutorials"
+
+#~ msgid "Sobre Nosotros"
+#~ msgstr "About Us"
+
+#~ msgid "GitHub"
+#~ msgstr "GitHub"
+
+#~ msgid "Guías"
+#~ msgstr "Guides"
+
+#~ msgid "Languages"
+#~ msgstr "Languages"

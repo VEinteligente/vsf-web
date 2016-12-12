@@ -12,7 +12,6 @@ urlpatterns = [
     url(r'^blocked-domains_sites$',BlockedUrlsSites.as_view(), name="BlockedUrlsSites"),
     url(r'^map-Venezuela',MapVenezuela.as_view(), name="MapVenezuela"),
     url(r'^map-api',MapApi.as_view(), name="MapApi"),
-    url(r'^list-cases',CaseList.as_view(), name="CaseList"),
+    url(r'^list-cases/title=(?P<title>\D+)/$',CaseList.as_view(), name="CaseList"),
     url(r'^cases-api',CaseListApi.as_view(), name="CaseListApi"),
-    url(r'^cases-api/filter=(?P<title>)',CaseListApi.as_view(), name="CaseListApi"),
 ] 

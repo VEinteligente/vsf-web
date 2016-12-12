@@ -8,6 +8,7 @@ from django.views.generic import (TemplateView)
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.template.defaultfilters import title
 
 
 # This view renders the HTML containing information about the company, social network, etc. 
@@ -18,7 +19,7 @@ class AboutUs(TemplateView):
 class BlockedSitesApi(APIView):
    
    def get(self, request, format=None):
-       snippet = requests.get('http://192.168.0.115:8000/events/api/blocked_sites/')
+       snippet = requests.get('http://192.168.0.100:8000/events/api/blocked_sites/')
        return Response(snippet)
 
 # This view obtains the blocked domains json data from the API of the Pandora project
@@ -41,18 +42,20 @@ class MapVenezuela(TemplateView):
 class MapApi(APIView):
        
    def get(self, request, format=None):
-       snippet = requests.get('http://192.168.0.100:8000/cases/api/list/region/')
+       snippet = requests.get('http://192.168.1.111:8000/cases/api/list/region/')
        
        return Response(snippet)
   
 # This view renders the HTML containing information about list of cases
 class CaseList(TemplateView):
     template_name = "list-cases.html"
+
+
+
+       
     
 # This view obtains the list of cases json data from the API of the Pandora project  
 class CaseListApi(APIView):
-       
-
        
    def get(self, request, format=None):      
        snippet = requests.get('http://192.168.0.100:8000/cases/api/list/')
@@ -65,8 +68,6 @@ class CaseListApi(APIView):
        category = request.data["category"]
        start_date=  request.data["start_date"]
        end_date=  request.data["end_date"]
-       
-       
        
        snippet = requests.get('http://192.168.0.100:8000/cases/api/list-case-filter/?title=' + title +"&category="+category+"&start_date="+start_date+"&endt_date="+end_date)
        

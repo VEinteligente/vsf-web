@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<form id="advanced_search" >
+    {% csrf_token %}
+    <input type="text" id="title" name="title" placeholder="Title">
+    <input type="text" id="category" name="category" placeholder="Category">
+    <input type="text" id="region" name="region" placeholder="Region">
+    <input type="text" id="start_date" class="datepicker" name="start_date" placeholder="Start date">
+    <input type="text" id="end_date" class="datepicker" name="end_date" placeholder="End date">
+    <input type="submit" value="Search" />
+</form>
+
+<br>
+
+    <div class="listCases">
+    </div>
+
+  
+<script>
+           
+    // These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here 
+    // because of DJango configuration
+     
+        var url_data="{% url 'General:CaseListApi' %}"
+        var url_data_search="{% url 'General:CaseListApi' %}"
+
+
+    $( ".datepicker" ).datepicker();
+
+        
+</script>
+
+
+    
+<script src="{% static 'js/general/list-cases.js' %}"></script>
+    
+{% endblock %}

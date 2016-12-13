@@ -28,7 +28,7 @@ $( document ).ready(function() {
             hidden_start_date=""; 
         }
         
-        if(hidden_end_date=="none"){
+        if(hidden_end_date=="none" || hidden_end_date=="--"){
             hidden_end_date=""; 
         }
         
@@ -136,7 +136,7 @@ $( document ).ready(function() {
                $("#start_date").val(hidden_start_date); 
             }
             
-            if(hidden_end_date=="none"){
+            if(hidden_end_date=="none" || hidden_end_date=="--"){
                 $("#end_date").val("");
             }
             else{
@@ -157,7 +157,7 @@ var formSer="";
 
 $("#advanced_search").submit(function(e){
     // This AJAX call corresponds to the request of the JSON data from Pandora project API.
-        
+        console.log(url_data_search)
         $( ".listCases" ).empty();
         formSer = $( "#advanced_search" ).serializeObject();
          //This is where we update the address bar with the 'url' parameter
@@ -249,7 +249,7 @@ $("#advanced_search").submit(function(e){
         
 
         if(hidden.length!=0){
-            history.pushState(null, null, url_data_list_empty+"title="+title+"&category="+category+"&region="+region+"&startDate="+start_date+"&endDate="+end_date);
+            history.pushState(null, null, url_data_list_empty+"title="+title+"&category="+category+"&start_date="+start_date+"&end_date="+end_date+"&region="+region);
             
         }
         else if( hidden == " " ){

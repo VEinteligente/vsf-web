@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^blocked-domains_sites$',BlockedUrlsSites.as_view(), name="BlockedUrlsSites"),
     url(r'^map-Venezuela',MapVenezuela.as_view(), name="MapVenezuela"),
     url(r'^map-api',MapApi.as_view(), name="MapApi"),
-    url(r'^list-cases/title=(?P<title>\D+)&category=(?P<category>\D+)&region=(?P<region>\D+)&startDate=(?P<startDate>\D+)&endDate=(?P<endDate>\D+)/$',CaseList.as_view(), name="CaseList"),
+    url(r'^list-cases/title=(?P<title>\D+)&category=(?P<category>\D+)&start_date=(?P<start_date>\D+)&end_date=(?P<year>\d+)-(?P<month>\d+)-(?P<day>\d+)&region=(?P<region>\D+)/$',CaseList.as_view(), name="CaseList"),
     url(r'^list-cases/$',CaseList.as_view(), name="CaseListEmpty"),
     url(r'^cases-api',CaseListApi.as_view(), name="CaseListApi"),
 ] 

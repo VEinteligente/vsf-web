@@ -6,7 +6,7 @@
 <input type="hidden" id="hidden_category" value="{{ category }}">
 <input type="hidden" id="hidden_region" value="{{ region }}">
 <input type="hidden" id="hidden_start_date" value="{{ start_date }}">
-<input type="hidden" id="hidden_end_date" value="{{ end_date }}">
+<input type="hidden" id="hidden_end_date" value="{{ year }}-{{ month }}-{{ day }}">
 
 <form id="advanced_search" >
     {% csrf_token %}

@@ -12,23 +12,12 @@ $( document ).ready(function() {
         var hidden_start_date = $( "#hidden_start_date" ).val();
         var hidden_end_date = $( "#hidden_end_date" ).val();
         
-        if(hidden_title=="none"){
-            hidden_title="";
-        }
         
-        if(hidden_category=="none"){
-            hidden_category=""; 
-        }
-        
-        if(hidden_region=="none"){
-            hidden_region=""; 
-        }
-        
-        if(hidden_start_date=="none"){
+        if(hidden_start_date=="--"){
             hidden_start_date=""; 
         }
         
-        if(hidden_end_date=="none" || hidden_end_date=="--"){
+        if(hidden_end_date=="--"){
             hidden_end_date=""; 
         }
         
@@ -108,35 +97,35 @@ $( document ).ready(function() {
        
       }
         else {
-            if(hidden_title=="none"){
+            if(hidden_title.length==0){
                 $("#title").val("");
             }
             else{
                $("#title").val(hidden_title); 
             }
             
-            if(hidden_category=="none"){
+            if(hidden_category.length==0){
             $("#category").val("");
             }
             else{
                $("#category").val(hidden_category); 
             }
             
-            if(hidden_region=="none"){
+            if(hidden_region.length==0){
                 $("#region").val("");
             }
             else{
                $("#region").val(hidden_region); 
             }
         
-            if(hidden_start_date=="none"){
+            if(hidden_start_date=="--"){
                 $("#start_date").val("");
             }
             else{
                $("#start_date").val(hidden_start_date); 
             }
             
-            if(hidden_end_date=="none" || hidden_end_date=="--"){
+            if(hidden_end_date=="--"){
                 $("#end_date").val("");
             }
             else{
@@ -180,73 +169,50 @@ $("#advanced_search").submit(function(e){
         var hidden_start_date = $( "#start_date" ).val();
         var hidden_end_date = $( "#end_date" ).val();
         
-        if(hidden_title=="none"){
-            hidden_title="";
-        }
-        
-        if(hidden_category=="none"){
-            hidden_category=""; 
-        }
-        
-        if(hidden_region=="none"){
-            hidden_region=""; 
-        }
-        
-        if(hidden_start_date=="none"){
-            hidden_start_date=""; 
-        }
-        
-        if(hidden_end_date=="none"){
-            hidden_end_date=""; 
-        }
-        
+               
         var hidden = hidden_title + hidden_category + hidden_region + hidden_start_date + hidden_end_date;
-        
+       
         console.log(hidden.length)
         
-        if(formSer.title==""){
-            var title = "none";
-        }
-        else{
+        if((formSer.title).length!=0){
             var title=hidden_title;
+         }
+        else{
+            var title ="";
         }
+        
 
         
-        if(formSer.category==""){
-            var category = "none";
-        }
-        else{
+        if((formSer.category).length!=0){
             var category=  hidden_category;
         }
-        
-        if(formSer.region==""){
-            var region = "none";
-        }
         else{
+            var category ="";
+        }
+        
+        
+        if((formSer.region).length!=0){
             var region=  hidden_region;
         }
-        
-        if(formSer.start_date==""){
-            var start_date = "none";
-        }
         else{
+            var region ="";
+        }
+        
+        if((formSer.start_date).length!=0){
             var start_date=  hidden_start_date;
         }
-
-        if(formSer.end_date==""){
-            var end_date = "none";
-        }
         else{
+            var start_date=  "--";
+        }
+
+
+        if((formSer.end_date).length!=0){
             var end_date=  hidden_end_date;
         }
-      
-      
-        
-        
-        
+        else{
+            var end_date=  "--";
+        }
 
-        
-        
 
         if(hidden.length!=0){
             history.pushState(null, null, url_data_list_empty+"title="+title+"&category="+category+"&start_date="+start_date+"&end_date="+end_date+"&region="+region);

@@ -5,8 +5,8 @@
 <input type="hidden" id="hidden_title" value="{{ title }}">
 <input type="hidden" id="hidden_category" value="{{ category }}">
 <input type="hidden" id="hidden_region" value="{{ region }}">
-<input type="hidden" id="hidden_start_date" value="{{ start_date }}">
-<input type="hidden" id="hidden_end_date" value="{{ year }}-{{ month }}-{{ day }}">
+<input type="hidden" id="hidden_start_date" value="{{ s_year }}-{{ s_month }}-{{ s_day }}">
+<input type="hidden" id="hidden_end_date" value="{{ e_year }}-{{ e_month }}-{{ e_day }}">
 
 <form id="advanced_search" >
     {% csrf_token %}
@@ -38,7 +38,7 @@
 
         var url_data_list_empty="{% url 'General:CaseListEmpty' %}"
         
-    $( ".datepicker" ).datepicker();
+    $( ".datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
 
         
 </script>

@@ -17,7 +17,8 @@ var element_hoverSpace = "";
 // mouseX and mouseY are the X and Y coordinates of the mouse
 var mouseX = null; //X coordinates of mouse
 var mouseY = null;  //Y coordinates of mouse
-
+// count indicate the click number the user had used
+var count=0; 
 // The commands inside the $(document).ready are all the commands that will be loaded 
 // after the rest of the page is loaded. 
 
@@ -253,7 +254,8 @@ $.ajax({
 
 
     });
-  var count=0; 
+    
+
     $('svg > g').on('click', function() { // when you click the div
     
         count++;

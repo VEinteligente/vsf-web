@@ -6,16 +6,6 @@ from django.views.generic import (TemplateView)
 # Create your views here.
 
 
-class CaseList(TemplateView):
-	template_name = "case-list.html"
-	def	get_context_data(self, **kwargs):
-		r = requests.get('http://192.168.0.130:8000/cases/api/list/')
-		context = super(CaseList, self).get_context_data(**kwargs)
-		# context test not necessary
-		context['test'] = json.loads(r.text)
-		probando2 = json.loads(r.text)
-		context['cases'] = probando2["results"]
-		return context
 
 class MultipleElementsCase(TemplateView):
     template_name = "multiple-elements-case.html"

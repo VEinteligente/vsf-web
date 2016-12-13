@@ -1,6 +1,7 @@
 from django.conf.urls import url
 
-from general.views import (Dashboard, AboutUs, BlockedSitesApi, BlockedDomainsApi, BlockedUrlsSites, MapApi, MapVenezuela)
+from general.views import (Dashboard, AboutUs, BlockedSitesApi, BlockedDomainsApi, BlockedUrlsSites, MapApi, MapVenezuela,
+                           CaseList, CaseListApi)
 
 
 urlpatterns = [
@@ -11,4 +12,7 @@ urlpatterns = [
     url(r'^blocked-domains_sites$',BlockedUrlsSites.as_view(), name="BlockedUrlsSites"),
     url(r'^map-Venezuela',MapVenezuela.as_view(), name="MapVenezuela"),
     url(r'^map-api',MapApi.as_view(), name="MapApi"),
+    url(r'^list-cases/title=(?P<title>(\S|\W)*)&category=(?P<category>(\S|\W)*)&start_date=(?P<s_year>\d*)-(?P<s_month>\d*)-(?P<s_day>\d*)&end_date=(?P<e_year>\d*)-(?P<e_month>\d*)-(?P<e_day>\d*)&region=(?P<region>(\S|\W)*)/$',CaseList.as_view(), name="CaseList"),
+    url(r'^list-cases/$',CaseList.as_view(), name="CaseListEmpty"),
+    url(r'^cases-api',CaseListApi.as_view(), name="CaseListApi"),
 ] 

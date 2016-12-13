@@ -5,7 +5,37 @@ $( document ).ready(function() {
         
 // Fnction select(option): Enables the option to use the same AJAX code for the sites or domains list. 
 // The input "option" corresponds to the type of list that we are going to show. Ex. "sites" or "domains"
-        if($("#probando").val() == "" ){
+        
+        var hidden_title = $( "#hidden_title" ).val();
+        var hidden_category = $( "#hidden_category" ).val();
+        var hidden_region = $( "#hidden_region" ).val();
+        var hidden_start_date = $( "#hidden_start_date" ).val();
+        var hidden_end_date = $( "#hidden_end_date" ).val();
+        
+        if(hidden_title=="none"){
+            hidden_title="";
+        }
+        
+        if(hidden_category=="none"){
+            hidden_category=""; 
+        }
+        
+        if(hidden_region=="none"){
+            hidden_region=""; 
+        }
+        
+        if(hidden_start_date=="none"){
+            hidden_start_date=""; 
+        }
+        
+        if(hidden_end_date=="none"){
+            hidden_end_date=""; 
+        }
+        
+        var hidden = hidden_title + hidden_category + hidden_region + hidden_start_date + hidden_end_date;
+        console.log(hidden.length)
+        if(hidden.length== 0){
+                console.log(hidden.length)
                  // This AJAX call corresponds to the request of the JSON data from Pandora project API.
             $.ajax({
                     url: url_data,
@@ -78,12 +108,44 @@ $( document ).ready(function() {
        
       }
         else {
-        console.log($("#probando").val())
-            $("#title").val($("#probando").val());
-   
-        console.log($("#title").val())
-        $("#advanced_search").submit()
-        }
+            if(hidden_title=="none"){
+                $("#title").val("");
+            }
+            else{
+               $("#title").val(hidden_title); 
+            }
+            
+            if(hidden_category=="none"){
+            $("#category").val("");
+            }
+            else{
+               $("#category").val(hidden_category); 
+            }
+            
+            if(hidden_region=="none"){
+                $("#region").val("");
+            }
+            else{
+               $("#region").val(hidden_region); 
+            }
+        
+            if(hidden_start_date=="none"){
+                $("#start_date").val("");
+            }
+            else{
+               $("#start_date").val(hidden_start_date); 
+            }
+            
+            if(hidden_end_date=="none"){
+                $("#end_date").val("");
+            }
+            else{
+               $("#end_date").val(hidden_end_date); 
+            }
+        
+
+        $("#advanced_search").submit();
+    }
 
     
     });
@@ -95,7 +157,7 @@ var formSer="";
 
 $("#advanced_search").submit(function(e){
     // This AJAX call corresponds to the request of the JSON data from Pandora project API.
-    
+        
         $( ".listCases" ).empty();
         formSer = $( "#advanced_search" ).serializeObject();
          //This is where we update the address bar with the 'url' parameter
@@ -103,7 +165,6 @@ $("#advanced_search").submit(function(e){
 
         e.preventDefault();
         
-        console.log(url_data_list+"/filter="+formSer.title)
    
         $.ajax({
             url: url_data_search,
@@ -113,8 +174,89 @@ $("#advanced_search").submit(function(e){
             contentType: 'application/json'
         }).done( function( data ) {
         
-            history.pushState(null, url_data_list, url_data_list+"/title="+formSer.title);
-//%20
+        var hidden_title = $( "#title" ).val();
+        var hidden_category = $( "#category" ).val();
+        var hidden_region = $( "#region" ).val();
+        var hidden_start_date = $( "#start_date" ).val();
+        var hidden_end_date = $( "#end_date" ).val();
+        
+        if(hidden_title=="none"){
+            hidden_title="";
+        }
+        
+        if(hidden_category=="none"){
+            hidden_category=""; 
+        }
+        
+        if(hidden_region=="none"){
+            hidden_region=""; 
+        }
+        
+        if(hidden_start_date=="none"){
+            hidden_start_date=""; 
+        }
+        
+        if(hidden_end_date=="none"){
+            hidden_end_date=""; 
+        }
+        
+        var hidden = hidden_title + hidden_category + hidden_region + hidden_start_date + hidden_end_date;
+        
+        console.log(hidden.length)
+        
+        if(formSer.title==""){
+            var title = "none";
+        }
+        else{
+            var title=hidden_title;
+        }
+
+        
+        if(formSer.category==""){
+            var category = "none";
+        }
+        else{
+            var category=  hidden_category;
+        }
+        
+        if(formSer.region==""){
+            var region = "none";
+        }
+        else{
+            var region=  hidden_region;
+        }
+        
+        if(formSer.start_date==""){
+            var start_date = "none";
+        }
+        else{
+            var start_date=  hidden_start_date;
+        }
+
+        if(formSer.end_date==""){
+            var end_date = "none";
+        }
+        else{
+            var end_date=  hidden_end_date;
+        }
+      
+      
+        
+        
+        
+
+        
+        
+
+        if(hidden.length!=0){
+            history.pushState(null, null, url_data_list_empty+"title="+title+"&category="+category+"&region="+region+"&startDate="+start_date+"&endDate="+end_date);
+            
+        }
+        else if( hidden == " " ){
+        
+            history.pushState(null, null, url_data_list_empty);
+        }
+        
             e.preventDefault();
             
   

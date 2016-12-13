@@ -42,17 +42,13 @@ class MapVenezuela(TemplateView):
 class MapApi(APIView):
        
    def get(self, request, format=None):
-       snippet = requests.get('http://192.168.1.111:8000/cases/api/list/region/')
+       snippet = requests.get('http://192.168.0.100:8000/cases/api/list/region/')
        
        return Response(snippet)
   
 # This view renders the HTML containing information about list of cases
 class CaseList(TemplateView):
-    template_name = "list-cases.html"
-
-
-
-       
+    template_name = "list-cases.html"      
     
 # This view obtains the list of cases json data from the API of the Pandora project  
 class CaseListApi(APIView):

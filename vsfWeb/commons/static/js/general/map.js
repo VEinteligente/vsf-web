@@ -44,7 +44,8 @@ $( document ).ready(function() {
     
     // Correspond to the number of elements in the JSON. Its default value is "0"
     $("#count").html("0");
-  
+
+    hoverEvents();
 });     
 
 // When the user changes the selected option in the "select" element
@@ -90,7 +91,75 @@ $('select').on('change', function(e) {
         });
 
 });
+
+// Function hoverEvents enables the hover options of the map and when a state is selected the tooltip, list of cases and 
+// selected option in select are updated 
+function hoverEvents(){
+
+
+    $('.map g').on('mouseover',function (e) {
     
+        // Reset the total of cases viewed in the page
+        $("#count").html("0");
+        
+        // Show the tooltip
+        $('.informationPanel').show();
+        
+        var element_hover= $(this).attr('id');
+        
+        if (element_hover != null){
+            var element_hoverSpace = element_hover.replace(/([A-Z])/g, ' $1').trim();
+        
+            $(".informationPanelTotalCases").html("");
+            
+            for(var i=0; i<array_name.length;i++){
+                
+                if(array_name[i]==element_hoverSpace){
+                    $(".informationPanelTotalCases").html(array_total[i]);
+                    $(".class"+array_counter[i]).show();
+                    $("#count").html(array_total[i]);
+        
+                }
+                else{
+                    $(".class"+array_counter[i]).hide();
+                }
+                
+            }
+           
+            if($('.informationPanelTotalCases').is(':empty')){
+                $(".informationPanelTotalCases").html("0");
+            }
+            
+            $('.informationPanelState').html(element_hover);
+            
+            $("select option").each(function(){
+                if ($(this).text() == element_hover){
+                    $("#"+element_hover).addClass("hover");
+                    $(this).attr("selected","selected");
+                    $("select").val(element_hover).change();
+                }
+                
+                else{
+                    $("#"+$(this).text()).removeClass("hover");
+                    $(this).removeAttr("selected");
+                }
+            });
+         
+        }
+        
+    });
+    
+    $('.map g').on('mousemove',function(e) {
+        mouseX = e.pageX;
+        mouseY = e.pageY;
+
+        $('.informationPanel').css({
+            top: mouseY-50,
+            left: mouseX - ($('.informationPanel').width()/2)
+        });
+    });
+}
+
 
 // This AJAX call corresponds to the request of the HTML of the total of cases and lists of cases per states.
 $.ajax({
@@ -184,70 +253,26 @@ $.ajax({
 
 
     });
-   
-     
-// This section enables the hover options of the map and when a state is selected the tooltip, list of cases and 
-// selected option in select are updated
- 
-$('.map g').mouseover(function (e) {
+  var count=0; 
+    $('svg > g').on('click', function() { // when you click the div
     
-        // Reset the total of cases viewed in the page
-        $("#count").html("0");
-        
-        // Show the tooltip
-        $('.informationPanel').show();
-        
-        var element_hover= $(this).attr('id');
-        
-        if (element_hover != null){
-            var element_hoverSpace = element_hover.replace(/([A-Z])/g, ' $1').trim();
-        
-            $(".informationPanelTotalCases").html("");
-            
-            for(var i=0; i<array_name.length;i++){
-                
-                if(array_name[i]==element_hoverSpace){
-                    $(".informationPanelTotalCases").html(array_total[i]);
-                    $(".class"+array_counter[i]).show();
-                    $("#count").html(array_total[i]);
-        
-                }
-                else{
-                    $(".class"+array_counter[i]).hide();
-                }
-                
-            }
-           
-            if($('.informationPanelTotalCases').is(':empty')){
-                $(".informationPanelTotalCases").html("0");
-            }
-            
-            $('.informationPanelState').html(element_hover);
-            
-            $("select option").each(function(){
-                if ($(this).text() == element_hover){
-                    $("#"+element_hover).addClass("hover");
-                    $(this).attr("selected","selected");
-                    $("select").val(element_hover).change();
-                }
-                
-                else{
-                    $("#"+$(this).text()).removeClass("hover");
-                    $(this).removeAttr("selected");
-                }
-            });
-         
-        }
-        
-    }).mousemove(function(e) {
-        mouseX = e.pageX;
-        mouseY = e.pageY;
+        count++;
+        //The count variable enables that the action when second click is different
+        // from the first click action
+        if(count % 2 != 0) {
+            $(this).removeClass('no-hover'); 
+            hoverEvents();
+        }else{
+            $(this).removeClass('hover');
+            $(this).addClass('no-hover'); 
 
-        $('.informationPanel').css({
-            top: mouseY-50,
-            left: mouseX - ($('.informationPanel').width()/2)
-        });
+            $('.map g').off('mouseover');
+            $('.map g').off('mousemove');
+
+        }  
     });
+
+   
   
 });
 

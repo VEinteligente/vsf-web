@@ -141,12 +141,27 @@ $( document ).ready(function() {
 
 
 $("#advanced_search").submit(function(e){
-    
+        
+        
     // Empty the search result to fill with new result
     $( ".listCases" ).empty();
-    
+
     // Serialize the form 
     formSer = $( "#advanced_search" ).serializeObject();
+    
+   
+    if(($("#region").val()).length == 0 )
+        formSer.region = "";
+    else
+        formSer.region = $( "#region" ).val()[0];
+    
+        
+
+    if( ( $("#category").val() ).length == 0 )
+        formSer.category = "";
+    else
+        formSer.category = $( "#category" ).val()[0];
+            
     
     // Prevent the page to redirect to new one
     e.preventDefault();
@@ -176,6 +191,8 @@ $("#advanced_search").submit(function(e){
         else{
             var category = "";
         }
+
+        
         
         if( ( formSer.region ).length != 0 ){
             var region = formSer.region;

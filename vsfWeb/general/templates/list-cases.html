@@ -3,6 +3,13 @@
 
 {% block content %}
 
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+ 
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
 <!-- Global variables corresponding to the search fields from the URL parameters -->
 <input type="hidden" id="hidden_title" value="{{ title }}">
 <input type="hidden" id="hidden_category" value="{{ category }}">
@@ -11,26 +18,91 @@
 <input type="hidden" id="hidden_end_date" value="{{ e_year }}-{{ e_month }}-{{ e_day }}">
 
 <!-- Search bar form -->
-<form id="advanced_search" >
+<form id="advanced_search">
     {% csrf_token %}
     <input type="text" id="title" name="title" placeholder="Title">
-    <input type="text" id="category" name="category" placeholder="Category">
-    <input type="text" id="region" name="region" placeholder="Region">
+
+    <select id="category" data-placeholder="Category" multiple="" >
+        <option value=""></option>
+        <option value="bloqueo">Bloqueo</option>
+        <option value="desconexion">Desconexion</option>
+        <option value="relentización">Relentización</option>
+        <option value="conexión">Conexión</option>
+        <option value="intercepción">Intercepción</option>
+        <option value="falla">Falla</option>
+        <option value="dos">dos</option>
+    </select>
+    
+    <select id="region" data-placeholder="Region" multiple="" >
+        <option value=""></option>
+        <option value="Distrito Federal">Distrito Federal</option>
+        <option value="Vargas">Vargas</option>
+        <option value="Aragua">Aragua</option>
+        <option value="Miranda">Miranda</option>
+     
+    </select>
+
+    
     <input type="text" id="start_date" class="datepicker" name="start_date" placeholder="Start date">
     <input type="text" id="end_date" class="datepicker" name="end_date" placeholder="End date">
     <input type="submit" value="Search" />
     
+    
+        
+    
+    
 </form>
 
-
-
 <br>
+<div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+    <span></span> <b class="caret"></b>
+</div>
+
+<script type="text/javascript">
+$(function() {
+
+    var start = moment().subtract(29, 'days');
+    var end = moment();
+
+    function cb(start, end) {
+        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+    }
+
+    $('#reportrange').daterangepicker({
+        startDate: start,
+        endDate: end,
+        ranges: {
+           'Today': [moment(), moment()],
+           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+           'This Month': [moment().startOf('month'), moment().endOf('month')],
+           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        }
+    }, cb);
+
+    cb(start, end);
+    
+});
+</script>
+<style>
+
+</style>
+
+
 <!-- Search results -->
 <div class="listCases"></div>
 
-  
+<script type="text/javascript">
+
+    $("#region").chosen();
+    $("#category").chosen();
+ 
+</script>
+
 <script>
-           
+   
     // These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here 
     // because of DJango configuration
      

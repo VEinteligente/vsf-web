@@ -112,7 +112,7 @@ function hoverEvents(){
             var element_hoverSpace = element_hover.replace(/([A-Z])/g, ' $1').trim();
         
             $(".informationPanelTotalCases").html("");
-            
+    ng-bottom        
             for(var i=0; i<array_name.length;i++){
                 
                 if(array_name[i]==element_hoverSpace){

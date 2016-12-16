@@ -17,47 +17,112 @@
 <input type="hidden" id="hidden_start_date" value="{{ s_year }}-{{ s_month }}-{{ s_day }}">
 <input type="hidden" id="hidden_end_date" value="{{ e_year }}-{{ e_month }}-{{ e_day }}">
 
-<!-- Search bar form -->
-<form id="advanced_search">
-    {% csrf_token %}
-    <input type="text" id="title" name="title" placeholder="Title">
+<div class="col-xs-12" >
 
-    <select id="category" data-placeholder="Category" multiple="" >
-        <option value=""></option>
-        <option value="bloqueo">Bloqueo</option>
-        <option value="desconexion">Desconexion</option>
-        <option value="relentización">Relentización</option>
-        <option value="conexión">Conexión</option>
-        <option value="intercepción">Intercepción</option>
-        <option value="falla">Falla</option>
-        <option value="dos">dos</option>
-    </select>
+<div class="col-xs-1"></div>
+       
+<div class="col-xs-10">
     
-    <select id="region" data-placeholder="Region" multiple="" >
-        <option value=""></option>
-        <option value="Distrito Federal">Distrito Federal</option>
-        <option value="Vargas">Vargas</option>
-        <option value="Aragua">Aragua</option>
-        <option value="Miranda">Miranda</option>
-     
-    </select>
-
     
-    <input type="text" id="start_date" class="datepicker" name="start_date" placeholder="Start date">
-    <input type="text" id="end_date" class="datepicker" name="end_date" placeholder="End date">
-    <input type="submit" value="Search" />
-    
+    <div class="col-xs-12">
+    <!-- Search bar form -->
+    <form id="advanced_search">
+        {% csrf_token %}
+        <div class="col-xs-12 first ">
+            
+            <div class="col-xs-6">
+                <input type="text" id="title" name="title" placeholder="Title">
+            </div>
+            
+            <div id="reportrange" class="col-xs-5" style="background: #fff; cursor: pointer; padding: 5px 10px; ">
+                <span></span> <b class="caret"></b>
+                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+            </div>
+            
+            <div class="col-xs-1">
+                <input type="submit" value="" id="submit" />    
+                
+               
+            </div>
+            
+        </div>
+        
+        <select id="category" class="others" data-placeholder="Category" multiple="" >
+            <option value=""></option>
+            <option value="bloqueo">Bloqueo</option>
+            <option value="desconexion">Desconexion</option>
+            <option value="relentización">Relentización</option>
+            <option value="conexión">Conexión</option>
+            <option value="intercepción">Intercepción</option>
+            <option value="falla">Falla</option>
+            <option value="dos">dos</option>
+        </select>
+        
+        <select id="region" data-placeholder="Region" multiple="" >
+            <option value=""></option>
+            <option value="Distrito Federal">Distrito Federal</option>
+            <option value="Vargas">Vargas</option>
+            <option value="Aragua">Aragua</option>
+            <option value="Miranda">Miranda</option>
+         
+        </select>
     
         
+        <input type="hidden" id="start_date" class="datepicker" name="start_date" placeholder="Start date">
+        <input type="hidden" id="end_date" class="datepicker" name="end_date" placeholder="End date">
+        
+        
+        
+            
+        
+        
+    </form>
+    
+    <br>
+    </div>
     
     
-</form>
 
-<br>
-<div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
-    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
-    <span></span> <b class="caret"></b>
+
 </div>
+<div class="col-xs-1"></div>
+</div>
+
+<div class="col-xs-12" style="background: gray">
+
+<div class="col-xs-1" ></div>
+       
+<div class="col-xs-10" style="margin-bottom: 10px" >
+    
+    
+    <!-- Search results -->
+    <div class="listCasesContainer">
+        
+        <div id="resultados"></div>
+
+        <div class="col-xs-12 subtitleBar" style="margin-bottom: 5px">
+            <h4 class="title" >
+                <div class="col-xs-2">Fecha</div>
+                <div class="col-xs-2">Caso</div>
+                <div class="col-xs-2">Sitio</div>
+                <div class="col-xs-2">ISP</div>
+                <div class="col-xs-2">Categoria</div>
+                <div class="col-xs-2">Region</div>
+            </h4>        
+        </div>
+        
+        <div class="listCases" style="margin-bottom: 5px"></div>  
+    </div> 
+    
+    
+
+
+</div>
+
+<div class="col-xs-1" ></div>
+
+</div>
+
 
 <script type="text/javascript">
 $(function() {
@@ -65,11 +130,47 @@ $(function() {
     var start = moment().subtract(29, 'days');
     var end = moment();
 
-    function cb(start, end) {
-        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+    function cb(start, end, label) {
+   
+        var start_date = $( "#hidden_start_date" ).val();
+        var end_date = $( "#hidden_end_date" ).val();
+        
+        if(start_date.lenght == 0){
+            start_date = start.format('YYYY/MM/DD');
+        }
+        else
+        {
+            start_date = start_date.split( "-" );
+            start_date = start_date[2] + "/" + start_date[1] + "/" + start_date[0];
+        }
+        
+        if(end_date.lenght == 0){
+            end_date = end.format('YYYY/MM/DD');
+        }
+        else{
+            end_date = end_date.split( "-" );
+            end_date = end_date[2] + "/" + end_date[1] + "/" + end_date[0];
+        }
+        
+        $("#start_date").val(start.format('YYYY-MM-DD'));
+        $("#end_date").val(end.format('YYYY-MM-DD'));
+        
+        if(label == "Custom Range")   
+            $('#reportrange span').html( start_date + ' - ' + end_date );
+                
+        else if(label != "")   
+            $('#reportrange span').html( label );
+            
+            else
+                $('#reportrange span').html( start_date + ' - ' + end_date );
+             
+        
+        
+    
     }
 
     $('#reportrange').daterangepicker({
+        autoUpdateInput: false,
         startDate: start,
         endDate: end,
         ranges: {
@@ -81,9 +182,16 @@ $(function() {
            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
         }
     }, cb);
-
-    cb(start, end);
     
+    var label = $('.daterangepicker .ranges li.active').text();
+    
+    $(".applyBtn .btn-success").click(function(){
+        label="Custom Range";
+    })
+    
+    cb(start, end, label );
+    
+ 
 });
 </script>
 <style>
@@ -91,8 +199,7 @@ $(function() {
 </style>
 
 
-<!-- Search results -->
-<div class="listCases"></div>
+
 
 <script type="text/javascript">
 

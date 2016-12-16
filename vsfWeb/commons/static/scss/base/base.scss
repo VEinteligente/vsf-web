@@ -242,7 +242,7 @@ button {
 }
 
 .smallBar{
-    border: 2px solid $gray;
+    background: white;
     padding:0;
     .title{
         padding: 8px $md_padding 8px $lg_padding;
@@ -255,6 +255,7 @@ button {
 .subtitleBar{
     padding:0;
     height: 36px;
+    background: white;
     .title{
         padding: $sm_padding $md_padding $sm_padding $lg_padding;
         margin: 0;

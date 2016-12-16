@@ -2,23 +2,51 @@
 {% load i18n %}
 {% load static %}
 {% block content %}
+{% get_current_language as language_code %}    
 
 
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>ID</th>
-			<th>Title</th>
-			<th>ISP</th>
-			<th>Category</th>						
-		</tr>
-	</thead>
+    <input type="hidden" id="hiddenID" value="" />
+    <input type="hidden" id="hiddenTitle" value="" />
+    <input type="hidden" id="category" value="{% trans 'Categories' %}" />
+    <input type="hidden" id="isp" value="{% trans 'ISPs' %}" />
+    
+<div class="container">
+    
+    <div>
+   
+        <table class="table col-xs-4">
+   
+            <thead>
+   
+                <tr>
+   
+                    <th id="title">
 
-	<tbody id="summaryAjax">
+                    </th>
+                </tr>
 
-	</tbody>
-</table>
+            </thead>
+            
+            <tbody id="tablebody">
 
+            </tbody>
+
+        </table>
+
+                    
+                <h4 style="color:white">{% trans "Order By:" %}</h4>
+                
+                <button class="contextualButtonFixedSize" onclick="select('category')" style="margin-top: 10px;margin-bottom: 5px;">
+                        {% trans 'Category' %}
+                </button>
+            
+                <button class="contextualButtonFixedSize" onclick="select('isp')" style="margin-top: 10px;margin-bottom: 5px;">
+                        {% trans 'ISP' %}
+                </button>
+    </div>
+
+<script > var url_style_list =  "{% url 'StylingGuide:ListApi' %}"</script>
 <script src="{% static 'js/summary/table.js' %}"></script>
+
 {% endblock %}

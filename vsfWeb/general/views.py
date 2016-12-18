@@ -19,14 +19,14 @@ class AboutUs(TemplateView):
 class BlockedSitesApi(APIView):
    
    def get(self, request, format=None):
-       snippet = requests.get('http://192.168.0.100:8000/events/api/blocked_sites/')
+       snippet = requests.get('http://192.168.0.115:8000/events/api/blocked_sites/')
        return Response(snippet)
 
 # This view obtains the blocked domains json data from the API of the Pandora project
 class BlockedDomainsApi(APIView):
    
    def get(self, request, format=None):
-       snippet = requests.get('http://192.168.0.100:8000/events/api/blocked_domains/')
+       snippet = requests.get('http://192.168.0.115:8000/events/api/blocked_domains/')
        
        return Response(snippet)
 
@@ -42,7 +42,7 @@ class MapVenezuela(TemplateView):
 class MapApi(APIView):
        
    def get(self, request, format=None):
-       snippet = requests.get('http://192.168.0.100:8000/cases/api/list/region/')
+       snippet = requests.get('http://192.168.0.115:8000/cases/api/list/region/')
        
        return Response(snippet)
   
@@ -54,7 +54,7 @@ class CaseList(TemplateView):
 class CaseListApi(APIView):
        
    def get(self, request, format=None):      
-       snippet = requests.get('http://192.168.0.100:8000/cases/api/list/')
+       snippet = requests.get('http://192.168.0.115:8000/cases/api/list/')
        
        return Response(snippet)
    
@@ -66,7 +66,7 @@ class CaseListApi(APIView):
        end_date=  request.data["end_date"]
        print end_date
        
-       snippet = requests.get('http://192.168.0.100:8000/cases/api/list-case-filter/?title=' + title +"&category="+category+'&start_date='+start_date+'&end_date='+end_date+'&region='+region)
+       snippet = requests.get('http://192.168.0.115:8000/cases/api/list-case-filter/?title=' + title +"&category="+category+'&start_date='+start_date+'&end_date='+end_date+'&region='+region)
        
        return Response(snippet)
    

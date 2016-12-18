@@ -48,6 +48,11 @@ $( document ).ready(function() {
                 var dataJson=JSON.parse( temporal );
                             
                 $.each( dataJson , function( key , value ){ // First Level                                         
+                                                              
+                    if( key=="count" ){
+                      
+                        $("#resultados").html("Resultados de busqueda <strong>" + value + "</strong>");
+                    }     
                     
                     // We need to access this element to get each case data
                     if( key == "results" ){                   
@@ -135,6 +140,8 @@ $( document ).ready(function() {
             }).fail( function( jqXHR, textStatus, errorThrown ) {
                     $( '.listCases' ).html( "" );
                 });
+                
+
        
     }
     else {

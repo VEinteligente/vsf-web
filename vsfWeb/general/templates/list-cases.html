@@ -14,6 +14,7 @@
 <input type="hidden" id="hidden_title" value="{{ title }}">
 <input type="hidden" id="hidden_category" value="{{ category }}">
 <input type="hidden" id="hidden_region" value="{{ region }}">
+<input type="hidden" id="hidden_label" value="">
 <input type="hidden" id="hidden_start_date" value="{{ s_year }}-{{ s_month }}-{{ s_day }}">
 <input type="hidden" id="hidden_end_date" value="{{ e_year }}-{{ e_month }}-{{ e_day }}">
 
@@ -134,35 +135,51 @@ $(function() {
    
         var start_date = $( "#hidden_start_date" ).val();
         var end_date = $( "#hidden_end_date" ).val();
-        
-        if(start_date.lenght == 0){
-            start_date = start.format('YYYY/MM/DD');
+
+        if(start_date == "--" & label == "" )
+        {
+            start_date = " ";
         }
-        else
+        else if( label != "Custom Range" ) 
         {
             start_date = start_date.split( "-" );
             start_date = start_date[2] + "/" + start_date[1] + "/" + start_date[0];
         }
-        
-        if(end_date.lenght == 0){
-            end_date = end.format('YYYY/MM/DD');
+        else
+        {
+            start_date = start.format('DD/MM/YYYY');
         }
-        else{
+        
+        if(end_date == "--" & label == ""  ){
+            end_date = " ";
+        }
+        else if( label != "Custom Range" ) 
+        {
             end_date = end_date.split( "-" );
             end_date = end_date[2] + "/" + end_date[1] + "/" + end_date[0];
+        }
+        else
+        {
+            end_date = end.format('DD/MM/YYYY');
         }
         
         $("#start_date").val(start.format('YYYY-MM-DD'));
         $("#end_date").val(end.format('YYYY-MM-DD'));
         
-        if(label == "Custom Range")   
+        if(label == "Custom Range"){
             $('#reportrange span').html( start_date + ' - ' + end_date );
+            $('#hidden_label').val("Custom Range");
+        }
                 
         else if(label != "")   
+        {
             $('#reportrange span').html( label );
-            
-            else
-                $('#reportrange span').html( start_date + ' - ' + end_date );
+            $('#hidden_label').val(label);
+        } 
+        else{
+             $('#reportrange span').html( start_date + ' - ' + end_date );
+             $('#hidden_label').val();
+        }
              
         
         
@@ -216,9 +233,6 @@ $(function() {
     var url_data="{% url 'General:CaseListApi' %}"
     var url_data_search="{% url 'General:CaseListApi' %}"
     var url_data_list_empty="{% url 'General:CaseListEmpty' %}"
-     
-    // Datepickers format   
-    $( ".datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
 
 </script>
     

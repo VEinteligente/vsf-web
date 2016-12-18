@@ -3,6 +3,9 @@ var formSer="";
 // The commands inside the $(document).ready are all the commands that will be loaded 
 // after the rest of the page is loaded. 
 $( document ).ready(function() {
+     
+    // Datepickers format   
+    $( ".datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' }).val("");
 
 
     // Variables corresponding to the search fields from the URL parameters
@@ -52,32 +55,75 @@ $( document ).ready(function() {
                         $.each( dataJson.results , function( secondLevelKey, secondLevelValue ){ // Second Level 
                                 
                             $.each( secondLevelValue , function( thirdLevelKey , thirdLevelValue ){ // Third Level 
-                                                                                                                                                
-                                if( thirdLevelKey == "id" ){
-                                    $( ".listCases" ).append( "<a href='http://192.168.0.115:8000/cases/api/detail/" + thirdLevelValue + "'>LINK</a> <br>" );                                         
+                                                                                                                                                    
+                                if( thirdLevelKey =="id" ) {
+                                    $( ".listCases" ).append("<div class='col-xs-12 smallBar' style='border-bottom:1px solid blue'><h5 class='title'>"
+                                        + "<div class='col-xs-2 fecha'></div>"
+                                        +"<div class='col-xs-2 name' style='display: flex;'></div>"
+                                        +"<div class='col-xs-2 site'></div>"
+                                        + "<div class='col-xs-2 isp'></div>"
+                                        + "<div class='col-xs-2 category'></div>"
+                                        + "<div class='col-xs-2 region'></div>"
+                                        + "</h5>     </div>");
+                                   
+                                    
+                                        //$( ".listCases" ).append( "<a href='http://192.168.0.115:8000/cases/api/detail/" + thirdLevelValue + "'>LINK</a> <br>" );                                         
+                                }
                                             
+                                if( thirdLevelKey == "region" ) {
+                                    
+                                    $( ".listCases" ).find(".region").append( thirdLevelValue );
+                                    $( ".listCases" ).find(".region").removeClass("region");                                                       
                                 }
+                                
+                                if( thirdLevelKey == "description" ) {
+                                    
+                                    $( ".listCases" ).find(".name").append( "<strong style='white-space: nowrap;overflow: hidden; text-overflow: ellipsis;'>" + thirdLevelValue + "</strong> <br>" );
+                                    $( ".listCases" ).find(".name").removeClass("name");                                                       
+                                }                                     
+                                  
+                                if( thirdLevelKey == "domains" ) {
+                                    $.each( thirdLevelValue , function( fourthLevelKey , fourthLevelValue ) {
                                         
-                                if( thirdLevelKey == "title" ){                                        
-                                    $(".listCases").append("<strong>Title: </strong>"+thirdLevelValue+" <br>");                                                       
-                                }                                    
-                                        
-                                if( thirdLevelKey == "start_date" ){                                        
-                                    $( ".listCases" ).append( "<strong>Start Date: </strong>" + thirdLevelValue + " <br>" );                                                                                                                                                                                                  
+                                        $( ".listCases" ).find(".site").append( fourthLevelValue.site);
+                                        $( ".listCases" ).find(".site").removeClass("site"); 
+                                    });
                                 }
-                                        
-                                if( thirdLevelKey == "end_date" ){                                        
-                                    if( thirdLevelValue != null ){
-                                        $( ".listCases" ).append( "<strong>End Date: </strong>"+ thirdLevelValue + " <br>" );
+                                                                                           
+                                 
+                                          
+                                if( thirdLevelKey == "start_date" ) {
+                                    datethirdLevelValue = thirdLevelValue.split( "T" );
+                                    datethirdLevelValue = datethirdLevelValue[0].split("-");
+                                    date = datethirdLevelValue[2] + "/" + datethirdLevelValue[1] + "/" + datethirdLevelValue[0];
+                                    $( ".listCases" ).find(".fecha").append( "<strong>" + date + "</strong> <br>" );  
+                                    
+                                }
+                                            
+                                if( thirdLevelKey == "end_date" ) {
+                                    if( thirdLevelValue != null ) {
+                                        datethirdLevelValue = thirdLevelValue.split( "T" );
+                                        datethirdLevelValue = datethirdLevelValue[0].split("-");
+                                        date = datethirdLevelValue[2] + "/" + datethirdLevelValue[1] + "/" + datethirdLevelValue[0];
+                                        $( ".listCases:last-child" ).find(".fecha").append( date );
+                                        $( ".listCases" ).find(".fecha").removeClass("fecha");
                                     }
-                                    else{
-                                        $( ".listCases" ).append( "<strong>State: </strong>" + "Continue" + " <br>" );
-                                    }                                                                                                                                                                                                                                                                                        
-                                } 
-                                        
-                                if( thirdLevelKey == "category" ){                                        
-                                    $( ".listCases" ).append( "<strong>Category: </strong>" + thirdLevelValue + " <br>");                                                                                                                                                                                                     
-                                }                                                                                                   
+                                    else {
+                                        $( ".listCases:last-child" ).find(".fecha").append( "presente" );
+                                        $( ".listCases" ).find(".fecha").removeClass("fecha");
+                                   //     $( ".listCases" ).append( "<strong>State:</strong> Continue<br>" );
+                                    }                                          
+                                }
+                                
+                                 
+                                            
+                                if( thirdLevelKey=="category" ) {
+                                    $( ".listCases:last-child" ).find(".category").append( 
+                                    
+                                    '<div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'+thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+                                    $( ".listCases" ).find(".category").removeClass("category");
+                                 //  $( ".listCases" ).append( "<strong>Category: </strong>" + thirdLevelValue + " <br>" );  
+                                }                                                                                                     
                             });
                         });
                     }  
@@ -102,7 +148,7 @@ $( document ).ready(function() {
             $( "#title" ).val( hidden_title ); 
         }
             
-        if(hidden_category.length==0){
+        if(hidden_category.length == 0 ){
             $( "#category" ).val( "" );
         }
         else{
@@ -207,19 +253,24 @@ $("#advanced_search").submit(function(e){
             var start_date = "--";
         }
 
-
         if( ( formSer.end_date ).length != 0 ){
             var end_date = formSer.end_date;
         }
         else{
             var end_date = "--";
         }
+        
+        
+        
 
         // If there is a search parameter then change the URL to add the parameters or to initial search page but do not redirect to it
         var hidden =  title + category + start_date + end_date + region;
         
         if( hidden.length != 0 ){
             history.pushState( null, null, url_data_list_empty + "title=" + title + "&category=" + category + "&start_date=" + start_date + "&end_date=" + end_date + "&region=" + region);            
+            
+         
+            
         }
         else if( hidden == " " ){
             history.pushState(null, null, url_data_list_empty);

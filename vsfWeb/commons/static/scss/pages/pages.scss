@@ -3,6 +3,7 @@
 
 //One Element Case Page Style
 
+//Summary Category & ISP Table
 
 #caseImage{
 	background-color: $lightGray;
@@ -97,7 +98,6 @@
 	border-top: 1px solid gray;
 	background-color: gray;
 
->>>>>>> CaseDetail
 
 #listBlocked{
     background:white; 
@@ -244,6 +244,18 @@
 #caseRegionListContainer{
     padding-left: 10px;
     padding-right: 10px;
+}
+
+#tableCases{
+    color: white;
+    text-decoration: underline;
+
+}
+
+#count{
+    
+    color:red;
+    font-size:100%;
 }
 
 

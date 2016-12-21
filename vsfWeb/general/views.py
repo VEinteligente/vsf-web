@@ -30,7 +30,7 @@ class BlockedUrls(TemplateView):
     template_name = "blocked-urls.html"
     
     def get_context_data(self,**kwargs ):
-    	r = requests.get('http://192.168.0.130:8000/events/api/blocked_domains/')
+    	r = requests.get('http://192.168.0.130:8000:8000/events/api/blocked_domains/')
     	context= super(BlockedUrls,self).get_context_data(**kwargs)
     	probando2 = json.loads(r.text)
     	context['urls'] = probando2["results"]
@@ -41,14 +41,14 @@ class BlockedUrls(TemplateView):
 class BlockedSitesApi(APIView):
    
    def get(self, request, format=None):
-       snippet = requests.get('http://192.168.0.100:8000/events/api/blocked_sites/')
-       return Response(snippet)
+      snippet= requests.get('http://192.168.0.130:8000:8000/events/api/blocked_sites/')
+      return Response(snippet)
 
 # This view obtains the blocked domains json data from the API of the Pandora project
 class BlockedDomainsApi(APIView):
    
    def get(self, request, format=None):
-       snippet = requests.get('http://192.168.0.100:8000/events/api/blocked_domains/?format=json')
+       snippet = requests.get('http://192.168.0.130:8000:8000/events/api/blocked_domains/?format=json')
        
        return Response(snippet)
 
@@ -64,7 +64,7 @@ class MapVenezuela(TemplateView):
 class MapApi(APIView):
        
    def get(self, request, format=None):
-       snippet = requests.get('http://192.168.0.100:8000/cases/api/list/region/')
+       snippet = requests.get('http://192.168.0.130:8000:8000/cases/api/list/region/')
        
        return Response(snippet)
     
@@ -73,7 +73,7 @@ class MapApi(APIView):
 class CaseList(TemplateView):
 	template_name = "case-list.html"
 	def get_context_data(self, **kwargs):
-		r = requests.get('http://192.168.0.100:8000/cases/api/list/')
+		r = requests.get('http://192.168.0.130:8000/cases/api/list/')
 	    	context= super(CaseList,self).get_context_data(**kwargs)
 	    	probando2 = json.loads(r.text)
 	    	context['cases'] = probando2["results"]

@@ -8,6 +8,7 @@ from django.views.generic import (TemplateView)
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.template.defaultfilters import title
 
 
 # This view renders the HTML containing information about the company, social network, etc. 
@@ -49,7 +50,6 @@ class BlockedDomainsApi(APIView):
    
    def get(self, request, format=None):
        snippet = requests.get('http://192.168.0.130:8000:8000/events/api/blocked_domains/?format=json')
-       
        return Response(snippet)
 
 # This view renders the HTML containing information about the blocked sites and domains.
@@ -67,29 +67,30 @@ class MapApi(APIView):
        snippet = requests.get('http://192.168.0.130:8000:8000/cases/api/list/region/')
        
        return Response(snippet)
-    
-
-
+  
+# This view renders the HTML containing information about list of cases
 class CaseList(TemplateView):
-	template_name = "case-list.html"
-	def get_context_data(self, **kwargs):
-		r = requests.get('http://192.168.0.130:8000/cases/api/list/')
-	    	context= super(CaseList,self).get_context_data(**kwargs)
-	    	probando2 = json.loads(r.text)
-	    	context['cases'] = probando2["results"]
-
-	    	return context
-
-class CaseDetail(TemplateView):
-	template_name = "case-detail.html"
-	def get_context_data(self, **kwargs):
-		r = requests.get('http://192.168.0.130:8000/cases/api/list/')
-	    	context= super(CaseDetail,self).get_context_data(**kwargs)
-	    	probando2 = json.loads(r.text)
-	    	context['cases'] = probando2["results"][0]
-	    	aux = datetime.datetime.strptime(probando2["results"][0]["start_date"],'%Y-%m-%dT%H:%M:%SZ')
-	    	context['date'] = aux
-
+    template_name = "list-cases.html"      
+    
+# This view obtains the list of cases json data from the API of the Pandora project  
+class CaseListApi(APIView):
+       
+   def get(self, request, format=None):      
+       snippet = requests.get('http://192.168.0.100:8000/cases/api/list/')
+       
+       return Response(snippet)
+   
+   def post(self, request, format=None):
+       title = request.data["title"]
+       region = request.data["region"]
+       category = request.data["category"]
+       start_date=  request.data["start_date"]
+       end_date=  request.data["end_date"]
+       print end_date
+       
+       snippet = requests.get('http://192.168.0.100:8000/cases/api/list-case-filter/?title=' + title +"&category="+category+'&start_date='+start_date+'&end_date='+end_date+'&region='+region)
+       
+       return Response(snippet)
 
 class Dashboard(TemplateView):
     template_name = "dashboard.html"

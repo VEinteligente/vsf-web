@@ -7,6 +7,7 @@ from rest_framework.response import Response
 # Create your views here.
 
 
+
 class CaseList(TemplateView):
 	template_name = "case-list.html"
 	def	get_context_data(self, **kwargs):

@@ -223,6 +223,10 @@ input#title{
   left:-1px;
   }
 
+#dateClick, #nameClick, #siteClick, #ispClick, #categoryClick, #regionClick{
+    &:hover{
+    cursor: pointer;}
+}
 
 /* RESPONSIVE */
 

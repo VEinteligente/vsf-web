@@ -2,9 +2,19 @@ import requests
 import datetime
 import json
 from django.views.generic import (TemplateView)
+from rest_framework.views import APIView
 
 # Create your views here.
 
+class GanttEvents(TemplateView):
+    template_name = "gantt.html"
+
+# This view obtains the blocked sites json data from the API of the Pandora project
+class GanttEventsApi(APIView):
+   
+   def get(self, request, format=None):
+       snippet = requests.get('http://127.0.0.1:8001/events/api/list-event-group/')
+       return Response(snippet)
 
 
 class MultipleElementsCase(TemplateView):
@@ -14,7 +24,7 @@ class MultipleElementsCase(TemplateView):
 class OneElementCase(TemplateView):
 	template_name = "one-element-case.html"
 	def get_context_data(self, **kwargs):
-		r = requests.get('http://192.168.0.130:8000/cases/api/list/')
+		r = requests.get('http://127.0.1:8001/cases/api/list/')
 	    	context= super(OneElementCase,self).get_context_data(**kwargs)
 	    	
 	    	data = json.loads(r.text)
@@ -33,7 +43,7 @@ class OneElementCase(TemplateView):
 	    		for y in x:
 	    			event_list1.append(y)
 	    	event_list = event_list1
-	    	r2= requests.get('http://192.168.0.130:8000/events/api/list/')
+	    	r2= requests.get('http://127.0.1:8001/events/api/list/')
 	    	event_data = json.loads(r2.text) 
 	    	event_data2= event_data["results"]
 	    	

@@ -269,10 +269,14 @@ $.ajax({
         //The count variable enables that the action when second click is different
         // from the first click action
         if(count % 2 != 0) {
-            $(this).removeClass('no-hover'); 
+            $("svg > g").each(function(){        
+                $(this).removeClass('no-hover');             
+            });
+        
             hoverEvents();
         }else{
             $(this).removeClass('hover');
+
             $(this).addClass('no-hover'); 
 
             $('.map g').off('mouseover');

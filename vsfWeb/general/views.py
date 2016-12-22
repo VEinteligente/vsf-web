@@ -10,6 +10,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.template.defaultfilters import title
 
+import csv
+from django.http import HttpResponse
+
 
 # This view renders the HTML containing information about the company, social network, etc. 
 class AboutUs(TemplateView):
@@ -50,6 +53,10 @@ class MapApi(APIView):
 class CaseList(TemplateView):
     template_name = "list-cases.html"      
     
+# This view renders the HTML containing information about list of cases
+class CaseListAdvanced(TemplateView):
+    template_name = "list-cases-advanced.html"  
+    
 # This view obtains the list of cases json data from the API of the Pandora project  
 class CaseListApi(APIView):
        
@@ -64,12 +71,59 @@ class CaseListApi(APIView):
        category = request.data["category"]
        start_date=  request.data["start_date"]
        end_date=  request.data["end_date"]
-       print end_date
        
        snippet = requests.get('http://127.0.1:8001/cases/api/list-case-filter/?title=' + title +"&category="+category+'&start_date='+start_date+'&end_date='+end_date+'&region='+region)
        
        return Response(snippet)
+
+def SearchResultCVS(request):
+    # Create the HttpResponse object with the appropriate CSV header.
+    snippet = requests.get('http://127.0.1:8001/cases/api/list-case-filter')
+    data = json.loads(snippet.text)
+    
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
+    
+
+    writer = csv.writer(response)
+    writer.writerow(['Fecha inicio', 'Fecha final', 'Titulo', 'Descripcion'])
+    
+    result = data['results']
+    count = data["count"]-1
+    
+    
+    while (count > -1):
+
+        start_date = result[count]['start_date']
+        end_date = result[count]['end_date']
+        description = result[count]['description']
+        title = result[count]['title']
+        category = result[count]['category']
+        
+        
+        events = result[count]['events']
+        countEvent = 0
+        
+        for event in events:
+            if countEvent>0:
+                eventList = eventList + "," + event
+            else:
+                eventsList = event
+            
+            
+            countEvent = countEvent + 1 
+            
+            
+        isp = result[count]['isp']
+        regions = result[count]['region']
+        domains = result[count]['domains']
+        
+        writer.writerow([end_date, start_date, title, description, category, eventsList, isp, regions, domains])
+        count = count - 1
+            
+    
    
+    return response   
 
 class Dashboard(TemplateView):
     template_name = "dashboard.html"

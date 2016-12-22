@@ -70,9 +70,21 @@ class MapApi(APIView):
   
 # This view renders the HTML containing information about list of cases
 class CaseList(TemplateView):
+<<<<<<< HEAD
     template_name = "list-cases.html"      
     
 # This view obtains the list of cases json data from the API of the Pandora project  
+=======
+	template_name = "case-list.html"
+	def get_context_data(self, **kwargs):
+		r = requests.get('http://192.168.0.130:8000/cases/api/list/')
+	    	context= super(CaseList,self).get_context_data(**kwargs)
+	    	probando2 = json.loads(r.text)
+	    	context['cases'] = probando2["results"]
+
+	    	return context
+
+>>>>>>> look
 class CaseListApi(APIView):
        
    def get(self, request, format=None):      
@@ -91,6 +103,21 @@ class CaseListApi(APIView):
        snippet = requests.get('http://192.168.0.100:8000/cases/api/list-case-filter/?title=' + title +"&category="+category+'&start_date='+start_date+'&end_date='+end_date+'&region='+region)
        
        return Response(snippet)
+<<<<<<< HEAD
+=======
+   
+
+class CaseDetail(TemplateView):
+	template_name = "case-detail.html"
+	def get_context_data(self, **kwargs):
+		r = requests.get('http://192.168.0.130:8000/cases/api/list/')
+	    	context= super(CaseDetail,self).get_context_data(**kwargs)
+	    	probando2 = json.loads(r.text)
+	    	context['cases'] = probando2["results"][0]
+	    	aux = datetime.datetime.strptime(probando2["results"][0]["start_date"],'%Y-%m-%dT%H:%M:%SZ')
+	    	context['date'] = aux
+
+>>>>>>> look
 
 class Dashboard(TemplateView):
     template_name = "dashboard.html"

@@ -3,10 +3,18 @@ $(document).ready(function()
 
 	//Global Variables
 	var month_names = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-	var case_id;
+	
+	var count=0;
+	
+	//url_data is where we fetch most of the case information and pk is the id of the case
+	var url_data = "http://127.0.0.1:8001/cases/api/detail/"+pk+"/";
+
+	//url_data is where we get the update data of the case and pk is the id of the case
+	var url_data2 ="http://127.0.0.1:8001/cases/api/detail_update/"+pk+"/";
+	
 	//First Ajax call to recieve the case data from server
 	$.ajax({
-		url: "http://127.0.0.1:8001/cases/api/detail/1/",
+		url: url_data,
 		method: 'GET',
 		dataType: 'json',
 		contentType:'application/json'
@@ -47,7 +55,7 @@ $(document).ready(function()
 
 		//AJAX call for updates datails API associated to the case
 		$.ajax({
-			url: "http://127.0.0.1:8001/cases/api/detail_update/"+case_id+"/",
+			url: url_data2,
 			method: 'GET',
 			dataType: 'json',
 			contentType:'application/json'
@@ -85,10 +93,11 @@ function select(option){
         // When select function is invoked the list is emptied  
         $("#domainTableBody").empty();
         
- 
+ 		var url_data = "http://127.0.0.1:8001/cases/api/detail/"+pk+"/";
+
         // This AJAX call corresponds to the request of the JSON data from Pandora project API.
         $.ajax({
-                url:'http://127.0.0.1:8001/cases/api/detail/1/',
+                url:url_data,
                 method: "GET",
                 dataType: 'json',
                 contentType: 'application/json'
@@ -97,22 +106,35 @@ function select(option){
 
         if (option == "domains"){
 
-            $("#domainTableTitle").html('Dominios');
+        	count =0;
+
+            $("#domainTableTitle").html('<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:100%; background-color:red"></span>&nbsp Dominios');
            
             $.each(data.domains,function(index,result){
 
-                $("#domainTableBody").append('<tr><td>'+result.url+'</td><tr>');
+            	count= count +1;
+
+            	$("#count").html(count);
+
+                $("#domainTableBody").append('<tr><td style="border-radius:5px">'+result.url+'</td><tr>');
+
        
             })
         }
         
         else{
 
-            $("#domainTableTitle").html('Sitios');
+        	count =0;
+
+            $("#domainTableTitle").html('<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:100%; background-color:red"></span>&nbsp Sitios');
            
             $.each(data.domains,function(index,result){
 
-                $("#domainTableBody").append('<tr><td style="text-transform:capitalize">'+result.site+'</td><tr>');
+                count= count +1;
+
+                $("#count").html(count);
+
+                $("#domainTableBody").append('<tr><td style="text-transform:capitalize;border-radius:5px">'+result.site+'</td><tr>');
 
             })
 

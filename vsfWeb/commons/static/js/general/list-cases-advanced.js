@@ -46,7 +46,8 @@ $( document ).ready(function() {
                 }
                             
                 var dataJson=JSON.parse( temporal );
-                            
+                $("#download").attr("href",url_csv);
+                           
                 $.each( dataJson , function( key , value ){ // First Level                                         
                                                               
                     if( key=="count" ){
@@ -296,12 +297,13 @@ $("#advanced_search").submit(function(e){
         
         if( hidden.length != 0 ){
             history.pushState( null, null, url_data_list_empty + "title=" + title + "&category=" + category + "&start_date=" + start_date + "&end_date=" + end_date + "&region=" + region);            
-            
+            $("#download").attr("href",url_csv + "title=" + title + "&category=" + category + "&start_date=" + start_date + "&end_date=" + end_date + "&region=" + region)
          
             
         }
         else if( hidden == " " ){
             history.pushState(null, null, url_data_list_empty);
+            $("#download").attr("href",url_csv);
         }
 
         e.preventDefault();

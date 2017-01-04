@@ -69,19 +69,7 @@ class MapApi(APIView):
        return Response(snippet)
   
 # This view renders the HTML containing information about list of cases
-class CaseList(TemplateView):
-    template_name = "list-cases.html"      
-    # This view obtains the list of cases json data from the API of the Pandora project  
-    template_name = "case-list.html"
-
-def get_context_data(self, **kwargs):
-		r = requests.get('http://192.168.0.130:8000/cases/api/list/')
-	    	context= super(CaseList,self).get_context_data(**kwargs)
-	    	probando2 = json.loads(r.text)
-	    	context['cases'] = probando2["results"]
-
-	    	return context
-
+    
 
 class CaseListApi(APIView):
        
@@ -101,6 +89,19 @@ class CaseListApi(APIView):
        snippet = requests.get('http://192.168.0.100:8000/cases/api/list-case-filter/?title=' + title +"&category="+category+'&start_date='+start_date+'&end_date='+end_date+'&region='+region)
        
        return Response(snippet)
+
+class CaseList(TemplateView):
+    template_name = "list-cases.html"      
+    # This view obtains the list of cases json data from the API of the Pandora project  
+    template_name = "case-list.html"
+
+def get_context_data(self, **kwargs):
+		r = requests.get('http://192.168.0.130:8000/cases/api/list/')
+	    	context= super(CaseList,self).get_context_data(**kwargs)
+	    	probando2 = json.loads(r.text)
+	    	context['cases'] = probando2["results"]
+
+	    	return context
 
    
 

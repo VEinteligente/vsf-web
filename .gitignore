@@ -3,6 +3,7 @@
 /vsfWeb/commons/static/CACHE/*
 <<<<<<< HEAD
 *.pyc
+.pyc
 =======
 /vsfWeb/general/admin.pyc
 /vsfWeb/general/models.pyc

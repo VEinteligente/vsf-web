@@ -14,7 +14,8 @@ $( document ).ready(function() {
         var name = null;
         var number = null;
         var count = 0;
-        var title = null;      
+        var title = null;
+        var content = null;      
 }); 
 
 // Fnction select(option): Enables the option to use the same AJAX code for the summary table for category or isp. 
@@ -83,9 +84,50 @@ function select(option){
 
                     //for each case wee need its title to display as info on the table
                     $.each(result.cases, function (key, value){
+                    
+                    title = value.title;
 
-                        title = value.title;
-                        $("#data"+name).append('<tr><td>'+title+'</td><td><div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div></td><td><a href="http://127.0.0.1:8001/cases/api/detail/'+value.id+'">Ver</a></td></tr><br>');
+                    if (name == "bloqueo"){
+                        content = "blocked";
+                        $("#data"+name).append('<tr><td>'+title+'</td><td><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div></td><td><a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Ver</a></td></tr><br>');
+
+                    }
+
+                    else if (name == "desconexion"){
+                        content = "disconnected";
+                        $("#data"+name).append('<tr><td>'+title+'</td><td><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div></td><td><a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Ver</a></td></tr><br>');
+
+                    }
+
+                    else if (name == "relentizacion"){
+                        content = "slowdown";
+                        $("#data"+name).append('<tr><td>'+title+'</td><td><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div></td><td><a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Ver</a></td></tr><br>');
+
+                    }
+
+                    else if (name == "conexion"){
+                        content = "continue";
+                        $("#data"+name).append('<tr><td>'+title+'</td><td><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div></td><td><a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Ver</a></td></tr><br>');
+
+                    }
+
+                    else if (name == "intercepcion"){
+                        content = "interception";
+                        $("#data"+name).append('<tr><td>'+title+'</td><td><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div></td><td><a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Ver</a></td></tr><br>');
+
+                    }
+
+                    else if (name == "falla"){
+                        content = "fail";
+                        $("#data"+name).append('<tr><td>'+title+'</td><td><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div></td><td><a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Ver</a></td></tr><br>');
+
+                    }
+
+                    else {
+                        content = "dos";
+                        $("#data"+name).append('<tr><td>'+title+'</td><td><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div></td><td><a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Ver</a></td></tr><br>');
+
+                    }
 
                     })    
             })
@@ -125,7 +167,7 @@ function select(option){
                     $.each(result.cases, function (key, value){
 
                         title = value.title;
-                        $("#data"+name).append('<tr><td>'+title+'</td><td><a href="http://127.0.0.1:8001/cases/api/detail/'+value.id+'">Ver</a></td></tr></tr>');
+                        $("#data"+name).append('<tr><td>'+title+'</td><td><a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Ver</a></td></tr></tr>');
 
                     })    
             })

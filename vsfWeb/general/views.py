@@ -69,6 +69,24 @@ class MapApi(APIView):
        return Response(snippet)
     
 
+class CaseListApi(APIView):
+       
+   def get(self, request, format=None):      
+       snippet = requests.get('http://192.168.0.100:8000/cases/api/list/')
+       
+       return Response(snippet)
+   
+   def post(self, request, format=None):
+       title = request.data["title"]
+       region = request.data["region"]
+       category = request.data["category"]
+       start_date=  request.data["start_date"]
+       end_date=  request.data["end_date"]
+       print end_date
+       
+       snippet = requests.get('http://192.168.0.100:8000/cases/api/list-case-filter/?title=' + title +"&category="+category+'&start_date='+start_date+'&end_date='+end_date+'&region='+region)
+       
+       return Response(snippet)
 
 class CaseList(TemplateView):
 	template_name = "case-list.html"

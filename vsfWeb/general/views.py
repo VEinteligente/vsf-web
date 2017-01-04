@@ -77,23 +77,27 @@ class CaseListApi(APIView):
        
        return Response(snippet)
 
+# This view takes list of all the cases and exports it to a CVS file.
 def SearchResultCVS(request):
-    # Create the HttpResponse object with the appropriate CSV header.
+    
+    # Get the list of all the cases and load it as JSON
     snippet = requests.get('http://127.0.1:8001/cases/api/list-case-filter')
     data = json.loads(snippet.text)
     
+    # Create the HttpResponse object with the appropriate CSV header.
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
     
-
+    # CSV header.
     writer = csv.writer(response)
     writer.writerow(['Fecha inicio', 'Fecha final', 'Titulo', 'Descripcion', 'Categoria', 'Eventos', 'ISP', 'Region', 'Dominios'])
 
-        
+    # count is the total of cases to be shown.
+    # result is where the information is located in the JSON
     result = data['results']
     count = data["count"]-1
     
-    
+    # Load all the information of each result in a CVS row
     while (count > -1):
 
         start_date = result[count]['start_date']
@@ -101,7 +105,6 @@ def SearchResultCVS(request):
         description = result[count]['description']
         title = result[count]['title']
         category = result[count]['category']
-        
         
         events = result[count]['events']
         countEvent = 0
@@ -153,15 +156,15 @@ def SearchResultCVS(request):
             countDomain = countDomain + 1 
         
         writer.writerow([start_date, end_date, title, description, category, eventsList, ispList, regionList, domainList])
-        count = count - 1
-            
+        count = count - 1     
     
    
     return response  
 
-
+# This view takes list of filtered cases and exports it to a CVS file.
 def SearchResultFilterCVS(request, title, region, category, e_day, s_day, e_month, s_month, e_year, s_year):
-    # Create the HttpResponse object with the appropriate CSV header.
+    
+    # Loads the URL values for the filter 
     if e_day != "":
         end_date = s_year + "-" + s_month + "-" + s_day
     else: 
@@ -170,23 +173,26 @@ def SearchResultFilterCVS(request, title, region, category, e_day, s_day, e_mont
         start_date = e_year + "-" + e_month + "-" + e_day
     else:
         start_date = ""
-    print end_date
+
+    
+    # Get the list of all the cases and load it as JSON
     snippet = requests.get('http://127.0.1:8001/cases/api/list-case-filter/?title=' + title +"&category="+category+'&start_date='+start_date+'&end_date='+end_date+'&region='+region)
-       
     data = json.loads(snippet.text)
-    print data
+
+    # Create the HttpResponse object with the appropriate CSV header.
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
     
-
+    # CSV header
     writer = csv.writer(response)
     writer.writerow(['Fecha inicio', 'Fecha final', 'Titulo', 'Descripcion', 'Categoria', "Eventos", "ISP", "Region", "Dominios"])
 
-        
+    # count is the total of cases to be shown.
+    # result is where the information is located in the JSON     
     result = data['results']
     count = data["count"]-1
     
-    
+    # Load all the information of each result in a CVS row
     while (count > -1):
 
         start_date = result[count]['start_date']

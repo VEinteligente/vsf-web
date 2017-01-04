@@ -660,7 +660,7 @@ function sortNameDes( parent, child ){
 
                 var alphabeticallyOrderedDivs = $divs.sort(function (a, b) {
                         
-                        return $(a).find(child).text() > $(b).find(child).text();
+                    return $(a).find(child).text() > $(b).find(child).text();
                         
                 });
                 

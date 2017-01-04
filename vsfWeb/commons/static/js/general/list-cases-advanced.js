@@ -27,7 +27,7 @@ $( document ).ready(function() {
     }
     
     // Concatenate the parameters value from URL to check if any exists  
-    var hidden = hidden_title + hidden_category + hidden_site + hidden_region + hidden_start_date + hidden_end_date;
+    var hidden = hidden_title + hidden_site + hidden_isp + hidden_category + hidden_site + hidden_region + hidden_start_date + hidden_end_date;
 
     if( hidden.length == 0 ){
         
@@ -183,11 +183,10 @@ $( document ).ready(function() {
                                  
                                             
                                 if( thirdLevelKey=="category" ) {
-                                    $( ".listCasesAdvanced:last-child" ).find(".category").append( 
-                                    
+                                    $( ".listCasesAdvanced:last-child" ).find(".category").append(          
                                     '<div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'+thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
-                                    $( ".listCasesAdvanced" ).find(".category").addClass("categorySort");
-                                    $( ".listCasesAdvanced" ).find(".category").removeClass("category");
+                                    $( ".listCasesAdvanced" ).find( ".category" ).addClass( "categorySort" );
+                                    $( ".listCasesAdvanced" ).find( ".category" ).removeClass( "category" );
                                  
                                 }  
                                                                                                                                    
@@ -211,37 +210,40 @@ $( document ).ready(function() {
         
         // Change the input of the search with the URL parameters if they exist and submit the form
 
-        if( hidden_title.length === 0 ){
+        if( hidden_title.length == 0 ){
             $( "#title" ).val( "" );
         }
         else{
             $( "#title" ).val( hidden_title ); 
         }
             
-        if(hidden_category.length === 0 ){
+        if(hidden_category.length == 0 ){
             $( "#category" ).val( "" );
         }
         else{
             $( "#category" ).val( hidden_category ); 
         }
         
-        if(hidden_isp.length === 0 ){
+        if(hidden_isp.length == 0 ){
             $( "#isp" ).val( "" );
         }
         else{
+
             fillChosenValues(hidden_isp, "#isp");
 
-        }
+        } 
+
         
-        if(hidden_site.length === 0 ){
-            $( "#site" ).val( "" );
+        if(hidden_site.length == 0 ){
+            $( "#site" ).val( "" );     
         }
         else{ 
+            
             fillChosenValues(hidden_site, "#site");
 
         }
             
-        if( hidden_region.length === 0 ){
+        if( hidden_region.length == 0 ){
             $( "#region" ).val( "" );
         }
         else{
@@ -321,12 +323,13 @@ $("#advanced_search").submit(function(e){
                 
             }
             else{
-                formSer.category = $( "#category" ).val()[0]; 
+                formSer.category = $( "#category" ).val()[0] + ", "; 
                 for( var i = 1 ; i < ($("#category").val()).length; i++ ){
+
                     if( i == ($("#category").val()).length-1)
-                        formSer.category = formSer.category + $( "#category" ).val()[i]; 
+                        formSer.category = formSer.category  + $( "#category" ).val()[i]; 
                     else
-                        formSer.category = formSer.category +  $( "#category" ).val()[i] + ", "; 
+                        formSer.category = formSer.category  + $( "#category" ).val()[i] + ", "; 
                 
                  }
             
@@ -347,12 +350,13 @@ $("#advanced_search").submit(function(e){
                 
             }
             else{
-                formSer.isp = $( "#isp" ).val()[0]; 
+               formSer.isp = $( "#isp" ).val()[0] + ", "; 
                 for( var i = 1 ; i < ($("#isp").val()).length; i++ ){
+
                     if( i == ($("#isp").val()).length-1)
-                        formSer.isp = formSer.isp +  $( "#isp" ).val()[i]; 
+                        formSer.isp = formSer.isp  + $( "#isp" ).val()[i]; 
                     else
-                        formSer.isp = formSer.isp +  $( "#isp" ).val()[i] + ", "; 
+                        formSer.isp = formSer.isp  + $( "#isp" ).val()[i] + ", "; 
                 
                  }
             
@@ -369,16 +373,17 @@ $("#advanced_search").submit(function(e){
     
         if(($("#site").val()).length < 2 ){
             
-                formSer.site = formSer.site +  $( "#isp" ).val()[0];
+                formSer.site =  $( "#site" ).val()[0];
                 
             }
             else{
-                formSer.site = $( "#site" ).val()[0]; 
-                for( var i = 1 ; i < ($("#site").val()).length; i++ ){
-                    if( i == ($("#site").val()).length-1)
+                formSer.site = $( "#site" ).val()[0] + ", "; 
+                for( var i = 1 ; i < ( $( "#site" ).val()).length; i++ ){
+
+                    if( i == ( $( "#site" ).val()).length-1)
                         formSer.site = formSer.site  + $( "#site" ).val()[i]; 
                     else
-                        formSer.site =  formSer.site + $( "#site" ).val()[i] + ", "; 
+                        formSer.site = formSer.site  + $( "#site" ).val()[i] + ", "; 
                 
                  }
             
@@ -430,7 +435,7 @@ $("#advanced_search").submit(function(e){
         else{
             var site = "";
         }
-        
+     
        
         var domain = "";
         
@@ -457,14 +462,12 @@ $("#advanced_search").submit(function(e){
         }
         
         
-        site = ""
-
         // If there is a search parameter then change the URL to add the parameters or to initial search page but do not redirect to it
         var hidden =  title + category + start_date + end_date + region + isp + site + domain;
         
         if( hidden.length != 0 ){
-            history.pushState( null, null, url_data_list_empty + "title=" + title + "&category=" + category + "&start_date=" + start_date + "&end_date=" + end_date + "&region=" + region + "&domain=" + domain + "&site=" + site + "&isp=" + isp );            
-            $("#download").attr("href",url_csv + "title=" + title + "&category=" + category + "&start_date=" + start_date + "&end_date=" + end_date + "&region=" + region + "&domain=" + domain + "&site=" + site + "&isp=" + isp )
+            history.pushState( null, null, url_data_list_empty + "title=" + title + "&category=" + category + "&start_date=" + start_date + "&end_date=" + end_date + "&region=" + region  + "&site=" + site + "&isp=" + isp );            
+            $("#download").attr("href",url_csv + "title=" + title + "&category=" + category + "&start_date=" + start_date + "&end_date=" + end_date + "&region=" + region  + "&site=" + site + "&isp=" + isp )
          
             
         }

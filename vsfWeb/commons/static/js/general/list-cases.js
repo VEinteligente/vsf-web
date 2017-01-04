@@ -49,9 +49,9 @@ $( document ).ready(function() {
                             
                 $.each( dataJson , function( key , value ){ // First Level                                         
                                                               
-                    if( key=="count" ){
+                    if( key == "count" ){
                       
-                        $("#resultados").html("Resultados de busqueda <strong>" + value + "</strong>");
+                        $( "#resultados" ).html( "Resultados de busqueda <strong>" + value + "</strong>" );
                         
                     }     
                     
@@ -62,22 +62,30 @@ $( document ).ready(function() {
                                 
                             $.each( secondLevelValue , function( thirdLevelKey , thirdLevelValue ){ // Third Level 
                                                                                                                                                     
-                                if( thirdLevelKey =="id" ) {
+                                if( thirdLevelKey == "id" ) {
                                 
-                                    $( ".listCases" ).append("<div class='col-xs-12 smallBar' style='border-bottom:1px solid blue'><h5 class='title'>"
+                                    $( ".listCases" ).append( "<div class='col-xs-12 smallBar' style='border-bottom:1px solid blue'><h5 class='title'>"
                                         + "<div class='col-xs-2 date'></div>"
                                         +"<div class='col-xs-2 name' style='display: flex;'></div>"
                                         +"<div class='col-xs-2 site'></div>"
                                         + "<div class='col-xs-2 isp'></div>"
                                         + "<div class='col-xs-2 category'></div>"
                                         + "<div class='col-xs-2 region'></div>"
-                                        + "</h5>     </div>");
+                                        + "</h5>     </div>" );
                                                                            
                                 }
                                             
                                 if( thirdLevelKey == "region" ) {
                                     
-                                    $( ".listCases" ).find(".region").append( thirdLevelValue );
+                                    
+                                    if( thirdLevelValue.length < 2 ){
+                                        $( ".listCases" ).find(".region").append( thirdLevelValue );
+                                    }
+                                    else{
+                                        $( ".listCases" ).find(".region").append( "Varios" );
+                                    }
+                                        
+                                    
                                     $( ".listCases" ).find(".region").addClass("regionSort");
                                     $( ".listCases" ).find(".region").removeClass("region"); 
                                                                                           
@@ -104,8 +112,14 @@ $( document ).ready(function() {
                                 }
                                 
                                 if( thirdLevelKey == "isp" ) {
-                                       
-                                        $( ".listCases" ).find(".isp").append( thirdLevelValue);
+
+                                        if( thirdLevelValue.length < 2 ){
+                                            $( ".listCases" ).find(".isp").append( thirdLevelValue);
+                                        }
+                                        else{
+                                            $( ".listCases" ).find(".isp").html( "Varios" );
+                                        }
+                                        
                                         $( ".listCases" ).find(".isp").addClass("ispSort");
                                         $( ".listCases" ).find(".isp").removeClass("isp"); 
                                     
@@ -146,9 +160,11 @@ $( document ).ready(function() {
                                  
                                             
                                 if( thirdLevelKey=="category" ) {
+                                
                                     $( ".listCases:last-child" ).find(".category").append( 
                                     
                                     '<div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'+thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+                                    $( ".listCases" ).find(".category").addClass("categorySort");                                 
                                     $( ".listCases" ).find(".category").removeClass("category");
                                  
                                 }  
@@ -173,21 +189,21 @@ $( document ).ready(function() {
         
         // Change the input of the search with the URL parameters if they exist and submit the form
 
-        if( hidden_title.length == 0 ){
+        if( hidden_title.length === 0 ){
             $( "#title" ).val( "" );
         }
         else{
             $( "#title" ).val( hidden_title ); 
         }
             
-        if(hidden_category.length == 0 ){
+        if(hidden_category.length === 0 ){
             $( "#category" ).val( "" );
         }
         else{
             $( "#category" ).val( hidden_category ); 
         }
             
-        if( hidden_region.length == 0 ){
+        if( hidden_region.length === 0 ){
             $( "#region" ).val( "" );
         }
         else{
@@ -347,13 +363,40 @@ $("#advanced_search").submit(function(e){
                                     
                         if( thirdLevelKey == "region" ) {
                             
-                            $( ".listCases" ).find(".region").append( thirdLevelValue );
+                            if( thirdLevelValue.length < 2 ){
+                            
+                                $( ".listCases" ).find(".region").append( thirdLevelValue );
+                                
+                            }
+                            else{
+                            
+                                $( ".listCases" ).find(".region").append( "Varios" );
+                            }
+                            
+                            $( ".listCases" ).find(".region").addClass("regionSort");
                             $( ".listCases" ).find(".region").removeClass("region");                                                       
+                        }
+                        
+                        if( thirdLevelKey == "isp" ) {
+                            
+                            if( thirdLevelValue.length < 2 ){
+                            
+                                $( ".listCases" ).find(".isp").append( thirdLevelValue );
+                                
+                            }
+                            else{
+                            
+                                $( ".listCases" ).find(".isp").append( "Varios" );
+                            }
+                            
+                            $( ".listCases" ).find(".isp").addClass("ispSort");                            
+                            $( ".listCases" ).find(".isp").removeClass("isp");                                                       
                         }
                         
                         if( thirdLevelKey == "description" ) {
                             
                             $( ".listCases" ).find(".name").append( "<strong style='white-space: nowrap;overflow: hidden; text-overflow: ellipsis;'>" + thirdLevelValue + "</strong> <br>" );
+                            $( ".listCases" ).find(".name").addClass("nameSort");
                             $( ".listCases" ).find(".name").removeClass("name");                                                       
                         }                                     
                           
@@ -361,6 +404,7 @@ $("#advanced_search").submit(function(e){
                             $.each( thirdLevelValue , function( fourthLevelKey , fourthLevelValue ) {
                                 
                                 $( ".listCases" ).find(".site").append( fourthLevelValue.site);
+                                $( ".listCases" ).find(".site").addClass("siteSort");
                                 $( ".listCases" ).find(".site").removeClass("site"); 
                             });
                         }
@@ -420,11 +464,11 @@ $("#advanced_search").submit(function(e){
 $("#nameClick").on('click', function() { // when you click the div
         
         if($("#nameClick").hasClass("desc")) {
-           sortNameAsc(".nameSort strong");
+           sortNameAsc( "#nameClick", ".nameSort strong" );
            $("#nameClick").addClass("asc");
            $("#nameClick").removeClass("desc");
         }else{
-            sortNameDes(".nameSort strong");
+            sortNameDes( "#nameClick", ".nameSort strong" );
             $("#nameClick").addClass("desc");
             $("#nameClick").removeClass("asc");
         }  
@@ -434,11 +478,11 @@ $("#nameClick").on('click', function() { // when you click the div
 $("#ispClick").on('click', function() { // when you click the div
 
         if($("#ispClick").hasClass("desc")) {
-            sortNameAsc(".ispSort");
+            sortNameAsc( "#ispClick", ".ispSort" );
             $("#ispClick").addClass("asc");
             $("#ispClick").removeClass("desc");
         }else{
-            sortNameDes(".ispSort ");
+            sortNameDes( "#ispClick", ".ispSort " );
             $("#ispClick").addClass("desc");
            $("#ispClick").removeClass("asc");
         }  
@@ -449,11 +493,11 @@ $("#ispClick").on('click', function() { // when you click the div
 $("#siteClick").on('click', function() { // when you click the div
 
         if($("#siteClick").hasClass("desc")) {
-            sortNameAsc(".siteSort");
+            sortNameAsc( "#siteClick", ".siteSort" );
             $("#siteClick").addClass("asc");
             $("#siteClick").removeClass("desc");
         }else{
-            sortNameDes(".siteSort ");
+            sortNameDes( "#siteClick", ".siteSort " );
             $("#siteClick").addClass("desc");
            $("#siteClick").removeClass("asc");
         }  
@@ -465,11 +509,12 @@ $("#siteClick").on('click', function() { // when you click the div
 $("#regionClick").on('click', function() { // when you click the div
 
         if($("#regionClick").hasClass("desc")) {
-            sortNameAsc(".regionSort");
+        
+            sortNameAsc( "#regionClick", ".regionSort" );
             $("#regionClick").addClass("asc");
             $("#regionClick").removeClass("desc");
         }else{
-            sortNameDes(".regionSort ");           
+            sortNameDes( "#regionClick", ".regionSort " );           
             $("#regionClick").addClass("desc");
             $("#regionClick").removeClass("asc");
         }  
@@ -480,11 +525,11 @@ $("#regionClick").on('click', function() { // when you click the div
 $("#categoryClick").on('click', function() { // when you click the div
 
         if($("#categoryClick").hasClass("desc")) {
-            sortNameAsc(".categorySort .contentTag");
+            sortNameAsc( "#categoryClick", ".categorySort .contentTag" );
             $("#categoryClick").addClass("asc");
             $("#categoryClick").removeClass("desc");
         }else{
-            sortNameDes(".categorySort .contentTag");           
+            sortNameDes( "#categoryClick", ".categorySort .contentTag" );           
             $("#categoryClick").addClass("desc");
             $("#categoryClick").removeClass("asc");
         }  
@@ -495,11 +540,11 @@ $("#categoryClick").on('click', function() { // when you click the div
 $("#dateClick").on('click', function() { // when you click the div
 
         if($("#dateClick").hasClass("desc")) {
-            sortDateAsc(".dateSort strong");
+            sortDateAsc( "#dateClick", ".dateSort strong");
             $("#dateClick").addClass("asc");
             $("#dateClick").removeClass("desc");
         }else{
-            sortDateDes(".dateSort strong");           
+            sortDateDes( "#dateClick", ".dateSort strong");           
             $("#dateClick").addClass("desc");
             $("#dateClick").removeClass("asc");
         }  
@@ -507,9 +552,13 @@ $("#dateClick").on('click', function() { // when you click the div
 });
 
   
-function sortDateAsc(child){
+function sortDateAsc( parent, child ){
 
-     var $divs = $(".smallBar .title ");
+    clearSelectedOrder();
+    
+    $( parent ).addClass("selectOrder");
+    
+    var $divs = $(".smallBar .title ");
                 
                 var alphabeticallyOrderedDivs = $divs.sort(function (a, b) {
                 
@@ -532,16 +581,20 @@ function sortDateAsc(child){
    
                 $( ".listCases" ).append("<div class='this col-xs-12 smallBar' style='border-bottom:1px solid blue'><h5 class='title'></h5></div>");                            
                 $(".this ").html($(this));
-                $(".this ").removeClass("this ")                    
+                $(".this ").removeClass("this ");                    
                     
             });
 
 }
 
 
-function sortDateDes(child){
+function sortDateDes( parent, child ){
     
-     var $divs = $(".smallBar .title ");
+    clearSelectedOrder();
+    
+    $( parent ).addClass("selectOrder");
+    
+    var $divs = $(".smallBar .title ");
 
                 var alphabeticallyOrderedDivs = $divs.sort(function (a, b) {
                            
@@ -570,9 +623,13 @@ function sortDateDes(child){
 
 }
   
-function sortNameAsc(child){
+function sortNameAsc(parent, child ){
     
-     var $divs = $(".smallBar .title ");
+    clearSelectedOrder();
+    
+    $( parent ).addClass("selectOrder");
+    
+    var $divs = $(".smallBar .title ");
                 
                 var alphabeticallyOrderedDivs = $divs.sort(function (a, b) {
 
@@ -593,9 +650,13 @@ function sortNameAsc(child){
 }
 
 
-function sortNameDes(child){
+function sortNameDes( parent, child ){
     
-     var $divs = $(".smallBar .title ");
+    clearSelectedOrder();
+    
+    $( parent ).addClass("selectOrder");
+    
+    var $divs = $(".smallBar .title ");
 
                 var alphabeticallyOrderedDivs = $divs.sort(function (a, b) {
                         
@@ -613,5 +674,17 @@ function sortNameDes(child){
                     
                 });
 
+}
+
+function clearSelectedOrder(){
+    
+    $("#dateClick").removeClass("selectOrder");
+    $("#nameClick").removeClass("selectOrder");
+    $("#siteClick").removeClass("selectOrder");
+    $("#ispClick").removeClass("selectOrder");
+    $("#categoryClick").removeClass("selectOrder");
+    $("#regionClick").removeClass("selectOrder");
+    
+    
 }
 

@@ -108,7 +108,7 @@ def SearchResultCVS(request):
         
         events = result[count]['events']
         countEvent = 0
-        
+        eventList = ""
         for event in events:
             if countEvent>0:
                 eventList = eventList + "," + event
@@ -121,7 +121,7 @@ def SearchResultCVS(request):
             
         isps = result[count]['isp']
         countIsp = 0
-        
+        ispList = ""
         for isp in isps:
             if countIsp>0:
                 ispList = ispList + "," + isp
@@ -133,7 +133,7 @@ def SearchResultCVS(request):
             
         regions = result[count]['region']
         countRegion = 0
-        
+        regionList = ""
         for region in regions:
             if countRegion>0:
                 regionList = regionList + "," + region
@@ -145,7 +145,7 @@ def SearchResultCVS(request):
             
         domains = result[count]['domains']
         countDomain = 0
-        
+        domainList = ""
         for domain in domains:
             if countDomain>0:
                 domainList = domainList + "," + domain["site"] + ": " + domain["url"] 
@@ -204,7 +204,7 @@ def SearchResultFilterCVS(request, title, region, category, e_day, s_day, e_mont
         
         events = result[count]['events']
         countEvent = 0
-        
+        eventList = ""
         for event in events:
             if countEvent>0:
                 eventList = eventList + "," + event
@@ -217,7 +217,7 @@ def SearchResultFilterCVS(request, title, region, category, e_day, s_day, e_mont
             
         isps = result[count]['isp']
         countIsp = 0
-        
+        ispList = ""
         for isp in isps:
             if countIsp>0:
                 ispList = ispList + "," + isp
@@ -229,7 +229,7 @@ def SearchResultFilterCVS(request, title, region, category, e_day, s_day, e_mont
             
         regions = result[count]['region']
         countRegion = 0
-        
+        regionList = ""
         for region in regions:
             if countRegion>0:
                 regionList = regionList + "," + region
@@ -241,7 +241,7 @@ def SearchResultFilterCVS(request, title, region, category, e_day, s_day, e_mont
             
         domains = result[count]['domains']
         countDomain = 0
-        
+        domainList = ""
         for domain in domains:
             if countDomain>0:
                 domainList = domainList + "," + domain["site"] + ": " + domain["url"] 

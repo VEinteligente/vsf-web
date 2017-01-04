@@ -221,11 +221,41 @@ input#title{
   position: absolute;
   top:0;
   left:-1px;
-  }
+}
+
+.dateStartSort, .dateEndSort, .nameSort, .siteSort, .ispSort, .regionSort{
+        padding-top: 5px;
+}
 
 #dateClick, #nameClick, #siteClick, #ispClick, #categoryClick, #regionClick{
     &:hover{
     cursor: pointer;}
+}
+
+.listCasesContainer .subtitleBar{
+    border-radius: 5px;
+    
+}
+
+.listCases .smallBar:first-of-type {
+  border-radius:5px 5px 0px 0px;
+}
+
+.listCases .smallBar:last-of-type {
+  border-radius:0px 0px 5px 5px;
+}
+
+.selectOrder{
+    border-bottom: solid blue 2px;
+    padding-bottom: 11px;
+    font-weight: bold;
+}
+
+.selectOrderAdvanced{
+    border-bottom: solid black 2px;
+    padding-bottom: 11px;
+    font-weight: bold;
+    color: black;
 }
 
 /* RESPONSIVE */

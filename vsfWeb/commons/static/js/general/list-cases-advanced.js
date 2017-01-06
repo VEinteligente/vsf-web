@@ -8,6 +8,8 @@ $( document ).ready(function() {
     $( ".datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' }).val("");
 
 
+    changeMultipleChoice(["#category", "#isp", "#site", "#region"]);
+
     // Variables corresponding to the search fields from the URL parameters
     var hidden_title = $( "#hidden_title" ).val();
     var hidden_category = $( "#hidden_category" ).val();
@@ -66,14 +68,14 @@ $( document ).ready(function() {
                                                                                                                                                     
                                 if( thirdLevelKey =="id" ) {
                                 
-                                    $( ".listCasesAdvanced" ).append("<div class='col-xs-12 smallBar' style='background: transparent; border-bottom: 1px solid gray'><h5 class='title' style='padding-left: 0px;'>"
+                                    $( ".listCasesAdvanced" ).append("<div class='col-xs-12 smallBar' ><h5 class='title' style='padding-left: 0px;'>"
                                         + "<div class='col-xs-1 dateStart' style='padding-left: 0px;'></div>"
                                         + "<div class='col-xs-1 dateEnd' style='padding-left: 0px;'></div>"
-                                        +"<div class='col-xs-2 name' style='display: flex; padding-left: 0px;'></div>"
-                                        +"<div class='col-xs-2 site' style='padding-left: 0px;'></div>"
-                                        + "<div class='col-xs-2 isp' style='padding-left: 0px;'></div>"
-                                        + "<div class='col-xs-2 category' style='padding-left: 0px; padding-bottom: 5px;'></div>"
-                                        + "<div class='col-xs-2 region' style='padding-left: 0px;'></div>"
+                                        +"<div class='col-xs-3 name' style='display: flex; padding-left: 0px;'></div>"
+                                        +"<div class='col-xs-1 site' style='padding-left: 0px;'></div>"
+                                        + "<div class='col-xs-1 isp' style='padding-left: 0px;'></div>"
+                                        + "<div class='col-xs-1 category' style='padding-left: 0px; padding-bottom: 5px;'></div>"
+                                        + "<div class='col-xs-1 region' style='padding-left: 0px;'></div>"
                                         + "</h5>     </div>");
                                                                            
                                 }
@@ -183,11 +185,13 @@ $( document ).ready(function() {
                                  
                                             
                                 if( thirdLevelKey=="category" ) {
-                                    $( ".listCasesAdvanced:last-child" ).find(".category").append(          
-                                    '<div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'+thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
-                                    $( ".listCasesAdvanced" ).find( ".category" ).addClass( "categorySort" );
-                                    $( ".listCasesAdvanced" ).find( ".category" ).removeClass( "category" );
-                                 
+                                
+                                        $( ".listCasesAdvanced" ).find( ".category" ).append(' <div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'+thirdLevelValue + '</div><div class="right_cornerTag"></div></div>' );    
+
+                                        $( ".listCasesAdvanced" ).find(".category").addClass("categorySort");
+                                        $( ".listCasesAdvanced" ).find(".category").removeClass("category"); 
+                                        
+                                   
                                 }  
                                                                                                                                    
                             });
@@ -221,7 +225,7 @@ $( document ).ready(function() {
             $( "#category" ).val( "" );
         }
         else{
-            $( "#category" ).val( hidden_category ); 
+            fillChosenValues(hidden_category, "#category");
         }
         
         if(hidden_isp.length == 0 ){
@@ -505,13 +509,13 @@ $("#advanced_search").submit(function(e){
                         
                         if( thirdLevelKey =="id" ) {
                            
-                            $( ".listCasesAdvanced" ).append("<div class='col-xs-12 smallBar' style='background: transparent; border-bottom: 1px solid gray'><h5 class='title' style='padding-left: 0px;'>"
+                            $( ".listCasesAdvanced" ).append("<div class='col-xs-12 smallBar'><h5 class='title' style='padding-left: 0px;'>"
                                         + "<div class='col-xs-1 dateStart' style='padding-left: 0px;'></div>"
-                                        + "<div class='col-xs-1 dateEnd' style='padding-left: 0px;'></div>"
-                                        +"<div class='col-xs-2 name' style='display: flex; padding-left: 0px;'></div>"
-                                        +"<div class='col-xs-2 site' style='padding-left: 0px;'></div>"
-                                        + "<div class='col-xs-2 isp' style='padding-left: 0px;'></div>"
-                                        + "<div class='col-xs-2 category' style='padding-left: 0px; padding-bottom: 5px;'></div>"
+                                        + "<div class='col-xs-1 dateEnd' style='padding-left: 0px; '></div>"
+                                        +"<div class='col-xs-3 name' style='display: flex; padding-left: 0px;'></div>"
+                                        +"<div class='col-xs-1 site' style='padding-left: 0px;'></div>"
+                                        + "<div class='col-xs-1 isp' style='padding-left: 0px;'></div>"
+                                        + "<div class='col-xs-1 category' style='padding-left: 0px; padding-bottom: 5px;'></div>"
                                         + "<div class='col-xs-2 region' style='padding-left: 0px;'></div>"
                                         + "</h5>     </div>");
                         
@@ -613,12 +617,16 @@ $("#advanced_search").submit(function(e){
                          
                                     
                         if( thirdLevelKey=="category" ) {
-                            $( ".listCasesAdvanced:last-child" ).find(".category").append( 
+                        
                             
-                            '<div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'+thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
-                            $( ".listCasesAdvanced" ).find(".category").addClass("categorySort");
-                            $( ".listCasesAdvanced" ).find(".category").removeClass("category");
-                         //  $( ".listCasesAdvanced" ).append( "<strong>Category: </strong>" + thirdLevelValue + " <br>" );  
+                                $( ".listCasesAdvanced" ).find( ".category" ).append(' <div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'+thirdLevelValue + '</div><div class="right_cornerTag"></div></div>' );
+                                                
+                                                        
+                                               
+
+                                        $( ".listCasesAdvanced" ).find(".category").addClass("categorySort");
+                                        $( ".listCasesAdvanced" ).find(".category").removeClass("category"); 
+                                        
                         }                                                                                                   
                     });
                 });
@@ -634,7 +642,9 @@ $("#advanced_search").submit(function(e){
    
  
 });
- 
+
+
+
 $("#nameClick").on('click', function() { // when you click the div
         
         if($("#nameClick").hasClass("desc")) {
@@ -769,7 +779,7 @@ function sortDateAsc( parent, child ){
        
             alphabeticallyOrderedDivs.each(function(index){
    
-                $( ".listCasesAdvanced" ).append("<div class='this col-xs-12 smallBar' style='background: transparent; border-bottom: 1px solid gray'><h5 class='title'></h5></div>");                            
+                $( ".listCasesAdvanced" ).append("<div class='this col-xs-12 smallBar'><h5 class='title'></h5></div>");                            
                 $(".this ").html($(this));
                 $(".this ").removeClass("this ");                   
                     
@@ -805,7 +815,7 @@ function sortDateDes( parent, child ){
        
                 alphabeticallyOrderedDivs.each(function(index){
    
-                    $( ".listCasesAdvanced" ).append("<div class='this col-xs-12 smallBar' style='background: transparent; border-bottom: 1px solid gray'><h5 class='title'></h5></div>");                            
+                    $( ".listCasesAdvanced" ).append("<div class='this col-xs-12 smallBar'><h5 class='title'></h5></div>");                            
                     $(".this ").html($(this));
                     $(".this ").removeClass("this");                    
                     
@@ -831,7 +841,7 @@ function sortNameAsc( parent, child ){
        
                 alphabeticallyOrderedDivs.each(function(index){
    
-                    $( ".listCasesAdvanced" ).append("<div class='this col-xs-12 smallBar' style='background: transparent; border-bottom: 1px solid gray'><h5 class='title'></h5></div>");                            
+                    $( ".listCasesAdvanced" ).append("<div class='this col-xs-12 smallBar'><h5 class='title'></h5></div>");                            
                     $(".this ").html($(this));
                     $(".this ").removeClass("this ");
                                         
@@ -858,7 +868,7 @@ function sortNameDes( parent, child ){
        
                 alphabeticallyOrderedDivs.each(function(index){
    
-                    $( ".listCasesAdvanced" ).append("<div class='this col-xs-12 smallBar' style='background: transparent; border-bottom: 1px solid gray'><h5 class='title'></h5></div>");                            
+                    $( ".listCasesAdvanced" ).append("<div class='this col-xs-12 smallBar'><h5 class='title'></h5></div>");                            
                     $(".this ").html($(this));
                     $(".this ").removeClass("this");
                     
@@ -878,6 +888,31 @@ function clearSelectedOrder(){
     
     
 }
+
+function changeMultipleChoiceContainerHeight(selectors){
+
+for (var i = 0; i < selectors.length; i++){
+        var selector = selectors[i];
+        var height = $(selector+"_chosen").outerHeight(true);
+        height = height-5;
+        $('<style>#advanced_search ' + selector +'_chosen.chosen-container::before {height: ' + height + 'px;}</style>').appendTo('body .changeStyling');
+        $('<style>#advanced_search ' + selector +'_chosen.chosen-container::after {height: ' + height + 'px;}</style>').appendTo('body .changeStyling');
+}
+    }
+    
+function changeMultipleChoice(selectors){
+    
+
+    for (var i = 0; i < selectors.length; i++){
+        var selector = selectors[i];
+     
+        $(selector).on('change', function(evt, params) {
+            $(".changeStyling").empty();
+            changeMultipleChoiceContainerHeight(selectors);
+        });
+    }
+}
+
 
            
 function fillChosenValues(values, id){

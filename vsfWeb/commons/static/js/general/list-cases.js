@@ -8,13 +8,16 @@ $( document ).ready(function() {
     $( ".datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' }).val("");
 
 
-    // Variables corresponding to the search fields from the URL parameters
+    changeMultipleChoice(["#category", "#isp", "#site", "#region"]);
+
+     // Variables corresponding to the search fields from the URL parameters
     var hidden_title = $( "#hidden_title" ).val();
     var hidden_category = $( "#hidden_category" ).val();
     var hidden_region = $( "#hidden_region" ).val();
     var hidden_start_date = $( "#hidden_start_date" ).val();
     var hidden_end_date = $( "#hidden_end_date" ).val();
-    
+    var hidden_site = $( "#hidden_site" ).val();
+    var hidden_isp = $( "#hidden_isp" ).val();
     
     // If no date exist in the URL then replace the hidden_element by empty string
     if( hidden_start_date == "--" ){
@@ -26,7 +29,7 @@ $( document ).ready(function() {
     }
     
     // Concatenate the parameters value from URL to check if any exists  
-    var hidden = hidden_title + hidden_category + hidden_region + hidden_start_date + hidden_end_date;
+    var hidden = hidden_title + hidden_site + hidden_isp + hidden_category + hidden_site + hidden_region + hidden_start_date + hidden_end_date;
 
     if( hidden.length == 0 ){
         
@@ -64,7 +67,7 @@ $( document ).ready(function() {
                                                                                                                                                     
                                 if( thirdLevelKey == "id" ) {
                                 
-                                    $( ".listCases" ).append( "<div class='col-xs-12 smallBar' style='border-bottom:1px solid blue'><h5 class='title'>"
+                                    $( ".listCases" ).append( "<div class='col-xs-12 smallBar' style='border-bottom:1px solid blue'><h5 class='title search'>"
                                         + "<div class='col-xs-2 date'></div>"
                                         +"<div class='col-xs-2 name' style='display: flex;'></div>"
                                         +"<div class='col-xs-2 site'></div>"
@@ -160,13 +163,16 @@ $( document ).ready(function() {
                                  
                                             
                                 if( thirdLevelKey=="category" ) {
-                                
-                                    $( ".listCases:last-child" ).find(".category").append( 
                                     
-                                    '<div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'+thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
-                                    $( ".listCases" ).find(".category").addClass("categorySort");                                 
-                                    $( ".listCases" ).find(".category").removeClass("category");
-                                 
+                                   
+                                    $( ".listCases" ).find(".category").html( '<div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">' + thirdLevelValue + ' </div><div class="right_cornerTag"></div></div>' );
+                                        
+                                    
+                                        
+                                    $( ".listCases" ).find(".category").addClass("categorySort");
+                                    $( ".listCases" ).find(".category").removeClass("category"); 
+                                    
+                                    
                                 }  
                                                                                                                                    
                             });
@@ -187,27 +193,51 @@ $( document ).ready(function() {
     }
     else {
         
+        
+        
         // Change the input of the search with the URL parameters if they exist and submit the form
 
-        if( hidden_title.length === 0 ){
+        if( hidden_title.length == 0 ){
             $( "#title" ).val( "" );
         }
         else{
             $( "#title" ).val( hidden_title ); 
         }
             
-        if(hidden_category.length === 0 ){
+        if(hidden_category.length == 0 ){
             $( "#category" ).val( "" );
         }
         else{
-            $( "#category" ).val( hidden_category ); 
+            fillChosenValues(hidden_category, "#category");
+        }
+        
+        if(hidden_isp.length == 0 ){
+            $( "#isp" ).val( "" );
+        }
+        else{
+
+            fillChosenValues(hidden_isp, "#isp");
+
+        } 
+
+        
+        if(hidden_site.length == 0 ){
+            $( "#site" ).val( "" );     
+        }
+        else{ 
+            
+            fillChosenValues(hidden_site, "#site");
+
         }
             
-        if( hidden_region.length === 0 ){
+        if( hidden_region.length == 0 ){
             $( "#region" ).val( "" );
         }
         else{
-            $( "#region" ).val( hidden_region ); 
+           
+           fillChosenValues(hidden_region, "#region");
+
+            
         }
         
         if( hidden_start_date == "--" ){
@@ -239,18 +269,115 @@ $("#advanced_search").submit(function(e){
     // Serialize the form 
     formSer = $( "#advanced_search" ).serializeObject();
    
-    if(($("#region").val()).length === 0 )
-        formSer.region = "";
-    else
-        formSer.region = $( "#region" ).val()[0];
+    if(($("#region").val()).length === 0 ){
     
+        formSer.region = "";
         
-
-    if( ( $("#category").val() ).length === 0 )
-        formSer.category = "";
-    else
-        formSer.category = $( "#category" ).val()[0];
+    }
+    else{
+    
+            if(($("#region").val()).length < 2 ){
             
+                formSer.region = $( "#region" ).val()[0];
+                
+            }
+            else{
+                formSer.region = $( "#region" ).val()[0] + ", "; 
+                for( var i = 1 ; i < ($("#region").val()).length; i++ ){
+
+                    if( i == ($("#region").val()).length-1)
+                        formSer.region = formSer.region  + $( "#region" ).val()[i]; 
+                    else
+                        formSer.region = formSer.region  + $( "#region" ).val()[i] + ", "; 
+                
+                 }
+            
+            }
+            
+    }
+        
+    
+    if(($("#category").val()).length === 0 ){
+    
+        formSer.category = "";
+        
+    }
+    else{
+    
+            if(($("#category").val()).length < 2 ){
+            
+                formSer.category = $( "#category" ).val()[0];
+                
+            }
+            else{
+                formSer.category = $( "#category" ).val()[0] + ", "; 
+                for( var i = 1 ; i < ($("#category").val()).length; i++ ){
+
+                    if( i == ($("#category").val()).length-1)
+                        formSer.category = formSer.category  + $( "#category" ).val()[i]; 
+                    else
+                        formSer.category = formSer.category  + $( "#category" ).val()[i] + ", "; 
+                
+                 }
+            
+            }
+            
+    }
+    
+    if(($("#isp").val()).length === 0 ){
+    
+        formSer.isp = "";
+        
+    }
+    else{
+    
+        if(($("#isp").val()).length < 2 ){
+            
+                formSer.isp = $( "#isp" ).val()[0];
+                
+            }
+            else{
+               formSer.isp = $( "#isp" ).val()[0] + ", "; 
+                for( var i = 1 ; i < ($("#isp").val()).length; i++ ){
+
+                    if( i == ($("#isp").val()).length-1)
+                        formSer.isp = formSer.isp  + $( "#isp" ).val()[i]; 
+                    else
+                        formSer.isp = formSer.isp  + $( "#isp" ).val()[i] + ", "; 
+                
+                 }
+            
+            }
+            
+    }
+    
+    if(($("#site").val()).length === 0 ){
+    
+        formSer.site = "";
+        
+    }
+    else{
+    
+        if(($("#site").val()).length < 2 ){
+            
+                formSer.site =  $( "#site" ).val()[0];
+                
+            }
+            else{
+                formSer.site = $( "#site" ).val()[0] + ", "; 
+                for( var i = 1 ; i < ( $( "#site" ).val()).length; i++ ){
+
+                    if( i == ( $( "#site" ).val()).length-1)
+                        formSer.site = formSer.site  + $( "#site" ).val()[i]; 
+                    else
+                        formSer.site = formSer.site  + $( "#site" ).val()[i] + ", "; 
+                
+                 }
+            
+            }
+            
+    }
+    
     
     // Prevent the page to redirect to new one
     e.preventDefault();
@@ -267,6 +394,7 @@ $("#advanced_search").submit(function(e){
         
        //Get the form values to construct the URL of the search result
         
+          
         if( ( formSer.title ).length !== 0 ){
             var title = formSer.title;
         }
@@ -281,6 +409,22 @@ $("#advanced_search").submit(function(e){
             var category = "";
         }
 
+        if( ( formSer.isp ).length !== 0 ){
+            var isp = formSer.isp;
+        }
+        else{
+            var isp = "";
+        }
+        
+        if( ( formSer.site ).length !== 0 ){
+            var site = formSer.site;
+        }
+        else{
+            var site = "";
+        }
+     
+       
+        var domain = "";
         
         
         if( ( formSer.region ).length !== 0 ){
@@ -305,13 +449,12 @@ $("#advanced_search").submit(function(e){
         }
         
         
-        
 
         // If there is a search parameter then change the URL to add the parameters or to initial search page but do not redirect to it
-        var hidden =  title + category + start_date + end_date + region;
+        var hidden =  title + category + start_date + end_date + region + isp + site + domain;
         
         if( hidden.length != 0 ){
-            history.pushState( null, null, url_data_list_empty + "title=" + title + "&category=" + category + "&start_date=" + start_date + "&end_date=" + end_date + "&region=" + region);            
+            history.pushState( null, null, url_data_list_empty + "title=" + title + "&category=" + category + "&start_date=" + start_date + "&end_date=" + end_date + "&region=" + region  + "&site=" + site + "&isp=" + isp );            
             
          
             
@@ -348,7 +491,7 @@ $("#advanced_search").submit(function(e){
                     $.each( secondLevelValue , function( thirdLevelKey , thirdLevelValue ) { // Third Level 
                         
                         if( thirdLevelKey =="id" ) {
-                            $( ".listCases" ).append("<div class='col-xs-12 smallBar' style='border-bottom:1px solid blue'><h5 class='title'>"
+                            $( ".listCases" ).append("<div class='col-xs-12 smallBar' style='border-bottom:1px solid blue'><h5 class='title search'>"
                             + "<div class='col-xs-2 date'></div>"
                             +"<div class='col-xs-2 name' style='display: flex;'></div>"
                             +"<div class='col-xs-2 site'></div>"
@@ -439,12 +582,12 @@ $("#advanced_search").submit(function(e){
                          
                                     
                         if( thirdLevelKey=="category" ) {
-                            $( ".listCases:last-child" ).find(".category").append( 
+                            $( ".listCases" ).find(".category").html( '<div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">' + thirdLevelValue + ' </div><div class="right_cornerTag"></div></div>' );
                             
-                            '<div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'+thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
                             $( ".listCases" ).find(".category").addClass("categorySort");
                             $( ".listCases" ).find(".category").removeClass("category");
-                         //  $( ".listCases" ).append( "<strong>Category: </strong>" + thirdLevelValue + " <br>" );  
+                            
+                            
                         }                                                                                                   
                     });
                 });
@@ -461,6 +604,7 @@ $("#advanced_search").submit(function(e){
  
 });
  
+
 $("#nameClick").on('click', function() { // when you click the div
         
         if($("#nameClick").hasClass("desc")) {
@@ -551,6 +695,11 @@ $("#dateClick").on('click', function() { // when you click the div
 
 });
 
+
+
+
+
+  
   
 function sortDateAsc( parent, child ){
 
@@ -688,3 +837,40 @@ function clearSelectedOrder(){
     
 }
 
+
+function changeMultipleChoiceContainerHeight(selectors){
+
+for (var i = 0; i < selectors.length; i++){
+        var selector = selectors[i];
+        var height = $(selector+"_chosen").outerHeight(true);
+        height = height-5;
+        $('<style>#advanced_search ' + selector +'_chosen.chosen-container::before {height: ' + height + 'px;}</style>').appendTo('body .changeStyling');
+        $('<style>#advanced_search ' + selector +'_chosen.chosen-container::after {height: ' + height + 'px;}</style>').appendTo('body .changeStyling');
+}
+    }
+    
+function changeMultipleChoice(selectors){
+    
+
+    for (var i = 0; i < selectors.length; i++){
+        var selector = selectors[i];
+     
+        $(selector).on('change', function(evt, params) {
+            $(".changeStyling").empty();
+            changeMultipleChoiceContainerHeight(selectors);
+        });
+    }
+}
+
+
+           
+function fillChosenValues(values, id){
+    var str_array = values.split(',');
+
+    for (var i = 0; i < str_array.length; i++) {
+        str_array[i] = str_array[i].replace(/^\s*/, "").replace(/\s*$/, "");
+    }         
+                
+    $(id).val(str_array).trigger("chosen:updated");
+    
+}

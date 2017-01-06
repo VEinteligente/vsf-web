@@ -74,9 +74,8 @@ class CaseListApi(APIView):
        end_date=  request.data["end_date"]
        isp =  request.data["isp"]
        site =  request.data["site"]
-       print site
+      
        snippet = requests.get('http://127.0.1:8001/cases/api/list-case-filter/?title=' + title +"&category="+category+'&start_date='+start_date+'&end_date='+end_date+'&region='+region+'&site='+site+'&isp='+isp)
-       print 'http://127.0.1:8001/cases/api/list-case-filter/?title=' + title +"&category="+category+'&start_date='+start_date+'&end_date='+end_date+'&region='+region+'&site='+site+'&isp='+isp
        return Response(snippet)
 
 # This view takes list of all the cases and exports it to a CVS file.

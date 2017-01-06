@@ -195,15 +195,27 @@ input#title{
   border-right:1px solid black;
   border-left:1px solid black;
   position: relative;
+  width: 23.95% !important;
+  margin-right: 1%;
+  
+  
 
 
 }
+#site_chosen.chosen-container {
 
+  margin-right: 0;
+
+
+}
+.multipleChoices, .resumeResult{
+    margin-bottom: 16px;
+}
 #advanced_search .chosen-container:after {
   padding:0;margin:0;
   display:block;/* not really needed */
   content: "";
-  height:50%;
+  height:80%;
   width:1px;
   background-color:white;
   position: absolute;
@@ -215,7 +227,7 @@ input#title{
   padding:0;margin:0;
   display:block;/* not really needed */
   content: "";
-  height:50%;
+  height:80%;
   width:1px;
   background-color:white;
   position: absolute;
@@ -223,15 +235,89 @@ input#title{
   left:-1px;
 }
 
-.dateStartSort, .dateEndSort, .nameSort, .siteSort, .ispSort, .regionSort{
-        padding-top: 5px;
+.resultadosAdvanced {
+    padding-left: 0 ;
 }
 
-#dateClick, #nameClick, #siteClick, #ispClick, #categoryClick, #regionClick{
+.dateStartSort, .dateEndSort, .nameSort, .siteSort, .ispSort, .regionSort{
+        padding-top: 5px;
+        margin-left: 15px;
+        margin-right: 15px;
+       
+}
+
+.categorySort{
+        margin-left: 15px;
+        margin-right: 15px;
+       
+}
+
+.dateStartSort {
+         margin-left: 0px;
+    
+}
+
+.siteSort{
+            margin-left: 30px;
+}
+
+.search {
+    .nameSort, .siteSort, .ispSort, .regionSort{
+        margin-left: 0px;
+        margin-right: 0px;
+        padding: 0 ;
+        padding-top: 16px;
+        padding-bottom: 16px
+    }
+    .dateSort{
+        margin-left: 0px;
+        margin-right: 0px;
+        padding: 0 ;
+        padding-top: 12px;
+        padding-bottom: 12px
+    }
+
+    .categorySort{
+        margin-left: 0px;
+        margin-right: 0px;
+        padding: 0 ;
+        padding-top:12px;
+    }
+}
+
+
+
+#dateStartClick, #dateEndClick, #dateClick, #nameClick, #siteClick, #ispClick, #categoryClick, #regionClick{
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-bottom: 16px;
+    padding-right: 0;
+    margin-left: 15px;
+    margin-right: 15px;
     &:hover{
     cursor: pointer;}
 }
-
+.search {
+     #dateClick, #nameClick, #siteClick, #ispClick, #categoryClick, #regionClick{
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-right: 0;
+        margin-left: 0px;
+    margin-right: 0px;
+    &:hover{
+    cursor: pointer;}
+}}
+.listCasesAdvanced { 
+    margin-bottom: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    
+    .smallBar{
+        padding-bottom: 16px;
+        background: transparent; 
+        border-bottom: 1px solid gray
+    }
+} 
 .listCasesContainer .subtitleBar{
     border-radius: 5px;
     
@@ -257,6 +343,7 @@ input#title{
     font-weight: bold;
     color: black;
 }
+
 
 /* RESPONSIVE */
 

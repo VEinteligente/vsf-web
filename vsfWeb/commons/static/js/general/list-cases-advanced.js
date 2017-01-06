@@ -10,7 +10,7 @@ $( document ).ready(function() {
 
     changeMultipleChoice(["#category", "#isp", "#site", "#region"]);
 
-     // Variables corresponding to the search fields from the URL parameters
+    // Variables corresponding to the search fields from the URL parameters
     var hidden_title = $( "#hidden_title" ).val();
     var hidden_category = $( "#hidden_category" ).val();
     var hidden_region = $( "#hidden_region" ).val();
@@ -49,10 +49,11 @@ $( document ).ready(function() {
                 }
                             
                 var dataJson=JSON.parse( temporal );
-                            
+                $("#download").attr("href",url_csv);
+                           
                 $.each( dataJson , function( key , value ){ // First Level                                         
                                                               
-                    if( key == "count" ){
+                    if( key=="count" ){
                       
                         $( "#resultados" ).html( "Resultados de busqueda <strong>" + value + "</strong>" );
                         
@@ -65,40 +66,49 @@ $( document ).ready(function() {
                                 
                             $.each( secondLevelValue , function( thirdLevelKey , thirdLevelValue ){ // Third Level 
                                                                                                                                                     
-                                if( thirdLevelKey == "id" ) {
+                                if( thirdLevelKey =="id" ) {
                                 
-                                    $( ".listCases" ).append( "<div class='col-xs-12 smallBar' style='border-bottom:1px solid blue'><h5 class='title search'>"
-                                        + "<div class='col-xs-2 date'></div>"
-                                        +"<div class='col-xs-2 name' style='display: flex;'></div>"
-                                        +"<div class='col-xs-2 site'></div>"
-                                        + "<div class='col-xs-2 isp'></div>"
-                                        + "<div class='col-xs-2 category'></div>"
-                                        + "<div class='col-xs-2 region'></div>"
-                                        + "</h5>     </div>" );
+                                    $( ".listCasesAdvanced" ).append("<div class='col-xs-12 smallBar' ><h5 class='title' style='padding-left: 0px;'>"
+                                        + "<div class='col-xs-1 dateStart' style='padding-left: 0px;'></div>"
+                                        + "<div class='col-xs-1 dateEnd' style='padding-left: 0px;'></div>"
+                                        +"<div class='col-xs-3 name' style='display: flex; padding-left: 0px;'></div>"
+                                        +"<div class='col-xs-1 site' style='padding-left: 0px;'></div>"
+                                        + "<div class='col-xs-1 isp' style='padding-left: 0px;'></div>"
+                                        + "<div class='col-xs-1 category' style='padding-left: 0px; padding-bottom: 5px;'></div>"
+                                        + "<div class='col-xs-1 region' style='padding-left: 0px;'></div>"
+                                        + "</h5>     </div>");
                                                                            
                                 }
                                             
                                 if( thirdLevelKey == "region" ) {
-                                    
-                                    
+                       
                                     if( thirdLevelValue.length < 2 ){
-                                        $( ".listCases" ).find(".region").append( thirdLevelValue );
+                                    
+                                        $( ".listCasesAdvanced" ).find( ".region" ).append( thirdLevelValue );
+                                        
                                     }
                                     else{
-                                        $( ".listCases" ).find(".region").append( "Varios" );
-                                    }
+                                        for( var i = 0; i < thirdLevelValue.length; i++){
+                                            if( i == thirdLevelValue.length-1){
+                                                $( ".listCasesAdvanced" ).find( ".region" ).append( thirdLevelValue[i] );
+                                            }
+                                            else{
+                                                $( ".listCasesAdvanced" ).find( ".region" ).append( thirdLevelValue[i] + ", " );
+                                            }
+                                            
+                                        }
                                         
-                                    
-                                    $( ".listCases" ).find(".region").addClass("regionSort");
-                                    $( ".listCases" ).find(".region").removeClass("region"); 
+                                    }
+                                    $( ".listCasesAdvanced" ).find(".region").addClass("regionSort");
+                                    $( ".listCasesAdvanced" ).find(".region").removeClass("region"); 
                                                                                           
                                 }
                                 
                                 if( thirdLevelKey == "description" ) {
                                     
-                                    $( ".listCases" ).find(".name").append( "<strong style='white-space: nowrap;overflow: hidden; text-overflow: ellipsis;'>" + thirdLevelValue + "</strong> <br>" );
-                                    $( ".listCases" ).find(".name").addClass("nameSort");
-                                    $( ".listCases" ).find(".name").removeClass("name");      
+                                    $( ".listCasesAdvanced" ).find(".name").append( "<strong style='white-space: nowrap;overflow: hidden; text-overflow: ellipsis;'>" + thirdLevelValue + "</strong> <br>" );
+                                    $( ".listCasesAdvanced" ).find(".name").addClass("nameSort");
+                                    $( ".listCasesAdvanced" ).find(".name").removeClass("name");      
                                                                                      
                                 }                                     
                                   
@@ -106,25 +116,36 @@ $( document ).ready(function() {
                                 
                                     $.each( thirdLevelValue , function( fourthLevelKey , fourthLevelValue ) {
                                         
-                                        $( ".listCases" ).find(".site").append( fourthLevelValue.site);
-                                        $( ".listCases" ).find(".site").addClass("siteSort");
-                                        $( ".listCases" ).find(".site").removeClass("site"); 
+                                        $( ".listCasesAdvanced" ).find(".site").append( fourthLevelValue.site);
+                                        $( ".listCasesAdvanced" ).find(".site").addClass("siteSort");
+                                        $( ".listCasesAdvanced" ).find(".site").removeClass("site"); 
                                         
                                     });
                                     
                                 }
                                 
                                 if( thirdLevelKey == "isp" ) {
-
+                                       
                                         if( thirdLevelValue.length < 2 ){
-                                            $( ".listCases" ).find(".isp").append( thirdLevelValue);
+                                    
+                                            $( ".listCasesAdvanced" ).find( ".isp" ).append( thirdLevelValue );
+                                                    
                                         }
                                         else{
-                                            $( ".listCases" ).find(".isp").html( "Varios" );
-                                        }
-                                        
-                                        $( ".listCases" ).find(".isp").addClass("ispSort");
-                                        $( ".listCases" ).find(".isp").removeClass("isp"); 
+                                            for( var i = 0; i < thirdLevelValue.length; i++){
+                                                if( i == thirdLevelValue.length-1){
+                                                    $( ".listCasesAdvanced" ).find( ".isp" ).append( thirdLevelValue[i] );
+                                                }
+                                                else{
+                                                   $( ".listCasesAdvanced" ).find( ".isp" ).append( thirdLevelValue[i] + ", " );
+                                                }
+                                                        
+                                            }
+                                                    
+                                        }       
+
+                                        $( ".listCasesAdvanced" ).find(".isp").addClass("ispSort");
+                                        $( ".listCasesAdvanced" ).find(".isp").removeClass("isp"); 
                                     
                                 }
                                                                                            
@@ -135,8 +156,9 @@ $( document ).ready(function() {
                                     datethirdLevelValue = thirdLevelValue.split( "T" );
                                     datethirdLevelValue = datethirdLevelValue[0].split("-");
                                     date = datethirdLevelValue[2] + "/" + datethirdLevelValue[1] + "/" + datethirdLevelValue[0];
-                                    $( ".listCases" ).find(".date").append( "<strong>" + date + "</strong> <br>" );  
-                                    
+                                    $( ".listCasesAdvanced" ).find(".dateStart").append( "<strong>" + date + "</strong> <br>" );  
+                                    $( ".listCasesAdvanced" ).find(".dateStart").addClass("dateStartSort");
+                                    $( ".listCasesAdvanced" ).find(".dateStart").removeClass("dateStart");
                                 }
                                             
                                 if( thirdLevelKey == "end_date" ) {
@@ -146,16 +168,16 @@ $( document ).ready(function() {
                                         datethirdLevelValue = thirdLevelValue.split( "T" );
                                         datethirdLevelValue = datethirdLevelValue[0].split("-");
                                         date = datethirdLevelValue[2] + "/" + datethirdLevelValue[1] + "/" + datethirdLevelValue[0];
-                                        $( ".listCases:last-child" ).find(".date").append( date );
-                                        $( ".listCases" ).find(".date").addClass("dateSort");
-                                        $( ".listCases" ).find(".date").removeClass("date");
+                                        $( ".listCasesAdvanced:last-child" ).find(".dateEnd").append( date );
+                                        $( ".listCasesAdvanced" ).find(".dateEnd").addClass("dateEndSort");
+                                        $( ".listCasesAdvanced" ).find(".dateEnd").removeClass("dateEnd");
                                         
                                     }
                                     else {
                                     
-                                        $( ".listCases:last-child" ).find(".date").append( "presente" );
-                                        $( ".listCases" ).find(".date").addClass("dateSort");
-                                        $( ".listCases" ).find(".date").removeClass("date");
+                                        $( ".listCasesAdvanced:last-child" ).find(".dateEnd").append( "presente" );
+                                        $( ".listCasesAdvanced" ).find(".dateEnd").addClass("dateEndSort");
+                                        $( ".listCasesAdvanced" ).find(".dateEnd").removeClass("dateEnd");
                                   
                                     }                                          
                                 }
@@ -163,16 +185,13 @@ $( document ).ready(function() {
                                  
                                             
                                 if( thirdLevelKey=="category" ) {
-                                    
+                                
+                                        $( ".listCasesAdvanced" ).find( ".category" ).append(' <div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'+thirdLevelValue + '</div><div class="right_cornerTag"></div></div>' );    
+
+                                        $( ".listCasesAdvanced" ).find(".category").addClass("categorySort");
+                                        $( ".listCasesAdvanced" ).find(".category").removeClass("category"); 
+                                        
                                    
-                                    $( ".listCases" ).find(".category").html( '<div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">' + thirdLevelValue + ' </div><div class="right_cornerTag"></div></div>' );
-                                        
-                                    
-                                        
-                                    $( ".listCases" ).find(".category").addClass("categorySort");
-                                    $( ".listCases" ).find(".category").removeClass("category"); 
-                                    
-                                    
                                 }  
                                                                                                                                    
                             });
@@ -182,18 +201,16 @@ $( document ).ready(function() {
             
                 });
                 
-                $( ".listCases" ).append( " <hr>" );  
+                $( ".listCasesAdvanced" ).append( " <hr>" );  
                 
                
                        
             }).fail( function( jqXHR, textStatus, errorThrown ) {
-                    $( '.listCases' ).html( "" );
+                    $( '.listCasesAdvanced' ).html( "" );
                 });
        
     }
     else {
-        
-        
         
         // Change the input of the search with the URL parameters if they exist and submit the form
 
@@ -264,7 +281,7 @@ $( document ).ready(function() {
 $("#advanced_search").submit(function(e){
             
     // Empty the search result to fill with new result
-    $( ".listCases" ).empty();
+    $( ".listCasesAdvanced" ).empty();
 
     // Serialize the form 
     formSer = $( "#advanced_search" ).serializeObject();
@@ -378,6 +395,7 @@ $("#advanced_search").submit(function(e){
             
     }
     
+            
     
     // Prevent the page to redirect to new one
     e.preventDefault();
@@ -394,7 +412,6 @@ $("#advanced_search").submit(function(e){
         
        //Get the form values to construct the URL of the search result
         
-          
         if( ( formSer.title ).length !== 0 ){
             var title = formSer.title;
         }
@@ -449,18 +466,18 @@ $("#advanced_search").submit(function(e){
         }
         
         
-
         // If there is a search parameter then change the URL to add the parameters or to initial search page but do not redirect to it
         var hidden =  title + category + start_date + end_date + region + isp + site + domain;
         
         if( hidden.length != 0 ){
             history.pushState( null, null, url_data_list_empty + "title=" + title + "&category=" + category + "&start_date=" + start_date + "&end_date=" + end_date + "&region=" + region  + "&site=" + site + "&isp=" + isp );            
-            
+            $("#download").attr("href",url_csv + "title=" + title + "&category=" + category + "&start_date=" + start_date + "&end_date=" + end_date + "&region=" + region  + "&site=" + site + "&isp=" + isp )
          
             
         }
         else if( hidden == " " ){
             history.pushState(null, null, url_data_list_empty);
+            $("#download").attr("href",url_csv);
         }
 
         e.preventDefault();
@@ -477,78 +494,95 @@ $("#advanced_search").submit(function(e){
             
         $.each( dataJson , function( key , value ) { // First Level       
                                           
-            if( key=="count" ){
+            if( key == "count" ){
               
-                $("#resultados").html("Resultados de busqueda <strong>" + value + "</strong>");
+                $( "#resultados" ).html( "Resultados de busqueda <strong>" + value + "</strong>" );
             }     
             
             
             // We need to access this element to get each case data
-            if( key=="results" ) {                   
+            if( key == "results" ) {                   
 
                 $.each( dataJson.results , function( secondLevelKey, secondLevelValue ) { // Second Level 
                             
                     $.each( secondLevelValue , function( thirdLevelKey , thirdLevelValue ) { // Third Level 
                         
                         if( thirdLevelKey =="id" ) {
-                            $( ".listCases" ).append("<div class='col-xs-12 smallBar' style='border-bottom:1px solid blue'><h5 class='title search'>"
-                            + "<div class='col-xs-2 date'></div>"
-                            +"<div class='col-xs-2 name' style='display: flex;'></div>"
-                            +"<div class='col-xs-2 site'></div>"
-                            + "<div class='col-xs-2 isp'></div>"
-                            + "<div class='col-xs-2 category'></div>"
-                            + "<div class='col-xs-2 region'></div>"
-                            + "</h5>     </div>");
-                       
+                           
+                            $( ".listCasesAdvanced" ).append("<div class='col-xs-12 smallBar'><h5 class='title' style='padding-left: 0px;'>"
+                                        + "<div class='col-xs-1 dateStart' style='padding-left: 0px;'></div>"
+                                        + "<div class='col-xs-1 dateEnd' style='padding-left: 0px; '></div>"
+                                        +"<div class='col-xs-3 name' style='display: flex; padding-left: 0px;'></div>"
+                                        +"<div class='col-xs-1 site' style='padding-left: 0px;'></div>"
+                                        + "<div class='col-xs-1 isp' style='padding-left: 0px;'></div>"
+                                        + "<div class='col-xs-1 category' style='padding-left: 0px; padding-bottom: 5px;'></div>"
+                                        + "<div class='col-xs-2 region' style='padding-left: 0px;'></div>"
+                                        + "</h5>     </div>");
                         
-                            //$( ".listCases" ).append( "<a href='http://192.168.0.115:8000/cases/api/detail/" + thirdLevelValue + "'>LINK</a> <br>" );                                         
+                            //$( ".listCasesAdvanced" ).append( "<a href='http://192.168.0.115:8000/cases/api/detail/" + thirdLevelValue + "'>LINK</a> <br>" );                                         
                         }
                                     
                         if( thirdLevelKey == "region" ) {
-                            
                             if( thirdLevelValue.length < 2 ){
-                            
-                                $( ".listCases" ).find(".region").append( thirdLevelValue );
-                                
+                                    
+                                $( ".listCasesAdvanced" ).find( ".region" ).append( thirdLevelValue );
+                                        
                             }
                             else{
-                            
-                                $( ".listCases" ).find(".region").append( "Varios" );
+                                for( var i = 0; i < thirdLevelValue.length; i++){
+                                    if( i == thirdLevelValue.length-1){
+                                        $( ".listCasesAdvanced" ).find( ".region" ).append( thirdLevelValue[i] );
+                                    }
+                                    else{
+                                       $( ".listCasesAdvanced" ).find( ".region" ).append( thirdLevelValue[i] + ", " );
+                                    }
+                                            
+                                }
+                                        
                             }
                             
-                            $( ".listCases" ).find(".region").addClass("regionSort");
-                            $( ".listCases" ).find(".region").removeClass("region");                                                       
+                            $( ".listCasesAdvanced" ).find( ".region" ).addClass( "regionSort" );
+                            $( ".listCasesAdvanced" ).find( ".region" ).removeClass( "region" );                                                       
                         }
                         
-                        if( thirdLevelKey == "isp" ) {
-                            
-                            if( thirdLevelValue.length < 2 ){
-                            
-                                $( ".listCases" ).find(".isp").append( thirdLevelValue );
-                                
-                            }
-                            else{
-                            
-                                $( ".listCases" ).find(".isp").append( "Varios" );
-                            }
-                            
-                            $( ".listCases" ).find(".isp").addClass("ispSort");                            
-                            $( ".listCases" ).find(".isp").removeClass("isp");                                                       
-                        }
+                         if( thirdLevelKey == "isp" ) {
+                                       
+                                        if( thirdLevelValue.length < 2 ){
+                                    
+                                            $( ".listCasesAdvanced" ).find( ".isp" ).append( thirdLevelValue );
+                                                    
+                                        }
+                                        else{
+                                            for( var i = 0; i < thirdLevelValue.length; i++){
+                                                if( i == thirdLevelValue.length-1){
+                                                    $( ".listCasesAdvanced" ).find( ".isp" ).append( thirdLevelValue[i] );
+                                                }
+                                                else{
+                                                   $( ".listCasesAdvanced" ).find( ".isp" ).append( thirdLevelValue[i] + ", " );
+                                                }
+                                                        
+                                            }
+                                                    
+                                        }       
+
+                                        $( ".listCasesAdvanced" ).find(".isp").addClass("ispSort");
+                                        $( ".listCasesAdvanced" ).find(".isp").removeClass("isp"); 
+                                    
+                                }
                         
                         if( thirdLevelKey == "description" ) {
                             
-                            $( ".listCases" ).find(".name").append( "<strong style='white-space: nowrap;overflow: hidden; text-overflow: ellipsis;'>" + thirdLevelValue + "</strong> <br>" );
-                            $( ".listCases" ).find(".name").addClass("nameSort");
-                            $( ".listCases" ).find(".name").removeClass("name");                                                       
+                            $( ".listCasesAdvanced" ).find(".name").append( "<strong style='white-space: nowrap;overflow: hidden; text-overflow: ellipsis;'>" + thirdLevelValue + "</strong> <br>" );
+                            $( ".listCasesAdvanced" ).find(".name").addClass("nameSort");
+                            $( ".listCasesAdvanced" ).find(".name").removeClass("name");                                                       
                         }                                     
                           
                         if( thirdLevelKey == "domains" ) {
                             $.each( thirdLevelValue , function( fourthLevelKey , fourthLevelValue ) {
                                 
-                                $( ".listCases" ).find(".site").append( fourthLevelValue.site);
-                                $( ".listCases" ).find(".site").addClass("siteSort");
-                                $( ".listCases" ).find(".site").removeClass("site"); 
+                                $( ".listCasesAdvanced" ).find(".site").append( fourthLevelValue.site);
+                                $( ".listCasesAdvanced" ).find(".site").addClass("siteSort");
+                                $( ".listCasesAdvanced" ).find(".site").removeClass("site"); 
                             });
                         }
                                                                                    
@@ -558,52 +592,58 @@ $("#advanced_search").submit(function(e){
                             datethirdLevelValue = thirdLevelValue.split( "T" );
                             datethirdLevelValue = datethirdLevelValue[0].split("-");
                             date = datethirdLevelValue[2] + "/" + datethirdLevelValue[1] + "/" + datethirdLevelValue[0];
-                            $( ".listCases" ).find(".date").append( "<strong>" + date + "</strong> <br>" );  
-                            
+                            $( ".listCasesAdvanced" ).find( ".dateStart" ).append( "<strong>" + date + "</strong> <br>" );  
+                            $( ".listCasesAdvanced" ).find( ".dateStart" ).addClass("dateStartSort");
+                            $( ".listCasesAdvanced" ).find( ".dateStart" ).removeClass("dateStart");
                         }
                                     
                         if( thirdLevelKey == "end_date" ) {
-                            if( thirdLevelValue != null ) {
+                            if( thirdLevelValue !== null ) {
                                 datethirdLevelValue = thirdLevelValue.split( "T" );
                                 datethirdLevelValue = datethirdLevelValue[0].split("-");
                                 date = datethirdLevelValue[2] + "/" + datethirdLevelValue[1] + "/" + datethirdLevelValue[0];
-                                $( ".listCases:last-child" ).find(".date").append( date );
-                                $( ".listCases" ).find(".date").addClass("dateSort");
-                                $( ".listCases" ).find(".date").removeClass("date");
+                                $( ".listCasesAdvanced:last-child" ).find( ".dateEnd" ).append( date );
+                                $( ".listCasesAdvanced" ).find( ".dateEnd" ).addClass( "dateEndSort" );
+                                $( ".listCasesAdvanced" ).find( ".dateEnd" ).removeClass( "dateEnd" );
                             }
                             else {
-                                $( ".listCases:last-child" ).find(".date").append( "presente" );
-                                $( ".listCases" ).find(".date").addClass("dateSort");
-                                $( ".listCases" ).find(".date").removeClass("date");
-                           //     $( ".listCases" ).append( "<strong>State:</strong> Continue<br>" );
+                                $( ".listCasesAdvanced:last-child" ).find( ".dateEnd" ).append( "presente" );
+                                $( ".listCasesAdvanced" ).find( ".dateEnd" ).addClass( "dateEndSort" );
+                                $( ".listCasesAdvanced" ).find( ".dateEnd" ).removeClass( "dateEnd" );
+                           //     $( ".listCasesAdvanced" ).append( "<strong>State:</strong> Continue<br>" );
                             }                                          
                         }
                         
                          
                                     
                         if( thirdLevelKey=="category" ) {
-                            $( ".listCases" ).find(".category").html( '<div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">' + thirdLevelValue + ' </div><div class="right_cornerTag"></div></div>' );
+                        
                             
-                            $( ".listCases" ).find(".category").addClass("categorySort");
-                            $( ".listCases" ).find(".category").removeClass("category");
-                            
-                            
+                                $( ".listCasesAdvanced" ).find( ".category" ).append(' <div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'+thirdLevelValue + '</div><div class="right_cornerTag"></div></div>' );
+                                                
+                                                        
+                                               
+
+                                        $( ".listCasesAdvanced" ).find(".category").addClass("categorySort");
+                                        $( ".listCasesAdvanced" ).find(".category").removeClass("category"); 
+                                        
                         }                                                                                                   
                     });
                 });
             }  
         });
         
-        $( ".listCases" ).append( " <hr>" );  
+        $( ".listCasesAdvanced" ).append( " <hr>" );  
                      
     }).fail( function( jqXHR, textStatus, errorThrown ) {
-        $( '.listCases' ).html( "" );
+        $( '.listCasesAdvanced' ).html( "" );
     });
    
    
  
 });
- 
+
+
 
 $("#nameClick").on('click', function() { // when you click the div
         
@@ -681,33 +721,44 @@ $("#categoryClick").on('click', function() { // when you click the div
 });
 
 
-$("#dateClick").on('click', function() { // when you click the div
+$("#dateStartClick").on('click', function() { // when you click the div
 
-        if($("#dateClick").hasClass("desc")) {
-            sortDateAsc( "#dateClick", ".dateSort strong");
-            $("#dateClick").addClass("asc");
-            $("#dateClick").removeClass("desc");
+        if($("#dateStartClick").hasClass("desc")) {
+            sortDateAsc( "#dateStartClick", ".dateStartSort strong");
+            $("#dateStartClick").addClass("asc");
+            $("#dateStartClick").removeClass("desc");
         }else{
-            sortDateDes( "#dateClick", ".dateSort strong");           
-            $("#dateClick").addClass("desc");
-            $("#dateClick").removeClass("asc");
+            sortDateDes( "#dateStartClick", ".dateStartSort strong");           
+            $("#dateStartClick").addClass("desc");
+            $("#dateStartClick").removeClass("asc");
         }  
 
 });
 
 
+$("#dateEndClick").on('click', function() { // when you click the div
+
+        if($("#dateEndClick").hasClass("desc")) {
+            sortDateAsc( "#dateEndClick", ".dateEndSort");
+            $("#dateEndClick").addClass("asc");
+            $("#dateEndClick").removeClass("desc");
+        }else{
+            sortDateDes( "#dateEndClick", ".dateEndSort");           
+            $("#dateEndClick").addClass("desc");
+            $("#dateEndClick").removeClass("asc");
+        }  
+
+});
 
 
-
-  
   
 function sortDateAsc( parent, child ){
-
+    
     clearSelectedOrder();
     
-    $( parent ).addClass("selectOrder");
-    
-    var $divs = $(".smallBar .title ");
+    $( parent ).addClass( "selectOrderAdvanced" );
+
+     var $divs = $(".smallBar .title ");
                 
                 var alphabeticallyOrderedDivs = $divs.sort(function (a, b) {
                 
@@ -724,13 +775,13 @@ function sortDateAsc( parent, child ){
                 return aTimestamp < bTimestamp;
             });
                 
-            $( ".listCases" ).empty();
+            $( ".listCasesAdvanced" ).empty();
        
             alphabeticallyOrderedDivs.each(function(index){
    
-                $( ".listCases" ).append("<div class='this col-xs-12 smallBar' style='border-bottom:1px solid blue'><h5 class='title'></h5></div>");                            
+                $( ".listCasesAdvanced" ).append("<div class='this col-xs-12 smallBar'><h5 class='title'></h5></div>");                            
                 $(".this ").html($(this));
-                $(".this ").removeClass("this ");                    
+                $(".this ").removeClass("this ");                   
                     
             });
 
@@ -741,9 +792,9 @@ function sortDateDes( parent, child ){
     
     clearSelectedOrder();
     
-    $( parent ).addClass("selectOrder");
+    $( parent ).addClass("selectOrderAdvanced");
     
-    var $divs = $(".smallBar .title ");
+     var $divs = $(".smallBar .title ");
 
                 var alphabeticallyOrderedDivs = $divs.sort(function (a, b) {
                            
@@ -760,11 +811,11 @@ function sortDateDes( parent, child ){
                 return aTimestamp > bTimestamp;
             });
                 
-                $( ".listCases" ).empty();
+                $( ".listCasesAdvanced" ).empty();
        
                 alphabeticallyOrderedDivs.each(function(index){
    
-                    $( ".listCases" ).append("<div class='this col-xs-12 smallBar' style='border-bottom:1px solid blue'><h5 class='title'></h5></div>");                            
+                    $( ".listCasesAdvanced" ).append("<div class='this col-xs-12 smallBar'><h5 class='title'></h5></div>");                            
                     $(".this ").html($(this));
                     $(".this ").removeClass("this");                    
                     
@@ -772,11 +823,11 @@ function sortDateDes( parent, child ){
 
 }
   
-function sortNameAsc(parent, child ){
+function sortNameAsc( parent, child ){
     
     clearSelectedOrder();
     
-    $( parent ).addClass("selectOrder");
+    $( parent ).addClass("selectOrderAdvanced");
     
     var $divs = $(".smallBar .title ");
                 
@@ -786,11 +837,11 @@ function sortNameAsc(parent, child ){
                         
                 });
                 
-                $( ".listCases" ).empty();
+                $( ".listCasesAdvanced" ).empty();
        
                 alphabeticallyOrderedDivs.each(function(index){
    
-                    $( ".listCases" ).append("<div class='this col-xs-12 smallBar' style='border-bottom:1px solid blue'><h5 class='title'></h5></div>");                            
+                    $( ".listCasesAdvanced" ).append("<div class='this col-xs-12 smallBar'><h5 class='title'></h5></div>");                            
                     $(".this ").html($(this));
                     $(".this ").removeClass("this ");
                                         
@@ -803,21 +854,21 @@ function sortNameDes( parent, child ){
     
     clearSelectedOrder();
     
-    $( parent ).addClass("selectOrder");
+    $( parent ).addClass("selectOrderAdvanced");
     
     var $divs = $(".smallBar .title ");
 
                 var alphabeticallyOrderedDivs = $divs.sort(function (a, b) {
                         
-                    return $(a).find(child).text() > $(b).find(child).text();
+                        return $(a).find(child).text() > $(b).find(child).text();
                         
                 });
                 
-                $( ".listCases" ).empty();
+                $( ".listCasesAdvanced" ).empty();
        
                 alphabeticallyOrderedDivs.each(function(index){
    
-                    $( ".listCases" ).append("<div class='this col-xs-12 smallBar' style='border-bottom:1px solid blue'><h5 class='title'></h5></div>");                            
+                    $( ".listCasesAdvanced" ).append("<div class='this col-xs-12 smallBar'><h5 class='title'></h5></div>");                            
                     $(".this ").html($(this));
                     $(".this ").removeClass("this");
                     
@@ -827,16 +878,16 @@ function sortNameDes( parent, child ){
 
 function clearSelectedOrder(){
     
-    $("#dateClick").removeClass("selectOrder");
-    $("#nameClick").removeClass("selectOrder");
-    $("#siteClick").removeClass("selectOrder");
-    $("#ispClick").removeClass("selectOrder");
-    $("#categoryClick").removeClass("selectOrder");
-    $("#regionClick").removeClass("selectOrder");
+    $("#dateStartClick").removeClass("selectOrderAdvanced");
+    $("#dateEndClick").removeClass("selectOrderAdvanced");
+    $("#nameClick").removeClass("selectOrderAdvanced");
+    $("#siteClick").removeClass("selectOrderAdvanced");
+    $("#ispClick").removeClass("selectOrderAdvanced");
+    $("#categoryClick").removeClass("selectOrderAdvanced");
+    $("#regionClick").removeClass("selectOrderAdvanced");
     
     
 }
-
 
 function changeMultipleChoiceContainerHeight(selectors){
 

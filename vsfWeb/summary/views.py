@@ -29,3 +29,5 @@ class SummaryTableIspApi(APIView):
        snippet = requests.get('http://127.0.0.1:8001/cases/api/list/isp/')
        return Response(snippet)
    
+class MeasurementsTable(TemplateView):
+    template_name = "measurements-table.html"

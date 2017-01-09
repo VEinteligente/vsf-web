@@ -11,19 +11,21 @@
     <input type="hidden" id="category" value="{% trans 'Categories' %}" />
     <input type="hidden" id="isp" value="{% trans 'ISPs' %}" />
     
-<div class="container">
+<div class= "container" id="sumtable">
     
-    <div>
+    <div class= "row">
+    <div class ="col-xs-5">
    
-        <table class="table col-xs-4">
+        <table class="table table-hover text-nowrap">
    
             <thead>
    
                 <tr>
    
-                    <th id="title">
+                    <th id="tabletitle">
 
                     </th>
+   
                 </tr>
 
             </thead>
@@ -32,25 +34,25 @@
 
             </tbody>
 
+
+        <tfoot>
+        <tr><td>
+        <button class="contextualButtonFixedSize" onclick="select('category')" style="color:#808080; margin-top: 10px; margin-bottom: 5px;">
+                {% trans 'Category' %}
+        </button>
+    
+        <button class="contextualButtonFixedSize" onclick="select('isp')" style="color:#808080; margin-top: 10px;margin-bottom: 5px;">
+                {% trans 'ISP' %}
+        </button>
+        </td>
+        </tr>
+        </tfoot>
         </table>
-
-                    
-                <h4 style="color:white">{% trans "Order By:" %}</h4>
-                
-                <button class="contextualButtonFixedSize" onclick="select('category')" style="margin-top: 10px;margin-bottom: 5px;">
-                        {% trans 'Category' %}
-                </button>
-            
-                <button class="contextualButtonFixedSize" onclick="select('isp')" style="margin-top: 10px;margin-bottom: 5px;">
-                        {% trans 'ISP' %}
-                </button>
     </div>
+    </div>
+</div>
 
-<script > 
-    var url_style_list =  "{% url 'StylingGuide:ListApi' %}";
-    var url_data_category =  "{% url 'Summary:SummaryTableCategoryApi' %}"; 
-    var url_data_isp =  "{% url 'Summary:SummaryTableIspApi' %}"; 
-</script>
+<script > var url_style_list =  "{% url 'StylingGuide:ListApi' %}"</script>
 <script src="{% static 'js/summary/table.js' %}"></script>
 
 {% endblock %}

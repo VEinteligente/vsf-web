@@ -16,78 +16,80 @@ from mysql.utilities.common.frm_reader import _MYSQL_TYPE_YEAR
 
 
 # This view renders the HTML containing information about the company, social network, etc. 
-class AboutUs(TemplateView):
+class AboutUs( TemplateView ):
     template_name = "about-us.html"
 
 # This view obtains the blocked sites json data from the API of the Pandora project
-class BlockedSitesApi(APIView):
+class BlockedSitesApi( APIView ):
    
-   def get(self, request, format=None):
-       snippet = requests.get('http://127.0.1:8001/events/api/blocked_sites/')
-       return Response(snippet)
+   def get( self, request, format = None ):
+       snippet = requests.get( 'http://127.0.1:8001/events/api/blocked_sites/' )
+       return Response( snippet )
 
 # This view obtains the blocked domains json data from the API of the Pandora project
-class BlockedDomainsApi(APIView):
+class BlockedDomainsApi( APIView ):
    
-   def get(self, request, format=None):
-       snippet = requests.get('http://127.0.1:8001/events/api/blocked_domains/')
-       
-       return Response(snippet)
+   def get( self, request, format = None ):
+       snippet = requests.get( 'http://127.0.1:8001/events/api/blocked_domains/'  )
+       return Response( snippet )
 
 # This view renders the HTML containing information about the blocked sites and domains.
-class BlockedUrlsSites(TemplateView):
+class BlockedUrlsSites( TemplateView ):
     template_name = "blocked-sites_domains.html"
 
-# This view renders the HTML containing information about map with its cases per region.
-class MapVenezuela(TemplateView):
-    template_name = "maps/venezuela.html"
-
-# This view obtains the maps json data from the API of the Pandora project  
-class MapApi(APIView):
-       
-   def get(self, request, format=None):
-       snippet = requests.get('http://127.0.1:8001/cases/api/list/region/')
-       
-       return Response(snippet)
   
 # This view renders the HTML containing information about list of cases
-class CaseList(TemplateView):
+class CaseList( TemplateView ):
     template_name = "list-cases.html"      
     
 # This view renders the HTML containing information about list of cases
-class CaseListAdvanced(TemplateView):
+class CaseListAdvanced( TemplateView ):
     template_name = "list-cases-advanced.html"  
     
 # This view obtains the list of cases json data from the API of the Pandora project  
-class CaseListApi(APIView):
-       
-   def get(self, request, format=None):      
-       snippet = requests.get('http://127.0.1:8001/cases/api/list/')
-       
-       return Response(snippet)
+class CaseListApi( APIView ):
+    
+   def get( self, request, format = None ):      
+       snippet = requests.get( 'http://127.0.1:8001/cases/api/list/' )
+       return Response( snippet )
    
-   def post(self, request, format=None):
+   def post( self, request, format = None ):
        title = request.data["title"]
        region = request.data["region"]
        category = request.data["category"]
-       start_date=  request.data["start_date"]
-       end_date=  request.data["end_date"]
-       isp =  request.data["isp"]
+       start_date = request.data["start_date"]
+       end_date = request.data["end_date"]
+       isp = request.data["isp"]
        site =  request.data["site"]
       
-       snippet = requests.get('http://127.0.1:8001/cases/api/list-case-filter/?title=' + title +"&category="+category+'&start_date='+start_date+'&end_date='+end_date+'&region='+region+'&site='+site+'&isp='+isp)
+       snippet = requests.get( 'http://127.0.1:8001/cases/api/list-case-filter/?title=' + title + "&category=" + category + '&start_date=' + start_date + '&end_date=' + end_date + '&region=' + region + '&site=' + site + '&isp=' + isp )
        return Response(snippet)
 
+# This view renders the HTML containing the dashboard
+class Dashboard( TemplateView ):
+    template_name = "dashboard.html"
+
+# This view renders the HTML containing information about map with its cases per region.
+class MapVenezuela( TemplateView ):
+    template_name = "maps/venezuela.html"
+
+# This view obtains the maps json data from the API of the Pandora project  
+class MapApi( APIView ):
+       
+   def get( self, request, format = None ):
+       snippet = requests.get( 'http://127.0.1:8001/cases/api/list/region/' )       
+       return Response( snippet )
+
 # This view takes list of all the cases and exports it to a CVS file.
-def SearchResultCVS(request):
+def SearchResultCVS( request ):
     
     # Get the list of all the cases and load it as JSON
-    snippet = requests.get('http://127.0.1:8001/cases/api/list-case-filter')
-    data = json.loads(snippet.text)
+    snippet = requests.get( 'http://127.0.1:8001/cases/api/list-case-filter' )
+    data = json.loads( snippet.text )
     
     # Create the HttpResponse object with the appropriate CSV header.
-    response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
+    response = HttpResponse( content_type='text/csv' )
+    response['Content-Disposition'] = 'attachment; filename="SearchResults.csv"'
     
     # CSV header.
     writer = csv.writer(response)
@@ -99,7 +101,7 @@ def SearchResultCVS(request):
     count = data["count"]-1
     
     # Load all the information of each result in a CVS row
-    while (count > -1):
+    while ( count > -1 ):
 
         start_date = result[count]['start_date']
         end_date = result[count]['end_date']
@@ -111,15 +113,14 @@ def SearchResultCVS(request):
         countEvent = 0
         eventList = ""
         for event in events:
-            if countEvent>0:
+            if countEvent > 0:
                 eventList = eventList + "," + event
             else:
                 eventsList = event
             
             
             countEvent = countEvent + 1 
-            
-            
+                  
         isps = result[count]['isp']
         countIsp = 0
         ispList = ""
@@ -163,7 +164,7 @@ def SearchResultCVS(request):
     return response  
 
 # This view takes list of filtered cases and exports it to a CVS file.
-def SearchResultFilterCVS(request, title, region, category, e_day, s_day, e_month, s_month, e_year, s_year):
+def SearchResultFilterCVS( request, title, region, category, e_day, s_day, e_month, s_month, e_year, s_year ):
     
     # Loads the URL values for the filter 
     if e_day != "":
@@ -177,12 +178,12 @@ def SearchResultFilterCVS(request, title, region, category, e_day, s_day, e_mont
 
     
     # Get the list of all the cases and load it as JSON
-    snippet = requests.get('http://127.0.1:8001/cases/api/list-case-filter/?title=' + title +"&category="+category+'&start_date='+start_date+'&end_date='+end_date+'&region='+region)
-    data = json.loads(snippet.text)
+    snippet = requests.get( 'http://127.0.1:8001/cases/api/list-case-filter/?title=' + title + "&category=" + category + '&start_date=' + start_date + '&end_date=' + end_date + '&region=' + region )
+    data = json.loads( snippet.text )
 
     # Create the HttpResponse object with the appropriate CSV header.
-    response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
+    response = HttpResponse( content_type='text/csv' )
+    response['Content-Disposition'] = 'attachment; filename="SearchResults.csv"'
     
     # CSV header
     writer = csv.writer(response)
@@ -258,7 +259,3 @@ def SearchResultFilterCVS(request, title, region, category, e_day, s_day, e_mont
     
    
     return response    
-
-class Dashboard(TemplateView):
-    template_name = "dashboard.html"
-

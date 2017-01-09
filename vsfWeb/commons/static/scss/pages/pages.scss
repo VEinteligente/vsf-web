@@ -47,6 +47,7 @@
     padding-left: 5px;
     padding-right: 5px;
     margin-left: 10px;
+    display: inline;
 
 }
 
@@ -344,7 +345,48 @@ input#title{
     color: black;
 }
 
+/* Summary Table */
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+ color: white;
+ background-color: #ebebeb ;
+}
 
+.table-hover tbody tr:active td, .table-hover tbody tr:active th {
+ color: white;
+ background-color: #d1d1d1 ;
+ font-weight:500;
+}
+
+td{
+   font-size: 14px;
+   font-weight:400;
+   color:#808080 ;
+
+}
+
+.tag{
+   font-size: 12px;
+   height: 20px;
+}
+
+#tabletitle{
+   font-weight: normal;
+   color:#575757 ;
+}
+
+/* Measurements table */
+
+#mtablehead{
+   th{
+   text-align:center;
+   }
+}
+
+#mtablebody{
+   tr{
+   text-align:center;
+   }
+}
 /* RESPONSIVE */
 
 

@@ -11,4 +11,4 @@ urlpatterns = [
     url(r'^gantt-api$', GanttEventsApi.as_view(), name = "ganttEventsApi" ),  
     url(r'^multiple-elements-case$', MultipleElementsCase.as_view(), name = "MultipleElementsCase" ),
     url(r'^speed-test-case$', SpeedTestCase.as_view(), name = "SpeedTestCase" ),    
-] 
+]  

@@ -12,7 +12,7 @@ from django.template.defaultfilters import title
 
 import csv
 from django.http import HttpResponse
-from mysql.utilities.common.frm_reader import _MYSQL_TYPE_YEAR
+
 
 
 # This view renders the HTML containing information about the company, social network, etc. 

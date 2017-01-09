@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+{% get_current_language as language_code %}    
+	
+	<div class="col-xs-1">
+	</div>
+	    
+	    <div class="container col-xs-10" style="margin-top:5px">
+	    <div>
+	   
+	        <table class="table text-nowrap table-bordered text-center table-hover">
+	   
+	            <thead class="thead-inverse">
+	   
+	                <tr id="mtablehead">
+	   
+	                    <th>{%trans 'Site' %}</th>
+	                    <th>{%trans 'URL' %}</th>
+	                    <th>{%trans 'Date' %}</th>
+	                    <th>{%trans 'Country' %}</th>
+	                    <th>{%trans 'State' %}</th>
+	                    <th>{%trans 'City' %}</th>
+	                    <th>{%trans 'ISP' %}</th>
+	                    <th>{%trans 'ISP Plan' %}</th>
+	                    <th>{%trans 'Upload Speed' %}</th>
+	                    <th>{%trans 'Download Speed' %}</th>
+	                    <th>{%trans 'Measurement' %}</th>
+	                    <th>{%trans 'Type' %}</th>
+	   
+	                </tr>
+
+	            </thead>
+	            
+	            <tbody id="mtablebody">
+
+	            </tbody>
+
+	        </table>
+	    </div>
+	    </div>
+	
+	<div class="col-xs-1">
+	</div>
+
+
+
+
+<script src="{% static 'js/summary/mtable.js' %}"></script>
+{% endblock %}

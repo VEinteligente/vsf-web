@@ -5,6 +5,46 @@
 
 //Summary Category & ISP Table
 
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  color: white;
+  background-color: #ebebeb;
+}
+
+.table-hover tbody tr:active td, .table-hover tbody tr:active th {
+  color: white;
+  background-color: #d1d1d1;
+  font-weight:500;
+}
+
+td{
+    font-size: 14px;
+    font-weight:400;
+    color:#808080;
+
+}
+
+.tag{
+    font-size: 12px;
+    height: 20px;
+}
+
+#tabletitle{
+    font-weight: normal;
+    color:#575757;
+}
+
+#mtablehead{
+    th{
+    text-align:center;
+    }
+}
+
+#mtablebody{
+    tr{
+    text-align:center;
+    }
+}
+
 #caseImage{
 	background-color: $lightGray;
     border: 1px solid $lightGray;
@@ -188,6 +228,10 @@
   fill: #8CC63F !important;
 }
 
+.map g.no-hover{
+    fill: #58ACFA !important;
+}
+
 .map {
     
     select {
@@ -256,6 +300,11 @@
     
     color:red;
     font-size:100%;
+}
+
+#domainTabletitle{
+
+    background:white;
 }
 
 

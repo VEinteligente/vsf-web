@@ -19,6 +19,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^cases/', include('cases.urls', namespace="Cases")),
+    url(r'^commons/', include('commons.urls', namespace="Commons")),
     url(r'^general/', include('general.urls', namespace="General")),
     url(r'^provider/', include('provider.urls', namespace="Provider")),
     url(r'^summary/', include('summary.urls', namespace="Summary")),

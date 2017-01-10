@@ -188,6 +188,14 @@
     	</div>
     </div>
     
+    <div class="modal fade global-modal contentBoxTransparent" style="color:black;">
+        <button type="button" class="close" onclick="empty(); $('.global-modal').modal('hide'); ">X</button>    
+        <div class="modal-dialog" role="document">
+        </div>
+    </div>
+   
+   <div id="status"></div>
+    
     <script>
            
     // These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here 
@@ -195,10 +203,12 @@
      
         var url_one_case="{% url 'Cases:OneElementCaseApi' %}"
         var pk = {{ pk }}
-        
+        var url_data ="'" + "{% url 'Commons:loginTwitter' %}" + "'";
+
     </script>
     
     <script src="{% static 'js/cases/case.js' %}"></script>
+    <script src="{% static 'js/commons/twitter-trending.js' %}"></script>
     
 
 {% endblock %}

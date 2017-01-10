@@ -55,7 +55,7 @@ $(document).ready(function()
 
 		//AJAX call for updates datails API associated to the case
 		$.ajax({
-			url: url_data_detail_update,
+			url: url_data_update,
 			method: 'GET',
 			dataType: 'json',
 			contentType:'application/json'

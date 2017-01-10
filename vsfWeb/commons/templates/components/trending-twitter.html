@@ -1,5 +1,16 @@
+<div id="twitter"></div>
 
-
-
-    Trending!!!
-    
+<script>
+    var twitterFavicon = document.createElement('img');
+    twitterFavicon.src = '//twitter.com/login';
+    twitterFavicon.addEventListener('load', function () {
+        document.getElementById('twitter').innerHTML = 'Logged into Twitter: Yes';
+    });
+    twitterFavicon.addEventListener('error', function () {
+        document.getElementById('status').innerHTML = 'Logged into Twitter: No';
+        $('#twitter').append('<div class="new col-xs-12"> <a href="#" onclick="empty(); modal_link('+url_data+')">Login to Twitter2</a> ');
+    //     <a href="https://twitter.com/login"></a>
+     
+        
+    });
+</script>

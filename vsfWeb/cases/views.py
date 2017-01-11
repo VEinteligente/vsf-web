@@ -1,7 +1,7 @@
 import datetime, json, requests 
 
 from django.views.generic import (TemplateView)
-
+from django.conf import settings
 from rest_framework.views import (APIView)
 
 # This view renders the HTML containing information about one element case
@@ -12,7 +12,8 @@ class OneElementCase(TemplateView):
 class OneElementCaseApi(APIView):
    
    def get(self, request, format=None):
-       snippet = requests.get('http://192.168.0.130:8000/cases/api/list/')
+       headers = {'Authorization': settings.SERVICES_TOKEN}
+       snippet = requests.get('http://192.168.0.130:8000/cases/api/list/' , headers = headers )
        return Response(snippet)
 
 # This view renders the HTML containing information about multiple elements case
@@ -27,7 +28,8 @@ class GanttEvents(TemplateView):
 class GanttEventsApi(APIView):
    
    def get(self, request, format=None):
-       snippet = requests.get('http://127.0.0.1:8001/events/api/list-event-group/')
+       headers = {'Authorization': settings.SERVICES_TOKEN}
+       snippet = requests.get('http://127.0.0.1:8001/events/api/list-event-group/' , headers = headers )
        return Response(snippet)
 
 # This view renders the HTML containing information about speed test

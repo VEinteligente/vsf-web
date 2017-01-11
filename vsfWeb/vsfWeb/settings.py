@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 from django.utils.translation import ugettext_lazy as _
+import local_settings
 import os
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,9 +24,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'dh96m6zsamw9#&%z758vm9(@j^!o@k(5(^&p8la2r(qy&^qmmy'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+DEBUG = local_settings.DEBUG
+SERVICES_TOKEN=local_settings.SERVICES_TOKEN
 ALLOWED_HOSTS = []
 
 
@@ -147,3 +148,5 @@ COMPRESS_ROOT = 'commons/static'
 STATIC_ROOT = 'commons/static'
 STATIC_URL = '/commons/static/'
 LOCALE_PATHS = (os.path.join(BASE_DIR,'locale'),)
+
+

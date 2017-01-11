@@ -18,6 +18,5 @@ class List(TemplateView):
 class ListApi(APIView):
 
    def get(self, request, format=None):
-       thirdLevelValue= request.POST['thirdLevelValue']
        snippet = requests.get('localhost:8000/styling-guide/list')
        return Response(snippet) 

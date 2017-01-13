@@ -16,6 +16,8 @@ from django.http import HttpResponse
 from django.conf import settings
 
 
+import json
+import urllib2
 
 
 # This view renders the HTML containing information about the company, social network, etc. 
@@ -269,3 +271,22 @@ def SearchResultFilterCVS( request, title, region, category, e_day, s_day, e_mon
     
    
     return response    
+
+
+# This view renders the HTML containing information about one element case
+class searchTwitter(TemplateView):
+    template_name = "components/trending-twitter.html"
+    
+class searchTwitterApi(APIView):
+    def get(self, format = None ):
+        ### Use the Access Token to make an API request
+
+        timeline_request = urllib2.Request("https://api.twitter.com/1.1/search/tweets.json?q=%40twitterapi")
+        timeline_request.add_header("Authorization", "Bearer %s" % settings.ACCESS_TOKEN)
+        
+        timeline_response = urllib2.urlopen(timeline_request)
+        timeline_contents = timeline_response.read()
+        timeline_data = json.loads(timeline_contents)
+        
+        print json.dumps(timeline_data, indent=2, sort_keys=True)
+        return Response(timeline_data)

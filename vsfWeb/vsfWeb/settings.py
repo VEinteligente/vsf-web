@@ -13,6 +13,29 @@ from django.utils.translation import ugettext_lazy as _
 import local_settings
 import os
 
+ 
+import base64
+import json
+import urllib2
+ ### Setup access credentials
+ 
+CONSUMER_KEY = local_settings.CONSUMER_KEY
+CONSUMER_SECRET = local_settings.CONSUMER_SECRET
+ 
+bearer_token = "%s:%s" % (CONSUMER_KEY, CONSUMER_SECRET)
+        
+bearer_token_64 = base64.b64encode(bearer_token)
+         
+token_request = urllib2.Request("https://api.twitter.com/oauth2/token") 
+token_request.add_header("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8")
+token_request.add_header("Authorization", "Basic %s" % bearer_token_64)
+token_request.data = "grant_type=client_credentials"
+         
+token_response = urllib2.urlopen(token_request)
+token_contents = token_response.read()
+token_data = json.loads(token_contents)
+        
+ACCESS_TOKEN = token_data["access_token"]
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -39,6 +62,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'compressor',
+    'rest_framework',
     'widget_tweaks',
 ]
 STATICFILES_FINDERS = (
@@ -114,6 +138,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 STATICFILES_FINDERS = (  
     'compressor.finders.CompressorFinder',
+    #'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
 STATICFILES_DIRS = [
@@ -145,6 +170,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 COMPRESS_ROOT = 'commons/static'
+#STATIC_ROOT = 'static'
 STATIC_ROOT = 'commons/static'
 STATIC_URL = '/commons/static/'
 LOCALE_PATHS = (os.path.join(BASE_DIR,'locale'),)

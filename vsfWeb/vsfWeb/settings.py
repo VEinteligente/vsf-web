@@ -138,7 +138,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 STATICFILES_FINDERS = (  
     'compressor.finders.CompressorFinder',
-    #'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
 STATICFILES_DIRS = [

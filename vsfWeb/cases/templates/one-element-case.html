@@ -195,20 +195,25 @@
     </div>
    
    <div id="status"></div>
-    
+    <!-- <blockquote class="twitter-tweet" lang="en"><p>OKC-MEM prediction: Fourteen overtimes, 10 4-point plays, a Perkins 3-pointer, and Tony Allen kills a guy.</p>&mdash; Zach Lowe (@ZachLowe_NBA) <a href="https://twitter.com/ZachLowe_NBA/status/461995665887723520">May 1, 2014</a></blockquote> -->
+<div id="twitter"></div>
     <script>
            
     // These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here 
     // because of DJango configuration
      
-        var url_one_case="{% url 'Cases:OneElementCaseApi' %}"
+        var url_one_case = "{% url 'Cases:OneElementCaseApi' %}"
+        var url_one_case_update = "{% url 'Cases:OneElementCaseUpdateApi' %}"
         var pk = {{ pk }}
-        var url_data ="'" + "{% url 'Commons:loginTwitter' %}" + "'";
+ 
 
-    </script>
-    
+      var url_data_twitter ="{% url 'General:SearchTwitterApi' %}" 
+        
+ 
+  </script>
+
+
     <script src="{% static 'js/cases/case.js' %}"></script>
-    <script src="{% static 'js/commons/twitter-trending.js' %}"></script>
-    
-
+    <script src="{% static 'js/general/twitter-trending.js' %}"></script>
+  
 {% endblock %}

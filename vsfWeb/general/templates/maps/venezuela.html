@@ -4,7 +4,6 @@
 
 {% block content %}
 
-<div id="twitter"></div>
     <div class="col-xs-12 mapContainer">
     
         <div class="col-xs-8">
@@ -3375,11 +3374,11 @@
      
         var url_data="{% url 'General:MapApi' %}"   
         var url_style_list ="{% url 'StylingGuide:ListApi' %}"
-        var url_data_twitter ="{% url 'General:SearchTwitterApi' %}" 
+
+
         
     </script>
     
     <script src="{% static 'js/general/map.js' %}"></script>
-    <script src="{% static 'js/general/twitter-trending.js' %}"></script>
 
 {% endblock %}

@@ -4,6 +4,7 @@ from django.views.generic import (TemplateView)
 from django.conf import settings
 from rest_framework.views import (APIView)
 
+from rest_framework.response import Response
 # This view renders the HTML containing information about one element case
 class OneElementCase(TemplateView):
     template_name = "one-element-case.html"
@@ -11,11 +12,20 @@ class OneElementCase(TemplateView):
 # This view obtains the information of the one element case as json data from the API of the Pandora project
 class OneElementCaseApi(APIView):
    
-   def get(self, request, format=None):
+   def get(self, request, pk ="1", format=None):
        headers = {'Authorization': settings.SERVICES_TOKEN}
-       snippet = requests.get('http://192.168.0.130:8000/cases/api/list/' , headers = headers )
+       snippet = requests.get('http://127.0.0.1:8001/cases/api/detail/'+ pk , headers = headers )
        return Response(snippet)
 
+# This view obtains the information of the one element case as json data from the API of the Pandora project
+class OneElementCaseUpdateApi(APIView):
+   
+   def get(self, request, pk ="1", format=None):
+       headers = {'Authorization': settings.SERVICES_TOKEN}
+       snippet = requests.get('http://127.0.0.1:8001/cases/api/detail_update/'+ pk , headers = headers )
+       return Response(snippet)
+   
+   
 # This view renders the HTML containing information about multiple elements case
 class MultipleElementsCase(TemplateView):
     template_name = "multiple-elements-case.html"

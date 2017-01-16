@@ -7,6 +7,7 @@ $(document).ready(function()
 	var count=0;
 	
 	//url_data is where we fetch most of the case information and pk is the id of the case
+
 	var url_data_detail = url_one_case;
 
 	//url_data is where we get the update data of the case and pk is the id of the case
@@ -41,7 +42,9 @@ $(document).ready(function()
 		var date=new Date(dataJson.start_date);
 		var title = dataJson.title;
 		var description = dataJson.description;
+
 		var twitter_search  = dataJson.twitter_search;
+
 		//Title & date for the main DIV in the details template
 		
 		$('#titleAjax').html(title);
@@ -55,11 +58,13 @@ $(document).ready(function()
 		$('#descriptionAjax').html(description);
 		
 		//if the end_date is null it means that the case is still active, still needs to do the else case when the case is considered finished
-		if (dataJson.end_date == null ){
+
+		if (dataJson.end_date == null){
 			$('#statusAjax').html("Continua");
 			$('#statusDateAjax').html(date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear());
 		}
 	
+
     	if( twitter_search != null ){
     	    
     	    twitterSearch( twitter_search );
@@ -72,8 +77,7 @@ $(document).ready(function()
 			method: 'GET',
 			dataType: 'json',
 			contentType:'application/json'
-		})
-		.done(function(dataJson){
+		}).done(function(dataJson){
 			//dataEvents has the whole case data with the details of the events in the following Object {id,events,title,description,start_date,end_date,category,draft}
 			//where the events key has an array of objects {isp,start_date,end_date,target,identification,type}
 			
@@ -92,7 +96,6 @@ $(document).ready(function()
 			$.each(dataUpdates.updates,function(index,value){
 			
 	      
-					
 				var update_date = new Date(value.date);
 				var update_text = value.text;
 				var update_category = value.category;
@@ -115,12 +118,12 @@ $(document).ready(function()
 
 //function for the domain/sites list in the page
 
-function select(option, data){
+function select(option){
         
         // When select function is invoked the list is emptied  
         $("#domainTableBody").empty();
-        
  		var url_data = url_one_case;
+
 
         // This AJAX call corresponds to the request of the JSON data from Pandora project API.
         $.ajax({
@@ -129,6 +132,7 @@ function select(option, data){
                 dataType: 'json',
                 contentType: 'application/json'
         })
+
         .done(function(dataJson){
         var temporal = ""; 
           
@@ -148,6 +152,7 @@ function select(option, data){
             $.each(data.domains,function(index,result){
 
             	count = count +1;
+
 
             	$("#count").html(count);
 
@@ -176,6 +181,7 @@ function select(option, data){
         }
 
         });
+
 
 
 }

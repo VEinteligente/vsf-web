@@ -26,13 +26,13 @@
         
             <div>
                 <div id="blockedSitesList" ></div>
-            
+
                     <button class="contextualButtonFixedSize" onclick="select('sites')" style="margin-top: 10px;margin-bottom: 5px;">
-                        {% trans 'Sites' %}
+                        {% trans 'Domains' %}
                     </button>
             
                     <button class="contextualButtonFixedSize" onclick="select('domains')" style="margin-top: 10px;margin-bottom: 5px;">
-                        {% trans 'Domains' %}
+                        {% trans 'Sites' %}
                     </button>
             </div>
     
@@ -50,7 +50,7 @@
         var url_data_sites="{% url 'General:BlockedSitesApi' %}"
         var url_data_domains = "{% url 'General:BlockedDomainsApi' %}"
         var url_style_list =  "{% url 'StylingGuide:ListApi' %}"
-
+        
     
         
     </script>

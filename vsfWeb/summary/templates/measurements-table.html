@@ -3,49 +3,71 @@
 {% load static %}
 {% block content %}
 {% get_current_language as language_code %}    
+
+
+<link rel="stylesheet" href="{% static 'css/jjsonviewer.css' %}">
+<div class="col-xs-1 marginPage">
+</div>
 	
-	<div class="col-xs-1">
-	</div>
-	    
-	    <div class="container col-xs-10" style="margin-top:5px">
-	    <div>
-	   
-	        <table class="table text-nowrap table-bordered text-center table-hover">
-	   
-	            <thead class="thead-inverse">
-	   
-	                <tr id="mtablehead">
-	   
-	                    <th>{%trans 'Site' %}</th>
-	                    <th>{%trans 'URL' %}</th>
-	                    <th>{%trans 'Date' %}</th>
-	                    <th>{%trans 'Country' %}</th>
-	                    <th>{%trans 'State' %}</th>
-	                    <th>{%trans 'City' %}</th>
-	                    <th>{%trans 'ISP' %}</th>
-	                    <th>{%trans 'ISP Plan' %}</th>
-	                    <th>{%trans 'Upload Speed' %}</th>
-	                    <th>{%trans 'Download Speed' %}</th>
-	                    <th>{%trans 'Measurement' %}</th>
-	                    <th>{%trans 'Type' %}</th>
-	   
-	                </tr>
+	<div class="col-xs-10 marginPage">
+		
+		<div class="container-fluid" id="mTable">
+				
+			<div class="row">
+			
+				<div class="col-xs-11" id="headerDiv">
 
-	            </thead>
-	            
-	            <tbody id="mtablebody">
+					<div class="col-xs-3 mheader">{% trans 'Site' %}</div>
+					<div class="col-xs-2 mheader">{% trans 'URL' %}</div>
+					<div class="col-xs-1 mheader">{% trans 'Date' %}</div>
+					<div class="col-xs-1 mheader">{% trans 'Country' %}</div>
+					<div class="col-xs-1 mheader">{% trans 'State'%}</div>
+					<div class="col-xs-1 mheader">{% trans 'City' %}</div>
+					<div class="col-xs-1 mheader">{% trans 'ISP' %}</div>
+					<div class="col-xs-1 mheader">{% trans 'Measurement' %}</div>
+					<div class="col-xs-1 mheader">{% trans 'Type' %}</div>
+				        
+				</div>  
 
-	            </tbody>
+			</div>
 
-	        </table>
-	    </div>
-	    </div>
-	
-	<div class="col-xs-1">
+			<div class="row" id="measurementHeaderRow">
+		
+			</div>
+
+			<div class="row">
+				
+				<div class="col-xs-11" id="dataTableM">
+				
+				</div>
+
+			</div>
+
+		</div>
 	</div>
 
+<div class="col-xs-1 marginPage">
+</div>
 
-
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="measurementTitle" aria-hidden="true">
+  <div class="modal-dialog" id="modalm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="measurementTitle"></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="measurementData">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script> var url_data_measurement =  "{% url 'Summary:MeasurementsTableApi' %}" </script>
+<script src="{% static 'js/summary/jjsonviewer.js' %}"></script>
 
 <script src="{% static 'js/summary/mtable.js' %}"></script>
 {% endblock %}

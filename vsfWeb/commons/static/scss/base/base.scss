@@ -393,6 +393,7 @@ button {
 .titleBar{
     border: 2px solid $lightGray;
     padding: $md_padding $md_padding $sm_padding $lg_padding;
+    background: white;
     .date{
         text-align: right;      
         padding-top: $sm_padding;  

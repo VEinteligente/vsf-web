@@ -24,6 +24,29 @@ import urllib2
 class AboutUs( TemplateView ):
     template_name = "about-us.html"
 
+
+class BlockedSites(TemplateView):
+    template_name = "blocked-sites.html"
+    
+    def get_context_data(self,**kwargs ):
+    	r = requests.get('http://192.168.0.130:8000/events/api/blocked_domains/')
+    	context= super(BlockedSites,self).get_context_data(**kwargs)
+    	probando2 = json.loads(r.text)
+    	context['sites'] = probando2["results"]
+
+    	return context
+
+class BlockedUrls(TemplateView):
+    template_name = "blocked-urls.html"
+    
+    def get_context_data(self,**kwargs ):
+    	r = requests.get('http://192.168.0.130:8000:8000/events/api/blocked_domains/')
+    	context= super(BlockedUrls,self).get_context_data(**kwargs)
+    	probando2 = json.loads(r.text)
+    	context['urls'] = probando2["results"]
+
+    	return context
+
 # This view obtains the blocked sites json data from the API of the Pandora project
 class BlockedSitesApi( APIView ):
    
@@ -32,19 +55,21 @@ class BlockedSitesApi( APIView ):
        snippet = requests.get( 'http://127.0.1:8001/events/api/blocked_sites/', headers = headers) 
        return Response( snippet )
 
+
 # This view obtains the blocked domains json data from the API of the Pandora project
 class BlockedDomainsApi( APIView ):
-   
+
    def get( self, request, format = None ):
        headers = {'Authorization': settings.SERVICES_TOKEN}
        snippet = requests.get( 'http://127.0.1:8001/events/api/blocked_domains/', headers = headers )
        return Response( snippet )
 
+
 # This view renders the HTML containing information about the blocked sites and domains.
 class BlockedUrlsSites( TemplateView ):
     template_name = "blocked-sites_domains.html"
 
-  
+ 
 # This view renders the HTML containing information about list of cases
 class CaseList( TemplateView ):
     template_name = "list-cases.html"      

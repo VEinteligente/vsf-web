@@ -8,7 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+
 "POT-Creation-Date: 2017-01-06 09:36-0400\n"
+
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,6 +82,7 @@ msgstr "Foro"
 msgid "Report"
 msgstr "Reportar"
 
+
 #: general/templates/blocked-sites_domains.html:12
 msgid "Blocked Sites Strong"
 msgstr "<strong>Sitios</strong> Bloqueados"
@@ -92,19 +95,24 @@ msgstr "<strong>Dominios</strong> Bloqueados"
 msgid "Featured Cases"
 msgstr "<strong>Casos</strong> Destacados"
 
+
+
 #: stylingGuide/templates/elements.html:13
 msgid "Buttons"
 msgstr "Botones"
 
 #: stylingGuide/templates/elements.html:17
 #: stylingGuide/templates/elements.html:23
-#: stylingGuide/templates/elements.html:139
-#: stylingGuide/templates/elements.html:164
-#: stylingGuide/templates/elements.html:168
+
+#: stylingGuide/templates/elements.html:93
+#: stylingGuide/templates/elements.html:118
+#: stylingGuide/templates/elements.html:122
+
 msgid "and"
 msgstr "y"
 
 #: stylingGuide/templates/elements.html:59
+
 #: stylingGuide/templates/elements.html:246
 #: stylingGuide/templates/elements.html:270
 #: stylingGuide/templates/elements.html:282
@@ -121,6 +129,7 @@ msgstr "Intercepcion"
 msgid "Disconnected"
 msgstr "Desconexion"
 
+
 #: stylingGuide/templates/elements.html:86
 msgid "Slowdown"
 msgstr "Relentizacion"
@@ -133,9 +142,11 @@ msgstr ""
 msgid "Fail"
 msgstr "Falla"
 
+
 #: stylingGuide/templates/elements.html:115
 msgid "Blocked"
 msgstr "Bloqueado"
+
 
 #: stylingGuide/templates/elements.html:129
 msgid "Contextual buttons (static)"
@@ -154,10 +165,14 @@ msgid "Title bar"
 msgstr "Barra de título"
 
 #: stylingGuide/templates/elements.html:218
+
+
+
 #, fuzzy
 #| msgid "Small bar"
 msgid "Small bars"
 msgstr "Barra pequeña"
+
 
 #: stylingGuide/templates/elements.html:226
 #: stylingGuide/templates/elements.html:238
@@ -177,6 +192,7 @@ msgstr "Ver más..."
 #: stylingGuide/templates/typography.html:13
 msgid "Typography"
 msgstr "Tipografía"
+
 
 #: stylingGuide/templates/typography.html:19
 msgid "Size per style"
@@ -214,6 +230,7 @@ msgstr "Color"
 #: stylingGuide/templates/typography.html:217
 msgid "Style"
 msgstr "Estilo"
+
 
 #: summary/templates/measurements-table.html:17
 #, fuzzy
@@ -282,6 +299,7 @@ msgstr "Ordenar Por:"
 msgid "Category"
 msgstr "Categorias"
 
+
 #: vsfWeb/settings.py:131
 msgid "English"
 msgstr "Ingles"
@@ -290,8 +308,10 @@ msgstr "Ingles"
 msgid "Spanish"
 msgstr "Español"
 
-#~ msgid "BlockedMultiple"
-#~ msgstr "Bloqueados"
+
+#~ msgid "Information"
+#~ msgstr "Información"
+
 
 #~ msgid "Tutorials"
 #~ msgstr "Tutoriales"

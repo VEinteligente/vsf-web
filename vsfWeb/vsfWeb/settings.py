@@ -49,6 +49,7 @@ SECRET_KEY = 'dh96m6zsamw9#&%z758vm9(@j^!o@k(5(^&p8la2r(qy&^qmmy'
 
 DEBUG = local_settings.DEBUG
 SERVICES_TOKEN=local_settings.SERVICES_TOKEN
+
 ALLOWED_HOSTS = []
 
 

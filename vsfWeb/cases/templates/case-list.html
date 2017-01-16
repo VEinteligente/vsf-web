@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h2> Case List </h2>
+	<ul class="list-group float-xs-left">
+
+		{% for case in cases %}
+			<li class="list-group-item">
+			{{case.title}}
+			</li>
+		{% endfor %}
+	</ul>
+
+
+
+{% endblock %}

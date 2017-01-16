@@ -1,5 +1,6 @@
 from django.conf.urls import url
 
+
 from cases.views import (OneElementCase, OneElementCaseApi, OneElementCaseUpdateApi, GanttEvents, GanttEventsApi, 
                          MultipleElementsCase, SpeedTestCase)
 

@@ -35,6 +35,7 @@ msgstr "Sites"
 msgid "Home"
 msgstr ""
 
+
 #: commons/templates/navbar/navbar.html:23
 msgid "News"
 msgstr ""
@@ -46,6 +47,7 @@ msgstr "Guides"
 #: commons/templates/navbar/navbar.html:33
 msgid "Evade The Blockade"
 msgstr "Evade The Blockade"
+
 
 #: commons/templates/navbar/navbar.html:39
 msgid "Cases"
@@ -91,19 +93,21 @@ msgstr "Blocked <strong>Domains</strong>"
 msgid "Featured Cases"
 msgstr "Featured <strong>Cases</strong>"
 
+
 #: stylingGuide/templates/elements.html:13
 msgid "Buttons"
 msgstr "Buttons"
 
 #: stylingGuide/templates/elements.html:17
 #: stylingGuide/templates/elements.html:23
-#: stylingGuide/templates/elements.html:139
-#: stylingGuide/templates/elements.html:164
-#: stylingGuide/templates/elements.html:168
+
+#: stylingGuide/templates/elements.html:93
+#: stylingGuide/templates/elements.html:118
+#: stylingGuide/templates/elements.html:122
 msgid "and"
 msgstr "and"
 
-#: stylingGuide/templates/elements.html:59
+
 #: stylingGuide/templates/elements.html:246
 #: stylingGuide/templates/elements.html:270
 #: stylingGuide/templates/elements.html:282
@@ -128,6 +132,18 @@ msgstr ""
 msgid "DoS"
 msgstr ""
 
+
+#: stylingGuide/templates/elements.html:83
+
+msgid "BlockedMultiple"
+msgstr "Blocked"
+
+msgid "Sites"
+msgstr ""
+
+msgid "Domains"
+msgstr "Domains"
+
 #: stylingGuide/templates/elements.html:104
 msgid "Fail"
 msgstr ""
@@ -140,36 +156,37 @@ msgstr "Blocked"
 msgid "Contextual buttons (static)"
 msgstr "Contextual buttons (static)"
 
-#: stylingGuide/templates/elements.html:160
+#: stylingGuide/templates/elements.html:114
 msgid "Contextual buttons"
 msgstr "Contextual buttons"
 
-#: stylingGuide/templates/elements.html:191
+#: stylingGuide/templates/elements.html:145
 msgid "Bars"
 msgstr "Bars"
 
-#: stylingGuide/templates/elements.html:203
+#: stylingGuide/templates/elements.html:157
 msgid "Title bar"
 msgstr "Title bar"
 
-#: stylingGuide/templates/elements.html:218
+#: stylingGuide/templates/elements.html:176
 #, fuzzy
 #| msgid "Small bar"
 msgid "Small bars"
-msgstr "Small bars"
+msgstr "Small bar"
 
-#: stylingGuide/templates/elements.html:226
-#: stylingGuide/templates/elements.html:238
-#: stylingGuide/templates/elements.html:253
-#: stylingGuide/templates/elements.html:291
+#: stylingGuide/templates/elements.html:184
+#: stylingGuide/templates/elements.html:196
+#: stylingGuide/templates/elements.html:211
+#: stylingGuide/templates/elements.html:249
 msgid "Height"
 msgstr "Height"
 
-#: stylingGuide/templates/elements.html:231
+#: stylingGuide/templates/elements.html:189
 msgid "Subtitle bar"
 msgstr "Subtitle bar"
 
-#: stylingGuide/templates/elements.html:321
+#: stylingGuide/templates/elements.html:279
+
 msgid "View more..."
 msgstr "View more..."
 
@@ -213,6 +230,7 @@ msgstr "Color"
 #: stylingGuide/templates/typography.html:217
 msgid "Style"
 msgstr "Style"
+
 
 #: summary/templates/measurements-table.html:17
 #, fuzzy
@@ -289,8 +307,9 @@ msgstr "English"
 msgid "Spanish"
 msgstr "Spanish"
 
-#~ msgid "BlockedMultiple"
-#~ msgstr "Blocked"
+
+#~ msgid "Information"
+#~ msgstr "Information"
 
 #~ msgid "Tutorials"
 #~ msgstr "Tutorials"

@@ -13,6 +13,11 @@ from django.template.defaultfilters import title
 import csv
 from django.http import HttpResponse
 
+from django.conf import settings
+
+
+import json
+import urllib2
 
 
 # This view renders the HTML containing information about the company, social network, etc. 
@@ -23,14 +28,16 @@ class AboutUs( TemplateView ):
 class BlockedSitesApi( APIView ):
    
    def get( self, request, format = None ):
-       snippet = requests.get( 'http://127.0.1:8001/events/api/blocked_sites/' )
+       headers = {'Authorization': settings.SERVICES_TOKEN}
+       snippet = requests.get( 'http://127.0.1:8001/events/api/blocked_sites/', headers = headers) 
        return Response( snippet )
 
 # This view obtains the blocked domains json data from the API of the Pandora project
 class BlockedDomainsApi( APIView ):
    
    def get( self, request, format = None ):
-       snippet = requests.get( 'http://127.0.1:8001/events/api/blocked_domains/'  )
+       headers = {'Authorization': settings.SERVICES_TOKEN}
+       snippet = requests.get( 'http://127.0.1:8001/events/api/blocked_domains/', headers = headers )
        return Response( snippet )
 
 # This view renders the HTML containing information about the blocked sites and domains.
@@ -49,8 +56,9 @@ class CaseListAdvanced( TemplateView ):
 # This view obtains the list of cases json data from the API of the Pandora project  
 class CaseListApi( APIView ):
     
-   def get( self, request, format = None ):      
-       snippet = requests.get( 'http://127.0.1:8001/cases/api/list/' )
+   def get( self, request, format = None ):  
+       headers = {'Authorization': settings.SERVICES_TOKEN}
+       snippet = requests.get('http://127.0.0.1:8001/cases/api/list-case-filter/', headers=headers)    
        return Response( snippet )
    
    def post( self, request, format = None ):
@@ -61,8 +69,9 @@ class CaseListApi( APIView ):
        end_date = request.data["end_date"]
        isp = request.data["isp"]
        site =  request.data["site"]
-      
-       snippet = requests.get( 'http://127.0.1:8001/cases/api/list-case-filter/?title=' + title + "&category=" + category + '&start_date=' + start_date + '&end_date=' + end_date + '&region=' + region + '&site=' + site + '&isp=' + isp )
+       
+       headers = {'Authorization': settings.SERVICES_TOKEN}
+       snippet = requests.get( 'http://127.0.1:8001/cases/api/list-case-filter/?title=' + title + "&category=" + category + '&start_date=' + start_date + '&end_date=' + end_date + '&region=' + region + '&site=' + site + '&isp=' + isp , headers = headers )
        return Response(snippet)
 
 # This view renders the HTML containing the dashboard
@@ -77,16 +86,18 @@ class MapVenezuela( TemplateView ):
 class MapApi( APIView ):
        
    def get( self, request, format = None ):
-       snippet = requests.get( 'http://127.0.1:8001/cases/api/list/region/' )       
+       headers = {'Authorization': settings.SERVICES_TOKEN}
+       snippet = requests.get( 'http://127.0.1:8001/cases/api/list/region/' , headers = headers )       
        return Response( snippet )
 
 # This view takes list of all the cases and exports it to a CVS file.
 def SearchResultCVS( request ):
     
     # Get the list of all the cases and load it as JSON
-    snippet = requests.get( 'http://127.0.1:8001/cases/api/list-case-filter' )
+    headers = {'Authorization': settings.SERVICES_TOKEN}
+    snippet = requests.get( 'http://127.0.1:8001/cases/api/list-case-filter' , headers = headers )
     data = json.loads( snippet.text )
-    
+    print data 
     # Create the HttpResponse object with the appropriate CSV header.
     response = HttpResponse( content_type='text/csv' )
     response['Content-Disposition'] = 'attachment; filename="SearchResults.csv"'
@@ -178,7 +189,8 @@ def SearchResultFilterCVS( request, title, region, category, e_day, s_day, e_mon
 
     
     # Get the list of all the cases and load it as JSON
-    snippet = requests.get( 'http://127.0.1:8001/cases/api/list-case-filter/?title=' + title + "&category=" + category + '&start_date=' + start_date + '&end_date=' + end_date + '&region=' + region )
+    headers = {'Authorization': settings.SERVICES_TOKEN}
+    snippet = requests.get( 'http://127.0.1:8001/cases/api/list-case-filter/?title=' + title + "&category=" + category + '&start_date=' + start_date + '&end_date=' + end_date + '&region=' + region , headers = headers )
     data = json.loads( snippet.text )
 
     # Create the HttpResponse object with the appropriate CSV header.
@@ -259,3 +271,23 @@ def SearchResultFilterCVS( request, title, region, category, e_day, s_day, e_mon
     
    
     return response    
+
+
+# This view renders the HTML containing information about one element case
+class searchTwitter(TemplateView):
+    template_name = "components/trending-twitter.html"
+    
+class searchTwitterApi( APIView ):
+    def get(self,request, twitterSearch = "", format = None ):
+        ### Use the Access Token to make an API request
+        
+        print twitterSearch
+        timeline_request = urllib2.Request("https://api.twitter.com/1.1/search/tweets.json?q=%23" +  twitterSearch)
+        timeline_request.add_header("Authorization", "Bearer %s" % settings.ACCESS_TOKEN)
+        
+        timeline_response = urllib2.urlopen(timeline_request)
+        timeline_contents = timeline_response.read()
+        timeline_data = json.loads(timeline_contents)
+        
+        #print json.dumps(timeline_data, indent=2, sort_keys=True)
+        return Response(timeline_data)

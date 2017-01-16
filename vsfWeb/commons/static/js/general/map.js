@@ -59,7 +59,7 @@ $('select').on('change', function(e) {
         $("select option").each(function(){
             if ($(this).text() == valueSelected){
                 
-                $("#"+valueSelected).addClass("hover");
+                $("#"+valueSelected.replace(/\s+/g, '')).addClass("hover");
                 $(this).attr("selected","selected");
                 $('.informationPanelState').html(valueSelected);
                 $(".informationPanelTotalCases").html("");

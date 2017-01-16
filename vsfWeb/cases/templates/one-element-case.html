@@ -146,7 +146,7 @@
     				</div>
     
     				<div class = "container-fluid" id = "subGraph1Description" >
-    					Subgraph 1 Description
+    					<div id="twitter"></div>
     				</div>
     
     			</div>
@@ -188,17 +188,34 @@
     	</div>
     </div>
     
+    <div class="modal fade global-modal contentBoxTransparent" style="color:black;">
+        <button type="button" class="close" onclick="empty(); $('.global-modal').modal('hide'); ">X</button>    
+        <div class="modal-dialog" role="document">
+        </div>
+    </div>
+   
+    <!-- <blockquote class="twitter-tweet" lang="en"><p>OKC-MEM prediction: Fourteen overtimes, 10 4-point plays, a Perkins 3-pointer, and Tony Allen kills a guy.</p>&mdash; Zach Lowe (@ZachLowe_NBA) <a href="https://twitter.com/ZachLowe_NBA/status/461995665887723520">May 1, 2014</a></blockquote> -->
+
     <script>
            
     // These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here 
     // because of DJango configuration
      
-        var url_one_case="{% url 'Cases:OneElementCaseApi' %}"
+        var url_one_case = "{% url 'Cases:OneElementCaseApi' %}"
+        var url_one_case_update = "{% url 'Cases:OneElementCaseUpdateApi' %}"
         var pk = {{ pk }}
         
-    </script>
     
-    <script src="{% static 'js/cases/case.js' %}"></script>
-    
+        
+        
+        
+        var url_data_twitter ="{% url 'General:SearchTwitterApiEmpty' %}" 
+        
+ 
+  </script>
 
+    <script src="{% static 'js/general/twitter-trending.js' %}"></script>
+    <script src="{% static 'js/cases/case.js' %}"></script>
+
+  
 {% endblock %}

@@ -7,11 +7,11 @@ $(document).ready(function()
 	var count=0;
 	
 	//url_data is where we fetch most of the case information and pk is the id of the case
-	var url_data_detail = "http://127.0.0.1:8001/cases/api/detail/"+pk+"/";
+	var url_data_detail = url_one_case;
 
 	//url_data is where we get the update data of the case and pk is the id of the case
-	var url_data_update ="http://127.0.0.1:8001/cases/api/detail_update/"+pk+"/";
-	
+	var url_data_update = url_one_case_update;         
+                 
 	//First Ajax call to recieve the case data from server
 	$.ajax({
 		url: url_data_detail,
@@ -19,14 +19,21 @@ $(document).ready(function()
 		dataType: 'json',
 		contentType:'application/json'
 	})
-	.done(function(data){
-		
+	.done(function(dataJson){
+
+	   var temporal = ""; 
+        // For each element in the JSON we need to collect their values
+        for(var i=0; i<dataJson.length; i++)
+            temporal=temporal.concat(dataJson[i]);
+            var data=JSON.parse(temporal);
+        
+	
 		//variable that has the data from server
-		var dataJson=data;
+		var dataJson = data;
 		//list of event's id's for future automatically url search
 		var id_events=[];
 
-		select("domains");
+		select("domains", dataJson);
 
 		//case ID
 		case_id = data.id;
@@ -34,6 +41,7 @@ $(document).ready(function()
 		var date=new Date(dataJson.start_date);
 		var title = dataJson.title;
 		var description = dataJson.description;
+		var twitter_search  = dataJson.twitter_search;
 		//Title & date for the main DIV in the details template
 		
 		$('#titleAjax').html(title);
@@ -47,25 +55,44 @@ $(document).ready(function()
 		$('#descriptionAjax').html(description);
 		
 		//if the end_date is null it means that the case is still active, still needs to do the else case when the case is considered finished
-		if (dataJson.end_date == null){
+		if (dataJson.end_date == null ){
 			$('#statusAjax').html("Continua");
 			$('#statusDateAjax').html(date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear());
 		}
 	
+    	if( twitter_search != null ){
+    	    
+    	    twitterSearch( twitter_search );
+    	}
+    	
 
 		//AJAX call for updates datails API associated to the case
 		$.ajax({
-			url: url_data_detail_update,
+			url: url_data_update,
 			method: 'GET',
 			dataType: 'json',
 			contentType:'application/json'
 		})
-		.done(function(dataUpdates){
+		.done(function(dataJson){
 			//dataEvents has the whole case data with the details of the events in the following Object {id,events,title,description,start_date,end_date,category,draft}
 			//where the events key has an array of objects {isp,start_date,end_date,target,identification,type}
+			
+			var temporal = ""; 
+			         
+            // For each element in the JSON we need to collect their values
+            for(var i=0; i<dataJson.length; i++)
+             temporal=temporal.concat(dataJson[i]);
+         
+            var data=JSON.parse(temporal);
+            
+   
+            //variable that has the data from server
+            var dataUpdates = data;
+            
 			$.each(dataUpdates.updates,function(index,value){
-				
-							
+			
+	      
+					
 				var update_date = new Date(value.date);
 				var update_text = value.text;
 				var update_category = value.category;
@@ -88,12 +115,12 @@ $(document).ready(function()
 
 //function for the domain/sites list in the page
 
-function select(option){
+function select(option, data){
         
         // When select function is invoked the list is emptied  
         $("#domainTableBody").empty();
         
- 		var url_data = "http://127.0.0.1:8001/cases/api/detail/"+pk+"/";
+ 		var url_data = url_one_case;
 
         // This AJAX call corresponds to the request of the JSON data from Pandora project API.
         $.ajax({
@@ -102,8 +129,16 @@ function select(option){
                 dataType: 'json',
                 contentType: 'application/json'
         })
-        .done(function(data){
-
+        .done(function(dataJson){
+        var temporal = ""; 
+          
+                     
+            // For each element in the JSON we need to collect their values
+            for(var i=0; i<dataJson.length; i++)
+             temporal=temporal.concat(dataJson[i]);
+         
+            var data=JSON.parse(temporal);
+            
         if (option == "domains"){
 
         	count =0;
@@ -112,7 +147,7 @@ function select(option){
            
             $.each(data.domains,function(index,result){
 
-            	count= count +1;
+            	count = count +1;
 
             	$("#count").html(count);
 

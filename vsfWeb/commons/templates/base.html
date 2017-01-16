@@ -2,6 +2,7 @@
 
 <html>
 {% load static %}
+{% load i18n %}
     <head>
       
         {% include "head/head.html" %}       
@@ -14,9 +15,10 @@
         {% include "navbar/navbar.html" %}       
        
         </header>
-        
+ 
         {% block content %}
         {% endblock %}
+     
         
      <!--   {% include "components/notifications.html" %} 
         {% include "components/share-social-media.html" %} 

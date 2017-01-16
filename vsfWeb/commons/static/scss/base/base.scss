@@ -47,6 +47,13 @@ $green_tag: #00CC00;
 $red_tag: #FF0000;
 $contentColorTag: #fff;
 
+$blocked_color: #ff2115;
+$disconnected_color: #bd2126;
+$slowdown_color: #ebe70e;
+$connected_color: #8cc63f;
+$fail_color: #ebe70e;
+$dos_color: #bd2126;
+$interception_color: #ebe70e;
 
 
 h1 {
@@ -230,11 +237,163 @@ button {
 
 }
 
+.disconnected_tag{
+    display: inline-block;
+    .left_cornerTag{
+        border-bottom: 5px solid $disconnected_color;
+        border-left: 5px solid transparent;
+    }
+    .right_cornerTag{
+        border-bottom: 5px solid $disconnected_color;
+        border-right: 5px solid transparent;
+        /** Flip vertically **/
+        -moz-transform: scale(1, -1);
+        -webkit-transform: scale(1, -1);
+        -o-transform: scale(1, -1);
+        -ms-transform: scale(1, -1);
+        transform: scale(1, -1);
+    }
+    .contentTag{
+        background: $disconnected_color;
+        line-height: 1.00;
+        padding: 0px $md_padding;
+        color:$contentColorTag;
+    }
+
+}
+
+.slowdown_tag{
+    display: inline-block;
+    .left_cornerTag{
+        border-bottom: 5px solid $slowdown_color;
+        border-left: 5px solid transparent;
+    }
+    .right_cornerTag{
+        border-bottom: 5px solid $slowdown_color;
+        border-right: 5px solid transparent;
+        /** Flip vertically **/
+        -moz-transform: scale(1, -1);
+        -webkit-transform: scale(1, -1);
+        -o-transform: scale(1, -1);
+        -ms-transform: scale(1, -1);
+        transform: scale(1, -1);
+    }
+    .contentTag{
+        background: $slowdown_color;
+        line-height: 1.00;
+        padding: 0px $md_padding;
+        color:$contentColorTag;
+    }
+
+}
+
+.connected_tag{
+    display: inline-block;
+    .left_cornerTag{
+        border-bottom: 5px solid $connected_color;
+        border-left: 5px solid transparent;
+    }
+    .right_cornerTag{
+        border-bottom: 5px solid $connected_color;
+        border-right: 5px solid transparent;
+        /** Flip vertically **/
+        -moz-transform: scale(1, -1);
+        -webkit-transform: scale(1, -1);
+        -o-transform: scale(1, -1);
+        -ms-transform: scale(1, -1);
+        transform: scale(1, -1);
+    }
+    .contentTag{
+        background: $connected_color;
+        line-height: 1.00;
+        padding: 0px $md_padding;
+        color:$contentColorTag;
+    }
+
+}
+
+.fail_tag{
+    display: inline-block;
+    .left_cornerTag{
+        border-bottom: 5px solid $fail_color;
+        border-left: 5px solid transparent;
+    }
+    .right_cornerTag{
+        border-bottom: 5px solid $fail_color;
+        border-right: 5px solid transparent;
+        /** Flip vertically **/
+        -moz-transform: scale(1, -1);
+        -webkit-transform: scale(1, -1);
+        -o-transform: scale(1, -1);
+        -ms-transform: scale(1, -1);
+        transform: scale(1, -1);
+    }
+    .contentTag{
+        background: $fail_color;
+        line-height: 1.00;
+        padding: 0px $md_padding;
+        color:$contentColorTag;
+    }
+
+}
+
+.dos_tag{
+    display: inline-block;
+    .left_cornerTag{
+        border-bottom: 5px solid $dos_color;
+        border-left: 5px solid transparent;
+    }
+    .right_cornerTag{
+        border-bottom: 5px solid $dos_color;
+        border-right: 5px solid transparent;
+        /** Flip vertically **/
+        -moz-transform: scale(1, -1);
+        -webkit-transform: scale(1, -1);
+        -o-transform: scale(1, -1);
+        -ms-transform: scale(1, -1);
+        transform: scale(1, -1);
+    }
+    .contentTag{
+        background: $dos_color;
+        line-height: 1.00;
+        padding: 0px $md_padding;
+        color:$contentColorTag;
+    }
+
+}
+
+.interception_tag{
+    display: inline-block;
+    .left_cornerTag{
+        border-bottom: 5px solid $interception_color;
+        border-left: 5px solid transparent;
+    }
+    .right_cornerTag{
+        border-bottom: 5px solid $interception_color;
+        border-right: 5px solid transparent;
+        /** Flip vertically **/
+        -moz-transform: scale(1, -1);
+        -webkit-transform: scale(1, -1);
+        -o-transform: scale(1, -1);
+        -ms-transform: scale(1, -1);
+        transform: scale(1, -1);
+    }
+    .contentTag{
+        background: $interception_color;
+        line-height: 1.00;
+        padding: 0px $md_padding;
+        color:$contentColorTag;
+    }
+
+}
+
+
 /* Bars */
 
 .titleBar{
     border: 2px solid $lightGray;
     padding: $md_padding $md_padding $sm_padding $lg_padding;
+    background: white;
     .date{
         text-align: right;      
         padding-top: $sm_padding;  
@@ -242,7 +401,7 @@ button {
 }
 
 .smallBar{
-    border: 2px solid $gray;
+    background: white;
     padding:0;
     .title{
         padding: 8px $md_padding 8px $lg_padding;
@@ -255,6 +414,7 @@ button {
 .subtitleBar{
     padding:0;
     height: 36px;
+    background: white;
     .title{
         padding: $sm_padding $md_padding $sm_padding $lg_padding;
         margin: 0;
@@ -263,7 +423,7 @@ button {
     
 }
 
-.timelineBar{
+.timelineBarContinue{
     color: white;
     height: 24px;
     padding: 0;
@@ -296,6 +456,42 @@ button {
         }
     
 }
+
+.timelineBarClosed{
+    color: white;
+    height: 24px;
+    padding: 0;
+    
+    background-color: $red-tag;
+       
+        .date{
+            font-weight: bold;
+            padding:0px;
+            padding-left:5px;         
+        }
+        .status{
+            text-align: right;
+            padding:0;
+            padding-right:16px;
+        }
+    
+        &:after{
+            right: 100%;
+            top: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            border-color: transparent;
+            border-right-color: $red-tag;
+            border-width: 12px;
+            margin-top: -12px;
+        }
+    
+}
+
+
 .toolbar {
     border: 2px solid $gray;
     height: 48px;

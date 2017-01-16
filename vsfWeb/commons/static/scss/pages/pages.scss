@@ -1,3 +1,104 @@
+//Summary Category & ISP Table
+
+.marginPage{
+    background-color:#dedede;
+}
+
+#modalm{
+    position: relative;
+    display: table;
+    overflow-y: auto;    
+    overflow-x: auto;
+    width: auto;
+    min-width: 300px;   
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  color: white;
+  background-color: #ebebeb;
+}
+
+.table-hover tbody tr:active td, .table-hover tbody tr:active th {
+  color: white;
+  background-color: #d1d1d1;
+  font-weight:500;
+}
+
+td{
+    font-size: 14px;
+    font-weight:400;
+    color:#808080;
+
+}
+
+.tag{
+    font-size: 12px;
+    height: 20px;
+}
+
+#tabletitle{
+    font-weight: normal;
+    color:#575757;
+}
+
+#measurementHeaderRow{
+    border-bottom-width: 1px;
+    border-bottom-color: darkgrey;
+    border-bottom-style:solid;  
+    height:1px;  
+}
+
+#mTable{
+    margin-top: 200px;
+    background-color:#dedede;
+    height:100vh;
+
+
+}
+
+.mheader{
+    color:#575757;
+    font-weight:700;
+    transform: rotate(-90deg);
+    transform-origin: left top 0;
+    float:left;
+    padding-left: 4px;
+    text-transform: uppercase;
+}
+
+#dataTableM{
+    padding-top:8px;
+    height:36px;
+    padding-bottom:8px;
+}
+
+#headerDiv{
+    height:0px;
+}
+
+#mRow{
+
+}
+
+#mRow:hover{
+    background-color: #cecece;
+    padding-right: 6px;    
+}
+
+.mData{
+    float:left;
+    font-size:12px;
+    color: #808184;
+    font-weight: 500;
+
+}
+
+#modalbutton{
+    text-decoration: underline;
+    color: #575757;
+    cursor: pointer;
+}
+
 // Sites and domain list
 
 #listBlocked{
@@ -47,6 +148,7 @@
     padding-left: 5px;
     padding-right: 5px;
     margin-left: 10px;
+    display: inline;
 
 }
 
@@ -86,11 +188,11 @@
 }
 
 .map g.hover {
-  fill: #8CC63F !important;
+  fill: #D2D2D2 !important;
 }
 
 .map g.no-hover{
-    fill: #58ACFA !important;
+    fill: #A7A7A7 !important;
 }
 
 .map {
@@ -151,8 +253,281 @@
     padding-right: 10px;
 }
 
+// Advanced search page
+
+input#title{
+        border: none;
+    padding: 5px 0px;
+    width: 100%;
+}
 
 
+#advanced_search #submit{
+    background: white;
+    background-repeat: no-repeat;
+    background-image: url(/commons/static/img/icons/vsf_iconsearch_v101.svg?3119de80434d);
+    border: none;
+    background-size: contain;
+    margin-top: 10px;
+    height: 15px;
+    width: 90%;
+
+
+}
+
+#advanced_search .first {
+
+ 
+  border-bottom:1px solid black;
+
+
+
+}
+
+
+#advanced_search .chosen-choices {
+
+    background: none;
+ border: none;}
+ 
+#advanced_search .chosen-container {
+
+ 
+  border-bottom:1px solid black;
+  border-right:1px solid black;
+  border-left:1px solid black;
+  position: relative;
+  width: 23.95% !important;
+  margin-right: 1%;
+  
+  
+
+
+}
+#site_chosen.chosen-container {
+
+  margin-right: 0;
+
+
+}
+.multipleChoices, .resumeResult{
+    margin-bottom: 16px;
+}
+#advanced_search .chosen-container:after {
+  padding:0;margin:0;
+  display:block;/* not really needed */
+  content: "";
+  height:80%;
+  width:1px;
+  background-color:white;
+  position: absolute;
+  top:0;
+  right:-1px;
+}
+
+#advanced_search .chosen-container:before {
+  padding:0;margin:0;
+  display:block;/* not really needed */
+  content: "";
+  height:80%;
+  width:1px;
+  background-color:white;
+  position: absolute;
+  top:0;
+  left:-1px;
+}
+
+.resultadosAdvanced {
+    padding-left: 0 ;
+}
+
+.dateStartSort, .dateEndSort, .nameSort, .siteSort, .ispSort, .regionSort{
+        padding-top: 5px;
+        margin-left: 15px;
+        margin-right: 15px;
+       
+}
+
+.categorySort{
+        margin-left: 15px;
+        margin-right: 15px;
+       
+}
+
+.dateStartSort {
+         margin-left: 0px;
+    
+}
+
+.siteSort{
+            margin-left: 30px;
+}
+
+.search {
+    .nameSort, .siteSort, .ispSort, .regionSort{
+        margin-left: 0px;
+        margin-right: 0px;
+        padding: 0 ;
+        padding-top: 16px;
+        padding-bottom: 16px
+    }
+    .dateSort{
+        margin-left: 0px;
+        margin-right: 0px;
+        padding: 0 ;
+        padding-top: 12px;
+        padding-bottom: 12px
+    }
+
+    .categorySort{
+        margin-left: 0px;
+        margin-right: 0px;
+        padding: 0 ;
+        padding-top:12px;
+    }
+}
+
+
+
+#dateStartClick, #dateEndClick, #dateClick, #nameClick, #siteClick, #ispClick, #categoryClick, #regionClick{
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-bottom: 16px;
+    padding-right: 0;
+    margin-left: 15px;
+    margin-right: 15px;
+    &:hover{
+    cursor: pointer;}
+}
+.search {
+     #dateClick, #nameClick, #siteClick, #ispClick, #categoryClick, #regionClick{
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-right: 0;
+        margin-left: 0px;
+    margin-right: 0px;
+    &:hover{
+    cursor: pointer;}
+}}
+.listCasesAdvanced { 
+    margin-bottom: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    
+    .smallBar{
+        padding-bottom: 16px;
+        background: transparent; 
+        border-bottom: 1px solid gray
+    }
+} 
+.listCasesContainer .subtitleBar{
+    border-radius: 5px;
+    
+}
+
+.listCases .smallBar:first-of-type {
+  border-radius:5px 5px 0px 0px;
+}
+
+.listCases .smallBar:last-of-type {
+  border-radius:0px 0px 5px 5px;
+}
+
+.selectOrder{
+    border-bottom: solid blue 2px;
+    padding-bottom: 11px;
+    font-weight: bold;
+}
+
+.selectOrderAdvanced{
+    border-bottom: solid black 2px;
+    padding-bottom: 11px;
+    font-weight: bold;
+    color: black;
+}
+
+/* Summary Table */
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+ color: white;
+ background-color: #ebebeb ;
+}
+
+.table-hover tbody tr:active td, .table-hover tbody tr:active th {
+ color: white;
+ background-color: #d1d1d1 ;
+ font-weight:500;
+}
+
+td{
+   font-size: 14px;
+   font-weight:400;
+   color:#808080 ;
+
+}
+
+.tag{
+   font-size: 12px;
+   height: 20px;
+}
+
+#tabletitle{
+   font-weight: normal;
+   color:#575757 ;
+}
+
+/* Measurements table */
+
+#mtablehead{
+   th{
+   text-align:center;
+   }
+}
+
+#mtablebody{
+   tr{
+   text-align:center;
+   }
+}
+
+//twitter
+
+blockquote.twitter-tweet {
+  display: block;
+  font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 16px;
+  border-color: #eee ;
+  //border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  //box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  margin: 0px 5px;
+  padding: 16px 16px 16px 16px;
+  max-width: 468px;
+}
+ blockquote.twitter-tweet img{
+     
+     height: 73px;
+     width: 73px;
+ }
+blockquote.twitter-tweet p {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 20px;
+}
+
+blockquote.twitter-tweet a {
+  color: inherit;
+  font-weight: normal;
+  text-decoration: none;
+  outline: 0 none;
+}
+
+blockquote.twitter-tweet a:hover,
+blockquote.twitter-tweet a:focus {
+  text-decoration: underline;
+}
 /* RESPONSIVE */
 
 

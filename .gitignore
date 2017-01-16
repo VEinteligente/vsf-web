@@ -2,3 +2,7 @@
 *.css.map
 /vsfWeb/commons/static/CACHE/*
 *.pyc
+local_settings.py
+.pyc
+/vsfWeb/general/admin.pyc
+/vsfWeb/general/models.pyc

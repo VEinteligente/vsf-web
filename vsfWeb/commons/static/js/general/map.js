@@ -35,7 +35,7 @@ $( document ).ready(function() {
     $(function(){
     
         $("svg > g").each(function(){        
-            arraySelectOptions[element] = $(this).attr('id');
+            arraySelectOptions[element] = $(this).attr('id').replace(/([A-Z])/g, ' $1').trim() ;
             $('#mapSelector').append('<option value="'+ arraySelectOptions[element] + '">' + arraySelectOptions[element] + '</option>');            
             element=arraySelectOptions.length;
     });
@@ -59,7 +59,7 @@ $('select').on('change', function(e) {
         $("select option").each(function(){
             if ($(this).text() == valueSelected){
                 
-                $("#"+valueSelected).addClass("hover");
+                $("#"+valueSelected.replace(/\s+/g, '')).addClass("hover");
                 $(this).attr("selected","selected");
                 $('.informationPanelState').html(valueSelected);
                 $(".informationPanelTotalCases").html("");
@@ -67,8 +67,10 @@ $('select').on('change', function(e) {
                 
                 for(var i=0; i<array_name.length;i++){
         
-                    if(array_name[i]==element_hoverSpace){
+                    if(array_name[i]==valueSelected){
                         $(".informationPanelTotalCases").html(array_total[i]);
+                        $(".class"+array_counter[i]).show();
+                        $("#count").html(array_total[i]);
                     }
                 }
    
@@ -112,10 +114,15 @@ function hoverEvents(){
             var element_hoverSpace = element_hover.replace(/([A-Z])/g, ' $1').trim();
         
             $(".informationPanelTotalCases").html("");
-            
+       
             for(var i=0; i<array_name.length;i++){
+
+                if($('.informationPanelTotalCases').is(':empty')){
+                    $(".informationPanelTotalCases").html("0");
+                }
                 
                 if(array_name[i]==element_hoverSpace){
+                
                     $(".informationPanelTotalCases").html(array_total[i]);
                     $(".class"+array_counter[i]).show();
                     $("#count").html(array_total[i]);
@@ -127,21 +134,21 @@ function hoverEvents(){
                 
             }
            
-            if($('.informationPanelTotalCases').is(':empty')){
-                $(".informationPanelTotalCases").html("0");
-            }
+            
             
             $('.informationPanelState').html(element_hover);
             
             $("select option").each(function(){
-                if ($(this).text() == element_hover){
+
+            
+                if ($(this).text() == element_hover.replace(/([A-Z])/g, ' $1').trim()){
                     $("#"+element_hover).addClass("hover");
                     $(this).attr("selected","selected");
-                    $("select").val(element_hover).change();
+                    $("select").val(element_hover.replace(/([A-Z])/g, ' $1').trim()).change();
                 }
                 
                 else{
-                    $("#"+$(this).text()).removeClass("hover");
+                    $("#"+$(this).text().replace(/\s+/g, '')).removeClass("hover");
                     $(this).removeAttr("selected");
                 }
             });
@@ -262,10 +269,14 @@ $.ajax({
         //The count variable enables that the action when second click is different
         // from the first click action
         if(count % 2 != 0) {
-            $(this).removeClass('no-hover'); 
+            $("svg > g").each(function(){        
+                $(this).removeClass('no-hover');             
+            });
+        
             hoverEvents();
         }else{
             $(this).removeClass('hover');
+
             $(this).addClass('no-hover'); 
 
             $('.map g').off('mouseover');

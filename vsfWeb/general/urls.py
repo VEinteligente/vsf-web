@@ -16,7 +16,7 @@ urlpatterns = [
     url(r'^advanced-list-cases/title=(?P<title>(\S|\W)*)&category=(?P<category>(\S|\W)*)&start_date=(?P<s_year>\d*)-(?P<s_month>\d*)-(?P<s_day>\d*)&end_date=(?P<e_year>\d*)-(?P<e_month>\d*)-(?P<e_day>\d*)&region=(?P<region>(\S|\W)*)&site=(?P<site>(\S|\W)*)&isp=(?P<isp>(\S|\W)*)/$',CaseListAdvanced.as_view(), name="CaseListAdvanced"),
     url(r'^advanced-list-cases/$',CaseListAdvanced.as_view(), name="CaseListEmptyAdvanced"),
     url(r'^list-cases-excel/$',SearchResultCVS,name="ExcelCaseListEmptyAdvanced"),        
-    url(r'^list-cases-excel/title=(?P<title>(\S|\W)*)&category=(?P<category>(\S|\W)*)&start_date=(?P<s_year>\d*)-(?P<s_month>\d*)-(?P<s_day>\d*)&end_date=(?P<e_year>\d*)-(?P<e_month>\d*)-(?P<e_day>\d*)&region=(?P<region>(\S|\W)*)/$',SearchResultFilterCVS,name="ExcelCaseListAdvanced"),        
+    url(r'^list-cases-excel/id=(?P<pk>\d+)&title=(?P<title>(\S|\W)*)&category=(?P<category>(\S|\W)*)&start_date=(?P<s_year>\d*)-(?P<s_month>\d*)-(?P<s_day>\d*)&end_date=(?P<e_year>\d*)-(?P<e_month>\d*)-(?P<e_day>\d*)&region=(?P<region>(\S|\W)*)/$',SearchResultFilterCVS,name="ExcelCaseListAdvanced"),        
     url(r'^list-cases/$',CaseList.as_view(), name="CaseListEmpty"),
     url(r'^cases-api',CaseListApi.as_view(), name="CaseListApi"),
     url(r'^twitter/$', searchTwitter.as_view(), name = "SearchTwitter" ),

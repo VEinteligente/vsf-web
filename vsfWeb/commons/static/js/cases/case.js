@@ -12,7 +12,14 @@ $(document).ready(function()
 
 	//url_data is where we get the update data of the case and pk is the id of the case
 	var url_data_update = url_one_case_update;         
-                 
+    
+    
+    $("#download").attr("href",url_one_case_excel + "id=" + pk)
+         
+            
+    
+ 
+              
 	//First Ajax call to recieve the case data from server
 	$.ajax({
 		url: url_data_detail,

@@ -471,7 +471,7 @@ $("#advanced_search").submit(function(e){
         
         if( hidden.length != 0 ){
             history.pushState( null, null, url_data_list_empty + "title=" + title + "&category=" + category + "&start_date=" + start_date + "&end_date=" + end_date + "&region=" + region  + "&site=" + site + "&isp=" + isp );            
-            $("#download").attr("href",url_csv + "title=" + title + "&category=" + category + "&start_date=" + start_date + "&end_date=" + end_date + "&region=" + region  + "&site=" + site + "&isp=" + isp )
+            $("#download").attr("href",url_csv + "id=" + id  + "title=" + title + "&category=" + category + "&start_date=" + start_date + "&end_date=" + end_date + "&region=" + region  + "&site=" + site + "&isp=" + isp )
          
             
         }

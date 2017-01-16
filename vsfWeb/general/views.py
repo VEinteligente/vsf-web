@@ -129,7 +129,7 @@ def SearchResultCVS( request ):
     
     # CSV header.
     writer = csv.writer(response)
-    writer.writerow(['Fecha inicio', 'Fecha final', 'Titulo', 'Descripcion', 'Categoria', 'Eventos', 'ISP', 'Region', 'Dominios'])
+    writer.writerow(['ID','Fecha inicio', 'Fecha final', 'Titulo', 'Descripcion', 'Categoria', 'Eventos', 'ISP', 'Region', 'Dominios','Twitter Search Word'])
 
     # count is the total of cases to be shown.
     # result is where the information is located in the JSON
@@ -138,7 +138,7 @@ def SearchResultCVS( request ):
     
     # Load all the information of each result in a CVS row
     while ( count > -1 ):
-
+        pk = result[count]['pk']
         start_date = result[count]['start_date']
         end_date = result[count]['end_date']
         description = result[count]['description']
@@ -193,7 +193,9 @@ def SearchResultCVS( request ):
             
             countDomain = countDomain + 1 
         
-        writer.writerow([start_date, end_date, title, description, category, eventsList, ispList, regionList, domainList])
+        twitter_search = result[count]['twitter_search']
+        
+        writer.writerow([pk, start_date, end_date, title, description, category, eventsList, ispList, regionList, domainList, twitter_search])
         count = count - 1     
     
    
@@ -233,7 +235,7 @@ def SearchResultFilterCVS( request, title, region, category, e_day, s_day, e_mon
     
     # Load all the information of each result in a CVS row
     while (count > -1):
-
+        pk = result[count]['pk']
         start_date = result[count]['start_date']
         end_date = result[count]['end_date']
         description = result[count]['description']
@@ -290,7 +292,8 @@ def SearchResultFilterCVS( request, title, region, category, e_day, s_day, e_mon
             
             countDomain = countDomain + 1 
         
-        writer.writerow([start_date, end_date, title, description, category, eventsList, ispList, regionList, domainList])
+        twitter_search = result[count]['twitter_search']
+        writer.writerow([pk, start_date, end_date, title, description, category, eventsList, ispList, regionList, domainList, twitter_search])
         count = count - 1
             
     

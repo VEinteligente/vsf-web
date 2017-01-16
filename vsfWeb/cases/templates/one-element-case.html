@@ -13,7 +13,10 @@
     			</div>
     		</div>				
     	</div>
-    
+        
+
+         
+        
     	<div class = "container-fluid" style = "padding-top:10px; padding-bottom:10px" >				
     		<div class = "row" >					   
     		    <div class = "col-xs-5 offset-xs-1" id = "caseImage" >		    
@@ -74,8 +77,18 @@
     		</div>
         </div>
     </div>
-    
-    
+
+    <div class = "container-fluid">
+        <div class = "row" >    
+            <div class="col-xs-2">
+                    Download: 
+                    <a id="download" href="#">
+                        <i class="fa fa-file-excel-o" aria-hidden="true"></i>                            
+                    </a>
+                    
+            </div>
+        </div>
+    </div>
     
     <div class = "container-fluid" id = "caseDescriptiion ">
     	<div class = "row" >
@@ -203,6 +216,7 @@
     // because of DJango configuration
      
         var url_one_case = "{% url 'Cases:OneElementCaseApi' %}"
+        var url_one_case_excel = "{% url 'Cases:ExcelCaseCVSEmpty' %}"
         var url_one_case_update = "{% url 'Cases:OneElementCaseUpdateApi' %}"
         var pk = {{ pk }}
         

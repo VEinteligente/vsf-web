@@ -33,14 +33,14 @@ function select(option){
             var categories=$("#category").val();
             
             $("#tableheader").html("Category");
-            url_data= "http://127.0.0.1:8001/cases/api/list/category/";
+            url_data= url_data_category;
             
         }
         else {
             // This variable loads the translated string of the title corresponding to the "domain" option
             var isps=$("#isp").val();            
             $("#tableheader").html("ISP");
-            url_data = "http://127.0.0.1:8001/cases/api/list/isp/";
+            url_data = url_data_isp;
             
         }
         
@@ -54,6 +54,13 @@ function select(option){
         })
         .done(function(data){
 
+        var temporal = ""; 
+        // For each element in the JSON we need to collect their values
+        for(var i=0; i<data.length; i++)
+            temporal=temporal.concat(data[i]);
+            var dataJson=JSON.parse(temporal);
+
+
         //Depending on the option choosed, the table loads the info for Category or ISP's
             
         if (option == "category"){
@@ -63,10 +70,10 @@ function select(option){
             $("#tabletitle").empty();
 
             //Pill with total number of cases in red and the title of the option
-            $("#tabletitle").append('<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:90%; background-color:red"></span> &nbsp <strong>Casos</strong> Por Categoría');
+            $("#tabletitle").html('<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:90%; background-color:red"></span> &nbsp <strong>Casos</strong> Por Categoría');
            
             //In data.results we find the info we need for this section, it is an array of objects
-            $.each(data.results,function(index,result){
+            $.each(dataJson.results,function(index,result){
 
                     //name of the category it is iterating on
                     name = result.category;
@@ -82,50 +89,50 @@ function select(option){
                     $("#tablebody").append('<tr data-toggle="collapse" data-target="#data'+name+'" class="clickable"><td style="text-transform:capitalize"><span class="tag tag-default tag-pill float-xs-left">'+number
                         +'</span> &nbsp '+name+'</td><tr><td class ="prueba" style="padding:0"><div id="data'+name+'" class="collapse"></div></td></tr>');
 
-                    //for each case wee need its title to display as info on the table
+                    //for each case wee need its title to display as info on the table each name of the categories is a tr that is has an id with #dataname where name is the name of the category so it can be appended where it belongs
                     $.each(result.cases, function (key, value){
                     
                     title = value.title;
 
                     if (name == "bloqueo"){
                         content = "blocked";
-                        $("#data"+name).append('<tr><td>'+title+'</td><td><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div> &nbsp <a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Abrir</a></td></tr><br>');
+                        $("#data"+name).append('<tr><td style="min-width:350px">'+title+'</td><td style="min-width:135px"><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div> </td><td><a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Abrir</a></td></tr><br>');
 
                     }
 
                     else if (name == "desconexion"){
                         content = "disconnected";
-                        $("#data"+name).append('<tr><td>'+title+'</td><td><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div> &nbsp <a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Abrir</a></td></tr><br>');
+                        $("#data"+name).append('<tr><td style="min-width:350px">'+title+'</td><td style="min-width:135px"><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div> </td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Abrir</a></td></tr><br>');
 
                     }
 
                     else if (name == "relentizacion"){
                         content = "slowdown";
-                        $("#data"+name).append('<tr><td>'+title+'</td><td colspan="2"><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div> &nbsp <a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Abrir</a></td></tr><br>');
+                        $("#data"+name).append('<tr><td style="min-width:350px">'+title+'</td><td style="min-width:135px"><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div></td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Abrir</a></td></tr><br>');
 
                     }
 
                     else if (name == "conexion"){
                         content = "continue";
-                        $("#data"+name).append('<tr><td>'+title+'</td><td colspan="2"><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div> &nbsp <a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Abrir</a></td></tr><br>');
+                        $("#data"+name).append('<tr><td style="min-width:350px">'+title+'</td><td style="min-width:135px"><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div> </td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Abrir</a></td></tr><br>');
 
                     }
 
                     else if (name == "intercepcion"){
                         content = "interception";
-                        $("#data"+name).append('<tr><td>'+title+'</td><td colspan="2"><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div> &nbsp <a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Abrir</a></td></tr><br>');
+                        $("#data"+name).append('<tr><td style="min-width:350px">'+title+'</td><td style="min-width:135px"><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div></td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Abrir</a></td></tr><br>');
 
                     }
 
                     else if (name == "falla"){
                         content = "fail";
-                        $("#data"+name).append('<tr><td>'+title+'</td><td colspan="2"><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div> &nbsp <a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Abrir</a></td></tr><br>');
+                        $("#data"+name).append('<tr><td style="min-width:350px">'+title+'</td><td style="min-width:135px"><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div> </td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Abrir</a></td></tr><br>');
 
                     }
 
                     else {
                         content = "dos";
-                        $("#data"+name).append('<tr><td>'+title+'</td><td colspan="2"><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div> &nbsp <a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Abrir</a></td></tr><br>');
+                        $("#data"+name).append('<tr><td style="min-width:350px">'+title+'</td><td style="min-width:135px"><div class="'+content+'_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'+name+'</div><div class="right_cornerTag"></div></div> </td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Abrir</a></td></tr><br>');
 
                     }
 
@@ -143,7 +150,7 @@ function select(option){
             $("#tabletitle").append('<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:90%; background-color:red"></span> &nbsp <strong>Casos</strong> Por ISP');
            
            //In data.results we find the info for this section, it is an array of objects
-            $.each(data.results,function(index,result){
+            $.each(dataJson.results,function(index,result){
 
                     //name of the isp
                     name = result.isp;
@@ -166,7 +173,7 @@ function select(option){
                     $.each(result.cases, function (key, value){
 
                         title = value.title;
-                        $("#data"+name).append('<tr><td>'+title+'</td><td><a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Abrir</a></td></tr></tr>');
+                        $("#data"+name).append('<tr><td style="min-width:350px">'+title+'</td><td><a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Abrir</a></td></tr></tr>');
 
                     })    
             })

@@ -1,9 +1,23 @@
+//Measurement Table
 
 // Sites and domain list
 
 //One Element Case Page Style
 
 //Summary Category & ISP Table
+
+.marginPage{
+    background-color:#dedede;
+}
+
+#modalm{
+    position: relative;
+    display: table;
+    overflow-y: auto;    
+    overflow-x: auto;
+    width: auto;
+    min-width: 300px;   
+}
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   color: white;
@@ -33,16 +47,62 @@ td{
     color:#575757;
 }
 
-#mtablehead{
-    th{
-    text-align:center;
-    }
+#measurementHeaderRow{
+    border-bottom-width: 1px;
+    border-bottom-color: darkgrey;
+    border-bottom-style:solid;  
+    height:1px;  
 }
 
-#mtablebody{
-    tr{
-    text-align:center;
-    }
+#mTable{
+    margin-top: 200px;
+    background-color:#dedede;
+    height:100vh;
+
+
+}
+
+.mheader{
+    color:#575757;
+    font-weight:700;
+    transform: rotate(-90deg);
+    transform-origin: left top 0;
+    float:left;
+    padding-left: 4px;
+    text-transform: uppercase;
+}
+
+#dataTableM{
+    padding-top:8px;
+    height:36px;
+    padding-bottom:8px;
+}
+
+#headerDiv{
+    height:0px;
+}
+
+#mRow{
+
+}
+
+#mRow:hover{
+    background-color: #cecece;
+    padding-right: 6px;    
+}
+
+.mData{
+    float:left;
+    font-size:12px;
+    color: #808184;
+    font-weight: 500;
+
+}
+
+#modalbutton{
+    text-decoration: underline;
+    color: #575757;
+    cursor: pointer;
 }
 
 #caseImage{

@@ -1,6 +1,7 @@
 import requests
 import datetime
 import json
+from selenium import webdriver
 from django.views.generic import (TemplateView)
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -30,5 +31,7 @@ class OneElementCase(TemplateView):
 	template_name = "one-element-case.html"
 	
 
+		
+	
 class SpeedTestCase(TemplateView):
     template_name = "speed-test-case.html"

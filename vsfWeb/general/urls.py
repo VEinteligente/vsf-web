@@ -20,5 +20,6 @@ urlpatterns = [
     url(r'^list-cases/$',CaseList.as_view(), name="CaseListEmpty"),
     url(r'^cases-api',CaseListApi.as_view(), name="CaseListApi"),
     url(r'^twitter/$', searchTwitter.as_view(), name = "SearchTwitter" ),
-    url(r'^twitter-api/$', searchTwitterApi.as_view(), name = "SearchTwitterApi" ),
+    url(r'^twitter-api/$', searchTwitterApi.as_view(), name = "SearchTwitterApiEmpty" ),
+    url(r'^twitter-api/search_twitter=(?P<twitterSearch>(\S|\W)*)$', searchTwitterApi.as_view(), name = "SearchTwitterApi" ),
 ] 

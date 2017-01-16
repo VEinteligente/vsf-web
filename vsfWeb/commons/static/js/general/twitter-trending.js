@@ -3,18 +3,17 @@
     // These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here 
     // because of DJango configuration
      
-    
-
+function twitterSearch(searchWord){
+     
             $.ajax({
-                url: url_data_twitter,
-                context: document.body
+                url: url_data_twitter + "search_twitter=" + searchWord,
+                context: document.body,                
             }).done(function(response){
                     var search_metadata = response.search_metadata;
                     var statuses  = response.statuses;
                     
                  //   $('#twitter').append('<a class="twitter-timeline"  href="https://twitter.com/search?q=' + (search_metadata.query) + '" data-widget-id="' + search_metadata.max_id +  '">#TwitterStories Tweets</a>')
-                    
-                    console.log((search_metadata.query).replace('%40',''))
+           
                    // $('#twitter').append(' <a class="twitter-timeline"  href="https://twitter.com/hashtag/TwitterStories" data-widget-id="819972820520333312">#TwitterStories Tweets</a>')
                               
                              
@@ -51,3 +50,4 @@
                 });
             
           
+}

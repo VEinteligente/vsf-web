@@ -10,8 +10,8 @@ $(document).ready(function()
 	var url_data_detail = url_one_case;
 
 	//url_data is where we get the update data of the case and pk is the id of the case
-	var url_data_update = url_one_case_update;
-	
+	var url_data_update = url_one_case_update;         
+                 
 	//First Ajax call to recieve the case data from server
 	$.ajax({
 		url: url_data_detail,
@@ -29,7 +29,7 @@ $(document).ready(function()
         
 	
 		//variable that has the data from server
-		var dataJson=data;
+		var dataJson = data;
 		//list of event's id's for future automatically url search
 		var id_events=[];
 
@@ -55,11 +55,16 @@ $(document).ready(function()
 		$('#descriptionAjax').html(description);
 		
 		//if the end_date is null it means that the case is still active, still needs to do the else case when the case is considered finished
-		if (dataJson.end_date == null){
+		if (dataJson.end_date == null ){
 			$('#statusAjax').html("Continua");
 			$('#statusDateAjax').html(date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear());
 		}
 	
+    	if( twitter_search != null ){
+    	    
+    	    twitterSearch( twitter_search );
+    	}
+    	
 
 		//AJAX call for updates datails API associated to the case
 		$.ajax({

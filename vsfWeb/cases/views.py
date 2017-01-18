@@ -8,6 +8,7 @@ from rest_framework.views import (APIView)
 import csv
 from django.http import HttpResponse
 from rest_framework.response import Response
+
 # This view renders the HTML containing information about one element case
 class OneElementCase(TemplateView):
     template_name = "one-element-case.html"
@@ -54,38 +55,23 @@ def CaseCVS( request, pk ):
     headers = {'Authorization': settings.SERVICES_TOKEN}
     snippet = requests.get( 'http://127.0.0.1:8001/cases/api/detail/' + pk , headers = headers )
     data = json.loads( snippet.text )
-
-    # Create the HttpResponse object with the appropriate CSV header.
-    response = HttpResponse( content_type='text/csv' )
-    response['Content-Disposition'] = 'attachment; filename=Case_ID="' + pk + '.csv"'
     
-    # CSV header
-    writer = csv.writer(response)
-    writer.writerow(['Fecha descarga', 'ID', 'Titulo', 'Descripcion', 'Categoria', "ISP", "Region", "Dominios", "Fecha inicio", "Fecha final"])
-
-   
     # Load all the information of each result in a CVS row
 
-    pk = data['id']
+    id = data['id']
     start_date = data['start_date']
-    end_date = data['end_date']
+    
+    
+    if  data["end_date"] is None:
+        end_date = "Continua"
+    else:
+        end_date = data['end_date']
+            
+            
     description = data['description']
     title = data['title']
     category = data['category']
         
-    events = data['events']
-    countEvent = 0
-    eventList = ""
-    for event in events:
-        if countEvent>0:
-            eventList = eventList + "," + event
-        else:
-            eventsList = event
-            
-            
-        countEvent = countEvent + 1 
-            
-            
     isps = data['isp']
     countIsp = 0
     ispList = ""
@@ -122,9 +108,58 @@ def CaseCVS( request, pk ):
             domainList = domain["site"] + ": " + domain["url"]          
             
         countDomain = countDomain + 1 
-        
-    twitter_search = data['twitter_search']
-    writer.writerow([ pk, start_date, end_date, title, description, category, eventsList, ispList, regionList, domainList, twitter_search])
+    
+    download_date = datetime.datetime.now().date()
+    
+    
+    # Get the list of all the events of the cases and load it as JSON
+    headers = {'Authorization': settings.SERVICES_TOKEN}
+    snippet = requests.get( 'http://127.0.0.1:8001/cases/api/detail_event/' + pk , headers = headers )
+    data_event = json.loads( snippet.text )
+    
+    events = data_event['events']
+    countEvent = 0
+    eventList = ""
+    for event in events:
+        if countEvent > 0:
+            eventList = eventList + ";" + "Event: " + event["identification"] + ", Fecha inicio: " + event["start_date"] + ", Fecha fin: " + event["end_date"]  + ", Target: " + event["isp"] + ", isp: " + event["isp"]     
+        else: 
+            if  event["end_date"] is None:
+                eventList = "Event: " + event["identification"] + ", Fecha inicio: " + event["start_date"] + ", Fecha fin: " + "Continua"  + ", Target: " + event["target"] + ", ISP: " + event["isp"]
+            else:
+                eventList = "Event: " + event["identification"] + ", Fecha inicio: " + event["start_date"] + ", Fecha fin: " + event["end_date"]  + ", Target: " + event["target"] + ", ISP: " + event["isp"]
+                                
+            
+        countEvent = countEvent + 1 
+    
+    
+    # Get the list of all the events of the cases and load it as JSON
+    headers = {'Authorization': settings.SERVICES_TOKEN}
+    snippet = requests.get( 'http://127.0.0.1:8001/cases/api/detail_update/' + pk , headers = headers )
+    data_update = json.loads( snippet.text )
+    
+    updates = data_update['updates']
+    countUpdate = 0
+    updateList = ""
+    for update in updates:
+        if countUpdate > 0:
+            updateList = updateList + ";" + "Update: " + str(update["id"]) + ", Fecha: " + update["date"] + ", Titulo: " + update["title"]  + ", Category: " + update["category"]     
+        else:
+            updateList = "Update: " + str(update["id"]) + ", Fecha: " + update["date"] + ", Titulo: " + update["title"]  + ", Category: " + update["category"]
+                                
+            
+        countUpdate = countUpdate + 1 
+    
+    
+    
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse( content_type='text/csv' )
+    response['Content-Disposition'] = 'attachment; filename=Case_ID=' + pk + '.csv'
+    
+    # CSV header
+    writer = csv.writer(response)
+    writer.writerow(['Fecha descarga', 'ID', 'Titulo',  "Fecha inicio", "Fecha final", 'Descripcion', 'Categoria', "ISP", "Region", "Dominios", "Updates", "Eventos"])
+    writer.writerow([ download_date, pk, title, start_date, end_date,  description, category, ispList, regionList, domainList, updateList, eventList])
 
             
     

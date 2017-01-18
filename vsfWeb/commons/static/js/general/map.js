@@ -24,6 +24,8 @@ var count=0;
 
 $( document ).ready(function() {
     
+    
+    $("#download").attr("href",url_map_excel)
     // This sections allows you to use a map of any country if you use a SVG image and loads the states in the select options.
     
     // arraySelectOptions is the array for the dropdown of the "select" and making it a global variable

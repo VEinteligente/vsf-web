@@ -10,9 +10,17 @@
 </div>
 	
 	<div class="col-xs-10 marginPage">
-		
+		<div class = "row" >    
+                <div class="col-xs-2">
+                        Download: 
+                        <a id="download" href="#">
+                            <i class="fa fa-file-excel-o" aria-hidden="true"></i>                            
+                        </a>
+                        
+                </div>
+        </div>  
 		<div class="container-fluid" id="mTable">
-				
+			
 			<div class="row">
 			
 				<div class="col-xs-11" id="headerDiv">
@@ -66,7 +74,10 @@
     </div>
   </div>
 </div>
-<script> var url_data_measurement =  "{% url 'Summary:MeasurementsTableApi' %}" </script>
+<script>
+    var url_data_measurement =  "{% url 'Summary:MeasurementsTableApi' %}" 
+    var url_excel = "{% url 'Summary:ExcelMeasurementList' %}"
+</script>
 <script src="{% static 'js/summary/jjsonviewer.js' %}"></script>
 
 <script src="{% static 'js/summary/mtable.js' %}"></script>

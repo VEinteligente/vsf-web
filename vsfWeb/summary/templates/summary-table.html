@@ -25,7 +25,7 @@
                 <tr>
    
                     <th id="tabletitle">
-
+                        
                     </th>
    
                 </tr>
@@ -46,6 +46,8 @@
         <button class="contextualButtonFixedSize" onclick="select('isp')" style="color:#808080; margin-top: 10px;margin-bottom: 5px;">
                 {% trans 'ISP' %}
         </button>
+        
+        <div class="float-xs-right" style="margin-top: 10px;margin-bottom: 5px;">  Download: <a id="download" href="#"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> </a></div>
         </td>
         </tr>
         </tfoot>
@@ -59,6 +61,8 @@
 var url_style_list =  "{% url 'StylingGuide:ListApi' %}"
 var url_data_category = "{% url 'Summary:SummaryCategoryTableApi'  %}"
 var url_data_isp = "{% url 'Summary:SummaryIspTableApi' %}"
+var url_excel_category = "{% url 'Summary:ExcelCategoryList' %}"
+var url_excel_isp = "{% url 'Summary:ExcelISPList' %}"
 </script>
 
 <script src="{% static 'js/summary/table.js' %}"></script>

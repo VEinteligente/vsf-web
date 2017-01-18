@@ -2,7 +2,21 @@
 {% load i18n %}
 {% load static %}
 
+{% block metadata %}
+
+<meta property="og:image" content="https://dolartoday.com/images/dolar_big_image.jpg" />
+<meta property="og:url" content="http://www.odinotvet.ru" />
+<meta property="og:description" content="Профессиональная сеть вопросов и ответов,создаваемая и управляемая сообществом пользователей. Ресурс для тех, кто хочет знать ответы на все вопросы." />
+
+<meta name="twitter:image" content="https://dolartoday.com/images/dolar_big_image.jpg" />
+<meta name="twitter:title" content="Mountain sunset" />
+
+{% endblock %}
+
+
 {% block content %}
+
+
 
 <div style = "background-color: gray" >
     	<div class = "container-fluid" id = "title" >				
@@ -87,7 +101,21 @@
                     </a>
                     
             </div>
+            
+            <div class="col-xs-2">
+                    Share: 
+                    <a href="" id="shareFacebook">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>                            
+                    </a>
+                    
+                    <a href="" id="shareTwitter">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>                            
+                    </a>
+                    
+            </div>
         </div>
+        
+        
     </div>
     
     <div class = "container-fluid" id = "caseDescriptiion ">
@@ -214,11 +242,12 @@
            
     // These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here 
     // because of DJango configuration
-     
-        var url_one_case = "{% url 'Cases:OneElementCaseApi' %}"
-        var url_one_case_excel = "{% url 'Cases:ExcelCaseCVSEmpty' %}"
-        var url_one_case_update = "{% url 'Cases:OneElementCaseUpdateApi' %}"
+        
         var pk = {{ pk }}
+        var url_one_case = "{% url 'Cases:OneElementCaseApi' pk=pk %}"
+        var url_one_case_excel = "{% url 'Cases:ExcelCaseCVSEmpty' %}"
+        var url_one_case_update = "{% url 'Cases:OneElementCaseUpdateApi' pk=pk %}"
+   
         
     
         
@@ -226,8 +255,7 @@
         
         var url_data_twitter ="{% url 'General:SearchTwitterApiEmpty' %}" 
         
- 
-  </script>
+</script>
 
     <script src="{% static 'js/general/twitter-trending.js' %}"></script>
     <script src="{% static 'js/cases/case.js' %}"></script>

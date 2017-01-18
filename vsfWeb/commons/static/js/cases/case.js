@@ -8,15 +8,19 @@ $(document).ready(function()
 	
 	//url_data is where we fetch most of the case information and pk is the id of the case
 
-	var url_data_detail = url_one_case;
+	var url_data_detail = url_one_case  ;
 
 	//url_data is where we get the update data of the case and pk is the id of the case
-	var url_data_update = url_one_case_update;         
+	var url_data_update = url_one_case_update ;
     
+    var url_share_facebook = "http://www.facebook.com/sharer.php?u=dev.web.pandora.saturno.space/general/map-Venezuela"
+    var url_share_twitter = "http://twitter.com/share?url=" + url_data_detail
     
     $("#download").attr("href",url_one_case_excel + "id=" + pk)
-         
-            
+    $("#shareFacebook").attr("href",url_share_facebook)
+          
+    $("#shareTwitter").attr("href",url_share_twitter)
+          
     
  
               

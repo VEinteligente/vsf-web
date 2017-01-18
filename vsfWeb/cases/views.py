@@ -18,6 +18,7 @@ class OneElementCaseApi(APIView):
    
    def get(self, request, pk ="1", format=None):
        headers = {'Authorization': settings.SERVICES_TOKEN}
+       print pk
        snippet = requests.get('http://127.0.0.1:8001/cases/api/detail/'+ pk , headers = headers )
        return Response(snippet)
 

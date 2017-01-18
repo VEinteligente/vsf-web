@@ -4,7 +4,8 @@ $(document).ready(function(){
 
 	var date =null;
 	var url_data= url_data_measurement;
-
+    
+    $("#download").attr("href",url_excel)
 
 	//months names & number list so it can be displayed on the html as a month name or month number
 	var month_names = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];

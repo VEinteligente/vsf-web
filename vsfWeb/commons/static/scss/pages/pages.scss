@@ -152,6 +152,11 @@ td{
 
 }
 
+.downloadBlockedSitesUrl{
+    padding-right: 25px;
+    padding-top: 10px;
+    
+}
 // Maps
 
 .mapContainer {
@@ -206,6 +211,9 @@ td{
     }
 }
 
+.downloadMap i { 
+    color: white;
+} 
 .informationPanel {
     z-index:100;
     position: absolute;

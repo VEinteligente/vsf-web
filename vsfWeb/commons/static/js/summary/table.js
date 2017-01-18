@@ -42,7 +42,7 @@ function select(option){
             // This variable loads the translated string of the title corresponding to the "domain" option
             var isps=$("#isp").val();            
             $("#tableheader").html("ISP");
-
+          
             url_data = url_data_isp;
 
             
@@ -77,7 +77,10 @@ function select(option){
             //Pill with total number of cases in red and the title of the option
 
             $("#tabletitle").html('<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:90%; background-color:red"></span> &nbsp <strong>Casos</strong> Por Categoría');
-           
+            
+            
+
+            $("#download").attr("href",url_excel_category)
             //In data.results we find the info we need for this section, it is an array of objects
             $.each(dataJson.results,function(index,result){
 
@@ -170,6 +173,8 @@ function select(option){
             //Pill with total number of cases in red and the title of the option
             $("#tabletitle").append('<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:90%; background-color:red"></span> &nbsp <strong>Casos</strong> Por ISP');
            
+
+            $("#download").attr("href",url_excel_isp)
            //In data.results we find the info for this section, it is an array of objects
 
             $.each(dataJson.results,function(index,result){

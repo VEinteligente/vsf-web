@@ -18,7 +18,8 @@
             
                 <h4 style="display: -webkit-box; display: -moz-box; display: box;">
                     <div class="col-xs-1" id="count"></div >
-                    <div id="title" style="padding-left: 5px;"></div>                                       
+                    <div id="title" style="padding-left: 5px;"></div>  
+                                                   
                 </h4>
                    
             </div>
@@ -27,13 +28,15 @@
             <div>
                 <div id="blockedSitesList" ></div>
 
-                    <button class="contextualButtonFixedSize" onclick="select('sites')" style="margin-top: 10px;margin-bottom: 5px;">
+                    <button class="contextualButtonFixedSize" onclick="select('domains')" style="margin-top: 10px;margin-bottom: 5px;">
                         {% trans 'Domains' %}
                     </button>
             
-                    <button class="contextualButtonFixedSize" onclick="select('domains')" style="margin-top: 10px;margin-bottom: 5px;">
+                    <button class="contextualButtonFixedSize" onclick="select('sites')" style="margin-top: 10px;margin-bottom: 5px;">
                         {% trans 'Sites' %}
                     </button>
+                    
+                    <div class="float-xs-right" style="margin-top: 10px;margin-bottom: 5px;">  Download: <a id="download" class="downloadBlockedSitesUrl" href="#"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> </a></div>     
             </div>
     
         
@@ -50,8 +53,8 @@
         var url_data_sites="{% url 'General:BlockedSitesApi' %}"
         var url_data_domains = "{% url 'General:BlockedDomainsApi' %}"
         var url_style_list =  "{% url 'StylingGuide:ListApi' %}"
-        
-    
+        var url_excel_sites = "{% url 'General:ExcelBlockedSites' %}"
+        var url_excel_domains = "{% url 'General:ExcelBlockedDomains' %}"
         
     </script>
     

@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from general.views import (Dashboard, AboutUs, BlockedSitesApi, BlockedDomainsApi, BlockedUrlsSites, MapApi, MapVenezuela,
+from general.views import (Dashboard, AboutUs, BlockedSitesApi, BlockedDomainsApi, BlockedUrlsSites, BlockedDomainsTableCVS, BlockedSitesTableCVS, MapApi, MapVenezuela, MapTableCVS,
                            CaseList, SearchResultCVS, SearchResultFilterCVS, searchTwitter , searchTwitterApi, CaseListAdvanced, CaseListApi)
 
 
@@ -10,8 +10,10 @@ urlpatterns = [
     url(r'^blocked-sites-api$',BlockedSitesApi.as_view(),name="BlockedSitesApi"),
     url(r'^blocked-domains-api$',BlockedDomainsApi.as_view(),name="BlockedDomainsApi"),
     url(r'^blocked-domains_sites$',BlockedUrlsSites.as_view(), name="BlockedUrlsSites"),
+    url(r'^blocked-domains-excel/$',BlockedDomainsTableCVS,name="ExcelBlockedDomains"),          
     url(r'^map-Venezuela',MapVenezuela.as_view(), name="MapVenezuela"),
     url(r'^map-api',MapApi.as_view(), name="MapApi"),
+    url(r'^map-excel/$',MapTableCVS,name="ExcelMap"),              
     url(r'^list-cases/title=(?P<title>(\S|\W)*)&category=(?P<category>(\S|\W)*)&start_date=(?P<s_year>\d*)-(?P<s_month>\d*)-(?P<s_day>\d*)&end_date=(?P<e_year>\d*)-(?P<e_month>\d*)-(?P<e_day>\d*)&region=(?P<region>(\S|\W)*)&site=(?P<site>(\S|\W)*)&isp=(?P<isp>(\S|\W)*)/$',CaseList.as_view(), name="CaseList"),
     url(r'^advanced-list-cases/title=(?P<title>(\S|\W)*)&category=(?P<category>(\S|\W)*)&start_date=(?P<s_year>\d*)-(?P<s_month>\d*)-(?P<s_day>\d*)&end_date=(?P<e_year>\d*)-(?P<e_month>\d*)-(?P<e_day>\d*)&region=(?P<region>(\S|\W)*)&site=(?P<site>(\S|\W)*)&isp=(?P<isp>(\S|\W)*)/$',CaseListAdvanced.as_view(), name="CaseListAdvanced"),
     url(r'^advanced-list-cases/$',CaseListAdvanced.as_view(), name="CaseListEmptyAdvanced"),

@@ -65,6 +65,86 @@ class BlockedDomainsApi( APIView ):
        return Response( snippet )
 
 
+# This view takes list of filtered cases and exports it to a CVS file.
+def BlockedDomainsTableCVS( request ):
+    
+    # Get the list of all the cases and load it as JSON
+    headers = {'Authorization': settings.SERVICES_TOKEN}
+    snippet = requests.get('http://127.0.1:8001/events/api/blocked_domains/' , headers = headers )
+    data = json.loads( snippet.text )
+    
+      # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse( content_type='text/csv' )
+    response['Content-Disposition'] = 'attachment; filename="BlockedDomainsTable.csv"'
+    
+    # CSV header.
+    writer = csv.writer(response)
+    writer.writerow(['Fecha descarga', 'Domains'])
+    # count is the total of cases to be shown.
+    # result is where the information is located in the JSON     
+    result = data['results']
+    count = data["count"]-1
+    
+    # Load all the information of each result in a CVS row
+    while (count > -1):
+        site = result[count]['site']
+        url = result[count]['url']
+       
+        download_date = datetime.datetime.now().date()
+        
+        writer.writerow([download_date, site, url])
+        count = count - 1
+            
+    
+   
+    return response  
+
+
+# This view takes list of filtered cases and exports it to a CVS file.
+def BlockedSitesTableCVS( request ):
+    
+    # Get the list of all the cases and load it as JSON
+    headers = {'Authorization': settings.SERVICES_TOKEN}
+    snippet = requests.get('http://127.0.1:8001/events/api/blocked_sites/' , headers = headers )
+    data = json.loads( snippet.text )
+    
+      # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse( content_type='text/csv' )
+    response['Content-Disposition'] = 'attachment; filename="BlockedSitesTable.csv"'
+    
+    # CSV header.
+    writer = csv.writer(response)
+    writer.writerow(['Fecha descarga', 'Site', 'Domains'])
+    # count is the total of cases to be shown.
+    # result is where the information is located in the JSON     
+    result = data['results']
+    count = data["count"]-1
+    
+    # Load all the information of each result in a CVS row
+    while (count > -1):
+        site = result[count]['name']
+        
+        domains =result[count]['domains']
+        
+        countDomains = 0
+        domainsList = ""
+        for domain in domains:
+            if countDomains > 0:
+                domainsList = domainsList + ";" + "ID:" + str(domain["id"]) + ", url: " + domain["url"]             
+            else:
+                domainsList = "ID:" + str(domain["id"]) + ", url: " + domain["url"]                                 
+            
+        countDomains = countDomains + 1 
+        
+        download_date = datetime.datetime.now().date()
+        
+        writer.writerow([download_date, site, domainsList])
+        count = count - 1
+            
+    
+   
+    return response  
+  
 # This view renders the HTML containing information about the blocked sites and domains.
 class BlockedUrlsSites( TemplateView ):
     template_name = "blocked-sites_domains.html"
@@ -115,6 +195,53 @@ class MapApi( APIView ):
        snippet = requests.get( 'http://127.0.1:8001/cases/api/list/region/' , headers = headers )       
        return Response( snippet )
 
+
+# This view takes list of filtered cases and exports it to a CVS file.
+def MapTableCVS( request ):
+    
+    # Get the list of all the cases and load it as JSON
+    headers = {'Authorization': settings.SERVICES_TOKEN}
+    snippet = requests.get('http://127.0.1:8001/cases/api/list/region/' , headers = headers )
+    data = json.loads( snippet.text )
+    
+      # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse( content_type='text/csv' )
+    response['Content-Disposition'] = 'attachment; filename="BlockedSitesPerRegion.csv"'
+    
+    # CSV header.
+    writer = csv.writer(response)
+    writer.writerow(['Fecha descarga', 'Region', 'Numero de casos', 'Casos'])
+    # count is the total of cases to be shown.
+    # result is where the information is located in the JSON     
+    result = data['results']
+    count = data["count"]-1
+    
+    # Load all the information of each result in a CVS row
+    while (count > -1):
+        region = result[count]['name']
+        number_cases = result[count]['number_cases']
+        
+        cases =result[count]['cases']
+        
+        countCases = 0
+        casesList = ""
+        for case in cases:
+            if countCases > 0:
+                casesList = domainsList + ";" + "ID:" + str(case["id"]) + ", Title: " + case["title"] + ", Category: " + case['category']            
+            else:
+                casesList = "ID:" + str(case["id"]) + ", Title: " + case["title"] + ", Category: " + case['category']                               
+            
+        countCases = countCases + 1 
+        
+        download_date = datetime.datetime.now().date()
+        
+        writer.writerow([download_date, region, number_cases, casesList])
+        count = count - 1
+            
+    
+   
+    return response  
+  
 # This view takes list of all the cases and exports it to a CVS file.
 def SearchResultCVS( request ):
     
@@ -129,7 +256,7 @@ def SearchResultCVS( request ):
     
     # CSV header.
     writer = csv.writer(response)
-    writer.writerow(['ID','Fecha inicio', 'Fecha final', 'Titulo', 'Descripcion', 'Categoria', 'Eventos', 'ISP', 'Region', 'Dominios','Twitter Search Word'])
+    writer.writerow(['Fecha descarga', 'Fecha inicio', 'Fecha final', 'Titulo', 'Descripcion', 'Categoria', 'Eventos', 'ISP', 'Region', 'Dominios','Twitter Search Word'])
 
     # count is the total of cases to be shown.
     # result is where the information is located in the JSON
@@ -195,7 +322,9 @@ def SearchResultCVS( request ):
         
         twitter_search = result[count]['twitter_search']
         
-        writer.writerow([pk, start_date, end_date, title, description, category, eventsList, ispList, regionList, domainList, twitter_search])
+        download_date = datetime.datetime.now().date()
+        
+        writer.writerow([download_date, start_date, end_date, title, description, category, eventsList, ispList, regionList, domainList, twitter_search])
         count = count - 1     
     
    
@@ -226,7 +355,7 @@ def SearchResultFilterCVS( request, title, region, category, e_day, s_day, e_mon
     
     # CSV header
     writer = csv.writer(response)
-    writer.writerow(['Fecha inicio', 'Fecha final', 'Titulo', 'Descripcion', 'Categoria', "Eventos", "ISP", "Region", "Dominios"])
+    writer.writerow(['Fecha descarga', 'Fecha inicio', 'Fecha final', 'Titulo', 'Descripcion', 'Categoria', "Eventos", "ISP", "Region", "Dominios"])
 
     # count is the total of cases to be shown.
     # result is where the information is located in the JSON     
@@ -293,7 +422,9 @@ def SearchResultFilterCVS( request, title, region, category, e_day, s_day, e_mon
             countDomain = countDomain + 1 
         
         twitter_search = result[count]['twitter_search']
-        writer.writerow([pk, start_date, end_date, title, description, category, eventsList, ispList, regionList, domainList, twitter_search])
+        download_date = datetime.datetime.now().date()
+        
+        writer.writerow([download_date, start_date, end_date, title, description, category, eventsList, ispList, regionList, domainList, twitter_search])
         count = count - 1
             
     
@@ -319,3 +450,6 @@ class searchTwitterApi( APIView ):
         
         #print json.dumps(timeline_data, indent=2, sort_keys=True)
         return Response(timeline_data)
+
+
+

@@ -1,6 +1,6 @@
 from vsfWeb.settings import *
 
-DEBUG = True
+DEBUG = False
 
 CONSUMER_KEY = local_settings.CONSUMER_KEY
 CONSUMER_SECRET = local_settings.CONSUMER_SECRET

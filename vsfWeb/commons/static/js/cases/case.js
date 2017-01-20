@@ -13,8 +13,8 @@ $(document).ready(function()
 	//url_data is where we get the update data of the case and pk is the id of the case
 	var url_data_update = url_one_case_update;
     
-    var url_share_facebook = "http://www.facebook.com/sharer.php?u=http://dev.web.pandora.saturno.space" + url_one_case;
-    var url_share_twitter = "http://twitter.com/share?url=http://dev.web.pandora.saturno.space" + url_one_case;
+    var url_share_facebook = "http://www.facebook.com/sharer.php?u=http://dev.web.pandora.saturno.space" + url_case;
+    var url_share_twitter = "http://twitter.com/share?url=http://dev.web.pandora.saturno.space" + url_case;
     
     
     
@@ -71,7 +71,7 @@ $(document).ready(function()
         $('head').append('<meta property="og:title" content="VE Sin filtro: ' + title + '" />');
         
         $('head').append('<meta property="og:image" content="' + $('.img-fluid').attr('src') + '" />');
-        $('head').append('<meta property="og:url" content="http://dev.web.pandora.saturno.space' + url_one_case + '" />');
+        $('head').append('<meta property="og:url" content="http://dev.web.pandora.saturno.space' + url_case + '" />');
         $('head').append('<meta property="og:description" content="' + description + '" />');
   
 		

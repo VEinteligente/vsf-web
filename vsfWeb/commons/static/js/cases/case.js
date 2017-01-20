@@ -62,16 +62,16 @@ $(document).ready(function()
 		
 		$('#titleAjax').html(title);
 		
-		$('head').append('<meta name="twitter:title" content="' + title + '" />');
-		$('head').append('<meta name="twitter:site" content="@VSF" />');
-        $('head').append('<meta name="twitter:description" content="' + description + '" />');
-		$('head').append('<meta name="twitter:image" content="' + $('.img-fluid').attr('scr') + '" />');
+		$('head').append('<meta property="twitter:title" content="' + title + '" />');
+		$('head').append('<meta property="twitter:site" content="@VSF" />');
+        $('head').append('<meta property="twitter:description" content="' + description + '" />');
+		$('head').append('<meta property="twitter:image" content="' + $('.img-fluid').attr('scr') + '" />');
         
         
-        $('head').append('<meta name="og:image" content="' + $('.img-fluid').attr('scr') + '" />');
-        $('head').append('<meta name="og:url" content="' + $('.img-fluid').attr('scr') + '" />');
-        $('head').append('<meta name="og:image" content="http://dev.web.pandora.saturno.space' + url_one_case + '" />');
-        $('head').append('<meta name="og:image" content="' + description + '" />');
+        $('head').append('<meta property="og:image" content="' + $('.img-fluid').attr('scr') + '" />');
+        $('head').append('<meta property="og:url" content="' + $('.img-fluid').attr('scr') + '" />');
+        $('head').append('<meta property="og:image" content="http://dev.web.pandora.saturno.space' + url_one_case + '" />');
+        $('head').append('<meta property="og:image" content="' + description + '" />');
   
 		
 		

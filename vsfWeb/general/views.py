@@ -29,7 +29,7 @@ class BlockedSitesApi( APIView ):
    
    def get( self, request, format = None ):
        headers = {'Authorization': settings.SERVICES_TOKEN}
-       snippet = requests.get( 'http://127.0.1:8001/events/api/blocked_sites/', headers = headers) 
+       snippet = requests.get( settings.URL_VSF + '/events/api/blocked_sites/', headers = headers) 
        return Response( snippet )
 
 
@@ -38,7 +38,7 @@ class BlockedDomainsApi( APIView ):
 
    def get( self, request, format = None ):
        headers = {'Authorization': settings.SERVICES_TOKEN}
-       snippet = requests.get( 'http://127.0.1:8001/events/api/blocked_domains/', headers = headers )
+       snippet = requests.get( settings.URL_VSF + '/events/api/blocked_domains/', headers = headers )
        return Response( snippet )
 
 
@@ -47,7 +47,7 @@ def BlockedDomainsTableCVS( request ):
     
     # Get the list of all the cases and load it as JSON
     headers = {'Authorization': settings.SERVICES_TOKEN}
-    snippet = requests.get('http://127.0.1:8001/events/api/blocked_domains/' , headers = headers )
+    snippet = requests.get(settings.URL_VSF + '/events/api/blocked_domains/' , headers = headers )
     data = json.loads( snippet.text )
     
       # Create the HttpResponse object with the appropriate CSV header.
@@ -82,7 +82,7 @@ def BlockedSitesTableCVS( request ):
     
     # Get the list of all the cases and load it as JSON
     headers = {'Authorization': settings.SERVICES_TOKEN}
-    snippet = requests.get('http://127.0.1:8001/events/api/blocked_sites/' , headers = headers )
+    snippet = requests.get(settings.URL_VSF + '/events/api/blocked_sites/' , headers = headers )
     data = json.loads( snippet.text )
     
       # Create the HttpResponse object with the appropriate CSV header.
@@ -140,7 +140,7 @@ class CaseListApi( APIView ):
     
    def get( self, request, format = None ):  
        headers = {'Authorization': settings.SERVICES_TOKEN}
-       snippet = requests.get('http://127.0.0.1:8001/cases/api/list-case-filter/', headers=headers)    
+       snippet = requests.get(settings.URL_VSF + '/cases/api/list-case-filter/', headers=headers)    
        return Response( snippet )
    
    def post( self, request, format = None ):
@@ -153,7 +153,7 @@ class CaseListApi( APIView ):
        site =  request.data["site"]
        
        headers = {'Authorization': settings.SERVICES_TOKEN}
-       snippet = requests.get( 'http://127.0.1:8001/cases/api/list-case-filter/?title=' + title + "&category=" + category + '&start_date=' + start_date + '&end_date=' + end_date + '&region=' + region + '&site=' + site + '&isp=' + isp , headers = headers )
+       snippet = requests.get( settings.URL_VSF + '/cases/api/list-case-filter/?title=' + title + "&category=" + category + '&start_date=' + start_date + '&end_date=' + end_date + '&region=' + region + '&site=' + site + '&isp=' + isp , headers = headers )
        return Response(snippet)
 
 # This view renders the HTML containing the dashboard
@@ -169,7 +169,7 @@ class MapApi( APIView ):
        
    def get( self, request, format = None ):
        headers = {'Authorization': settings.SERVICES_TOKEN}
-       snippet = requests.get( 'http://127.0.1:8001/cases/api/list/region/' , headers = headers )       
+       snippet = requests.get( settings.URL_VSF + '/cases/api/list/region/' , headers = headers )       
        return Response( snippet )
 
 
@@ -178,7 +178,7 @@ def MapTableCVS( request ):
     
     # Get the list of all the cases and load it as JSON
     headers = {'Authorization': settings.SERVICES_TOKEN}
-    snippet = requests.get('http://127.0.1:8001/cases/api/list/region/' , headers = headers )
+    snippet = requests.get(settings.URL_VSF + '/cases/api/list/region/' , headers = headers )
     data = json.loads( snippet.text )
     
       # Create the HttpResponse object with the appropriate CSV header.
@@ -224,7 +224,7 @@ def SearchResultCVS( request ):
     
     # Get the list of all the cases and load it as JSON
     headers = {'Authorization': settings.SERVICES_TOKEN}
-    snippet = requests.get( 'http://127.0.1:8001/cases/api/list-case-filter' , headers = headers )
+    snippet = requests.get( settings.URL_VSF + '/cases/api/list-case-filter' , headers = headers )
     data = json.loads( snippet.text )
     print data 
     # Create the HttpResponse object with the appropriate CSV header.
@@ -323,7 +323,7 @@ def SearchResultFilterCVS( request, title, region, category, e_day, s_day, e_mon
     
     # Get the list of all the cases and load it as JSON
     headers = {'Authorization': settings.SERVICES_TOKEN}
-    snippet = requests.get( 'http://127.0.1:8001/cases/api/list-case-filter/?title=' + title + "&category=" + category + '&start_date=' + start_date + '&end_date=' + end_date + '&region=' + region , headers = headers )
+    snippet = requests.get( settings.URL_VSF + '/cases/api/list-case-filter/?title=' + title + "&category=" + category + '&start_date=' + start_date + '&end_date=' + end_date + '&region=' + region , headers = headers )
     data = json.loads( snippet.text )
 
     # Create the HttpResponse object with the appropriate CSV header.

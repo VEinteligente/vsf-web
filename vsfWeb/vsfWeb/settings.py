@@ -48,10 +48,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'dh96m6zsamw9#&%z758vm9(@j^!o@k(5(^&p8la2r(qy&^qmmy'
 
 DEBUG = local_settings.DEBUG
-SERVICES_TOKEN=local_settings.SERVICES_TOKEN
+SERVICES_TOKEN = local_settings.SERVICES_TOKEN
 
-ALLOWED_HOSTS = []
-
+URL_VSF_WEB = 'http://127.0.0.1:8000'
+URL_VSF = 'http://127.0.0.1:8001'
 
 # Application definition
 
@@ -99,6 +99,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'vsfWeb.context_processors.global_settings',
                 'django.contrib.messages.context_processors.messages',
             ],
         },

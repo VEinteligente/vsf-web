@@ -26,21 +26,21 @@ class SummaryTableApi(APIView):
    
    def get(self, request, format=None):
        headers = {'Authorization': settings.SERVICES_TOKEN}
-       snippet = requests.get('http://127.0.0.1:8001/cases/api/list/', headers=headers)
+       snippet = requests.get(settings.URL_VSF + '/cases/api/list/', headers=headers)
        return Response(snippet)
    
 class SummaryCategoryTableApi(APIView):
    
    def get(self, request, format=None):
        headers = {'Authorization': settings.SERVICES_TOKEN}
-       snippet = requests.get('http://127.0.0.1:8001/cases/api/list/category/' , headers = headers )
+       snippet = requests.get(settings.URL_VSF + '/cases/api/list/category/' , headers = headers )
        return Response(snippet)
 
 class SummaryIspTableApi(APIView):
    
    def get(self, request, format=None):
        headers = {'Authorization': settings.SERVICES_TOKEN}
-       snippet = requests.get('http://127.0.0.1:8001/cases/api/list/isp/' , headers = headers )
+       snippet = requests.get(settings.URL_VSF + '/cases/api/list/isp/' , headers = headers )
        return Response(snippet)
    
 class MeasurementsTable(TemplateView):
@@ -49,7 +49,7 @@ class MeasurementsTable(TemplateView):
 class MeasurementsTableApi(APIView):
    def get(self, request, format=None):
        headers = {'Authorization': settings.SERVICES_TOKEN}
-       snippet = requests.get('http://127.0.0.1:8001/measurements/api/flags/', headers = headers)
+       snippet = requests.get(settings.URL_VSF + '/measurements/api/flags/', headers = headers)
        return Response(snippet)
 
 
@@ -59,7 +59,7 @@ def MeasurementsTableCVS( request ):
     
     # Get the list of all the cases and load it as JSON
     headers = {'Authorization': settings.SERVICES_TOKEN}
-    snippet = requests.get('http://127.0.0.1:8001/measurements/api/flags/', headers = headers)
+    snippet = requests.get(settings.URL_VSF + '/measurements/api/flags/', headers = headers)
     data = json.loads( snippet.text )
     
       # Create the HttpResponse object with the appropriate CSV header.
@@ -105,7 +105,7 @@ def SummaryISPTableCVS( request ):
     
     # Get the list of all the cases and load it as JSON
     headers = {'Authorization': settings.SERVICES_TOKEN}
-    snippet = requests.get('http://127.0.0.1:8001/cases/api/list/isp/' , headers = headers )
+    snippet = requests.get(settings.URL_VSF + '/cases/api/list/isp/' , headers = headers )
     data = json.loads( snippet.text )
     
       # Create the HttpResponse object with the appropriate CSV header.
@@ -152,7 +152,7 @@ def SummaryCategoryTableCVS( request ):
     
     # Get the list of all the cases and load it as JSON
     headers = {'Authorization': settings.SERVICES_TOKEN}
-    snippet = requests.get('http://127.0.0.1:8001/cases/api/list/category/' , headers = headers )
+    snippet = requests.get(settings.URL_VSF + '/cases/api/list/category/' , headers = headers )
     data = json.loads( snippet.text )
     
       # Create the HttpResponse object with the appropriate CSV header.

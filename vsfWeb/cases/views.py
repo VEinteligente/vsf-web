@@ -13,13 +13,13 @@ from rest_framework.response import Response
 class OneElementCase(TemplateView):
     template_name = "one-element-case.html"
     
+    
 # This view obtains the information of the one element case as json data from the API of the Pandora project
 class OneElementCaseApi(APIView):
-   
+    
    def get(self, request, pk ="1", format=None):
        headers = {'Authorization': settings.SERVICES_TOKEN}
-       print pk
-       snippet = requests.get('http://127.0.0.1:8001/cases/api/detail/'+ pk , headers = headers )
+       snippet = requests.get(settings.URL_VSF + '/cases/api/detail/'+ pk , headers = headers )
        return Response(snippet)
 
 # This view obtains the information of the one element case as json data from the API of the Pandora project
@@ -27,7 +27,7 @@ class OneElementCaseUpdateApi(APIView):
    
    def get(self, request, pk ="1", format=None):
        headers = {'Authorization': settings.SERVICES_TOKEN}
-       snippet = requests.get('http://127.0.0.1:8001/cases/api/detail_update/'+ pk , headers = headers )
+       snippet = requests.get(settings.URL_VSF + '/cases/api/detail_update/'+ pk , headers = headers )
        return Response(snippet)
    
    
@@ -44,7 +44,7 @@ class GanttEventsApi(APIView):
    
    def get(self, request, format=None):
        headers = {'Authorization': settings.SERVICES_TOKEN}
-       snippet = requests.get('http://127.0.0.1:8001/events/api/list-event-group/' , headers = headers )
+       snippet = requests.get(settings.URL_VSF + '/events/api/list-event-group/' , headers = headers )
        return Response(snippet)
 
 
@@ -54,7 +54,7 @@ def CaseCVS( request, pk ):
     
     # Get the list of all the cases and load it as JSON
     headers = {'Authorization': settings.SERVICES_TOKEN}
-    snippet = requests.get( 'http://127.0.0.1:8001/cases/api/detail/' + pk , headers = headers )
+    snippet = requests.get( settings.URL_VSF + '/cases/api/detail/' + pk , headers = headers )
     data = json.loads( snippet.text )
     
     # Load all the information of each result in a CVS row
@@ -115,7 +115,7 @@ def CaseCVS( request, pk ):
     
     # Get the list of all the events of the cases and load it as JSON
     headers = {'Authorization': settings.SERVICES_TOKEN}
-    snippet = requests.get( 'http://127.0.0.1:8001/cases/api/detail_event/' + pk , headers = headers )
+    snippet = requests.get( settings.URL_VSF + '/cases/api/detail_event/' + pk , headers = headers )
     data_event = json.loads( snippet.text )
     
     events = data_event['events']
@@ -136,7 +136,7 @@ def CaseCVS( request, pk ):
     
     # Get the list of all the events of the cases and load it as JSON
     headers = {'Authorization': settings.SERVICES_TOKEN}
-    snippet = requests.get( 'http://127.0.0.1:8001/cases/api/detail_update/' + pk , headers = headers )
+    snippet = requests.get(settings.URL_VSF + '/cases/api/detail_update/' + pk , headers = headers )
     data_update = json.loads( snippet.text )
     
     updates = data_update['updates']

@@ -24,11 +24,11 @@ function twitterSearch(searchWord){
                      var username = result.user.screen_name;
                         var id =  result.id_str;
                         if(result.user.profile_background_image_url_https != null){
-                             $('#twitter').append('<blockquote class="twitter-tweet" data-lang="en"><a href="https://twitter.com/'+ username + '/status/' + id + ' "><img src="'+ result.user.profile_background_image_url_https +'">&mdash; ' + result.user.name +  "(@"+ username + ')' + result.created_at + ' <p lang="en" dir="ltr">'+ result.text + '</p> </a></blockquote>' );   
+                             $('#twitterTweet').append('<blockquote class="twitter-tweet" data-lang="en"><a href="https://twitter.com/'+ username + '/status/' + id + ' "><img src="'+ result.user.profile_background_image_url_https +'">&mdash; ' + result.user.name +  "(@"+ username + ')' + result.created_at + ' <p lang="en" dir="ltr">'+ result.text + '</p> </a></blockquote>' );   
                  
                         }
                         else{
-                            $('#twitter').append('<blockquote class="twitter-tweet" data-lang="en"><a href="https://twitter.com/'+ username + '/status/' + id + ' ">&mdash; ' + result.user.name +  "(@"+ username + ')' + result.created_at + '  <p lang="en" dir="ltr">'+ result.text + '</p> </a></blockquote>' );   
+                            $('#twitterTweet').append('<blockquote class="twitter-tweet" data-lang="en"><a href="https://twitter.com/'+ username + '/status/' + id + ' ">&mdash; ' + result.user.name +  "(@"+ username + ')' + result.created_at + '  <p lang="en" dir="ltr">'+ result.text + '</p> </a></blockquote>' );   
                  
                         }
                         // $('#twitter').append( ' <iframe id="twitter-widget-0" scrolling="no" allowtransparency="true" allowfullscreen="true" class="twitter-tweet twitter-tweet-rendered"  style="position: static; visibility: visible; display: block; width: 500px; height: 209.583px; padding: 0px; border: medium none; max-width: 100%; min-width: 220px; margin-top: 10px; margin-bottom: 10px;" data-tweet-id="' + result.id + '" title="Twitter Tweet" frameborder="0"></iframe>')  

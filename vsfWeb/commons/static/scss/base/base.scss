@@ -55,6 +55,14 @@ $fail_color: #ebe70e;
 $dos_color: #bd2126;
 $interception_color: #ebe70e;
 
+body {
+    height: 100%;
+}
+.bodyContent{
+    width: 1024px;
+    margin: auto;
+    
+}
 
 h1 {
     font-size: $xl_fontSize;
@@ -391,8 +399,9 @@ button {
 /* Bars */
 
 .titleBar{
-    border: 2px solid $lightGray;
+    //border: 2px solid $lightGray;
     padding: $md_padding $md_padding $sm_padding $lg_padding;
+    border-radius: 8px;
     background: white;
     .date{
         text-align: right;      

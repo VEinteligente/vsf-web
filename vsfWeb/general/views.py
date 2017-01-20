@@ -24,29 +24,6 @@ import urllib2
 class AboutUs( TemplateView ):
     template_name = "about-us.html"
 
-
-class BlockedSites(TemplateView):
-    template_name = "blocked-sites.html"
-    
-    def get_context_data(self,**kwargs ):
-    	r = requests.get('http://192.168.0.130:8000/events/api/blocked_domains/')
-    	context= super(BlockedSites,self).get_context_data(**kwargs)
-    	probando2 = json.loads(r.text)
-    	context['sites'] = probando2["results"]
-
-    	return context
-
-class BlockedUrls(TemplateView):
-    template_name = "blocked-urls.html"
-    
-    def get_context_data(self,**kwargs ):
-    	r = requests.get('http://192.168.0.130:8000:8000/events/api/blocked_domains/')
-    	context= super(BlockedUrls,self).get_context_data(**kwargs)
-    	probando2 = json.loads(r.text)
-    	context['urls'] = probando2["results"]
-
-    	return context
-
 # This view obtains the blocked sites json data from the API of the Pandora project
 class BlockedSitesApi( APIView ):
    

@@ -80,17 +80,18 @@ $('select').on('change', function(e) {
                     $(".informationPanelTotalCases").html("0");
                 }
                 
+                
                 // If a state is selected the position of the tooltip will be fixed
                 $('.informationPanel').css({
-                    top: 4.5*$(".map").offset().top,
-                    left: 3*$(".map").offset().left
+                    top: $("#mapSelector").offset().top - 150,
+                    left: $("#mapSelector").offset().left - 450
                 });
 
  
                 $('.informationPanel').show();
             }        
             else{
-                $("#"+$(this).text()).removeClass("hover");
+                $("#"+($(this).text()).replace(/\s+/g, '')).removeClass("hover");
                 $(this).removeAttr("selected");
             }
         });
@@ -164,8 +165,8 @@ function hoverEvents(){
         mouseY = e.pageY;
 
         $('.informationPanel').css({
-            top: mouseY-50,
-            left: mouseX - ($('.informationPanel').width()/2)
+            top: mouseY - $('.map').offset().top,
+            left: mouseX -  $('.map').offset().left
         });
     });
 }

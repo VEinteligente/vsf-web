@@ -67,7 +67,7 @@ $( document ).ready(function() {
                                                                                                                                                     
                                 if( thirdLevelKey == "id" ) {
                                 
-                                    $( ".listCases" ).append( "<div class='col-xs-12 smallBar' style='border-bottom:1px solid blue'><h5 class='title search'>"
+                                    $( ".listCases" ).append( "<div class='col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><h5 class='title search'>"
                                         + "<div class='col-xs-2 date'></div>"
                                         +"<div class='col-xs-2 name' style='display: flex;'></div>"
                                         +"<div class='col-xs-2 site'></div>"
@@ -491,7 +491,7 @@ $("#advanced_search").submit(function(e){
                     $.each( secondLevelValue , function( thirdLevelKey , thirdLevelValue ) { // Third Level 
                         
                         if( thirdLevelKey =="id" ) {
-                            $( ".listCases" ).append("<div class='col-xs-12 smallBar' style='border-bottom:1px solid blue'><h5 class='title search'>"
+                            $( ".listCases" ).append("<div class='col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><h5 class='title search'>"
                             + "<div class='col-xs-2 date'></div>"
                             +"<div class='col-xs-2 name' style='display: flex;'></div>"
                             +"<div class='col-xs-2 site'></div>"
@@ -728,7 +728,7 @@ function sortDateAsc( parent, child ){
        
             alphabeticallyOrderedDivs.each(function(index){
    
-                $( ".listCases" ).append("<div class='this col-xs-12 smallBar' style='border-bottom:1px solid blue'><h5 class='title'></h5></div>");                            
+                $( ".listCases" ).append("<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><h5 class='title'></h5></div>");                            
                 $(".this ").html($(this));
                 $(".this ").removeClass("this ");                    
                     
@@ -764,7 +764,7 @@ function sortDateDes( parent, child ){
        
                 alphabeticallyOrderedDivs.each(function(index){
    
-                    $( ".listCases" ).append("<div class='this col-xs-12 smallBar' style='border-bottom:1px solid blue'><h5 class='title'></h5></div>");                            
+                    $( ".listCases" ).append("<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><h5 class='title'></h5></div>");                            
                     $(".this ").html($(this));
                     $(".this ").removeClass("this");                    
                     
@@ -790,7 +790,7 @@ function sortNameAsc(parent, child ){
        
                 alphabeticallyOrderedDivs.each(function(index){
    
-                    $( ".listCases" ).append("<div class='this col-xs-12 smallBar' style='border-bottom:1px solid blue'><h5 class='title'></h5></div>");                            
+                    $( ".listCases" ).append("<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><h5 class='title'></h5></div>");                            
                     $(".this ").html($(this));
                     $(".this ").removeClass("this ");
                                         
@@ -817,7 +817,7 @@ function sortNameDes( parent, child ){
        
                 alphabeticallyOrderedDivs.each(function(index){
    
-                    $( ".listCases" ).append("<div class='this col-xs-12 smallBar' style='border-bottom:1px solid blue'><h5 class='title'></h5></div>");                            
+                    $( ".listCases" ).append("<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><h5 class='title'></h5></div>");                            
                     $(".this ").html($(this));
                     $(".this ").removeClass("this");
                     

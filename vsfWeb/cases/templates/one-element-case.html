@@ -2,198 +2,222 @@
 {% load i18n %}
 {% load static %}
 
-{% block metadata %}
-
-<meta property="og:image" content="https://dolartoday.com/images/dolar_big_image.jpg" />
-<meta property="og:url" content="http://www.odinotvet.ru" />
-<meta property="og:description" content="Профессиональная сеть вопросов и ответов,создаваемая и управляемая сообществом пользователей. Ресурс для тех, кто хочет знать ответы на все вопросы." />
-
-<meta name="twitter:image" content="https://dolartoday.com/images/dolar_big_image.jpg" />
-<meta name="twitter:title" content="Mountain sunset" />
-
-{% endblock %}
 
 
 {% block content %}
 
-
-
-<div style = "background-color: gray" >
-    	<div class = "container-fluid" id = "title" >				
-    		<div class = "row" >				
-    			<div class = "col-xs-12 titleBar" >				
-    				<h2 class = "title" id = "titleAjax" >
-    				</h2>
-    			</div>
-    		</div>				
-    	</div>
+<div style = "background-color: #DEDEDE" >
         
-
-         
+        <div class="bodyContent"  >
+             
+            <div class = "container-fluid" id = "title" >               
+                <div class = "row" >                
+                    <div class = "col-xs-12 titleBar" style="margin-top: 15px" >             
+                        <h2 class = "title" id = "titleAjax" >
+                        </h2>
+                    </div>
+                </div>              
+            </div>
+            
+    
+             
+            
+            <div class = "container-fluid" style = "padding-top:10px; padding-bottom:10px" >                
+                <div class = "row" >                       
+                    <div class = "col-xs-6" id = "caseImage" >          
+                         <img src = "https://dolartoday.com/images/dolar_big_image.jpg" class = "img-fluid" >                   
+                    </div>
         
-    	<div class = "container-fluid" style = "padding-top:10px; padding-bottom:10px" >				
-    		<div class = "row" >					   
-    		    <div class = "col-xs-5 offset-xs-1" id = "caseImage" >		    
-    			     <img src = "https://dolartoday.com/images/dolar_big_image.jpg" class = "img-fluid" >					
-    			</div>
-    
-    	       <div class = "col-xs-5" id = "caseInfo" >
-        		 	<div class = "row" >
-    		    		<div class = "container-fluid" id = "caseDateBar" >
-    			    		<div class = "col-xs-12 timelineBarContinue" >
-    		           			<div class = "date col-xs-9" id = "statusDateAjax" >		      
-    		           			</div>
-    		           			<div class = "status col-xs-3" id = "statusAjax" >		      
-    		           			</div>   
-    			    		</div>				    	
-    					</div>
-    	           	</div>
-    				
-    				<div class = "row" >		    	
-    					<div class = "container" id = "caseDomainList" style = "padding-top:5px" >	    	
-    						<div>   																			             								                
-    							<table class = "table table-hover" >										   
-    								<thead>									
-    						            <tr>				
-    								       <th id = "domainTableTitle" style = "background-color:white; border-radius:5px" >
-    									   </th>
-    							        </tr>
-    								</thead>
-    										            
-    								<tbody id = "domainTableBody" style = "background-color:white; border-radius:5px" >
-    								</tbody>
-    
-    						        <tfoot>
-    	       					        <tr>
-        		      				        <td>
-    									        <button class = "contextualButtonFixedSize" onclick = "select('domains')" style = "margin-top: 10px;margin-bottom: 5px;" >
-    						                        {% trans 'Domains' %}
-    							                </button>
-    								            
-    							                <button class = "contextualButtonFixedSize" onclick = "select('sites')" style = "margin-top: 10px;margin-bottom: 5px;" >
-    						                        {% trans 'Sites' %}
-    							                </button>
-    						                </td>
-    							        </tr>
-    						        </tfoot>            
-    					        </table>
-    						</div>    	
-    					</div>
-    				</div>
-    						    	
-    				<div class = "row" >
-    					<div class = "container-fluid" id = "caseProvider" >
-    						<div class = "col-xs-12" style = "text-align: center;" id = "ispAjax">
-    						</div>	
-    					</div>
-    				</div>	
+                   <div class = "col-xs-6" id = "caseInfo" >
+                        <div class = "row" >
+                            <div class = "container-fluid" id = "caseDateBar" >
+                                <div class = "col-xs-12 timelineBarContinue" >
+                                    <div class = "date col-xs-9" id = "statusDateAjax" >              
+                                    </div>
+                                    <div class = "status col-xs-3" id = "statusAjax" >            
+                                    </div>   
+                                </div>                      
+                            </div>
+                        </div>
+                        
+                        <div class = "row" >                
+                            <div class = "container" id = "caseDomainList" style = "padding-top:5px" >          
+                                <div>                                                                                                                                           
+                                    <table class = "table table-hover" >                                           
+                                        <thead>                                 
+                                            <tr>                
+                                               <th id = "domainTableTitle" style = "background-color:white; border-radius:5px" >
+                                               </th>
+                                            </tr>
+                                        </thead>
+                                                            
+                                        <tbody id = "domainTableBody" style = "background-color:white; border-radius:5px" >
+                                        </tbody>
+        
+                                        <tfoot>
+                                            <tr>
+                                                <td>
+                                                    <button class = "contextualButtonFixedSize" onclick = "select('domains')" style = "margin-top: 10px;margin-bottom: 5px;" >
+                                                        {% trans 'Domains' %}
+                                                    </button>
+                                                    
+                                                    <button class = "contextualButtonFixedSize" onclick = "select('sites')" style = "margin-top: 10px;margin-bottom: 5px;" >
+                                                        {% trans 'Sites' %}
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tfoot>            
+                                    </table>
+                                </div>      
+                            </div>
+                        </div>
+                                        
+                        <div class = "row" >
+                            <div class = "container-fluid" id = "caseProvider" >
+                                <div class = "col-xs-12" style = "text-align: center;" id = "ispAjax">
+                                </div>  
+                            </div>
+                        </div>  
+                    </div>
                 </div>
-    		</div>
+            </div>
+            
         </div>
+    
+     
     </div>
 
     <div class = "container-fluid">
-        <div class = "row" >    
-            <div class="col-xs-2">
-                    Download: 
-                    <a id="download" href="#">
-                        <i class="fa fa-file-excel-o" aria-hidden="true"></i>                            
-                    </a>
-                    
+    
+      
+        
+        <div class=" bodyContent" >
+            <div class = "row" >    
+                <div class="col-xs-2">
+                        Download: 
+                        <a id="download" href="#">
+                            <i class="fa fa-file-excel-o" aria-hidden="true"></i>                            
+                        </a>
+                        
+                </div>
+                
+                <div class="col-xs-2">
+                        Share: 
+                        <a href="" id="shareFacebook" target="_blank">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>                            
+                        </a>
+                        
+                        <a href="" id="shareTwitter" target="_blank">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>                            
+                        </a>
+                        
+                </div>
             </div>
             
-            <div class="col-xs-2">
-                    Share: 
-                    <a href="" id="shareFacebook">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>                            
-                    </a>
-                    
-                    <a href="" id="shareTwitter">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>                            
-                    </a>
-                    
-            </div>
+            
+            
         </div>
-        
+
+
         
     </div>
     
     <div class = "container-fluid" id = "caseDescriptiion ">
-    	<div class = "row" >
-    		<div class = "col-xs-9 offset-xs-2" >
-                <h3> 
-                    Descripción: 
-                </h3>            
-    			<p id = "descriptionAjax" >			    
-    			</p>
-    		</div>		
+    	
+  
+        <div class="bodyContent" >
+            <div class = "row" >
+                <div class = "col-xs-12" >
+                    <h3> 
+                        Descripción: 
+                    </h3>            
+                    <p id = "descriptionAjax" >             
+                    </p>
+                </div>      
+            </div>
     	</div>
+      
+        
+    	
     </div>
     
     
-    <div class = "container-fluid" >
-    	
-    	<div class = "row" >
-    		<div class = "col-xs-12 subtitleBar" >
-                <h4 id = "updateTitle" >
-                    ACTUALIZACIONES
-                </h4>
-    	    </div>
-    	</div>
+    <div class = "container-fluid"  style="background-color: #B3B3B3" >
+  
+        <div class="bodyContent updates" >
+            <div class = "row" >
+                <div class = "col-xs-12 subtitleBar" >
+                    <h4 id = "updateTitle" >
+                        ACTUALIZACIONES
+                    </h4>
+                </div>
+            </div>
+ 
+        </div>
+    
+        
     		
-    	<div class = "row" id = "updateListAjax" >
-    	</div>		
+    
+    </div>
+    
+    <div class = "container-fluid"  style="background-color: #E6E6E6" >
+  
+        <div class="bodyContent updates" >
+
+                
+            <div class = "row" id = "updateListAjax" >
+            </div>  
+        </div>
+    
+        
+            
+    
+    </div>
+    
+      <div class = "container-fluid"  style="background-color: #B3B3B3" >
+  
+        <div class="bodyContent cards" >
+            <div class = "row" >
+                <div class = "col-xs-12 subtitleBar" >
+                    <h4 id = "cardsTitle" >
+                        INFORMACIÓN
+                    </h4>
+                </div>
+            </div>
+ 
+        </div>
+    
+        
+            
     
     </div>
     
     
-    <div class = "container-fluid" >
-    	<div class = "row" >
-    		<div class = "col-xs-12 subtitleBar" >
-                <h4>
-                    GRAPH
-                </h4>
-    		</div>
-    	</div>
-    	
-    	<div class = "row" >
-    		<div class = "col-xs-10 offset-xs-1" >
-    			<h1>
-    			    Graph Area
-    			</h1>
-    		</div>
-    	</div>
-    	
-    </div>
     
-    <div class = "container-fluid" >
-        <div class = "row" >	
-    		<div class = "col-xs-12 subtitleBar" >
-    			<h4>
-    			    SUBGRAPH
-    			</h4>
-    		</div>
-    	</div>
+    <div class = "container-fluid" style="height: 100vh; background-color: #E6E6E6" >
     
-    	<div class = "row" id = "subGraphDiv" >
+        <div class="bodyContent"  >
+    
+    	<div class = "row subGraphDiv"  >
     		<div class = "col-xs-3" id = "subGraph1" >
     			<div class = "row" >
-    				<div class = "container-fluid" >
-    					SubGraph 1
-    				</div>
-    				
-    				<div class = "container-fluid" id = "subGraph1Title" >
-    					Subgraph 1 Title
-    				</div>
-    
-    				<div class = "container-fluid" id = "subGraph1Description" >
-    					<div id="twitter"></div>
+    				 
+    				<div class = "container-fluid col-xs-12" id = "twitterDiv" >
+    					<div id="twitterTweet"></div>
+    					<div id="twitterSearchText">
+    					    <div id="twitterSearchTextTitle">
+    					        <h4 class="title"></h4>
+    					    </div>
+    					   <div id="twitterSearchTextContent">
+    					       <div class="title"></div>
+    					   </div>
+    					</div>
     				</div>
     
     			</div>
     		</div>
     
-    		<div class = "col-xs-3" id = "subGraph2" >
+    		<div class = "col-xs-3 offset-xs-1" id = "subGraph2" >
     			<div class = "row" >
     				<div class = "container-fluid" >
     					SubGraph 2
@@ -209,7 +233,7 @@
     			</div>
     		</div>
     
-    		<div class = "col-xs-3 " id = "subGraph3" >
+    		<div class = "col-xs-3  offset-xs-1" id = "subGraph3" >
     			<div class = "row" >
     				<div class = "container-fluid" >
     					SubGraph 3
@@ -226,6 +250,7 @@
     			</div>
     		</div>
     
+    	</div>
     	</div>
     </div>
     

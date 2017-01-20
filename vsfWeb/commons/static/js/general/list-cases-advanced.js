@@ -471,7 +471,7 @@ $("#advanced_search").submit(function(e){
         
         if( hidden.length != 0 ){
             history.pushState( null, null, url_data_list_empty + "title=" + title + "&category=" + category + "&start_date=" + start_date + "&end_date=" + end_date + "&region=" + region  + "&site=" + site + "&isp=" + isp );            
-            $("#download").attr("href",url_csv + "id=" + id  + "title=" + title + "&category=" + category + "&start_date=" + start_date + "&end_date=" + end_date + "&region=" + region  + "&site=" + site + "&isp=" + isp )
+            $("#download").attr("href",url_csv + "title=" + title + "&category=" + category + "&start_date=" + start_date + "&end_date=" + end_date + "&region=" + region  + "&site=" + site + "&isp=" + isp )
          
             
         }
@@ -516,7 +516,7 @@ $("#advanced_search").submit(function(e){
                                         +"<div class='col-xs-1 site' style='padding-left: 0px;'></div>"
                                         + "<div class='col-xs-1 isp' style='padding-left: 0px;'></div>"
                                         + "<div class='col-xs-1 category' style='padding-left: 0px; padding-bottom: 5px;'></div>"
-                                        + "<div class='col-xs-2 region' style='padding-left: 0px;'></div>"
+                                        + "<div class='col-xs-1 region' style='padding-left: 0px;'></div>"
                                         + "</h5>     </div>");
                         
                             //$( ".listCasesAdvanced" ).append( "<a href='http://192.168.0.115:8000/cases/api/detail/" + thirdLevelValue + "'>LINK</a> <br>" );                                         
@@ -756,7 +756,10 @@ function sortDateAsc( parent, child ){
     
     clearSelectedOrder();
     
-    $( parent ).addClass( "selectOrderAdvanced" );
+    $( parent ).addClass("selectOrderAdvanced");
+    
+    var parentSort = (parent.split(/(?=[A-Z])/)[0] + parent.split(/(?=[A-Z])/)[1] + "Sort").replace('#',".");
+    $('.smallBar').find(parentSort).addClass('selectedColumnAdvanced');
 
      var $divs = $(".smallBar .title ");
                 
@@ -794,6 +797,9 @@ function sortDateDes( parent, child ){
     
     $( parent ).addClass("selectOrderAdvanced");
     
+    var parentSort = (parent.split(/(?=[A-Z])/)[0]  + parent.split(/(?=[A-Z])/)[1] + "Sort").replace('#',".");
+    $('.smallBar').find(parentSort).addClass('selectedColumnAdvanced');
+
      var $divs = $(".smallBar .title ");
 
                 var alphabeticallyOrderedDivs = $divs.sort(function (a, b) {
@@ -826,9 +832,31 @@ function sortDateDes( parent, child ){
 function sortNameAsc( parent, child ){
     
     clearSelectedOrder();
-    
     $( parent ).addClass("selectOrderAdvanced");
     
+    var parentSort = (parent.split(/(?=[A-Z])/)[0] + "Sort").replace('#',".");
+    $('.smallBar').find(parentSort).addClass('selectedColumnAdvanced');
+
+    //elements.removeClass('selectedColumnAdvanced');
+    if( elements.length != 0 ){
+        for( var i = 0 ; i < elements ; i++) {
+            el.classList.remove("selectedColumnAdvanced")
+        
+         }
+        
+    }
+    
+    var parentSort = (parent.split(/(?=[A-Z])/)[0] + "Sort").replace('#',"");
+    console.log(parentSort)
+    elementsSelected = document.getElementsByClassName(parentSort);
+    console.log(elementsSelected)
+    if( elementsSelected.length != 0 ){
+        for( var i = 0 ; i < elementsSelected ; i++) {
+            el.classList.add("selectedColumnAdvanced")
+        
+         }
+    
+    }
     var $divs = $(".smallBar .title ");
                 
                 var alphabeticallyOrderedDivs = $divs.sort(function (a, b) {
@@ -853,8 +881,12 @@ function sortNameAsc( parent, child ){
 function sortNameDes( parent, child ){
     
     clearSelectedOrder();
-    
+   
     $( parent ).addClass("selectOrderAdvanced");
+    
+    var parentSort = (parent.split(/(?=[A-Z])/)[0] + "Sort").replace('#',".");
+    $('.smallBar').find(parentSort).addClass('selectedColumnAdvanced');
+
     
     var $divs = $(".smallBar .title ");
 
@@ -873,6 +905,7 @@ function sortNameDes( parent, child ){
                     $(".this ").removeClass("this");
                     
                 });
+    
 
 }
 
@@ -886,7 +919,15 @@ function clearSelectedOrder(){
     $("#categoryClick").removeClass("selectOrderAdvanced");
     $("#regionClick").removeClass("selectOrderAdvanced");
     
-    
+     
+    $('.dateStartSort').removeClass('selectedColumnAdvanced');
+    $('.dateEndSort').removeClass('selectedColumnAdvanced');
+    $('.siteSort').removeClass('selectedColumnAdvanced');
+    $('.nameSort').removeClass('selectedColumnAdvanced');
+    $('.ispSort').removeClass('selectedColumnAdvanced');
+    $('.categorySort').removeClass('selectedColumnAdvanced');
+    $('.regionSort').removeClass('selectedColumnAdvanced');
+
 }
 
 function changeMultipleChoiceContainerHeight(selectors){

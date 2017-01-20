@@ -13,8 +13,10 @@ $(document).ready(function()
 	//url_data is where we get the update data of the case and pk is the id of the case
 	var url_data_update = url_one_case_update ;
     
-    var url_share_facebook = "http://www.facebook.com/sharer.php?u=dev.web.pandora.saturno.space/general/map-Venezuela"
-    var url_share_twitter = "http://twitter.com/share?url=" + url_data_detail
+    var url_share_facebook = "http://www.facebook.com/sharer.php?u=http://dev.web.pandora.saturno.space" + url_one_case;
+    var url_share_twitter = "http://twitter.com/share?url=http://dev.web.pandora.saturno.space" + url_one_case;
+    
+    
     
     $("#download").attr("href",url_one_case_excel + "id=" + pk)
     $("#shareFacebook").attr("href",url_share_facebook)
@@ -59,6 +61,20 @@ $(document).ready(function()
 		//Title & date for the main DIV in the details template
 		
 		$('#titleAjax').html(title);
+		
+		$('head').append('<meta name="twitter:title" content="' + title + '" />');
+		$('head').append('<meta name="twitter:site" content="@VSF" />');
+        $('head').append('<meta name="twitter:description" content="' + description + '" />');
+		$('head').append('<meta name="twitter:image" content="' + $('.img-fluid').attr('scr') + '" />');
+        
+        
+        $('head').append('<meta name="og:image" content="' + $('.img-fluid').attr('scr') + '" />');
+        $('head').append('<meta name="og:url" content="' + $('.img-fluid').attr('scr') + '" />');
+        $('head').append('<meta name="og:image" content="http://dev.web.pandora.saturno.space' + url_one_case + '" />');
+        $('head').append('<meta name="og:image" content="' + description + '" />');
+  
+		
+		
 		$('#titleDateAjax').html(date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear());
 
 		$.each(dataJson.isp, function(secondLevelKey, secondLevelValue){
@@ -77,7 +93,8 @@ $(document).ready(function()
 	
 
     	if( twitter_search != null ){
-    	    
+    	   $("#twitterSearchTextTitle .title").html("Resultados de Twitter")
+    	   $("#twitterSearchTextContent .title").html("#"+twitter_search)
     	    twitterSearch( twitter_search );
     	}
     	

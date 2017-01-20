@@ -63,11 +63,12 @@ $(document).ready(function()
 		$('#titleAjax').html(title);
 		
 		$('head').append('<meta property="twitter:card" content="summary" />');
-		$('head').append('<meta property="twitter:title" content="' + title + '" />');
+		$('head').append('<meta property="twitter:title" content="VE Sin filtro: ' + title + '" />');
 		$('head').append('<meta property="twitter:site" content="VSF" />');
         $('head').append('<meta property="twitter:description" content="' + description + '" />');
 		$('head').append('<meta property="twitter:image:src" content="' + $('.img-fluid').attr('src') + '" />');
         
+        $('head').append('<meta property="og:title" content="VE Sin filtro: ' + title + '" />');
         
         $('head').append('<meta property="og:image" content="' + $('.img-fluid').attr('src') + '" />');
         $('head').append('<meta property="og:url" content="http://dev.web.pandora.saturno.space' + url_one_case + '" />');

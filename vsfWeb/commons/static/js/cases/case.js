@@ -71,7 +71,7 @@ $(document).ready(function()
         
         $('head').append('<meta property="og:image" content="' + $('.img-fluid').attr('src') + '" />');
         $('head').append('<meta property="og:url" content="' + $('.img-fluid').attr('src') + '" />');
-        $('head').append('<meta property="og:image" content="http://dev.web.pandora.saturno.space' + url_one_case + '" />');
+        $('head').append('<meta property="og:url" content="http://dev.web.pandora.saturno.space' + url_one_case + '" />');
         $('head').append('<meta property="og:description" content="' + description + '" />');
   
 		

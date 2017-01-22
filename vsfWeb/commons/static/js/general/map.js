@@ -78,7 +78,7 @@ $(document)
 							.on(
 									'change',
 									function(e) {
-
+											
 										var optionSelected = $(
 												"option:selected", this);
 										var valueSelected = this.value;
@@ -87,15 +87,12 @@ $(document)
 												.each(
 														function() {
 															if ($(this).text() == valueSelected) {
-
-																$(
-																		"#"
-																				+ valueSelected
-																						.replace(
-																								/\s+/g,
-																								''))
+														
+																$("#" + valueSelected.replace( /\s+/g, ''))
 																		.addClass(
 																				"hover");
+																
+																		
 																$(this)
 																		.attr(
 																				"selected",
@@ -153,10 +150,10 @@ $(document)
 																				{
 																					top : $(
 																							"#mapSelector")
-																							.offset().top - 150,
+																							.offset().top ,
 																					left : $(
 																							"#mapSelector")
-																							.offset().left - 450
+																							.offset().left 
 																				});
 
 																$(
@@ -275,14 +272,7 @@ $(document)
 																	}
 
 																	else {
-																		$(
-																				"#"
-																						+ $(
-																								this)
-																								.text()
-																								.replace(
-																										/\s+/g,
-																										''))
+																		$("#" + $(this).text().replace(/\s+/g,''))
 																				.removeClass(
 																						"hover");
 																		$(this)

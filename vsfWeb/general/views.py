@@ -146,7 +146,7 @@ class CaseList(TemplateView):
 
 
 class CaseListAdvanced(TemplateView):
-    """ This view renders the HTML containing information 
+    """ This view renders the HTML containing information
     about list of cases """
     template_name = "list-cases-advanced.html"
 

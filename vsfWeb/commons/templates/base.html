@@ -1,36 +1,28 @@
 <!DOCTYPE html>
 
 <html>
-{% load static %}
+{% load static %} 
 {% load i18n %}
-    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
-      
-        {% include "head/head.html" %}   
-        {% block metadata %}
-        {% endblock metadata %}   
-    </head>
-    
-    <body>
+<head
+	prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
 
-        <header>
-        
-        {% include "navbar/navbar.html" %}       
-       
-        </header>
- 
-        {% block content %}
-        {% endblock %}
-     
-        
-     <!--   {% include "components/notifications.html" %} 
+{% include "head/head.html" %} 
+
+</head>
+
+<body>
+
+	<header> {% include "navbar/navbar.html" %} </header>
+
+	{% block content %} 
+	{% endblock content %}
+
+
+	<!--   {% include "components/notifications.html" %} 
         {% include "components/share-social-media.html" %} 
         {% include "components/trending-twitter.html" %} -->
-        
-        <footer>
-        
-        {% include "footer/footer.html" %}       
-       
-        </footer>
-        
-    </body>
+
+	<footer> {% include "footer/footer.html" %} </footer>
+
+</body>
 </html>

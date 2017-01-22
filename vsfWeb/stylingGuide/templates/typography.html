@@ -1,233 +1,183 @@
 {% extends "base.html" %}
-  {% load i18n %}
-  {% get_current_language as LANGUAGE_CODE %}
-  {% get_language_info for LANGUAGE_CODE as lang %}
-  {% get_available_languages as LANGUAGES %}
-  {% get_language_info_list for LANGUAGES as languages %}
+{% load i18n %} 
+{% get_current_language as LANGUAGE_CODE %} 
+{% get_language_info for LANGUAGE_CODE as lang %} 
+{% get_available_languages as LANGUAGES %} 
+{% get_language_info_list for LANGUAGES as languages %} 
 
 {% block content %}
 
 <div>
 
-    <div class="col-xs-12">
-        {% trans "Typography" %} 
-    </div>
-    
-    <br>
-    
-    <div class="col-xs-12" style="color:gray">
-        {% trans "Size per style" %} 
-        
-        
-        <hr>
-    </div>
-    
-    <!-- H1 element -->   
-    <div class="col-xs-12">
-        <h1>
-            <div class="col-xs-3">
-                H1
-            
-            </div>
-           
-            <div class="col-xs-6">
-            Lorem ipsum
-            
-            </div>
-        </h1>
-        
-        <div class="col-xs-3">
-            <ul style="list-style: none;">
-                <li>{% trans "Size" %} : 44px </li>
-                <li>{% trans "Color" %} : #000 </li>
-                <li>{% trans "Style" %} : Medium </li>
-            </ul>
-            
-        </div>
-           
-    </div>
-    
-    <!-- H2 element -->   
-    <div class="col-xs-12">
-        <h2>
-            <div class="col-xs-3">
-                H2
-            
-            </div>
-           
-            <div class="col-xs-6">
-            Lorem ipsum
-            
-            </div>
-        </h2>
-        
-        <div class="col-xs-3">
-            <ul style="list-style: none;">
-                <li>{% trans "Size" %} : 26px </li>
-                <li>{% trans "Color" %} : #000 </li>
-                <li>{% trans "Style" %} : Medium </li>
-            </ul>
-            
-        </div>
-           
-    </div>
-    
-    <!-- H3 element -->   
-    <div class="col-xs-12">
-        <h3>
-            <div class="col-xs-3">
-                H3
-            
-            </div>
-           
-            <div class="col-xs-6">
-            Lorem ipsum
-            
-            </div>
-        </h3>
-        
-        <div class="col-xs-3">
-            <ul style="list-style: none;">
-                <li>{% trans "Size" %} : 18px </li>
-                <li>{% trans "Color" %} : #808184 </li>
-                <li>{% trans "Style" %} : Bold </li>
-            </ul>
-            
-        </div>
-           
-    </div>
-    
-    <!-- H4 element -->   
-    <div class="col-xs-12">
-        <h4>
-            <div class="col-xs-3">
-                H4
-            
-            </div>
-           
-            <div class="col-xs-6">
-            Lorem ipsum
-            
-            </div>
-        </h4>
-        
-        <div class="col-xs-3">
-            <ul style="list-style: none;">
-                <li>{% trans "Size" %} : 14px </li>
-                <li>{% trans "Color" %} : #808184 </li>
-                <li>{% trans "Style" %} : Medium </li>
-            </ul>
-            
-        </div>
-           
-    </div>
-    
-    <!-- H5 element -->   
-    <div class="col-xs-12">
-        <h5>
-            <div class="col-xs-3">
-                H5
-            
-            </div>
-           
-            <div class="col-xs-6">
-            Lorem ipsum
-            
-            </div>
-        </h5>
-        
-        <div class="col-xs-3">
-            <ul style="list-style: none;">
-                <li>{% trans "Size" %} : 12px </li>
-                <li>{% trans "Color" %} : #58595B </li>
-                <li>{% trans "Style" %} : Medium </li>
-            </ul>
-            
-        </div>
-           
-    </div>
-    
-    
-    <!-- Headline element -->   
-    <div class="col-xs-12">
-        <div class="headline">
-            <div class="col-xs-3">
-                HEADLINE
-            
-            </div>
-           
-            <div class="col-xs-6">
-            Lorem ipsum
-            
-            </div>
-        </div>
-        
-        <div class="col-xs-3">
-            <ul style="list-style: none;">
-                <li>{% trans "Size" %} : 14px </li>
-                <li>{% trans "Color" %} : #58595B </li>
-                <li>{% trans "Style" %} : Bold </li>
-            </ul>
-            
-        </div>
-           
-    </div>
-    
-    <!-- Subtitle element -->   
-    <div class="col-xs-12">
-        <div class="subtitle">
-            <div class="col-xs-3">
-                Subtitle
-            
-            </div>
-           
-            <div class="col-xs-6">
-            Lorem ipsum
-            
-            </div>
-        </div>
-        
-        <div class="col-xs-3">
-            <ul style="list-style: none;">
-                <li>{% trans "Size" %} : 12px </li>
-                <li>{% trans "Color" %} : #58595B </li>
-                <li>{% trans "Style" %} : Medium </li>
-            </ul>
-            
-        </div>
-           
-    </div>
-    
-    <!-- P element -->   
-    <div class="col-xs-12">
-            <p class="col-xs-3">
-                P
-            
-            </p>
-           
-            <p class="col-xs-6">
-            Lorem ipsum
-            
-            </p>
-        
-        <div class="col-xs-3">
-            <ul style="list-style: none;">
-                <li>{% trans "Size" %} : 14px </li>
-                <li>{% trans "Color" %} : #666666 </li>
-                <li>{% trans "Style" %} : Medium </li>
-            </ul>
-            
-        </div>
-           
-    </div>
+	<div class="col-xs-12">{% trans "Typography" %}</div>
 
-    
-    
+	<br>
+
+	<div class="col-xs-12" style="color: gray">
+		{% trans "Size per style" %}
+
+
+		<hr>
+	</div>
+
+	<!-- H1 element -->
+	<div class="col-xs-12">
+		<h1>
+			<div class="col-xs-3">H1</div>
+
+			<div class="col-xs-6">Lorem ipsum</div>
+		</h1>
+
+		<div class="col-xs-3">
+			<ul style="list-style: none;">
+				<li>{% trans "Size" %} : 44px</li>
+				<li>{% trans "Color" %} : #000</li>
+				<li>{% trans "Style" %} : Medium</li>
+			</ul>
+
+		</div>
+
+	</div>
+
+	<!-- H2 element -->
+	<div class="col-xs-12">
+		<h2>
+			<div class="col-xs-3">H2</div>
+
+			<div class="col-xs-6">Lorem ipsum</div>
+		</h2>
+
+		<div class="col-xs-3">
+			<ul style="list-style: none;">
+				<li>{% trans "Size" %} : 26px</li>
+				<li>{% trans "Color" %} : #000</li>
+				<li>{% trans "Style" %} : Medium</li>
+			</ul>
+
+		</div>
+
+	</div>
+
+	<!-- H3 element -->
+	<div class="col-xs-12">
+		<h3>
+			<div class="col-xs-3">H3</div>
+
+			<div class="col-xs-6">Lorem ipsum</div>
+		</h3>
+
+		<div class="col-xs-3">
+			<ul style="list-style: none;">
+				<li>{% trans "Size" %} : 18px</li>
+				<li>{% trans "Color" %} : #808184</li>
+				<li>{% trans "Style" %} : Bold</li>
+			</ul>
+
+		</div>
+
+	</div>
+
+	<!-- H4 element -->
+	<div class="col-xs-12">
+		<h4>
+			<div class="col-xs-3">H4</div>
+
+			<div class="col-xs-6">Lorem ipsum</div>
+		</h4>
+
+		<div class="col-xs-3">
+			<ul style="list-style: none;">
+				<li>{% trans "Size" %} : 14px</li>
+				<li>{% trans "Color" %} : #808184</li>
+				<li>{% trans "Style" %} : Medium</li>
+			</ul>
+
+		</div>
+
+	</div>
+
+	<!-- H5 element -->
+	<div class="col-xs-12">
+		<h5>
+			<div class="col-xs-3">H5</div>
+
+			<div class="col-xs-6">Lorem ipsum</div>
+		</h5>
+
+		<div class="col-xs-3">
+			<ul style="list-style: none;">
+				<li>{% trans "Size" %} : 12px</li>
+				<li>{% trans "Color" %} : #58595B</li>
+				<li>{% trans "Style" %} : Medium</li>
+			</ul>
+
+		</div>
+
+	</div>
+
+
+	<!-- Headline element -->
+	<div class="col-xs-12">
+		<div class="headline">
+			<div class="col-xs-3">HEADLINE</div>
+
+			<div class="col-xs-6">Lorem ipsum</div>
+		</div>
+
+		<div class="col-xs-3">
+			<ul style="list-style: none;">
+				<li>{% trans "Size" %} : 14px</li>
+				<li>{% trans "Color" %} : #58595B</li>
+				<li>{% trans "Style" %} : Bold</li>
+			</ul>
+
+		</div>
+
+	</div>
+
+	<!-- Subtitle element -->
+	<div class="col-xs-12">
+		<div class="subtitle">
+			<div class="col-xs-3">Subtitle</div>
+
+			<div class="col-xs-6">Lorem ipsum</div>
+		</div>
+
+		<div class="col-xs-3">
+			<ul style="list-style: none;">
+				<li>{% trans "Size" %} : 12px</li>
+				<li>{% trans "Color" %} : #58595B</li>
+				<li>{% trans "Style" %} : Medium</li>
+			</ul>
+
+		</div>
+
+	</div>
+
+	<!-- P element -->
+	<div class="col-xs-12">
+		<p class="col-xs-3">P</p>
+
+		<p class="col-xs-6">Lorem ipsum</p>
+
+		<div class="col-xs-3">
+			<ul style="list-style: none;">
+				<li>{% trans "Size" %} : 14px</li>
+				<li>{% trans "Color" %} : #666666</li>
+				<li>{% trans "Style" %} : Medium</li>
+			</ul>
+
+		</div>
+
+	</div>
+
+
+
 </div>
 
 
-    
-{% endblock %}
+
+{% endblock content %}
 
 
 

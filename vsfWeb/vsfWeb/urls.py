@@ -16,12 +16,15 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^cases/', include('cases.urls', namespace="Cases")),
     url(r'^general/', include('general.urls', namespace="General")),
     url(r'^provider/', include('provider.urls', namespace="Provider")),
     url(r'^summary/', include('summary.urls', namespace="Summary")),
-    url(r'^styling-guide/', include('stylingGuide.urls', namespace="StylingGuide")),
-    url(r'^i18n/',include('django.conf.urls.i18n')),
+    url(r'^styling-guide/',
+        include('stylingGuide.urls',
+                namespace="StylingGuide")),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 ]

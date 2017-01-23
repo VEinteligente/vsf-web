@@ -197,7 +197,7 @@ function select(option){
 
                         title = value.title;
 
-                        $("#data"+name).append('<tr><td style="min-width:350px">'+title+'</td><td><a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Abrir</a></td></tr></tr>');
+                        $("#data"+name).append('<tr><td style="min-width:520px">'+title+'</td><td><a href="http://127.0.0.1:8000/cases/one-element-case/'+value.id+'">Abrir</a></td></tr></tr>');
 
 
                     })    

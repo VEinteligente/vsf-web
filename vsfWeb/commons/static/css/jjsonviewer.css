@@ -1,8 +1,8 @@
 .jjson-container {
-    font-size: 13px;
+    font-size: 12px;
     line-height: 1.2;
     font-family: monospace;
-    padding-left: 0;
+    padding: 16px;
     margin-left: 20px;
     overflow: auto;
 }
@@ -38,19 +38,19 @@
 }
 
 .jjson-container .null {
-    color: #999;
+    color: #4cd964;
 }
 .jjson-container .string {
-    color: #4e9a06;
+    color: #4cd964;
 }
 .jjson-container .number {
-    color: #a40000;
+    color: #4cd964;
 }
 .jjson-container .boolean {
-    color: #c4a000;
+    color: #4cd964;
 }
 .jjson-container .key {
-    color: #204a87;
+    color: #174173;
 }
 .jjson-error {
     margin: 10px;
@@ -81,6 +81,7 @@
 
 .jjson-container li .collapsed ~ .close:before {
     content: "... ";
+    font-size: 1rem;
     color: #999;
 }
 

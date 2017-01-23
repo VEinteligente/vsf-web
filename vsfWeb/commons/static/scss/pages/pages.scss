@@ -67,9 +67,9 @@ td{
 }
 
 #dataTableM{
-    padding-top:8px;
+
     height:36px;
-    padding-bottom:8px;
+
 }
 
 #headerDiv{
@@ -77,11 +77,12 @@ td{
 }
 
 #mRow{
-
+    padding-top:8px;
+    padding-bottom:8px;
 }
 
 #mRow:hover{
-    background-color: #cecece;
+    background-color: #d1d1d1;
     padding-right: 6px;    
 }
 
@@ -97,6 +98,46 @@ td{
     text-decoration: underline;
     color: #575757;
     cursor: pointer;
+}
+
+#mDataSite{
+    padding-left:20px;
+}
+
+#mDataDate{
+    padding-left:5px;   
+    max-width:90px; 
+}
+
+#mDataCountry{
+    padding-left:10px;
+    max-width:90px;   
+}
+
+#mDataRegion{
+    padding-left:10px;
+    max-width:90px;
+}
+
+#mDataCity{
+    padding-left:13px;
+    max-width:90px;
+}
+
+#mDataIsp{
+    padding-left:15px;
+    max-width:90px;
+}
+
+#mDataJson{
+    padding-left:15px;
+    padding-right:10px;
+    max-width:90px;
+}
+
+#mDataType{
+    padding-left:20px;
+    max-width:90px;
 }
 
 // Sites and domain list
@@ -459,23 +500,34 @@ input#title{
 }
 
 td{
+
    font-size: 14px;
    font-weight:400;
-   color:#808080 ;
 
 }
 
 .tag{
    font-size: 12px;
-   height: 20px;
+   height: 24px;
 }
 
 #tabletitle{
-   font-weight: normal;
+   font-weight: 700;
    color:#575757 ;
+   padding-left:2px;
+}
+
+
+#sumtable{
+ overflow-y: scroll !important;
+ max-height: 300px !important;
 }
 
 /* Measurements table */
+
+#jsonClose{
+    font-size:1rem;
+}
 
 #mtablehead{
    th{
@@ -487,6 +539,47 @@ td{
    tr{
    text-align:center;
    }
+}
+
+#mModalHeader{
+    height:30px;
+    text-transform: uppercase;
+
+}
+
+#mModalContent{
+    border-radius: 8px;
+}
+
+#closeButton{
+    vertical-align:super;
+    margin-right: 15px;
+    font-size: x-large;
+    font-weight: 300;
+}
+
+#modalButton{
+    height: 28px;
+    width: auto !important;
+    padding-left:16px;
+    padding-right:16px;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+#measurementFooter{
+    height: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#measurementTitle{
+   margin-top:-8px;
+}
+
+#mModalID{
+    font-weight: 400;
 }
 
 //twitter

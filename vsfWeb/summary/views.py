@@ -43,8 +43,8 @@ class MeasurementsTable(TemplateView):
     template_name = "measurements-table.html" 
 
 class MeasurementsTableApi(APIView):
-   def get(self, request, format=None):
+   def get(self, request, pk="1", format=None):
        headers = {'Authorization': settings.SERVICES_TOKEN}
-       snippet = requests.get('http://127.0.0.1:8001/measurements/api/flags/', headers = headers)
+       snippet = requests.get('http://127.0.0.1:8001/cases/api/detail_event/'+ pk, headers = headers)
        return Response(snippet)
 

@@ -1,7 +1,6 @@
 
 import datetime, json, requests 
-
-
+from selenium import webdriver
 from django.views.generic import (TemplateView)
 from django.conf import settings
 from rest_framework.views import (APIView)

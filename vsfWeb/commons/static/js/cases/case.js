@@ -56,6 +56,7 @@ $(document).ready(function()
 		})
 
 		$('#descriptionAjax').html(description);
+		$("#caseImage").attr("src",png);
 		
 		//if the end_date is null it means that the case is still active, still needs to do the else case when the case is considered finished
 

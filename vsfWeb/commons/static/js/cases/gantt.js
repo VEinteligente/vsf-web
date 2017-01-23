@@ -353,3 +353,5 @@ function getCounts(arr) {
 function getCount(word, arr) {
 	return getCounts(arr)[word] || 0;
 }
+
+

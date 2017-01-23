@@ -1,6 +1,6 @@
 /* RESPONSIVE */
 
-
+//Responsive Sizes
 $xs_only:   "(min-width:0) and (max-width: 543px)";
 $sm_only:  "(min-width:544px) and (max-width:767px)";
 $sm_down:  "(max-width:767px)";
@@ -10,43 +10,61 @@ $lg_only:  "(min-width:992px) and (max-width:1199px)";
 $lg_down:  "(max-width:1199px)";
 $xl_only: "(min-width:1200px)";
 
+//Font Sizes
 $xl_fontSize: 44px;
 $lg_fontSize: 26px;
 $md_fontSize: 18px;
 $sm_fontSize: 14px;
 $xs_fontSize: 12px;
 
-$medium_fontWeight: 500;
+//Font Weights
+$large_fontWeight: 700;
+$medium_fontWeight: 400;
+$small_fontWeight: 300;
 
-$black_fontColor: #000;
-$darkGray_fontColor: #808184;
-$lightGray_fontColor: #58595B;
-$gray_fontColor: #666666;
+//White Background Style Colors
+$wb_black_fontColor: #333333;
+$wb_darkGray_fontColor: #808080;
+$wb_lightGray_fontColor: #808080;
+$wb_gray_fontColor: #575757;
 
+//Black Background Style Colors (Inverted)
+$bb_white_fontColor: #fff;
+$bb_darkGray_fontColor: $wb_darkGray_fontColor;
+$bb_lightGray_fontColor: #58595B;
+$bb_gray_fontColor: #666666;
+
+//Colors
+$gray_fontColor: #575757;
 $darkGray: #808080;
 $gray: #A0A0A0;
-$lightGray: #CCCCFF;
+$lightGray: #EBEBEB;
 
-$darkGrayButton: #BBBBBB;
+$darkGrayButton: #ABABAB;
 $grayButton: #E8E8E8;
 $lightGrayButton: #CCCCCC;
 
+//Font Family
 $primary_fontFamily: Roboto;
 
+//Padding
 $sm_padding: 8px;
 $md_padding: 16px;
 $lg_padding: 24px;
 
+//Buttons
 $buttonHeightSize: 28px;
 
 $contextualButtonHeightSize: 24px;
 $contextualButtonWidthSize: 80px;
 $contextualButtonColor: #fff; 
 
-$green_tag: #00CC00;
-$red_tag: #FF0000;
+//Tags
+$green_tag: #8cc63f;
+$red_tag: #FF2115;
 $contentColorTag: #fff;
 
+//Tag colors
 $blocked_color: #ff2115;
 $disconnected_color: #bd2126;
 $slowdown_color: #ebe70e;
@@ -66,54 +84,107 @@ body {
 
 h1 {
     font-size: $xl_fontSize;
-    color: $black_fontColor;
-    font-weight: $medium_fontWeight;
+    color: $wb_black_fontColor;
+    font-weight: $large_fontWeight;
 }
 
 h2 {
     font-size: $lg_fontSize;
-    color:$black_fontColor;
-    font-weight: $medium_fontWeight;
+    color:$wb_black_fontColor;
+    font-weight: $large_fontWeight;
 }
 
 h3 {
     font-size: $md_fontSize;
-    color: $darkGray_fontColor;
-    font-weight: bold;
+    color: $wb_darkGray_fontColor;
+    font-weight: $large_fontWeight;
 }
 
 h4 {
     font-size: $sm_fontSize;
-    color: $darkGray_fontColor;
+    color: $wb_lightGray_fontColor;
     font-weight: $medium_fontWeight;
 }
 
 h5 {
     font-size: $xs_fontSize;
-    color: $lightGray_fontColor;
-    font-weight:  $medium_fontWeight;
+    color: $wb_gray_fontColor;
+    font-weight: $medium_fontWeight;
 }
 
 .headline {
     font-size: $sm_fontSize;
-    color: $lightGray_fontColor;
-    font-weight: bold;
+    color: $wb_lightGray_fontColor;
+    font-weight: $large_fontWeight;
+    text-transform: uppercase;
 }
 
 .subtitle {
     font-size: $xs_fontSize;
-    color: $lightGray_fontColor;
+    color: $wb_lightGray_fontColor;
     font-weight: $medium_fontWeight;
-    
 }
 
 p {
     font-size: $sm_fontSize;
-    color: $gray_fontColor;
+    color: $wb_gray_fontColor;
     font-weight: $medium_fontWeight;
     
 }
 
+//Inverted Styles
+
+ih1 {
+    font-size: $xl_fontSize;
+    color: $bb_white_fontColor;
+    font-weight: bold;
+}
+
+ih2 {
+    font-size: $lg_fontSize;
+    color:$bb_white_fontColor;
+    font-weight: bold;
+}
+
+ih3 {
+    font-size: $md_fontSize;
+    color: $bb_darkGray_fontColor;
+    font-weight: bold;
+}
+
+ih4 {
+    font-size: $sm_fontSize;
+    color: $bb_lightGray_fontColor;
+    font-weight: regular;
+}
+
+ih5 {
+    font-size: $xs_fontSize;
+    color: $bb_gray_fontColor;
+    font-weight: regular;
+}
+
+.iheadline {
+    font-size: $sm_fontSize;
+    color: $bb_lightGray_fontColor;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.isubtitle {
+    font-size: $xs_fontSize;
+    color: $bb_lightGray_fontColor;
+    font-weight: bold;
+}
+
+ip {
+    font-size: $sm_fontSize;
+    color: $bb_gray_fontColor;
+    font-weight: light;
+    
+}
+
+//Action Button
 button {
     padding-left: $md_padding;
     padding-right: $md_padding;
@@ -122,17 +193,22 @@ button {
     border: none;
     outline: none;
     font-size: $sm_fontSize;
-    background-color: $grayButton;
+    color: $bb_lightGray_fontColor;
+    font-weight: regular;
+    background-color: white;
     
     &:hover {
         font-weight: regular;
-        background-color: $lightGray;
+        background-color: #ebebeb;
+        color:$wb_lightGray_fontColor;
     }
     
     &:active {
         font-weight: medium;
-        background-color: $darkGray;
-        outline: none; 
+        background-color: #d1d1d1;
+        outline: none;
+        font-weight: $large_fontWeight;
+        color: white; 
     }
     
     &:focus {
@@ -140,25 +216,25 @@ button {
     }
 }
 
-
+//Static Button
 .contextualButtonFixedSize {
     width: $contextualButtonWidthSize !important;
     height: $contextualButtonHeightSize;
     border: 1px solid $lightGray;
     outline: none;
     background-color: $contextualButtonColor;
-    border-radius: 5px;
+    border-radius: 8px;
     padding:0;
     
     &:hover {
         border:none;
         font-weight: regular;
-        background-color: $lightGrayButton;  
+        background-color: $lightGray;  
              
     }
     
     &:active {
-        font-weight: medium;
+        font-weight: $large_fontWeight;
         background-color: $darkGrayButton;
         color: $contextualButtonColor;
         outline: none; 
@@ -169,11 +245,12 @@ button {
     }
 }
 
+//Contextual Button
 .contextualButton{
     border: 1px solid $lightGray;
     outline: none;
     background-color: $contextualButtonColor;
-    border-radius: 5px;
+    border-radius: 8px;
     padding-left: $sm_padding;
     padding-right: $sm_padding;
     
@@ -184,8 +261,8 @@ button {
     }
     
     &:active {
-        font-weight: medium;
-        background-color: $darkGray;
+        font-weight: $large_fontWeight;
+        background-color: $darkGrayButton;
         color: $contextualButtonColor;
         outline: none; 
     }
@@ -195,6 +272,7 @@ button {
     }
 }
 
+//Continue Tag
 .continue_tag{
     display: inline-block;
     .left_cornerTag{
@@ -220,6 +298,7 @@ button {
 
 }
 
+//blocked Tag
 .blocked_tag{
     display: inline-block;
     .left_cornerTag{
@@ -245,6 +324,7 @@ button {
 
 }
 
+//Disconnected Tag
 .disconnected_tag{
     display: inline-block;
     .left_cornerTag{
@@ -270,6 +350,7 @@ button {
 
 }
 
+//Slowdown Tag
 .slowdown_tag{
     display: inline-block;
     .left_cornerTag{
@@ -295,6 +376,7 @@ button {
 
 }
 
+//Connected Tad
 .connected_tag{
     display: inline-block;
     .left_cornerTag{
@@ -320,6 +402,7 @@ button {
 
 }
 
+//Fail Tag
 .fail_tag{
     display: inline-block;
     .left_cornerTag{
@@ -345,6 +428,7 @@ button {
 
 }
 
+//DOS Tag
 .dos_tag{
     display: inline-block;
     .left_cornerTag{
@@ -370,6 +454,7 @@ button {
 
 }
 
+//Interception Tag
 .interception_tag{
     display: inline-block;
     .left_cornerTag{
@@ -503,7 +588,7 @@ button {
 
 .toolbar {
     border: 2px solid $gray;
-    height: 48px;
+    height: 40px;
     display: flex;
     align-items: center;
     padding: 0px;
@@ -528,7 +613,7 @@ button {
 
     .dateYear{
         font-size: $xs_fontSize;
-        color: $lightGray_fontColor;
+        color: $wb_lightGray_fontColor;
         font-weight:  $medium_fontWeight;
         
     }

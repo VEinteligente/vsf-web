@@ -55,6 +55,13 @@ SERVICES_TOKEN = local_settings.SERVICES_TOKEN
 URL_VSF_WEB = 'http://127.0.0.1:8000'
 URL_VSF = 'http://127.0.0.1:8001'
 
+ALLOWED_HOSTS = []
+
+# Cronjobs
+CRON_CLASSES = [
+    "vsfWeb.cron.ScreenshotCronjob",
+]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -64,6 +71,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_cron',
     'compressor',
     'rest_framework',
     'widget_tweaks',

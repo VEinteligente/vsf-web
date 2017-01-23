@@ -165,18 +165,21 @@ def CaseCVS(request, pk):
             eventList = (eventList + "; Event: " + event["identification"] +
                          ", Fecha inicio: " + event["start_date"] +
                          ", Fecha fin: " + event["end_date"] + ", Target: " +
-                         event["isp"] + ", isp: " + event["isp"])
+                         event["target"]["site"] + event["target"]["url"] +
+                         ", ISP: " + event["isp"])
         else:
             if event["end_date"] is None:
                 eventList = ("Event: " + event["identification"] +
                              ", Fecha inicio: " + event["start_date"] +
                              ", Fecha fin: " + "Continua" + ", Target: " +
-                             event["target"] + ", ISP: " + event["isp"])
+                             event["target"]["site"] + event["target"]["url"] +
+                             ", ISP: " + event["isp"])
             else:
                 eventList = ("Event: " + event["identification"] +
                              ", Fecha inicio: " + event["start_date"] +
                              ", Fecha fin: " + event["end_date"] +
-                             ", Target: " + event["target"] + ", ISP: " +
+                             ", Target: " + event["target"]["site"] +
+                             event["target"]["url"] + ", ISP: " +
                              event["isp"])
 
         countEvent = countEvent + 1

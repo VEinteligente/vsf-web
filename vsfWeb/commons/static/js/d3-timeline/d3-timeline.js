@@ -2,7 +2,7 @@
 (function () {
   d3.timeline = function() {
     var DISPLAY_TYPES = ["circle", "rect"];
-
+    
     var hover = function () {},
         mouseover = function () {},
         mouseout = function () {},
@@ -149,7 +149,7 @@
       var fullItemHeight    = itemHeight + itemMargin;
       var rowsDown          = margin.top + (fullItemHeight/2) + fullItemHeight * (yAxisMapping[index] || 1);
 
-      gParent.append("text")
+      gParent.append("g")
         .attr("class", "timeline-label")
         .attr("transform", "translate(" + labelMargin + "," + rowsDown + ")")
         .text(hasLabel ? labelFunction(datum.label) : datum.id)
@@ -685,19 +685,39 @@
   };
 })();
 
+
 //d3-timeline
 
 var testData = [
-                {label: "person a", times: [
-                  {"starting_time": 1355752800000, "ending_time": 1355759900000},
-                  {"starting_time": 1355767900000, "ending_time": 1355774400000}]},
-                {label: "person b", times: [
+                {label: "person a",  
+                	times: [
+                	        {"color":"red", "starting_time": 1355752800000, "ending_time": 1355759900000},
+                	        {"color":"yellow", "starting_time": 1355752800000, "ending_time": 1355759700000},
+                	        {"starting_time": 1355767900000, "ending_time": 1355774400000}
+                	        
+                	       ]
+                },
+                {label: "person b", class:"blockedPartial", times: [
                   {"starting_time": 1355759910000, "ending_time": 1355761900000}]},
                 {label: "person c", times: [
                   {"starting_time": 1355761910000, "ending_time": 1355763910000}]}
                 ];
 
-var chart = d3.timeline().showTimeAxisTick().stack();
+var chart = d3.timeline().showTimeAxisTick().showTimeAxisTick().stack();
 
 var svg = d3.select("#timeline1").append("svg").attr("width", 500)
   .datum(testData).call(chart);
+
+
+
+svg.selectAll(".timeline-label")  // select all the text elements for the xaxis
+          .html(function(d) {
+        	  
+        	  var labelStrong_first = (($(this).text())).split(" ")[0];
+        	  console.log(labelStrong_first)
+        	  var labelStrong_second = (($(this).text())).split(" ")[1];
+        	  console.log(labelStrong_second)
+        	  return ("<text stroke='#000000'>" + labelStrong_first + "</text>" 
+        			  + "<text transform='translate(55,0)'>" + labelStrong_second + "</text>");
+         });
+

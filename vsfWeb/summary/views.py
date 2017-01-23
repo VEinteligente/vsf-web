@@ -68,23 +68,23 @@ class MeasurementsTableApi(APIView):
     """ This view renders the API request for the measurement table
     by category """
 
-    def get(self, request, format=None):
+    def get(self, request, pk="1", format=None):
         headers = {'Authorization': settings.SERVICES_TOKEN}
         snippet = requests.get(
             settings.URL_VSF +
-            '/measurements/api/flags/',
+            '/cases/api/detail_event/' + pk,
             headers=headers)
         return Response(snippet)
 
 
-def MeasurementsTableCVS(request):
+def MeasurementsTableCVS(request, pk="1"):
     """ This view takes list of measurements and exports
     it to a CVS file. """
     # Get the list of all the cases and load it as JSON
     headers = {'Authorization': settings.SERVICES_TOKEN}
     snippet = requests.get(
         settings.URL_VSF +
-        '/measurements/api/flags/',
+        '/cases/api/detail_event/' + pk,
         headers=headers)
     data = json.loads(snippet.text)
 
@@ -96,48 +96,33 @@ def MeasurementsTableCVS(request):
     # CSV header.
     writer = csv.writer(response)
     writer.writerow(['Fecha descarga',
-                     'Sitios',
-                     'URL',
-                     'Fecha',
-                     'Pais',
-                     'Estado',
-                     'Cuidad',
-                     'ISP',
-                     'Medicion',
-                     'Tipo'])
+                     'Flags'])
     # count is the total of cases to be shown.
     # result is where the information is located in the JSON
-    result = data['results']
-    count = data["count"] - 1
+    results = data['events']
+    count = 0
 
-    # Load all the information of each result in a CVS row
-    while (count > -1):
-        id = result[count]['id']
-        date = result[count]['date']
-        target = result[count]['target']
-        url = target['url']
-        site = target['site']
-        probe = result[count]['probe']
-        country = probe['country']
-        region = probe['region']
-        city = probe['city']
-        isp = result[count]['isp']
-        measurement = result[count]
-        type = result[count]['type_med']
+    for result in results:
+        # Load all the information of each result in a CVS row
+        flags = result['flags']
+
+        countFlags = 0
+        flagsList = ""
+        for flag in flags:
+            flagsList = "[ " + flagsList + "ID: " + str(flag['id'])
+            flagsList = (flagsList + ", Country: " +
+                         str(flag['probe']['country']))
+            flagsList = flagsList + ", City: " + str(flag['probe']['city'])
+            flagsList = flagsList + ", Region: " + str(flag['probe']['region'])
+            flagsList = flagsList + ", Type: " + str(flag['type_med'])
+            flagsList = flagsList + ", Date: " + str(flag['date'])
+            flagsList = flagsList + ", Target: " + str(flag['target']) + " ]"
 
         download_date = datetime.datetime.now().date()
 
         writer.writerow([download_date,
-                         site,
-                         url,
-                         date,
-                         country,
-                         region,
-                         city,
-                         isp,
-                         measurement,
-                         type])
-        count = count - 1
+                         flagsList])
+        count = count + 1
 
     return response
 

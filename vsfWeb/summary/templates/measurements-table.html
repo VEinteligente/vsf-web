@@ -1,6 +1,6 @@
 {% extends "base.html" %} 
 {% load i18n %} 
-{% load static %} 
+{% load static %}
 {% block content %} 
 {% get_current_language as language_code %}
 
@@ -48,29 +48,35 @@
 	</div>
 </div>
 
-<div class="col-xs-1 marginPage"></div>
-
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 	aria-labelledby="measurementTitle" aria-hidden="true">
 	<div class="modal-dialog" id="modalm" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h3 class="modal-title" id="measurementTitle"></h3>
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
+		<div class="modal-content" id="mModalContent">
+			<button type="button" class="close" id="closeButton"
+				data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<div class="modal-header" id="mModalHeader">
+
+				<h4 class="modal-title" id="measurementTitle"></h4>
+
 			</div>
 			<div class="modal-body" id="measurementData"></div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			<div class="modal-footer" id="measurementFooter">
+
+				<button type="button" class="btn btn-secondary" id="modalButton"
+					data-dismiss="modal">Close</button>
+
 			</div>
 		</div>
 	</div>
 </div>
-<script>
-	var url_data_measurement = "{% url 'Summary:MeasurementsTableApi' %}"
-	var url_excel = "{% url 'Summary:ExcelMeasurementList' %}"
+<script> 
+	var pk = {{ pk }}
+	var url_data_measurement =  "{% url 'Summary:MeasurementsTableApi' pk=pk %}" 
+	var url_excel = "{% url 'Summary:ExcelMeasurementList' pk=pk %}"
+
+
 </script>
 <script src="{% static 'js/jjsonviewer.js' %}"></script>
 

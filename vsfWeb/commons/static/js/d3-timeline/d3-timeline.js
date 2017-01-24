@@ -3,7 +3,7 @@
   d3.timeline = function() {
     var DISPLAY_TYPES = ["circle", "rect"];
     
-    var hover = function () {},
+    var hover = function (label) {console.log(label)},
         mouseover = function () {},
         mouseout = function () {},
         click = function () {},
@@ -193,11 +193,11 @@
       if (stacked || ending === 0 || beginning === 0) {
         g.each(function (d, i) {
           d.forEach(function (datum, index) {
-
             // create y mapping for stacked graph
-            if (stacked && Object.keys(yAxisMapping).indexOf(index) == -1) {
-              yAxisMapping[index] = maxStack;
-              maxStack++;
+            if (stacked && Object.keys(yAxisMapping).indexOf(index) == -1) {    
+            console.log("maxStack: " + maxStack)
+            yAxisMapping[index] = maxStack;
+            maxStack++;
             }
 
             // figure out beginning and ending times if they are unspecified
@@ -255,18 +255,12 @@
 
           g.selectAll("svg").data(data).enter()
             .append(function(d, i) {
-                return document.createElementNS(d3.ns.prefix.svg, "display" in d? d.display:display);
+                return document.createElementNS(d3.ns.prefix.svg, "polygon");
             })
+            .attr("transform", getPosition)
+            .attr("points", getPoints)
             .attr("x", getXPos)
-            .attr("y", getStackPosition)
-            .attr("width", function (d, i) {
-              return (d.ending_time - d.starting_time) * scaleFactor;
-            })
-            .attr("cy", function(d, i) {
-                return getStackPosition(d, i) + itemHeight/2;
-            })
-            .attr("cx", getXPos)
-            .attr("r", itemHeight / 2)
+            .attr("y", getStackPosition)          
             .attr("height", itemHeight)
             .style("fill", function(d, i){
               var dColorPropName;
@@ -407,7 +401,27 @@
       function getXPos(d, i) {
         return margin.left + (d.starting_time - beginning) * scaleFactor;
       }
+      
+      function getPoints(d, i) {
+    	  var x = getXPos(d, i);
+    	  
+    	  var width = (d.ending_time - d.starting_time) * scaleFactor;
+          return width + ",16 7,16 0 ,8 7, 0 " + width + ",0" ;
+        }
 
+      function getPosition(d, i) {
+    	  var x = getXPos(d, i);
+    	  if (stacked) {
+    		  console.log(stacked)
+    		  console.log(d )
+    		  console.log(i + " : " + yAxisMapping[i])
+    		  var y =  margin.top + (itemHeight + itemMargin) * yAxisMapping[i];
+    		  console.log(y)
+            }
+          return "translate("+x + " " + y + ")";
+        }
+      
+      
       function getXTextPos(d, i) {
         return margin.left + (d.starting_time - beginning) * scaleFactor + 5;
       }
@@ -693,15 +707,26 @@ var testData = [
                 	times: [
                 	        {"color":"red", "starting_time": 1355752800000, "ending_time": 1355759900000},
                 	        {"color":"yellow", "starting_time": 1355752800000, "ending_time": 1355759700000},
-                	        {"starting_time": 1355767900000, "ending_time": 1355774400000}
+                	        {"color":"blue", "starting_time": 1355767900000, "ending_time": 1355774400000}
+                	        
+                	       ]
+                },
+                {label: "person a",  
+                	times: [
+                	        {"color":"red", "starting_time": 1355752800000, "ending_time": 1355759900000},
+                	        {"color":"yellow", "starting_time": 1355752800000, "ending_time": 1355759700000},
+                	        {"color":"blue", "starting_time": 1355767900000, "ending_time": 1355774400000}
                 	        
                 	       ]
                 },
                 {label: "person b", class:"blockedPartial", times: [
-                  {"starting_time": 1355759910000, "ending_time": 1355761900000}]},
+                  {},               
+                  {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]},
                 {label: "person c", times: [
-                  {"starting_time": 1355761910000, "ending_time": 1355763910000}]}
+                  {"color":"green", "starting_time": 1355761910000, "ending_time": 1355763910000}]}
                 ];
+
+
 
 var chart = d3.timeline().showTimeAxisTick().showTimeAxisTick().stack();
 
@@ -720,4 +745,3 @@ svg.selectAll(".timeline-label")  // select all the text elements for the xaxis
         	  return ("<text stroke='#000000'>" + labelStrong_first + "</text>" 
         			  + "<text transform='translate(55,0)'>" + labelStrong_second + "</text>");
          });
-

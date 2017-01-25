@@ -166,6 +166,7 @@
         maxStack = 1,
         minTime = 0,
         maxTime = 0;
+      
 
       setWidth();
 
@@ -194,9 +195,11 @@
         g.each(function (d, i) {
           d.forEach(function (datum, index) {
             // create y mapping for stacked graph
+        	
             if (stacked && Object.keys(yAxisMapping).indexOf(index) == -1) {    
             console.log("maxStack: " + maxStack)
             yAxisMapping[index] = maxStack;
+            
             maxStack++;
             }
 
@@ -238,12 +241,17 @@
       } else {
         xAxis.ticks(tickFormat.numTicks || tickFormat.tickTime, tickFormat.tickInterval);
       }
-
+      var count = 0;
+      var position = 0; 
       // draw the chart
       g.each(function(d, i) {
+    	
         chartData = d;
         d.forEach( function(datum, index){
+        
           var data = datum.times;
+          console.log( data)
+           console.log( datum)
           var hasLabel = (typeof(datum.label) != "undefined");
 
           // issue warning about using id per data set. Ids should be individual to data elements
@@ -406,18 +414,29 @@
     	  var x = getXPos(d, i);
     	  
     	  var width = (d.ending_time - d.starting_time) * scaleFactor;
-          return width + ",16 7,16 0 ,8 7, 0 " + width + ",0" ;
+          return width +",8 " + (width-8) + ",0 " + (width-8) +
+          ",0 " + (width-8) + ",0 8,0 8,0 0,8 8,16 8,16 " + (width-8) + 
+          ",16 " + (width-8) + ",16 " + (width-8) + ",16" 
+          
+//          width + ",16 7,16 0 ,8 7, 0 " + width + ",0" ;
+//          550,8 542.001,0 542,0.001 542,0 8,0 8,0 0,8 8,16 8,16 542,16 542,15.999 542.001,16 
+//          550,16 7,16 0,8 7,0 550,0 
         }
-
+      
       function getPosition(d, i) {
     	  var x = getXPos(d, i);
+    		console.log("hi" + count)
+    	  if(count !=0 && i == 0 ){
+    		  position ++;  
+    	  }
+    	
     	  if (stacked) {
-    		  console.log(stacked)
-    		  console.log(d )
-    		  console.log(i + " : " + yAxisMapping[i])
-    		  var y =  margin.top + (itemHeight + itemMargin) * yAxisMapping[i];
+    		 
+    		  console.log(position + " " + i + " : " + yAxisMapping[position])
+    		  var y =  margin.top + (itemHeight + itemMargin) * yAxisMapping[position];
     		  console.log(y)
             }
+    	  count ++;
           return "translate("+x + " " + y + ")";
         }
       
@@ -706,24 +725,13 @@ var testData = [
                 {label: "person a",  
                 	times: [
                 	        {"color":"red", "starting_time": 1355752800000, "ending_time": 1355759900000},
-                	        {"color":"yellow", "starting_time": 1355752800000, "ending_time": 1355759700000},
-                	        {"color":"blue", "starting_time": 1355767900000, "ending_time": 1355774400000}
-                	        
                 	       ]
-                },
-                {label: "person a",  
-                	times: [
-                	        {"color":"red", "starting_time": 1355752800000, "ending_time": 1355759900000},
-                	        {"color":"yellow", "starting_time": 1355752800000, "ending_time": 1355759700000},
-                	        {"color":"blue", "starting_time": 1355767900000, "ending_time": 1355774400000}
-                	        
-                	       ]
-                },
+                },                
                 {label: "person b", class:"blockedPartial", times: [
-                  {},               
                   {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]},
                 {label: "person c", times: [
-                  {"color":"green", "starting_time": 1355761910000, "ending_time": 1355763910000}]}
+                  {"color":"green", "starting_time": 1355761910000, "ending_time": 1355763910000},
+                  {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]}
                 ];
 
 

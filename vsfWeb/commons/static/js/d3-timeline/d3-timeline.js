@@ -720,36 +720,79 @@
 
 
 //d3-timeline
+var dataResult = [];
 
-var testData = [
-                {label: "person a",  
-                	times: [
-                	        {"color":"red", "starting_time": 1355752800000, "ending_time": 1355759900000},
-                	       ]
-                },                
-                {label: "person b", class:"blockedPartial", times: [
-                  {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]},
-                {label: "person c", times: [
-                  {"color":"green", "starting_time": 1355761910000, "ending_time": 1355763910000},
-                  {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]}
-                ];
+// This AJAX call corresponds to the request of the JSON data from Pandora
+// project API.
+$
+		.ajax({
+			url : url_data,
+			method : "GET",
+			dataType : 'json',
+			contentType : 'application/json'
+		})
+		.done(
+				function(data) {
+					
+					var temporal = "";
+
+					// For each element in the JSON we need to collect their
+					// values
+					for (var i = 0; i < data.length; i++)
+						temporal = temporal.concat(data[i]);
+
+					var dataJson = JSON.parse(temporal);
+				
+					console.log(dataJson)
+					
+						$.each(dataJson.results, function(key, value) { // First Level
+							
+					  
+							
+							element = { label: (value.isp + " " + value.type),times: 
+								[ {"color":"red", "starting_time": 1355752800000, "ending_time": 1355759900000}]
+											
+										};		
+							
+							dataResult.push(element)
+							console.log("dataResul")
+							console.log(dataResult)
+						})
+						
+
+						var testData = dataResult
+						console.log(testData)
+						var chart = d3.timeline().showTimeAxisTick().showTimeAxisTick().stack();
+
+						var svg = d3.select("#timeline1").append("svg").attr("width", 500)
+						  .datum(testData).call(chart);
 
 
 
-var chart = d3.timeline().showTimeAxisTick().showTimeAxisTick().stack();
+						svg.selectAll(".timeline-label")  // select all the text elements for the yaxis
+						          .html(function(d) {
+						        	  
+						        	  var labelStrong_first = (($(this).text())).split(" ")[0];
+						        	  console.log(labelStrong_first)
+						        	  var labelStrong_second = (($(this).text())).split(" ")[1];
+						        	  console.log(labelStrong_second)
+						        	  return ("<text stroke='#000000'>" + labelStrong_first + "</text>" 
+						        			  + "<text transform='translate(55,0)'>" + labelStrong_second + "</text>");
+						         });
 
-var svg = d3.select("#timeline1").append("svg").attr("width", 500)
-  .datum(testData).call(chart);
+					
 
+				});
 
-
-svg.selectAll(".timeline-label")  // select all the text elements for the xaxis
-          .html(function(d) {
-        	  
-        	  var labelStrong_first = (($(this).text())).split(" ")[0];
-        	  console.log(labelStrong_first)
-        	  var labelStrong_second = (($(this).text())).split(" ")[1];
-        	  console.log(labelStrong_second)
-        	  return ("<text stroke='#000000'>" + labelStrong_first + "</text>" 
-        			  + "<text transform='translate(55,0)'>" + labelStrong_second + "</text>");
-         });
+//var testData = [
+//                {label: "person a",  
+//                	times: [
+//                	        {"color":"red", "starting_time": 1355752800000, "ending_time": 1355759900000},
+//                	       ]
+//                },                
+//                {label: "person b", class:"blockedPartial", times: [
+//                  {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]},
+//                {label: "person c", times: [
+//                  {"color":"green", "starting_time": 1355761910000, "ending_time": 1355763910000},
+//                  {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]}
+//                ];

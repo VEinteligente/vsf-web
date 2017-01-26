@@ -7,8 +7,9 @@ $(document)
 							"Mayo", "Junio", "Julio", "Agosto", "Septiembre",
 							"Octubre", "Noviembre", "Diciembre" ];
 
+					var month_number = [ "01", "02", "03", "04", "05", "06",
+							"07", "08", "09", 10, 11, 12 ];
 					var count = 0;
-
 					// url_data is where we fetch most of the case information
 					// and pk is the id of the case
 
@@ -39,7 +40,6 @@ $(document)
 							})
 							.done(
 									function(dataJson) {
-
 										var temporal = "";
 										// For each element in the JSON we need
 										// to collect their values
@@ -62,16 +62,13 @@ $(document)
 										// date has the case date in dateType
 										// format to use javascript methods
 										var date = new Date(dataJson.start_date);
-										var title = dataJson.title;
-										var description = dataJson.description;
-
+										var title = dataJson.title_de;
+										var description = dataJson.description_de;
 										var twitter_search = dataJson.twitter_search;
 
 										// Title & date for the main DIV in the
 										// details template
-
-										$('#titleAjax').html(title);
-
+										
 										$('head').append(
 												'<meta property="og:title" content="VE Sin filtro: '
 														+ title + '" />');
@@ -113,8 +110,11 @@ $(document)
 																+ '" />');
 
 										$('#titleDateAjax').html(
-												date.getDate() + "/"
-														+ date.getMonth() + "/"
+												date.getDate()
+														+ "/"
+														+ month_number[date
+																.getMonth()]
+														+ "/"
 														+ date.getFullYear());
 
 										$.each(dataJson.isp, function(
@@ -126,9 +126,25 @@ $(document)
 															+ secondLevelValue
 															+ '</button>');
 										})
-
+										
+										$('#titleAjax').html(title);
 										$('#descriptionAjax').html(description);
-										$("#caseImage").attr("src",png);
+
+										if (language != "en"){
+											var titleLanguage= "title_"+language;
+											var descripctionLanguage = "description_"+language;
+											$('#titleAjax').html(dataJson[titleLanguage]);
+											$('#descriptionAjax').html(dataJson[descripctionLanguage]);
+											if (dataJson[titleLanguage] == null){
+												$('#titleAjax').html(<strong>title</strong>);
+											}
+											if (dataJson[descriptionLanguage] == null){
+												$('#titleAjax').html(<strong>description</strong>);
+											}
+											
+										} 
+										
+										$("#caseImage").attr("src", png);
 
 										// if the end_date is null it means that
 										// the case is still active, still needs
@@ -136,13 +152,13 @@ $(document)
 										// considered finished
 
 										if (dataJson.end_date == null) {
-											$('#statusAjax').html("Continua");
+											$('#statusAjax').html("{% trans "'Continua'" %}");
 											$('#statusDateAjax')
 													.html(
 															date.getDate()
 																	+ "/"
-																	+ date
-																			.getMonth()
+																	+ month_number[date
+																			.getMonth()]
 																	+ "/"
 																	+ date
 																			.getFullYear());
@@ -208,8 +224,12 @@ $(document)
 																					value) {
 
 																				var update_date = new Date(
-																						value.date);
-																				var update_text = value.text;
+																						value.date)
+																				var update_text = value.text_de;
+																				if (language!= "en"){
+																					var textLanguage = "text_"+language;
+																					update_text = value[textLanguage];
+																				}
 																				var update_category = value.category;
 
 																				if (update_category == "grave") {

@@ -126,15 +126,20 @@ $(document)
 															+ secondLevelValue
 															+ '</button>');
 										})
-										
+										// Title & Description according Main website Language
 										$('#titleAjax').html(title);
 										$('#descriptionAjax').html(description);
-
+										
+										// If website langues is not de main one, find the title
+										// and description according to the language in var:language
 										if (language != "en"){
 											var titleLanguage= "title_"+language;
 											var descriptionLanguage = "description_"+language;
 											$('#titleAjax').html(dataJson[titleLanguage]);
 											$('#descriptionAjax').html(dataJson[descriptionLanguage]);
+											
+											// if the translated field is empty on Json use the main
+											// language of the website and highlight it
 											if (dataJson[titleLanguage] == null){
 												$('#titleAjax').html("<strong>"+title+"</strong>");
 											}
@@ -144,6 +149,7 @@ $(document)
 											
 										} 
 										
+										//website screenshot
 										$("#caseImage").attr("src", png);
 
 										// if the end_date is null it means that
@@ -323,7 +329,7 @@ function select(option) {
 
 							$("#domainTableTitle")
 									.html(
-											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:100%; background-color:red"></span>&nbsp Dominios');
+											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:100%; background-color:red"></span>&nbsp'+$('#domainTrans').val());
 
 							$.each(data.domains, function(index, result) {
 
@@ -334,7 +340,7 @@ function select(option) {
 								$("#domainTableBody").append(
 										'<tr><td style="border-radius:5px">'
 												+ result.url + '</td><tr>');
-
+								
 							})
 						}
 
@@ -344,7 +350,7 @@ function select(option) {
 
 							$("#domainTableTitle")
 									.html(
-											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:100%; background-color:red"></span>&nbsp Sitios');
+											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:100%; background-color:red"></span>&nbsp'+$('#siteTrans').val());
 
 							$.each(data.domains, function(index, result) {
 

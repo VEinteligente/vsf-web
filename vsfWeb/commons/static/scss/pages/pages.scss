@@ -110,8 +110,6 @@ tr{
     margin-top: 200px;
     background-color:#dedede;
     height:100vh;
-
-
 }
 
 .mheader{
@@ -157,38 +155,6 @@ tr{
     text-decoration: underline;
     color: #575757;
     cursor: pointer;
-}
-
-#mDataSite{
-
-}
-
-#mDataDate{
-
-}
-
-#mDataCountry{
-  
-}
-
-#mDataRegion{
-
-}
-
-#mDataCity{
-
-}
-
-#mDataIsp{
-
-}
-
-#mDataJson{
-
-}
-
-#mDataType{
-
 }
 
 // Sites and domain list
@@ -733,6 +699,7 @@ input#title{
     }
     #updateTitle{
         color: white;
+        text-transform: uppercase;
     padding-top: 10px;
     }
 }
@@ -744,6 +711,7 @@ input#title{
     }
     #cardsTitle{
         color: white;
+        text-transform: uppercase;
     padding-top: 10px;
     }
 }

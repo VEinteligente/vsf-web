@@ -5,6 +5,8 @@
 {% get_current_language as language_code %}
 
 <input id="continueTrans" type="hidden" value="{% trans 'Continua' %}">
+<input id="domainTrans" type="hidden" value="{% trans 'Dominios' %}">
+<input id="siteTrans" type="hidden" value="{% trans 'Sitios' %}">
 
 <div style="background-color: #DEDEDE">
 
@@ -138,7 +140,7 @@
 	<div class="bodyContent updates">
 		<div class="row">
 			<div class="col-xs-12 subtitleBar">
-				<h4 id="updateTitle">ACTUALIZACIONES</h4>
+				<h4 id="updateTitle">{% trans 'actualizaciones' %}</h4>
 			</div>
 		</div>
 
@@ -167,7 +169,7 @@
 	<div class="bodyContent cards">
 		<div class="row">
 			<div class="col-xs-12 subtitleBar">
-				<h4 id="cardsTitle">INFORMACIÓN</h4>
+				<h4 id="cardsTitle">{% trans 'informacion' %}</h4>
 			</div>
 		</div>
 

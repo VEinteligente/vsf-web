@@ -137,7 +137,7 @@ tr{
 #mRow{
     padding-top:8px;
     padding-bottom:8px;
-    padding-left:0px;
+    padding-left:15px;
 }
 
 #mRow:hover{
@@ -149,6 +149,7 @@ tr{
     font-size:12px;
     color: #808184;
     font-weight: 500;
+    padding: 0;
 
 }
 
@@ -159,43 +160,35 @@ tr{
 }
 
 #mDataSite{
-    padding-left:20px;
+
 }
 
 #mDataDate{
-    padding-left:5px;   
-    max-width:90px; 
+
 }
 
 #mDataCountry{
-    padding-left:10px;
-    max-width:90px;   
+  
 }
 
 #mDataRegion{
-    padding-left:10px;
-    max-width:90px;
+
 }
 
 #mDataCity{
-    padding-left:13px;
-    max-width:90px;
+
 }
 
 #mDataIsp{
-    padding-left:15px;
-    max-width:90px;
+
 }
 
 #mDataJson{
-    padding-left:15px;
-    padding-right:10px;
-    max-width:90px;
+
 }
 
 #mDataType{
-    padding-left:20px;
-    max-width:90px;
+
 }
 
 // Sites and domain list

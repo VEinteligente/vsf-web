@@ -176,8 +176,9 @@ $(document)
 															"Resultados de Twitter")
 											$(
 													"#twitterSearchTextContent .title")
-													.html("#" + twitter_search)
-											twitterSearch(twitter_search);
+													.html(decodeURI(twitter_search))
+													console.log(encodeURIComponent(twitter_search))
+											twitterSearch(encodeURIComponent(twitter_search));
 										}
 
 										// AJAX call for updates datails API

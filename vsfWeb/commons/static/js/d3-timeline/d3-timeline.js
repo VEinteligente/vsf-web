@@ -3,7 +3,7 @@
   d3.timeline = function() {
     var DISPLAY_TYPES = ["circle", "rect"];
     
-    var hover = function () {},
+    var hover = function (label) {console.log(label)},
         mouseover = function () {},
         mouseout = function () {},
         click = function () {},
@@ -166,6 +166,7 @@
         maxStack = 1,
         minTime = 0,
         maxTime = 0;
+      
 
       setWidth();
 
@@ -193,11 +194,13 @@
       if (stacked || ending === 0 || beginning === 0) {
         g.each(function (d, i) {
           d.forEach(function (datum, index) {
-
             // create y mapping for stacked graph
-            if (stacked && Object.keys(yAxisMapping).indexOf(index) == -1) {
-              yAxisMapping[index] = maxStack;
-              maxStack++;
+        	
+            if (stacked && Object.keys(yAxisMapping).indexOf(index) == -1) {    
+            console.log("maxStack: " + maxStack)
+            yAxisMapping[index] = maxStack;
+            
+            maxStack++;
             }
 
             // figure out beginning and ending times if they are unspecified
@@ -238,12 +241,17 @@
       } else {
         xAxis.ticks(tickFormat.numTicks || tickFormat.tickTime, tickFormat.tickInterval);
       }
-
+      var count = 0;
+      var position = 0; 
       // draw the chart
       g.each(function(d, i) {
+    	
         chartData = d;
         d.forEach( function(datum, index){
+        
           var data = datum.times;
+          console.log( data)
+           console.log( datum)
           var hasLabel = (typeof(datum.label) != "undefined");
 
           // issue warning about using id per data set. Ids should be individual to data elements
@@ -255,18 +263,12 @@
 
           g.selectAll("svg").data(data).enter()
             .append(function(d, i) {
-                return document.createElementNS(d3.ns.prefix.svg, "display" in d? d.display:display);
+                return document.createElementNS(d3.ns.prefix.svg, "polygon");
             })
+            .attr("transform", getPosition)
+            .attr("points", getPoints)
             .attr("x", getXPos)
-            .attr("y", getStackPosition)
-            .attr("width", function (d, i) {
-              return (d.ending_time - d.starting_time) * scaleFactor;
-            })
-            .attr("cy", function(d, i) {
-                return getStackPosition(d, i) + itemHeight/2;
-            })
-            .attr("cx", getXPos)
-            .attr("r", itemHeight / 2)
+            .attr("y", getStackPosition)          
             .attr("height", itemHeight)
             .style("fill", function(d, i){
               var dColorPropName;
@@ -407,7 +409,38 @@
       function getXPos(d, i) {
         return margin.left + (d.starting_time - beginning) * scaleFactor;
       }
-
+      
+      function getPoints(d, i) {
+    	  var x = getXPos(d, i);
+    	  
+    	  var width = (d.ending_time - d.starting_time) * scaleFactor;
+          return width +",8 " + (width-8) + ",0 " + (width-8) +
+          ",0 " + (width-8) + ",0 8,0 8,0 0,8 8,16 8,16 " + (width-8) + 
+          ",16 " + (width-8) + ",16 " + (width-8) + ",16" 
+          
+//          width + ",16 7,16 0 ,8 7, 0 " + width + ",0" ;
+//          550,8 542.001,0 542,0.001 542,0 8,0 8,0 0,8 8,16 8,16 542,16 542,15.999 542.001,16 
+//          550,16 7,16 0,8 7,0 550,0 
+        }
+      
+      function getPosition(d, i) {
+    	  var x = getXPos(d, i);
+    		console.log("hi" + count)
+    	  if(count !=0 && i == 0 ){
+    		  position ++;  
+    	  }
+    	
+    	  if (stacked) {
+    		 
+    		  console.log(position + " " + i + " : " + yAxisMapping[position])
+    		  var y =  margin.top + (itemHeight + itemMargin) * yAxisMapping[position];
+    		  console.log(y)
+            }
+    	  count ++;
+          return "translate("+x + " " + y + ")";
+        }
+      
+      
       function getXTextPos(d, i) {
         return margin.left + (d.starting_time - beginning) * scaleFactor + 5;
       }
@@ -687,37 +720,79 @@
 
 
 //d3-timeline
+var dataResult = [];
 
-var testData = [
-                {label: "person a",  
-                	times: [
-                	        {"color":"red", "starting_time": 1355752800000, "ending_time": 1355759900000},
-                	        {"color":"yellow", "starting_time": 1355752800000, "ending_time": 1355759700000},
-                	        {"starting_time": 1355767900000, "ending_time": 1355774400000}
-                	        
-                	       ]
-                },
-                {label: "person b", class:"blockedPartial", times: [
-                  {"starting_time": 1355759910000, "ending_time": 1355761900000}]},
-                {label: "person c", times: [
-                  {"starting_time": 1355761910000, "ending_time": 1355763910000}]}
-                ];
+// This AJAX call corresponds to the request of the JSON data from Pandora
+// project API.
+$
+		.ajax({
+			url : url_data,
+			method : "GET",
+			dataType : 'json',
+			contentType : 'application/json'
+		})
+		.done(
+				function(data) {
+					
+					var temporal = "";
 
-var chart = d3.timeline().showTimeAxisTick().showTimeAxisTick().stack();
+					// For each element in the JSON we need to collect their
+					// values
+					for (var i = 0; i < data.length; i++)
+						temporal = temporal.concat(data[i]);
 
-var svg = d3.select("#timeline1").append("svg").attr("width", 500)
-  .datum(testData).call(chart);
+					var dataJson = JSON.parse(temporal);
+				
+					console.log(dataJson)
+					
+						$.each(dataJson.results, function(key, value) { // First Level
+							
+					  
+							
+							element = { label: (value.isp + " " + value.type),times: 
+								[ {"color":"red", "starting_time": 1355752800000, "ending_time": 1355759900000}]
+											
+										};		
+							
+							dataResult.push(element)
+							console.log("dataResul")
+							console.log(dataResult)
+						})
+						12
+
+						var testData = dataResult
+						console.log(testData)
+						var chart = d3.timeline().showTimeAxisTick().showTimeAxisTick().stack();
+
+						var svg = d3.select("#timeline1").append("svg").attr("width", 500)
+						  .datum(testData).call(chart);
 
 
 
-svg.selectAll(".timeline-label")  // select all the text elements for the xaxis
-          .html(function(d) {
-        	  
-        	  var labelStrong_first = (($(this).text())).split(" ")[0];
-        	  console.log(labelStrong_first)
-        	  var labelStrong_second = (($(this).text())).split(" ")[1];
-        	  console.log(labelStrong_second)
-        	  return ("<text stroke='#000000'>" + labelStrong_first + "</text>" 
-        			  + "<text transform='translate(55,0)'>" + labelStrong_second + "</text>");
-         });
+						svg.selectAll(".timeline-label")  // select all the text elements for the yaxis
+						          .html(function(d) {
+						        	  
+						        	  var labelStrong_first = (($(this).text())).split(" ")[0];
+						        	  console.log(labelStrong_first)
+						        	  var labelStrong_second = (($(this).text())).split(" ")[1];
+						        	  console.log(labelStrong_second)
+						        	  return ("<text stroke='#000000'>" + labelStrong_first + "</text>" 
+						        			  + "<text transform='translate(55,0)'>" + labelStrong_second + "</text>");
+						         });
 
+					
+
+				});
+
+//var testData = [
+//                {label: "person a",  
+//                	times: [
+//                	        {"color":"red", "starting_time": 1355752800000, "ending_time": 1355759900000},
+//                	       ]
+//                },                
+//                {label: "person b", class:"blockedPartial", times: [
+//                  {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]},
+//                {label: "person c", times: [
+//                  {"color":"green", "starting_time": 1355761910000, "ending_time": 1355763910000},
+//                  {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]}
+//                ];

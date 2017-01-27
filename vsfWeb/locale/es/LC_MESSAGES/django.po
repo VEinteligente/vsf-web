@@ -136,7 +136,7 @@ msgstr "Relentizacion"
 
 #: stylingGuide/templates/elements.html:95
 msgid "DoS"
-msgstr ""
+msgstr "DoS"
 
 #: stylingGuide/templates/elements.html:104
 msgid "Fail"

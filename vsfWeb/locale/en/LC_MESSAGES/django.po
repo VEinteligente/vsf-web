@@ -1,4 +1,4 @@
-# SOME DESCRIPTIVE TITLE.
+# SOME DESCRIPTImsgVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
@@ -33,12 +33,12 @@ msgstr "Sites"
 
 #: commons/templates/navbar/navbar.html:19
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 
 #: commons/templates/navbar/navbar.html:23
 msgid "News"
-msgstr ""
+msgstr "News"
 
 #: commons/templates/navbar/navbar.html:29
 msgid "Guides"
@@ -122,15 +122,15 @@ msgstr "Information"
 
 #: stylingGuide/templates/elements.html:77
 msgid "Disconnected"
-msgstr ""
+msgstr "Disconnected"
 
 #: stylingGuide/templates/elements.html:86
 msgid "Slowdown"
-msgstr ""
+msgstr "Slowdown"
 
 #: stylingGuide/templates/elements.html:95
 msgid "DoS"
-msgstr ""
+msgstr "DoS"
 
 
 #: stylingGuide/templates/elements.html:83
@@ -138,15 +138,9 @@ msgstr ""
 msgid "BlockedMultiple"
 msgstr "Blocked"
 
-msgid "Sites"
-msgstr ""
-
-msgid "Domains"
-msgstr "Domains"
-
 #: stylingGuide/templates/elements.html:104
 msgid "Fail"
-msgstr ""
+msgstr "Fail"
 
 #: stylingGuide/templates/elements.html:115
 msgid "Blocked"
@@ -240,64 +234,64 @@ msgstr "Sites"
 
 #: summary/templates/measurements-table.html:18
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: summary/templates/measurements-table.html:19
 msgid "Date"
-msgstr ""
+msgstr "Date"
 
 #: summary/templates/measurements-table.html:20
 msgid "Country"
-msgstr ""
+msgstr "Country"
 
 #: summary/templates/measurements-table.html:21
 msgid "State"
-msgstr ""
+msgstr "State"
 
 #: summary/templates/measurements-table.html:22
 msgid "City"
-msgstr ""
+msgstr "City"
 
 #: summary/templates/measurements-table.html:23
 #: summary/templates/summary-table.html:46
 msgid "ISP"
-msgstr ""
+msgstr "ISP"
 
 #: summary/templates/measurements-table.html:24
 msgid "ISP Plan"
-msgstr ""
+msgstr "ISP Plan"
 
 #: summary/templates/measurements-table.html:25
 msgid "Upload Speed"
-msgstr ""
+msgstr "Upload Speed"
 
 #: summary/templates/measurements-table.html:26
 msgid "Download Speed"
-msgstr ""
+msgstr "Download Speed"
 
 #: summary/templates/measurements-table.html:27
 msgid "Measurement"
-msgstr ""
+msgstr "Measurement"
 
 #: summary/templates/measurements-table.html:28
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: summary/templates/summary-table.html:11
 msgid "Categories"
-msgstr ""
+msgstr "Categories"
 
 #: summary/templates/summary-table.html:12
 msgid "ISPs"
-msgstr ""
+msgstr "ISPs"
 
 #: summary/templates/summary-table.html:39
 msgid "Order By:"
-msgstr ""
+msgstr "Order By:"
 
 #: summary/templates/summary-table.html:42
 msgid "Category"
-msgstr ""
+msgstr "Category"
 
 #: vsfWeb/settings.py:131
 msgid "English"

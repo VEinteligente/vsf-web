@@ -1,15 +1,17 @@
 
-from django.conf import settings
-from django.http import HttpResponse
-from django.template.defaultfilters import title
-from django.views.generic import (TemplateView)
-from rest_framework.response import Response
-from rest_framework.views import APIView
 import csv
 import datetime
 import json
-import requests
 import urllib2
+
+from django.conf import settings
+from django.http import HttpResponse
+from django.template.defaultfilters import title
+from django.utils.http import urlquote
+from django.views.generic import (TemplateView)
+from rest_framework.response import Response
+from rest_framework.views import APIView
+import requests
 
 
 class AboutUs(TemplateView):
@@ -513,10 +515,9 @@ class searchTwitterApi(APIView):
     def get(self, request, twitterSearch="", format=None):
         # Use the Access Token to make an API request
 
-        print twitterSearch
         timeline_request = urllib2.Request(
-            "https://api.twitter.com/1.1/search/tweets.json?q=%23" +
-            twitterSearch)
+            "https://api.twitter.com/1.1/search/tweets.json?q=" +
+            urlquote(twitterSearch))
         timeline_request.add_header(
             "Authorization",
             "Bearer %s" %

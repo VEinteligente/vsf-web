@@ -758,7 +758,7 @@ $
 							console.log("dataResul")
 							console.log(dataResult)
 						})
-						
+						12
 
 						var testData = dataResult
 						console.log(testData)

@@ -681,20 +681,30 @@ td{
 
 #twitterTweet::-webkit-scrollbar{
   background: white;
-  width: 6px;
+  width: 15px;
+
 }
 
 
 #twitterTweet::-webkit-scrollbar-thumb{
-  background: black; 
-  height: 100px;
+  background-image: url("/commons/static/img/icons/vsf_iconscrollbar_v101.svg" );
+  background-repeat: no-repeat;
+  height: 150px;
+  background-position: center;
   }
 
- #twitterTweet::-webkit-scrollbar-button{
-  background: red; 
-  height: 10px;
+ #twitterTweet::-webkit-scrollbar-button:start{
+  background-image: url("/commons/static/img/icons/vsf_iconarrow_v101.svg"); 
+  background-position: center;
+
   }
 
+#twitterTweet::-webkit-scrollbar-button:end{
+  background-image: url("/commons/static/img/icons/vsf_iconarrow_v101_end.svg"); 
+  background-position: center;
+
+
+  }
 #caseImage{
     padding-left: 0;
     img{

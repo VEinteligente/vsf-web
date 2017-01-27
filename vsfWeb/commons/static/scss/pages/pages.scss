@@ -37,12 +37,12 @@
   }
 
 #rowTitleDataCategory{
-  min-width: 550px;
+  width: 85%;
   color: #fff;  
 }
 
 #rowTitleDataIsp{
-  min-width: 682px;
+  width: 100%;
   color: #fff;  
 }
 
@@ -333,6 +333,7 @@ tr{
     padding: 0;
     margin-left: 10px;
     
+    
     > div:first-child{
         border-bottom: 1px solid $grayButton;
         color: black;
@@ -350,6 +351,9 @@ tr{
     }
     .subtitleBar > span {
         padding: 0;
+        white-space: nowrap;
+    	overflow: hidden;
+    	text-overflow: ellipsis
     }
 
     .title{

@@ -1236,30 +1236,14 @@ function sortNameAsc(parent, child) {
 	clearSelectedOrder();
 	$(parent).addClass("selectOrderAdvanced");
 
+	
+
 	var parentSort = (parent.split(/(?=[A-Z])/)[0] + "Sort").replace('#', ".");
+	
 	$('.smallBar').find(parentSort).addClass('selectedColumnAdvanced');
 
-	// elements.removeClass('selectedColumnAdvanced');
-	if (elements.length != 0) {
-		for (var i = 0; i < elements; i++) {
-			el.classList.remove("selectedColumnAdvanced")
-
-		}
-
-	}
-
-	var parentSort = (parent.split(/(?=[A-Z])/)[0] + "Sort").replace('#', "");
-	console.log(parentSort)
-	elementsSelected = document.getElementsByClassName(parentSort);
-	console.log(elementsSelected)
-	if (elementsSelected.length != 0) {
-		for (var i = 0; i < elementsSelected; i++) {
-			el.classList.add("selectedColumnAdvanced")
-
-		}
-
-	}
 	var $divs = $(".smallBar .title ");
+
 
 	var alphabeticallyOrderedDivs = $divs.sort(function(a, b) {
 

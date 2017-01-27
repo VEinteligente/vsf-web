@@ -132,14 +132,14 @@ $(document)
 
 										if (language != "en"){
 											var titleLanguage= "title_"+language;
-											var descripctionLanguage = "description_"+language;
+											var descriptionLanguage = "description_"+language;
 											$('#titleAjax').html(dataJson[titleLanguage]);
-											$('#descriptionAjax').html(dataJson[descripctionLanguage]);
+											$('#descriptionAjax').html(dataJson[descriptionLanguage]);
 											if (dataJson[titleLanguage] == null){
-												$('#titleAjax').html(<strong>title</strong>);
+												$('#titleAjax').html("<strong>"+title+"</strong>");
 											}
 											if (dataJson[descriptionLanguage] == null){
-												$('#titleAjax').html(<strong>description</strong>);
+												$('#titleAjax').html("<strong>"+description+"</strong>");
 											}
 											
 										} 
@@ -152,7 +152,7 @@ $(document)
 										// considered finished
 
 										if (dataJson.end_date == null) {
-											$('#statusAjax').html("{% trans "'Continua'" %}");
+											$('#statusAjax').html($('#continueTrans').val());
 											$('#statusDateAjax')
 													.html(
 															date.getDate()

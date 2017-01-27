@@ -21,6 +21,62 @@ class AboutUs(TemplateView):
     template_name = "about-us.html"
 
 
+class ISPListApi(APIView):
+    """This view obtains the list of isp json data from the API of the
+        Pandora project
+    """
+
+    def get(self, request, format=None):
+        headers = {'Authorization': settings.SERVICES_TOKEN}
+        snippet = requests.get(
+            settings.URL_VSF +
+            '/cases/api/isp/',
+            headers=headers)
+        return Response(snippet)
+
+
+class CategoryListApi(APIView):
+    """This view obtains the list of isp json data from the API of the
+        Pandora project
+    """
+
+    def get(self, request, format=None):
+        headers = {'Authorization': settings.SERVICES_TOKEN}
+        snippet = requests.get(
+            settings.URL_VSF +
+            '/cases/api/category/',
+            headers=headers)
+        return Response(snippet)
+
+
+class SiteListApi(APIView):
+    """This view obtains the list of isp json data from the API of the
+        Pandora project
+    """
+
+    def get(self, request, format=None):
+        headers = {'Authorization': settings.SERVICES_TOKEN}
+        snippet = requests.get(
+            settings.URL_VSF +
+            '/events/api/site/',
+            headers=headers)
+        return Response(snippet)
+
+
+class RegionListApi(APIView):
+    """This view obtains the list of isp json data from the API of the
+        Pandora project
+    """
+
+    def get(self, request, format=None):
+        headers = {'Authorization': settings.SERVICES_TOKEN}
+        snippet = requests.get(
+            settings.URL_VSF +
+            '/cases/api/region/',
+            headers=headers)
+        return Response(snippet)
+
+
 class BlockedSitesApi(APIView):
     """This view obtains the blocked sites json data from the API of the
         Pandora project

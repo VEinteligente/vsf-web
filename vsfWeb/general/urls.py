@@ -5,7 +5,8 @@ from views import (Dashboard, AboutUs, BlockedSitesApi, BlockedDomainsApi,
                    BlockedSitesTableCVS, MapApi, MapVenezuela, MapTableCVS,
                    CaseList, SearchResultCVS, SearchResultFilterCVS,
                    searchTwitterApi, CaseListAdvanced,
-                   CaseListApi)
+                   CaseListApi, ISPListApi, CategoryListApi, RegionListApi,
+                   SiteListApi)
 
 
 urlpatterns = [
@@ -26,6 +27,10 @@ urlpatterns = [
     url(r'^blocked-sites-excel/$',
         BlockedSitesTableCVS,
         name="ExcelBlockedSites"),
+    url(r'^isp-list', ISPListApi.as_view(), name="ISPListApi"),
+    url(r'^category-list', CategoryListApi.as_view(), name="CategoryListApi"),
+    url(r'^site-list', SiteListApi.as_view(), name="SiteListApi"),
+    url(r'^region-list', RegionListApi.as_view(), name="RegionListApi"),
     url(r'^map-Venezuela', MapVenezuela.as_view(), name="MapVenezuela"),
     url(r'^map-api', MapApi.as_view(), name="MapApi"),
     url(r'^map-excel/$', MapTableCVS, name="ExcelMap"),

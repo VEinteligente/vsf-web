@@ -60,30 +60,23 @@
 
 					<select id="isp" data-placeholder="ISP" multiple="">
 						<option value=""></option>
-						<option value="supercable">Supercable</option>
-						<option value="cantv">cantv</option>
-						<option value="inter">inter</option>
-					</select> <select id="category" data-placeholder="Category" multiple="">
+						
+					</select> 
+					
+					<select id="category" data-placeholder="Category" multiple="">
 						<option value=""></option>
-						<option value="1">Bloqueo</option>
-						<!-- <option value="desconexion">Desconexion</option>
-                <option value="relentización">Relentización</option>
-                <option value="conexión">Conexión</option>
-                <option value="intercepción">Intercepción</option>
-                <option value="falla">Falla</option>
-                <option value="dos">dos</option> -->
-					</select> <select id="region" data-placeholder="Region" multiple="">
+						
+					</select> 
+					
+					<select id="region" data-placeholder="Region" multiple="">
 						<option value=""></option>
-						<option value="Distrito Federal">Distrito Federal</option>
-						<option value="Vargas">Vargas</option>
-						<option value="Aragua">Aragua</option>
-						<option value="Miranda">Miranda</option>
+					
 
-					</select> <select id="site" data-placeholder="Site" multiple="">
+					</select>
+					
+					<select id="site" data-placeholder="Site" multiple="">
 						<option value=""></option>
-						<option value="Dolar Today">Dolar Today</option>
-						<option value="Fancy">Fancy</option>
-						<option value="Otro">Otro</option>
+						
 					</select>
 
 
@@ -242,10 +235,67 @@
 
 
 <script type="text/javascript">
-	$("#region").chosen();
-	$("#category").chosen();
-	$("#isp").chosen();
-	$("#site").chosen();
+
+
+	function fillSelectors(selectContainer, url_data){
+		$.ajax({
+			url : url_data,
+			method : "GET",
+			dataType : 'json',
+			contentType : 'application/json'
+		})
+		.done(
+				function(data) {
+		
+					var temporal = "";
+		
+					// For each element in the JSON we
+					// need to collect their values
+					for (var i = 0; i < data.length; i++) {
+						temporal = temporal.concat(data[i]);
+					}
+		
+					var dataJson = JSON.parse(temporal);
+					var $select = $(selectContainer);
+					$.each( dataJson.results, function(key, value) { 
+					// First Level
+						
+						if(selectContainer =="#region"){
+							$.each( value, function(keyLevel, valueLevel) { 
+								if(keyLevel == "name")
+									$select.append('<option value=' + valueLevel + '>' + valueLevel + '</option>');
+								
+							});
+						}
+						else{
+							$.each( value, function(keyLevel, valueLevel) { 
+								
+								$select.append('<option value=' + valueLevel + '>' + valueLevel + '</option>');
+								
+							});
+						}
+						
+					
+					});
+					$(selectContainer).chosen();
+					
+		}).fail(function(jqXHR, textStatus, errorThrown) {
+			
+		});
+		
+	}
+	
+	 var url = "{% url 'General:ISPListApi' %}";
+	 fillSelectors("#isp", url);
+	 
+	 url = "{% url 'General:CategoryListApi' %}";
+	 fillSelectors("#category", url);
+	
+	 url = "{% url 'General:RegionListApi' %}";
+	 fillSelectors("#region", url);
+	 
+	 url = "{% url 'General:SiteListApi' %}";
+	 fillSelectors("#site", url);
 </script>
 
 <script>

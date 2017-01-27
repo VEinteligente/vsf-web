@@ -86,7 +86,7 @@ function select(option) {
 
 							$("#tabletitle")
 									.html(
-											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:90%; background-color:red"></span> &nbsp <strong>Casos</strong> Por Categoría');
+											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="countSummary"></span> &nbsp <strong>Casos</strong> Por Categoría');
 
 							$("#download").attr("href", url_excel_category)
 							// In data.results we find the info we need for this
@@ -111,16 +111,16 @@ function select(option) {
 														+ result.number_cases;
 
 												// displays
-												$("#count").html(count);
+												$("#countSummary").html(count);
 												$("#tablebody")
 														.append(
-																'<tr data-toggle="collapse" data-target="#data'
+																'<tr class="focus" data-toggle="collapse" data-target="#data'
 																		+ name
-																		+ '" class="clickable"><td style="text-transform:capitalize"><span class="tag tag-default tag-pill float-xs-left">'
+																		+ '" class="clickable"><td id="rowName"><span class="tag tag-default tag-pill float-xs-left">'
 																		+ number
 																		+ '</span> &nbsp '
 																		+ name
-																		+ '</td><tr><td class ="prueba" style="padding:0"><div id="data'
+																		+ '</td><tr><td id="focusSummary" class ="prueba" style="padding:0"><div id="data'
 																		+ name
 																		+ '" class="collapse"></div></td></tr>');
 
@@ -148,11 +148,11 @@ function select(option) {
 																				"#data"
 																						+ name)
 																				.append(
-																						'<tr><td style="min-width:350px">'
+																						'<tr><td id="rowTitleDataCategory">'
 																								+ title
-																								+ '</td><td style="min-width:135px"><div class="'
+																								+ '</td><td style="min-width:300px"><div class="'
 																								+ content
-																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'
+																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
 																								+ '</div><div class="right_cornerTag"></div></div> </td><td><a href="http://127.0.0.1:8000/cases/one-element-case/'
 																								+ value.id
@@ -167,11 +167,11 @@ function select(option) {
 																				"#data"
 																						+ name)
 																				.append(
-																						'<tr><td style="min-width:350px">'
+																						'<tr><td id="rowTitleDataCategory">'
 																								+ title
 																								+ '</td><td style="min-width:135px"><div class="'
 																								+ content
-																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'
+																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
 																								+ '</div><div class="right_cornerTag"></div></div> </td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'
 																								+ value.id
@@ -186,11 +186,11 @@ function select(option) {
 																				"#data"
 																						+ name)
 																				.append(
-																						'<tr><td style="min-width:350px">'
+																						'<tr><td id="rowTitleDataCategory">'
 																								+ title
 																								+ '</td><td style="min-width:135px"><div class="'
 																								+ content
-																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'
+																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
 																								+ '</div><div class="right_cornerTag"></div></div></td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'
 																								+ value.id
@@ -205,11 +205,11 @@ function select(option) {
 																				"#data"
 																						+ name)
 																				.append(
-																						'<tr><td style="min-width:350px">'
+																						'<tr><td id="rowTitleDataCategory">'
 																								+ title
 																								+ '</td><td style="min-width:135px"><div class="'
 																								+ content
-																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'
+																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
 																								+ '</div><div class="right_cornerTag"></div></div> </td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'
 																								+ value.id
@@ -224,11 +224,11 @@ function select(option) {
 																				"#data"
 																						+ name)
 																				.append(
-																						'<tr><td style="min-width:350px">'
+																						'<tr><td id="rowTitleDataCategory">'
 																								+ title
 																								+ '</td><td style="min-width:135px"><div class="'
 																								+ content
-																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'
+																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
 																								+ '</div><div class="right_cornerTag"></div></div></td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'
 																								+ value.id
@@ -243,11 +243,11 @@ function select(option) {
 																				"#data"
 																						+ name)
 																				.append(
-																						'<tr><td style="min-width:350px">'
+																						'<tr><td id="rowTitleDataCategory">'
 																								+ title
 																								+ '</td><td style="min-width:135px"><div class="'
 																								+ content
-																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'
+																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
 																								+ '</div><div class="right_cornerTag"></div></div> </td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'
 																								+ value.id
@@ -262,11 +262,11 @@ function select(option) {
 																				"#data"
 																						+ name)
 																				.append(
-																						'<tr><td style="min-width:350px">'
+																						'<tr><td id="rowTitleDataCategory">'
 																								+ title
 																								+ '</td><td style="min-width:135px"><div class="'
 																								+ content
-																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag" style="text-transform:capitalize">'
+																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
 																								+ '</div><div class="right_cornerTag"></div></div> </td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'
 																								+ value.id
@@ -290,7 +290,7 @@ function select(option) {
 							// title of the option
 							$("#tabletitle")
 									.append(
-											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:90%; background-color:red"></span> &nbsp <strong>Casos</strong> Por ISP');
+											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="countSummary"></span> &nbsp <strong>Casos</strong> Por ISP');
 
 							$("#download").attr("href", url_excel_isp)
 							// In data.results we find the info for this
@@ -315,7 +315,7 @@ function select(option) {
 
 												// displays in the title the
 												// total number of cases
-												$("#count").html(count);
+												$("#countSummary").html(count);
 
 												// adds the info on the body of
 												// the table for each of the isp
@@ -323,13 +323,13 @@ function select(option) {
 												// object
 												$("#tablebody")
 														.append(
-																'<tr data-toggle="collapse" data-target="#data'
+																'<tr class="focus" data-toggle="collapse" data-target="#data'
 																		+ name
-																		+ '" class="clickable"><td style="text-transform:capitalize"><span class="tag tag-default tag-pill float-xs-left">'
+																		+ '" class="clickable"><td id="rowName"><span class="tag tag-default tag-pill float-xs-left">'
 																		+ number
 																		+ '</span> &nbsp '
 																		+ name
-																		+ '</td><tr><td style="padding:0"><div id="data'
+																		+ '</td><tr id="focusSummary"><td style="padding:0"><div id="data'
 																		+ name
 																		+ '" class="collapse"></div></td><td style="padding:0"></td></tr>');
 
@@ -348,7 +348,7 @@ function select(option) {
 																			"#data"
 																					+ name)
 																			.append(
-																					'<tr><td style="min-width:350px">'
+																					'<tr><td id="rowTitleDataIsp">'
 																							+ title
 																							+ '</td><td><a href="http://127.0.0.1:8000/cases/one-element-case/'
 																							+ value.id

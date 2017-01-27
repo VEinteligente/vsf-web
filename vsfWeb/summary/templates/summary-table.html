@@ -12,7 +12,7 @@
 <input type="hidden" id="isp" value="{% trans 'ISPs' %}" />
 
 <div class="col-xs-1"></div>
-<div class="col-xs-5">
+<div class="col-xs-6">
 	<div class="container" id="sumtable">
 
 		<div class="row">
@@ -40,11 +40,11 @@
 						<td>
 							<button class="contextualButtonFixedSize"
 								onclick="select('category')"
-								style="color: #808080; margin-top: 10px; margin-bottom: 5px;">
+							>
 								{% trans 'Category' %}</button>
 
 							<button class="contextualButtonFixedSize" onclick="select('isp')"
-								style="color: #808080; margin-top: 10px; margin-bottom: 5px;">
+							>
 								{% trans 'ISP' %}</button>
 								
 							<div class="float-xs-right"
@@ -71,6 +71,7 @@
 	var url_data_isp = "{% url 'Summary:SummaryIspTableApi' %}"
 	var url_excel_category = "{% url 'Summary:ExcelCategoryList' %}"
 	var url_excel_isp = "{% url 'Summary:ExcelISPList' %}"
+
 </script>
 
 <script src="{% static 'js/summary/table.js' %}"></script>

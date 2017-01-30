@@ -60,31 +60,33 @@ function select(option){
                             
                             // We need to access this element to get each site/domain data
                             if(key=="results"){                   
-                                $('#hiddenID').val("");       
+                            	$('#hiddenID').val(0);  
+                     
                                         
                                 $.each(dataJson.results , function(secondLevelKey, secondLevelValue){ // Second Level 
                                 	
                                 		
                                     $.each(secondLevelValue , function(thirdLevelKey , thirdLevelValue){ // Third Level 
-                                                                            	                                                                           	
-                                        		console.log(thirdLevelKey)	
+                                    	$('#hiddenID').val($('#hiddenID').val()+1);                                	                                                                           	
+                                        console.log(thirdLevelKey)	
                                         if(thirdLevelKey==show_result){
                                         
                                                     // We load the show_result value in the specific ID.  
                                         			
-                                        
+                                        			$('#'+ $('#hiddenDomainID').val()).html(thirdLevelValue);
                                         		
                                                     // If the element is a site we need to add the "external-link" icon and remove the "lock" icon 
                                                   
-                                                        $("#"+$('#hiddenLinkID').val()).find("a").attr("href","http://"+thirdLevelValue);
+                                                    $("#"+$('#hiddenLinkID').val()).find("a").attr("href","http://"+thirdLevelValue);
                                                                                                    
 
                                         }                                    
                                         
                                         if(thirdLevelKey=="domains"){
-                                        
+                                        	
+                                        	
                                             $.each(thirdLevelValue , function(fourthLevelKey , fourthLevelValue){ // Third Level 
-                                                
+                                            	  
                                                 $.each(fourthLevelValue , function(fifthLevelKey, fifthLevelValue){ // Fourth Level 
                                                 
                                                     // This AJAX call corresponds to the request of the HTML of the elements of the list.
@@ -101,6 +103,8 @@ function select(option){
                                                             // We have a generic ID for the list element and the anchor tag in the HTML 
                                                             // template that we need to change to a specific one for each element to then
                                                             // load the value of showResult there.
+                                                        	
+                                                        	console.log(fifthLevelKey)	
                                                         	$('#blockedSitesList').append(result);
                                                             oldID = document.getElementById("value");
                                                             oldID.id = "idenDomain" + fifthLevelValue;
@@ -113,13 +117,14 @@ function select(option){
                                                             
                                                             // This section makes it possible that the  list corresponding to a site are hidden 
                                                             // and only shown when the site is clicked and with their corresponding background color.
-                                                            $("#"+$('#hiddenDomainLinkID').val()).closest(".subtitleBar").addClass("domain");
+                                                            $("#"+$('#hiddenDomainLinkID').val()).addClass("domain"+$('#hiddenID').val());
                                                             $("#"+$('#hiddenDomainLinkID').val()).closest(".subtitleBar").addClass($('#hiddenLinkID').val());
                                                             
-                                                            $(".domain").hide();
-                                                            
-                                                            var parentID= $("#"+$('#hiddenID').val()).parent(".subtitleBar");
-                                                            var childID =$("."+$('#hiddenLinkID').val());
+                                                            $(".domain"+$('#hiddenID').val()).hide();
+                                                            $(".domain"+$('#hiddenID').val()).addClass("col-xs-12");
+                                                            $('#hiddenLinkID').val( "domain"+$('#hiddenID').val() )
+                                                            var parentID= $('#'+ $('#hiddenDomainLinkID').val()).parent(".subtitleBar");
+                                                            var childID =$('#'+ $('#hiddenDomainLinkID').val());
                                                             var count=0;
                                                             
                                                             parentID.click(function(){
@@ -151,7 +156,7 @@ function select(option){
                                                     if(fifthLevelKey=="url"){
                                                  
                                                         // We load the showResult value in the specific ID. 
-                                                        $('#'+ $('#hiddenDomainID').val()).html(fifthLevelValue);
+                                                        $('#'+ $('#hiddenDomainLinkID').val()).html('<span class="col-xs-11" style="padding-left: 15px">' + fifthLevelValue + '</span><a target="_blank" href=""><i class="fa fa-lock" aria-hidden="true"></i></a>');
                                                         $("#"+$('#hiddenDomainLinkID').val()).find("a").attr("href",fifthLevelValue);                                               
                                                         $("#"+$('#hiddenLinkID').val()).find("a").attr("href",fifthLevelValue);
                                                     }

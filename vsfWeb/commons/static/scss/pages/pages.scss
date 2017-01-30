@@ -37,12 +37,12 @@
   }
 
 #rowTitleDataCategory{
-  min-width: 550px;
+  width: 85%;
   color: #fff;  
 }
 
 #rowTitleDataIsp{
-  min-width: 682px;
+  width: 100%;
   color: #fff;  
 }
 
@@ -110,8 +110,6 @@ tr{
     margin-top: 200px;
     background-color:#dedede;
     height:100vh;
-
-
 }
 
 .mheader{
@@ -137,7 +135,7 @@ tr{
 #mRow{
     padding-top:8px;
     padding-bottom:8px;
-    padding-left:0px;
+    padding-left:15px;
 }
 
 #mRow:hover{
@@ -149,6 +147,10 @@ tr{
     font-size:12px;
     color: #808184;
     font-weight: 500;
+    padding: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
 }
 
@@ -156,46 +158,6 @@ tr{
     text-decoration: underline;
     color: #575757;
     cursor: pointer;
-}
-
-#mDataSite{
-    padding-left:20px;
-}
-
-#mDataDate{
-    padding-left:5px;   
-    max-width:90px; 
-}
-
-#mDataCountry{
-    padding-left:10px;
-    max-width:90px;   
-}
-
-#mDataRegion{
-    padding-left:10px;
-    max-width:90px;
-}
-
-#mDataCity{
-    padding-left:13px;
-    max-width:90px;
-}
-
-#mDataIsp{
-    padding-left:15px;
-    max-width:90px;
-}
-
-#mDataJson{
-    padding-left:15px;
-    padding-right:10px;
-    max-width:90px;
-}
-
-#mDataType{
-    padding-left:20px;
-    max-width:90px;
 }
 
 // Sites and domain list
@@ -333,6 +295,7 @@ tr{
     padding: 0;
     margin-left: 10px;
     
+    
     > div:first-child{
         border-bottom: 1px solid $grayButton;
         color: black;
@@ -350,6 +313,9 @@ tr{
     }
     .subtitleBar > span {
         padding: 0;
+        white-space: nowrap;
+    	overflow: hidden;
+    	text-overflow: ellipsis;
     }
 
     .title{
@@ -704,20 +670,30 @@ input#title{
 
 #twitterTweet::-webkit-scrollbar{
   background: white;
-  width: 6px;
+  width: 15px;
+
 }
 
 
 #twitterTweet::-webkit-scrollbar-thumb{
-  background: black; 
-  height: 100px;
+  background-image: url("/commons/static/img/icons/vsf_iconscrollbar_v101.svg" );
+  background-repeat: no-repeat;
+  height: 150px;
+  background-position: center;
   }
 
- #twitterTweet::-webkit-scrollbar-button{
-  background: red; 
-  height: 10px;
+ #twitterTweet::-webkit-scrollbar-button:start{
+  background-image: url("/commons/static/img/icons/vsf_iconarrow_v101.svg"); 
+  background-position: center;
+
   }
 
+#twitterTweet::-webkit-scrollbar-button:end{
+  background-image: url("/commons/static/img/icons/vsf_iconarrow_v101_end.svg"); 
+  background-position: center;
+
+
+  }
 #caseImage{
     padding-left: 0;
     img{
@@ -736,6 +712,7 @@ input#title{
     }
     #updateTitle{
         color: white;
+        text-transform: uppercase;
     padding-top: 10px;
     }
 }
@@ -747,6 +724,7 @@ input#title{
     }
     #cardsTitle{
         color: white;
+        text-transform: uppercase;
     padding-top: 10px;
     }
 }
@@ -770,6 +748,10 @@ input#title{
         }
     }
 }
+
+
+
+
 /* RESPONSIVE */
 
 

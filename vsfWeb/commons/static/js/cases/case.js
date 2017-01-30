@@ -126,24 +126,30 @@ $(document)
 															+ secondLevelValue
 															+ '</button>');
 										})
-										
+										// Title & Description according Main website Language
 										$('#titleAjax').html(title);
 										$('#descriptionAjax').html(description);
-
+										
+										// If website langues is not de main one, find the title
+										// and description according to the language in var:language
 										if (language != "en"){
 											var titleLanguage= "title_"+language;
-											var descripctionLanguage = "description_"+language;
+											var descriptionLanguage = "description_"+language;
 											$('#titleAjax').html(dataJson[titleLanguage]);
-											$('#descriptionAjax').html(dataJson[descripctionLanguage]);
+											$('#descriptionAjax').html(dataJson[descriptionLanguage]);
+											
+											// if the translated field is empty on Json use the main
+											// language of the website and highlight it
 											if (dataJson[titleLanguage] == null){
-												$('#titleAjax').html(<strong>title</strong>);
+												$('#titleAjax').html("<strong>"+title+"</strong>");
 											}
 											if (dataJson[descriptionLanguage] == null){
-												$('#titleAjax').html(<strong>description</strong>);
+												$('#titleAjax').html("<strong>"+description+"</strong>");
 											}
 											
 										} 
 										
+										//website screenshot
 										$("#caseImage").attr("src", png);
 
 										// if the end_date is null it means that
@@ -152,7 +158,7 @@ $(document)
 										// considered finished
 
 										if (dataJson.end_date == null) {
-											$('#statusAjax').html("{% trans "'Continua'" %}");
+											$('#statusAjax').html($('#continueTrans').val());
 											$('#statusDateAjax')
 													.html(
 															date.getDate()
@@ -170,8 +176,9 @@ $(document)
 															"Resultados de Twitter")
 											$(
 													"#twitterSearchTextContent .title")
-													.html("#" + twitter_search)
-											twitterSearch(twitter_search);
+													.html(decodeURI(twitter_search))
+													console.log(encodeURIComponent(twitter_search))
+											twitterSearch(encodeURIComponent(twitter_search));
 										}
 
 										// AJAX call for updates datails API
@@ -323,7 +330,7 @@ function select(option) {
 
 							$("#domainTableTitle")
 									.html(
-											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:100%; background-color:red"></span>&nbsp Dominios');
+											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:100%; background-color:red"></span>&nbsp'+$('#domainTrans').val());
 
 							$.each(data.domains, function(index, result) {
 
@@ -334,7 +341,7 @@ function select(option) {
 								$("#domainTableBody").append(
 										'<tr><td style="border-radius:5px">'
 												+ result.url + '</td><tr>');
-
+								
 							})
 						}
 
@@ -344,7 +351,7 @@ function select(option) {
 
 							$("#domainTableTitle")
 									.html(
-											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:100%; background-color:red"></span>&nbsp Sitios');
+											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:100%; background-color:red"></span>&nbsp'+$('#siteTrans').val());
 
 							$.each(data.domains, function(index, result) {
 

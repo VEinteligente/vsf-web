@@ -148,6 +148,9 @@ tr{
     color: #808184;
     font-weight: 500;
     padding: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
 }
 
@@ -156,7 +159,6 @@ tr{
     color: #575757;
     cursor: pointer;
 }
-
 // Sites and domain list
 
 #listBlocked{

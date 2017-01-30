@@ -81,7 +81,7 @@
 					
 					<select id="site" data-placeholder="Site" multiple="">
 						<option value=""></option>
-					
+			
 					</select>
 
 
@@ -255,66 +255,17 @@ $(function() {
 	
 	
 	
-	function fillSelectors(selectContainer, url_data){
-		$.ajax({
-			url : url_data,
-			method : "GET",
-			dataType : 'json',
-			contentType : 'application/json'
-		})
-		.done(
-				function(data) {
-		
-					var temporal = "";
-		
-					// For each element in the JSON we
-					// need to collect their values
-					for (var i = 0; i < data.length; i++) {
-						temporal = temporal.concat(data[i]);
-					}
-		
-					var dataJson = JSON.parse(temporal);
-					var $select = $(selectContainer);
-					$.each( dataJson.results, function(key, value) { 
-					// First Level
-						
-						if(selectContainer =="#region"){
-							$.each( value, function(keyLevel, valueLevel) { 
-								if(keyLevel == "name")
-									$select.append('<option value=' + valueLevel + '>' + valueLevel + '</option>');
-								
-							});
-						}
-						else{
-							$.each( value, function(keyLevel, valueLevel) { 
-								
-								$select.append('<option value=' + valueLevel + '>' + valueLevel + '</option>');
-								
-							});
-						}
-						
-					
-					});
-					$(selectContainer).chosen();
-					
-		}).fail(function(jqXHR, textStatus, errorThrown) {
-			
-		});
-		
-	}
 	
-	 var url = "{% url 'General:ISPListApi' %}";
-	 fillSelectors("#isp", url);
+	
+	 var url_isp = "{% url 'General:ISPListApi' %}";
 	 
-	 url = "{% url 'General:CategoryListApi' %}ch";
-	 fillSelectors("#category", url);
-	
-	 url = "{% url 'General:RegionListApi' %}";
-	 fillSelectors("#region", url);
+	 var url_category = "{% url 'General:CategoryListApi' %}";
 	 
-	 url = "{% url 'General:SiteListApi' %}";
-	 fillSelectors("#site", url);
-	
+	 var url_region = "{% url 'General:RegionListApi' %}";
+	 
+	 var url_site = "{% url 'General:SiteListApi' %}";
+	 
+	 
  
 </script>
 
@@ -328,9 +279,79 @@ $(function() {
     var url_data_list_empty="{% url 'General:CaseListEmptyAdvanced' %}"
     var url_csv ="{% url 'General:ExcelCaseListEmptyAdvanced' %}"
 
-    
+    	function fillSelectors(selectContainer, url_data, values){
+    	
+    	$.ajax({
+    		url : url_data,
+    		method : "GET",
+    		dataType : 'json',
+    		contentType : 'application/json'
+    	})
+    	.done(
+    			function(data) {
+    	
+    				var temporal = "";
+    	
+    				// Forhttp://127.0.0.1:8000/general/advanced-list-cases/title=&category=&start_date=--&end_date=--&region=&site=Fancy&isp= each element in the JSON we
+    				// need to collect their values
+    				for (var i = 0; i < data.length; i++) {
+    					temporal = temporal.concat(data[i]);
+    				}
+    				
+    	
+    				var dataJson = JSON.parse(temporal);
+    				var $select = $(selectContainer);
+    				$.each( dataJson.results, function(key, value) { 
+    				// First Level
+    					
+    					if(selectContainer =="#region"){
+    						$.each( value, function(keyLevel, valueLevel) { 
+    							
+    							if(keyLevel == "name")
+    								$select.append('<option value="' + valueLevel + '">' + valueLevel + '</option>');
+    							
+    						});
+    					}
+    					else{
+    						$.each( value, function(keyLevel, valueLevel) { 
+    							
+    							$select.append('<option value="' + valueLevel + '">' + valueLevel + '</option>');
+    							
+    						});
+    					}
+    					
+    				
+    				});
+    				
+    				if(values!=""){
+    					var str_array = values.split(',');
+        				
+        				for (var i = 0; i < str_array.length; i++) {
+        					str_array[i] = str_array[i].replace('/^\s*/', "").replace(",", "");
+        					
+        					console.log("values: " + str_array[i])
+        					var selectorElement =  selectContainer + " option[value='"+str_array[i]+"']";
+        					
+        					$(selectorElement).attr('selected','selected');
+        				}
+        				
+    				}
+    				
+    				
+    				$select.chosen();
+    				
+    				
+    		    	
+    				
+    	}).fail(function(jqXHR, textStatus, errorThrown) {
+    		
+    	});
+    	
+    }
 
 
+ 
+		
 </script>
 
 <script src="{% static 'js/general/list-cases-advanced.js' %}"></script>

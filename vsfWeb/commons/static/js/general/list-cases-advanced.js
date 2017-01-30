@@ -1,12 +1,15 @@
 // formSer are the serialized form values
 var formSer = "";
+
+
+
 // The commands inside the $(document).ready are all the commands that will be
 // loaded
 // after the rest of the page is loaded.
 $(document)
 		.ready(
 				function() {
-
+					
 					// Datepickers format
 					$(".datepicker").datepicker({
 						dateFormat : 'yy-mm-dd'
@@ -38,11 +41,21 @@ $(document)
 					// Concatenate the parameters value from URL to check if any
 					// exists
 					var hidden = hidden_title + hidden_site + hidden_isp
-							+ hidden_category + hidden_site + hidden_region
+							+ hidden_category + hidden_region
 							+ hidden_start_date + hidden_end_date;
-
+					
+					
+					
+					
+				    
+					console.log(hidden)
+					
 					if (hidden.length == 0) {
-
+						
+						fillSelectors("#isp", url_isp,"");
+					    fillSelectors("#category", url_category,"");
+					    fillSelectors("#region", url_region,"");
+					    fillSelectors("#site", url_site,"");
 						// This AJAX call corresponds to the request of the JSON
 						// data from Pandora project API.
 						$
@@ -413,7 +426,7 @@ $(document)
 
 						// Change the input of the search with the URL
 						// parameters if they exist and submit the form
-
+						
 						if (hidden_title.length == 0) {
 							$("#title").val("");
 						} else {
@@ -422,31 +435,61 @@ $(document)
 
 						if (hidden_category.length == 0) {
 							$("#category").val("");
+							
+							
+						    fillSelectors("#category", url_category,"");
+						   
 						} else {
-							fillChosenValues(hidden_category, "#category");
+							
+							
+							
+						    fillSelectors("#category", url_category,hidden_category);
+						    
+							
+							 
 						}
 
 						if (hidden_isp.length == 0) {
 							$("#isp").val("");
+							fillSelectors("#isp", url_isp,"");
+						    
 						} else {
 
-							fillChosenValues(hidden_isp, "#isp");
+							
+							
+							
+							fillSelectors("#isp", url_isp,hidden_isp);
+						   
+							
+							 
+							 
 
 						}
 
 						if (hidden_site.length == 0) {
 							$("#site").val("");
+							
+						    fillSelectors("#site", url_site,"");
 						} else {
+							$("#site").val(hidden_site);
+							
+							
 
-							fillChosenValues(hidden_site, "#site");
+							
+						    fillSelectors("#site", url_site,hidden_site);
 
 						}
 
 						if (hidden_region.length == 0) {
 							$("#region").val("");
+						
+						    fillSelectors("#region", url_region,"");
+				
 						} else {
-
-							fillChosenValues(hidden_region, "#region");
+						
+						
+						    fillSelectors("#region", url_region,hidden_region);
+						    
 
 						}
 
@@ -466,6 +509,7 @@ $(document)
 
 					}
 
+					 
 				});
 
 $("#advanced_search")
@@ -531,7 +575,7 @@ $("#advanced_search")
 						}
 
 					}
-
+					
 					if (($("#isp").val()).length === 0) {
 
 						formSer.isp = "";
@@ -585,7 +629,7 @@ $("#advanced_search")
 						}
 
 					}
-
+					
 					// Prevent the page to redirect to new one
 					e.preventDefault();
 
@@ -1351,12 +1395,24 @@ function changeMultipleChoice(selectors) {
 
 //Fills the values of the multiselect if they are given when the page is loaded
 function fillChosenValues(values, id) {
+
+
 	var str_array = values.split(',');
-
+	
 	for (var i = 0; i < str_array.length; i++) {
-		str_array[i] = str_array[i].replace(/^\s*/, "").replace(/\s*$/, "");
+		str_array[i] = str_array[i].replace(/^\s*/, "").replace(",", "");
+		
+		console.log("values: " + str_array[i])
+		var selectorElement =  id + " option[value='"+str_array[i]+"']";
+		
+		$(selectorElement).attr('selected','selected');
 	}
-
+	
+	console.log("values: " + id)
+	
+	console.log("values: " + str_array)
+	
 	$(id).val(str_array).trigger("chosen:updated");
+
 
 }

@@ -1,4 +1,4 @@
-# SOME DESCRIPTIVE TITLE.
+# SOME DESCRIPTImsgVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-06 09:37-0400\n"
+"POT-Creation-Date: 2017-01-27 18:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,67 +17,91 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: cases/templates/one-element-case.html:74
-#: general/templates/blocked-sites_domains.html:35
-#: general/templates/blocked-urls.html:26
+#: cases/templates/one-element-case.html:7
+#, fuzzy
+#| msgid "Continue"
+msgid "Continua"
+msgstr "Continue"
+
+#: cases/templates/one-element-case.html:8
+msgid "Dominios"
+msgstr "Domains"
+
+#: cases/templates/one-element-case.html:9
+msgid "Sitios"
+msgstr "Sites"
+
+#: cases/templates/one-element-case.html:63
+#: general/templates/blocked-sites_domains.html:34
 #, fuzzy
 #| msgid "Blocked Domains"
 msgid "Domains"
 msgstr "Blocked Domains"
 
-#: cases/templates/one-element-case.html:78
-#: general/templates/blocked-sites.html:25
-#: general/templates/blocked-sites_domains.html:31
+#: cases/templates/one-element-case.html:67
+#: general/templates/blocked-sites_domains.html:39
 msgid "Sites"
 msgstr "Sites"
 
+#: cases/templates/one-element-case.html:127
+msgid "Descripcion: "
+msgstr "Description:"
+
+#: cases/templates/one-element-case.html:143
+msgid "actualizaciones"
+msgstr "Updates:"
+
+#: cases/templates/one-element-case.html:172
+#, fuzzy
+#| msgid "Information"
+msgid "informacion"
+msgstr "Information"
+
 #: commons/templates/navbar/navbar.html:19
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
-
-#: commons/templates/navbar/navbar.html:23
+#: commons/templates/navbar/navbar.html:25
 msgid "News"
-msgstr ""
+msgstr "News"
 
-#: commons/templates/navbar/navbar.html:29
+#: commons/templates/navbar/navbar.html:31
 msgid "Guides"
 msgstr "Guides"
 
-#: commons/templates/navbar/navbar.html:33
+#: commons/templates/navbar/navbar.html:44
 msgid "Evade The Blockade"
 msgstr "Evade The Blockade"
 
-
-#: commons/templates/navbar/navbar.html:39
+#: commons/templates/navbar/navbar.html:52
 msgid "Cases"
 msgstr "Cases"
 
-#: commons/templates/navbar/navbar.html:41
+#: commons/templates/navbar/navbar.html:57
 msgid "Blocked URLs"
 msgstr "Blocked URL's"
 
-#: commons/templates/navbar/navbar.html:42
+#: commons/templates/navbar/navbar.html:61
 msgid "Blocked Domains"
 msgstr "Blocked Domains"
 
-#: commons/templates/navbar/navbar.html:43
+#: commons/templates/navbar/navbar.html:65
 msgid "Speed Test"
 msgstr "Speed Test"
 
-#: commons/templates/navbar/navbar.html:49
+#: commons/templates/navbar/navbar.html:73
 msgid "Community"
 msgstr "Community"
 
-#: commons/templates/navbar/navbar.html:51
+#: commons/templates/navbar/navbar.html:78
 msgid "About Us"
 msgstr "About Us"
 
-#: commons/templates/navbar/navbar.html:53
+#: commons/templates/navbar/navbar.html:86
 msgid "Forum"
 msgstr "Forum"
 
-#: commons/templates/navbar/navbar.html:58
+#: commons/templates/navbar/navbar.html:93
 msgid "Report"
 msgstr "Report"
 
@@ -85,78 +109,64 @@ msgstr "Report"
 msgid "Blocked Sites Strong"
 msgstr "Blocked <strong>Sites</strong>"
 
-#: general/templates/blocked-sites_domains.html:13
+#: general/templates/blocked-sites_domains.html:14
 msgid "Blocked Domains Strong"
 msgstr "Blocked <strong>Domains</strong>"
 
-#: general/templates/maps/venezuela.html:5118
+#: general/templates/maps/venezuela.html:7451
 msgid "Featured Cases"
 msgstr "Featured <strong>Cases</strong>"
 
-
-#: stylingGuide/templates/elements.html:13
+#: stylingGuide/templates/elements.html:12
 msgid "Buttons"
 msgstr "Buttons"
 
-#: stylingGuide/templates/elements.html:17
-#: stylingGuide/templates/elements.html:23
-
-#: stylingGuide/templates/elements.html:93
-#: stylingGuide/templates/elements.html:118
-#: stylingGuide/templates/elements.html:122
+#: stylingGuide/templates/elements.html:14
+#: stylingGuide/templates/elements.html:19
+#: stylingGuide/templates/elements.html:108
+#: stylingGuide/templates/elements.html:125
+#: stylingGuide/templates/elements.html:128
 msgid "and"
 msgstr "and"
 
-
-#: stylingGuide/templates/elements.html:246
-#: stylingGuide/templates/elements.html:270
-#: stylingGuide/templates/elements.html:282
+#: stylingGuide/templates/elements.html:47
+#: stylingGuide/templates/elements.html:193
+#: stylingGuide/templates/elements.html:213
+#: stylingGuide/templates/elements.html:224
 msgid "Continue"
 msgstr "Continue"
 
-#: stylingGuide/templates/elements.html:68
+#: stylingGuide/templates/elements.html:54
 #, fuzzy
 #| msgid "Information"
 msgid "Interception"
-msgstr "Information"
+msgstr "Interception"
 
-#: stylingGuide/templates/elements.html:77
+#: stylingGuide/templates/elements.html:61
 msgid "Disconnected"
-msgstr ""
+msgstr "Disconnected"
 
-#: stylingGuide/templates/elements.html:86
+#: stylingGuide/templates/elements.html:68
 msgid "Slowdown"
-msgstr ""
+msgstr "Slowdown"
 
-#: stylingGuide/templates/elements.html:95
+#: stylingGuide/templates/elements.html:75
 msgid "DoS"
-msgstr ""
+msgstr "DoS"
 
-
-#: stylingGuide/templates/elements.html:83
-
-msgid "BlockedMultiple"
-msgstr "Blocked"
-
-msgid "Sites"
-msgstr ""
-
-msgid "Domains"
-msgstr "Domains"
-
-#: stylingGuide/templates/elements.html:104
+#: stylingGuide/templates/elements.html:82
 msgid "Fail"
-msgstr ""
+msgstr "Fail"
 
-#: stylingGuide/templates/elements.html:115
+#: stylingGuide/templates/elements.html:89
 msgid "Blocked"
 msgstr "Blocked"
 
-#: stylingGuide/templates/elements.html:129
+#: stylingGuide/templates/elements.html:101
 msgid "Contextual buttons (static)"
 msgstr "Contextual buttons (static)"
 
-#: stylingGuide/templates/elements.html:114
+#: stylingGuide/templates/elements.html:123
 msgid "Contextual buttons"
 msgstr "Contextual buttons"
 
@@ -164,152 +174,171 @@ msgstr "Contextual buttons"
 msgid "Bars"
 msgstr "Bars"
 
-#: stylingGuide/templates/elements.html:157
+#: stylingGuide/templates/elements.html:155
 msgid "Title bar"
 msgstr "Title bar"
 
-#: stylingGuide/templates/elements.html:176
+#: stylingGuide/templates/elements.html:168
 #, fuzzy
 #| msgid "Small bar"
 msgid "Small bars"
 msgstr "Small bar"
 
-#: stylingGuide/templates/elements.html:184
-#: stylingGuide/templates/elements.html:196
-#: stylingGuide/templates/elements.html:211
-#: stylingGuide/templates/elements.html:249
+#: stylingGuide/templates/elements.html:175
+#: stylingGuide/templates/elements.html:185
+#: stylingGuide/templates/elements.html:200
+#: stylingGuide/templates/elements.html:233
 msgid "Height"
 msgstr "Height"
 
-#: stylingGuide/templates/elements.html:189
+#: stylingGuide/templates/elements.html:179
 msgid "Subtitle bar"
 msgstr "Subtitle bar"
 
-#: stylingGuide/templates/elements.html:279
-
+#: stylingGuide/templates/elements.html:261
 msgid "View more..."
 msgstr "View more..."
 
-#: stylingGuide/templates/typography.html:13
+#: stylingGuide/templates/typography.html:10
+#: stylingGuide/templates/typography.html:179
 msgid "Typography"
 msgstr "Typography"
 
-#: stylingGuide/templates/typography.html:19
+#: stylingGuide/templates/typography.html:15
+#: stylingGuide/templates/typography.html:184
 msgid "Size per style"
 msgstr "Size per style"
 
-#: stylingGuide/templates/typography.html:41
-#: stylingGuide/templates/typography.html:66
-#: stylingGuide/templates/typography.html:91
-#: stylingGuide/templates/typography.html:116
-#: stylingGuide/templates/typography.html:141
-#: stylingGuide/templates/typography.html:167
-#: stylingGuide/templates/typography.html:192
-#: stylingGuide/templates/typography.html:215
+#: stylingGuide/templates/typography.html:31
+#: stylingGuide/templates/typography.html:50
+#: stylingGuide/templates/typography.html:69
+#: stylingGuide/templates/typography.html:88
+#: stylingGuide/templates/typography.html:107
+#: stylingGuide/templates/typography.html:127
+#: stylingGuide/templates/typography.html:146
+#: stylingGuide/templates/typography.html:163
+#: stylingGuide/templates/typography.html:200
+#: stylingGuide/templates/typography.html:219
+#: stylingGuide/templates/typography.html:238
+#: stylingGuide/templates/typography.html:257
+#: stylingGuide/templates/typography.html:276
+#: stylingGuide/templates/typography.html:296
+#: stylingGuide/templates/typography.html:315
+#: stylingGuide/templates/typography.html:332
 msgid "Size"
 msgstr "Size"
 
-#: stylingGuide/templates/typography.html:42
-#: stylingGuide/templates/typography.html:67
-#: stylingGuide/templates/typography.html:92
-#: stylingGuide/templates/typography.html:117
-#: stylingGuide/templates/typography.html:142
-#: stylingGuide/templates/typography.html:168
-#: stylingGuide/templates/typography.html:193
-#: stylingGuide/templates/typography.html:216
+#: stylingGuide/templates/typography.html:32
+#: stylingGuide/templates/typography.html:51
+#: stylingGuide/templates/typography.html:70
+#: stylingGuide/templates/typography.html:89
+#: stylingGuide/templates/typography.html:108
+#: stylingGuide/templates/typography.html:128
+#: stylingGuide/templates/typography.html:147
+#: stylingGuide/templates/typography.html:164
+#: stylingGuide/templates/typography.html:201
+#: stylingGuide/templates/typography.html:220
+#: stylingGuide/templates/typography.html:239
+#: stylingGuide/templates/typography.html:258
+#: stylingGuide/templates/typography.html:277
+#: stylingGuide/templates/typography.html:297
+#: stylingGuide/templates/typography.html:316
+#: stylingGuide/templates/typography.html:333
 msgid "Color"
 msgstr "Color"
 
-#: stylingGuide/templates/typography.html:43
-#: stylingGuide/templates/typography.html:68
-#: stylingGuide/templates/typography.html:93
-#: stylingGuide/templates/typography.html:118
-#: stylingGuide/templates/typography.html:143
-#: stylingGuide/templates/typography.html:169
-#: stylingGuide/templates/typography.html:194
-#: stylingGuide/templates/typography.html:217
+#: stylingGuide/templates/typography.html:33
+#: stylingGuide/templates/typography.html:52
+#: stylingGuide/templates/typography.html:71
+#: stylingGuide/templates/typography.html:90
+#: stylingGuide/templates/typography.html:109
+#: stylingGuide/templates/typography.html:129
+#: stylingGuide/templates/typography.html:148
+#: stylingGuide/templates/typography.html:165
+#: stylingGuide/templates/typography.html:202
+#: stylingGuide/templates/typography.html:221
+#: stylingGuide/templates/typography.html:240
+#: stylingGuide/templates/typography.html:259
+#: stylingGuide/templates/typography.html:278
+#: stylingGuide/templates/typography.html:298
+#: stylingGuide/templates/typography.html:317
+#: stylingGuide/templates/typography.html:334
 msgid "Style"
 msgstr "Style"
 
-
-#: summary/templates/measurements-table.html:17
+#: summary/templates/measurements-table.html:26
 #, fuzzy
 #| msgid "Sites"
 msgid "Site"
 msgstr "Sites"
 
-#: summary/templates/measurements-table.html:18
-msgid "URL"
-msgstr ""
-
-#: summary/templates/measurements-table.html:19
-msgid "Date"
-msgstr ""
-
-#: summary/templates/measurements-table.html:20
-msgid "Country"
-msgstr ""
-
-#: summary/templates/measurements-table.html:21
-msgid "State"
-msgstr ""
-
-#: summary/templates/measurements-table.html:22
-msgid "City"
-msgstr ""
-
-#: summary/templates/measurements-table.html:23
-#: summary/templates/summary-table.html:46
-msgid "ISP"
-msgstr ""
-
-#: summary/templates/measurements-table.html:24
-msgid "ISP Plan"
-msgstr ""
-
-#: summary/templates/measurements-table.html:25
-msgid "Upload Speed"
-msgstr ""
-
-#: summary/templates/measurements-table.html:26
-msgid "Download Speed"
-msgstr ""
-
 #: summary/templates/measurements-table.html:27
-msgid "Measurement"
-msgstr ""
+msgid "URL"
+msgstr "URL"
 
 #: summary/templates/measurements-table.html:28
+msgid "Date"
+msgstr "Date"
+
+#: summary/templates/measurements-table.html:29
+msgid "Country"
+msgstr "Country"
+
+#: summary/templates/measurements-table.html:30
+msgid "State"
+msgstr "State"
+
+#: summary/templates/measurements-table.html:31
+msgid "City"
+msgstr "City"
+
+#: summary/templates/measurements-table.html:32
+#: summary/templates/summary-table.html:48
+msgid "ISP"
+msgstr "ISP"
+
+#: summary/templates/measurements-table.html:33
+msgid "Measurement"
+msgstr "Measurement"
+
+#: summary/templates/measurements-table.html:34
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: summary/templates/summary-table.html:11
 msgid "Categories"
-msgstr ""
+msgstr "Categories"
 
 #: summary/templates/summary-table.html:12
 msgid "ISPs"
-msgstr ""
+msgstr "ISPs"
 
-#: summary/templates/summary-table.html:39
-msgid "Order By:"
-msgstr ""
-
-#: summary/templates/summary-table.html:42
+#: summary/templates/summary-table.html:44
 msgid "Category"
-msgstr ""
+msgstr "Category"
 
-#: vsfWeb/settings.py:131
+#: vsfWeb/settings.py:172
 msgid "English"
 msgstr "English"
 
-#: vsfWeb/settings.py:132
+#: vsfWeb/settings.py:173
 msgid "Spanish"
 msgstr "Spanish"
 
+#~ msgid "BlockedMultiple"
+#~ msgstr "Blocked"
 
-#~ msgid "Information"
-#~ msgstr "Information"
+#~ msgid "ISP Plan"
+#~ msgstr "ISP Plan"
+
+#~ msgid "Upload Speed"
+#~ msgstr "Upload Speed"
+
+#~ msgid "Download Speed"
+#~ msgstr "Download Speed"
+
+#~ msgid "Order By:"
+#~ msgstr "Order By:"
 
 #~ msgid "Tutorials"
 #~ msgstr "Tutorials"

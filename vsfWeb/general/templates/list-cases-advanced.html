@@ -91,7 +91,8 @@
 
 
 				<input type="hidden" id="start_date" class="datepicker"
-					name="start_date" placeholder="Start date"> <input
+					name="start_date" placeholder="Start date"> 
+				<input
 					type="hidden" id="end_date" class="datepicker" name="end_date"
 					placeholder="End date">
 
@@ -326,15 +327,13 @@ $(function() {
     				if(values!=""){
     					var str_array = values.split(',');
         				
-        				for (var i = 0; i < str_array.length; i++) {
-        					str_array[i] = str_array[i].replace('/^\s*/', "").replace(",", "");
-        					
-        					console.log("values: " + str_array[i])
-        					var selectorElement =  selectContainer + " option[value='"+str_array[i]+"']";
-        					
-        					$(selectorElement).attr('selected','selected');
-        				}
+    					for (var i = 0; i < str_array.length; i++) {
+    						str_array[i] = str_array[i].replace(/^\s*/, "").replace(/\s*$/, "");
+    					}
+						
+    					$select.val(str_array).trigger("chosen:updated");
         				
+    				
     				}
     				
     				

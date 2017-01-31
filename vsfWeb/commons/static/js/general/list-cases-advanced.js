@@ -471,10 +471,6 @@ $(document)
 							
 						    fillSelectors("#site", url_site,"");
 						} else {
-							$("#site").val(hidden_site);
-							
-							
-
 							
 						    fillSelectors("#site", url_site,hidden_site);
 
@@ -506,6 +502,7 @@ $(document)
 						}
 
 						$("#advanced_search").submit();
+						
 
 					}
 
@@ -519,14 +516,16 @@ $("#advanced_search")
 					// Empty the search result to fill with new result
 				
 					$(".listCasesAdvanced").empty();
-					console.log($("#advanced_search"))
+					
+
 					// Serialize the form
 					formSer = $("#advanced_search").serializeObject();
 					
 					
 					if (($("#region").chosen().val()).length === 0) {
 
-						formSer.region = "";
+						formSer.region = $("#hidden_region").val();
+						$("hidden_region").val("");
 
 					} else {
 
@@ -538,7 +537,7 @@ $("#advanced_search")
 							formSer.region = $("#region").chosen().val()[0] + ", ";
 							for (var i = 1; i < ($("#region").chosen().val()).length; i++) {
 
-								if (i == ($("#region").chosen())).length - 1)
+								if (i == ($("#region").chosen().val()).length - 1)
 									formSer.region = formSer.region
 											+ $("#region").chosen().val()[i];
 								else
@@ -554,7 +553,7 @@ $("#advanced_search")
 
 					if (($("#category").chosen().val()).length === 0) {
 
-						formSer.category = "";
+						formSer.category = $("#hidden_category").val();
 						$("hidden_category").val("");
 
 					} else {
@@ -580,9 +579,10 @@ $("#advanced_search")
 
 					}
 					
+
 					if (($("#isp").chosen().val()).length === 0) {
 
-						formSer.isp = "";
+						formSer.isp = $("#hidden_isp").val();
 						$("#hidden_isp").val("")
 
 					} else {
@@ -607,14 +607,16 @@ $("#advanced_search")
 						}
 
 					}
-console.log(($("#site").chosen().val()).length)
-						
+					
+
+        
 					if (($("#site").chosen().val()).length === 0) {
 						
 						
-						formSer.site = "";
-						$("#hidden_site").val("")
+						formSer.site = $("#hidden_site").val();
 						
+						$("#hidden_site").val("")
+						 
 
 					} else {
 
@@ -640,9 +642,6 @@ console.log(($("#site").chosen().val()).length)
 
 					}
 					
-console.log($("#hidden_site").val())
-
-console.log(formSer)
 					// Prevent the page to redirect to new one
 					e.preventDefault();
 

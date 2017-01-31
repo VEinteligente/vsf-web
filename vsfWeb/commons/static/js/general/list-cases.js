@@ -40,7 +40,10 @@ $(document)
 							+ hidden_start_date + hidden_end_date;
 
 					if (hidden.length == 0) {
-
+						fillSelectors("#isp", url_isp,"");
+					    fillSelectors("#category", url_category,"");
+					    fillSelectors("#region", url_region,"");
+					    fillSelectors("#site", url_site,"");
 						// This AJAX call corresponds to the request of the JSON
 						// data from Pandora project API.
 						$
@@ -362,6 +365,10 @@ $(document)
 						// Change the input of the search with the URL
 						// parameters if they exist and submit the form
 
+
+						// Change the input of the search with the URL
+						// parameters if they exist and submit the form
+						
 						if (hidden_title.length == 0) {
 							$("#title").val("");
 						} else {
@@ -370,31 +377,57 @@ $(document)
 
 						if (hidden_category.length == 0) {
 							$("#category").val("");
+							
+							
+						    fillSelectors("#category", url_category,"");
+						   
 						} else {
-							fillChosenValues(hidden_category, "#category");
+							
+							
+							
+						    fillSelectors("#category", url_category,hidden_category);
+						    
+							
+							 
 						}
 
 						if (hidden_isp.length == 0) {
 							$("#isp").val("");
+							fillSelectors("#isp", url_isp,"");
+						    
 						} else {
 
-							fillChosenValues(hidden_isp, "#isp");
+							
+							
+							
+							fillSelectors("#isp", url_isp,hidden_isp);
+						   
+							
+							 
+							 
 
 						}
 
 						if (hidden_site.length == 0) {
 							$("#site").val("");
+							
+						    fillSelectors("#site", url_site,"");
 						} else {
-
-							fillChosenValues(hidden_site, "#site");
+							
+						    fillSelectors("#site", url_site,hidden_site);
 
 						}
 
 						if (hidden_region.length == 0) {
 							$("#region").val("");
+						
+						    fillSelectors("#region", url_region,"");
+				
 						} else {
-
-							fillChosenValues(hidden_region, "#region");
+						
+						
+						    fillSelectors("#region", url_region,hidden_region);
+						    
 
 						}
 
@@ -426,110 +459,123 @@ $("#advanced_search")
 
 					// Serialize the form
 					formSer = $("#advanced_search").serializeObject();
+					
+					
+					if (($("#region").chosen().val()).length === 0) {
 
-					if (($("#region").val()).length === 0) {
-
-						formSer.region = "";
+						formSer.region = $("#hidden_region").val();
+						$("hidden_region").val("");
 
 					} else {
 
-						if (($("#region").val()).length < 2) {
+						if (($("#region").chosen().val()).length < 2) {
 
-							formSer.region = $("#region").val()[0];
+							formSer.region = $("#region").chosen().val()[0];
 
 						} else {
-							formSer.region = $("#region").val()[0] + ", ";
-							for (var i = 1; i < ($("#region").val()).length; i++) {
+							formSer.region = $("#region").chosen().val()[0] + ", ";
+							for (var i = 1; i < ($("#region").chosen().val()).length; i++) {
 
-								if (i == ($("#region").val()).length - 1)
+								if (i == ($("#region").chosen().val()).length - 1)
 									formSer.region = formSer.region
-											+ $("#region").val()[i];
+											+ $("#region").chosen().val()[i];
 								else
 									formSer.region = formSer.region
-											+ $("#region").val()[i] + ", ";
+											+ $("#region").chosen().val()[i] + ", ";
 
 							}
 
 						}
 
 					}
+				
 
-					if (($("#category").val()).length === 0) {
+					if (($("#category").chosen().val()).length === 0) {
 
-						formSer.category = "";
+						formSer.category = $("#hidden_category").val();
+						$("hidden_category").val("");
 
 					} else {
 
-						if (($("#category").val()).length < 2) {
+						if (($("#category").chosen().val()).length < 2) {
 
-							formSer.category = $("#category").val()[0];
+							formSer.category = $("#category").chosen().val()[0];
 
 						} else {
-							formSer.category = $("#category").val()[0] + ", ";
-							for (var i = 1; i < ($("#category").val()).length; i++) {
+							formSer.category = $("#category").chosen().val()[0] + ", ";
+							for (var i = 1; i < ($("#category").chosen().val()).length; i++) {
 
-								if (i == ($("#category").val()).length - 1)
+								if (i == ($("#category").chosen().val()).length - 1)
 									formSer.category = formSer.category
-											+ $("#category").val()[i];
+											+ $("#category").chosen().val()[i];
 								else
 									formSer.category = formSer.category
-											+ $("#category").val()[i] + ", ";
+											+ $("#category").chosen().val()[i] + ", ";
 
 							}
 
 						}
 
 					}
+					
 
-					if (($("#isp").val()).length === 0) {
+					if (($("#isp").chosen().val()).length === 0) {
 
-						formSer.isp = "";
+						formSer.isp = $("#hidden_isp").val();
+						$("#hidden_isp").val("")
 
 					} else {
 
-						if (($("#isp").val()).length < 2) {
+						if (($("#isp").chosen().val()).length < 2) {
 
-							formSer.isp = $("#isp").val()[0];
+							formSer.isp = $("#isp").chosen().val()[0];
 
 						} else {
-							formSer.isp = $("#isp").val()[0] + ", ";
-							for (var i = 1; i < ($("#isp").val()).length; i++) {
+							formSer.isp = $("#isp").chosen().val()[0] + ", ";
+							for (var i = 1; i < ($("#isp").chosen().val()).length; i++) {
 
-								if (i == ($("#isp").val()).length - 1)
+								if (i == ($("#isp").chosen().val()).length - 1)
 									formSer.isp = formSer.isp
-											+ $("#isp").val()[i];
+											+ $("#isp").chosen().val()[i];
 								else
 									formSer.isp = formSer.isp
-											+ $("#isp").val()[i] + ", ";
+											+ $("#isp").chosen().val()[i] + ", ";
 
 							}
 
 						}
 
 					}
+					
 
-					if (($("#site").val()).length === 0) {
-
-						formSer.site = "";
+        
+					if (($("#site").chosen().val()).length === 0) {
+						
+						
+						formSer.site = $("#hidden_site").val();
+						
+						$("#hidden_site").val("")
+						 
 
 					} else {
 
-						if (($("#site").val()).length < 2) {
+						if (($("#site").chosen().val()).length < 2) {
 
-							formSer.site = $("#site").val()[0];
-
+							formSer.site = $("#site").chosen().val()[0];
+							$("#hidden_site").val(formSer.site)
 						} else {
-							formSer.site = $("#site").val()[0] + ", ";
-							for (var i = 1; i < ($("#site").val()).length; i++) {
+							formSer.site = $("#site").chosen().val()[0] + ", ";
+							for (var i = 1; i < ($("#site").chosen().val()).length; i++) {
 
-								if (i == ($("#site").val()).length - 1)
+								if (i == ($("#site").chosen().val()).length - 1)
 									formSer.site = formSer.site
-											+ $("#site").val()[i];
+											+ $("#site").chosen().val()[i];
 								else
 									formSer.site = formSer.site
-											+ $("#site").val()[i] + ", ";
+											+ $("#site").chosen().val()[i] + ", ";
 
 							}
+							$("#hidden_site").val(formSer.site)
 
 						}
 

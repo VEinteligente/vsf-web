@@ -179,31 +179,24 @@ $(document)
 
 																											if (thirdLevelKey == "domains") {
 
-																												$
-																														.each(
-																																thirdLevelValue,
-																																function(
-																																		fourthLevelKey,
-																																		fourthLevelValue) {
+																												$.each( thirdLevelValue, function( fourthLevelKey, fourthLevelValue) {
+																													
+																													if (thirdLevelValue.length < 2) {
+																										
+																														$(".listCases").find(".site").append(fourthLevelValue.site);
 
-																																	$(
-																																			".listCases")
-																																			.find(
-																																					".site")
-																																			.append(
-																																					fourthLevelValue.site);
-																																	$(
-																																			".listCases")
-																																			.find(
-																																					".site")
-																																			.addClass(
-																																					"siteSort");
-																																	$(
-																																			".listCases")
-																																			.find(
-																																					".site")
-																																			.removeClass(
-																																					"site");
+																													} else {
+																													
+																														
+																																$(".listCases").find(".site").html("Varios");
+																															
+
+																													}				
+																													
+//																													$(".listCasesAdvanced").find(".site").append(fourthLevelValue.site);
+																																	
+																																	$(".listCases").find(".site").addClass("siteSort");
+																																	$(".listCases").find(".site").removeClass("site");
 
 																																});
 
@@ -322,28 +315,19 @@ $(document)
 
 																											if (thirdLevelKey == "category") {
 
+																												CategoryTag(thirdLevelValue);
 																												$(
-																														".listCases")
-																														.find(
-																																".category")
-																														.html(
-																																'<div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'
-																																		+ thirdLevelValue
-																																		+ ' </div><div class="right_cornerTag"></div></div>');
-
-																												$(
-																														".listCases")
-																														.find(
-																																".category")
-																														.addClass(
-																																"categorySort");
-																												$(
-																														".listCases")
-																														.find(
-																																".category")
-																														.removeClass(
-																																"category");
-
+																												".listCases")
+																												.find(
+																														".category")
+																												.addClass(
+																														"categorySort");
+																										$(
+																												".listCases")
+																												.find(
+																														".category")
+																												.removeClass(
+																														"category");
 																											}
 
 																										});
@@ -950,27 +934,19 @@ $("#advanced_search")
 																										}
 
 																										if (thirdLevelKey == "category") {
+																											CategoryTag(thirdLevelValue);
 																											$(
-																													".listCases")
-																													.find(
-																															".category")
-																													.html(
-																															'<div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'
-																																	+ thirdLevelValue
-																																	+ ' </div><div class="right_cornerTag"></div></div>');
-
-																											$(
-																													".listCases")
-																													.find(
-																															".category")
-																													.addClass(
-																															"categorySort");
-																											$(
-																													".listCases")
-																													.find(
-																															".category")
-																													.removeClass(
-																															"category");
+																											".listCases")
+																											.find(
+																													".category")
+																											.addClass(
+																													"categorySort");
+																									$(
+																											".listCases")
+																											.find(
+																													".category")
+																											.removeClass(
+																													"category");
 
 																										}
 																									});
@@ -1270,4 +1246,66 @@ function fillChosenValues(values, id) {
 
 	$(id).val(str_array).trigger("chosen:updated");
 
+}
+
+
+
+function CategoryTag(thirdLevelValue){
+	console.log(thirdLevelValue)
+	switch(thirdLevelValue) {
+    case "blocked_tag":
+    	$(".listCases").find(".category")
+		.append(' <div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');																								
+        break;
+    case "continue_tag":
+    	$(".listCases").find(".category")
+		.append(' <div class="continue_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+
+        break;
+    
+    case "interception_tag":
+    	$(".listCases").find(".category")
+		.append(' <div class="interception_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+
+        break;
+    
+    case "disconnected_tag":
+    	$(".listCases").find(".category")
+		.append(' <div class="disconnected_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+
+        break;
+        
+    case "slowdown_tag":
+    	$(".listCases").find(".category")
+		.append(' <div class="slowdown_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+
+        break;
+        
+    case "dos_tag":
+    	$(".listCases").find(".category")
+		.append(' <div class="dos_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+
+        break;
+    
+    case "fail_tag":
+    	$(".listCases").find(".category")
+		.append(' <div class="fail_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+
+        break; 
+        
+    default:
+    	$(".listCases").find(".category")
+		.append(' <div class=""><div class="left_cornerTag"></div><div class="contentTag">'
+				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+
+        break;
+	}
+	
 }

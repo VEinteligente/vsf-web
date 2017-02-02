@@ -213,31 +213,32 @@ $(document)
 
 																											if (thirdLevelKey == "domains") {
 
-																												$
-																														.each(
-																																thirdLevelValue,
-																																function(
-																																		fourthLevelKey,
-																																		fourthLevelValue) {
+																												$.each( thirdLevelValue, function( fourthLevelKey, fourthLevelValue) {
+																													
+																													if (thirdLevelValue.length < 2) {
+																										
+																														$(".listCasesAdvanced").find(".site").append(fourthLevelValue.site);
 
-																																	$(
-																																			".listCasesAdvanced")
-																																			.find(
-																																					".site")
-																																			.append(
-																																					fourthLevelValue.site);
-																																	$(
-																																			".listCasesAdvanced")
-																																			.find(
-																																					".site")
-																																			.addClass(
-																																					"siteSort");
-																																	$(
-																																			".listCasesAdvanced")
-																																			.find(
-																																					".site")
-																																			.removeClass(
-																																					"site");
+																													} else {
+																													
+																														for (var i = 0; i < thirdLevelValue.length; i++) {
+																															
+																															if (i == thirdLevelValue.length - 1) {
+																																console.log(thirdLevelValue[i])
+																																$(".listCasesAdvanced").find(".site").append(thirdLevelValue[i].site);
+																															} else {
+																																console.log((fourthLevelValue.site))
+																																$(".listCasesAdvanced").find(".site").append(thirdLevelValue[i].site + ", ");
+																															}
+
+																														}
+
+																													}				
+																													
+//																													$(".listCasesAdvanced").find(".site").append(fourthLevelValue.site);
+																																	
+																																	$(".listCasesAdvanced").find(".site").addClass("siteSort");
+																																	$(".listCasesAdvanced").find(".site").removeClass("site");
 
 																																});
 
@@ -383,14 +384,17 @@ $(document)
 
 																											if (thirdLevelKey == "category") {
 
-																												$(
-																														".listCasesAdvanced")
-																														.find(
-																																".category")
-																														.append(
-																																' <div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'
-																																		+ thirdLevelValue
-																																		+ '</div><div class="right_cornerTag"></div></div>');
+																												CategoryTag(thirdLevelValue);
+																												
+																												
+											
+
+
+								
+
+															
+																												
+																												
 
 																												$(
 																														".listCasesAdvanced")
@@ -1066,14 +1070,7 @@ $("#advanced_search")
 
 																										if (thirdLevelKey == "category") {
 
-																											$(
-																													".listCasesAdvanced")
-																													.find(
-																															".category")
-																													.append(
-																															' <div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'
-																																	+ thirdLevelValue
-																																	+ '</div><div class="right_cornerTag"></div></div>');
+																											CategoryTag(thirdLevelValue);
 
 																											$(
 																													".listCasesAdvanced")
@@ -1427,4 +1424,65 @@ function fillChosenValues(values, id) {
 	$(id).val(str_array).trigger("chosen:updated");
 
 
+}
+
+
+function CategoryTag(thirdLevelValue){
+	
+	switch(thirdLevelValue) {
+    case "blocked_tag":
+    	$(".listCasesAdvanced").find(".category")
+		.append(' <div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');																								
+        break;
+    case "continue_tag":
+    	$(".listCasesAdvanced").find(".category")
+		.append(' <div class="continue_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+
+        break;
+    
+    case "interception_tag":
+    	$(".listCasesAdvanced").find(".category")
+		.append(' <div class="interception_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+
+        break;
+    
+    case "disconnected_tag":
+    	$(".listCasesAdvanced").find(".category")
+		.append(' <div class="disconnected_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+
+        break;
+        
+    case "slowdown_tag":
+    	$(".listCasesAdvanced").find(".category")
+		.append(' <div class="slowdown_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+
+        break;
+        
+    case "dos_tag":
+    	$(".listCasesAdvanced").find(".category")
+		.append(' <div class="dos_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+
+        break;
+    
+    case "fail_tag":
+    	$(".listCasesAdvanced").find(".category")
+		.append(' <div class="fail_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+
+        break; 
+        
+    default:
+    	$(".listCasesAdvanced").find(".category")
+		.append(' <div class=""><div class="left_cornerTag"></div><div class="contentTag">'
+				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+
+        break;
+	}
+	
 }

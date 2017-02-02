@@ -301,12 +301,20 @@ $(function() {
     							
     						});
     					}
-    					else{
-    						$.each( value, function(keyLevel, valueLevel) { 
+    					else if(selectContainer =="#category"){
+    	
     							
-    							$select.append('<option value="' + valueLevel + '">' + valueLevel + '</option>');
+    							$select.append('<option value="' + value.category + '">' +  value.display_name + '</option>');
     							
-    						});
+    						
+    						}
+    						else{
+    	    						$.each( value, function(keyLevel, valueLevel) { 
+    	    							
+    	    							$select.append('<option value="' + valueLevel + '">' + valueLevel + '</option>');
+    	    							
+    	    						}
+    						);
     					}
     					
     				

@@ -241,6 +241,9 @@ button {
     }
     
     &:focus {
+        font-weight: $large_fontWeight;
+        background-color: $darkGrayButton;
+        color: $contextualButtonColor;
         outline: none; 
     }
 }
@@ -268,6 +271,9 @@ button {
     }
     
     &:focus {
+        font-weight: $large_fontWeight;
+        background-color: $darkGrayButton;
+        color: $contextualButtonColor;
         outline: none; 
     }
 }

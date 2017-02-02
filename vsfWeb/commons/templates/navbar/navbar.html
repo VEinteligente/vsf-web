@@ -7,13 +7,28 @@
   
 
 <nav class = "navbar navbar-fixed-top navbar-dark bg-inverse" >
-    <button class = "navbar-toggler hidden-lg-up float-xs-right" type = "button" data-toggle = "collapse" data-target = "#navbarResponsive" aria-controls = "navbarResponsive" aria-expanded = "false" aria-label = "Toggle navigation" ></button>
-        <a class = "navbar-brand" href = "#" > 
-            <img src = "{% static 'img/long_veSinFiltro.svg' %}" width = "221" height = "50" alt = "">
-        </a>
-    
-    <div class = "collapse navbar-toggleable-md float-md-right" id = "navbarResponsive" >
-        <ul class = "nav navbar-nav float-xs-right" >
+			
+			<div class="navbar_big row">
+				
+				<div class="navbar_small">
+	        
+	                <a class="navbar-brand navbar-brand_big" href="#">
+	                    <img src="{% static 'img/vsf_logolight.svg' %}">
+	                </a>
+	        
+	                <button class = "navbar-toggler hidden-lg-up float-xs-right" type = "button" data-toggle = "collapse" data-target = "#navbarResponsive" aria-controls = "navbarResponsive" aria-expanded = "false" aria-label = "Toggle navigation" ></button>
+	        
+	            </div>
+            
+            </div>
+                
+     <div class = "collapse navbar navbar-dark bg-faded navbar-toggleable-md row"  id = "navbarResponsive" >
+        <a class="navbar-brand navbar-brand_hide" href="#">
+                <img src="{% static 'img/vsf_logolight.svg' %}">
+            </a>
+        
+        <ul class = "nav navbar-nav float-xs-right" id="smallNavbar" >
+            
             <li class = "nav-item" >
                 <a class = "nav-link" href = "#" >
                     {% trans "Home" %}
@@ -26,66 +41,26 @@
                 </a>
             </li>
           
-            <li class = "nav-item dropdown" >
-                <a class = "nav-link dropdown-toggle" href = "#" data-toggle = "dropdown" aria-haspopup = "true" aria-expanded = "false" >
+            <li class = "nav-item" >
+                <a class = "nav-link" href = "#">
                     {% trans "Guides" %}
                 </a>
                 
-                <div class = "dropdown-menu" >
-                    <a class = "dropdown-item" href= "#">
-                        VPN's
-                    </a>
-                    
-                    <a class = "dropdown-item" href = "#" >
-                        Proxy's
-                    </a>
-                    
-                    <a class = "dropdown-item" href = "#" >
-                        {% trans "Evade The Blockade" %}
-                    </a>
-                </div>
             </li>
           
 
-            <li class = "nav-item dropdown" >
-                <a class = "nav-link dropdown-toggle" href = "#" data-toggle = "dropdown" aria-haspopup = "true" aria-expanded = "false" >
+            <li class = "nav-item" >
+                <a class = "nav-link" href = "#">
                     {% trans "Cases" %}
                 </a>
-                
-                <div class = "dropdown-menu" aria-labelledby = "supportedContentDropdown" >
-                    <a class = "dropdown-item" href = "#" >
-                        {% trans "Blocked URLs" %}
-                    </a>
-                    
-                    <a class = "dropdown-item" href = "#" >
-                        {% trans "Blocked Domains" %}
-                    </a>
-                    
-                    <a class = "dropdown-item" href = "#" >
-                        {% trans "Speed Test" %}
-                    </a>
-                          
-                </div>
+                            
             </li>         
 
-            <li class = "nav-item dropdown" >
-                <a class = "nav-link dropdown-toggle" href = "#" data-toggle = "dropdown" aria-haspopup = "true" aria-expanded = "false">
+            <li class = "nav-item" >
+                <a class = "nav-link" href = "#">
                     {% trans "Community" %}
                 </a>
-                
-                <div class = "dropdown-menu" >
-                    <a class = "dropdown-item" href = "#" >
-                        {% trans "About Us" %}
-                    </a>
-                    
-                    <a class = "dropdown-item" href = "#" >
-                        Open source
-                    </a>
-                    
-                    <a class = "dropdown-item" href = "#" >
-                        {% trans "Forum" %}
-                    </a>
-                </div>
+               
             </li>
 
             <li class = "nav-item" >
@@ -94,15 +69,18 @@
                 </a>
             </li>
           
-            <li class = "nav-item" >
-                <form>
-                    <input type = "text" name = "search" placeholder = "Search.." >
-                </form>
-            </li>
-          
+          	<li class="nav-item">
+          		<form class="nav-item form-inline my-lg-0 navbar_search" id="searchBar">
+                    <input class="form-control" type="text" placeholder="Search">
+                    <button class="btn btn-secondary my-2 my-sm-0 btn_iconsearch" type="submit">
+                        <img class="iconsearch" src="{% static 'img/vsf_iconsearch.svg' %}">
+                    </button>
+         		</form>
+         	</li>
+                  
             <li class = "nav-item dropdown" >
-                <a class = "nav-link dropdown-toggle" href = "#" data-toggle = "dropdown" aria-haspopup = "true" aria-expanded = "false">
-                    <img style = "width: 30px; height:30px;" src = "{% static 'img/translate.svg' %}" alt = "language" >
+                <a id ="imageTranslate" class = "nav-link dropdown-toggle icontranslate" href = "#" data-toggle = "dropdown" aria-haspopup = "true" aria-expanded = "false">
+                    <img src = "{% static 'img/vsf_icontranslate.svg' %}" alt = "language" >
                 </a>
                 
                 <div class = "dropdown-menu" style = "left: -20px;min-width: 0px !important;width: 75px;" >

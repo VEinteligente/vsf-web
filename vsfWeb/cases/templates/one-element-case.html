@@ -95,12 +95,17 @@
 	<div class=" bodyContent">
 		<div class="row">
 			<div class="col-xs-2">
-				Download: <a id="download" href="#"> <i
+				{% trans 'Download' %}.cvs: <a id="download" href="#"> <i
 					class="fa fa-file-excel-o" aria-hidden="true"></i>
 				</a>
 
 			</div>
-
+			
+			<div class="col-xs-2">
+				{% trans 'Download' %}.pdf: <a id="downloadPdf" href="#"><i
+					class="fa fa-file-pdf-o" aria-hidden="true"></i></a>			
+			</div>
+			
 			<div class="col-xs-2">
 				Share: <a href="" id="shareFacebook" target="_blank"> <i
 					class="fa fa-facebook" aria-hidden="true"></i>
@@ -254,9 +259,10 @@
         var domain = "{{ URL_VSF }}"
         var url_case = "{% url 'Cases:OneElementCase' pk=pk %}"
         var url_one_case = "{% url 'Cases:OneElementCaseApi' pk=pk %}"
+        var url_one_case_pdf = "{% url 'Cases:CasePdfEmpty' %}"
         var url_one_case_excel = "{% url 'Cases:ExcelCaseCVSEmpty' %}"
         var url_one_case_update = "{% url 'Cases:OneElementCaseUpdateApi' pk=pk %}"
-        var png = "{% static "" %}" +"screenshots/screen_case_"+pk+".png"
+        var png = "{% static "" %}" +"screenshots/screen_case_"+pk+"_1.png"
         var language = '{{ language_code }}'
     
         

@@ -2,6 +2,7 @@
 import csv
 import datetime
 import json
+import pdfkit
 
 from django.conf import settings
 from django.http import HttpResponse
@@ -243,6 +244,13 @@ def CaseCVS(request, pk):
 
     return response
 
+def CasePdf (request, pk="1"):
+     
+    pdf = pdfkit.from_url(settings.URL_VSF_WEB +'/cases/one-element-case/'+pk, False, options={'javascript-delay': 1500})
+    response = HttpResponse(pdf, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="case_'+pk+'.pdf'
+    
+    return response 
 
 class SpeedTestCase(TemplateView):
     """This view renders the HTML containing information about speed test

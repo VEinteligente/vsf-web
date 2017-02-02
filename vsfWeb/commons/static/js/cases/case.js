@@ -26,6 +26,9 @@ $(document)
 
 					$("#download")
 							.attr("href", url_one_case_excel + "id=" + pk);
+					
+					$('#downloadPdf').attr("href", url_one_case_pdf + "id=" +pk);
+					
 					$("#shareFacebook").attr("href", url_share_facebook);
 
 					$("#shareTwitter").attr("href", url_share_twitter);

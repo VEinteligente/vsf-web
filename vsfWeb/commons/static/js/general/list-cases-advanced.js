@@ -214,7 +214,7 @@ $(document)
 																											if (thirdLevelKey == "domains") {
 
 																												$.each( thirdLevelValue, function( fourthLevelKey, fourthLevelValue) {
-																													
+																													console.log(thirdLevelValue.length)
 																													if (thirdLevelValue.length < 2) {
 																										
 																														$(".listCasesAdvanced").find(".site").append(fourthLevelValue.site);
@@ -951,33 +951,38 @@ $("#advanced_search")
 																										}
 
 																										if (thirdLevelKey == "domains") {
-																											$
-																													.each(
-																															thirdLevelValue,
-																															function(
-																																	fourthLevelKey,
-																																	fourthLevelValue) {
 
-																																$(
-																																		".listCasesAdvanced")
-																																		.find(
-																																				".site")
-																																		.append(
-																																				fourthLevelValue.site);
-																																$(
-																																		".listCasesAdvanced")
-																																		.find(
-																																				".site")
-																																		.addClass(
-																																				"siteSort");
-																																$(
-																																		".listCasesAdvanced")
-																																		.find(
-																																				".site")
-																																		.removeClass(
-																																				"site");
+																											$.each( thirdLevelValue, function( fourthLevelKey, fourthLevelValue) {
+																												console.log(thirdLevelValue.length)
+																												if (thirdLevelValue.length < 2) {
+																									
+																													$(".listCasesAdvanced").find(".site").append(fourthLevelValue.site);
+
+																												} else {
+																												
+																													for (var i = 0; i < thirdLevelValue.length; i++) {
+																														
+																														if (i == thirdLevelValue.length - 1) {
+																															console.log(thirdLevelValue[i])
+																															$(".listCasesAdvanced").find(".site").append(thirdLevelValue[i].site);
+																														} else {
+																															console.log((fourthLevelValue.site))
+																															$(".listCasesAdvanced").find(".site").append(thirdLevelValue[i].site + ", ");
+																														}
+
+																													}
+
+																												}				
+																												
+//																												$(".listCasesAdvanced").find(".site").append(fourthLevelValue.site);
+																																
+																																$(".listCasesAdvanced").find(".site").addClass("siteSort");
+																																$(".listCasesAdvanced").find(".site").removeClass("site");
+
 																															});
+
 																										}
+
 
 																										if (thirdLevelKey == "start_date") {
 																											datethirdLevelValue = thirdLevelValue

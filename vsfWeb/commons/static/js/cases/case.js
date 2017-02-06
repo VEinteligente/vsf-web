@@ -62,10 +62,11 @@ $(document)
 										// date has the case date in dateType
 										// format to use javascript methods
 										var date = new Date(dataJson.start_date);
+										var dateEnd = new Date(dataJson.end_date);
 										var title = dataJson.title_de;
 										var description = dataJson.description_de;
 										var twitter_search = dataJson.twitter_search;
-
+										console.log(date)
 										// Title & date for the main DIV in the
 										// details template
 										
@@ -159,16 +160,30 @@ $(document)
 
 										if (dataJson.end_date == null) {
 											$('#statusAjax').html($('#continueTrans').val());
-											$('#statusDateAjax')
-													.html(
-															date.getDate()
+											$('#statusDateAjax').html(date.getDate()
 																	+ "/"
-																	+ month_number[date
-																			.getMonth()]
+																	+ month_number[date.getMonth()]
 																	+ "/"
-																	+ date
-																			.getFullYear());
+																	+ date.getFullYear());
 										}
+										else{
+											$('#statusDateAjax').html(date.getDate()
+													+ "/"
+													+ month_number[date.getMonth()]
+													+ "/"
+													+ date.getFullYear());
+											
+											$('#statusAjax').html(dateEnd.getDate()
+													+ "/"
+													+ month_number[dateEnd.getMonth()]
+													+ "/"
+													+ date.getFullYear());
+											
+											$(".timelineBarContinue").addClass("timelineBarClosed")
+											$(".timelineBarContinue").removeClass("timelineBarContinue")
+									
+										}
+
 
 										if (twitter_search != null) {
 											$("#twitterSearchTextTitle .title")

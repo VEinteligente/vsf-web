@@ -29,7 +29,7 @@ class ISPListApi(APIView):
     def get(self, request, format=None):
         headers = {'Authorization': settings.SERVICES_TOKEN}
         snippet = requests.get(
-            settings.URL_VSF +
+            settings.URL_VSF + 
             '/cases/api/isp/',
             headers=headers)
         return Response(snippet)
@@ -43,7 +43,7 @@ class CategoryListApi(APIView):
     def get(self, request, format=None):
         headers = {'Authorization': settings.SERVICES_TOKEN}
         snippet = requests.get(
-            settings.URL_VSF +
+            settings.URL_VSF + 
             '/cases/api/category/',
             headers=headers)
         return Response(snippet)
@@ -57,7 +57,7 @@ class SiteListApi(APIView):
     def get(self, request, format=None):
         headers = {'Authorization': settings.SERVICES_TOKEN}
         snippet = requests.get(
-            settings.URL_VSF +
+            settings.URL_VSF + 
             '/events/api/site/',
             headers=headers)
         return Response(snippet)
@@ -71,7 +71,7 @@ class RegionListApi(APIView):
     def get(self, request, format=None):
         headers = {'Authorization': settings.SERVICES_TOKEN}
         snippet = requests.get(
-            settings.URL_VSF +
+            settings.URL_VSF + 
             '/cases/api/region/',
             headers=headers)
         return Response(snippet)
@@ -85,7 +85,7 @@ class BlockedSitesApi(APIView):
     def get(self, request, format=None):
         headers = {'Authorization': settings.SERVICES_TOKEN}
         snippet = requests.get(
-            settings.URL_VSF +
+            settings.URL_VSF + 
             '/events/api/blocked_sites/',
             headers=headers)
         return Response(snippet)
@@ -98,7 +98,7 @@ class BlockedDomainsApi(APIView):
     def get(self, request, format=None):
         headers = {'Authorization': settings.SERVICES_TOKEN}
         snippet = requests.get(
-            settings.URL_VSF +
+            settings.URL_VSF + 
             '/events/api/blocked_domains/',
             headers=headers)
         return Response(snippet)
@@ -109,7 +109,7 @@ def BlockedDomainsTableCVS(request):
     # Get the list of all the cases and load it as JSON
     headers = {'Authorization': settings.SERVICES_TOKEN}
     snippet = requests.get(
-        settings.URL_VSF +
+        settings.URL_VSF + 
         '/events/api/blocked_domains/',
         headers=headers)
     data = json.loads(snippet.text)
@@ -117,7 +117,7 @@ def BlockedDomainsTableCVS(request):
     # Create the HttpResponse object with the appropriate CSV header.
     response = HttpResponse(content_type='text/csv')
     response[
-        'Content-Disposition'] = ('attachment;' +
+        'Content-Disposition'] = ('attachment;' + 
                                   ' filename="BlockedDomainsTable.csv"')
 
     # CSV header.
@@ -147,7 +147,7 @@ def BlockedSitesTableCVS(request):
     # Get the list of all the cases and load it as JSON
     headers = {'Authorization': settings.SERVICES_TOKEN}
     snippet = requests.get(
-        settings.URL_VSF +
+        settings.URL_VSF + 
         '/events/api/blocked_sites/',
         headers=headers)
     data = json.loads(snippet.text)
@@ -216,7 +216,7 @@ class CaseListApi(APIView):
     def get(self, request, format=None):
         headers = {'Authorization': settings.SERVICES_TOKEN}
         snippet = requests.get(
-            settings.URL_VSF +
+            settings.URL_VSF + 
             '/cases/api/list-case-filter/',
             headers=headers)
         return Response(snippet)
@@ -232,20 +232,20 @@ class CaseListApi(APIView):
 
         headers = {'Authorization': settings.SERVICES_TOKEN}
         snippet = requests.get(
-            settings.URL_VSF +
-            '/cases/api/list-case-filter/?title=' +
-            title +
-            "&category=" +
-            category +
-            '&start_date=' +
-            start_date +
-            '&end_date=' +
-            end_date +
-            '&region=' +
-            region +
-            '&site=' +
-            site +
-            '&isp=' +
+            settings.URL_VSF + 
+            '/cases/api/list-case-filter/?title=' + 
+            title + 
+            "&category=" + 
+            category + 
+            '&start_date=' + 
+            start_date + 
+            '&end_date=' + 
+            end_date + 
+            '&region=' + 
+            region + 
+            '&site=' + 
+            site + 
+            '&isp=' + 
             isp,
             headers=headers)
         return Response(snippet)
@@ -269,7 +269,7 @@ class MapApi(APIView):
     def get(self, request, format=None):
         headers = {'Authorization': settings.SERVICES_TOKEN}
         snippet = requests.get(
-            settings.URL_VSF +
+            settings.URL_VSF + 
             '/cases/api/list/region/',
             headers=headers)
         return Response(snippet)
@@ -281,7 +281,7 @@ def MapTableCVS(request):
     # Get the list of all the cases and load it as JSON
     headers = {'Authorization': settings.SERVICES_TOKEN}
     snippet = requests.get(
-        settings.URL_VSF +
+        settings.URL_VSF + 
         '/cases/api/list/region/',
         headers=headers)
     data = json.loads(snippet.text)
@@ -289,7 +289,7 @@ def MapTableCVS(request):
     # Create the HttpResponse object with the appropriate CSV header.
     response = HttpResponse(content_type='text/csv')
     response[
-        'Content-Disposition'] = ('attachment;' +
+        'Content-Disposition'] = ('attachment;' + 
                                   'filename="BlockedSitesPerRegion.csv"')
 
     # CSV header.
@@ -334,7 +334,7 @@ def SearchResultCVS(request):
     # Get the list of all the cases and load it as JSON
     headers = {'Authorization': settings.SERVICES_TOKEN}
     snippet = requests.get(
-        settings.URL_VSF +
+        settings.URL_VSF + 
         '/cases/api/list-case-filter',
         headers=headers)
     data = json.loads(snippet.text)
@@ -455,16 +455,16 @@ def SearchResultFilterCVS(
     # Get the list of all the cases and load it as JSON
     headers = {'Authorization': settings.SERVICES_TOKEN}
     snippet = requests.get(
-        settings.URL_VSF +
-        '/cases/api/list-case-filter/?title=' +
-        title +
-        "&category=" +
-        category +
-        '&start_date=' +
-        start_date +
-        '&end_date=' +
-        end_date +
-        '&region=' +
+        settings.URL_VSF + 
+        '/cases/api/list-case-filter/?title=' + 
+        title + 
+        "&category=" + 
+        category + 
+        '&start_date=' + 
+        start_date + 
+        '&end_date=' + 
+        end_date + 
+        '&region=' + 
         region,
         headers=headers)
     data = json.loads(snippet.text)
@@ -568,15 +568,27 @@ def SearchResultFilterCVS(
 class searchTwitterApi(APIView):
     """ This view obtains the tweets from one case from a twitter search  """
 
-    def get(self, request, twitterSearch="", format=None):
+    def get(self, request, e_day="01", s_day="01", e_month="01",
+        s_month="01", e_year="2016", s_year="2016", twitterSearch="", format=None):
         # Use the Access Token to make an API request
+        
+        if e_day != "":
+            until = s_year + "-" + s_month + "-" + s_day
+        else:
+            until = datetime.datetime.now().date()
+        if s_day != "":
+            since = e_year + "-" + e_month + "-" + e_day
+        else:
+            since = ""
 
+        
+        
         timeline_request = urllib2.Request(
-            "https://api.twitter.com/1.1/search/tweets.json?q=" +
-            urlquote(twitterSearch))
+            "https://api.twitter.com/1.1/search/tweets.json?q=" + 
+            urlquote(twitterSearch + " until:" + until + " since:" + since) )
         timeline_request.add_header(
             "Authorization",
-            "Bearer %s" %
+            "Bearer %s" % 
             settings.ACCESS_TOKEN)
 
         timeline_response = urllib2.urlopen(timeline_request)

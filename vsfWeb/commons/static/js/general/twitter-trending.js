@@ -1,7 +1,7 @@
-function twitterSearch(searchWord) {
+function twitterSearch(searchWord, until, since) {
 
 	$.ajax({
-		url : url_data_twitter + "search_twitter=" + searchWord,
+		url : url_data_twitter + "search_twitter=" + searchWord + "&since=" + since + "&until=" + until,
 		context : document.body,
 	}).done(
 		function(response) {

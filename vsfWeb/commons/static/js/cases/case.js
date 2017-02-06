@@ -170,7 +170,8 @@ $(document)
 																			.getFullYear());
 										}
 
-										if (twitter_search != null) {
+										if (twitter_search != "") {
+											
 											$("#twitterSearchTextTitle .title")
 													.html(
 															"Resultados de Twitter")

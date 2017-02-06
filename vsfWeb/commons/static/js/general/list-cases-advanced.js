@@ -384,7 +384,7 @@ $(document)
 
 																											if (thirdLevelKey == "category") {
 
-																												CategoryTag(thirdLevelValue);
+																												CategoryTag(thirdLevelValue.display_name);
 																												
 																												
 											
@@ -1070,7 +1070,7 @@ $("#advanced_search")
 
 																										if (thirdLevelKey == "category") {
 
-																											CategoryTag(thirdLevelValue);
+																											CategoryTag(thirdLevelValue.display_name);
 
 																											$(
 																													".listCasesAdvanced")

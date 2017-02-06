@@ -46,14 +46,12 @@ $(document)
 					    fillSelectors("#site", url_site,"");
 						// This AJAX call corresponds to the request of the JSON
 						// data from Pandora project API.
-						$
-								.ajax({
-									url : url_data,
-									method : "GET",
-									dataType : 'json',
-									contentType : 'application/json'
-								})
-								.done(
+						$.ajax({
+							url : url_data,
+							method : "GET",
+							dataType : 'json',
+							contentType : 'application/json'
+						}).done(
 										function(data) {
 											var temporal = "";
 											// For each element in the JSON we
@@ -314,8 +312,8 @@ $(document)
 																											}
 
 																											if (thirdLevelKey == "category") {
-
-																												CategoryTag(thirdLevelValue);
+																														console.log("cat "+thirdLevelValue)
+																												CategoryTag(thirdLevelValue.display_name);
 																												$(
 																												".listCases")
 																												.find(
@@ -934,7 +932,7 @@ $("#advanced_search")
 																										}
 
 																										if (thirdLevelKey == "category") {
-																											CategoryTag(thirdLevelValue);
+																											CategoryTag(thirdLevelValue.display_name);
 																											$(
 																											".listCases")
 																											.find(

@@ -304,7 +304,10 @@ $(function() {
     					else if(selectContainer =="#category"){
     	
     							
-    							$select.append('<option value="' + value.category + '">' +  value.display_name + '</option>');
+							var element = value.category;
+							
+							$select.append('<option value="' + element.name + '">' +  element.display_name + '</option>');
+							
     							
     						
     						}

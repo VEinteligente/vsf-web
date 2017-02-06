@@ -98,7 +98,7 @@ function select(option) {
 
 												// name of the category it is
 												// iterating on
-												name = result.category;
+												name = (result.category).display_name;
 
 												// number of cases the catefory
 												// has

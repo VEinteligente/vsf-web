@@ -148,8 +148,11 @@ body{
 }
 
 
-
 @media screen and (max-width: 991px){
+	#navbarResponsive{
+	margin-top: 48px;
+}
+	
   header nav {
     height: 48px;
   }

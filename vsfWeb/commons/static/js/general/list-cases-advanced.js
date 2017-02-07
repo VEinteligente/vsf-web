@@ -384,7 +384,7 @@ $(document)
 
 																											if (thirdLevelKey == "category") {
 
-																												CategoryTag(thirdLevelValue.display_name);
+																												CategoryTag(thirdLevelValue);
 																												
 																												
 											
@@ -1075,7 +1075,7 @@ $("#advanced_search")
 
 																										if (thirdLevelKey == "category") {
 
-																											CategoryTag(thirdLevelValue.display_name);
+																											CategoryTag(thirdLevelValue);
 
 																											$(
 																													".listCasesAdvanced")
@@ -1434,58 +1434,58 @@ function fillChosenValues(values, id) {
 
 function CategoryTag(thirdLevelValue){
 	
-	switch(thirdLevelValue) {
+	switch(thirdLevelValue.name) {
     case "blocked_tag":
     	$(".listCasesAdvanced").find(".category")
 		.append(' <div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'
-				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');																								
+				+ thirdLevelValue.display_name + '</div><div class="right_cornerTag"></div></div>');																								
         break;
     case "continue_tag":
     	$(".listCasesAdvanced").find(".category")
 		.append(' <div class="continue_tag"><div class="left_cornerTag"></div><div class="contentTag">'
-				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+				+ thirdLevelValue.display_name + '</div><div class="right_cornerTag"></div></div>');
 
         break;
     
     case "interception_tag":
     	$(".listCasesAdvanced").find(".category")
 		.append(' <div class="interception_tag"><div class="left_cornerTag"></div><div class="contentTag">'
-				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+				+ thirdLevelValue.display_name + '</div><div class="right_cornerTag"></div></div>');
 
         break;
     
     case "disconnected_tag":
     	$(".listCasesAdvanced").find(".category")
 		.append(' <div class="disconnected_tag"><div class="left_cornerTag"></div><div class="contentTag">'
-				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+				+ thirdLevelValue.display_name + '</div><div class="right_cornerTag"></div></div>');
 
         break;
         
     case "slowdown_tag":
     	$(".listCasesAdvanced").find(".category")
 		.append(' <div class="slowdown_tag"><div class="left_cornerTag"></div><div class="contentTag">'
-				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+				+ thirdLevelValue.display_name + '</div><div class="right_cornerTag"></div></div>');
 
         break;
         
     case "dos_tag":
     	$(".listCasesAdvanced").find(".category")
 		.append(' <div class="dos_tag"><div class="left_cornerTag"></div><div class="contentTag">'
-				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+				+ thirdLevelValue.display_name + '</div><div class="right_cornerTag"></div></div>');
 
         break;
     
     case "fail_tag":
     	$(".listCasesAdvanced").find(".category")
 		.append(' <div class="fail_tag"><div class="left_cornerTag"></div><div class="contentTag">'
-				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+				+ thirdLevelValue.display_name + '</div><div class="right_cornerTag"></div></div>');
 
         break; 
         
     default:
     	$(".listCasesAdvanced").find(".category")
 		.append(' <div class=""><div class="left_cornerTag"></div><div class="contentTag">'
-				+ thirdLevelValue + '</div><div class="right_cornerTag"></div></div>');
+				+ thirdLevelValue.display_name + '</div><div class="right_cornerTag"></div></div>');
 
         break;
 	}

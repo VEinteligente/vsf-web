@@ -29,6 +29,10 @@ $(document)
 					$("#shareFacebook").attr("href", url_share_facebook);
 
 					$("#shareTwitter").attr("href", url_share_twitter);
+					
+					$("#measurementsLink").attr("href", url_data_measurements);
+					
+					
 
 					// First Ajax call to recieve the case data from server
 					$

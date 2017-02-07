@@ -109,6 +109,18 @@
 				</a>
 
 			</div>
+			
+			<div class="col-xs-2">
+				Measurements: 
+				<a href="" id="measurementsLink" target="_blank"> 
+					<i class="fa fa-database" aria-hidden="true"></i>
+
+				</a> 
+
+			</div>
+			
+			
+			
 		</div>
 
 
@@ -263,7 +275,9 @@
         var png_commons = "{% static "" %}" +"screenshots/screen_case_"+pk;
          
         
-        var url_data_twitter ="{% url 'General:SearchTwitterApiEmpty' %}" 
+        var url_data_twitter ="{% url 'General:SearchTwitterApiEmpty' %}"
+        
+        var url_data_measurements ="{% url 'Summary:MeasurementsTable' pk=pk %}"
         
 </script>
 

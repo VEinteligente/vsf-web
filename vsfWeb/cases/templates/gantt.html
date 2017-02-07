@@ -92,8 +92,8 @@ body {
 <script>
     // These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here 
     // because of DJango configuration
-     
-        var url_data="{% url 'Cases:ganttEventsApi' %}"   
+     var pk = {{ pk }}
+        var url_data="{% url 'Cases:ganttEventsApi' pk=pk %}"   
 		
             
 </script>

@@ -19,7 +19,7 @@ class ScreenshotCronjob(CronJobBase):
        headers = {'Authorization': settings.SERVICES_TOKEN}
        # Snippet has the return of the call to the server
        snippet = requests.get(
-           'http://127.0.0.1:8001/cases/api/list', headers=headers
+           settings.URL_VSF + '/cases/api/list', headers=headers
        )
        # in data we have the .Json file with the info we need
        data = json.loads(snippet.text)

@@ -74,11 +74,11 @@ class GanttEventsApi(APIView):
      Pandora project
     """
 
-    def get(self, request, format=None):
+    def get(self, request, pk="1", format=None):
         headers = {'Authorization': settings.SERVICES_TOKEN}
         snippet = requests.get(
             settings.URL_VSF +
-            '/events/api/list-event-group/',
+            '/cases/api/gantt/' + pk,
             headers=headers)
         return Response(snippet)
 

@@ -722,6 +722,14 @@
 //d3-timeline
 var dataResult = [];
 
+var dataResultBlockedDNS = [];
+var dataResultBlockedDPI = [];
+var dataResultBlockedIP = [];
+var dataResultInterception = [];
+var dataResultFallaDNS = [];
+var dataResultSpeed = [];
+var dataResultAlteration = [];
+
 // This AJAX call corresponds to the request of the JSON data from Pandora
 // project API.
 $
@@ -733,7 +741,7 @@ $
 		})
 		.done(
 				function(data) {
-					
+		
 					var temporal = "";
 
 					// For each element in the JSON we need to collect their
@@ -743,14 +751,27 @@ $
 
 					var dataJson = JSON.parse(temporal);
 				
-					console.log(dataJson)
+		
 					
-						$.each(dataJson.results, function(key, value) { // First Level
+						$.each(dataJson.events, function(key, value) { // First Level
 							
-					  
+							var isp = value.isp;
+							var type = value.type;
+							console.log(type)
+							console.log(typeof(value.start_date))
+							var start_date = (new Date(value.start_date)).getTime();
 							
-							element = { label: (value.isp + " " + value.type),times: 
-								[ {"color":"red", "starting_time": 1355752800000, "ending_time": 1355759900000}]
+							if( value.end_date != null ) {
+								var end_date = (new Date(value.end_date)).getTime();
+							}
+							else{
+								var end_date = (new Date()).getTime();
+							}
+							
+							
+							
+							element = { label: ( isp + " " + type),times: 
+								[ {"color":"red", "starting_time": start_date, "ending_time": end_date}]
 											
 										};		
 							
@@ -761,6 +782,7 @@ $
 						12
 
 						var testData = dataResult
+						console.log("test")
 						console.log(testData)
 						var chart = d3.timeline().showTimeAxisTick().showTimeAxisTick().stack();
 
@@ -775,6 +797,11 @@ $
 						        	  var labelStrong_first = (($(this).text())).split(" ")[0];
 						        	  console.log(labelStrong_first)
 						        	  var labelStrong_second = (($(this).text())).split(" ")[1];
+						        	  
+						        	  for(var i = 2; i  < (($(this).text())).split(" ").length; i++){
+						        		  var labelStrong_second = labelStrong_second + " " + (($(this).text())).split(" ")[i];
+						        	  }
+						        	  
 						        	  console.log(labelStrong_second)
 						        	  return ("<text stroke='#000000'>" + labelStrong_first + "</text>" 
 						        			  + "<text transform='translate(55,0)'>" + labelStrong_second + "</text>");

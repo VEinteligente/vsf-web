@@ -626,6 +626,8 @@ input#title{
 
 // One element case
 
+
+
 #twitterDiv{
     float:right;
     height: 330px;   
@@ -747,7 +749,36 @@ input#title{
     }
 }
 
+#owl-demo .item img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
 
+.owl-carousel {
+position: relative;
+}
+.owl-prev,
+.owl-next {
+position: absolute;
+top: 50%;
+margin-top: -10px; // Half of the prev/next buttons height here in negatives to center them perfectly
+}
+.owl-prev {
+left: 0;
+}
+.owl-next {
+right: 0;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+border-radius: 0;
+  -webkit-transform: rotate(45deg);
+     -moz-transform: rotate(45deg);
+     -ms-transform: rotate(45deg);
+     -o-transform: rotate(45deg);
+     transform: rotate(45deg);
+}
 
 
 /* RESPONSIVE */

@@ -66,9 +66,81 @@ $(document)
 										var title = dataJson.title_de;
 										var description = dataJson.description_de;
 										var twitter_search = dataJson.twitter_search;
-										console.log(date)
+										var domains_count = (dataJson.domains).length;
+										console.log(domains_count)
+										
+										if(domains_count == 1){
+											
+											$("#caseImage").html('<img src="" class="img-fluid">');
+											var png = png_commons + "_0.png";	
+											$("#caseImage img").attr("src", png);
+										}
+										else{
+											
+											$("#caseImage").append('<div id="owl-demo" class="owl-carousel owl-theme"></div>');
+											
+											for(var i = 0; i < domains_count; i++){
+												
+												$(".owl-carousel").append('<div class="item"><img src="" class="img-fluid"></div>');
+												var png = png_commons + "_" + i + ".png";	
+												$(".img-fluid").attr("src", png);
+												$(".img-fluid").removeClass('img-fluid');
+											}
+											
+											  $("#owl-demo").owlCarousel({
+												  
+
+											      navigation : true, // показывать кнопки next и prev 
+											      navText: [
+											                       "<i class='fa fa-chevron-left'></i>",
+											                       "<i class='fa fa-chevron-right'></i>"
+											                    ],
+											      slideSpeed : 300,
+											      paginationSpeed : 400,
+											      nav: true,
+											      items : 1, 
+											      itemsDesktop : false,
+											      itemsDesktopSmall : false,
+											      itemsTablet: false,
+											      itemsMobile : false
+											      
+											      // "singleItem:true" is a shortcut for:
+											      // items : 1, 
+											      // itemsDesktop : false,
+											      // itemsDesktopSmall : false,
+											      // itemsTablet: false,
+											      // itemsMobile : false
+											 
+											  });
+											// Custom Navigation Events
+											  function showNav(e){
+												    if ($(".next").css("float") == "right") {
+												      $(".next").fadeIn();
+												      $(".prev").fadeIn();
+												    }
+												  }
+												  function hideNav(e){
+												    $(".next").fadeOut();
+												    $(".prev").fadeOut();
+												  }
+												  $("#jm-Section-CARU").hover(showNav, hideNav);
+												  $('.customNextBtn').click(function(e) {
+												    e.preventDefault();
+												    $(".owl-carousel").trigger('next.owl.carousel');
+												  });
+												  $('.customPrevBtn').click(function(e) {
+												    e.preventDefault();
+												    $(".owl-carousel").trigger('prev.owl.carousel');
+												  });
+											 
+										}
+									
+										
+										
+										
 										// Title & date for the main DIV in the
 										// details template
+										
 										
 										$('head').append(
 												'<meta property="og:title" content="VE Sin filtro: '
@@ -150,8 +222,7 @@ $(document)
 											
 										} 
 										
-										//website screenshot
-										$("#caseImage").attr("src", png);
+										
 
 										// if the end_date is null it means that
 										// the case is still active, still needs

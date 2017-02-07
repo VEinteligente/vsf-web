@@ -25,8 +25,8 @@
 		<div class="container-fluid"
 			style="padding-top: 10px; padding-bottom: 10px">
 			<div class="row">
-				<div class="col-xs-5 offset-xs-1">
-					<img id="caseImage" src="" class="img-fluid">
+				<div class="col-xs-6" id="caseImage" >
+					
 				</div>
 
 				<div class="col-xs-6" id="caseInfo">
@@ -256,10 +256,11 @@
         var url_one_case = "{% url 'Cases:OneElementCaseApi' pk=pk %}"
         var url_one_case_excel = "{% url 'Cases:ExcelCaseCVSEmpty' %}"
         var url_one_case_update = "{% url 'Cases:OneElementCaseUpdateApi' pk=pk %}"
-        var png = "{% static "" %}" +"screenshots/screen_case_"+pk+".png"
+        
         var language = '{{ language_code }}'
     
-        
+        //var png_commons = "{% static "" %}" +"screenshots/screen_case_"+pk+".png"
+        var png_commons = "{% static "" %}" +"screenshots/screen_case_"+pk;
          
         
         var url_data_twitter ="{% url 'General:SearchTwitterApiEmpty' %}" 

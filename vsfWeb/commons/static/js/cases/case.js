@@ -62,10 +62,11 @@ $(document)
 										// date has the case date in dateType
 										// format to use javascript methods
 										var date = new Date(dataJson.start_date);
+										var dateEnd = new Date(dataJson.end_date);
 										var title = dataJson.title_de;
 										var description = dataJson.description_de;
 										var twitter_search = dataJson.twitter_search;
-
+										console.log(date)
 										// Title & date for the main DIV in the
 										// details template
 										
@@ -159,27 +160,59 @@ $(document)
 
 										if (dataJson.end_date == null) {
 											$('#statusAjax').html($('#continueTrans').val());
-											$('#statusDateAjax')
-													.html(
-															date.getDate()
+											$('#statusDateAjax').html(date.getDate()
 																	+ "/"
-																	+ month_number[date
-																			.getMonth()]
+																	+ month_number[date.getMonth()]
 																	+ "/"
-																	+ date
-																			.getFullYear());
+																	+ date.getFullYear());
 										}
+										else{
+											$('#statusDateAjax').html(date.getDate()
+													+ "/"
+													+ month_number[date.getMonth()]
+													+ "/"
+													+ date.getFullYear());
+											
+											$('#statusAjax').html(dateEnd.getDate()
+													+ "/"
+													+ month_number[dateEnd.getMonth()]
+													+ "/"
+													+ dateEnd.getFullYear());
+											
+											$(".timelineBarContinue").addClass("timelineBarClosed")
+											$(".timelineBarContinue").removeClass("timelineBarContinue")
+									
+										}
+
 
 										if (twitter_search != "") {
 											
+
 											$("#twitterSearchTextTitle .title")
 													.html(
 															"Resultados de Twitter")
 											$(
 													"#twitterSearchTextContent .title")
 													.html(decodeURI(twitter_search))
-													console.log(encodeURIComponent(twitter_search))
-											twitterSearch(encodeURIComponent(twitter_search));
+											if (dataJson.end_date == null) {
+												
+												var until = new Date();
+												var today =  until.getFullYear()+ "-"+ until.getMonth() + "-"+ until.getDate();
+												var since = date.getFullYear()+ "-"+ date.getMonth() + "-"+ date.getDate();
+												twitter_search = twitter_search + " " +  since
+												twitterSearch(encodeURIComponent(twitter_search));
+											}
+											else{
+												var until = dateEnd.getFullYear()+ "-"+ dateEnd.getMonth()+ "-"+ dateEnd.getDate();
+												var since = date.getFullYear()+ "-"+ date.getMonth() + "-"+ date.getDate();
+												twitter_search = twitter_search + " " + until  + " " +  since
+												twitterSearch(encodeURIComponent(twitter_search));
+											}
+											
+											
+										}
+										else{
+											$('#twitterTweet').append('No search word for twitter')
 										}
 
 										// AJAX call for updates datails API

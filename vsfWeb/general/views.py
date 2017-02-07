@@ -568,24 +568,16 @@ def SearchResultFilterCVS(
 class searchTwitterApi(APIView):
     """ This view obtains the tweets from one case from a twitter search  """
 
-    def get(self, request, e_day="01", s_day="01", e_month="01",
-        s_month="01", e_year="2016", s_year="2016", twitterSearch="", format=None):
+    def get(self, request, twitterSearch="", format=None):
         # Use the Access Token to make an API request
         
-        if e_day != "":
-            until = s_year + "-" + s_month + "-" + s_day
-        else:
-            until = datetime.datetime.now().date()
-        if s_day != "":
-            since = e_year + "-" + e_month + "-" + e_day
-        else:
-            since = ""
+   
 
         
         
         timeline_request = urllib2.Request(
             "https://api.twitter.com/1.1/search/tweets.json?q=" + 
-            urlquote(twitterSearch + " until:" + until + " since:" + since) )
+            urlquote(twitterSearch ) )
         timeline_request.add_header(
             "Authorization",
             "Bearer %s" % 

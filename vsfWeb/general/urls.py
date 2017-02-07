@@ -34,17 +34,17 @@ urlpatterns = [
     url(r'^map-Venezuela', MapVenezuela.as_view(), name="MapVenezuela"),
     url(r'^map-api', MapApi.as_view(), name="MapApi"),
     url(r'^map-excel/$', MapTableCVS, name="ExcelMap"),
-    url(r'^list-cases/title=(?P<title>(\S|\W)*)&category=' +
-        '(?P<category>(\S|\W)*)&start_date=(?P<s_year>\d*)-(?P<s_month>\d*)-' +
-        '(?P<s_day>\d*)&end_date=(?P<e_year>\d*)-(?P<e_month>\d*)-' +
-        '(?P<e_day>\d*)&region=(?P<region>(\S|\W)*)&site=(?P<site>(\S|\W)*)' +
+    url(r'^list-cases/title=(?P<title>(\S|\W)*)&category=' + 
+        '(?P<category>(\S|\W)*)&start_date=(?P<s_year>\d*)-(?P<s_month>\d*)-' + 
+        '(?P<s_day>\d*)&end_date=(?P<e_year>\d*)-(?P<e_month>\d*)-' + 
+        '(?P<e_day>\d*)&region=(?P<region>(\S|\W)*)&site=(?P<site>(\S|\W)*)' + 
         '&isp=(?P<isp>(\S|\W)*)/$',
         CaseList.as_view(),
         name="CaseList"),
-    url(r'^advanced-list-cases/title=(?P<title>(\S|\W)*)&category=' +
-        '(?P<category>(\S|\W)*)&start_date=(?P<s_year>\d*)-(?P<s_month>\d*)' +
-        '-(?P<s_day>\d*)&end_date=(?P<e_year>\d*)-(?P<e_month>\d*)-' +
-        '(?P<e_day>\d*)&region=(?P<region>(\S|\W)*)&site=(?P<site>(\S|\W)*)' +
+    url(r'^advanced-list-cases/title=(?P<title>(\S|\W)*)&category=' + 
+        '(?P<category>(\S|\W)*)&start_date=(?P<s_year>\d*)-(?P<s_month>\d*)' + 
+        '-(?P<s_day>\d*)&end_date=(?P<e_year>\d*)-(?P<e_month>\d*)-' + 
+        '(?P<e_day>\d*)&region=(?P<region>(\S|\W)*)&site=(?P<site>(\S|\W)*)' + 
         '&isp=(?P<isp>(\S|\W)*)/$',
         CaseListAdvanced.as_view(),
         name="CaseListAdvanced"),
@@ -54,9 +54,9 @@ urlpatterns = [
     url(r'^list-cases-excel/$',
         SearchResultCVS,
         name="ExcelCaseListEmptyAdvanced"),
-    url(r'^list-cases-excel/title=(?P<title>(\S|\W)*)&category=' +
-        '(?P<category>(\S|\W)*)&start_date=(?P<s_year>\d*)-(?P<s_month>\d*)' +
-        '-(?P<s_day>\d*)&end_date=(?P<e_year>\d*)-(?P<e_month>\d*)-' +
+    url(r'^list-cases-excel/title=(?P<title>(\S|\W)*)&category=' + 
+        '(?P<category>(\S|\W)*)&start_date=(?P<s_year>\d*)-(?P<s_month>\d*)' + 
+        '-(?P<s_day>\d*)&end_date=(?P<e_year>\d*)-(?P<e_month>\d*)-' + 
         '(?P<e_day>\d*)&region=(?P<region>(\S|\W)*)/$',
         SearchResultFilterCVS,
         name="ExcelCaseListAdvanced"),

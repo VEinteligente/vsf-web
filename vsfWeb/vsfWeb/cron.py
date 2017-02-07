@@ -25,7 +25,7 @@ class ScreenshotCronjob(CronJobBase):
        data = json.loads(snippet.text)
        # Count has the number of cases
        count = data["count"]
-       for x in xrange(1, count):
+       for x in xrange(0, count):
            # results has the case (list of dictionaries) with the info we need
            results = data["results"][x]
            id_case = results["id"]

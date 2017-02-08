@@ -5,8 +5,6 @@
 {% get_available_languages as LANGUAGES %} 
 {% get_language_info_list for LANGUAGES as languages %}
 
-
-
 <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
 
 
@@ -38,16 +36,32 @@
 
 		<li class="nav-item"><a class="nav-link" href="#"> {% trans	"Home" %} </a></li>
 
-		<li class="nav-item"><a class="nav-link" href="#"> {% trans	"News" %} </a></li>
-
-		<li class="nav-item"><a class="nav-link" href="#"> {% trans	"Guides" %} </a></li>
-
-
 		<li class="nav-item"><a class="nav-link" href="#"> {% trans	"Cases" %} </a></li>
 
-		<li class="nav-item"><a class="nav-link" href="#"> {% trans	"Community" %} </a></li>
+		<li class="nav-item dropdown">
+			
+			<a class="nav-link dropdown-toggle" href="#" data-toggle ="dropdown" aria-haspopup = "true" aria-expanded = "false" > 
+				{% trans "Summary" %} 
+			</a>
+			
+			<div class = "dropdown-menu" >
+                   
+                    <a class = "dropdown-item" href= "http://127.0.0.1:8000/general/blocked-domains_sites">
+                        {% trans "Blocked List" %}
+                    </a>
+                    
+                    <a class = "dropdown-item" href = "http://127.0.0.1:8000/general/map-Venezuela" >
+                        {% trans "Map of Cases" %}
+                    </a>
+                    
+                    <a class = "dropdown-item" href = "http://127.0.0.1:8000/summary/summary-table" >
+                        {% trans "Summary Table" %}
+                    </a>
+           </div>
+		
+		
+		</li>
 
-		<li class="nav-item"><a class="nav-link" href="#"> {% trans	"Report" %} </a></li>
 
 		<li class="nav-item">
 			<form class="nav-item form-inline my-lg-0 navbar_search"

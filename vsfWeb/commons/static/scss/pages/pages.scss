@@ -750,8 +750,23 @@ input#title{
     }
 }
 
+#rowDomain{
+	color: #fff;
+	background-color: #adadad ;
+	font-weight:700;
+	width: 100%;
+}
 
+.rowDomain{
+	color: #fff;
+	background-color: #adadad ;
+	font-weight:700;
+	width: 100%;
+}
 
+#caseDomainList{
+	 overflow-y: 100px !important;
+}
 
 /* RESPONSIVE */
 

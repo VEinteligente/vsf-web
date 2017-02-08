@@ -32,7 +32,56 @@ $(document)
 					$("#shareFacebook").attr("href", url_share_facebook);
 
 					$("#shareTwitter").attr("href", url_share_twitter);
+					// This AJAX call corresponds to the request of the JSON data from Pandora
+					// project API.
+					$
+							.ajax({
+								url : url_one_case,
+								method : "GET",
+								dataType : 'json',
+								contentType : 'application/json'
+							})
 
+							.done(
+									function(dataJson) {
+										var temporal = "";
+
+										// For each element in the JSON we need to collect their
+										// values
+										for (var i = 0; i < dataJson.length; i++)
+											temporal = temporal.concat(dataJson[i]);
+
+										var data = JSON.parse(temporal);
+
+										
+
+											count = 0;
+
+											$("#domainTableTitle")
+													.html(
+															'<span class="tag tag-default tag-pill float-xs-left pill-size" id="count"></span>&nbsp'+$('#domainTrans').val());
+
+											$.each(data.domains, function(index, result){
+
+												count = count + 1;
+
+												$("#count").html(count);
+
+												$("#domainTableBody").append('<tr class="focus clickable" data-toggle="collapse" data-target="#data'+result.site+'"><td style="border-radius:5px">'+result.site+'</td><tr><td id="focusDomain" class="prueba" style="padding:0;"><div class="collapse" id="data'+result.site+'"><div></td></tr>');
+												
+											})
+											
+											$.each(data.domains, function(index, result){
+												
+												$("#data"+result.site).append('<tr class="rowDomain"><td style="width:100%">'+result.url+'</td><td><i class="fa fa-lock" aria-hidden="true"></i></td></tr>');
+											
+											})
+											
+											
+										
+
+										
+									});
 					// First Ajax call to recieve the case data from server
 					$
 							.ajax({
@@ -58,7 +107,6 @@ $(document)
 										// automatically url search
 										var id_events = [];
 
-										select("domains", dataJson);
 
 										// case ID
 										case_id = data.id;
@@ -294,82 +342,7 @@ $(document)
 
 																			})
 														});
+									
 									});
 
 				});
-
-// function for the domain/sites list in the page
-
-function select(option) {
-
-	// When select function is invoked the list is emptied
-	$("#domainTableBody").empty();
-	var url_data = url_one_case;
-
-	// This AJAX call corresponds to the request of the JSON data from Pandora
-	// project API.
-	$
-			.ajax({
-				url : url_data,
-				method : "GET",
-				dataType : 'json',
-				contentType : 'application/json'
-			})
-
-			.done(
-					function(dataJson) {
-						var temporal = "";
-
-						// For each element in the JSON we need to collect their
-						// values
-						for (var i = 0; i < dataJson.length; i++)
-							temporal = temporal.concat(dataJson[i]);
-
-						var data = JSON.parse(temporal);
-
-						if (option == "domains") {
-
-							count = 0;
-
-							$("#domainTableTitle")
-									.html(
-											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:100%; background-color:red"></span>&nbsp'+$('#domainTrans').val());
-
-							$.each(data.domains, function(index, result) {
-
-								count = count + 1;
-
-								$("#count").html(count);
-
-								$("#domainTableBody").append(
-										'<tr><td style="border-radius:5px">'
-												+ result.url + '</td><tr>');
-								
-							})
-						}
-
-						else {
-
-							count = 0;
-
-							$("#domainTableTitle")
-									.html(
-											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:100%; background-color:red"></span>&nbsp'+$('#siteTrans').val());
-
-							$.each(data.domains, function(index, result) {
-
-								count = count + 1;
-
-								$("#count").html(count);
-
-								$("#domainTableBody").append(
-										'<tr><td style="text-transform:capitalize;border-radius:5px">'
-												+ result.site + '</td><tr>');
-
-							})
-
-						}
-
-					});
-
-}

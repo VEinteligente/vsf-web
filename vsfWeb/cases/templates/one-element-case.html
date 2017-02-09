@@ -25,41 +25,45 @@
 		<div class="container-fluid"
 			style="padding-top: 10px; padding-bottom: 10px">
 			<div class="row">
-				<div class="col-xs-5 offset-xs-1">
+				<div class="col-xs-6">
 					<img id="caseImage" src="" class="img-fluid">
 				</div>
 
 				<div class="col-xs-6" id="caseInfo">
-					<div class="row">
-						<div class="container-fluid" id="caseDateBar">
-							<div class="col-xs-12 timelineBarContinue">
-								<div class="date col-xs-9" id="statusDateAjax"></div>
-								<div class="status col-xs-3" id="statusAjax"></div>
+					<div class="row subtitleBar" id="dateBar">
+							<div class="container-fluid" id="caseDateBar">
+								<div class="col-xs-12 timelineBarContinue">
+									<div class="date col-xs-9" id="statusDateAjax"></div>
+									<div class="status col-xs-3" id="statusAjax"></div>
+								</div>
 							</div>
-						</div>
 					</div>
 
-					<div class="row">
-						<div class="container" id="caseDomainList"
-							style="padding-top: 5px">
+
+				<div class="row">
+						
+						<div class="container" id="caseDomainList">
 							<div>
 								
-								<table class="table table-hover">
+								<table class="table table-hover" id="tableDomain">
 								
 									<thead>
-								
+										
 										<tr>
-								
-											<th id="domainTableTitle"
-												style="background-color: white; border-radius: 5px"></th>
+										
+											<th id="caseCategory" class="h4Style">
+											
+												 {% trans "Category: "%}
+											
+											</th>
+										
 										</tr>
+																	
 								
 									</thead>
 
 								
-									<tbody id="domainTableBody"
-									
-										style="background-color: white; border-radius: 5px">
+									<tbody id="domainTableBody">
 									
 									</tbody>
 
@@ -70,11 +74,15 @@
 						</div>
 					</div>
 
-					<div class="row">
+					<div class="row toolbar" id="providerBar">
+						
 						<div class="container-fluid" id="caseProvider">
+							
 							<div class="col-xs-12" style="text-align: center;" id="ispAjax">
+							
 							</div>
 						</div>
+					
 					</div>
 				</div>
 			</div>

@@ -1,5 +1,11 @@
 //Summary Category & ISP Table
 
+#summaryTableBorder{
+	padding:1px;
+	border-radius:8px;
+	background-color: #fff;
+}
+
 #countSummary{
   background-color: #ff2114;
   font-size: 90%;
@@ -20,7 +26,7 @@
 #tabletitle{
    font-weight: 700;
    color:#575757 ;
-   padding-left:2px;
+   padding-left:16px;
 }
 
 #sumtable{
@@ -32,18 +38,23 @@
 
 #rowName{
   text-transform: capitalize;
-  padding-left: 3px;
+  padding-left: 16px;
   height: 40px;
   }
 
 #rowTitleDataCategory{
-  width: 85%;
-  color: #fff;  
+  color: #fff;
+  max-width:320px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;  
+  padding-left:16px;
 }
 
 #rowTitleDataIsp{
   width: 100%;
-  color: #fff;  
+  color: #fff; 
+  padding-left:16px; 
 }
 
 .marginPage{
@@ -753,21 +764,66 @@ input#title{
 #rowDomain{
 	color: #fff;
 	background-color: #adadad ;
-	font-weight:700;
+	font-weight:400;
 	width: 100%;
+
 }
 
 .rowDomain{
 	color: #fff;
-	background-color: #adadad ;
-	font-weight:700;
+	background-color: #c9c9c9 ;
+	font-weight:400;
 	width: 100%;
 }
 
-#caseDomainList{
-	 overflow-y: 100px !important;
+.rowDomain:hover{
+	background-color:#ebebeb;
+	color: #808080;
 }
 
+#caseDomainList{
+	 overflow-y: 176px !important;
+	 padding-top:8px;
+	 padding-left:0px;
+	 padding-right:0px;
+	 padding-bottom:8px;
+}
+
+#dateBar{
+	padding-top:6px;
+	padding-left:10px;
+	margin-bottom: 8px;
+}
+
+#providerBar{
+	background-color: #fff;
+	border-radius: 8px;
+	border:0px;
+}
+
+#caseCategory{
+	padding-left:16px;
+}
+
+#tableDomain{
+	border-radius: 8px;
+	background-color: #fff;
+	
+}
+
+#domainTableTile{
+	padding-left:0px;
+}
+
+#nameDomain{
+	color: #333333;
+	font-weight:700;
+	padding-left: 16px;
+}
+
+#siteDomain{
+	padding-left:16px;
+}
 /* RESPONSIVE */
 
 

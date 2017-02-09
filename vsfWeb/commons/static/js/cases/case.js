@@ -67,15 +67,21 @@ $(document)
 
 												$("#count").html(count);
 
-												$("#domainTableBody").append('<tr class="focus clickable" data-toggle="collapse" data-target="#data'+result.site+'"><td style="border-radius:5px">'+result.site+'</td><tr><td id="focusDomain" class="prueba" style="padding:0;"><div class="collapse" id="data'+result.site+'"><div></td></tr>');
+												$("#domainTableBody").append('<tr class="focus clickable" data-toggle="collapse" data-target="#data'+result.site+'"><td id="nameDomain">'+result.site+'</td><tr><td id="focusDomain" class="prueba" style="padding:0;"><div class="collapse" id="data'+result.site+'"><div></td></tr>');
 												
 											})
 											
 											$.each(data.domains, function(index, result){
 												
-												$("#data"+result.site).append('<tr class="rowDomain"><td style="width:100%">'+result.url+'</td><td><i class="fa fa-lock" aria-hidden="true"></i></td></tr>');
+												$("#data"+result.site).append('<tr class="rowDomain"><td id="siteDomain" style="width:100%">'+result.url+'</td><td><i class="fa fa-lock" aria-hidden="true"></i></td></tr>');
 											
 											})
+											console.log(data.category);
+											$("#caseCategory").append('&nbsp <div class="'
+													+ data.category
+													+ '_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+													+ data.category
+													+ '</div><div class="right_cornerTag"></div></div>')
 											
 											
 										

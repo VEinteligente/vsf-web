@@ -756,17 +756,28 @@ function colorSelect(type){
 	return color
 }
 
+
+var timesGroup = [];
 //d3-timeline
 var dataResult = [];
+var dataLabel = [];
+var dataAll = [];
 
-var dataResultBlockedDNS = [];
-var dataResultBlockedDPI = [];
-var dataResultBlockedIP = [];
-var dataResultInterception = [];
-var dataResultFallaDNS = [];
-var dataResultSpeed = [];
-var dataResultAlteration = [];
 
+var testData = [
+                {label: "person a",  
+                	times: [
+                	        {"color":"red", "starting_time": 1355752800000, "ending_time": 1355759900000},
+                	       ]
+                },                
+                {label: "person b", class:"blockedPartial", times: [
+                  {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]},
+                {label: "person c", times: [
+                  {"color":"green", "starting_time": 1355761910000, "ending_time": 1355763910000},
+                  {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]}
+                ];
+console.log("test")
+console.log(testData)
 // This AJAX call corresponds to the request of the JSON data from Pandora
 // project API.
 $
@@ -807,23 +818,65 @@ $
 							
 							
 							
+									
 							element = { label: ( isp + " " + type),times: 
 								[ {"color": colorSelect(type), "starting_time": start_date, "ending_time": end_date}]
-											
-										};		
+							};
 							
-							dataResult.push(element)
-							console.log("dataResul")
-							console.log(dataResult)
+							dataAll[dataAll.length]=element;
+							
+							var exists = 0;
+							for(var i = 0; i < dataLabel.length ; i++){
+								if(dataAll[i].label == (isp + " " + type)) {
+									exists = 1;
+								}
+							}
+							
+							if(exists != 1){
+								dataLabel[dataLabel.length]= (isp + " " + type)
+							}
 						})
 						
+							
 						
+							for(var i = 0; i < dataLabel.length ; i++){
+								var times_element = ""
+								var times = []
+								var z = 0;
+								for(var j = 0; j < dataAll.length; j++){
+									
+									if(dataAll[j].label==dataLabel[i]) {
+										
+										console.log("DSFDSFDS" + dataAll[j])
+										console.log( dataAll[j].times)
+										times_element =  (dataAll[j].times)[0]
+										console.log(times_element)
+										
+										times[z]= times_element
+										z = z +1
+									}
+									
+									
+								}
+								
+								console.log("GANTTTT")
+							
+								
+								element = { label: dataAll[i].label ,times };
+							
+								console.log(element)
+								dataResult.push(element)
+								
+							}
+							
+					
+							console.log("dataResul")
+							console.log(dataResult)
 						var timelineStart = (new Date('01-01-2017')).getTime();
 						var timelineEnd = (new Date('07-31-2017')).getTime();
 				
 						var testData = dataResult
-						console.log("test")
-						console.log(testData)
+						
 						var chart = d3.timeline().showTimeAxisTick().stack().beginning(timelineStart).ending(timelineEnd);
 
 						
@@ -860,17 +913,3 @@ $
 				});
 
 
-
-
-//var testData = [
-//                {label: "person a",  
-//                	times: [
-//                	        {"color":"red", "starting_time": 1355752800000, "ending_time": 1355759900000},
-//                	       ]
-//                },                
-//                {label: "person b", class:"blockedPartial", times: [
-//                  {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]},
-//                {label: "person c", times: [
-//                  {"color":"green", "starting_time": 1355761910000, "ending_time": 1355763910000},
-//                  {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]}
-//                ];

@@ -52,8 +52,8 @@ SECRET_KEY = 'dh96m6zsamw9#&%z758vm9(@j^!o@k(5(^&p8la2r(qy&^qmmy'
 DEBUG = local_settings.DEBUG
 SERVICES_TOKEN = local_settings.SERVICES_TOKEN
 
-URL_VSF_WEB = 'http://127.0.0.1:8000'
-URL_VSF = 'http://127.0.0.1:8001'
+URL_VSF_WEB = local_settings.URL_VSF_WEB
+URL_VSF = local_settings.URL_VSF
 
 ALLOWED_HOSTS = []
 

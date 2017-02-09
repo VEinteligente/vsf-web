@@ -16,8 +16,8 @@
         height = null,
         rowSeparatorsColor = null,
         backgroundColor = null,
-        tickFormat = { format: d3.time.format("%I %p"),
-          tickTime: d3.time.hours,
+        tickFormat = { format: d3.time.format("%B"),
+          tickTime: d3.time.months,
           tickInterval: 1,
           tickSize: 6,
           tickValues: null
@@ -718,6 +718,43 @@
   };
 })();
 
+function colorSelect(type){
+
+	switch(type) {
+    case "bloqueo por DPI":
+    	var color = "red";																				
+        break;
+    case "bloqueo por DNS":
+    	var color = "green";
+        break;
+    
+    case "bloqueo por IP":
+    	var color = "blue";
+        break;
+    
+    case "Interceptacion de trafico":
+    	var color = "yellow";
+        break;
+        
+    case "falla de dns":
+    	var color = "purple";
+        break;
+        
+    case "Velocidad de internet":
+    	var color = "gray";
+        break;
+    
+    case "alteracion de trafico por intermediarios":
+    	 var color = "black";
+        break; 
+        
+    default:
+    	var color = "white"; 
+        break;
+	}
+	
+	return color
+}
 
 //d3-timeline
 var dataResult = [];
@@ -771,7 +808,7 @@ $
 							
 							
 							element = { label: ( isp + " " + type),times: 
-								[ {"color":"red", "starting_time": start_date, "ending_time": end_date}]
+								[ {"color": colorSelect(type), "starting_time": start_date, "ending_time": end_date}]
 											
 										};		
 							
@@ -779,14 +816,24 @@ $
 							console.log("dataResul")
 							console.log(dataResult)
 						})
-						12
-
+						
+						
+						var timelineStart = (new Date('01-01-2017')).getTime();
+						var timelineEnd = (new Date('07-31-2017')).getTime();
+				
 						var testData = dataResult
 						console.log("test")
 						console.log(testData)
-						var chart = d3.timeline().showTimeAxisTick().showTimeAxisTick().stack();
+						var chart = d3.timeline().showTimeAxisTick().stack().beginning(timelineStart).ending(timelineEnd);
 
-						var svg = d3.select("#timeline1").append("svg").attr("width", 500)
+						
+						var margin = {top: 35, right: 200, bottom: 20, left: 80},
+					    width = 960 - (margin.left + margin.right);
+					    height = 400 - (margin.top + margin.bottom);
+					    
+					    
+						var svg = d3.select("#timeline1").append("svg").attr("width", width +  margin.left + margin.right)
+					    .attr("height", height + margin.top + margin.bottom)
 						  .datum(testData).call(chart);
 
 
@@ -802,14 +849,18 @@ $
 						        		  var labelStrong_second = labelStrong_second + " " + (($(this).text())).split(" ")[i];
 						        	  }
 						        	  
-						        	  console.log(labelStrong_second)
+						        	  $("#timeline1 svg > g:first-child").attr('transform','translate(220,0)');
 						        	  return ("<text stroke='#000000'>" + labelStrong_first + "</text>" 
-						        			  + "<text transform='translate(55,0)'>" + labelStrong_second + "</text>");
+						        			  + "<text transform='translate(90,0)'>" + labelStrong_second + "</text>");
 						         });
 
-					
+
+	
 
 				});
+
+
+
 
 //var testData = [
 //                {label: "person a",  

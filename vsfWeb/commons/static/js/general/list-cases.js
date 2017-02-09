@@ -1249,7 +1249,7 @@ function fillChosenValues(values, id) {
 
 
 function CategoryTag(thirdLevelValue){
-	console.log(thirdLevelValue)
+
 	switch(thirdLevelValue) {
     case "blocked_tag":
     	$(".listCases").find(".category")

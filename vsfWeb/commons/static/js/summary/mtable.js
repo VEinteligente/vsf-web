@@ -37,7 +37,7 @@ $(document).ready(
 
 							}).done(
 									function(data) {
-							
+						
 										var temporal = "";
 										// For each element in the JSON we need
 										// to collect their values
@@ -171,6 +171,9 @@ $(document).ready(
 
 														})
 
+									}).fail(function(jqXHR, textStatus, errorThrown) {
+
+										$('#dataTableM').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 									});
 
 					//Function to give the modal the Json file on click with the format we like to

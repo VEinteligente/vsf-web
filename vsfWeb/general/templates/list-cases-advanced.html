@@ -254,7 +254,7 @@ $(function() {
 	 
 	 var url_site = "{% url 'General:SiteListApi' %}";
 	 
-	 
+	 var fail_service_img = "{% static 'img/icons/vsf_iconfailure_v101.svg' %}";
  
 </script>
 
@@ -350,12 +350,12 @@ $(function() {
     			        var selectedValues = $(this).find('option:selected').map(function(){
     			                                 return this.value;
     			                             }).get();
-    			        console.log("function "+ selectedValues);
+    
     			        $("#hidden_" + (selectContainer.split("#"))[1]).val(selectedValues);
     			    });
     				
     	}).fail(function(jqXHR, textStatus, errorThrown) {
-    		
+    		$('.multipleChoices').html("<div class='failedService'><img style='    background: gray;' src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load multiselection service</p></div>");
     	});
     	
     }

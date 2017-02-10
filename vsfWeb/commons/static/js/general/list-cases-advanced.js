@@ -423,7 +423,7 @@ $(document)
 
 										})
 								.fail(function(jqXHR, textStatus, errorThrown) {
-									$('.listCasesAdvanced').html("");
+									$('.listCasesAdvanced').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 								});
 
 					} else {

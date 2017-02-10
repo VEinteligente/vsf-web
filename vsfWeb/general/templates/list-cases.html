@@ -236,6 +236,8 @@ var url_site = "{% url 'General:SiteListApi' %}";
 
 
 
+var fail_service_img = "{% static 'img/icons/vsf_iconfailure_v101.svg' %}";
+
 
 function fillSelectors(selectContainer, url_data, values){
 	
@@ -321,7 +323,7 @@ function fillSelectors(selectContainer, url_data, values){
 			    });
 				
 	}).fail(function(jqXHR, textStatus, errorThrown) {
-		
+		$('.multipleChoices').html("<div class='failedService'><img style='    background: gray;' src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load multiselection service</p></div>");
 	});
 	
 }

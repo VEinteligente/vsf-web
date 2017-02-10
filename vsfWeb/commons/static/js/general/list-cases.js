@@ -339,7 +339,7 @@ $(document)
 
 										})
 								.fail(function(jqXHR, textStatus, errorThrown) {
-									$('.listCases').html("");
+									$('.listCases').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 								});
 
 					} else {
@@ -954,10 +954,10 @@ $("#advanced_search")
 
 										$(".listCases").append(" <hr>");
 
-									}).fail(
-									function(jqXHR, textStatus, errorThrown) {
-										$('.listCases').html("");
+									}).fail(function(jqXHR, textStatus, errorThrown) {
+										$('.listCases').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 									});
+
 
 				});
 

@@ -804,9 +804,23 @@ $
 						$.each(dataJson.events, function(key, value) { // First Level
 							
 							var isp = value.isp;
+							
+							var target = value.target;
+							
+							var domain = "";
+							
+							if(target.site != null){
+								domain = target.site 
+							}
+							else if(target.domain != null){
+								domain = target.domain 
+							}
+							else if(target.ip != null){
+								domain = target.ip 
+							}
+							
 							var type = value.type;
-							console.log(type)
-							console.log(typeof(value.start_date))
+				
 							var start_date = (new Date(value.start_date)).getTime();
 							
 							if( value.end_date != null ) {
@@ -819,7 +833,7 @@ $
 							
 							
 									
-							element = { label: ( isp + " " + type),times: 
+							element = { label: ( isp + " " + domain),times: 
 								[ {"color": colorSelect(type), "starting_time": start_date, "ending_time": end_date}]
 							};
 							
@@ -827,13 +841,13 @@ $
 							
 							var exists = 0;
 							for(var i = 0; i < dataLabel.length ; i++){
-								if(dataAll[i].label == (isp + " " + type)) {
+								if(dataAll[i].label == (isp + " " + domain)) {
 									exists = 1;
 								}
 							}
 							
 							if(exists != 1){
-								dataLabel[dataLabel.length]= (isp + " " + type)
+								dataLabel[dataLabel.length]= (isp + " " + domain)
 							}
 						})
 						
@@ -846,9 +860,7 @@ $
 								for(var j = 0; j < dataAll.length; j++){
 									
 									if(dataAll[j].label==dataLabel[i]) {
-										
-										console.log("DSFDSFDS" + dataAll[j])
-										console.log( dataAll[j].times)
+							
 										times_element =  (dataAll[j].times)[0]
 										console.log(times_element)
 										
@@ -859,19 +871,16 @@ $
 									
 								}
 								
-								console.log("GANTTTT")
-							
+								
 								
 								element = { label: dataAll[i].label ,times };
-							
-								console.log(element)
+				
 								dataResult.push(element)
 								
 							}
 							
 					
-							console.log("dataResul")
-							console.log(dataResult)
+						
 						var timelineStart = (new Date('01-01-2017')).getTime();
 						var timelineEnd = (new Date('07-31-2017')).getTime();
 				
@@ -910,6 +919,10 @@ $
 
 	
 
+				}).fail(function(jqXHR, textStatus, errorThrown) {
+					$('#timeline1').closest('.container-fluid').html("<div class='failedService'><img  style='background:gray'  src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
+					
+					
 				});
 
 

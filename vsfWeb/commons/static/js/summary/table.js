@@ -359,6 +359,9 @@ function select(option) {
 
 						}
 
-					});
+					}).fail(function(jqXHR, textStatus, errorThrown) {
+
+						$('#tablebody').html("<div class='failedService'><img style='background: gray' src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
+					});;
 
 }

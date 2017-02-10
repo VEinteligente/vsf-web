@@ -698,7 +698,7 @@ input#title{
     padding-left: 0;
     img{
     border-radius: 8px;
-    max-height: 373px;
+    max-height: 268px;
     }
 }
 
@@ -709,13 +709,20 @@ input#title{
 .updates 
     {
      .updateBar, .subtitleBar{
-    background-color: transparent;
+    	background-color: transparent;
     }
     #updateTitle{
         color: white;
         text-transform: uppercase;
-    padding-top: 10px;
+    	padding-top: 10px;
     }
+}
+
+
+.tick line {
+	fill: none;
+    stroke: #d51717;
+    stroke-width: 1.0;
 }
 
 .cards 
@@ -757,28 +764,28 @@ input#title{
 }
 
 .owl-carousel {
-position: relative;
+	position:relative;
 }
 .owl-prev,
 .owl-next {
-position: absolute;
-top: 50%;
-margin-top: -10px; // Half of the prev/next buttons height here in negatives to center them perfectly
+	position: absolute;
+	top: 50%;
+	margin-top: -10px; // Half of the prev/next buttons height here in negatives to center them perfectly
 }
 .owl-prev {
-left: 0;
+	left: 0;
 }
 .owl-next {
-right: 0;
+	right: 0;
 }
 
 .owl-theme .owl-dots .owl-dot span {
-border-radius: 0;
-  -webkit-transform: rotate(45deg);
-     -moz-transform: rotate(45deg);
-     -ms-transform: rotate(45deg);
-     -o-transform: rotate(45deg);
-     transform: rotate(45deg);
+	border-radius: 0;
+  	-webkit-transform: rotate(45deg);
+   	-moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
 

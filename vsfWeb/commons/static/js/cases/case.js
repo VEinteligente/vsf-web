@@ -400,6 +400,16 @@ $(document)
 
 																			})
 														});
+									}).fail(function(jqXHR, textStatus, errorThrown) {
+										$('#twitterDiv').html("<div class='failedService'><img style='margin-top: 100px; background:gray' src='"+ fail_twitter_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
+										$('#caseImage').closest('.container-fluid').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
+										$('#titleAjax').html("Failed to load case");
+										$('#download').closest('.row').html('');
+										$('#descriptionAjax').html("<div class='failedService'><img style='background:gray'  src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
+										$('#updateListAjax').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
+										$('#timeline1').closest('.container-fluid').html("<div class='failedService'><img  style='background:gray'  src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
+										
+										
 									});
 
 				});
@@ -476,6 +486,7 @@ function select(option) {
 
 						}
 
-					});
+					})
+					;
 
 }

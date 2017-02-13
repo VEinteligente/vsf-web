@@ -8,7 +8,7 @@ function twitterSearch(searchWord) {
 			var search_metadata = response.search_metadata;
 			var statuses = response.statuses;
 				if(statuses.length === 0){
-					$('#twitterTweet').append('No tweets')
+					$('#twitterTweet').html("<div class='failedService'><img style='background:gray' src='"+ fail_twitter_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 				}
 				else{
 					$.each(statuses,function(index, result) {

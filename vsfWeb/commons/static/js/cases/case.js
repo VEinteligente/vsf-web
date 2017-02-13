@@ -391,74 +391,84 @@ $(document)
 															// the data from
 															// server
 															var dataUpdates = data;
+															
+															if (dataUpdates.length == 0){
+																
+																$('#updateListAjax').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>No updates</p></div>");
+																
+															}
+															else{
+																
+																$
+																.each(
+																		dataUpdates.updates,
+																		function(
+																				index,
+																				value) {
 
-															$
-																	.each(
-																			dataUpdates.updates,
-																			function(
-																					index,
-																					value) {
+																			var update_date = new Date(
+																					value.date)
+																			var update_text = value.text_de;
+																			if (language!= "en"){
+																				var textLanguage = "text_"+language;
+																				update_text = value[textLanguage];
+																			}
+																			var update_category = value.category;
 
-																				var update_date = new Date(
-																						value.date)
-																				var update_text = value.text_de;
-																				if (language!= "en"){
-																					var textLanguage = "text_"+language;
-																					update_text = value[textLanguage];
-																				}
-																				var update_category = value.category;
+																			if (update_category == "grave") {
+																				$(
+																						'#updateListAjax')
+																						.append(
+																								'<div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
+																										+ update_date
+																												.getDate()
+																										+ " "
+																										+ month_names[update_date
+																												.getMonth()]
+																										+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
+																										+ update_date
+																												.getFullYear()
+																										+ '</div></div><div class="col-xs-2" style="padding-left: 0;"><div class="symbolBlocked"></div></div></div><div class="col-xs-7 content" style="padding-left: 0;">'
+																										+ update_text
+																										+ '</div><div class="col-xs-3 share"><a href="#">View more...</a><a href="#" target="_blank"><i class="fa fa-facebook-square "></i></a><a href="#" target="_blank"><i class="fa fa-twitter"></i></a><a href="#" target="_blank"><i class="fa fa-pinterest"></i></a></div></div>');
+																			} else if (update_category == "info") {
+																				$(
+																						'#updateListAjax')
+																						.append(
+																								'<div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
+																										+ update_date
+																												.getDate()
+																										+ " "
+																										+ month_names[update_date
+																												.getMonth()]
+																										+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
+																										+ update_date
+																												.getFullYear()
+																										+ '</div></div><div class="col-xs-2" style="padding-left: 0;"><div class="symbolBlocked" style = "background:cyan"></div></div></div><div class="col-xs-7 content" style="padding-left: 0;">'
+																										+ update_text
+																										+ '</div><div class="col-xs-3 share"><a href="#">View more...</a><a href="#" target="_blank"><i class="fa fa-facebook-square "></i></a><a href="#" target="_blank"><i class="fa fa-twitter"></i></a><a href="#" target="_blank"><i class="fa fa-pinterest"></i></a></div></div>');
+																			} else {
+																				$(
+																						'#updateListAjax')
+																						.append(
+																								'<div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
+																										+ update_date
+																												.getDate()
+																										+ " "
+																										+ month_names[update_date
+																												.getMonth()]
+																										+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
+																										+ update_date
+																												.getFullYear()
+																										+ '</div></div><div class="col-xs-2" style="padding-left: 0;"><div class="symbolBlocked" style = "background:green"></div></div></div><div class="col-xs-7 content" style="padding-left: 0;">'
+																										+ update_text
+																										+ '</div><div class="col-xs-3 share"><a href="#">View more...</a><a href="#" target="_blank"><i class="fa fa-facebook-square "></i></a><a href="#" target="_blank"><i class="fa fa-twitter"></i></a><a href="#" target="_blank"><i class="fa fa-pinterest"></i></a></div></div>');
+																			}
 
-																				if (update_category == "grave") {
-																					$(
-																							'#updateListAjax')
-																							.append(
-																									'<div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
-																											+ update_date
-																													.getDate()
-																											+ " "
-																											+ month_names[update_date
-																													.getMonth()]
-																											+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
-																											+ update_date
-																													.getFullYear()
-																											+ '</div></div><div class="col-xs-2" style="padding-left: 0;"><div class="symbolBlocked"></div></div></div><div class="col-xs-7 content" style="padding-left: 0;">'
-																											+ update_text
-																											+ '</div><div class="col-xs-3 share"><a href="#">View more...</a><a href="#" target="_blank"><i class="fa fa-facebook-square "></i></a><a href="#" target="_blank"><i class="fa fa-twitter"></i></a><a href="#" target="_blank"><i class="fa fa-pinterest"></i></a></div></div>');
-																				} else if (update_category == "info") {
-																					$(
-																							'#updateListAjax')
-																							.append(
-																									'<div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
-																											+ update_date
-																													.getDate()
-																											+ " "
-																											+ month_names[update_date
-																													.getMonth()]
-																											+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
-																											+ update_date
-																													.getFullYear()
-																											+ '</div></div><div class="col-xs-2" style="padding-left: 0;"><div class="symbolBlocked" style = "background:cyan"></div></div></div><div class="col-xs-7 content" style="padding-left: 0;">'
-																											+ update_text
-																											+ '</div><div class="col-xs-3 share"><a href="#">View more...</a><a href="#" target="_blank"><i class="fa fa-facebook-square "></i></a><a href="#" target="_blank"><i class="fa fa-twitter"></i></a><a href="#" target="_blank"><i class="fa fa-pinterest"></i></a></div></div>');
-																				} else {
-																					$(
-																							'#updateListAjax')
-																							.append(
-																									'<div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
-																											+ update_date
-																													.getDate()
-																											+ " "
-																											+ month_names[update_date
-																													.getMonth()]
-																											+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
-																											+ update_date
-																													.getFullYear()
-																											+ '</div></div><div class="col-xs-2" style="padding-left: 0;"><div class="symbolBlocked" style = "background:green"></div></div></div><div class="col-xs-7 content" style="padding-left: 0;">'
-																											+ update_text
-																											+ '</div><div class="col-xs-3 share"><a href="#">View more...</a><a href="#" target="_blank"><i class="fa fa-facebook-square "></i></a><a href="#" target="_blank"><i class="fa fa-twitter"></i></a><a href="#" target="_blank"><i class="fa fa-pinterest"></i></a></div></div>');
-																				}
+																		})
+															}
 
-																			})
+															
 														});
 
 									}).fail(function(jqXHR, textStatus, errorThrown) {

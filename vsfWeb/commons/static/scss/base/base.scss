@@ -77,36 +77,36 @@ body {
     height: 100%;
 }
 .bodyContent{
-    width: 1024px;
+    max-width: 1024px;
     margin: auto;
     
 }
 
-h1 {
+.h1Style {
     font-size: $xl_fontSize;
     color: $wb_black_fontColor;
     font-weight: $large_fontWeight;
 }
 
-h2 {
+.h2Style {
     font-size: $lg_fontSize;
     color:$wb_black_fontColor;
     font-weight: $large_fontWeight;
 }
 
-h3 {
+.h3Style {
     font-size: $md_fontSize;
     color: $wb_darkGray_fontColor;
     font-weight: $large_fontWeight;
 }
 
-h4 {
+.h4Style {
     font-size: $sm_fontSize;
     color: $wb_lightGray_fontColor;
     font-weight: $medium_fontWeight;
 }
 
-h5 {
+.h5Style {
     font-size: $xs_fontSize;
     color: $wb_gray_fontColor;
     font-weight: $medium_fontWeight;
@@ -487,6 +487,214 @@ button {
 }
 
 
+//Continue Tag
+.continua_tag{
+    display: inline-block;
+    .left_cornerTag{
+        border-bottom: 5px solid $green_tag;
+        border-left: 5px solid transparent;
+    }
+    .right_cornerTag{
+        border-bottom: 5px solid $green_tag;
+        border-right: 5px solid transparent;
+        /** Flip vertically **/
+        -moz-transform: scale(1, -1);
+        -webkit-transform: scale(1, -1);
+        -o-transform: scale(1, -1);
+        -ms-transform: scale(1, -1);
+        transform: scale(1, -1);
+    }
+    .contentTag{
+        background: $green_tag;
+        line-height: 1.00;
+        padding: 0px $md_padding;
+        color: $contentColorTag;
+    }
+
+}
+
+//blocked Tag
+.Bloqueo_tag{
+    display: inline-block;
+    .left_cornerTag{
+        border-bottom: 5px solid $red_tag;
+        border-left: 5px solid transparent;
+    }
+    .right_cornerTag{
+        border-bottom: 5px solid $red_tag;
+        border-right: 5px solid transparent;
+        /** Flip vertically **/
+        -moz-transform: scale(1, -1);
+        -webkit-transform: scale(1, -1);
+        -o-transform: scale(1, -1);
+        -ms-transform: scale(1, -1);
+        transform: scale(1, -1);
+    }
+    .contentTag{
+        background: $red_tag;
+        line-height: 1.00;
+        padding: 0px $md_padding;
+        color:$contentColorTag;
+    }
+
+}
+
+//Disconnected Tag
+.Desconexion_tag{
+    display: inline-block;
+    .left_cornerTag{
+        border-bottom: 5px solid $disconnected_color;
+        border-left: 5px solid transparent;
+    }
+    .right_cornerTag{
+        border-bottom: 5px solid $disconnected_color;
+        border-right: 5px solid transparent;
+        /** Flip vertically **/
+        -moz-transform: scale(1, -1);
+        -webkit-transform: scale(1, -1);
+        -o-transform: scale(1, -1);
+        -ms-transform: scale(1, -1);
+        transform: scale(1, -1);
+    }
+    .contentTag{
+        background: $disconnected_color;
+        line-height: 1.00;
+        padding: 0px $md_padding;
+        color:$contentColorTag;
+    }
+
+}
+
+//Slowdown Tag
+.Relentizacion_tag{
+    display: inline-block;
+    .left_cornerTag{
+        border-bottom: 5px solid $slowdown_color;
+        border-left: 5px solid transparent;
+    }
+    .right_cornerTag{
+        border-bottom: 5px solid $slowdown_color;
+        border-right: 5px solid transparent;
+        /** Flip vertically **/
+        -moz-transform: scale(1, -1);
+        -webkit-transform: scale(1, -1);
+        -o-transform: scale(1, -1);
+        -ms-transform: scale(1, -1);
+        transform: scale(1, -1);
+    }
+    .contentTag{
+        background: $slowdown_color;
+        line-height: 1.00;
+        padding: 0px $md_padding;
+        color:$contentColorTag;
+    }
+
+}
+
+//Connected Tad
+.Conexion_tag{
+    display: inline-block;
+    .left_cornerTag{
+        border-bottom: 5px solid $connected_color;
+        border-left: 5px solid transparent;
+    }
+    .right_cornerTag{
+        border-bottom: 5px solid $connected_color;
+        border-right: 5px solid transparent;
+        /** Flip vertically **/
+        -moz-transform: scale(1, -1);
+        -webkit-transform: scale(1, -1);
+        -o-transform: scale(1, -1);
+        -ms-transform: scale(1, -1);
+        transform: scale(1, -1);
+    }
+    .contentTag{
+        background: $connected_color;
+        line-height: 1.00;
+        padding: 0px $md_padding;
+        color:$contentColorTag;
+    }
+
+}
+
+//Fail Tag
+.Falla_tag{
+    display: inline-block;
+    .left_cornerTag{
+        border-bottom: 5px solid $fail_color;
+        border-left: 5px solid transparent;
+    }
+    .right_cornerTag{
+        border-bottom: 5px solid $fail_color;
+        border-right: 5px solid transparent;
+        /** Flip vertically **/
+        -moz-transform: scale(1, -1);
+        -webkit-transform: scale(1, -1);
+        -o-transform: scale(1, -1);
+        -ms-transform: scale(1, -1);
+        transform: scale(1, -1);
+    }
+    .contentTag{
+        background: $fail_color;
+        line-height: 1.00;
+        padding: 0px $md_padding;
+        color:$contentColorTag;
+    }
+
+}
+
+//DOS Tag
+.Dos_tag{
+    display: inline-block;
+    .left_cornerTag{
+        border-bottom: 5px solid $dos_color;
+        border-left: 5px solid transparent;
+    }
+    .right_cornerTag{
+        border-bottom: 5px solid $dos_color;
+        border-right: 5px solid transparent;
+        /** Flip vertically **/
+        -moz-transform: scale(1, -1);
+        -webkit-transform: scale(1, -1);
+        -o-transform: scale(1, -1);
+        -ms-transform: scale(1, -1);
+        transform: scale(1, -1);
+    }
+    .contentTag{
+        background: $dos_color;
+        line-height: 1.00;
+        padding: 0px $md_padding;
+        color:$contentColorTag;
+    }
+
+}
+
+//Interception Tag
+.Intercepcion_tag{
+    display: inline-block;
+    .left_cornerTag{
+        border-bottom: 5px solid $interception_color;
+        border-left: 5px solid transparent;
+    }
+    .right_cornerTag{
+        border-bottom: 5px solid $interception_color;
+        border-right: 5px solid transparent;
+        /** Flip vertically **/
+        -moz-transform: scale(1, -1);
+        -webkit-transform: scale(1, -1);
+        -o-transform: scale(1, -1);
+        -ms-transform: scale(1, -1);
+        transform: scale(1, -1);
+    }
+    .contentTag{
+        background: $interception_color;
+        line-height: 1.00;
+        padding: 0px $md_padding;
+        color:$contentColorTag;
+    }
+
+}
+
 /* Bars */
 
 .titleBar{
@@ -513,6 +721,7 @@ button {
 
 .subtitleBar{
     padding:0;
+    border-radius: 8px;
     height: 36px;
     background: white;
     .title{
@@ -597,7 +806,8 @@ button {
     height: 40px;
     display: flex;
     align-items: center;
-    padding: 0px;
+    padding-top: 13px;
+    padding-bottom:13px;
 }
 
 .updateBar{

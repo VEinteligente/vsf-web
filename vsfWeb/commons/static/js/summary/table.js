@@ -150,7 +150,7 @@ function select(option) {
 																				.append(
 																						'<tr><td id="rowTitleDataCategory">'
 																								+ title
-																								+ '</td><td style="min-width:300px"><div class="'
+																								+ '</td><td><div class="'
 																								+ content
 																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name

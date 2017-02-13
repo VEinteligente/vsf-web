@@ -130,16 +130,21 @@ $(document)
 										var description = dataJson.description_de;
 										var twitter_search = dataJson.twitter_search;
 										var domains_count = (dataJson.domains).length;
-										console.log(domains_count)
+										
+
+										
+										// Carrousel for multiple sites case or simple image for single site case
 										
 										if(domains_count == 1){
-											
+											// For cases with one site, a simple image is loaded. The image is stored in 
+											// static/screenshots and has a name similar to "screen_case_#ID_0.png"
 											$("#caseImage").html('<img src="" class="img-fluid" style="width:100%">');
 											var png = png_commons + "_0.png";	
 											$("#caseImage img").attr("src", png);
 										}
 										else{
-											
+											// For cases with multiple sites, a carrousel is loaded. The images are stored in 
+											// static/screenshots and has a name similar to "screen_case_#ID_#DomainCount.png"
 											$("#caseImage").append('<div id="owl-demo" class="owl-carousel owl-theme"></div>');
 											
 											for(var i = 0; i < domains_count; i++){
@@ -150,10 +155,11 @@ $(document)
 												$(".img-fluid").removeClass('img-fluid');
 											}
 											
-											  $("#owl-demo").owlCarousel({
+											// Settings for the carrousel
+											$("#owl-demo").owlCarousel({
 												  
 
-											      navigation : true, // показывать кнопки next и prev 
+											      navigation : true, 
 											      navText: [
 											                       "<i class='fa fa-chevron-left'></i>",
 											                       "<i class='fa fa-chevron-right'></i>"
@@ -166,16 +172,11 @@ $(document)
 											      itemsDesktopSmall : false,
 											      itemsTablet: false,
 											      itemsMobile : false
-											      
-											      // "singleItem:true" is a shortcut for:
-											      // items : 1, 
-											      // itemsDesktop : false,
-											      // itemsDesktopSmall : false,
-											      // itemsTablet: false,
-											      // itemsMobile : false
+
 											 
-											  });
-											// Custom Navigation Events
+											 });
+											
+											 // Custom Navigation Events
 											  function showNav(e){
 												    if ($(".next").css("float") == "right") {
 												      $(".next").fadeIn();
@@ -202,9 +203,7 @@ $(document)
 										
 										
 										// Title & date for the main DIV in the
-										// details template
-										
-										
+										// details template										
 										$('head').append(
 												'<meta property="og:title" content="VE Sin filtro: '
 														+ title + '" />');

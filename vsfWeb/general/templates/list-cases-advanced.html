@@ -22,7 +22,7 @@
 	value="{{ s_year }}-{{ s_month }}-{{ s_day }}">
 <input type="hidden" id="hidden_end_date"
 	value="{{ e_year }}-{{ e_month }}-{{ e_day }}">
-
+<input type="hidden" id="hidden_url_web" value="{{VSF_URL_WEB}}">
 <div class="container-fluid">
 
 
@@ -41,7 +41,7 @@
 						</div>
 
 						<div id="reportrange" class="col-xs-2"
-							style="background: #fff; cursor: pointer; padding: 5px 10px;">
+							style="cursor: pointer; padding: 5px 10px;">
 							<span></span> <b class="caret"></b> <i
 								class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
 						</div>
@@ -262,7 +262,7 @@ $(function() {
    
     // These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here 
     // because of DJango configuration
-     
+    var url_web = $("#hidden_url_web").val();
     var url_data="{% url 'General:CaseListApi' %}"
     var url_data_search="{% url 'General:CaseListApi' %}"
     var url_data_list_empty="{% url 'General:CaseListEmptyAdvanced' %}"

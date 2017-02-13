@@ -134,7 +134,7 @@ $(document)
 										
 										if(domains_count == 1){
 											
-											$("#caseImage").html('<img src="" class="img-fluid">');
+											$("#caseImage").html('<img src="" class="img-fluid" style="width:100%">');
 											var png = png_commons + "_0.png";	
 											$("#caseImage img").attr("src", png);
 										}

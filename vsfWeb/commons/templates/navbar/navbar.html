@@ -36,7 +36,22 @@
 
 		<li class="nav-item"><a class="nav-link" href="#"> {% trans	"Home" %} </a></li>
 
-		<li class="nav-item"><a class="nav-link" href="#"> {% trans	"Cases" %} </a></li>
+		<li class="nav-item dropdown">
+		
+			<a class="nav-link dropdown-toggle" href="#" data-toggle ="dropdown" aria-haspopup = "true" aria-expanded = "false" > {% trans	"Cases" %} </a>
+			<div class = "dropdown-menu" >
+                   
+                    <a class = "dropdown-item" href= "{{ URL_VSF_WEB }}/general/list-cases">
+                        {% trans "Search Case" %}
+                    </a>
+                    
+                    <a class = "dropdown-item" href= "{{ URL_VSF_WEB }}/general/advanced-list-cases">
+                        {% trans "Advanced Search Case " %}
+                    </a>
+                    
+           </div>
+           
+		</li>
 
 		<li class="nav-item dropdown">
 			
@@ -46,15 +61,15 @@
 			
 			<div class = "dropdown-menu" >
                    
-                    <a class = "dropdown-item" href= "http://127.0.0.1:8000/general/blocked-domains_sites">
+                     <a class = "dropdown-item" href= "{{ URL_VSF_WEB }}/general/blocked-domains_sites">
                         {% trans "Blocked List" %}
                     </a>
                     
-                    <a class = "dropdown-item" href = "http://127.0.0.1:8000/general/map-Venezuela" >
+                    <a class = "dropdown-item" href = "{{ URL_VSF_WEB }}/general/map-Venezuela" >
                         {% trans "Map of Cases" %}
                     </a>
                     
-                    <a class = "dropdown-item" href = "http://127.0.0.1:8000/summary/summary-table" >
+                    <a class = "dropdown-item" href = "{{ URL_VSF_WEB }}/summary/summary-table" >
                         {% trans "Summary Table" %}
                     </a>
            </div>

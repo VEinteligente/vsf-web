@@ -105,7 +105,9 @@ $(document)
 																												$(
 																														".listCases")
 																														.append(
-																																"<div class='col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><div class='h5Style title search'>"
+																																"<div class='col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8' onclick=goTo("+ thirdLevelValue +")>"																																		
+																																		+ "<div class='h5Style title search'>"
+																																		+ "<input type='hidden' class='id_case' value='"+ thirdLevelValue +"'>"		
 																																		+ "<div class='col-xs-2 date'></div>"
 																																		+ "<div class='col-xs-2 name' style='display: flex;'></div>"
 																																		+ "<div class='col-xs-2 site'></div>"
@@ -708,7 +710,9 @@ $("#advanced_search")
 																											$(
 																													".listCases")
 																													.append(
-																															"<div class='col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><div class='h5Style title search'>"
+																															"<div class='col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8' onclick=goTo("+ thirdLevelValue +")>" 																																	
+																																	+ "<div class='h5Style title search'>"
+																																	+ "<input type='hidden' class='id_case' value='"+ thirdLevelValue +"'>"		
 																																	+ "<div class='col-xs-2 date'></div>"
 																																	+ "<div class='col-xs-2 name' style='display: flex;'></div>"
 																																	+ "<div class='col-xs-2 site'></div>"
@@ -1083,8 +1087,9 @@ function sortDateAsc(parent, child) {
 
 				$(".listCases")
 						.append(
-								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><div class='h5Style title'></div></div>");
+								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'  onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
+	
 				$(".this ").removeClass("this ");
 
 			});
@@ -1122,7 +1127,7 @@ function sortDateDes(parent, child) {
 
 				$(".listCases")
 						.append(
-								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><div class='h5Style title'></div></div>");
+								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this");
 
@@ -1152,7 +1157,7 @@ function sortNameAsc(parent, child) {
 
 				$(".listCases")
 						.append(
-								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><div class='h5Style title'></div></div>");
+								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8' onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this ");
 
@@ -1182,7 +1187,7 @@ function sortNameDes(parent, child) {
 
 				$(".listCases")
 						.append(
-								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><div class='h5Style title'></div></div>");
+								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8' onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this");
 
@@ -1305,5 +1310,11 @@ function CategoryTag(thirdLevelValue){
 
         break;
 	}
+	
+}
+
+function goTo(id){
+	
+	window.location.href = url_web+"/cases/one-element-case/"+id;
 	
 }

@@ -85,31 +85,31 @@ body {
     text-align: center;
 }
 
-h1 {
+h1, .h1Style {
     font-size: $xl_fontSize;
     color: $wb_black_fontColor;
     font-weight: $large_fontWeight;
 }
 
-h2 {
+h2, .h2Style {
     font-size: $lg_fontSize;
     color:$wb_black_fontColor;
     font-weight: $large_fontWeight;
 }
 
-h3 {
+h3, .h3Style {
     font-size: $md_fontSize;
     color: $wb_darkGray_fontColor;
     font-weight: $large_fontWeight;
 }
 
-h4 {
+h4, .h4Style {
     font-size: $sm_fontSize;
     color: $wb_lightGray_fontColor;
     font-weight: $medium_fontWeight;
 }
 
-h5 {
+h5, .h5Style{
     font-size: $xs_fontSize;
     color: $wb_gray_fontColor;
     font-weight: $medium_fontWeight;
@@ -244,6 +244,9 @@ button {
     }
     
     &:focus {
+        font-weight: $large_fontWeight;
+        background-color: $darkGrayButton;
+        color: $contextualButtonColor;
         outline: none; 
     }
 }
@@ -271,6 +274,9 @@ button {
     }
     
     &:focus {
+        font-weight: $large_fontWeight;
+        background-color: $darkGrayButton;
+        color: $contextualButtonColor;
         outline: none; 
     }
 }
@@ -511,6 +517,7 @@ button {
 .subtitleBar{
     padding:0;
     height: 36px;
+    border-radius: 8px;
     background: white;
     .title{
         padding: $sm_padding $md_padding $sm_padding $lg_padding;

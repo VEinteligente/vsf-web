@@ -48,7 +48,7 @@ $(document)
 					
 					
 				    
-					console.log(hidden)
+		
 					
 					if (hidden.length == 0) {
 						
@@ -126,7 +126,7 @@ $(document)
 																												$(
 																														".listCasesAdvanced")
 																														.append(
-																																"<div class='col-xs-12 smallBar' ><h5 class='title' style='padding-left: 0px;'>"
+																																"<div class='col-xs-12 smallBar' ><div class='h5Style title' style='padding-left: 0px;'>"
 																																		+ "<div class='col-xs-1 dateStart' style='padding-left: 0px;'></div>"
 																																		+ "<div class='col-xs-1 dateEnd' style='padding-left: 0px;'></div>"
 																																		+ "<div class='col-xs-3 name' style='display: flex; padding-left: 0px;'></div>"
@@ -134,7 +134,7 @@ $(document)
 																																		+ "<div class='col-xs-1 isp' style='padding-left: 0px;'></div>"
 																																		+ "<div class='col-xs-1 category' style='padding-left: 0px; padding-bottom: 5px;'></div>"
 																																		+ "<div class='col-xs-1 region' style='padding-left: 0px;'></div>"
-																																		+ "</h5>     </div>");
+																																		+ "</div>     </div>");
 
 																											}
 
@@ -807,7 +807,7 @@ $("#advanced_search")
 																											$(
 																													".listCasesAdvanced")
 																													.append(
-																															"<div class='col-xs-12 smallBar'><h5 class='title' style='padding-left: 0px;'>"
+																															"<div class='col-xs-12 smallBar'><div class='h5Style title' style='padding-left: 0px;'>"
 																																	+ "<div class='col-xs-1 dateStart' style='padding-left: 0px;'></div>"
 																																	+ "<div class='col-xs-1 dateEnd' style='padding-left: 0px; '></div>"
 																																	+ "<div class='col-xs-3 name' style='display: flex; padding-left: 0px;'></div>"
@@ -815,7 +815,7 @@ $("#advanced_search")
 																																	+ "<div class='col-xs-1 isp' style='padding-left: 0px;'></div>"
 																																	+ "<div class='col-xs-1 category' style='padding-left: 0px; padding-bottom: 5px;'></div>"
 																																	+ "<div class='col-xs-1 region' style='padding-left: 0px;'></div>"
-																																	+ "</h5>     </div>");
+																																	+ "</div>     </div>");
 
 																											// $(
 																											// ".listCasesAdvanced"
@@ -1239,7 +1239,7 @@ function sortDateAsc(parent, child) {
 
 				$(".listCasesAdvanced")
 						.append(
-								"<div class='this col-xs-12 smallBar'><h5 class='title'></h5></div>");
+								"<div class='this col-xs-12 smallBar'><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this ");
 
@@ -1281,7 +1281,7 @@ function sortDateDes(parent, child) {
 
 				$(".listCasesAdvanced")
 						.append(
-								"<div class='this col-xs-12 smallBar'><h5 class='title'></h5></div>");
+								"<div class='this col-xs-12 smallBar'><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this");
 
@@ -1316,7 +1316,7 @@ function sortNameAsc(parent, child) {
 
 				$(".listCasesAdvanced")
 						.append(
-								"<div class='this col-xs-12 smallBar'><h5 class='title'></h5></div>");
+								"<div class='this col-xs-12 smallBar'><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this ");
 
@@ -1348,7 +1348,7 @@ function sortNameDes(parent, child) {
 
 				$(".listCasesAdvanced")
 						.append(
-								"<div class='this col-xs-12 smallBar'><h5 class='title'></h5></div>");
+								"<div class='this col-xs-12 smallBar'><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this");
 

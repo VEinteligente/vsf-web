@@ -139,7 +139,7 @@ $(document).ready(
 																				$(
 																						"#dataTableM")
 																						.append(
-																								'<div class="row" id="mRow"><div class="col-xs-3 mData" id="mDataSite">'
+																								'<div class="row" id="mRow"><div class="col-xs-2 mData" id="mDataSite">'
 																										+ site
 																										+ '</div><div class="col-xs-2 mData">'
 																										+ m_url

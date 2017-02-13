@@ -6,15 +6,13 @@
 
 
 <link rel="stylesheet" href="{% static 'css/jjsonviewer.css' %}">
-<div class="col-xs-1 marginPage"></div>
-
-<div class="col-xs-10 marginPage">
+<div class="bodyContent">
+<div class="col-xs-11 marginPage">
 	<div class="row">
 		<div class="col-xs-2">
-			Download: <a id="download" href="#"> <i
+			{% trans 'Download:' %} <a id="download" href="#"> <i
 				class="fa fa-file-excel-o" aria-hidden="true"></i>
 			</a>
-
 		</div>
 	</div>
 	<div class="container-fluid" id="mTable">
@@ -23,7 +21,7 @@
 
 			<div class="col-xs-11" id="headerDiv">
 
-				<div class="col-xs-3 mheader">{% trans 'Site' %}</div>
+				<div class="col-xs-2 mheader">{% trans 'Site' %}</div>
 				<div class="col-xs-2 mheader">{% trans 'URL' %}</div>
 				<div class="col-xs-1 mheader">{% trans 'Date' %}</div>
 				<div class="col-xs-1 mheader">{% trans 'Country' %}</div>
@@ -46,6 +44,7 @@
 		</div>
 
 	</div>
+</div>
 </div>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog"

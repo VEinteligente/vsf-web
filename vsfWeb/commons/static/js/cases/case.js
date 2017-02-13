@@ -26,14 +26,74 @@ $(document)
 
 					$("#download")
 							.attr("href", url_one_case_excel + "id=" + pk);
+					
+					$('#downloadPdf').attr("href", url_one_case_pdf + "id=" +pk);
+					
 					$("#shareFacebook").attr("href", url_share_facebook);
 
 					$("#shareTwitter").attr("href", url_share_twitter);
+
 					
 					$("#measurementsLink").attr("href", url_data_measurements);
 					
-					
 
+					// This AJAX call corresponds to the request of the JSON data from Pandora
+					// project API.
+					$
+							.ajax({
+								url : url_one_case,
+								method : "GET",
+								dataType : 'json',
+								contentType : 'application/json'
+							})
+
+							.done(
+									function(dataJson) {
+										var temporal = "";
+
+										// For each element in the JSON we need to collect their
+										// values
+										for (var i = 0; i < dataJson.length; i++)
+											temporal = temporal.concat(dataJson[i]);
+
+										var data = JSON.parse(temporal);
+
+										
+
+											count = 0;
+
+											$("#domainTableTitle")
+													.html(
+															'<span class="tag tag-default tag-pill float-xs-left pill-size" id="count"></span>&nbsp'+$('#domainTrans').val());
+
+											$.each(data.domains, function(index, result){
+
+												count = count + 1;
+
+												$("#count").html(count);
+
+
+												$("#domainTableBody").append('<tr class="focus clickable" data-toggle="collapse" data-target="#data'+result.site+'"><td id="nameDomain">'+result.site+'</td><tr><td id="focusDomain" class="prueba" style="padding:0;"><div class="collapse" id="data'+result.site+'"><div></td></tr>');
+												
+											})
+											
+											$.each(data.domains, function(index, result){
+												
+												$("#data"+result.site).append('<tr class="rowDomain"><td id="siteDomain" style="width:100%">'+result.url+'</td><td><i class="fa fa-lock" aria-hidden="true"></i></td></tr>');
+											
+											})
+											
+											$("#caseCategory").append('&nbsp <div class="'
+													+ (data.category).name
+													+ '"><div class="left_cornerTag"></div><div class="contentTag">'
+													+ (data.category).display_name
+													+ '</div><div class="right_cornerTag"></div></div>')
+											
+											
+										
+
+										
+									});
 					// First Ajax call to recieve the case data from server
 					$
 							.ajax({
@@ -59,7 +119,6 @@ $(document)
 										// automatically url search
 										var id_events = [];
 
-										select("domains", dataJson);
 
 										// case ID
 										case_id = data.id;
@@ -269,6 +328,7 @@ $(document)
 											$(
 													"#twitterSearchTextContent .title")
 													.html(decodeURI(twitter_search))
+
 											if (dataJson.end_date == null) {
 												
 												var until = new Date();
@@ -288,6 +348,7 @@ $(document)
 										}
 										else{
 											$('#twitterTweet').append('No search word for twitter')
+
 										}
 
 										// AJAX call for updates datails API
@@ -400,6 +461,7 @@ $(document)
 
 																			})
 														});
+
 									}).fail(function(jqXHR, textStatus, errorThrown) {
 										$('#twitterDiv').html("<div class='failedService'><img style='margin-top: 100px; background:gray' src='"+ fail_twitter_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 										$('#caseImage').closest('.container-fluid').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
@@ -490,3 +552,4 @@ function select(option) {
 					;
 
 }
+

@@ -2,6 +2,7 @@ from django.conf.urls import url
 
 from views import (
     CaseCVS,
+    CasePdf,
     OneElementCase,
     OneElementCaseApi,
     OneElementCaseUpdateApi,
@@ -17,6 +18,8 @@ urlpatterns = [
         name="OneElementCase"),
     url(r'^case-excel/$', CaseCVS, name="ExcelCaseCVSEmpty"),
     url(r'^case-excel/id=(?P<pk>\d+)/$', CaseCVS, name="ExcelCaseCVS"),
+    url(r'^case-pdf/id=(?P<pk>\d+)/$', CasePdf, name="CasePdf"),
+    url(r'^case-pdf/$', CasePdf, name="CasePdfEmpty"),
     url(r'^one-element-case-api/(?P<pk>\d+)/$',
         OneElementCaseApi.as_view(),
         name="OneElementCaseApi"),

@@ -105,14 +105,14 @@ $(document)
 																												$(
 																														".listCases")
 																														.append(
-																																"<div class='col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><h5 class='title search'>"
+																																"<div class='col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><div class='h5Style title search'>"
 																																		+ "<div class='col-xs-2 date'></div>"
 																																		+ "<div class='col-xs-2 name' style='display: flex;'></div>"
 																																		+ "<div class='col-xs-2 site'></div>"
 																																		+ "<div class='col-xs-2 isp'></div>"
 																																		+ "<div class='col-xs-2 category'></div>"
 																																		+ "<div class='col-xs-2 region'></div>"
-																																		+ "</h5>     </div>");
+																																		+ "</div>     </div>");
 
 																											}
 																											// Select all the possible values of the multiselect
@@ -708,14 +708,14 @@ $("#advanced_search")
 																											$(
 																													".listCases")
 																													.append(
-																															"<div class='col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><h5 class='title search'>"
+																															"<div class='col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><div class='h5Style title search'>"
 																																	+ "<div class='col-xs-2 date'></div>"
 																																	+ "<div class='col-xs-2 name' style='display: flex;'></div>"
 																																	+ "<div class='col-xs-2 site'></div>"
 																																	+ "<div class='col-xs-2 isp'></div>"
 																																	+ "<div class='col-xs-2 category'></div>"
 																																	+ "<div class='col-xs-2 region'></div>"
-																																	+ "</h5>     </div>");
+																																	+ "</div>     </div>");
 
 																											// $(
 																											// ".listCases"
@@ -1083,7 +1083,7 @@ function sortDateAsc(parent, child) {
 
 				$(".listCases")
 						.append(
-								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><h5 class='title'></h5></div>");
+								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this ");
 
@@ -1122,7 +1122,7 @@ function sortDateDes(parent, child) {
 
 				$(".listCases")
 						.append(
-								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><h5 class='title'></h5></div>");
+								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this");
 
@@ -1152,7 +1152,7 @@ function sortNameAsc(parent, child) {
 
 				$(".listCases")
 						.append(
-								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><h5 class='title'></h5></div>");
+								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this ");
 
@@ -1182,7 +1182,7 @@ function sortNameDes(parent, child) {
 
 				$(".listCases")
 						.append(
-								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><h5 class='title'></h5></div>");
+								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this");
 

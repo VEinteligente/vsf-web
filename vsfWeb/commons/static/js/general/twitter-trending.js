@@ -8,7 +8,7 @@ function twitterSearch(searchWord) {
 			var search_metadata = response.search_metadata;
 			var statuses = response.statuses;
 				if(statuses.length === 0){
-					$('#twitterTweet').html("<div class='failedService'><img style='background:gray' src='"+ fail_twitter_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
+					$('#twitterTweet').html("<div class='failedService' style='padding-top: 100px;'><img style='background:gray' src='"+ fail_twitter_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 				}
 				else{
 					$.each(statuses,function(index, result) {
@@ -46,7 +46,7 @@ function twitterSearch(searchWord) {
 
 		}).fail(function(jqXHR, textStatus, errorThrown) {
 
-			$('#twitterTweet').html("<div class='failedService'><img style='background:gray' src='"+ fail_twitter_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
+			$('#twitterTweet').html("<div class='failedService'><img style='background:gray; margin-top: 100px;' src='"+ fail_twitter_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 		});
 
 }

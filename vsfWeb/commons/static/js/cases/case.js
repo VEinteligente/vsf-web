@@ -321,12 +321,8 @@ $(document)
 										if (twitter_search != "") {
 											
 
-											$("#twitterSearchTextTitle .title")
-													.html(
-															"Resultados de Twitter")
-											$(
-													"#twitterSearchTextContent .title")
-													.html(decodeURI(twitter_search))
+											$("#twitterSearchTextTitle .title").html("Resultados de Twitter")
+											$("#twitterSearchTextContent .title").html(decodeURI(twitter_search))
 
 											if (dataJson.end_date == null) {
 												
@@ -346,7 +342,7 @@ $(document)
 											
 										}
 										else{
-											$('#twitterTweet').append('No search word for twitter')
+											$('#twitterTweet').html("<div class='failedService'><img style='background:gray' src='"+ fail_twitter_img + "' alt='service fail' /><br><p>No search word</p></div>");
 
 										}
 
@@ -392,7 +388,7 @@ $(document)
 															// server
 															var dataUpdates = data;
 															
-															if (dataUpdates.length == 0){
+															if ((dataUpdates.updates).length == 0){
 																
 																$('#updateListAjax').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>No updates</p></div>");
 																

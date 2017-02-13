@@ -16,8 +16,8 @@
         height = null,
         rowSeparatorsColor = null,
         backgroundColor = null,
-        tickFormat = { format: d3.time.format("%I %p"),
-          tickTime: d3.time.hours,
+        tickFormat = { format: d3.time.format("%B"),
+          tickTime: d3.time.months,
           tickInterval: 1,
           tickSize: 6,
           tickValues: null
@@ -718,10 +718,66 @@
   };
 })();
 
+function colorSelect(type){
 
+	switch(type) {
+    case "bloqueo por DPI":
+    	var color = "red";																				
+        break;
+    case "bloqueo por DNS":
+    	var color = "green";
+        break;
+    
+    case "bloqueo por IP":
+    	var color = "blue";
+        break;
+    
+    case "Interceptacion de trafico":
+    	var color = "yellow";
+        break;
+        
+    case "falla de dns":
+    	var color = "purple";
+        break;
+        
+    case "Velocidad de internet":
+    	var color = "gray";
+        break;
+    
+    case "alteracion de trafico por intermediarios":
+    	 var color = "black";
+        break; 
+        
+    default:
+    	var color = "white"; 
+        break;
+	}
+	
+	return color
+}
+
+
+var timesGroup = [];
 //d3-timeline
 var dataResult = [];
+var dataLabel = [];
+var dataAll = [];
 
+
+var testData = [
+                {label: "person a",  
+                	times: [
+                	        {"color":"red", "starting_time": 1355752800000, "ending_time": 1355759900000},
+                	       ]
+                },                
+                {label: "person b", class:"blockedPartial", times: [
+                  {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]},
+                {label: "person c", times: [
+                  {"color":"green", "starting_time": 1355761910000, "ending_time": 1355763910000},
+                  {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]}
+                ];
+console.log("test")
+console.log(testData)
 // This AJAX call corresponds to the request of the JSON data from Pandora
 // project API.
 $
@@ -733,7 +789,7 @@ $
 		})
 		.done(
 				function(data) {
-					
+		
 					var temporal = "";
 
 					// For each element in the JSON we need to collect their
@@ -743,28 +799,103 @@ $
 
 					var dataJson = JSON.parse(temporal);
 				
-					console.log(dataJson)
+		
 					
-						$.each(dataJson.results, function(key, value) { // First Level
+						$.each(dataJson.events, function(key, value) { // First Level
 							
-					  
+							var isp = value.isp;
 							
-							element = { label: (value.isp + " " + value.type),times: 
-								[ {"color":"red", "starting_time": 1355752800000, "ending_time": 1355759900000}]
-											
-										};		
+							var target = value.target;
 							
-							dataResult.push(element)
-							console.log("dataResul")
-							console.log(dataResult)
+							var domain = "";
+							
+							if(target.site != null){
+								domain = target.site 
+							}
+							else if(target.domain != null){
+								domain = target.domain 
+							}
+							else if(target.ip != null){
+								domain = target.ip 
+							}
+							
+							var type = value.type;
+				
+							var start_date = (new Date(value.start_date)).getTime();
+							
+							if( value.end_date != null ) {
+								var end_date = (new Date(value.end_date)).getTime();
+							}
+							else{
+								var end_date = (new Date()).getTime();
+							}
+							
+							
+							
+									
+							element = { label: ( isp + " " + domain),times: 
+								[ {"color": colorSelect(type), "starting_time": start_date, "ending_time": end_date}]
+							};
+							
+							dataAll[dataAll.length]=element;
+							
+							var exists = 0;
+							for(var i = 0; i < dataLabel.length ; i++){
+								if(dataAll[i].label == (isp + " " + domain)) {
+									exists = 1;
+								}
+							}
+							
+							if(exists != 1){
+								dataLabel[dataLabel.length]= (isp + " " + domain)
+							}
 						})
-						12
-
+						
+							
+						
+							for(var i = 0; i < dataLabel.length ; i++){
+								var times_element = ""
+								var times = []
+								var z = 0;
+								for(var j = 0; j < dataAll.length; j++){
+									
+									if(dataAll[j].label==dataLabel[i]) {
+							
+										times_element =  (dataAll[j].times)[0]
+										console.log(times_element)
+										
+										times[z]= times_element
+										z = z +1
+									}
+									
+									
+								}
+								
+								
+								
+								element = { label: dataAll[i].label ,times };
+				
+								dataResult.push(element)
+								
+							}
+							
+					
+						
+						var timelineStart = (new Date('01-01-2017')).getTime();
+						var timelineEnd = (new Date('07-31-2017')).getTime();
+				
 						var testData = dataResult
-						console.log(testData)
-						var chart = d3.timeline().showTimeAxisTick().showTimeAxisTick().stack();
+						
+						var chart = d3.timeline().showTimeAxisTick().stack().beginning(timelineStart).ending(timelineEnd);
 
-						var svg = d3.select("#timeline1").append("svg").attr("width", 500)
+						
+						var margin = {top: 35, right: 200, bottom: 20, left: 80},
+					    width = 960 - (margin.left + margin.right);
+					    height = 400 - (margin.top + margin.bottom);
+					    
+					    
+						var svg = d3.select("#timeline1").append("svg").attr("width", width +  margin.left + margin.right)
+					    .attr("height", height + margin.top + margin.bottom)
 						  .datum(testData).call(chart);
 
 
@@ -775,24 +906,23 @@ $
 						        	  var labelStrong_first = (($(this).text())).split(" ")[0];
 						        	  console.log(labelStrong_first)
 						        	  var labelStrong_second = (($(this).text())).split(" ")[1];
-						        	  console.log(labelStrong_second)
+						        	  
+						        	  for(var i = 2; i  < (($(this).text())).split(" ").length; i++){
+						        		  var labelStrong_second = labelStrong_second + " " + (($(this).text())).split(" ")[i];
+						        	  }
+						        	  
+						        	  $("#timeline1 svg > g:first-child").attr('transform','translate(220,0)');
 						        	  return ("<text stroke='#000000'>" + labelStrong_first + "</text>" 
-						        			  + "<text transform='translate(55,0)'>" + labelStrong_second + "</text>");
+						        			  + "<text transform='translate(90,0)'>" + labelStrong_second + "</text>");
 						         });
 
-					
 
+	
+
+				}).fail(function(jqXHR, textStatus, errorThrown) {
+					$('#timeline1').closest('.container-fluid').html("<div class='failedService'><img  style='background:gray'  src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
+					
+					
 				});
 
-//var testData = [
-//                {label: "person a",  
-//                	times: [
-//                	        {"color":"red", "starting_time": 1355752800000, "ending_time": 1355759900000},
-//                	       ]
-//                },                
-//                {label: "person b", class:"blockedPartial", times: [
-//                  {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]},
-//                {label: "person c", times: [
-//                  {"color":"green", "starting_time": 1355761910000, "ending_time": 1355763910000},
-//                  {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]}
-//                ];
+

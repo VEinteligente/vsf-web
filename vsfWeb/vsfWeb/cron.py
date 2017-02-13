@@ -19,13 +19,13 @@ class ScreenshotCronjob(CronJobBase):
        headers = {'Authorization': settings.SERVICES_TOKEN}
        # Snippet has the return of the call to the server
        snippet = requests.get(
-           'http://127.0.0.1:8001/cases/api/list', headers=headers
+           settings.URL_VSF + '/cases/api/list', headers=headers
        )
        # in data we have the .Json file with the info we need
        data = json.loads(snippet.text)
        # Count has the number of cases
        count = data["count"]
-       for x in xrange(1, count):
+       for x in xrange(0, count):
            # results has the case (list of dictionaries) with the info we need
            results = data["results"][x]
            id_case = results["id"]

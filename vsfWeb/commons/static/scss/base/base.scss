@@ -2,13 +2,16 @@
 
 //Responsive Sizes
 $xs_only:   "(min-width:0) and (max-width: 543px)";
-$sm_only:  "(min-width:544px) and (max-width:767px)";
+$sm_only:  "(min-width:544px) and (max-width:766px)";
 $sm_down:  "(max-width:767px)";
-$md_only:   "(min-width:768px) and (max-width:991px)";
-$md_down:  "(max-width:991px)";
-$lg_only:  "(min-width:992px) and (max-width:1199px)";
-$lg_down:  "(max-width:1199px)";
-$xl_only: "(min-width:1200px)";
+$md_only:   "(min-width: 768px) and (max-width: 900px)";
+$md_down:  "(max-width:901px)";
+$lg_only:  "(min-width: 901px) and (max-width: 1024px)";
+$lg_down:  "(max-width:1025px)";
+$xl_only: "(min-width: 1025px)";
+
+
+
 
 //Font Sizes
 $xl_fontSize: 44px;
@@ -76,37 +79,37 @@ $interception_color: #ebe70e;
 body {
     height: 100%;
 }
-.bodyContent{
-    width: 1024px;
-    margin: auto;
-    
+
+
+.failedService{
+    text-align: center;
 }
 
-h1 {
+h1, .h1Style {
     font-size: $xl_fontSize;
     color: $wb_black_fontColor;
     font-weight: $large_fontWeight;
 }
 
-h2 {
+h2, .h2Style {
     font-size: $lg_fontSize;
     color:$wb_black_fontColor;
     font-weight: $large_fontWeight;
 }
 
-h3 {
+h3, .h3Style {
     font-size: $md_fontSize;
     color: $wb_darkGray_fontColor;
     font-weight: $large_fontWeight;
 }
 
-h4 {
+h4, .h4Style {
     font-size: $sm_fontSize;
     color: $wb_lightGray_fontColor;
     font-weight: $medium_fontWeight;
 }
 
-h5 {
+h5, .h5Style{
     font-size: $xs_fontSize;
     color: $wb_gray_fontColor;
     font-weight: $medium_fontWeight;
@@ -241,6 +244,9 @@ button {
     }
     
     &:focus {
+        font-weight: $large_fontWeight;
+        background-color: $darkGrayButton;
+        color: $contextualButtonColor;
         outline: none; 
     }
 }
@@ -268,6 +274,9 @@ button {
     }
     
     &:focus {
+        font-weight: $large_fontWeight;
+        background-color: $darkGrayButton;
+        color: $contextualButtonColor;
         outline: none; 
     }
 }
@@ -508,6 +517,7 @@ button {
 .subtitleBar{
     padding:0;
     height: 36px;
+    border-radius: 8px;
     background: white;
     .title{
         padding: $sm_padding $md_padding $sm_padding $lg_padding;
@@ -687,7 +697,11 @@ button {
 }
 
 @media #{$md_only} {
- 
+  .bodyContent {
+	 max-width: 768px;
+	 margin: auto;
+
+ }
 }
 
 @media #{$md_down} {
@@ -695,7 +709,11 @@ button {
 }
 
 @media #{$lg_only} {
+	 .bodyContent {
+	 max-width: 900px;
+	 margin: auto;
 
+ }
 }
 
 @media #{$lg_down} {
@@ -703,5 +721,10 @@ button {
 }
 
 @media #{$xl_only} {
-      
+  .bodyContent {
+	 max-width: 1024px;
+	 margin: auto;
+
+ }
 }
+

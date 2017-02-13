@@ -16,7 +16,7 @@
 		<div class="container-fluid" id="title">
 			<div class="row">
 				<div class="col-xs-12 titleBar" style="margin-top: 15px">
-					<h2 class="title" id="titleAjax"></h2>
+					<div class="h2Style title" id="titleAjax"></div>
 				</div>
 			</div>
 		</div>
@@ -25,59 +25,66 @@
 		<div class="container-fluid"
 			style="padding-top: 10px; padding-bottom: 10px">
 			<div class="row">
+
 				<div class="col-xs-6" id="caseImage" >
 					
+
 				</div>
 
 				<div class="col-xs-6" id="caseInfo">
-					<div class="row">
-						<div class="container-fluid" id="caseDateBar">
-							<div class="col-xs-12 timelineBarContinue">
-								<div class="date col-xs-9" id="statusDateAjax"></div>
-								<div class="status col-xs-3" id="statusAjax"></div>
+					<div class="row subtitleBar" id="dateBar">
+							<div class="container-fluid" id="caseDateBar">
+								<div class="col-xs-12 timelineBarContinue">
+									<div class="date col-xs-9" id="statusDateAjax"></div>
+									<div class="status col-xs-3" id="statusAjax"></div>
+								</div>
 							</div>
-						</div>
 					</div>
 
-					<div class="row">
-						<div class="container" id="caseDomainList"
-							style="padding-top: 5px">
+
+				<div class="row">
+						
+						<div class="container" id="caseDomainList">
 							<div>
-								<table class="table table-hover">
+								
+								<table class="table table-hover" id="tableDomain">
+								
 									<thead>
+										
 										<tr>
-											<th id="domainTableTitle"
-												style="background-color: white; border-radius: 5px"></th>
+										
+											<th id="caseCategory" class="h4Style">
+											
+												 {% trans "Category: "%}
+											
+											</th>
+										
 										</tr>
+																	
+								
 									</thead>
 
-									<tbody id="domainTableBody"
-										style="background-color: white; border-radius: 5px">
+								
+									<tbody id="domainTableBody">
+									
 									</tbody>
 
-									<tfoot>
-										<tr>
-											<td>
-												<button class="contextualButtonFixedSize"
-													onclick="select('domains')"
-													style="margin-top: 10px; margin-bottom: 5px;">{% trans 'Domains' %}</button>
-
-												<button class="contextualButtonFixedSize"
-													onclick="select('sites')"
-													style="margin-top: 10px; margin-bottom: 5px;">{% trans 'Sites' %}</button>
-											</td>
-										</tr>
-									</tfoot>
+								
 								</table>
+							
 							</div>
 						</div>
 					</div>
 
-					<div class="row">
+					<div class="row toolbar" id="providerBar">
+						
 						<div class="container-fluid" id="caseProvider">
+							
 							<div class="col-xs-12" style="text-align: center;" id="ispAjax">
+							
 							</div>
 						</div>
+					
 					</div>
 				</div>
 			</div>
@@ -95,12 +102,17 @@
 	<div class=" bodyContent">
 		<div class="row">
 			<div class="col-xs-2">
-				Download: <a id="download" href="#"> <i
+				{% trans 'Download' %}.cvs: <a id="download" href="#"> <i
 					class="fa fa-file-excel-o" aria-hidden="true"></i>
 				</a>
 
 			</div>
-
+			
+			<div class="col-xs-2">
+				{% trans 'Download' %}.pdf: <a id="downloadPdf" href="#"><i
+					class="fa fa-file-pdf-o" aria-hidden="true"></i></a>			
+			</div>
+			
 			<div class="col-xs-2">
 				Share: <a href="" id="shareFacebook" target="_blank"> <i
 					class="fa fa-facebook" aria-hidden="true"></i>
@@ -109,6 +121,18 @@
 				</a>
 
 			</div>
+			
+			<div class="col-xs-2">
+				Measurements: 
+				<a href="" id="measurementsLink" target="_blank"> 
+					<i class="fa fa-database" aria-hidden="true"></i>
+
+				</a> 
+
+			</div>
+			
+			
+			
 		</div>
 
 
@@ -124,7 +148,7 @@
 	<div class="bodyContent">
 		<div class="row">
 			<div class="col-xs-12">
-				<h3>{% trans "Descripcion: " %}</h3>
+				<div class="h3Style">{% trans "Descripcion: " %}</div>
 				<p id="descriptionAjax"></p>
 			</div>
 		</div>
@@ -140,7 +164,7 @@
 	<div class="bodyContent updates">
 		<div class="row">
 			<div class="col-xs-12 subtitleBar">
-				<h4 id="updateTitle">{% trans 'actualizaciones' %}</h4>
+				<div class="h4Style" id="updateTitle">{% trans 'actualizaciones' %}</div>
 			</div>
 		</div>
 
@@ -169,7 +193,8 @@
 	<div class="bodyContent cards">
 		<div class="row">
 			<div class="col-xs-12 subtitleBar">
-				<h4 id="cardsTitle">{% trans 'informacion' %}</h4>
+
+				<h4 id="cardsTitle">{% trans 'Grafico' %}</h4>
 			</div>
 		</div>
 
@@ -179,6 +204,32 @@
 
 
 </div>
+
+
+<div class="container-fluid" style="background-color: #FFFFFF">
+
+	<div class="bodyContent">
+		<div id="timeline1"></div>
+	</div>
+</div>
+
+<div class="container-fluid" style="background-color: #B3B3B3">
+
+	<div class="bodyContent cards">
+		<div class="row">
+			<div class="col-xs-12 subtitleBar">
+				<h4 id="cardsTitle">{% trans 'informacion' %}</h4>
+
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+</div>
+
 
 
 
@@ -195,7 +246,7 @@
 						<div id="twitterTweet"></div>
 						<div id="twitterSearchText">
 							<div id="twitterSearchTextTitle">
-								<h4 class="title"></h4>
+								<div class="h4Style" class="title"></div>
 							</div>
 							<div id="twitterSearchTextContent">
 								<div class="title"></div>
@@ -254,22 +305,33 @@
         var domain = "{{ URL_VSF }}"
         var url_case = "{% url 'Cases:OneElementCase' pk=pk %}"
         var url_one_case = "{% url 'Cases:OneElementCaseApi' pk=pk %}"
+        var url_one_case_pdf = "{% url 'Cases:CasePdfEmpty' %}"
         var url_one_case_excel = "{% url 'Cases:ExcelCaseCVSEmpty' %}"
         var url_one_case_update = "{% url 'Cases:OneElementCaseUpdateApi' pk=pk %}"
-        
+
         var language = '{{ language_code }}'
     
         //var png_commons = "{% static "" %}" +"screenshots/screen_case_"+pk+".png"
         var png_commons = "{% static "" %}" +"screenshots/screen_case_"+pk;
          
-        
-        var url_data_twitter ="{% url 'General:SearchTwitterApiEmpty' %}" 
+        var url_data="{% url 'Cases:ganttEventsApi' pk=pk %}"   
+    		
+        var url_data_twitter ="{% url 'General:SearchTwitterApiEmpty' %}"
+        var fail_service_img = "{% static 'img/icons/vsf_iconfailure_v101.svg' %}";
+        var fail_twitter_img = "{% static 'img/icons/vsf_icontwitterfailure_v101.svg' %}";
+        var url_data_measurements ="{% url 'Summary:MeasurementsTable' pk=pk %}"
         
 </script>
 
 <script src="{% static 'js/general/twitter-trending.js' %}"></script>
 <script src="{% static 'js/cases/case.js' %}"></script>
 
+
+
+<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript" src="http://static.mentful.com/gantt-chart-d3v2.js"></script>
+
+<script src="{% static 'js/d3-timeline/d3-timeline.js' %}"></script>
 
 
 {% endblock content %}

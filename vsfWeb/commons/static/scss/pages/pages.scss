@@ -1,92 +1,120 @@
 //Summary Category & ISP Table
 
+#summaryTableBorder{
+    padding:1px;
+    border-radius:8px;
+    background-color: #fff;
+        margin-top: 15px;
+}
+
 #countSummary{
-  background-color: #ff2114;
-  font-size: 90%;
-  font-weight:700;
-}
-
-.table .table-hover tbody tr:hover td, .table tbody tr:hover th {
- color: #fff;
- background-color: #ebebeb ;
-}
-
-.table .table-hover tbody tr:active td, .table tbody tr:active th {
- color: #fff;
- background-color: #d1d1d1 ;
+ background-color: #ff2114 ;
+ font-size: 90%;
  font-weight:700;
 }
 
+.table .table-hover tbody tr:hover td, .table tbody tr:hover th {
+color: #fff;
+background-color: #ebebeb ;
+}
+
+.table .table-hover tbody tr:active td, .table tbody tr:active th {
+color: #fff;
+background-color: #d1d1d1 ;
+font-weight:700;
+}
+
 #tabletitle{
-   font-weight: 700;
-   color:#575757 ;
-   padding-left:2px;
+  font-weight: 700;
+  color:#575757 ;
+  padding-left:16px;
 }
 
 #sumtable{
- border-radius: 8px;
- overflow-y: 330px;
- height: 330px;
- padding: 0px 16px 0px;  
+border-radius: 8px;
+overflow: auto;
+height: 330px;
+padding: 0px 16px 0px;  
 }
 
+  #sumtable::-webkit-scrollbar {
+  background: white;
+  width: 15px; }
+#sumtable::-webkit-scrollbar-thumb {
+  background-image: url("/commons/static/img/icons/vsf_iconscrollbar_v101.svg?170e96b76754");
+  background-repeat: no-repeat;
+  height: 150px;
+  background-position: center; }
+
+#sumtable::-webkit-scrollbar-button:start {
+  background-image: url("/commons/static/img/icons/vsf_iconarrow_v101.svg?170e96b76754");
+  background-position: center; }
+
+#sumtable::-webkit-scrollbar-button:end {
+  background-image: url("/commons/static/img/icons/vsf_iconarrow_v101_end.svg?170e96b76754");
+  background-position: center; }
 #rowName{
-  text-transform: capitalize;
-  padding-left: 3px;
-  height: 40px;
-  }
+ text-transform: capitalize;
+ padding-left: 16px;
+ height: 40px;
+ }
 
 #rowTitleDataCategory{
-  width: 85%;
-  color: #fff;  
+ color: #fff;
+ max-width:320px;
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;  
+ padding-left:16px;
+ width: 100%;
 }
 
 #rowTitleDataIsp{
-  width: 100%;
-  color: #fff;  
+ width: 100%;
+ color: #fff;
+ padding-left:16px;
 }
 
 .marginPage{
-    background-color:#dedede;
+   background-color:#dedede ;
 }
 
 #focusSummary{
-	color: #fff;
-	background-color: #adadad ;
-	font-weight:700;
+    color: #fff;
+    background-color: #adadad ;
+    font-weight:700;
 }
 
 tr{
-    font-size: 14px;
-    font-weight:400;
-    color:#808080;
+   font-size: 14px;
+   font-weight:400;
+   color:#808080 ;
 }
 
 .tag{
-    font-size: 13px;
-    height: 22px;
-    font-weight: 700;
+   font-size: 13px;
+   height: 22px;
+   font-weight: 700;
 }
 
 #tabletitle{
-    font-weight: normal;
-    color:#575757;
-    height:36px;
+   font-weight: normal;
+   color:#575757 ;
+   height:36px;
 }
 
 .contentTag{
-  text-transform: capitalize;
+ text-transform: capitalize;
 }
 
 .tag-default{
-  background-color: #ababab;
+ background-color: #ababab ;
 }
 
 .tag-default:active{
-  background-color: #fff;
-  color: #ababab;
+ background-color: #fff;
+ color: #ababab ;
 }
-
 
 //Measurement Table
 
@@ -148,6 +176,9 @@ tr{
     color: #808184;
     font-weight: 500;
     padding: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
 }
 
@@ -312,7 +343,8 @@ tr{
         padding: 0;
         white-space: nowrap;
     	overflow: hidden;
-    	text-overflow: ellipsis
+    	text-overflow: ellipsis;
+
     }
 
     .title{
@@ -335,11 +367,12 @@ input#title{
     border: none;
     padding: 0px 0px;
     width: 100%;
+          background: transparent;
 }
 
 
 #advanced_search #submit{
-    background: white;
+          background: transparent;
     background-repeat: no-repeat;
     background-image: url(/commons/static/img/icons/vsf_iconsearch_v101.svg?3119de80434d);
     border: none;
@@ -365,7 +398,15 @@ input#title{
 
 #advanced_search .first {
     margin-bottom: 8px;
-  border-bottom: 2px solid #c9c9c9
+  border-bottom: 2px solid #c9c9c9;
+      background: transparent;
+
+
+}
+
+#advanced_search .reportrange {
+
+      background: transparent;
 
 
 }
@@ -405,7 +446,7 @@ input#title{
   content: "";
   height:80%;
   width:2px;
-  background-color:white;
+        background: #DEDEDE;
   position: absolute;
   top:0;
   right:-2px;
@@ -417,7 +458,7 @@ input#title{
   content: "";
   height:80%;
   width:2px;
-  background-color:white;
+      background: #DEDEDE;
   position: absolute;
   top:0;
   left:-2px;
@@ -689,7 +730,9 @@ input#title{
   }
 
 #twitterTweet::-webkit-scrollbar-button:end{
+
   background-image: url("/commons/static/img/icons/vsf_iconarrowdown_v101_end.svg"); 
+
   background-position: center;
 
 
@@ -698,23 +741,31 @@ input#title{
     padding-left: 0;
     img{
     border-radius: 8px;
+    max-height: 268px;
     }
 }
 
 #caseInfo{
-    padding-right: 0; 
+    height:268px; 
 }
 
 .updates 
     {
      .updateBar, .subtitleBar{
-    background-color: transparent;
+    	background-color: transparent;
     }
     #updateTitle{
         color: white;
         text-transform: uppercase;
-    padding-top: 10px;
+    	padding-top: 10px;
     }
+}
+
+
+.tick line {
+	fill: none;
+    stroke: #d51717;
+    stroke-width: 1.0;
 }
 
 .cards 
@@ -749,6 +800,7 @@ input#title{
     }
 }
 
+
 #owl-demo .item img{
     display: block;
     width: 100%;
@@ -756,30 +808,129 @@ input#title{
 }
 
 .owl-carousel {
-position: relative;
+	position:relative;
 }
 .owl-prev,
 .owl-next {
-position: absolute;
-top: 50%;
-margin-top: -10px; // Half of the prev/next buttons height here in negatives to center them perfectly
+	position: absolute;
+	top: 50%;
+	margin-top: -10px; // Half of the prev/next buttons height here in negatives to center them perfectly
 }
 .owl-prev {
-left: 0;
+	left: 0;
 }
 .owl-next {
-right: 0;
+	right: 0;
 }
 
 .owl-theme .owl-dots .owl-dot span {
-border-radius: 0;
-  -webkit-transform: rotate(45deg);
-     -moz-transform: rotate(45deg);
-     -ms-transform: rotate(45deg);
-     -o-transform: rotate(45deg);
-     transform: rotate(45deg);
+	border-radius: 0;
+  	-webkit-transform: rotate(45deg);
+   	-moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
+
+
+#rowDomain{
+	color: #fff;
+	background-color: #adadad ;
+	font-weight:400;
+	width: 100%;
+
+}
+
+.rowDomain{
+	color: #fff;
+	background-color: #c9c9c9 ;
+	font-weight:400;
+	width: 100%;
+}
+
+.rowDomain:hover{
+	background-color:#ebebeb;
+	color: #808080;
+}
+
+#caseDomainList{
+	 overflow: auto;
+	 height: 176px;
+	 padding-top:8px;
+	 padding-left:0px;
+	 padding-right:0px;
+	 padding-bottom:8px;
+}
+
+#caseDomainList::-webkit-scrollbar{
+  background: white;
+  width: 15px;
+
+}
+
+
+#caseDomainList::-webkit-scrollbar-thumb{
+  background-image: url("/commons/static/img/icons/vsf_iconscrollbar_v101.svg" );
+  background-repeat: no-repeat;
+  height: 150px;
+  background-position: center;
+  }
+
+ #caseDomainList::-webkit-scrollbar-button:start{
+  background-image: url("/commons/static/img/icons/vsf_iconarrow_v101.svg"); 
+  background-position: center;
+
+  }
+
+#caseDomainList::-webkit-scrollbar-button:end{
+  background-image: url("/commons/static/img/icons/vsf_iconarrow_v101_end.svg"); 
+  background-position: center;
+
+
+  }
+
+#dateBar{
+	padding-top:6px;
+	padding-left:10px;
+	padding-right:10px;
+	margin-bottom: 8px;
+}
+
+#providerBar{
+	background-color: #fff;
+	border-radius: 8px;
+	border:0px;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+#caseCategory{
+	padding-left:16px;
+	border-top: 0;
+}
+
+#tableDomain{
+	border-radius: 8px;
+	background-color: #fff;
+}
+
+#domainTableTile{
+	padding-left:0px;
+}
+
+#nameDomain{
+	color: #333333;
+	font-weight:700;
+	padding-left: 16px;
+	border-top:0;
+	border-bottom:0;
+}
+
+#siteDomain{
+	padding-left:16px;
+}
 
 /* RESPONSIVE */
 

@@ -105,14 +105,16 @@ $(document)
 																												$(
 																														".listCases")
 																														.append(
-																																"<div class='col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><h5 class='title search'>"
+																																"<div class='col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8' onclick=goTo("+ thirdLevelValue +")>"																																		
+																																		+ "<div class='h5Style title search'>"
+																																		+ "<input type='hidden' class='id_case' value='"+ thirdLevelValue +"'>"		
 																																		+ "<div class='col-xs-2 date'></div>"
 																																		+ "<div class='col-xs-2 name' style='display: flex;'></div>"
 																																		+ "<div class='col-xs-2 site'></div>"
 																																		+ "<div class='col-xs-2 isp'></div>"
 																																		+ "<div class='col-xs-2 category'></div>"
 																																		+ "<div class='col-xs-2 region'></div>"
-																																		+ "</h5>     </div>");
+																																		+ "</div>     </div>");
 
 																											}
 																											// Select all the possible values of the multiselect
@@ -340,7 +342,7 @@ $(document)
 
 										})
 								.fail(function(jqXHR, textStatus, errorThrown) {
-									$('.listCases').html("");
+									$('.listCases').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 								});
 
 					} else {
@@ -709,14 +711,16 @@ $("#advanced_search")
 																											$(
 																													".listCases")
 																													.append(
-																															"<div class='col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><h5 class='title search'>"
+																															"<div class='col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8' onclick=goTo("+ thirdLevelValue +")>" 																																	
+																																	+ "<div class='h5Style title search'>"
+																																	+ "<input type='hidden' class='id_case' value='"+ thirdLevelValue +"'>"		
 																																	+ "<div class='col-xs-2 date'></div>"
 																																	+ "<div class='col-xs-2 name' style='display: flex;'></div>"
 																																	+ "<div class='col-xs-2 site'></div>"
 																																	+ "<div class='col-xs-2 isp'></div>"
 																																	+ "<div class='col-xs-2 category'></div>"
 																																	+ "<div class='col-xs-2 region'></div>"
-																																	+ "</h5>     </div>");
+																																	+ "</div>     </div>");
 
 																											// $(
 																											// ".listCases"
@@ -955,10 +959,10 @@ $("#advanced_search")
 
 										$(".listCases").append(" <hr>");
 
-									}).fail(
-									function(jqXHR, textStatus, errorThrown) {
-										$('.listCases').html("");
+									}).fail(function(jqXHR, textStatus, errorThrown) {
+										$('.listCases').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 									});
+
 
 				});
 
@@ -1084,8 +1088,9 @@ function sortDateAsc(parent, child) {
 
 				$(".listCases")
 						.append(
-								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><h5 class='title'></h5></div>");
+								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'  onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
+	
 				$(".this ").removeClass("this ");
 
 			});
@@ -1123,7 +1128,7 @@ function sortDateDes(parent, child) {
 
 				$(".listCases")
 						.append(
-								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><h5 class='title'></h5></div>");
+								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this");
 
@@ -1153,7 +1158,7 @@ function sortNameAsc(parent, child) {
 
 				$(".listCases")
 						.append(
-								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><h5 class='title'></h5></div>");
+								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8' onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this ");
 
@@ -1183,7 +1188,7 @@ function sortNameDes(parent, child) {
 
 				$(".listCases")
 						.append(
-								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'><h5 class='title'></h5></div>");
+								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8' onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this");
 
@@ -1252,6 +1257,7 @@ function fillChosenValues(values, id) {
 function CategoryTag(thirdLevelValue){
 	
 	switch(thirdLevelValue.name) {
+
     case "blocked_tag":
     	$(".listCases").find(".category")
 		.append(' <div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'
@@ -1306,5 +1312,11 @@ function CategoryTag(thirdLevelValue){
 
         break;
 	}
+	
+}
+
+function goTo(id){
+	
+	window.location.href = url_web+"/cases/one-element-case/"+id;
 	
 }

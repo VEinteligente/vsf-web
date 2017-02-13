@@ -487,6 +487,9 @@ $(document)
 
 														});
 
+									}).fail(function(jqXHR, textStatus, errorThrown) {
+
+										$('#caseregionList').html("<div class='failedService'><img style='background:gray' src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 									});
 
 					$('svg > g').on('click', function() { // when you click

@@ -48,7 +48,7 @@ $(document)
 					
 					
 				    
-					console.log(hidden)
+		
 					
 					if (hidden.length == 0) {
 						
@@ -126,7 +126,8 @@ $(document)
 																												$(
 																														".listCasesAdvanced")
 																														.append(
-																																"<div class='col-xs-12 smallBar' ><h5 class='title' style='padding-left: 0px;'>"
+																																"<div class='col-xs-12 smallBar' onclick=goTo("+ thirdLevelValue +")><div class='h5Style title' style='padding-left: 0px;' >"
+																																		+ "<input type='hidden' class='id_case' value='"+ thirdLevelValue +"'>"		
 																																		+ "<div class='col-xs-1 dateStart' style='padding-left: 0px;'></div>"
 																																		+ "<div class='col-xs-1 dateEnd' style='padding-left: 0px;'></div>"
 																																		+ "<div class='col-xs-3 name' style='display: flex; padding-left: 0px;'></div>"
@@ -134,7 +135,7 @@ $(document)
 																																		+ "<div class='col-xs-1 isp' style='padding-left: 0px;'></div>"
 																																		+ "<div class='col-xs-1 category' style='padding-left: 0px; padding-bottom: 5px;'></div>"
 																																		+ "<div class='col-xs-1 region' style='padding-left: 0px;'></div>"
-																																		+ "</h5>     </div>");
+																																		+ "</div>     </div>");
 
 																											}
 
@@ -423,7 +424,7 @@ $(document)
 
 										})
 								.fail(function(jqXHR, textStatus, errorThrown) {
-									$('.listCasesAdvanced').html("");
+									$('.listCasesAdvanced').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 								});
 
 					} else {
@@ -807,7 +808,8 @@ $("#advanced_search")
 																											$(
 																													".listCasesAdvanced")
 																													.append(
-																															"<div class='col-xs-12 smallBar'><h5 class='title' style='padding-left: 0px;'>"
+																															"<div class='col-xs-12 smallBar' onclick=goTo("+ thirdLevelValue +")><div class='h5Style title' style='padding-left: 0px;' >"
+																																	+ "<input type='hidden' class='id_case' value='"+ thirdLevelValue +"'>"
 																																	+ "<div class='col-xs-1 dateStart' style='padding-left: 0px;'></div>"
 																																	+ "<div class='col-xs-1 dateEnd' style='padding-left: 0px; '></div>"
 																																	+ "<div class='col-xs-3 name' style='display: flex; padding-left: 0px;'></div>"
@@ -815,7 +817,7 @@ $("#advanced_search")
 																																	+ "<div class='col-xs-1 isp' style='padding-left: 0px;'></div>"
 																																	+ "<div class='col-xs-1 category' style='padding-left: 0px; padding-bottom: 5px;'></div>"
 																																	+ "<div class='col-xs-1 region' style='padding-left: 0px;'></div>"
-																																	+ "</h5>     </div>");
+																																	+ "</div>     </div>");
 
 																											// $(
 																											// ".listCasesAdvanced"
@@ -1239,7 +1241,7 @@ function sortDateAsc(parent, child) {
 
 				$(".listCasesAdvanced")
 						.append(
-								"<div class='this col-xs-12 smallBar'><h5 class='title'></h5></div>");
+								"<div class='this col-xs-12 smallBar' onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this ");
 
@@ -1281,7 +1283,7 @@ function sortDateDes(parent, child) {
 
 				$(".listCasesAdvanced")
 						.append(
-								"<div class='this col-xs-12 smallBar'><h5 class='title'></h5></div>");
+								"<div class='this col-xs-12 smallBar' onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this");
 
@@ -1316,7 +1318,7 @@ function sortNameAsc(parent, child) {
 
 				$(".listCasesAdvanced")
 						.append(
-								"<div class='this col-xs-12 smallBar'><h5 class='title'></h5></div>");
+								"<div class='this col-xs-12 smallBar' onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this ");
 
@@ -1348,7 +1350,7 @@ function sortNameDes(parent, child) {
 
 				$(".listCasesAdvanced")
 						.append(
-								"<div class='this col-xs-12 smallBar'><h5 class='title'></h5></div>");
+								"<div class='this col-xs-12 smallBar' onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this");
 
@@ -1489,5 +1491,13 @@ function CategoryTag(thirdLevelValue){
 
         break;
 	}
+	
+}
+
+
+
+function goTo(id){
+	
+	window.location.href = url_web+"/cases/one-element-case/"+id;
 	
 }

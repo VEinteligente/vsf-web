@@ -2,6 +2,7 @@
 import csv
 import datetime
 import json
+import pdfkit
 
 from django.conf import settings
 from django.http import HttpResponse
@@ -74,11 +75,11 @@ class GanttEventsApi(APIView):
      Pandora project
     """
 
-    def get(self, request, format=None):
+    def get(self, request, pk="1", format=None):
         headers = {'Authorization': settings.SERVICES_TOKEN}
         snippet = requests.get(
             settings.URL_VSF +
-            '/events/api/list-event-group/',
+            '/cases/api/gantt/' + pk,
             headers=headers)
         return Response(snippet)
 
@@ -161,12 +162,16 @@ def CaseCVS(request, pk):
     countEvent = 0
     eventList = ""
     for event in events:
+
         if countEvent > 0:
+            print "Hello"
+            print event["isp"]
+            isp = event["isp"]
             eventList = (eventList + "; Event: " + event["identification"] +
                          ", Fecha inicio: " + event["start_date"] +
                          ", Fecha fin: " + event["end_date"] + ", Target: " +
                          event["target"]["site"] + event["target"]["url"] +
-                         ", ISP: " + event["isp"])
+                         ", ISP: " + str(isp))
         else:
             if event["end_date"] is None:
                 eventList = ("Event: " + event["identification"] +
@@ -240,6 +245,22 @@ def CaseCVS(request, pk):
                      domainList,
                      updateList,
                      eventList])
+
+    return response
+
+
+def CasePdf(request, pk="1"):
+
+    pdf = pdfkit.from_url(
+        settings.URL_VSF_WEB +
+        '/cases/one-element-case/' +
+        pk,
+        False,
+        options={
+            'javascript-delay': 4500})
+    response = HttpResponse(pdf, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="case_' + \
+        pk + '.pdf'
 
     return response
 

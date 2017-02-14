@@ -8,7 +8,7 @@
 <input id="domainTrans" type="hidden" value="{% trans 'Dominios' %}">
 <input id="siteTrans" type="hidden" value="{% trans 'Sitios' %}">
 
-<div style="background-color: #DEDEDE">
+<div style="background-color: #DEDEDE; margin-top: 25px;">
 
 	<div class="bodyContent">
 
@@ -95,41 +95,48 @@
 
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid white-background padding-title">
 
 
 
-	<div class=" bodyContent">
+	<div class="bodyContent titleBarContent">
 		<div class="row">
 			<div class="col-xs-2">
-				{% trans 'Download' %}.cvs: <a id="download" href="#"> <i
-					class="fa fa-file-excel-o" aria-hidden="true"></i>
-				</a>
+				 <a id="download" href="#"> 
+				 	{% trans 'Download' %} CVS
+				 </a>
 
 			</div>
 			
 			<div class="col-xs-2">
-				{% trans 'Download' %}.pdf: <a id="downloadPdf" href="#"><i
-					class="fa fa-file-pdf-o" aria-hidden="true"></i></a>			
+				<a id="downloadPdf" href="#">
+					{% trans 'Download' %} PDF
+				</a>			
 			</div>
 			
-			<div class="col-xs-2">
-				Share: <a href="" id="shareFacebook" target="_blank"> <i
-					class="fa fa-facebook" aria-hidden="true"></i>
-				</a> <a href="" id="shareTwitter" target="_blank"> <i
-					class="fa fa-twitter" aria-hidden="true"></i>
+			<div class="col-xs-8 downloadBar">
+				<a href="" id="shareFacebook" target="_blank"> 
+					<i class="fa fa-facebook" aria-hidden="true"></i>
+				</a> 
+				
+				<a href="" id="shareTwitter" target="_blank"> 
+					<i class="fa fa-twitter" aria-hidden="true"></i>
+				</a>
+				
+				<a href="" id="shareReddit" target="_blank"> 
+					<i class="fa fa-reddit" aria-hidden="true"></i>
 				</a>
 
 			</div>
 			
-			<div class="col-xs-2">
+			<!-- <div class="col-xs-2">
 				Measurements: 
 				<a href="" id="measurementsLink" target="_blank"> 
 					<i class="fa fa-database" aria-hidden="true"></i>
 
 				</a> 
 
-			</div>
+			</div> -->
 			
 			
 			
@@ -142,10 +149,10 @@
 
 </div>
 
-<div class="container-fluid" id="caseDescriptiion ">
+<div class="container-fluid white-background" id="caseDescription ">
 
 
-	<div class="bodyContent">
+	<div class="bodyContent" id="caseDescriptionContent">
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="h3Style">{% trans "Descripcion: " %}</div>
@@ -159,9 +166,9 @@
 </div>
 
 
-<div class="container-fluid" style="background-color: #B3B3B3">
+<div class="container-fluid white-background" >
 
-	<div class="bodyContent updates">
+	<div class="bodyContent updates titleBarContent">
 		<div class="row">
 			<div class="col-xs-12 subtitleBar">
 				<div class="h4Style" id="updateTitle">{% trans 'actualizaciones' %}</div>
@@ -175,7 +182,7 @@
 
 </div>
 
-<div class="container-fluid" style="background-color: #E6E6E6">
+<div class="container-fluid white-background" >
 
 	<div class="bodyContent updates">
 
@@ -188,9 +195,9 @@
 
 </div>
 
-<div class="container-fluid" style="background-color: #B3B3B3">
+<div class="container-fluid white-background" >
 
-	<div class="bodyContent cards">
+	<div class="bodyContent cards titleBarContent">
 		<div class="row">
 			<div class="col-xs-12 subtitleBar">
 
@@ -206,29 +213,14 @@
 </div>
 
 
-<div class="container-fluid" style="background-color: #FFFFFF">
+<div class="container-fluid white-background" >
 
 	<div class="bodyContent">
 		<div id="timeline1"></div>
 	</div>
 </div>
 
-<div class="container-fluid" style="background-color: #B3B3B3">
 
-	<div class="bodyContent cards">
-		<div class="row">
-			<div class="col-xs-12 subtitleBar">
-				<h4 id="cardsTitle">{% trans 'informacion' %}</h4>
-
-			</div>
-		</div>
-
-	</div>
-
-
-
-
-</div>
 
 
 
@@ -303,11 +295,11 @@
         
         var pk = {{ pk }}
         var domain = "{{ URL_VSF }}"
-        var url_case = "{% url 'Cases:OneElementCase' pk=pk %}"
-        var url_one_case = "{% url 'Cases:OneElementCaseApi' pk=pk %}"
+        var url_case = "{% url 'Cases:Case' pk=pk %}"
+        var url_one_case = "{% url 'Cases:CaseApi' pk=pk %}"
         var url_one_case_pdf = "{% url 'Cases:CasePdfEmpty' %}"
         var url_one_case_excel = "{% url 'Cases:ExcelCaseCVSEmpty' %}"
-        var url_one_case_update = "{% url 'Cases:OneElementCaseUpdateApi' pk=pk %}"
+        var url_one_case_update = "{% url 'Cases:CaseUpdateApi' pk=pk %}"
 
         var language = '{{ language_code }}'
     

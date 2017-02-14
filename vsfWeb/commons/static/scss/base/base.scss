@@ -78,6 +78,31 @@ $interception_color: #ebe70e;
 
 body {
     height: 100%;
+
+    
+    font-family: $primary_fontFamily, sans-serif;
+    background-color: #dedede;   
+	padding-top: 128px;
+ 
+}
+
+.titleBarContent{
+	border-radius: 8px;
+	box-shadow: 5px 10px 5px #DADADA;
+	background: #f2f2f2;
+	height: 45px;
+	padding-left: 35px;
+	padding: 10px 20px 10px 35px;
+	text-transform: uppercase; 
+}
+
+.white-background{
+	background: white;
+}
+
+.padding-title{
+	padding-bottom: 15px;
+	padding-top: 15px;
 }
 
 
@@ -603,8 +628,8 @@ button {
 		    position: absolute;
 		    border-color: transparent;
 		    border-right-color: #FF2115;
-		    border-width: 12px;
-		    margin-top: -12px; 
+            border-width: 12px;
+            margin-top: -12px;
      		-moz-transform: scaleX(-1);
 	        -o-transform: scaleX(-1);
 	        -webkit-transform: scaleX(-1);

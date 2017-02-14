@@ -407,6 +407,11 @@
       }
 
       function getXPos(d, i) {
+    	  console.log("GET POS"+ margin.left + (d.starting_time - beginning) * scaleFactor)
+    	      	  console.log( margin.left )
+    	      	      	  console.log((d.starting_time ) )
+    	      	      	      	  console.log( beginning)
+    	      	      	      	  console.log( scaleFactor)
         return margin.left + (d.starting_time - beginning) * scaleFactor;
       }
       
@@ -437,6 +442,10 @@
     		  console.log(y)
             }
     	  count ++;
+    	  
+    	  console.log("ERROR")
+    	  console.log("translate("+x + " " + y + ")")
+    	  
           return "translate("+x + " " + y + ")";
         }
       
@@ -885,7 +894,7 @@ $
 						var timelineEnd = (new Date('07-31-2017')).getTime();
 				
 						var testData = dataResult
-						
+					
 						var chart = d3.timeline().showTimeAxisTick().stack().beginning(timelineStart).ending(timelineEnd);
 
 						

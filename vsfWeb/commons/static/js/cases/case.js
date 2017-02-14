@@ -24,8 +24,7 @@ $(document)
 					var url_share_twitter = "http://twitter.com/share?url=http://dev.web.pandora.saturno.space"
 							+ url_case;
 
-					$("#download")
-							.attr("href", url_one_case_excel + "id=" + pk);
+					$("#download").attr("href", url_one_case_excel + "id=" + pk);
 					
 					$('#downloadPdf').attr("href", url_one_case_pdf + "id=" +pk);
 					

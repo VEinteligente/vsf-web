@@ -12,13 +12,13 @@ from rest_framework.views import (APIView)
 import requests
 
 
-class OneElementCase(TemplateView):
+class Case(TemplateView):
     """This view renders the HTML containing information about one element case
     """
-    template_name = "one-element-case.html"
+    template_name = "case.html"
 
 
-class OneElementCaseApi(APIView):
+class CaseApi(APIView):
     """This view obtains the information of the one element case as json data
         from the API of the Pandora project
 
@@ -37,7 +37,7 @@ class OneElementCaseApi(APIView):
         return Response(snippet)
 
 
-class OneElementCaseUpdateApi(APIView):
+class CaseUpdateApi(APIView):
     """This view obtains the information of the one element case updates as
         json data from the API of the Pandora project
 
@@ -53,15 +53,6 @@ class OneElementCaseUpdateApi(APIView):
             pk,
             headers=headers)
         return Response(snippet)
-
-
-class MultipleElementsCase(TemplateView):
-    """This view renders the HTML containing information about multiple
-        elements case
-    """
-    template_name = "multiple-elements-case.html"
-
-#
 
 
 class GanttEvents(TemplateView):

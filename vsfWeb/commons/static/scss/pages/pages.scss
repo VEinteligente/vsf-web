@@ -468,6 +468,13 @@ input#title{
     padding-left: 0 ;
 }
 
+.downloadBar{
+	font-size: 1.2em;
+	text-align: right;
+}
+
+
+
 .dateStartSort, .dateEndSort, .nameSort, .siteSort, .ispSort, .regionSort{
         padding-top: 5px;
         margin-left: 15px;
@@ -667,6 +674,9 @@ input#title{
 
 // One element case
 
+#caseDescriptionContent{ 
+	padding: 0px 100px 0px 100px;
+}
 
 
 #twitterDiv{
@@ -754,10 +764,10 @@ input#title{
      .updateBar, .subtitleBar{
     	background-color: transparent;
     }
-    #updateTitle{
-        color: white;
+    #updateTitle{        
+		color: #b3b3b3;
+    	font-weight: bold;
         text-transform: uppercase;
-    	padding-top: 10px;
     }
 }
 
@@ -774,9 +784,9 @@ input#title{
     background-color: transparent;
     }
     #cardsTitle{
-        color: white;
+		color: #b3b3b3;
+    	font-weight: bold;
         text-transform: uppercase;
-    padding-top: 10px;
     }
 }
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-27 18:29+0000\n"
+"POT-Creation-Date: 2017-02-15 19:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,87 +31,90 @@ msgstr "Domains"
 msgid "Sitios"
 msgstr "Sites"
 
-#: cases/templates/one-element-case.html:63
-#: general/templates/blocked-sites_domains.html:34
+#: cases/templates/one-element-case.html:58
 #, fuzzy
-#| msgid "Blocked Domains"
-msgid "Domains"
-msgstr "Blocked Domains"
+#| msgid "Category"
+msgid "Category: "
+msgstr "Category"
 
-#: cases/templates/one-element-case.html:67
-#: general/templates/blocked-sites_domains.html:39
-msgid "Sites"
-msgstr "Sites"
+#: cases/templates/one-element-case.html:105
+#: cases/templates/one-element-case.html:112
+#, fuzzy
+#| msgid "Download Speed"
+msgid "Download"
+msgstr "Download Speed"
 
-#: cases/templates/one-element-case.html:127
+#: cases/templates/one-element-case.html:151
 msgid "Descripcion: "
 msgstr "Description:"
 
-#: cases/templates/one-element-case.html:143
+#: cases/templates/one-element-case.html:167
 msgid "actualizaciones"
 msgstr "Updates:"
 
-#: cases/templates/one-element-case.html:172
+#: cases/templates/one-element-case.html:197
+msgid "Grafico"
+msgstr "Graphic"
+
+#: cases/templates/one-element-case.html:221
 #, fuzzy
 #| msgid "Information"
 msgid "informacion"
 msgstr "Information"
 
-#: commons/templates/navbar/navbar.html:19
+#: commons/templates/navbar/navbar.html:36
 msgid "Home"
 msgstr "Home"
 
-#: commons/templates/navbar/navbar.html:25
-msgid "News"
-msgstr "News"
-
-#: commons/templates/navbar/navbar.html:31
-msgid "Guides"
-msgstr "Guides"
-
-#: commons/templates/navbar/navbar.html:44
-msgid "Evade The Blockade"
-msgstr "Evade The Blockade"
-
-#: commons/templates/navbar/navbar.html:52
+#: commons/templates/navbar/navbar.html:40
 msgid "Cases"
 msgstr "Cases"
 
-#: commons/templates/navbar/navbar.html:57
-msgid "Blocked URLs"
+#: commons/templates/navbar/navbar.html:44
+#, fuzzy
+#| msgid "Featured Cases"
+msgid "Search Case"
+msgstr "Featured <strong>Cases</strong>"
+
+#: commons/templates/navbar/navbar.html:48
+msgid "Advanced Search Case "
+msgstr "Advanced Search Case"
+
+#: commons/templates/navbar/navbar.html:58
+msgid "Summary"
+msgstr "Summary"
+
+#: commons/templates/navbar/navbar.html:64
+#, fuzzy
+#| msgid "Blocked URLs"
+msgid "Blocked List"
 msgstr "Blocked URL's"
 
-#: commons/templates/navbar/navbar.html:61
-msgid "Blocked Domains"
-msgstr "Blocked Domains"
+#: commons/templates/navbar/navbar.html:68
+msgid "Map of Cases"
+msgstr "Map of Cases"
 
-#: commons/templates/navbar/navbar.html:65
-msgid "Speed Test"
-msgstr "Speed Test"
+#: commons/templates/navbar/navbar.html:72
+msgid "Summary Table"
+msgstr "Summary Table"
 
-#: commons/templates/navbar/navbar.html:73
-msgid "Community"
-msgstr "Community"
-
-#: commons/templates/navbar/navbar.html:78
-msgid "About Us"
-msgstr "About Us"
-
-#: commons/templates/navbar/navbar.html:86
-msgid "Forum"
-msgstr "Forum"
-
-#: commons/templates/navbar/navbar.html:93
-msgid "Report"
-msgstr "Report"
-
-#: general/templates/blocked-sites_domains.html:12
+#: general/templates/blocked-sites_domains.html:14
 msgid "Blocked Sites Strong"
 msgstr "Blocked <strong>Sites</strong>"
 
-#: general/templates/blocked-sites_domains.html:14
+#: general/templates/blocked-sites_domains.html:16
 msgid "Blocked Domains Strong"
 msgstr "Blocked <strong>Domains</strong>"
+
+#: general/templates/blocked-sites_domains.html:36
+#, fuzzy
+#| msgid "Blocked Domains"
+msgid "Domains"
+msgstr "Blocked Domains"
+
+#: general/templates/blocked-sites_domains.html:41
+msgid "Sites"
+msgstr "Sites"
 
 #: general/templates/maps/venezuela.html:7451
 msgid "Featured Cases"
@@ -266,42 +269,48 @@ msgstr "Color"
 msgid "Style"
 msgstr "Style"
 
-#: summary/templates/measurements-table.html:26
+#: summary/templates/measurements-table.html:13
+#, fuzzy
+#| msgid "Download Speed"
+msgid "Download:"
+msgstr "Download Speed"
+
+#: summary/templates/measurements-table.html:24
 #, fuzzy
 #| msgid "Sites"
 msgid "Site"
 msgstr "Sites"
 
-#: summary/templates/measurements-table.html:27
+#: summary/templates/measurements-table.html:25
 msgid "URL"
 msgstr "URL"
 
-#: summary/templates/measurements-table.html:28
+#: summary/templates/measurements-table.html:26
 msgid "Date"
 msgstr "Date"
 
-#: summary/templates/measurements-table.html:29
+#: summary/templates/measurements-table.html:27
 msgid "Country"
 msgstr "Country"
 
-#: summary/templates/measurements-table.html:30
+#: summary/templates/measurements-table.html:28
 msgid "State"
 msgstr "State"
 
-#: summary/templates/measurements-table.html:31
+#: summary/templates/measurements-table.html:29
 msgid "City"
 msgstr "City"
 
-#: summary/templates/measurements-table.html:32
+#: summary/templates/measurements-table.html:30
 #: summary/templates/summary-table.html:48
 msgid "ISP"
 msgstr "ISP"
 
-#: summary/templates/measurements-table.html:33
+#: summary/templates/measurements-table.html:31
 msgid "Measurement"
 msgstr "Measurement"
 
-#: summary/templates/measurements-table.html:34
+#: summary/templates/measurements-table.html:32
 msgid "Type"
 msgstr "Type"
 
@@ -317,13 +326,40 @@ msgstr "ISPs"
 msgid "Category"
 msgstr "Category"
 
-#: vsfWeb/settings.py:172
+#: vsfWeb/settings.py:173
 msgid "English"
 msgstr "English"
 
-#: vsfWeb/settings.py:173
+#: vsfWeb/settings.py:174
 msgid "Spanish"
 msgstr "Spanish"
+
+#~ msgid "News"
+#~ msgstr "News"
+
+#~ msgid "Guides"
+#~ msgstr "Guides"
+
+#~ msgid "Evade The Blockade"
+#~ msgstr "Evade The Blockade"
+
+#~ msgid "Blocked Domains"
+#~ msgstr "Blocked Domains"
+
+#~ msgid "Speed Test"
+#~ msgstr "Speed Test"
+
+#~ msgid "Community"
+#~ msgstr "Community"
+
+#~ msgid "About Us"
+#~ msgstr "About Us"
+
+#~ msgid "Forum"
+#~ msgstr "Forum"
+
+#~ msgid "Report"
+#~ msgstr "Report"
 
 #~ msgid "BlockedMultiple"
 #~ msgstr "Blocked"
@@ -333,9 +369,6 @@ msgstr "Spanish"
 
 #~ msgid "Upload Speed"
 #~ msgstr "Upload Speed"
-
-#~ msgid "Download Speed"
-#~ msgstr "Download Speed"
 
 #~ msgid "Order By:"
 #~ msgstr "Order By:"

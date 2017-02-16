@@ -58,42 +58,38 @@ $(document)
 
 										var data = JSON.parse(temporal);
 
-										
-
-											count = 0;
-
-											$("#domainTableTitle")
-													.html(
-															'<span class="tag tag-default tag-pill float-xs-left pill-size" id="count"></span>&nbsp'+$('#domainTrans').val());
-
-											$.each(data.domains, function(index, result){
-
-												count = count + 1;
-
-												$("#count").html(count);
-
-
-												$("#domainTableBody").append('<tr class="focus clickable" data-toggle="collapse" data-target="#data'+result.site+'"><td id="nameDomain">'+result.site+'</td><tr><td id="focusDomain" class="prueba" style="padding:0;"><div class="collapse" id="data'+result.site+'"><div></td></tr>');
-												
-											})
-											
-											$.each(data.domains, function(index, result){
-												
-												$("#data"+result.site).append('<tr class="rowDomain"><td id="siteDomain" style="width:100%">'+result.url+'</td><td><i class="fa fa-lock" aria-hidden="true"></i></td></tr>');
-											
-											})
-											
 											$("#caseCategory").append('&nbsp <div class="'
 													+ (data.category).name
 													+ '"><div class="left_cornerTag"></div><div class="contentTag">'
 													+ (data.category).display_name
 													+ '</div><div class="right_cornerTag"></div></div>')
-											
-											
-										
 
-										
-									});
+												
+											$.each(data.domains, function(index, result){
+												
+												//It can happen that the site is null but the probe reported a blocked or failing url, in that case
+												//we only show the url which triggered the probe
+												if(result.site == null){
+													
+													$("#domainTableBody").append('<tr><td id="nameDomain" style="width:100%">'+result.url+'</td><td><i class="fa fa-lock" aria-hidden="true"></i></td></tr>');
+												}
+												
+												//Site Name with a collapse div of the url that belongs to the site
+												else{
+
+													$("#domainTableBody").append('<tr class="focus clickable" data-toggle="collapse" data-target="#data'+result.site+'"><td id="nameDomain">'+result.site+'</td><tr><td id="focusDomain" class="prueba" style="padding:0;"><div class="collapse" id="data'+result.site+'"><div></td></tr>');
+												
+													$.each(data.domains, function(index, result){
+												
+														$("#data"+result.site).append('<tr class="rowDomain"><td id="siteDomain" style="width:100%">'+result.url+'</td><td><i class="fa fa-lock" aria-hidden="true"></i></td></tr>');
+											
+													})
+												
+												}
+											
+											})
+							});
+					
 					// First Ajax call to recieve the case data from server
 					$
 							.ajax({

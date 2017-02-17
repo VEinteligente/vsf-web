@@ -80,7 +80,7 @@ class EventsMonth(APIView):
         Pandora project
     """
 
-    def get_authenticate_header(self, request, pk="1", format=None):
+    def get(self, request, pk="1", format=None):
         headers = {'Authorization': settings.SERVICES_TOKEN}
         snippet = requests.get(
             settings.URL_VSF +

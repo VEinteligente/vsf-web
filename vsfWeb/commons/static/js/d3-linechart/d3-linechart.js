@@ -1,38 +1,4 @@
-var data = [] 
-console.log(url_events_month)
-$
-		.ajax({
-			url : url_events_month,
-			method : "GET",
-			dataType : 'json',
-			contentType : 'application/json'
-		})
-		.done(
-				function(array) {
-					console.log(array)
-					var temporal = "";
 
-					// For each element in the JSON we need to collect their
-					// values
-					for (var i = 0; i < array.length; i++)
-						temporal = temporal.concat(array[i]);
-
-					var dataJson = JSON.parse(temporal);
-				
-		
-						$.each(dataJson.dates, function(key, value) { // First Level
-							
-											
-					console.log(key)
-									
-							element = { 'date': new Date(key), "trendingValue": value}
-						
-						
-							data.push(element)
-							
-						});	
-						console.log(data)
-				}); 
 
 function getDate(d) {
  var dt = new Date(d.date);

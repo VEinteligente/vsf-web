@@ -103,6 +103,7 @@ $(document)
 							})
 							.done(
 									function(dataJson) {
+						
 										var temporal = "";
 										// For each element in the JSON we need
 										// to collect their values

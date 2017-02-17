@@ -785,8 +785,7 @@ var testData = [
                   {"color":"green", "starting_time": 1355761910000, "ending_time": 1355763910000},
                   {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]}
                 ];
-console.log("test")
-console.log(testData)
+
 // This AJAX call corresponds to the request of the JSON data from Pandora
 // project API.
 $

@@ -23,7 +23,9 @@ $(document)
 							+ url_case;
 					var url_share_twitter = "http://twitter.com/share?url=http://dev.web.pandora.saturno.space"
 							+ url_case;
-
+					
+					var url_share_reddit = "http://www.reddit.com/submit?url=http://dev.web.pandora.saturno.space"
+						+ url_case;
 					$("#download").attr("href", url_one_case_excel + "id=" + pk);
 					
 					$('#downloadPdf').attr("href", url_one_case_pdf + "id=" +pk);
@@ -31,7 +33,8 @@ $(document)
 					$("#shareFacebook").attr("href", url_share_facebook);
 
 					$("#shareTwitter").attr("href", url_share_twitter);
-
+					
+					$("#shareReddit").attr("href", url_share_reddit);
 					
 					$("#measurementsLink").attr("href", url_data_measurements);
 					
@@ -140,6 +143,7 @@ $(document)
 											$("#caseImage").html('<img src="" class="img-fluid" style="width:100%">');
 											var png = png_commons + "_0.png";	
 											$("#caseImage img").attr("src", png);
+											var image_meta = png;
 										}
 										else{
 											// For cases with multiple sites, a carrousel is loaded. The images are stored in 
@@ -152,6 +156,10 @@ $(document)
 												var png = png_commons + "_" + i + ".png";	
 												$(".img-fluid").attr("src", png);
 												$(".img-fluid").removeClass('img-fluid');
+												
+												if(i == 0){
+													var image_meta = png;
+												}
 											}
 											
 											// Settings for the carrousel
@@ -210,10 +218,7 @@ $(document)
 										$('head')
 												.append(
 														'<meta property="og:image" content="'
-																+ $(
-																		'.img-fluid')
-																		.attr(
-																				'src')
+																+ image_meta
 																+ '" />');
 										$('head').append(
 												'<meta property="og:url" content="http://dev.web.pandora.saturno.space'
@@ -224,7 +229,7 @@ $(document)
 
 										$('head')
 												.append(
-														'<meta property="twitter:card" content="summary" />');
+														'<meta property="twitter:card" content="summary_large_image" />');
 										$('head').append(
 												'<meta property="twitter:title" content="VE Sin filtro: '
 														+ title + '" />');
@@ -237,10 +242,7 @@ $(document)
 										$('head')
 												.append(
 														'<meta property="twitter:image:src" content="'
-																+ $(
-																		'.img-fluid')
-																		.attr(
-																				'src')
+																+ image_meta
 																+ '" />');
 
 										$('#titleDateAjax').html(

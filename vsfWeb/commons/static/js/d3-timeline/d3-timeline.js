@@ -929,9 +929,9 @@ $
 	
 
 				}).fail(function(jqXHR, textStatus, errorThrown) {
-					$('#timeline1').closest('.container-fluid').html("<div class='failedService'><img  style='background:gray'  src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
+					$('#timeline1').closest('.container-fluid').html("<div class='failedService'><img  src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 					
-					
+					$('#twitterDiv').css('padding-right','0');
 				});
 
 

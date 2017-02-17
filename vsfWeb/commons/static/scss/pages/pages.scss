@@ -691,6 +691,16 @@ input#title{
 #twitterTweet{
     height: 229px;  
     overflow:auto;
+    
+    .failedService{
+    
+ 
+   border-radius: 8px  8px 0 0; 
+   padding-top: 20% ;
+   height: 100%;
+    background: #dadada;
+    
+    }
 }
 #twitterSearchText{
     height: 229px; 
@@ -769,8 +779,26 @@ input#title{
     	font-weight: bold;
         text-transform: uppercase;
     }
+    .failedService{
+	    background: #dadada;
+	    border-radius: 8px;
+	    margin-left: 20px;
+	    margin-right: 20px;
+    
+    }
 }
 
+.timeline1{ 
+
+
+    .failedService{
+	    background: #dadada;
+	    border-radius: 8px;
+	    margin-left: 20px;
+	    margin-right: 20px;
+    
+    }
+}
 
 .tick line {
 	fill: none;

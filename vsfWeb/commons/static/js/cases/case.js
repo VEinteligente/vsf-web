@@ -9,6 +9,10 @@ function modal_content(element_content){
 
 		}
 
+function empty(){
+	$('.global-modal').find('.modal-dialog').html('');	
+}
+
 $(document)
 		.ready(
 				function() {

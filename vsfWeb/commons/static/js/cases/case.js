@@ -1,3 +1,14 @@
+function modal_content(element_content){
+		
+		var response = $(element_content).html();
+
+		
+		$('.global-modal').find('.modal-dialog').html(response);	
+		$('.global-modal').modal("show");
+
+
+		}
+
 $(document)
 		.ready(
 				function() {
@@ -556,6 +567,8 @@ function select(option) {
 
 					})
 					;
+
+	
 
 }
 

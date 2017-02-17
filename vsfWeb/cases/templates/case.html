@@ -230,7 +230,8 @@
 
 	<div class="bodyContent">
 
-		<div class="row subGraphDiv">
+		<div class="row subGraphDiv" data-toggle="modal" data-target="#modal" title="delete item" data-tooltip href="#" 
+onclick="modal_content('#subGraph1')">
 			<div class="col-xs-3" id="subGraph1">
 				<div class="row">
 
@@ -312,6 +313,9 @@
         var fail_service_img = "{% static 'img/icons/vsf_iconfailure_v101.svg' %}";
         var fail_twitter_img = "{% static 'img/icons/vsf_icontwitterfailure_v101.svg' %}";
         var url_data_measurements ="{% url 'Summary:MeasurementsTable' pk=pk %}"
+        
+        
+        
         
 </script>
 

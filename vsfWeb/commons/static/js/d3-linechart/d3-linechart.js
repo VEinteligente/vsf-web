@@ -1,3 +1,12 @@
+
+ 
+var draw = function() {
+// var data = [  {'date': "2012-09-01", 'trendingValue': 900}, 
+//               {'date': "2012-08-01", 'trendingValue': 1100}, 
+//               {'date': "2012-07-01", 'trendingValue': 950}, 
+//               {'date': "2012-06-01", 'trendingValue': 1050}];
+// 
+
 	 var data = [  ];
 	  
 //This AJAX call corresponds to the request of the JSON data from Pandora
@@ -24,8 +33,7 @@ $
 		
 						$.each(dataJson.dates, function(key, value) { // First Level
 							
-											
-					console.log(key)
+
 							var dateSplit = key.split(" "); 
 							var dateKey = new Date(dateSplit[0]+ " " + dateSplit[2]);
 							if(dateKey.getMonth()!=10 & dateKey.getMonth() != 11){
@@ -36,12 +44,14 @@ $
 							}
 							var dateString = ""+ dateKey.getFullYear() + "-" + month + "-" + dateKey.getDate() + "";
 							element = { 'date': dateString, "trendingValue": value}
+
 						
 						
 							data.push(element)
 							
 						});	
 						console.log(data)
+
 
 						function getDate(d) {
 						 var dt = new Date(d.date);
@@ -174,5 +184,4 @@ $
 				});
 
 
-
-console.log(data)
+}

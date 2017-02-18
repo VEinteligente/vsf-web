@@ -12,6 +12,7 @@ from django.views.generic import (TemplateView)
 from rest_framework.response import Response
 from rest_framework.views import APIView
 import requests
+from django.forms.forms import Form
 
 
 class AboutUs(TemplateView):

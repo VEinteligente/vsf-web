@@ -230,9 +230,9 @@
 
 	<div class="bodyContent">
 
-		<div class="row subGraphDiv" data-toggle="modal" data-target="#modal" title="delete item" data-tooltip href="#" 
+		<div class="row subGraphDiv">
+			<div class="col-xs-3" id="subGraph1" data-toggle="modal" data-target="#modal" data-tooltip 
 onclick="modal_content('#subGraph1')">
-			<div class="col-xs-3" id="subGraph1">
 				<div class="row">
 
 					<div class="container-fluid col-xs-12" id="twitterDiv">
@@ -250,15 +250,18 @@ onclick="modal_content('#subGraph1')">
 				</div>
 			</div>
 
-			<div class="col-xs-3 offset-xs-1" id="subGraph2">
-				<div class="row">
+			<div class="col-xs-3 offset-xs-1" id="subGraph2"  data-toggle="modal" data-target="#modal" data-tooltip 
+onclick="modal_content('#subGraph2')">
+				<div class="row subGraphDiv">
+					
+					<div class="container-fluid " id="chart">
+						</div>
+						
 					<div class="container-fluid">SubGraph 2</div>
 
 					<div class="container-fluid" id="subGraph2Title">Subgraph 2
 						Title</div>
-
-					<div class="container-fluid" id="subGraph2Description">
-						Subgraph 2 Description</div>
+					
 				</div>
 			</div>
 
@@ -288,7 +291,52 @@ onclick="modal_content('#subGraph1')">
 
 <!-- <blockquote class="twitter-tweet" lang="en"><p>OKC-MEM prediction: Fourteen overtimes, 10 4-point plays, a Perkins 3-pointer, and Tony Allen kills a guy.</p>&mdash; Zach Lowe (@ZachLowe_NBA) <a href="https://twitter.com/ZachLowe_NBA/status/461995665887723520">May 1, 2014</a></blockquote> -->
 
-
+ <style>
+ #subGraph2 .subGraphDiv{
+ float: right;
+    height: 330px;
+    padding: 0px;
+    
+    border-radius: 8px;
+    background-color: white;
+ }
+ #chart{
+ background: #1f1f1f;
+ }
+ #chart path {
+ stroke: yellow;
+ stroke-width: 2;
+ fill: #1f1f1f;
+ }
+ 
+ #chart path.domain {
+ 	stroke: transparent;
+ }
+ #chart .tick text {
+ 	fill: white;
+ }
+ .axis { shape-rendering: crispEdges; }
+ .x.axis line { stroke: #1f1f1f; }
+ .x.axis .minor { stroke-opacity: .5; }
+ .x.axis path { display: none; }
+ .y.axis line, .y.axis path {
+ fill: none;
+ stroke: #000;
+ }
+ .infobox {
+ border:2px solid steelblue;
+ border-radius:4px;
+ box-shadow:#333333 0px 0px 10px;
+ margin:200px auto;
+ padding:5px 10px;
+ background:rgba(255, 255, 255, 0.8);
+ position:absolute;
+ top:0px;
+ left:0px;
+ z-index:10500;
+ font-weight:bold;
+ }
+ </style>
 <script>
            
     // These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here 
@@ -308,7 +356,7 @@ onclick="modal_content('#subGraph1')">
         var png_commons = "{% static "" %}" +"screenshots/screen_case_"+pk;
          
         var url_data="{% url 'Cases:ganttEventsApi' pk=pk %}"   
-    		
+        var url_events_month ="{% url 'Cases:monthEventsApi' pk=pk %}"	
         var url_data_twitter ="{% url 'General:SearchTwitterApiEmpty' %}"
         var fail_service_img = "{% static 'img/icons/vsf_iconfailure_v101.svg' %}";
         var fail_twitter_img = "{% static 'img/icons/vsf_icontwitterfailure_v101.svg' %}";
@@ -328,6 +376,6 @@ onclick="modal_content('#subGraph1')">
 <script type="text/javascript" src="http://static.mentful.com/gantt-chart-d3v2.js"></script>
 
 <script src="{% static 'js/d3-timeline/d3-timeline.js' %}"></script>
-
+<script src="{% static 'js/d3-linechart/d3-linechart.js' %}"></script>
 
 {% endblock content %}

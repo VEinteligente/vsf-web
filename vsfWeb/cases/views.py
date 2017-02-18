@@ -75,6 +75,20 @@ class GanttEventsApi(APIView):
         return Response(snippet)
 
 
+class EventsMonth(APIView):
+    """ This view obtains the number of events per monthfrom the API of the
+        Pandora project
+    """
+
+    def get(self, request, pk="1", format=None):
+        headers = {'Authorization': settings.SERVICES_TOKEN}
+        snippet = requests.get(
+            settings.URL_VSF +
+            '/cases/api/events-month/' + pk,
+            headers=headers)
+        return Response(snippet)
+
+
 def CaseCVS(request, pk):
     """This view takes list of filtered cases and exports it to a CVS file.
     """

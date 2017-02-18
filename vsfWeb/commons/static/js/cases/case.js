@@ -1,6 +1,7 @@
+
 function modal_content(element_content){
 		
-		var response = $(element_content).html();
+		var response = $(element_content).clone();
 
 		
 		$('.global-modal').find('.modal-dialog').html(response);	
@@ -121,6 +122,7 @@ $(document)
 							})
 							.done(
 									function(dataJson) {
+						
 										var temporal = "";
 										// For each element in the JSON we need
 										// to collect their values

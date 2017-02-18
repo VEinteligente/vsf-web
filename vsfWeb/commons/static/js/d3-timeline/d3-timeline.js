@@ -3,7 +3,7 @@
   d3.timeline = function() {
     var DISPLAY_TYPES = ["circle", "rect"];
     
-    var hover = function (label) {console.log(label)},
+    var hover = function (label) {},
         mouseover = function () {},
         mouseout = function () {},
         click = function () {},
@@ -197,7 +197,7 @@
             // create y mapping for stacked graph
         	
             if (stacked && Object.keys(yAxisMapping).indexOf(index) == -1) {    
-            console.log("maxStack: " + maxStack)
+     
             yAxisMapping[index] = maxStack;
             
             maxStack++;
@@ -250,8 +250,7 @@
         d.forEach( function(datum, index){
         
           var data = datum.times;
-          console.log( data)
-           console.log( datum)
+        
           var hasLabel = (typeof(datum.label) != "undefined");
 
           // issue warning about using id per data set. Ids should be individual to data elements
@@ -407,11 +406,7 @@
       }
 
       function getXPos(d, i) {
-    	  console.log("GET POS"+ margin.left + (d.starting_time - beginning) * scaleFactor)
-    	      	  console.log( margin.left )
-    	      	      	  console.log((d.starting_time ) )
-    	      	      	      	  console.log( beginning)
-    	      	      	      	  console.log( scaleFactor)
+    	 
         return margin.left + (d.starting_time - beginning) * scaleFactor;
       }
       
@@ -430,21 +425,20 @@
       
       function getPosition(d, i) {
     	  var x = getXPos(d, i);
-    		console.log("hi" + count)
+   
     	  if(count !=0 && i == 0 ){
     		  position ++;  
     	  }
     	
     	  if (stacked) {
     		 
-    		  console.log(position + " " + i + " : " + yAxisMapping[position])
+   
     		  var y =  margin.top + (itemHeight + itemMargin) * yAxisMapping[position];
-    		  console.log(y)
+    		
             }
     	  count ++;
     	  
-    	  console.log("ERROR")
-    	  console.log("translate("+x + " " + y + ")")
+    
     	  
           return "translate("+x + " " + y + ")";
         }
@@ -785,8 +779,7 @@ var testData = [
                   {"color":"green", "starting_time": 1355761910000, "ending_time": 1355763910000},
                   {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]}
                 ];
-console.log("test")
-console.log(testData)
+
 // This AJAX call corresponds to the request of the JSON data from Pandora
 // project API.
 $
@@ -871,7 +864,6 @@ $
 									if(dataAll[j].label==dataLabel[i]) {
 							
 										times_element =  (dataAll[j].times)[0]
-										console.log(times_element)
 										
 										times[z]= times_element
 										z = z +1
@@ -913,7 +905,7 @@ $
 						          .html(function(d) {
 						        	  
 						        	  var labelStrong_first = (($(this).text())).split(" ")[0];
-						        	  console.log(labelStrong_first)
+						        	 
 						        	  var labelStrong_second = (($(this).text())).split(" ")[1];
 						        	  
 						        	  for(var i = 2; i  < (($(this).text())).split(" ").length; i++){

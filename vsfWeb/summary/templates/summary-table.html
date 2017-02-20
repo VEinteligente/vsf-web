@@ -10,6 +10,7 @@
 <input type="hidden" id="hiddenTitle" value="" />
 <input type="hidden" id="category" value="{% trans 'Categories' %}" />
 <input type="hidden" id="isp" value="{% trans 'ISPs' %}" />
+<input type="hidden" id="hidden_url_web" value="{{VSF_URL_WEB}}">
 
 <div class="bodyContent">
 <div class="col-xs-6" id="summaryTableBorder">
@@ -70,7 +71,7 @@
     var url_data_isp = "{% url 'Summary:SummaryIspTableApi' %}"
     var url_excel_category = "{% url 'Summary:ExcelCategoryList' %}"
     var url_excel_isp = "{% url 'Summary:ExcelISPList' %}"
-
+    var url_web = $("#hidden_url_web").val();
 </script>
 
 <script src="{% static 'js/summary/table.js' %}"></script>

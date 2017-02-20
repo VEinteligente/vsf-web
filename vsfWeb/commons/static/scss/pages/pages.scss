@@ -768,6 +768,10 @@ input#title{
     	border-radius:8px;
     	overflow:hidden;
     }
+    .img-fluid{
+    	clip-path: inset(0px 0px 25% 0px);
+    	-webkit-clip-path: inset(0px 0px 25% 0px);
+    }
 }
 
 .owl-item{

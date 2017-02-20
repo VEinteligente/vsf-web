@@ -154,7 +154,7 @@ function select(option) {
 																								+ content
 																								+ '"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
-																								+ '</div><div class="right_cornerTag"></div></div> </td><td><a href="http://127.0.0.1:8000/cases/one-element-case/'
+																								+ '</div><div class="right_cornerTag"></div></div> </td><td><a href="' + url_web +  '/cases/case/'
 																								+ value.id
 																								+ '">Abrir</a></td></tr><br>');
 
@@ -173,7 +173,7 @@ function select(option) {
 																								+ content
 																								+ '"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
-																								+ '</div><div class="right_cornerTag"></div></div> </td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'
+																								+ '</div><div class="right_cornerTag"></div></div> </td><td> <a href="' + url_web +  '/cases/case/'
 																								+ value.id
 																								+ '">Abrir</a></td></tr><br>');
 
@@ -192,7 +192,7 @@ function select(option) {
 																								+ content
 																								+ '"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
-																								+ '</div><div class="right_cornerTag"></div></div></td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'
+																								+ '</div><div class="right_cornerTag"></div></div></td><td> <a href="' + url_web +  '/cases/case/'
 																								+ value.id
 																								+ '">Abrir</a></td></tr><br>');
 
@@ -211,7 +211,7 @@ function select(option) {
 																								+ content
 																								+ '"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
-																								+ '</div><div class="right_cornerTag"></div></div> </td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'
+																								+ '</div><div class="right_cornerTag"></div></div> </td><td> <a href="' + url_web +  '/cases/case/'
 																								+ value.id
 																								+ '">Abrir</a></td></tr><br>');
 
@@ -230,7 +230,7 @@ function select(option) {
 																								+ content
 																								+ '"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
-																								+ '</div><div class="right_cornerTag"></div></div></td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'
+																								+ '</div><div class="right_cornerTag"></div></div></td><td> <a href="' + url_web +  '/cases/case/'
 																								+ value.id
 																								+ '">Abrir</a></td></tr><br>');
 
@@ -249,7 +249,7 @@ function select(option) {
 																								+ content
 																								+ '"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
-																								+ '</div><div class="right_cornerTag"></div></div> </td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'
+																								+ '</div><div class="right_cornerTag"></div></div> </td><td> <a href="' + url_web +  '/cases/case/'
 																								+ value.id
 																								+ '">Abrir</a></td></tr><br>');
 
@@ -268,7 +268,7 @@ function select(option) {
 																								+ content
 																								+ '"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
-																								+ '</div><div class="right_cornerTag"></div></div> </td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'
+																								+ '</div><div class="right_cornerTag"></div></div> </td><td> <a href="' + url_web +  '/cases/case/'
 																								+ value.id
 																								+ '">Abrir</a></td></tr><br>');
 
@@ -350,7 +350,7 @@ function select(option) {
 																			.append(
 																					'<tr><td id="rowTitleDataIsp">'
 																							+ title
-																							+ '</td><td><a href="http://127.0.0.1:8000/cases/one-element-case/'
+																							+ '</td><td><a href="' + url_web +  '/cases/case/'
 																							+ value.id
 																							+ '">Abrir</a></td></tr></tr>');
 

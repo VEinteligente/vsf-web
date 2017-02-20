@@ -1316,6 +1316,6 @@ function CategoryTag(thirdLevelValue){
 
 function goTo(id){
 	
-	window.location.href = url_web+"/cases/one-element-case/"+id;
+	window.location.href = url_web+"/cases/case/"+id;
 	
 }

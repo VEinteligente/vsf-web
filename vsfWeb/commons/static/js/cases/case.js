@@ -1,7 +1,20 @@
+$('.subGraphDivHover').hide();
+
+$('#subGraph1').mouseover(function(){
+	$('#subGraph1 .subGraphDivHover').show();
+}).mouseleave(function(){
+	$('#subGraph1 .subGraphDivHover').hide();
+});
+
+$('#subGraph2').mouseover(function(){
+	$('#subGraph2 .subGraphDivHover').show();
+}).mouseleave(function(){
+	$('#subGraph2 .subGraphDivHover').hide();
+});
 
 function modal_content(element_content){
 		
-		var response = $(element_content).clone();
+		var response = $(element_content).clone(true);
 
 		
 		$('.global-modal').find('.modal-dialog').html(response);	

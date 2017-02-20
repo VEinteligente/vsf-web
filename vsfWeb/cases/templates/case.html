@@ -26,65 +26,59 @@
 			style="padding-top: 10px; padding-bottom: 10px">
 			<div class="row">
 
-				<div class="col-xs-6" id="caseImage" >
-					
-
-				</div>
+				<div class="col-xs-6" id="caseImage"></div>
 
 				<div class="col-xs-6" id="caseInfo">
 					<div class="row subtitleBar" id="dateBar">
-							<div class="container-fluid" id="caseDateBar">
-								<div class="col-xs-12 timelineBarContinue">
-									<div class="date col-xs-9" id="statusDateAjax"></div>
-									<div class="status col-xs-3" id="statusAjax"></div>
-								</div>
+						<div class="container-fluid" id="caseDateBar">
+							<div class="col-xs-12 timelineBarContinue">
+								<div class="date col-xs-9" id="statusDateAjax"></div>
+								<div class="status col-xs-3" id="statusAjax"></div>
 							</div>
+						</div>
 					</div>
 
 
-				<div class="row">
-						
+					<div class="row">
+
 						<div class="container" id="caseDomainList">
 							<div>
-								
+
 								<table class="table table-hover" id="tableDomain">
-								
+
 									<thead>
-										
+
 										<tr>
-										
+
 											<th id="caseCategory" class="h4Style">
-											
-												 {% trans "Category: "%}
-											
-											</th>
-										
+											{% trans "Category: "%}</th>
+
 										</tr>
-																	
-								
+
+
 									</thead>
 
-								
+
 									<tbody id="domainTableBody">
-									
+
 									</tbody>
 
-								
+
 								</table>
-							
+
 							</div>
 						</div>
 					</div>
 
 					<div class="row toolbar" id="providerBar">
-						
+
 						<div class="container-fluid" id="caseProvider">
-							
+
 							<div class="col-xs-12" style="text-align: center;" id="ispAjax">
-							
+
 							</div>
 						</div>
-					
+
 					</div>
 				</div>
 			</div>
@@ -102,33 +96,25 @@
 	<div class="bodyContent titleBarContent">
 		<div class="row">
 			<div class="col-xs-2">
-				 <a id="download" href="#"> 
-				 	{% trans 'Download' %} CVS
-				 </a>
+				<a id="download" href="#"> {% trans 'Download' %} CVS </a>
 
 			</div>
-			
+
 			<div class="col-xs-2">
-				<a id="downloadPdf" href="#">
-					{% trans 'Download' %} PDF
-				</a>			
+				<a id="downloadPdf" href="#"> {% trans 'Download' %} PDF </a>
 			</div>
-			
+
 			<div class="col-xs-8 downloadBar">
-				<a href="" id="shareFacebook" target="_blank"> 
-					<i class="fa fa-facebook" aria-hidden="true"></i>
-				</a> 
-				
-				<a href="" id="shareTwitter" target="_blank"> 
-					<i class="fa fa-twitter" aria-hidden="true"></i>
-				</a>
-				
-				<a href="" id="shareReddit" target="_blank"> 
-					<i class="fa fa-reddit" aria-hidden="true"></i>
+				<a href="" id="shareFacebook" target="_blank"> <i
+					class="fa fa-facebook" aria-hidden="true"></i>
+				</a> <a href="" id="shareTwitter" target="_blank"> <i
+					class="fa fa-twitter" aria-hidden="true"></i>
+				</a> <a href="" id="shareReddit" target="_blank"> <i
+					class="fa fa-reddit" aria-hidden="true"></i>
 				</a>
 
 			</div>
-			
+
 			<!-- <div class="col-xs-2">
 				Measurements: 
 				<a href="" id="measurementsLink" target="_blank"> 
@@ -137,9 +123,9 @@
 				</a> 
 
 			</div> -->
-			
-			
-			
+
+
+
 		</div>
 
 
@@ -166,7 +152,7 @@
 </div>
 
 
-<div class="container-fluid white-background" >
+<div class="container-fluid white-background">
 
 	<div class="bodyContent updates titleBarContent">
 		<div class="row">
@@ -182,7 +168,7 @@
 
 </div>
 
-<div class="container-fluid white-background" >
+<div class="container-fluid white-background">
 
 	<div class="bodyContent updates">
 
@@ -195,7 +181,7 @@
 
 </div>
 
-<div class="container-fluid white-background" >
+<div class="container-fluid white-background">
 
 	<div class="bodyContent cards titleBarContent">
 		<div class="row">
@@ -213,7 +199,7 @@
 </div>
 
 
-<div class="container-fluid white-background" >
+<div class="container-fluid white-background">
 
 	<div class="bodyContent">
 		<div id="timeline1"></div>
@@ -231,8 +217,9 @@
 	<div class="bodyContent">
 
 		<div class="row subGraphDiv">
-			<div class="col-xs-3" id="subGraph1" data-toggle="modal" data-target="#modal" data-tooltip 
-onclick="modal_content('#subGraph1')">
+			<div class="col-xs-3" id="subGraph1" data-toggle="modal"
+				data-target="#modal" data-tooltip
+				onclick="modal_content('#subGraph1')">
 				<div class="row">
 
 					<div class="container-fluid col-xs-12" id="twitterDiv">
@@ -247,23 +234,67 @@ onclick="modal_content('#subGraph1')">
 						</div>
 					</div>
 
+
+					<div  class="watermark subGraphDivHover"
+						data-toggle="modal" data-target="#modal" data-tooltip
+						onclick="modal_content('#twitterDiv'); twitterSearch($('#twitterSearchTextContent .title').text());">
+
+
+						<p>Click to open</p>
+					</div>
 				</div>
 			</div>
 
-			<div class="col-xs-3 offset-xs-1" id="subGraph2"  data-toggle="modal" data-target="#modal" data-tooltip 
-onclick="modal_content('#subGraph2')">
-				<div class="row subGraphDiv">
-					
-					<div class="container-fluid " id="chart">
-						</div>
+			<div class="col-xs-3 offset-xs-1" id="subGraph2">
+				<div class="row ">
+					<div class="EventsMonth ">
+
+						<div class="container-fluid " id="chart"></div>
+
+						<div class="container-fluid">Events per month</div>
+
 						
-					<div class="container-fluid">SubGraph 2</div>
 
-					<div class="container-fluid" id="subGraph2Title">Subgraph 2
-						Title</div>
+					</div>
 
+					<div  class="watermark subGraphDivHover"
+						data-toggle="modal" data-target="#modal" data-tooltip
+						onclick="modal_content('#chart'); $('.modal-dialog  #chart').empty();EventsMonth('.modal-dialog #chart')">
+
+						<p>Click to open</p>
+
+
+
+					</div>
 				</div>
+
 			</div>
+
+			<style>
+.watermark {
+	background: rgba(230, 230, 230, 0.51);
+	width: 100%;
+	height: 330px;
+	border-radius: 8px;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+.watermark p {
+	position: relative;
+	top: -60%;
+	left: 40%;
+	color: black;
+	cursor: pointer;
+}
+
+#EventsMonth {
+	position: relative;
+	top: 0;
+	left: 0;
+}
+</style>
 
 			<div class="col-xs-3  offset-xs-1" id="subGraph3">
 				<div class="row">
@@ -291,60 +322,68 @@ onclick="modal_content('#subGraph2')">
 
 <!-- <blockquote class="twitter-tweet" lang="en"><p>OKC-MEM prediction: Fourteen overtimes, 10 4-point plays, a Perkins 3-pointer, and Tony Allen kills a guy.</p>&mdash; Zach Lowe (@ZachLowe_NBA) <a href="https://twitter.com/ZachLowe_NBA/status/461995665887723520">May 1, 2014</a></blockquote> -->
 
- <style>
-<<<<<<< HEAD
- #subGraph2 .subGraphDiv{
- float: right;
-    height: 330px;
-    padding: 0px;
-    
-    border-radius: 8px;
-    background-color: white;
- }
-=======
->>>>>>> 7390837d10962bb139de04b5e8bd9aba0687d072
- #chart{
- background: #1f1f1f;
- }
- #chart path {
- stroke: yellow;
- stroke-width: 2;
- fill: #1f1f1f;
- }
- 
- #chart path.domain {
- 	stroke: transparent;
- }
-<<<<<<< HEAD
- #chart .tick text {
- 	fill: white;
-=======
- #chart .tick {
- 	
->>>>>>> 7390837d10962bb139de04b5e8bd9aba0687d072
- }
- .axis { shape-rendering: crispEdges; }
- .x.axis line { stroke: #1f1f1f; }
- .x.axis .minor { stroke-opacity: .5; }
- .x.axis path { display: none; }
- .y.axis line, .y.axis path {
- fill: none;
- stroke: #000;
- }
- .infobox {
- border:2px solid steelblue;
- border-radius:4px;
- box-shadow:#333333 0px 0px 10px;
- margin:200px auto;
- padding:5px 10px;
- background:rgba(255, 255, 255, 0.8);
- position:absolute;
- top:0px;
- left:0px;
- z-index:10500;
- font-weight:bold;
- }
- </style>
+<style>
+#subGraph2 .EventsMonth {
+	float: right;
+	height: 330px;
+	padding: 0px;
+	border-radius: 8px;
+	background-color: white;
+}
+
+#chart {
+	background: #1f1f1f;
+}
+
+#chart path {
+	stroke: yellow;
+	stroke-width: 2;
+	fill: #1f1f1f;
+}
+
+#chart path.domain {
+	stroke: transparent;
+}
+
+#chart .tick text {
+	fill: white;
+}
+
+.axis {
+	shape-rendering: crispEdges;
+}
+
+.x.axis line {
+	stroke: #1f1f1f;
+}
+
+.x.axis .minor {
+	stroke-opacity: .5;
+}
+
+.x.axis path {
+	display: none;
+}
+
+.y.axis line, .y.axis path {
+	fill: none;
+	stroke: #000;
+}
+
+.infobox {
+	border: 2px solid steelblue;
+	border-radius: 4px;
+	box-shadow: #333333 0px 0px 10px;
+	margin: 200px auto;
+	padding: 5px 10px;
+	background: rgba(255, 255, 255, 0.8);
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 10500;
+	font-weight: bold;
+}
+</style>
 <script>
            
     // These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here 
@@ -381,7 +420,8 @@ onclick="modal_content('#subGraph2')">
 
 
 <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
-<script type="text/javascript" src="http://static.mentful.com/gantt-chart-d3v2.js"></script>
+<script type="text/javascript"
+	src="http://static.mentful.com/gantt-chart-d3v2.js"></script>
 
 <script src="{% static 'js/d3-timeline/d3-timeline.js' %}"></script>
 <script src="{% static 'js/d3-linechart/d3-linechart.js' %}"></script>

@@ -20,7 +20,7 @@ $( document ).ready(function() {
 // The input "option" corresponds to the type of list that we are going to show. Ex. "sites" or "domains"
 
 function select(option){
-        
+	$('#hiddenID').val(0);  
         // When select function is invoked the list is emptied  
         $("#blockedSitesList").empty();
         
@@ -67,8 +67,8 @@ function select(option){
                                 	
                                 		
                                     $.each(secondLevelValue , function(thirdLevelKey , thirdLevelValue){ // Third Level 
-                                    	$('#hiddenID').val($('#hiddenID').val()+1);                                	                                                                           	
-                                        console.log(thirdLevelKey)	
+                                    	$('#hiddenID').val(Number($('#hiddenID').val())+1);                                	                                                                           	
+                          
                                         if(thirdLevelKey==show_result){
                                         
                                                     // We load the show_result value in the specific ID.  
@@ -104,7 +104,7 @@ function select(option){
                                                             // template that we need to change to a specific one for each element to then
                                                             // load the value of showResult there.
                                                         	
-                                                        	console.log(fifthLevelKey)	
+                                                      
                                                         	$('#blockedSitesList').append(result);
                                                             oldID = document.getElementById("value");
                                                             oldID.id = "idenDomain" + fifthLevelValue;
@@ -122,7 +122,7 @@ function select(option){
                                                             
                                                             $(".domain"+$('#hiddenID').val()).hide();
                                                             $(".domain"+$('#hiddenID').val()).addClass("col-xs-12");
-                                                            $('#hiddenLinkID').val( "domain"+$('#hiddenID').val() )
+                                                            $('#hiddenLinkID').val( "link"+$('#hiddenID').val() )
                                                             var parentID= $('#'+ $('#hiddenDomainLinkID').val()).parent(".subtitleBar");
                                                             var childID =$('#'+ $('#hiddenDomainLinkID').val());
                                                             var count=0;
@@ -173,9 +173,10 @@ function select(option){
                     }).fail( function( jqXHR, textStatus, errorThrown ) {
                         $('#blockedSitesList').html(" ");
                     });
-            
+  
         }
         else {
+
             // This variable loads the translated string of the title corresponding to the "domain" option
             var domain=$("#domains").val();            
             $("#title").html(domain);
@@ -251,15 +252,14 @@ function select(option){
                                                         $('#blockedSitesList').html(" ");
                                                     });
                                         }
-                                        console.log(thirdLevelValue)
+                
                                         if(thirdLevelKey==show_result){
                                         			
                                                     // We load the show_result value in the specific ID.  
                                         			
                                         
-                                        			console.log($('#hiddenID').val())
                                                     $('#'+ $('#hiddenID').val()).html(thirdLevelValue);
-                                        			console.log(show_result)
+                                     
                                                     // If the element is a site we need to add the "external-link" icon and remove the "lock" icon 
                                                     if(show_result!="name")
                                                         $("#"+$('#hiddenLinkID').val()).find("a").attr("href","http://"+thirdLevelValue);

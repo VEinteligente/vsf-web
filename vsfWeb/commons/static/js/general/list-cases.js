@@ -837,25 +837,24 @@ $("#advanced_search")
 																																	fourthLevelKey,
 																																	fourthLevelValue) {
 
-																																$(
-																																		".listCases")
-																																		.find(
-																																				".site")
-																																		.append(
-																																				fourthLevelValue.site);
-																																$(
-																																		".listCases")
-																																		.find(
-																																				".site")
-																																		.addClass(
-																																				"siteSort");
-																																$(
-																																		".listCases")
-																																		.find(
-																																				".site")
-																																		.removeClass(
-																																				"site");
-																															});
+																																if (thirdLevelValue.length < 2) {
+																																	
+																																	$(".listCases").find(".site").append(fourthLevelValue.site);
+
+																																} else {
+																																
+																																	
+																																			$(".listCases").find(".site").html("Varios");
+																																		
+
+																																}				
+																																
+//																																$(".listCasesAdvanced").find(".site").append(fourthLevelValue.site);
+																																				
+																																				$(".listCases").find(".site").addClass("siteSort");
+																																				$(".listCases").find(".site").removeClass("site");
+
+																																			});
 																										}
 
 																										if (thirdLevelKey == "start_date") {

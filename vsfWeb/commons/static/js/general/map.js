@@ -314,7 +314,7 @@ $(document)
 										for (var i = 0; i < data.length; i++)
 											temporal = temporal.concat(data[i]);
 										var dataJson = JSON.parse(temporal);
-
+console.log(dataJson)
 										$
 												.each(
 														dataJson,
@@ -447,31 +447,17 @@ $(document)
 																																								+ "link"
 																																								+ counterCase;
 
-																																						$(
-																																								"#"
-																																										+ "link"
-																																										+ counter
-																																										+ "link"
-																																										+ counterCase)
-																																								.find(
-																																										"a")
-																																								.find(
-																																										"i")
-																																								.removeClass(
-																																										"fa-lock");
-																																						$(
-																																								"#"
-																																										+ "link"
-																																										+ counter
-																																										+ "link"
-																																										+ counterCase)
-																																								.find(
-																																										"a")
-																																								.find(
-																																										"i")
-																																								.addClass(
-																																										"fa-external-link");
+																																						$("#" + "link" + counter + "link" + counterCase).find("a").find("i").removeClass("fa-lock");
+																																						$("#" + "link" + counter + "link" + counterCase).find("a").find("i").addClass("fa-external-link");
+																																						$("#" + "link" + counter + "link" + counterCase).find("a").find("i").addClass("fa-external-link");
+																																						$("#" + "link" + counter + "link" + counterCase).find("a").attr("href", url_web+"/cases/case/"+$("#caseID").val());
 
+																																					}
+																																					
+																																					if(fifthKey == "id"){
+																																					
+																																						$("#caseID").val(fifthValue) ;
+																																					
 																																					}
 
 																																				});

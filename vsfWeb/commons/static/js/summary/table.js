@@ -99,7 +99,7 @@ function select(option) {
 												// name of the category it is
 												// iterating on
 												name = (result.category).display_name;
-
+												aux = (result.category).name;
 												// number of cases the catefory
 												// has
 												number = result.number_cases;
@@ -142,7 +142,7 @@ function select(option) {
 																	title = value.title;
 
 																	if (name == "bloqueo") {
-																		content = "blocked";
+																		content = aux;
 
 																		$(
 																				"#data"
@@ -152,7 +152,7 @@ function select(option) {
 																								+ title
 																								+ '</td><td style="min-width:300px"><div class="'
 																								+ content
-																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																								+ '"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
 																								+ '</div><div class="right_cornerTag"></div></div> </td><td><a href="http://127.0.0.1:8000/cases/one-element-case/'
 																								+ value.id
@@ -161,7 +161,7 @@ function select(option) {
 																	}
 
 																	else if (name == "desconexion") {
-																		content = "disconnected";
+																		content = aux;
 
 																		$(
 																				"#data"
@@ -171,7 +171,7 @@ function select(option) {
 																								+ title
 																								+ '</td><td style="min-width:135px"><div class="'
 																								+ content
-																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																								+ '"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
 																								+ '</div><div class="right_cornerTag"></div></div> </td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'
 																								+ value.id
@@ -180,7 +180,7 @@ function select(option) {
 																	}
 
 																	else if (name == "relentizacion") {
-																		content = "slowdown";
+																		content = aux;
 
 																		$(
 																				"#data"
@@ -190,7 +190,7 @@ function select(option) {
 																								+ title
 																								+ '</td><td style="min-width:135px"><div class="'
 																								+ content
-																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																								+ '"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
 																								+ '</div><div class="right_cornerTag"></div></div></td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'
 																								+ value.id
@@ -199,7 +199,7 @@ function select(option) {
 																	}
 
 																	else if (name == "conexion") {
-																		content = "continue";
+																		content = aux;
 
 																		$(
 																				"#data"
@@ -209,7 +209,7 @@ function select(option) {
 																								+ title
 																								+ '</td><td style="min-width:135px"><div class="'
 																								+ content
-																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																								+ '"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
 																								+ '</div><div class="right_cornerTag"></div></div> </td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'
 																								+ value.id
@@ -218,7 +218,7 @@ function select(option) {
 																	}
 
 																	else if (name == "intercepcion") {
-																		content = "interception";
+																		content = aux;
 
 																		$(
 																				"#data"
@@ -228,7 +228,7 @@ function select(option) {
 																								+ title
 																								+ '</td><td style="min-width:135px"><div class="'
 																								+ content
-																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																								+ '"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
 																								+ '</div><div class="right_cornerTag"></div></div></td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'
 																								+ value.id
@@ -237,7 +237,7 @@ function select(option) {
 																	}
 
 																	else if (name == "falla") {
-																		content = "fail";
+																		content = aux;
 
 																		$(
 																				"#data"
@@ -247,7 +247,7 @@ function select(option) {
 																								+ title
 																								+ '</td><td style="min-width:135px"><div class="'
 																								+ content
-																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																								+ '"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
 																								+ '</div><div class="right_cornerTag"></div></div> </td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'
 																								+ value.id
@@ -256,7 +256,7 @@ function select(option) {
 																	}
 
 																	else {
-																		content = "dos";
+																		content = aux;
 
 																		$(
 																				"#data"
@@ -266,7 +266,7 @@ function select(option) {
 																								+ title
 																								+ '</td><td style="min-width:135px"><div class="'
 																								+ content
-																								+ '_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																								+ '"><div class="left_cornerTag"></div><div class="contentTag">'
 																								+ name
 																								+ '</div><div class="right_cornerTag"></div></div> </td><td> <a href="http://127.0.0.1:8000/cases/one-element-case/'
 																								+ value.id

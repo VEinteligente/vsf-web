@@ -759,7 +759,15 @@ input#title{
 
 
   }
- 
+  
+twitterwidget::shadow .Tweet-card,twitterwidget::shadow  .Tweet-actions,twitterwidget::shadow  .TweetAuthor-screenName,
+twitterwidget::shadow .Tweet-brand {
+    	display:none;
+}
+
+twitterwidget::shadow .TweetAuthor-name{display: block; margin-top: 7px;}
+
+    
 #caseImage{
     padding-left: 0;
     clip-path: inset(0px 1px 1px 0px );
@@ -801,7 +809,9 @@ input#title{
     
     }
 }
-
+#updateListAjax{
+margin-left: 30px;
+}
 .timeline1{ 
 
 

@@ -453,7 +453,7 @@ $(document)
 																												.getFullYear()
 																										+ '</div></div><div class="col-xs-2" style="padding-left: 0;"><div class="symbolBlocked"></div></div></div><div class="col-xs-7 content" style="padding-left: 0;">'
 																										+ update_text
-																										+ '</div><div class="col-xs-3 share"><a href="#">View more...</a><a href="#" target="_blank"><i class="fa fa-facebook-square "></i></a><a href="#" target="_blank"><i class="fa fa-twitter"></i></a><a href="#" target="_blank"><i class="fa fa-pinterest"></i></a></div></div>');
+																										+ '</div><div class="col-xs-3 share"></div></div>');
 																			} else if (update_category == "info") {
 																				$(
 																						'#updateListAjax')

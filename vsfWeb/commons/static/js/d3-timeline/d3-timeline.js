@@ -882,21 +882,26 @@ $
 							
 					
 						
-						var timelineStart = (new Date('01-01-2017')).getTime();
-						var timelineEnd = (new Date('07-31-2017')).getTime();
+						
 				
 						var testData = dataResult
 					
-						var chart = d3.timeline().showTimeAxisTick().stack().beginning(timelineStart).ending(timelineEnd);
+						var chart = d3.timeline().showTimeAxisTick().stack();
 
 						
 						var margin = {top: 35, right: 200, bottom: 20, left: 80},
-					    width = 960 - (margin.left + margin.right);
-					    height = 400 - (margin.top + margin.bottom);
+					    width = 1024 - (margin.left + margin.right);
+						height = 220 - (margin.top + margin.bottom);
 					    
 					    
-						var svg = d3.select("#timeline1").append("svg").attr("width", width +  margin.left + margin.right)
-					    .attr("height", height + margin.top + margin.bottom)
+						var svg = d3.select("#timeline1")//container class to make it responsive
+						.append("svg").attr("preserveAspectRatio", "xMinYMin meet")
+						.attr("width", width + (margin.left + margin.right))
+						.attr("height", height )
+						   .attr("viewBox", "0 0 " + height + " "
+								 + ( width - 544 )  )
+						   //class to make it responsive
+						   .classed("svg-content-responsive", true)
 						  .datum(testData).call(chart);
 
 

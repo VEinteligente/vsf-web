@@ -558,8 +558,9 @@ button {
 
 .timelineBarContinue{
     color: white;
-    height: 24px;
+    height: 20px;
     padding: 0;
+    width: 105%; 
     
     background-color: $green-tag;
        
@@ -592,8 +593,10 @@ button {
 
 .timelineBarClosed{
     color: white;
-    height: 24px;
+    height: 20px;
     padding: 0;
+    width:100%;
+    font-weight: bold;
     
     background-color: $red-tag;
        
@@ -605,7 +608,7 @@ button {
         .status{
             text-align: right;
             padding:0;
-            padding-right:16px;
+            padding-right:4px;
         }
     
         &:after{
@@ -755,5 +758,6 @@ button {
 	 margin: auto;
 
  }
+
 }
 

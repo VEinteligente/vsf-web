@@ -442,6 +442,11 @@ input#title{
 .multipleChoices, .resumeResult{
     margin-bottom: 16px;
 }
+
+.multipleChoices{
+	padding-right: 0px;
+}
+
 #advanced_search .chosen-container:after {
   padding:0;margin:0;
   display:block;/* not really needed */
@@ -918,11 +923,13 @@ margin-left: 30px;
 
 #caseDomainList{
 	 overflow: auto;
-	 height: 176px;
-	 padding-top:8px;
-	 padding-left:0px;
-	 padding-right:0px;
-	 padding-bottom:8px;
+    height: 176px;
+    margin-top: 8px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    background: #fff;
 }
 
 
@@ -933,7 +940,7 @@ margin-left: 30px;
 #caseDomainList::-webkit-scrollbar-thumb {
   background-image: url("/commons/static/img/icons/vsf_iconscrollbar_v101.svg");
   background-repeat: no-repeat;
-  height: 50px !important;
+  height: 15px !important;
   background-position: center; }
 
 #caseDomainList::-webkit-scrollbar-button:start {
@@ -946,7 +953,7 @@ margin-left: 30px;
 
 
 #dateBar{
-	padding-top:6px;
+	padding-top:8px;
 	padding-left:10px;
 	padding-right:10px;
 	margin-bottom: 8px;
@@ -987,8 +994,71 @@ margin-left: 30px;
 	padding-left:16px;
 }
 
+.social{
+	padding: 0px 8px;
+}
+a{
+	color: #4067e1;
+	 white-space: nowrap;
+}
+
+#shareFacebook{
+	text-decoration: none;
+}
+
+#shareTwitter{
+	text-decoration: none;
+}
+
+#shareReddit{
+	text-decoration: none;
+}
+
+.clickable{
+	cursor: pointer;
+}
+
+
 /* RESPONSIVE */
 
+
+@media print {
+    .accordion-group .accordion-body.collapse {
+        height: auto;
+    }
+   
+   	*{
+   	background-color: #fff;
+   	color: #000;
+   	margin-top: -140px;
+   }
+   
+   #caseImage{
+	    padding-left: 0;
+	    clip-path: inset(0px 0px 25% 0px );
+	    max-height:268px;
+	    img{
+	    	border-radius:8px;
+	    	overflow:hidden;
+	    }
+	    .img-fluid{
+	    	clip-path: inset(0px 0px 25% 0px);
+	    	-webkit-clip-path: inset(0px 0px 25% 0px);
+	    }
+	}
+	
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid; // Prevent headings from being printed at the bottom of the page
+  }
+
+  article {
+    page-break-before: always; // Always start new articles on a new page
+  }
+
+  img {
+    page-break-inside: avoid; // Prevent images from being split up
+  }
+}
 
 
 @media #{$xs_only} {

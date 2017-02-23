@@ -67,6 +67,9 @@ $(document)
 					
 					$("#measurementsLink").attr("href", url_data_measurements);
 					
+					$("#measurementsTitle").click(function(){
+						window.location = url_data_measurements;
+					})
 
 					// This AJAX call corresponds to the request of the JSON data from Pandora
 					// project API.
@@ -378,6 +381,7 @@ $(document)
 											
 										}
 										else{
+											$('#twitterDiv').css('padding-right','0');
 											$('#twitterTweet').html("<div class='failedService'><img style='background:gray' src='"+ fail_twitter_img + "' alt='service fail' /><br><p>No search word</p></div>");
 
 										}

@@ -751,22 +751,33 @@ input#title{
   }
 
  #twitterTweet::-webkit-scrollbar-button:start{
-  background-image: url("/commons/static/img/icons/vsf_iconarrow_v101.svg"); 
-  background-position: center;
-
+  height: 36px;
+  background-image: url("/commons/static/img/icons/vsf_iconarrow_v101.svg?809b3d26489e");
+  background-repeat: no-repeat;
+  background-position: top 16px left 0;
   }
 
 #twitterTweet::-webkit-scrollbar-button:end{
-
-  background-image: url("/commons/static/img/icons/vsf_iconarrowdown_v101_end.svg"); 
-
-  background-position: center;
-
+  background-image: url("/commons/static/img/icons/vsf_iconarrowdown_v101_end.svg?809b3d26489e");
+  background-position: center; 
+   background-repeat: no-repeat;
 
   }
   
+twitterwidget::shadow .EmbeddedTweet{
+	border-radius: 8px;
+	
+}
+
+twitterwidget::shadow .EmbeddedTweet-tweet{
+	border: none;
+	
+}
+
+
+     
 twitterwidget::shadow .Tweet-card,twitterwidget::shadow  .Tweet-actions,twitterwidget::shadow  .TweetAuthor-screenName,
-twitterwidget::shadow .Tweet-brand {
+twitterwidget::shadow .Tweet-brand, twitterwidget::shadow  .MediaCard-media{
     	display:none;
 }
 
@@ -922,7 +933,7 @@ margin-left: 30px;
 }
 
 #caseDomainList{
-	 overflow: auto;
+	overflow: auto;
     height: 176px;
     margin-top: 8px;
     padding-left: 0px;

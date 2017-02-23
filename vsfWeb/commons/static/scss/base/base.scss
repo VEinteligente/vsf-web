@@ -91,7 +91,7 @@ body {
 
 .titleBarContent{
 	border-radius: 8px;
-	box-shadow: 5px 10px 5px #DADADA;
+	box-shadow: 0 12px 18px -12px rgba(0, 0, 0, 0.27), 0 3px 21px 0px rgba(0, 0, 0, 0.12), 0 6px 12px -6px rgba(0, 0, 0, 0.12);
 	background: #f2f2f2;
 	height: 45px;
 	padding-left: 35px;
@@ -558,8 +558,9 @@ button {
 
 .timelineBarContinue{
     color: white;
-    height: 24px;
+    height: 20px;
     padding: 0;
+    width: 105%; 
     
     background-color: $green-tag;
        
@@ -584,16 +585,18 @@ button {
             position: absolute;
             border-color: transparent;
             border-right-color: $green-tag;
-            border-width: 12px;
-            margin-top: -12px;
+            border-width: 10px;
+            margin-top: -10px;
         }
     
 }
 
 .timelineBarClosed{
     color: white;
-    height: 24px;
+    height: 20px;
     padding: 0;
+    width:100%;
+    font-weight: bold;
     
     background-color: $red-tag;
        
@@ -605,7 +608,7 @@ button {
         .status{
             text-align: right;
             padding:0;
-            padding-right:16px;
+            padding-right:4px;
         }
     
         &:after{
@@ -618,8 +621,8 @@ button {
             position: absolute;
             border-color: transparent;
             border-right-color: $red-tag;
-            border-width: 12px;
-            margin-top: -12px;
+            border-width: 10px;
+            margin-top: -10px;
         }
         
         &:before {
@@ -632,8 +635,8 @@ button {
 		    position: absolute;
 		    border-color: transparent;
 		    border-right-color: #FF2115;
-            border-width: 12px;
-            margin-top: -12px;
+            border-width: 10px;
+            margin-top: -10px;
      		-moz-transform: scaleX(-1);
 	        -o-transform: scaleX(-1);
 	        -webkit-transform: scaleX(-1);
@@ -755,5 +758,6 @@ button {
 	 margin: auto;
 
  }
+
 }
 

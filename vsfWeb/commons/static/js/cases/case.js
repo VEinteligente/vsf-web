@@ -88,7 +88,7 @@ $(document)
 											temporal = temporal.concat(dataJson[i]);
 
 										var data = JSON.parse(temporal);
-
+											$('#footerCaseInfo').append(data);
 											$("#caseCategory").append('&nbsp <div class="'
 													+ (data.category).name
 													+ '"><div class="left_cornerTag"></div><div class="contentTag">'
@@ -102,7 +102,7 @@ $(document)
 												//we only show the url which triggered the probe
 												if(result.site == null){
 													
-													$("#domainTableBody").append('<tr><td id="nameDomain" style="width:100%">'+result.url+'</td><td><i class="fa fa-lock" aria-hidden="true"></i></td></tr>');
+													$("#domainTableBody").append('<tr><td id="nameDomain" style="width:100%">'+result.url+'</td><td><i class="fa fa-external-link" aria-hidden="true"></i></td></tr>');
 												}
 												
 												//Site Name with a collapse div of the url that belongs to the site
@@ -112,7 +112,7 @@ $(document)
 												
 													$.each(data.domains, function(index, result){
 												
-														$("#data"+result.site).append('<tr class="rowDomain"><td id="siteDomain" style="width:100%">'+result.url+'</td><td><i class="fa fa-lock" aria-hidden="true"></i></td></tr>');
+														$("#data"+result.site).append('<tr class="rowDomain"><td id="siteDomain" style="width:100%">'+result.url+'</td><td><i class="fa fa-external-link" aria-hidden="true"></i></td></tr>');
 											
 													})
 												
@@ -271,14 +271,14 @@ $(document)
 																+ image_meta
 																+ '" />');
 
-										$('#titleDateAjax').html(
-												date.getDate()
-														+ "/"
-														+ month_number[date
-																.getMonth()]
-														+ "/"
-														+ date.getFullYear());
-
+										$('#titleDateAjax').html(date.getDate()
+														+ "/" + month_number[date.getMonth()]
+														+ "/" + date.getFullYear());
+										
+										$('#hiddenDate').val(month_number[date.getMonth()]
+												+ "/" + date.getDate()
+										+ "/" + date.getFullYear());
+										
 										$.each(dataJson.isp, function(
 												secondLevelKey,
 												secondLevelValue) {
@@ -325,6 +325,9 @@ $(document)
 																	+ month_number[date.getMonth()]
 																	+ "/"
 																	+ date.getFullYear());
+											
+											$('#hiddenDateEnd').val(new Date());
+											
 										}
 										else{
 											$('#statusDateAjax').html(date.getDate()
@@ -339,8 +342,14 @@ $(document)
 													+ "/"
 													+ dateEnd.getFullYear());
 											
-											$(".timelineBarContinue").addClass("timelineBarClosed")
-											$(".timelineBarContinue").removeClass("timelineBarContinue")
+											$(".timelineBarContinue").addClass("timelineBarClosed");
+											$(".timelineBarContinue").removeClass("timelineBarContinue");
+											
+											$('#hiddenDateEnd').val( month_number[dateEnd.getMonth()]
+													+ "/"
+													+ dateEnd.getDate()
+													+ "/"
+													+ dateEnd.getFullYear());
 									
 										}
 
@@ -451,7 +460,7 @@ $(document)
 																										+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
 																										+ update_date
 																												.getFullYear()
-																										+ '</div></div><div class="col-xs-2" style="padding-left: 0;"><div class="symbolBlocked"></div></div></div><div class="col-xs-7 content" style="padding-left: 0;">'
+																										+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked"></div></div></div><div class="col-xs-7 content" style="padding-left: 0;">'
 																										+ update_text
 																										+ '</div><div class="col-xs-3 share"></div></div>');
 																			} else if (update_category == "info") {
@@ -467,7 +476,7 @@ $(document)
 																										+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
 																										+ update_date
 																												.getFullYear()
-																										+ '</div></div><div class="col-xs-2" style="padding-left: 0;"><div class="symbolBlocked" style = "background:cyan"></div></div></div><div class="col-xs-7 content" style="padding-left: 0;">'
+																										+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked" style = "background:cyan"></div></div></div><div class="col-xs-7 content" style="padding-left: 0;">'
 																										+ update_text
 																										+ '</div><div class="col-xs-3 share"><a href="#">View more...</a><a href="#" target="_blank"><i class="fa fa-facebook-square "></i></a><a href="#" target="_blank"><i class="fa fa-twitter"></i></a><a href="#" target="_blank"><i class="fa fa-pinterest"></i></a></div></div>');
 																			} else {
@@ -483,7 +492,7 @@ $(document)
 																										+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
 																										+ update_date
 																												.getFullYear()
-																										+ '</div></div><div class="col-xs-2" style="padding-left: 0;"><div class="symbolBlocked" style = "background:green"></div></div></div><div class="col-xs-7 content" style="padding-left: 0;">'
+																										+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked" style = "background:green"></div></div></div><div class="col-xs-7 content" style="padding-left: 0;">'
 																										+ update_text
 																										+ '</div><div class="col-xs-3 share"><a href="#">View more...</a><a href="#" target="_blank"><i class="fa fa-facebook-square "></i></a><a href="#" target="_blank"><i class="fa fa-twitter"></i></a><a href="#" target="_blank"><i class="fa fa-pinterest"></i></a></div></div>');
 																			}
@@ -493,7 +502,8 @@ $(document)
 
 															
 														});
-
+										
+										gantt();
 									}).fail(function(jqXHR, textStatus, errorThrown) {
 										$('#twitterDiv').html("<div class='failedService'><img style='margin-top: 100px; background:gray' src='"+ fail_twitter_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 										$('#caseImage').closest('.container-fluid').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
@@ -505,8 +515,12 @@ $(document)
 										
 										
 									});
-
+					
+					
 				});
+
+
+
 
 // function for the domain/sites list in the page
 
@@ -583,7 +597,6 @@ function select(option) {
 					})
 					;
 
-	
 
 }
 

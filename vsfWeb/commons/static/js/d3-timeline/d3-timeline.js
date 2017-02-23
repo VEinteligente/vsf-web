@@ -1,4 +1,72 @@
-// vim: ts=2 sw=2
+function gantt(){// vim: ts=2 sw=2
+	
+	
+	var timelineStart = (new Date($('#hiddenDate').val())).getTime();
+	var timelineEnd = (new Date($('#hiddenDateEnd').val())).getTime();
+	var dateStart = new Date($('#hiddenDate').val());
+	var start = (new Date($('#hiddenDateEnd').val()));
+	var timeDiff = Math.abs(timelineEnd- timelineStart);
+	var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+	
+	if(diffDays < 3){
+		
+			var tickFormat = { format: d3.time.format("%d %b"),
+			          tickTime: d3.time.days,
+			          tickInterval: 1,
+			          tickSize: 6,
+			          tickValues: null
+			        };
+			
+			
+			
+		
+	}
+	else{
+		if(diffDays < 7) {
+			var tickFormat = { format: d3.time.format("%d %b"),
+			          tickTime: d3.time.days,
+			          tickInterval: 1,
+			          tickSize: 6,
+			          tickValues: null
+			        };
+			
+			
+			timelineStart = dateStart.setDate(start.getDate() - 7);
+		}
+		else{
+			if(diffDays < 31) {
+				var tickFormat = { format: d3.time.format("%d %b"),
+				          tickTime: d3.time.days,
+				          tickInterval: 2,
+				          tickSize: 6,
+				          tickValues: null
+				        };
+				timelineStart = new Date(start.getFullYear(), start.getMonth(), 1);
+			}
+			else{
+				if(diffDays < 365){
+					var tickFormat = { format: d3.time.format("%B %Y"),
+					          tickTime: d3.time.months,
+					          tickInterval: 1,
+					          tickSize: 6,
+					          tickValues: null
+					        };
+					
+					timelineStart = new Date(start.getFullYear(), 0, 1);
+				}
+				else{
+					var tickFormat = { format: d3.time.format("%B %Y"),
+					          tickTime: d3.time.years,
+					          tickInterval: 1,
+					          tickSize: 6,
+					          tickValues: null
+					        };
+				}
+			}
+		}
+	}
+	
+	
 (function () {
   d3.timeline = function() {
     var DISPLAY_TYPES = ["circle", "rect"];
@@ -16,12 +84,12 @@
         height = null,
         rowSeparatorsColor = null,
         backgroundColor = null,
-        tickFormat = { format: d3.time.format("%B"),
-          tickTime: d3.time.months,
-          tickInterval: 1,
-          tickSize: 6,
-          tickValues: null
-        },
+//        tickFormat = { format: d3.time.format("%a %d"),
+//		          tickTime: d3.time.days,
+//		          tickInterval: 1,
+//		          tickSize: 6,
+//		          tickValues: null
+//        },
         colorCycle = d3.scale.category20(),
         colorPropertyName = null,
         display = "rect",
@@ -780,6 +848,7 @@ var testData = [
                   {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]}
                 ];
 
+
 // This AJAX call corresponds to the request of the JSON data from Pandora
 // project API.
 $
@@ -879,14 +948,14 @@ $
 								dataResult.push(element)
 								
 							}
-							
-					
+			
 						
 						
 				
 						var testData = dataResult
 					
-						var chart = d3.timeline().showTimeAxisTick().stack();
+						var chart = d3.timeline().showTimeAxisTick().stack().beginning(timelineStart).ending(timelineEnd);
+;
 
 						
 						var margin = {top: 35, right: 200, bottom: 20, left: 80},
@@ -930,5 +999,6 @@ $
 					
 					$('#twitterDiv').css('padding-right','0');
 				});
+}
 
 

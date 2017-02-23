@@ -3,13 +3,14 @@ import csv
 import datetime
 import json
 import pdfkit
+import requests
 
 from django.conf import settings
 from django.http import HttpResponse
 from django.views.generic import (TemplateView)
 from rest_framework.response import Response
 from rest_framework.views import (APIView)
-import requests
+
 
 
 class Case(TemplateView):
@@ -255,14 +256,34 @@ def CaseCVS(request, pk):
 
 
 def CasePdf(request, pk="1"):
-
-    pdf = pdfkit.from_url(
-        settings.URL_VSF_WEB +
-        '/cases/one-element-case/' +
+    """This view makes the pdf file available with the download button in the case page"""
+    
+    # Get the list of all the cases and load it as JSON
+    headers = {'Authorization': settings.SERVICES_TOKEN}
+    snippet = requests.get(
+        settings.URL_VSF +
+        '/cases/api/detail/' +
         pk,
+        headers=headers)
+    data = json.loads(snippet.text)
+    
+    #case ID
+    id = data['id']
+    title = data['title']
+    
+    pdf = pdfkit.from_file(
+        settings.BASE_DIR+'/commons/static/pdf/case-pdf.html',
         False,
         options={
-            'javascript-delay': 4500})
+            'javascript-delay': '3000',
+            #'print-media-type':'',
+            #'header-html':settings.BASE_DIR+'/commons/static/pdf/header.html',
+            #'footer-html':settings.BASE_DIR+'/commons/static/pdf/footer.html',
+            'margin-left':'5',
+            'margin-right':'5',
+            'viewport-size':'1400',
+
+            })
     response = HttpResponse(pdf, content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="case_' + \
         pk + '.pdf'

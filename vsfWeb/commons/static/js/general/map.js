@@ -415,20 +415,12 @@ console.log(dataJson)
 
 																																					if (fifthKey == "title") {
 
-																																						$(
-																																								'#value')
-																																								.html(
-																																										fifthValue);
+																																						$('#value').html(fifthValue);
+																																						$('#value').removeClass('col-xs-11');
+																																						$('#value').addClass('col-xs-10');
 																																						counterCase = counterCase + 1;
-																																						$(
-																																								'#value')
-																																								.closest(
-																																										".subtitleBar")
-																																								.hide();
-																																						oldLinkID = $(
-																																								'#value')
-																																								.closest(
-																																										".subtitleBar");
+																																						$('#value').closest(".subtitleBar").hide();
+																																						oldLinkID = $('#value').closest(".subtitleBar");
 
 																																						oldLinkID
 																																								.addClass("class"
@@ -447,9 +439,12 @@ console.log(dataJson)
 																																								+ "link"
 																																								+ counterCase;
 
-																																						$("#" + "link" + counter + "link" + counterCase).find("a").find("i").removeClass("fa-lock");
-																																						$("#" + "link" + counter + "link" + counterCase).find("a").find("i").addClass("fa-external-link");
-																																						$("#" + "link" + counter + "link" + counterCase).find("a").find("i").addClass("fa-external-link");
+																																						$("#" + "link" + counter + "link" + counterCase).find("a").html("Abrir");
+																																						
+																																						$("#" + "link" + counter + "link" + counterCase).removeClass("col-xs-10");
+																																						$("#" + "link" + counter + "link" + counterCase).addClass("col-xs-2");
+																										
+																										
 																																						$("#" + "link" + counter + "link" + counterCase).find("a").attr("href", url_web+"/cases/case/"+$("#caseID").val());
 
 																																					}

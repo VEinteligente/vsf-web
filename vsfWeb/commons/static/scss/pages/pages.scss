@@ -769,6 +769,9 @@ twitterwidget::shadow .EmbeddedTweet{
 	
 }
 
+twitterwidget::shadow .Tweet-metadata, twitterwidget::shadow .Tweet-body, twitterwidget::shadow .Tweet-header{
+	font-size: 12px;
+} 
 twitterwidget::shadow .EmbeddedTweet-tweet{
 	border: none;
 	

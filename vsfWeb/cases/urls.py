@@ -8,6 +8,7 @@ from views import (
     CaseUpdateApi,
     GanttEvents,
     GanttEventsApi,
+    PdfView,
     SpeedTestCase,
     EventsMonth)
 
@@ -18,11 +19,15 @@ urlpatterns = [
         name="Case"),
     url(r'^case-excel/$', CaseCVS, name="ExcelCaseCVSEmpty"),
     url(r'^case-excel/id=(?P<pk>\d+)/$', CaseCVS, name="ExcelCaseCVS"),
-    url(r'^case-pdf/id=(?P<pk>\d+)/$', CasePdf, name="CasePdf"),
+    
     url(r'^case-pdf/$', CasePdf, name="CasePdfEmpty"),
+    url(r'^case-pdf/id=(?P<pk>\d+)$', CasePdf, name="CasePdf"),
     url(r'^case-api/(?P<pk>\d+)/$',
         CaseApi.as_view(),
         name="CaseApi"),
+    url(r'^case-pdf-view/(?P<pk>\d+)/$',
+        PdfView.as_view(),
+        name="PdfView"),
     url(r'^case-update-api/(?P<pk>\d+)/$',
         CaseUpdateApi.as_view(),
         name="CaseUpdateApi"),

@@ -260,11 +260,10 @@ def CasePdf(request, pk="1"):
 
     pdf = pdfkit.from_url(
         settings.URL_VSF_WEB +
-        '/cases/case-pdf/id='+pk,
+        '/cases/case-pdf-view/'+pk +'/',
         False)
     response = HttpResponse(pdf, content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="case_' + \
-        pk + '.pdf'
+    response['Content-Disposition'] = 'attachment; filename="case_' + pk + '.pdf'
 
     return response
     

@@ -56,9 +56,9 @@ $(document)
 					var url_share_reddit = "http://www.reddit.com/submit?url=http://dev.web.pandora.saturno.space"
 						+ url_case;
 					$("#download").attr("href", url_one_case_excel + "id=" + pk);
-					
-					$('#downloadPdf').attr("href", url_one_case_pdf + "id=" +pk);
-					
+					console.log(url_one_case_pdf+pk);
+					$('#downloadPdf').attr("href", url_pdf_prueba);
+					$('#SavePdf').attr("href", url_one_case_pdf);
 					$("#shareFacebook").attr("href", url_share_facebook);
 
 					$("#shareTwitter").attr("href", url_share_twitter);
@@ -102,7 +102,7 @@ $(document)
 												//we only show the url which triggered the probe
 												if(result.site == null){
 													
-													$("#domainTableBody").append('<tr><td id="nameDomain" style="width:100%">'+result.url+'</td><td><i class="fa fa-external-link" aria-hidden="true"></i></td></tr>');
+													$("#domainTableBody").append('<tr><td id="nameDomain" style="width:100%">'+result.url+'</td><td><a href="'+result.url+'"><i class="fa fa-external-link" aria-hidden="true"></i></a></td></tr>');
 												}
 												
 												//Site Name with a collapse div of the url that belongs to the site
@@ -112,7 +112,7 @@ $(document)
 												
 													$.each(data.domains, function(index, result){
 												
-														$("#data"+result.site).append('<tr class="rowDomain"><td id="siteDomain" style="width:100%">'+result.url+'</td><td><i class="fa fa-external-link" aria-hidden="true"></i></td></tr>');
+														$("#data"+result.site).append('<tr class="rowDomain"><td id="siteDomain" style="width:100%">'+result.url+'</td><td><a href="'+result.url+'"><i class="fa fa-external-link" aria-hidden="true"></i></a></td></tr>');
 											
 													})
 												

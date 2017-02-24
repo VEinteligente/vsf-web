@@ -7,8 +7,14 @@
 <input id="continueTrans" type="hidden" value="{% trans 'Continua' %}">
 <input id="domainTrans" type="hidden" value="{% trans 'Dominios' %}">
 <input id="siteTrans" type="hidden" value="{% trans 'Sitios' %}">
+<style>
+	body{
+		background: white;
+	}
+</style>
 
-<div style="background-color: #DEDEDE; margin-top: 25px;">
+
+<div style=" margin-top: 25px;">
 
 	<div class="bodyContent">
 
@@ -40,34 +46,21 @@
 
 
 					<div class="row">
-
-						<div class="container" id="caseDomainList">
-							<div>
-
-								<table class="table table-hover" id="tableDomain">
-
-									<thead>
-
-										<tr>
-
-											<th id="caseCategory" class="h4Style">
-											{% trans "Category: "%}</th>
-
-										</tr>
-
-
-									</thead>
-
-
-									<tbody id="domainTableBody">
-
-									</tbody>
-
-
-								</table>
-
+						
+						<div id="caseCategory" class="h4Style">
+							{% trans "Category: "%}
+						</div>
+						
+						<div class="bodyContent" style='margin-top: 10px;' id="caseDescriptionContent">
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="h3Style">{% trans "Descripcion: " %}</div>
+									<p id="descriptionAjax"></p>
+								</div>
 							</div>
 						</div>
+											
+						
 					</div>
 
 					<div class="row toolbar" id="providerBar">
@@ -95,24 +88,10 @@
 
 	<div class="bodyContent titleBarContent">
 		<div class="row">
-			<div class="col-xs-2 h4Style">
-				<a id="download" href="#"> {% trans 'Download' %} CVS </a>
-
-			</div>
+	
 
 			<div class="col-xs-2 h4Style">
 				<a id="SavePdf" href="#"> {% trans 'Download' %} PDF </a>
-			</div>
-
-			<div class="col-xs-8 downloadBar">
-				<a href="" id="shareFacebook" target="_blank"> <i
-					class="fa fa-facebook social" aria-hidden="true"></i>
-				</a> <a href="" id="shareTwitter" target="_blank"> <i
-					class="fa fa-twitter social" aria-hidden="true"></i>
-				</a> <a href="" id="shareReddit" target="_blank"> <i
-					class="fa fa-reddit social" aria-hidden="true"></i>
-				</a>
-
 			</div>
 
 
@@ -127,16 +106,33 @@
 
 <div class="container-fluid white-background" id="caseDescription ">
 
+						<div class="container" id="caseDomainList">
+							<div>
 
-	<div class="bodyContent" id="caseDescriptionContent">
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="h3Style">{% trans "Descripcion: " %}</div>
-				<p id="descriptionAjax"></p>
-			</div>
-		</div>
-	</div>
+								<table class="table table-hover" id="tableDomain">
 
+									<thead>
+
+										<tr>
+
+											<th id="caseCategory" class="h4Style">
+											{% trans "List Domains: "%}</th>
+
+										</tr>
+
+
+									</thead>
+
+
+									<tbody id="domainTableBody">
+
+									</tbody>
+
+
+								</table>
+
+							</div>
+						</div>
 
 
 </div>
@@ -198,120 +194,6 @@
 
 
 
-
-
-
-<div class="container-fluid"
-	style="height: 100vh; background-color: #E6E6E6">
-
-	<div class="bodyContent">
-
-		<div class="row subGraphDiv">
-			<div class="col-xs-3" id="subGraph1" data-toggle="modal"
-				data-target="#modal" data-tooltip
-				onclick="modal_content('#subGraph1')">
-				<div class="row">
-
-					<div class="container-fluid col-xs-12" id="twitterDiv">
-						<div id="twitterTweet"></div>
-						<div id="twitterSearchText">
-							<div id="twitterSearchTextTitle">
-								<div class="h4Style title"></div>
-							</div>
-							<div id="twitterSearchTextContent">
-								<div class="title"></div>
-							</div>
-						</div>
-					</div>
-
-
-					<div  class="watermark subGraphDivHover"
-						data-toggle="modal" data-target="#modal" data-tooltip
-						onclick="modal_content('#twitterDiv'); twitterSearch($('#twitterSearchTextContent .title').text());">
-
-
-						<p>Click to open</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-xs-3 offset-xs-1" id="subGraph2">
-				<div class="row ">
-					<div class="EventsMonth ">
-
-						<div class="container-fluid " id="chart"></div>
-
-						<div class="container-fluid">Events per month</div>
-
-						
-
-					</div>
-
-					<div  class="watermark subGraphDivHover"
-						data-toggle="modal" data-target="#modal" data-tooltip
-						onclick="modal_content('#chart'); $('.modal-dialog  #chart').empty();EventsMonth('.modal-dialog #chart')">
-
-						<p>Click to open</p>
-
-
-
-					</div>
-				</div>
-
-			</div>
-
-			<style>
-.watermark {
-	background: rgba(230, 230, 230, 0.51);
-	width: 100%;
-	height: 330px;
-	border-radius: 8px;
-	position: relative;
-	top: 0;
-	left: 0;
-}
-
-.watermark p {
-	position: relative;
-	top: -60%;
-	left: 40%;
-	color: black;
-	cursor: pointer;
-}
-
-#EventsMonth {
-	position: relative;
-	top: 0;
-	left: 0;
-}
-</style>
-
-			<div class="col-xs-3  offset-xs-1" id="subGraph3">
-				<div class="row">
-					<div class="container-fluid">SubGraph 3</div>
-
-					<div class="container-fluid" id="subGraph3Title">Subgraph 3
-						Title</div>
-
-					<div class="container-fluid" id="subGraph3Description">
-						Subgraph 3 Description</div>
-
-				</div>
-			</div>
-
-		</div>
-	</div>
-</div>
-
-<div class="modal fade global-modal contentBoxTransparent"
-	style="color: black;">
-	<button type="button" class="close"
-		onclick="empty(); $('.global-modal').modal('hide'); ">X</button>
-	<div class="modal-dialog" role="document"></div>
-</div>
-
-<!-- <blockquote class="twitter-tweet" lang="en"><p>OKC-MEM prediction: Fourteen overtimes, 10 4-point plays, a Perkins 3-pointer, and Tony Allen kills a guy.</p>&mdash; Zach Lowe (@ZachLowe_NBA) <a href="https://twitter.com/ZachLowe_NBA/status/461995665887723520">May 1, 2014</a></blockquote> -->
-
 <script>
 
     // These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here 
@@ -343,7 +225,7 @@
 </script>
 
 <script src="{% static 'js/general/twitter-trending.js' %}"></script>
-<script src="{% static 'js/cases/case.js' %}"></script>
+<script src="{% static 'js/cases/case-pdf.js' %}"></script>
 
 
 

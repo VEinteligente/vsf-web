@@ -904,7 +904,7 @@ $
 							
 							
 									
-							element = { label: ( isp + " " + domain),times: 
+							element = { label: ( isp + "-" + type + "-" + domain),times: 
 								[ {"color": colorSelect(type), "starting_time": start_date, "ending_time": end_date}]
 							};
 							
@@ -912,13 +912,13 @@ $
 							
 							var exists = 0;
 							for(var i = 0; i < dataLabel.length ; i++){
-								if(dataAll[i].label == (isp + " " + domain)) {
+								if(dataAll[i].label == (isp + "-" + type + "-" + domain)) {
 									exists = 1;
 								}
 							}
 							
 							if(exists != 1){
-								dataLabel[dataLabel.length]= (isp + " " + domain)
+								dataLabel[dataLabel.length]= (isp + "-" + type + "-" + domain)
 							}
 						})
 						
@@ -978,17 +978,18 @@ $
 						svg.selectAll(".timeline-label")  // select all the text elements for the yaxis
 						          .html(function(d) {
 						        	  
-						        	  var labelStrong_first = (($(this).text())).split(" ")[0];
+						        	  var labelStrong_first = (($(this).text())).split("-")[0];
 						        	 
-						        	  var labelStrong_second = (($(this).text())).split(" ")[1];
+						        	  var labelStrong_second = (($(this).text())).split("-")[1];
 						        	  
-						        	  for(var i = 2; i  < (($(this).text())).split(" ").length; i++){
-						        		  var labelStrong_second = labelStrong_second + " " + (($(this).text())).split(" ")[i];
-						        	  }
+						        	  var labelStrong_third = (($(this).text())).split("-")[2];
 						        	  
-						        	  $("#timeline1 svg > g:first-child").attr('transform','translate(220,0)');
+						        	  
+						        	  
+						        	  
+						        	  $("#timeline1 svg > g:first-child").attr('transform','translate(270,0)');
 						        	  return ("<text stroke='#000000'>" + labelStrong_first + "</text>" 
-						        			  + "<text transform='translate(90,0)'>" + labelStrong_second + "</text>");
+						        			  + "<text transform='translate(90,0)'>" + labelStrong_second + ": "+ labelStrong_third +"</text>");
 						         });
 
 

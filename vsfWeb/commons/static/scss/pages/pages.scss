@@ -1029,7 +1029,9 @@ margin-left: 30px;
     top: 20%;
     left: 0;
 }
-
+.svg-content-responsive g polygon {
+  mix-blend-mode: multiply;
+}
 .social{
 	padding: 0px 8px;
 }

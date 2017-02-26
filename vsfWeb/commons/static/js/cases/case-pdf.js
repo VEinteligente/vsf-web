@@ -67,9 +67,6 @@ $(document)
 					
 					$("#measurementsLink").attr("href", url_data_measurements);
 					
-					$("#measurementsTitle").click(function(){
-						window.location = url_data_measurements;
-					})
 
 					// This AJAX call corresponds to the request of the JSON data from Pandora
 					// project API.
@@ -111,11 +108,11 @@ $(document)
 												//Site Name with a collapse div of the url that belongs to the site
 												else{
 
-													$("#domainTableBody").append('<tr class="focus clickable" data-toggle="collapse" data-target="#data'+result.site+'"><td id="nameDomain">'+result.site+'</td><tr><td id="focusDomain" class="prueba" style="padding:0;"><div class="collapse" id="data'+result.site+'"><div></td></tr>');
+													$("#domainTableBody").append('<tr class="focus clickable" data-toggle="" data-target="#data'+result.site+'"><td id="nameDomain">'+result.site+'</td><tr><td id="focusDomain" class="prueba" style="padding:0;"><div class="" id="data'+result.site+'"><div></td></tr>');
 												
 													$.each(data.domains, function(index, result){
 												
-														$("#data"+result.site).append('<tr class="rowDomain"><td id="siteDomain" style="width:100%">'+result.url+'</td><td><a href="'+result.url+'"><i class="fa fa-external-link" aria-hidden="true"></i></a></td></tr>');
+														$("#data"+result.site).append('<tr class="rowDomain" style="padding-left:16px; background-color:#fff; color:black;"><td id="siteDomain" style="width:100%">'+result.url+'</td></tr>');
 											
 													})
 												
@@ -274,14 +271,14 @@ $(document)
 																+ image_meta
 																+ '" />');
 
-										$('#titleDateAjax').html(date.getDate()
-														+ "/" + month_number[date.getMonth()]
-														+ "/" + date.getFullYear());
-										
-										$('#hiddenDate').val(month_number[date.getMonth()]
-												+ "/" + date.getDate()
-										+ "/" + date.getFullYear());
-										
+										$('#titleDateAjax').html(
+												date.getDate()
+														+ "/"
+														+ month_number[date
+																.getMonth()]
+														+ "/"
+														+ date.getFullYear());
+
 										$.each(dataJson.isp, function(
 												secondLevelKey,
 												secondLevelValue) {
@@ -328,9 +325,6 @@ $(document)
 																	+ month_number[date.getMonth()]
 																	+ "/"
 																	+ date.getFullYear());
-											
-											$('#hiddenDateEnd').val(new Date());
-											
 										}
 										else{
 											$('#statusDateAjax').html(date.getDate()
@@ -345,14 +339,8 @@ $(document)
 													+ "/"
 													+ dateEnd.getFullYear());
 											
-											$(".timelineBarContinue").addClass("timelineBarClosed");
-											$(".timelineBarContinue").removeClass("timelineBarContinue");
-											
-											$('#hiddenDateEnd').val( month_number[dateEnd.getMonth()]
-													+ "/"
-													+ dateEnd.getDate()
-													+ "/"
-													+ dateEnd.getFullYear());
+											$(".timelineBarContinue").addClass("timelineBarClosed")
+											$(".timelineBarContinue").removeClass("timelineBarContinue")
 									
 										}
 
@@ -381,7 +369,6 @@ $(document)
 											
 										}
 										else{
-											$('#twitterDiv').css('padding-right','0');
 											$('#twitterTweet').html("<div class='failedService'><img style='background:gray' src='"+ fail_twitter_img + "' alt='service fail' /><br><p>No search word</p></div>");
 
 										}
@@ -506,8 +493,7 @@ $(document)
 
 															
 														});
-										
-										gantt();
+
 									}).fail(function(jqXHR, textStatus, errorThrown) {
 										$('#twitterDiv').html("<div class='failedService'><img style='margin-top: 100px; background:gray' src='"+ fail_twitter_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 										$('#caseImage').closest('.container-fluid').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
@@ -519,12 +505,8 @@ $(document)
 										
 										
 									});
-					
-					
+
 				});
-
-
-
 
 // function for the domain/sites list in the page
 
@@ -601,6 +583,7 @@ function select(option) {
 					})
 					;
 
+	
 
 }
 

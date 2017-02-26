@@ -1,3 +1,5 @@
+var maxYValues = 15; 
+
 function gantt(){// vim: ts=2 sw=2
 	
 	
@@ -71,7 +73,7 @@ function gantt(){// vim: ts=2 sw=2
   d3.timeline = function() {
     var DISPLAY_TYPES = ["circle", "rect"];
     
-    var hover = function (label) {},
+    var hover = function (d,i) { console.log(d); console.log("hol" + i)},
         mouseover = function () {},
         mouseout = function () {},
         click = function () {},
@@ -833,8 +835,7 @@ var timesGroup = [];
 var dataResult = [];
 var dataLabel = [];
 var dataAll = [];
-
-
+var dataTooltip = [];
 var testData = [
                 {label: "person a",  
                 	times: [
@@ -919,10 +920,68 @@ $
 							
 							if(exists != 1){
 								dataLabel[dataLabel.length]= (isp + "-" + type + "-" + domain)
+								
 							}
-						})
+						});
 						
+						if(dataLabel.length >  maxYValues){
 							
+							dataLabel = [];
+							dataAll = [];
+			
+							$.each(dataJson.events, function(key, value) { // First Level
+								
+								var isp = value.isp;
+								
+								var target = value.target;
+								
+								var domain = "";
+								
+								if(target.site != null){
+									domain = target.site 
+								}
+								else if(target.domain != null){
+									domain = target.domain 
+								}
+								else if(target.ip != null){
+									domain = target.ip 
+								}
+								
+								var type = value.type;
+					
+								var start_date = (new Date(value.start_date)).getTime();
+								
+								if( value.end_date != null ) {
+									var end_date = (new Date(value.end_date)).getTime();
+								}
+								else{
+									var end_date = (new Date()).getTime();
+								}
+								
+								
+								
+										
+								element = { label: ( isp + "-" + " " + "-" + domain),times: 
+									[ {"color": colorSelect(type), "starting_time": start_date, "ending_time": end_date}]
+								};
+								
+								dataAll[dataAll.length]=element;
+								
+								var exists = 0;
+								for(var i = 0; i < dataLabel.length ; i++){
+									if(dataAll[i].label == (isp + "-" + " " + "-" + domain)) {
+										exists = 1;
+									}
+								}
+								
+								if(exists != 1){
+									dataLabel[dataLabel.length]= (isp + "-" + " " + "-" + domain)
+									
+								}
+							});
+							
+						}
+												
 						
 							for(var i = 0; i < dataLabel.length ; i++){
 								var times_element = ""
@@ -968,7 +1027,7 @@ $
 						.attr("width", width + (margin.left + margin.right))
 						.attr("height", height )
 						   .attr("viewBox", "0 0 " + height + " "
-								 + ( width - 544 )  )
+								 + ( width - 534 )  )
 						   //class to make it responsive
 						   .classed("svg-content-responsive", true)
 						  .datum(testData).call(chart);

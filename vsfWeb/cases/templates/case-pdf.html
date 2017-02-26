@@ -1,0 +1,239 @@
+{% extends "base.html" %} 
+{% load i18n %} 
+{% load static %} 
+{% block content %} 
+{% get_current_language as language_code %}
+
+<input id="continueTrans" type="hidden" value="{% trans 'Continua' %}">
+<input id="domainTrans" type="hidden" value="{% trans 'Dominios' %}">
+<input id="siteTrans" type="hidden" value="{% trans 'Sitios' %}">
+<style>
+	body{
+		background: white;
+	}
+</style>
+
+
+<div style=" margin-top: 25px;">
+
+	<div class="bodyContent">
+
+		<!-- Basic information of the case -->
+		<div class="container-fluid" id="title">
+			<div class="row">
+				<div class="col-xs-12 titleBar" style="margin-top: 15px">
+					<div class="h2Style title" id="titleAjax"></div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="container-fluid"
+			style="padding-top: 10px; padding-bottom: 40px">
+			<div class="row">
+
+				<div class="col-xs-6" id="caseImage"></div>
+
+				<div class="col-xs-6" id="caseInfo">
+					<div class="row subtitleBar" id="dateBar">
+						<div class="container-fluid" id="caseDateBar">
+							<div class="col-xs-12 timelineBarContinue h4Style">
+								<div class="date col-xs-9" id="statusDateAjax"></div>
+								<div class="status col-xs-3" id="statusAjax"></div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="row">
+						
+						<div id="caseCategory" class="h4Style">
+							{% trans "Category: "%}
+						</div>
+						
+						<div class="bodyContent" style='margin-top: 10px;' id="caseDescriptionContent">
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="h3Style">{% trans "Descripcion: " %}</div>
+									<p id="descriptionAjax"></p>
+								</div>
+							</div>
+						</div>
+											
+						
+					</div>
+
+					<div class="row toolbar" id="providerBar">
+
+						<div class="container-fluid" id="caseProvider">
+
+							<div class="col-xs-12" style="text-align: center;" id="ispAjax">
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+</div>
+
+<div class="container-fluid white-background padding-title">
+
+
+
+	<div class="bodyContent titleBarContent">
+		<div class="row">
+	
+
+			<div class="col-xs-2 h4Style">
+				<a id="SavePdf" href="#"> {% trans 'Download' %} PDF </a>
+			</div>
+
+
+		</div>
+
+
+
+	</div>
+
+
+</div>
+
+<div class="container-fluid white-background" id="caseDescription ">
+
+						<div class="container" id="caseDomainList">
+							<div>
+
+								<table class="table table-hover" id="tableDomain">
+
+									<thead>
+
+										<tr>
+
+											<th id="caseCategory" class="h4Style">
+											{% trans "List Domains: "%}</th>
+
+										</tr>
+
+
+									</thead>
+
+
+									<tbody id="domainTableBody">
+
+									</tbody>
+
+
+								</table>
+
+							</div>
+						</div>
+
+
+</div>
+
+
+<div class="container-fluid white-background">
+
+	<div class="bodyContent updates titleBarContent">
+		<div class="row">
+			<div class="col-xs-12 subtitleBar">
+				<div class="h4Style" id="updateTitle">{% trans 'actualizaciones' %}</div>
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+</div>
+
+<div class="container-fluid white-background">
+
+	<div class="bodyContent updates">
+
+
+		<div class="row" id="updateListAjax"></div>
+	</div>
+
+
+
+
+</div>
+
+<div class="container-fluid white-background">
+
+	<div class="bodyContent cards titleBarContent">
+		<div class="row">
+			<div class="col-xs-12 subtitleBar">
+
+				<h4 id="cardsTitle">{% trans 'Grafico' %}</h4>
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+</div>
+
+
+<div class="container-fluid white-background">
+
+	<div class="bodyContent">
+		<div id="timeline1"></div>
+	</div>
+</div>
+
+
+
+<script>
+
+    // These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here 
+    // because of DJango configuration
+        
+        var pk = {{ pk }}
+        var domain = "{{ URL_VSF }}"
+        var url_case = "{% url 'Cases:Case' pk=pk %}"
+        var url_one_case = "{% url 'Cases:CaseApi' pk=pk %}"
+        var url_one_case_pdf = "{% url 'Cases:CasePdfEmpty' %}"
+        var url_one_case_excel = "{% url 'Cases:ExcelCaseCVSEmpty' %}"
+        var url_one_case_update = "{% url 'Cases:CaseUpdateApi' pk=pk %}"
+		var url_pdf_prueba ="{% url 'Cases:PdfView' pk=pk%}"
+        var language = '{{ language_code }}'
+    
+        //var png_commons = "{% static "" %}" +"screenshots/screen_case_"+pk+".png"
+        var png_commons = "{% static "" %}" +"screenshots/screen_case_"+pk;
+         
+        var url_data="{% url 'Cases:ganttEventsApi' pk=pk %}"   
+        var url_events_month ="{% url 'Cases:monthEventsApi' pk=pk %}"	
+        var url_data_twitter ="{% url 'General:SearchTwitterApiEmpty' %}"
+        var fail_service_img = "{% static 'img/icons/vsf_iconfailure_v101.svg' %}";
+        var fail_twitter_img = "{% static 'img/icons/vsf_icontwitterfailure_v101.svg' %}";
+        var url_data_measurements ="{% url 'Summary:MeasurementsTable' pk=pk %}"
+        
+        
+        
+        
+</script>
+
+<script src="{% static 'js/general/twitter-trending.js' %}"></script>
+<script src="{% static 'js/cases/case-pdf.js' %}"></script>
+
+
+
+<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript"
+	src="http://static.mentful.com/gantt-chart-d3v2.js"></script>
+
+<script src="{% static 'js/d3-timeline/d3-timeline.js' %}"></script>
+<script src="{% static 'js/d3-linechart/d3-linechart.js' %}"></script>
+
+{% endblock content %}

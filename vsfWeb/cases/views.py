@@ -254,42 +254,21 @@ def CaseCVS(request, pk):
 
     return response
 
-
-def CasePdf(request, pk="1"):
+#def CasePdf(request, pk):
     """This view makes the pdf file available with the download button in the case page"""
-    
-    # Get the list of all the cases and load it as JSON
-    headers = {'Authorization': settings.SERVICES_TOKEN}
-    snippet = requests.get(
-        settings.URL_VSF +
-        '/cases/api/detail/' +
-        pk,
-        headers=headers)
-    data = json.loads(snippet.text)
-    
-    #case ID
-    id = data['id']
-    title = data['title']
-    
-    pdf = pdfkit.from_file(
-        settings.BASE_DIR+'/commons/static/pdf/case-pdf.html',
-        False,
-        options={
-            'javascript-delay': '3000',
-            #'print-media-type':'',
-            #'header-html':settings.BASE_DIR+'/commons/static/pdf/header.html',
-            #'footer-html':settings.BASE_DIR+'/commons/static/pdf/footer.html',
-            'margin-left':'5',
-            'margin-right':'5',
-            'viewport-size':'1400',
+def CasePdf(request, pk="1"):
 
-            })
+    pdf = pdfkit.from_url(
+        settings.URL_VSF_WEB +
+        '/cases/case-pdf-view/'+pk +'/',
+        False)
     response = HttpResponse(pdf, content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="case_' + \
-        pk + '.pdf'
+    response['Content-Disposition'] = 'attachment; filename="case_' + pk + '.pdf'
 
     return response
-
+    
+class PdfView (TemplateView):
+    template_name = 'case-pdf.html'
 
 class SpeedTestCase(TemplateView):
     """This view renders the HTML containing information about speed test

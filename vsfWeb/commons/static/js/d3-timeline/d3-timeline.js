@@ -39,7 +39,7 @@ function gantt(){// vim: ts=2 sw=2
 			if(diffDays < 31) {
 				var tickFormat = { format: d3.time.format("%d %b"),
 				          tickTime: d3.time.days,
-				          tickInterval: 2,
+				          tickInterval: 3,
 				          tickSize: 6,
 				          tickValues: null
 				        };
@@ -47,7 +47,7 @@ function gantt(){// vim: ts=2 sw=2
 			}
 			else{
 				if(diffDays < 365){
-					var tickFormat = { format: d3.time.format("%B %Y"),
+					var tickFormat = { format: d3.time.format("%b %Y"),
 					          tickTime: d3.time.months,
 					          tickInterval: 1,
 					          tickSize: 6,
@@ -57,7 +57,7 @@ function gantt(){// vim: ts=2 sw=2
 					timelineStart = new Date(start.getFullYear(), 0, 1);
 				}
 				else{
-					var tickFormat = { format: d3.time.format("%B %Y"),
+					var tickFormat = { format: d3.time.format("%b %Y"),
 					          tickTime: d3.time.years,
 					          tickInterval: 1,
 					          tickSize: 6,
@@ -73,7 +73,38 @@ function gantt(){// vim: ts=2 sw=2
   d3.timeline = function() {
     var DISPLAY_TYPES = ["circle", "rect"];
     
-    var hover = function (d,i) { console.log(d); console.log("hol" + i)},
+    var hover = function (d,i) {  
+    		console.log( dataTooltip[i] );
+    		var isp =  dataTooltip[i].isp;
+    		var start =  dataTooltip[i].start_date;
+    		var end =  dataTooltip[i].end_date;
+    		var target = dataTooltip[i].target; 
+    		var targetName = "";
+    		var url = target.url;
+    		
+    		var site = target.site; 
+    		var ip = target.ip; 
+			
+    		
+			if(site != null){
+				targetName = site;
+			}
+			else if(url != null){
+				targetName = url;
+				
+			}
+			else if(ip != null){
+				targetName = ip;
+				
+			}
+			
+			var type = dataTooltip[i].type;
+
+			
+    		$(".informationPanelState").html(isp + " - " +  type + " - " + targetName);
+    		
+    		$(".informationPanelTotalCases").html("Target: " + site + " " + url + " " + domain + "<br> Start date: " + start + " <br> End date: " + end );
+    	},
         mouseover = function () {},
         mouseout = function () {},
         click = function () {},
@@ -832,11 +863,26 @@ function colorSelect(type){
 
 
 function adjustTextLabels(selection) {
-	var daysToPixels = (($('.axis .tick:nth-child(2) text')).position().left -
-	($('.axis .tick:nth-child(1) text')).position().left)/2+40;
 	
-    selection.selectAll('.axis .tick text')
-        .attr('transform', 'translate(' + daysToPixels + ',0)');
+	if(diffDays < 31){
+		var offset = 10;
+		
+		var daysToPixels = (($('.axis .tick:nth-child(2) text')).position().left -
+				($('.axis .tick:nth-child(1) text')).position().left)/2+offset;
+				
+			    selection.selectAll('.axis .tick text')
+			        .attr('transform', 'translate(0,30)');
+	}
+	else{
+		var offset = 40;
+		var daysToPixels = (($('.axis .tick:nth-child(2) text')).position().left -
+				($('.axis .tick:nth-child(1) text')).position().left)/2+offset;
+				
+			    selection.selectAll('.axis .tick text')
+			        .attr('transform', 'translate(' + daysToPixels + ',0)');
+	}
+	
+	
    
 
 }
@@ -887,6 +933,8 @@ $
 		
 					
 						$.each(dataJson.events, function(key, value) { // First Level
+							
+							dataTooltip[dataTooltip.length]= value;
 							
 							var isp = value.isp;
 							
@@ -953,8 +1001,8 @@ $
 								if(target.site != null){
 									domain = target.site 
 								}
-								else if(target.domain != null){
-									domain = target.domain 
+								else if(target.url != null){
+									domain = target.url 
 								}
 								else if(target.ip != null){
 									domain = target.ip 
@@ -1059,14 +1107,14 @@ $
 						        	  
 						        	  
 						        	  
-						        	  $("#timeline1 svg > g:first-child").attr('transform','translate(270,0)');
-						        	  return ("<text stroke='#000000'>" + labelStrong_first + "</text>" 
-						        			  + "<text transform='translate(90,0)'>" + labelStrong_second + ": "+ labelStrong_third +"</text>");
+						        	  $("#timeline1 svg > g:first-child").attr('transform','translate(330,0)');
+						        	  return ("<text stroke='#000000' style='text-transform: uppercase;'>" + labelStrong_first + "</text>" 
+						        			  + "<text transform='translate(120,0)'>" + labelStrong_second + ": "+ labelStrong_third +"</text>");
 						         });
 
 						$('.axis .tick ').each(function() {
 					
-					    $(this).html($(this).html()+ '<rect x="5" y="5" width="15" height="15" transform="rotate(45)" />');
+					    $(this).html($(this).html()+ '<rect x="5" y="5" width="15" height="15" style="fill: #ccc" transform="rotate(45)" />');
 			         });
 	
 

@@ -1149,16 +1149,20 @@ a{
 
 #timeline1 path.domain {
 	fill: transparent;
-    stroke: gray;
+    stroke: #ccc;
     stroke-dasharray: 10;
 }
 
 #timeline1 .axis .tick line {
 	fill: transparent;
-    stroke: gray;
+    stroke: #ccc;
     stroke-dasharray: 0;
 }
 
+#timeline1 .axis .tick text {
+	text-transform: uppercase;
+	fill: #ccc;
+}
 
 .infobox {
 	border: 2px solid steelblue;

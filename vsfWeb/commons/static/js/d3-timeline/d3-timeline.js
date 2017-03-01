@@ -631,6 +631,7 @@ function gantt(){// vim: ts=2 sw=2
       return timeline;
     };
 
+    
     timeline.hover = function (hoverFunc) {
       if (!arguments.length) return hover;
       hover = hoverFunc;
@@ -828,6 +829,18 @@ function colorSelect(type){
 	
 	return color
 }
+
+
+function adjustTextLabels(selection) {
+	var daysToPixels = (($('.axis .tick:nth-child(2) text')).position().left -
+	($('.axis .tick:nth-child(1) text')).position().left)/2+40;
+	
+    selection.selectAll('.axis .tick text')
+        .attr('transform', 'translate(' + daysToPixels + ',0)');
+   
+
+}
+
 
 
 var timesGroup = [];
@@ -1030,10 +1043,10 @@ $
 								 + ( width - 534 )  )
 						   //class to make it responsive
 						   .classed("svg-content-responsive", true)
-						  .datum(testData).call(chart);
+						  .datum(testData).call(chart).call(adjustTextLabels);     // adjusts text labels on the axis 
+				
 
-
-
+	
 						svg.selectAll(".timeline-label")  // select all the text elements for the yaxis
 						          .html(function(d) {
 						        	  
@@ -1051,7 +1064,10 @@ $
 						        			  + "<text transform='translate(90,0)'>" + labelStrong_second + ": "+ labelStrong_third +"</text>");
 						         });
 
-
+						$('.axis .tick ').each(function() {
+					
+					    $(this).html($(this).html()+ '<rect x="5" y="5" width="15" height="15" transform="rotate(45)" />');
+			         });
 	
 
 				}).fail(function(jqXHR, textStatus, errorThrown) {

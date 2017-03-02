@@ -55,8 +55,13 @@ $(document)
 					
 					var url_share_reddit = "http://www.reddit.com/submit?url=http://dev.web.pandora.saturno.space"
 						+ url_case;
+					
+					// list of isp to forbid the duplication of the names in front-end
+					var isp_list = [];
+					var isp_list_aux =[];
+					
 					$("#download").attr("href", url_one_case_excel + "id=" + pk);
-					console.log(url_one_case_pdf+pk);
+
 					$('#downloadPdf').attr("href", url_pdf_prueba);
 					$('#SavePdf').attr("href", url_one_case_pdf);
 					$("#shareFacebook").attr("href", url_share_facebook);
@@ -282,12 +287,24 @@ $(document)
 										$.each(dataJson.isp, function(
 												secondLevelKey,
 												secondLevelValue) {
-
+											
+											isp_list.push(secondLevelValue);
+											
+										})
+										
+										$.each(isp_list, function(i, el){
+										 
+											if($.inArray(el, isp_list_aux) === -1) isp_list_aux.push(el);
+										
+										});
+										
+										$.each(isp_list_aux, function(index,value){
 											$('#ispAjax').append(
 													'<button class="contextualButtonFixedSize">'
-															+ secondLevelValue
+															+ value
 															+ '</button>');
 										})
+										
 										// Title & Description according Main website Language
 										$('#titleAjax').html(title);
 										$('#descriptionAjax').html(description);

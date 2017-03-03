@@ -35,6 +35,8 @@ $(document)
 					var month_names = [ "Enero", "Febrero", "Marzo", "Abril",
 							"Mayo", "Junio", "Julio", "Agosto", "Septiembre",
 							"Octubre", "Noviembre", "Diciembre" ];
+					
+				
 
 					var month_number = [ "01", "02", "03", "04", "05", "06",
 							"07", "08", "09", 10, 11, 12 ];
@@ -437,8 +439,11 @@ $(document)
 											
 										}
 										else{
-											$('#twitterDiv').css('padding-right','0');
-											$('#twitterTweet').html("<div class='failedService'><img style='background:gray' src='"+ fail_twitter_img + "' alt='service fail' /><br><p>No search word</p></div>");
+											$('#twitterDiv').hide();
+											
+//
+//											$('#twitterDiv').css('padding-right','0');
+//											$('#twitterTweet').html("<div class='failedService'><img style='background:gray' src='"+ fail_twitter_img + "' alt='service fail' /><br><p>No search word</p></div>");
 
 										}
 
@@ -500,6 +505,7 @@ $(document)
 
 																			var update_date = new Date(
 																					value.date)
+																			var update_title = value.title;
 																			var update_text = value.text_de;
 																			if (language!= "en"){
 																				var textLanguage = "text_"+language;
@@ -511,7 +517,7 @@ $(document)
 																				$(
 																						'#updateListAjax')
 																						.append(
-																								'<div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
+																								'<div class="row"><div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
 																										+ update_date
 																												.getDate()
 																										+ " "
@@ -520,44 +526,67 @@ $(document)
 																										+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
 																										+ update_date
 																												.getFullYear()
-																										+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked"></div></div></div><div class="col-xs-7 content" style="padding-left: 0;">'
-																										+ update_text
-																										+ '</div><div class="col-xs-3 share"></div></div>');
+																										+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked"></div></div></div><div class="col-xs-10 content" style="padding-left: 0;">'
+																										+ update_title + '</div></div>' + '<div class="col-xs-12 description">' + update_text + '<br><div class="grave_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																										+ update_category + '</div><div class="right_cornerTag"></div></div></div></div>');
 																			} else if (update_category == "info") {
 																				$(
-																						'#updateListAjax')
-																						.append(
-																								'<div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
-																										+ update_date
-																												.getDate()
-																										+ " "
-																										+ month_names[update_date
-																												.getMonth()]
-																										+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
-																										+ update_date
-																												.getFullYear()
-																										+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked" style = "background:cyan"></div></div></div><div class="col-xs-7 content" style="padding-left: 0;">'
-																										+ update_text
-																										+ '</div><div class="col-xs-3 share"><a href="#">View more...</a><a href="#" target="_blank"><i class="fa fa-facebook-square "></i></a><a href="#" target="_blank"><i class="fa fa-twitter"></i></a><a href="#" target="_blank"><i class="fa fa-pinterest"></i></a></div></div>');
+																				'#updateListAjax')
+																				.append(
+																						'<div class="row"><div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
+																								+ update_date
+																										.getDate()
+																								+ " "
+																								+ month_names[update_date
+																										.getMonth()]
+																								+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
+																								+ update_date
+																										.getFullYear()
+																								+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked" style="background: cyan"></div></div></div><div class="col-xs-10 content" style="padding-left: 0;">'
+																								+ update_title + '</div></div>' + '<div class="col-xs-12 description">' + update_text + '<br><div class="info_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																								+ update_category + '</div><div class="right_cornerTag"></div></div></div></div>');
 																			} else {
 																				$(
-																						'#updateListAjax')
-																						.append(
-																								'<div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
-																										+ update_date
-																												.getDate()
-																										+ " "
-																										+ month_names[update_date
-																												.getMonth()]
-																										+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
-																										+ update_date
-																												.getFullYear()
-																										+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked" style = "background:green"></div></div></div><div class="col-xs-7 content" style="padding-left: 0;">'
-																										+ update_text
-																										+ '</div><div class="col-xs-3 share"><a href="#">View more...</a><a href="#" target="_blank"><i class="fa fa-facebook-square "></i></a><a href="#" target="_blank"><i class="fa fa-twitter"></i></a><a href="#" target="_blank"><i class="fa fa-pinterest"></i></a></div></div>');
+																				'#updateListAjax')
+																				.append(
+																						'<div class="row"><div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
+																								+ update_date
+																										.getDate()
+																								+ " "
+																								+ month_names[update_date
+																										.getMonth()]
+																								+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
+																								+ update_date
+																										.getFullYear()
+																								+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked" style="background: #8cc63f"></div></div></div><div class="col-xs-10 content" style="padding-left: 0;">'
+																								+ update_title + '</div></div>' + '<div class="col-xs-12 description">' + update_text + '<br><div class="positive_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																								+ update_category + '</div><div class="right_cornerTag"></div></div></div></div>');
 																			}
-
-																		})
+																		
+																			$("#updateListAjax .description").hide();
+																			$('#updateListAjax  .row').each(function(){
+																					var count = 0;
+																					console.log($(this))
+																					$(this).on('click', function() { // when you click
+																							// the div
+																						console.log($(this).find(".description"))
+																						console.log($(this).next(".description"))
+																						count++;
+																						// The count variable enables that the action when
+																						// second click is different
+																						// from the first click action
+																						if (count % 2 != 0) {
+																						
+																							$(this).find(".description").show();
+																							
+																						} else {
+																							$(this).find(".description").hide();
+																							
+																						}
+																					});
+																		});
+																			
+																		});
 															}
 
 															

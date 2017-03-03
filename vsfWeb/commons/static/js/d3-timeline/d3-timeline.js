@@ -74,7 +74,7 @@ function gantt(){// vim: ts=2 sw=2
     var DISPLAY_TYPES = ["circle", "rect"];
     
     var hover = function (d,i) {  
-    		console.log( dataTooltip[i] );
+//    		console.log( dataTooltip[i] );
     		var isp =  dataTooltip[i].isp;
     		var start =  dataTooltip[i].start_date;
     		var end =  dataTooltip[i].end_date;
@@ -826,36 +826,36 @@ function gantt(){// vim: ts=2 sw=2
 function colorSelect(type){
 
 	switch(type) {
-    case "bloqueo por DPI":
-    	var color = "red";																				
-        break;
-    case "bloqueo por DNS":
-    	var color = "green";
-        break;
-    
-    case "bloqueo por IP":
-    	var color = "blue";
-        break;
-    
-    case "Interceptacion de trafico":
-    	var color = "yellow";
-        break;
-        
-    case "falla de dns":
-    	var color = "purple";
-        break;
-        
-    case "Velocidad de internet":
-    	var color = "gray";
-        break;
-    
-    case "alteracion de trafico por intermediarios":
-    	 var color = "black";
-        break; 
-        
-    default:
-    	var color = "white"; 
-        break;
+	    case "bloqueo por DPI":
+	    	var color = "red";																				
+	        break;
+	    case "bloqueo por DNS":
+	    	var color = "green";
+	        break;
+	    
+	    case "bloqueo por IP":
+	    	var color = "blue";
+	        break;
+	    
+	    case "Interceptacion de trafico":
+	    	var color = "yellow";
+	        break;
+	        
+	    case "falla de dns":
+	    	var color = "purple";
+	        break;
+	        
+	    case "Velocidad de internet":
+	    	var color = "gray";
+	        break;
+	    
+	    case "alteracion de trafico por intermediarios":
+	    	 var color = "black";
+	        break; 
+	        
+	    default:
+	    	var color = "white"; 
+	        break;
 	}
 	
 	return color
@@ -972,7 +972,9 @@ $
 							
 							dataAll[dataAll.length]=element;
 							
+					
 							var exists = 0;
+							
 							for(var i = 0; i < dataLabel.length ; i++){
 								if(dataAll[i].label == (isp + "-" + type + "-" + domain)) {
 									exists = 1;
@@ -987,75 +989,83 @@ $
 						
 						if(dataLabel.length >  maxYValues){
 							
-							dataLabel = [];
-							dataAll = [];
-			
-							$.each(dataJson.events, function(key, value) { // First Level
+								dataLabel = [];
+								dataAll = [];
+				
+								$.each(dataJson.events, function(key, value) { // First Level
 								
-								var isp = value.isp;
-								
-								var target = value.target;
-								
-								var domain = "";
-								
-								if(target.site != null){
-									domain = target.site 
-								}
-								else if(target.url != null){
-									domain = target.url 
-								}
-								else if(target.ip != null){
-									domain = target.ip 
-								}
-								
-								var type = value.type;
-					
-								var start_date = (new Date(value.start_date)).getTime();
-								
-								if( value.end_date != null ) {
-									var end_date = (new Date(value.end_date)).getTime();
-								}
-								else{
-									var end_date = (new Date()).getTime();
-								}
-								
-								
-								
-										
-								element = { label: ( isp + "-" + " " + "-" + domain),times: 
-									[ {"color": colorSelect(type), "starting_time": start_date, "ending_time": end_date}]
-								};
-								
-								dataAll[dataAll.length]=element;
-								
-								var exists = 0;
-								for(var i = 0; i < dataLabel.length ; i++){
-									if(dataAll[i].label == (isp + "-" + " " + "-" + domain)) {
-										exists = 1;
-									}
-								}
-								
-								if(exists != 1){
-									dataLabel[dataLabel.length]= (isp + "-" + " " + "-" + domain)
+									var isp = value.isp;
 									
-								}
-							});
+									var target = value.target;
+									
+									var domain = "";
+									
+									if(target.site != null){
+										domain = target.site 
+									}
+									else if(target.url != null){
+										domain = target.url 
+									}
+									else if(target.ip != null){
+										domain = target.ip 
+									}
+									
+									var type = value.type;
+						
+									var start_date = (new Date(value.start_date)).getTime();
+									
+									if( value.end_date != null ) {
+										var end_date = (new Date(value.end_date)).getTime();
+									}
+									else{
+										var end_date = (new Date()).getTime();
+									}
+									
+									
+									
+											
+									element = { label: ( isp + "-" + " " + "-" + domain),times: 
+										[ {"color": colorSelect(type), "starting_time": start_date, "ending_time": end_date}]
+									};
+									
+									dataAll[dataAll.length]=element;
+									
+									var exists = 0;
+									for(var i = 0; i < dataLabel.length ; i++){
+										if(dataAll[i].label == (isp + "-" + " " + "-" + domain)) {
+											exists = 1;
+										}
+									}
+									
+									if(exists != 1){
+										dataLabel[dataLabel.length]= (isp + "-" + " " + "-" + domain)
+										
+									}
+								});
 							
-						}
+							}
 												
 						
 							for(var i = 0; i < dataLabel.length ; i++){
-								var times_element = ""
-								var times = []
+								var times_element = "";
+								var label_element = "";
+								var times = [];
 								var z = 0;
+								
 								for(var j = 0; j < dataAll.length; j++){
+
+									console.log(dataAll)
+									console.log(dataLabel)
 									
 									if(dataAll[j].label==dataLabel[i]) {
 							
-										times_element =  (dataAll[j].times)[0]
+										times_element =  (dataAll[j].times)[0];
+										label_element =  (dataAll[j].label);
 										
-										times[z]= times_element
-										z = z +1
+										times[z]= times_element;
+										z = z +1;
+										
+										
 									}
 									
 									
@@ -1063,9 +1073,10 @@ $
 								
 								
 								
-								element = { label: dataAll[i].label ,times };
-				
-								dataResult.push(element)
+								element = { label: label_element ,times };
+								console.log(element);
+								dataResult.push(element);
+								console.log(dataResult);
 								
 							}
 			

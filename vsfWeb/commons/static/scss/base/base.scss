@@ -64,7 +64,9 @@ $contextualButtonColor: #fff;
 
 //Tags
 $green_tag: #8cc63f;
-$red_tag: #FF2115;
+$red_tag: #ff2115;
+$blue_tag: cyan;
+
 $contentColorTag: #fff;
 
 //Tag colors
@@ -332,6 +334,88 @@ button {
         line-height: 1.00;
         padding: 0px $md_padding;
         color: $contentColorTag;
+    }
+
+}
+
+//status_positive
+.positive_tag{
+    display: inline-block;
+    float: right;
+    .left_cornerTag{
+        border-bottom: 5px solid $green_tag;
+        border-left: 5px solid transparent;
+    }
+    .right_cornerTag{
+        border-bottom: 5px solid $green_tag;
+        border-right: 5px solid transparent;
+        /** Flip vertically **/
+        -moz-transform: scale(1, -1);
+        -webkit-transform: scale(1, -1);
+        -o-transform: scale(1, -1);
+        -ms-transform: scale(1, -1);
+        transform: scale(1, -1);
+    }
+    .contentTag{
+        background: $green_tag;
+        line-height: 1.00;
+        padding: 0px $md_padding;
+        color:$contentColorTag;
+    }
+
+}
+
+
+//status_info
+.info_tag{
+    display: inline-block;
+    float: right;
+    .left_cornerTag{
+        border-bottom: 5px solid $blue_tag;
+        border-left: 5px solid transparent;
+    }
+    .right_cornerTag{
+        border-bottom: 5px solid $blue_tag;
+        border-right: 5px solid transparent;
+        /** Flip vertically **/
+        -moz-transform: scale(1, -1);
+        -webkit-transform: scale(1, -1);
+        -o-transform: scale(1, -1);
+        -ms-transform: scale(1, -1);
+        transform: scale(1, -1);
+    }
+    .contentTag{
+        background: $blue_tag;
+        line-height: 1.00;
+        padding: 0px $md_padding;
+        color:$contentColorTag;
+    }
+
+}
+
+//status_grave
+.grave_tag{
+    display: inline-block;
+    float: right;
+    .left_cornerTag{
+        border-bottom: 5px solid $red_tag;
+        border-left: 5px solid transparent;
+    }
+    .right_cornerTag{
+        border-bottom: 5px solid $red_tag;
+        border-right: 5px solid transparent;
+        /** Flip vertically **/
+        -moz-transform: scale(1, -1);
+        -webkit-transform: scale(1, -1);
+        -o-transform: scale(1, -1);
+        -ms-transform: scale(1, -1);
+        transform: scale(1, -1);
+    }
+    .contentTag{
+        background: $red_tag;
+        line-height: 1.00;
+        padding: 0px $md_padding;
+        color:$contentColorTag;
     }
 
 }

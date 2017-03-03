@@ -49,11 +49,15 @@ padding: 0px 16px 0px;
 
 #sumtable::-webkit-scrollbar-button:start {
   background-image: url("/commons/static/img/icons/vsf_iconarrow_v101.svg");
-  background-position: center; }
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 #sumtable::-webkit-scrollbar-button:end {
   background-image: url("/commons/static/img/icons/vsf_iconarrowdown_v101_end.svg");
-  background-position: center; }
+  background-position: center; 
+  background-repeat: no-repeat;
+}
   
 #rowName{
  text-transform: capitalize;
@@ -760,9 +764,9 @@ input#title{
 #twitterTweet::-webkit-scrollbar-button:end{
   background-image: url("/commons/static/img/icons/vsf_iconarrowdown_v101_end.svg?809b3d26489e");
   background-position: center; 
-   background-repeat: no-repeat;
+  background-repeat: no-repeat;
 
-  }
+}
   
 twitterwidget::shadow .EmbeddedTweet{
 	border-radius: 8px;
@@ -968,11 +972,15 @@ margin-left: 30px;
 
 #caseDomainList::-webkit-scrollbar-button:start {
   background-image: url("/commons/static/img/icons/vsf_iconarrow_v101.svg");
-  background-position: center; }
+  background-position: center; 
+  background-repeat: no-repeat;  
+}
 
 #caseDomainList::-webkit-scrollbar-button:end {
   background-image: url("/commons/static/img/icons/vsf_iconarrowdown_v101_end.svg");
-  background-position: center; }
+  background-position: center; 
+  background-repeat: no-repeat;
+}
 
 
 #dateBar{
@@ -1042,21 +1050,26 @@ margin-left: 30px;
 	&::-webkit-scrollbar-button:vertical:start {
 	  background-image: url("/commons/static/img/icons/vsf_iconarrow_v101.svg?170e96b76754");
 	  background-position: center; 
+	  background-repeat: no-repeat;
+	  
 	}
 
 	&::-webkit-scrollbar-button:vertical:end {
 	  background-image: url("/commons/static/img/icons/vsf_iconarrowdown_v101_end.svg?170e96b76754");
 	  background-position: center; 
+	  background-repeat: no-repeat;
 	}
 	
 	&::-webkit-scrollbar-button:horizontal:start {
 	  background-image: url("/commons/static/img/icons/vsf_iconarrow_v101.svg?170e96b76754");
 	  background-position: center; 
+	  background-repeat: no-repeat;
 	}
 
 	&::-webkit-scrollbar-button:horizontal:end {
 	  background-image: url("/commons/static/img/icons/vsf_iconarrowdown_v101_end.svg?170e96b76754");
 	  background-position: center; 
+	  background-repeat: no-repeat;
 	  
 	}
     

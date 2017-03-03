@@ -171,6 +171,24 @@ $(document)
 											// static/screenshots and has a name similar to "screen_case_#ID_0.png"
 											$("#caseImage").html('<img src="" class="img-fluid" style="width:100%">');
 											var png = png_commons + "_0.png";	
+											
+											var xhr = new XMLHttpRequest();
+											
+											xhr.open('HEAD', png, true);
+											xhr.onreadystatechange = function(){
+											
+											if ( xhr.readyState == 4 ) {
+											    if ( xhr.status == 200 ) {
+													$(".img-fluid").attr("src", png);
+										
+											    } else {
+													$(".img-fluid").attr("src", png_default);
+													
+											    }
+											  }
+											};
+											xhr.send(null);
+											
 											$("#caseImage img").attr("src", png);
 											var image_meta = png;
 										}
@@ -183,11 +201,49 @@ $(document)
 												
 												$(".owl-carousel").append('<div class="item"><img src="" class="img-fluid"></div>');
 												var png = png_commons + "_" + i + ".png";	
-												$(".img-fluid").attr("src", png);
-												$(".img-fluid").removeClass('img-fluid');
+												
+												var xhr = new XMLHttpRequest();
+												
+												xhr.open('HEAD', png, true);
+												xhr.onreadystatechange = function(){
+												
+												if ( xhr.readyState == 4 ) {
+												    if ( xhr.status == 200 ) {
+														$(".img-fluid").attr("src", png);
+														$(".img-fluid").removeClass('img-fluid');
+												    } else {
+														$(".img-fluid").attr("src", png_default);
+														$(".img-fluid").removeClass('img-fluid');
+												    }
+												  }
+												};
+												xhr.send(null);
+												
+
 												
 												if(i == 0){
-													var image_meta = png;
+													var xhr = new XMLHttpRequest();
+													
+													xhr.open('HEAD', png, true);
+													xhr.onreadystatechange = function(){
+													
+													if ( xhr.readyState == 4 ) {
+													    if ( xhr.status == 200 ) {
+															$(".img-fluid").attr("src", png);
+															$(".img-fluid").removeClass('img-fluid');
+															var image_meta = png;
+													    } else {
+															$(".img-fluid").attr("src", png_default);
+															$(".img-fluid").removeClass('img-fluid');
+															var image_meta = png_default;
+													    }
+													  }
+													};
+													xhr.send(null);
+													
+													
+													
+													
 												}
 											}
 											

@@ -403,7 +403,7 @@
     
         //var png_commons = "{% static "" %}" +"screenshots/screen_case_"+pk+".png"
         var png_commons = "{% static "" %}" +"screenshots/screen_case_"+pk;
-         
+        var png_default = "{% static "" %}" +"screenshots/vsf_socialmediadefault_v101.png";
         var url_data="{% url 'Cases:ganttEventsApi' pk=pk %}"   
         var url_events_month ="{% url 'Cases:monthEventsApi' pk=pk %}"	
         var url_data_twitter ="{% url 'General:SearchTwitterApiEmpty' %}"

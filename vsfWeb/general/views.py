@@ -15,6 +15,13 @@ import requests
 from django.forms.forms import Form
 
 
+class Home(TemplateView):
+    """ This view renders the HTML containing information about the company,
+        social network, etc.
+    """
+    template_name = "home.html"
+
+
 class AboutUs(TemplateView):
     """ This view renders the HTML containing information about the company,
         social network, etc.

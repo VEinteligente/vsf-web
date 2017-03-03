@@ -130,11 +130,15 @@
 }
 
 #smallNavbar{
-	padding-right:20px;
+
 }
 
 .dropdown-toggle::after{
 	margin-right: -2px;
+}
+.dropdown-item:hover{
+	background-color: #c9c9c9;
+	color: #fff;
 }
 
 #imageTranslate{

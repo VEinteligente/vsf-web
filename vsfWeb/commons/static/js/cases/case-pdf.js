@@ -55,6 +55,9 @@ $(document)
 					
 					var url_share_reddit = "http://www.reddit.com/submit?url=http://dev.web.pandora.saturno.space"
 						+ url_case;
+					
+					var isp_list = [];
+					var isp_list_aux = [];
 					$("#download").attr("href", url_one_case_excel + "id=" + pk);
 					console.log(url_one_case_pdf+pk);
 					$('#downloadPdf').attr("href", url_pdf_prueba);
@@ -95,26 +98,25 @@ $(document)
 													+ (data.category).display_name
 													+ '</div><div class="right_cornerTag"></div></div>')
 
-												
 											$.each(data.domains, function(index, result){
 												
 												//It can happen that the site is null but the probe reported a blocked or failing url, in that case
 												//we only show the url which triggered the probe
 												if(result.site == null){
 													
-													$("#domainTableBody").append('<tr><td id="nameDomain" style="width:100%">'+result.url+'</td><td><a href="'+result.url+'"><i class="fa fa-external-link" aria-hidden="true"></i></a></td></tr>');
+													$("#domainTableBody").append('<tr><td id="nameDomain" style="width:100%; font-weight:normal;">'+result.url+'<a href="'+result.url+'"><i class="fa fa-external-link" style="float:right" aria-hidden="true"></i></a></td></tr>');
 												}
 												
 												//Site Name with a collapse div of the url that belongs to the site
 												else{
 
-													$("#domainTableBody").append('<tr class="focus clickable" data-toggle="" data-target="#data'+result.site+'"><td id="nameDomain">'+result.site+'</td><tr><td id="focusDomain" class="prueba" style="padding:0;"><div class="" id="data'+result.site+'"><div></td></tr>');
+													$("#domainTableBody").append('<tr class="focus" data-toggle="collapse" data-target="#data'+result.site+'"><td id="nameDomain">'+result.site+'</td><tr><td id="focusDomain" class="prueba" style="padding:0;"><div class="" id="data'+result.site+'"><div></td></tr>');
 												
-													$.each(data.domains, function(index, result){
-												
-														$("#data"+result.site).append('<tr class="rowDomain" style="padding-left:16px; background-color:#fff; color:black;"><td id="siteDomain" style="width:100%">'+result.url+'</td></tr>');
+
+													$("#data"+result.site).append('<tr class="rowDomain" style="background:#fff; color:#000;"><td id="siteDomain" style="width:100%">'+result.url+'</td><td><a href="'+result.url+'"><i class="fa fa-external-link" aria-hidden="true"></i></a></td></tr>');
+
 											
-													})
+
 												
 												}
 											
@@ -282,10 +284,21 @@ $(document)
 										$.each(dataJson.isp, function(
 												secondLevelKey,
 												secondLevelValue) {
-
+											
+											isp_list.push(secondLevelValue);
+											
+										})
+										
+										$.each(isp_list, function(i, el){
+										 
+											if($.inArray(el, isp_list_aux) === -1) isp_list_aux.push(el);
+										
+										});
+										
+										$.each(isp_list_aux, function(index,value){
 											$('#ispAjax').append(
 													'<button class="contextualButtonFixedSize">'
-															+ secondLevelValue
+															+ value
 															+ '</button>');
 										})
 										// Title & Description according Main website Language

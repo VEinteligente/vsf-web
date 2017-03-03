@@ -101,9 +101,9 @@
 
 			</div>
 
-			<div class="col-xs-2 h4Style">
+		<!-- 	<div class="col-xs-2 h4Style">
 				<a id="downloadPdf" href="#"> {% trans 'Download' %} PDF </a>
-			</div>
+			</div> -->
 
 			<div class="col-xs-8 downloadBar">
 				<a href="" id="shareFacebook" target="_blank"> <i
@@ -222,7 +222,7 @@
 		<div class="row subGraphDiv">
 			<div class="col-xs-3" id="subGraph1" data-toggle="modal"
 				data-target="#modal" data-tooltip
-				onclick="modal_content('#subGraph1')">
+				>
 				<div class="row">
 
 					<div class="container-fluid col-xs-12" id="twitterDiv">
@@ -314,10 +314,7 @@
 
 		</div>
 	</div>-->
-</div> 
-
-<div class="container-fluid ">
-
+	
 	<div class="bodyContent cards titleBarContent">
 		<div class="row">
 			<div class="col-xs-12 subtitleBar">
@@ -327,6 +324,11 @@
 		</div>
 
 	</div>
+</div> 
+
+<div class="container-fluid ">
+
+	
 
 
 <style>
@@ -398,7 +400,7 @@
         var url_one_case_pdf = "{% url 'Cases:CasePdfEmpty' %}"
         var url_one_case_excel = "{% url 'Cases:ExcelCaseCVSEmpty' %}"
         var url_one_case_update = "{% url 'Cases:CaseUpdateApi' pk=pk %}"
-		var url_pdf_prueba ="{% url 'Cases:PdfView' pk=pk %}"
+//		var url_pdf_prueba ="{% url 'Cases:PdfView' pk=pk %}"
         var language = '{{ language_code }}'
     
         //var png_commons = "{% static "" %}" +"screenshots/screen_case_"+pk+".png"

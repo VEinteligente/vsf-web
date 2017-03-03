@@ -57,10 +57,15 @@ $(document)
 					
 					var url_share_reddit = "http://www.reddit.com/submit?url=http://dev.web.pandora.saturno.space"
 						+ url_case;
+					
+					// list of isp to forbid the duplication of the names in front-end
+					var isp_list = [];
+					var isp_list_aux =[];
+					
 					$("#download").attr("href", url_one_case_excel + "id=" + pk);
-					console.log(url_one_case_pdf+pk);
-					$('#downloadPdf').attr("href", url_pdf_prueba);
-					$('#SavePdf').attr("href", url_one_case_pdf);
+
+//					$('#downloadPdf').attr("href", url_pdf_prueba);
+//					$('#SavePdf').attr("href", url_one_case_pdf);
 					$("#shareFacebook").attr("href", url_share_facebook);
 
 					$("#shareTwitter").attr("href", url_share_twitter);
@@ -107,7 +112,7 @@ $(document)
 												//we only show the url which triggered the probe
 												if(result.site == null){
 													
-													$("#domainTableBody").append('<tr><td id="nameDomain" style="width:100%">'+result.url+'</td><td><a href="'+result.url+'"><i class="fa fa-external-link" aria-hidden="true"></i></a></td></tr>');
+													$("#domainTableBody").append('<tr><td id="nameDomain" style="width:100%">'+result.url+'<a href="'+result.url+'"><i class="fa fa-external-link" style="float:right" aria-hidden="true"></i></a></td></tr>');
 												}
 												
 												//Site Name with a collapse div of the url that belongs to the site
@@ -115,11 +120,11 @@ $(document)
 
 													$("#domainTableBody").append('<tr class="focus clickable" data-toggle="collapse" data-target="#data'+result.site+'"><td id="nameDomain">'+result.site+'</td><tr><td id="focusDomain" class="prueba" style="padding:0;"><div class="collapse" id="data'+result.site+'"><div></td></tr>');
 												
-													$.each(data.domains, function(index, result){
-												
-														$("#data"+result.site).append('<tr class="rowDomain"><td id="siteDomain" style="width:100%">'+result.url+'</td><td><a href="'+result.url+'"><i class="fa fa-external-link" aria-hidden="true"></i></a></td></tr>');
+
+													$("#data"+result.site).append('<tr class="rowDomain"><td id="siteDomain" style="width:100%">'+result.url+'</td><td><a href="'+result.url+'"><i class="fa fa-external-link" aria-hidden="true"></i></a></td></tr>');
+
 											
-													})
+
 												
 												}
 											
@@ -343,12 +348,24 @@ $(document)
 										$.each(dataJson.isp, function(
 												secondLevelKey,
 												secondLevelValue) {
-
+											
+											isp_list.push(secondLevelValue);
+											
+										})
+										
+										$.each(isp_list, function(i, el){
+										 
+											if($.inArray(el, isp_list_aux) === -1) isp_list_aux.push(el);
+										
+										});
+										
+										$.each(isp_list_aux, function(index,value){
 											$('#ispAjax').append(
 													'<button class="contextualButtonFixedSize">'
-															+ secondLevelValue
+															+ value
 															+ '</button>');
 										})
+										
 										// Title & Description according Main website Language
 										$('#titleAjax').html(title);
 										$('#descriptionAjax').html(description);
@@ -607,85 +624,3 @@ $(document)
 					
 					
 				});
-
-
-
-
-// function for the domain/sites list in the page
-
-function select(option) {
-
-	// When select function is invoked the list is emptied
-	$("#domainTableBody").empty();
-	var url_data = url_one_case;
-
-	// This AJAX call corresponds to the request of the JSON data from Pandora
-	// project API.
-	$
-			.ajax({
-				url : url_data,
-				method : "GET",
-				dataType : 'json',
-				contentType : 'application/json'
-			})
-
-			.done(
-					function(dataJson) {
-						var temporal = "";
-
-						// For each element in the JSON we need to collect their
-						// values
-						for (var i = 0; i < dataJson.length; i++)
-							temporal = temporal.concat(dataJson[i]);
-
-						var data = JSON.parse(temporal);
-
-						if (option == "domains") {
-
-							count = 0;
-
-							$("#domainTableTitle")
-									.html(
-											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:100%; background-color:red"></span>&nbsp'+$('#domainTrans').val());
-
-							$.each(data.domains, function(index, result) {
-
-								count = count + 1;
-
-								$("#count").html(count);
-
-								$("#domainTableBody").append(
-										'<tr><td style="border-radius:5px">'
-												+ result.url + '</td><tr>');
-								
-							})
-						}
-
-						else {
-
-							count = 0;
-
-							$("#domainTableTitle")
-									.html(
-											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="count" style="font-size:100%; background-color:red"></span>&nbsp'+$('#siteTrans').val());
-
-							$.each(data.domains, function(index, result) {
-
-								count = count + 1;
-
-								$("#count").html(count);
-
-								$("#domainTableBody").append(
-										'<tr><td style="text-transform:capitalize;border-radius:5px">'
-												+ result.site + '</td><tr>');
-
-							})
-
-						}
-
-					})
-					;
-
-
-}
-

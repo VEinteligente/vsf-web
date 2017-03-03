@@ -105,7 +105,9 @@ $(document)
 																												$(
 																														".listCases")
 																														.append(
-																																"<div class='col-xs-12 smallBar clickable' style='border-bottom:1px solid #7C96E8' onclick=goTo("+ thirdLevelValue +")>"																																		
+
+																																"<div class='col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8; cursor:pointer;' onclick=goTo("+ thirdLevelValue +")>"																																		
+
 																																		+ "<div class='h5Style title search'>"
 																																		+ "<input type='hidden' class='id_case' value='"+ thirdLevelValue +"'>"		
 																																		+ "<div class='col-xs-2 date'></div>"

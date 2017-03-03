@@ -1,0 +1,381 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-02-15 19:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: cases/templates/one-element-case.html:7
+#, fuzzy
+#| msgid "Continue"
+msgid "Continua"
+msgstr "Continua"
+
+#: cases/templates/one-element-case.html:8
+msgid "Dominios"
+msgstr "Dominios"
+
+#: cases/templates/one-element-case.html:9
+msgid "Sitios"
+msgstr "Sitios"
+
+#: cases/templates/one-element-case.html:58
+#, fuzzy
+#| msgid "Category"
+msgid "Category: "
+msgstr "Categorias"
+
+#: cases/templates/one-element-case.html:105
+#: cases/templates/one-element-case.html:112
+#, fuzzy
+#| msgid "Download Speed"
+msgid "Download"
+msgstr "Velocidad de Descarga"
+
+#: cases/templates/one-element-case.html:151
+msgid "Descripcion: "
+msgstr "Descripcion: "
+
+#: cases/templates/one-element-case.html:167
+msgid "actualizaciones"
+msgstr "actualizaciones"
+
+#: cases/templates/one-element-case.html:197
+msgid "Grafico"
+msgstr "Graph"
+
+#: cases/templates/one-element-case.html:221
+#, fuzzy
+#| msgid "Information"
+msgid "informacion"
+msgstr "Información"
+
+#: commons/templates/navbar/navbar.html:36
+msgid "Home"
+msgstr "Inicio"
+
+#: commons/templates/navbar/navbar.html:40
+msgid "Cases"
+msgstr "Casos"
+
+#: commons/templates/navbar/navbar.html:44
+#, fuzzy
+#| msgid "Featured Cases"
+msgid "Search Case"
+msgstr "<strong>Casos</strong> Destacados"
+
+#: commons/templates/navbar/navbar.html:48
+msgid "Advanced Search Case "
+msgstr "Búsqueda de Caso Avanzado"
+
+#: commons/templates/navbar/navbar.html:58
+msgid "Summary"
+msgstr "Resumen"
+
+#: commons/templates/navbar/navbar.html:64
+#, fuzzy
+#| msgid "Blocked URLs"
+msgid "Blocked List"
+msgstr "URL's Bloqueados"
+
+#: commons/templates/navbar/navbar.html:68
+msgid "Map of Cases"
+msgstr "Mapa de Casos"
+
+#: commons/templates/navbar/navbar.html:72
+msgid "Summary Table"
+msgstr "Tabla Resumen"
+
+#: general/templates/blocked-sites_domains.html:14
+msgid "Blocked Sites Strong"
+msgstr "<strong>Sitios</strong> Bloqueados"
+
+#: general/templates/blocked-sites_domains.html:16
+msgid "Blocked Domains Strong"
+msgstr "<strong>Dominios</strong> Bloqueados"
+
+#: general/templates/blocked-sites_domains.html:36
+#, fuzzy
+#| msgid "Blocked Domains"
+msgid "Domains"
+msgstr "Dominios Bloqueados"
+
+#: general/templates/blocked-sites_domains.html:41
+msgid "Sites"
+msgstr "Sitios"
+
+#: general/templates/maps/venezuela.html:7451
+msgid "Featured Cases"
+msgstr "<strong>Casos</strong> Destacados"
+
+#: stylingGuide/templates/elements.html:12
+msgid "Buttons"
+msgstr "Botones"
+
+#: stylingGuide/templates/elements.html:14
+#: stylingGuide/templates/elements.html:19
+#: stylingGuide/templates/elements.html:108
+#: stylingGuide/templates/elements.html:125
+#: stylingGuide/templates/elements.html:128
+msgid "and"
+msgstr "y"
+
+#: stylingGuide/templates/elements.html:47
+#: stylingGuide/templates/elements.html:193
+#: stylingGuide/templates/elements.html:213
+#: stylingGuide/templates/elements.html:224
+msgid "Continue"
+msgstr "Continua"
+
+#: stylingGuide/templates/elements.html:54
+#, fuzzy
+#| msgid "Information"
+msgid "Interception"
+msgstr "Intercepcion"
+
+#: stylingGuide/templates/elements.html:61
+msgid "Disconnected"
+msgstr "Desconexion"
+
+#: stylingGuide/templates/elements.html:68
+msgid "Slowdown"
+msgstr "Relentizacion"
+
+#: stylingGuide/templates/elements.html:75
+msgid "DoS"
+msgstr "DoS"
+
+#: stylingGuide/templates/elements.html:82
+msgid "Fail"
+msgstr "Falla"
+
+#: stylingGuide/templates/elements.html:89
+msgid "Blocked"
+msgstr "Bloqueado"
+
+#: stylingGuide/templates/elements.html:101
+msgid "Contextual buttons (static)"
+msgstr "Botones contextuales (estáticos)"
+
+#: stylingGuide/templates/elements.html:123
+msgid "Contextual buttons"
+msgstr "Botones contextuales"
+
+#: stylingGuide/templates/elements.html:145
+msgid "Bars"
+msgstr "Barras"
+
+#: stylingGuide/templates/elements.html:155
+msgid "Title bar"
+msgstr "Barra de título"
+
+#: stylingGuide/templates/elements.html:168
+#, fuzzy
+#| msgid "Small bar"
+msgid "Small bars"
+msgstr "Barra pequeña"
+
+#: stylingGuide/templates/elements.html:175
+#: stylingGuide/templates/elements.html:185
+#: stylingGuide/templates/elements.html:200
+#: stylingGuide/templates/elements.html:233
+msgid "Height"
+msgstr "Altura"
+
+#: stylingGuide/templates/elements.html:179
+msgid "Subtitle bar"
+msgstr "Barra de subtítulo"
+
+#: stylingGuide/templates/elements.html:261
+msgid "View more..."
+msgstr "Ver más..."
+
+#: stylingGuide/templates/typography.html:10
+#: stylingGuide/templates/typography.html:179
+msgid "Typography"
+msgstr "Tipografía"
+
+#: stylingGuide/templates/typography.html:15
+#: stylingGuide/templates/typography.html:184
+msgid "Size per style"
+msgstr "Tamaño por estilo"
+
+#: stylingGuide/templates/typography.html:31
+#: stylingGuide/templates/typography.html:50
+#: stylingGuide/templates/typography.html:69
+#: stylingGuide/templates/typography.html:88
+#: stylingGuide/templates/typography.html:107
+#: stylingGuide/templates/typography.html:127
+#: stylingGuide/templates/typography.html:146
+#: stylingGuide/templates/typography.html:163
+#: stylingGuide/templates/typography.html:200
+#: stylingGuide/templates/typography.html:219
+#: stylingGuide/templates/typography.html:238
+#: stylingGuide/templates/typography.html:257
+#: stylingGuide/templates/typography.html:276
+#: stylingGuide/templates/typography.html:296
+#: stylingGuide/templates/typography.html:315
+#: stylingGuide/templates/typography.html:332
+msgid "Size"
+msgstr "Tamaño"
+
+#: stylingGuide/templates/typography.html:32
+#: stylingGuide/templates/typography.html:51
+#: stylingGuide/templates/typography.html:70
+#: stylingGuide/templates/typography.html:89
+#: stylingGuide/templates/typography.html:108
+#: stylingGuide/templates/typography.html:128
+#: stylingGuide/templates/typography.html:147
+#: stylingGuide/templates/typography.html:164
+#: stylingGuide/templates/typography.html:201
+#: stylingGuide/templates/typography.html:220
+#: stylingGuide/templates/typography.html:239
+#: stylingGuide/templates/typography.html:258
+#: stylingGuide/templates/typography.html:277
+#: stylingGuide/templates/typography.html:297
+#: stylingGuide/templates/typography.html:316
+#: stylingGuide/templates/typography.html:333
+msgid "Color"
+msgstr "Color"
+
+#: stylingGuide/templates/typography.html:33
+#: stylingGuide/templates/typography.html:52
+#: stylingGuide/templates/typography.html:71
+#: stylingGuide/templates/typography.html:90
+#: stylingGuide/templates/typography.html:109
+#: stylingGuide/templates/typography.html:129
+#: stylingGuide/templates/typography.html:148
+#: stylingGuide/templates/typography.html:165
+#: stylingGuide/templates/typography.html:202
+#: stylingGuide/templates/typography.html:221
+#: stylingGuide/templates/typography.html:240
+#: stylingGuide/templates/typography.html:259
+#: stylingGuide/templates/typography.html:278
+#: stylingGuide/templates/typography.html:298
+#: stylingGuide/templates/typography.html:317
+#: stylingGuide/templates/typography.html:334
+msgid "Style"
+msgstr "Estilo"
+
+#: summary/templates/measurements-table.html:13
+#, fuzzy
+#| msgid "Download Speed"
+msgid "Download:"
+msgstr "Velocidad de Descarga"
+
+#: summary/templates/measurements-table.html:24
+#, fuzzy
+#| msgid "Sites"
+msgid "Site"
+msgstr "Sitios"
+
+#: summary/templates/measurements-table.html:25
+msgid "URL"
+msgstr "URL"
+
+#: summary/templates/measurements-table.html:26
+msgid "Date"
+msgstr "Fecha"
+
+#: summary/templates/measurements-table.html:27
+msgid "Country"
+msgstr "Pais"
+
+#: summary/templates/measurements-table.html:28
+msgid "State"
+msgstr "Estado"
+
+#: summary/templates/measurements-table.html:29
+msgid "City"
+msgstr "Ciudad"
+
+#: summary/templates/measurements-table.html:30
+#: summary/templates/summary-table.html:48
+msgid "ISP"
+msgstr "Proveedor"
+
+#: summary/templates/measurements-table.html:31
+msgid "Measurement"
+msgstr "Medicion"
+
+#: summary/templates/measurements-table.html:32
+msgid "Type"
+msgstr "Tipo"
+
+#: summary/templates/summary-table.html:11
+msgid "Categories"
+msgstr "Categorias"
+
+#: summary/templates/summary-table.html:12
+msgid "ISPs"
+msgstr "Proveedores"
+
+#: summary/templates/summary-table.html:44
+msgid "Category"
+msgstr "Categorias"
+
+#: vsfWeb/settings.py:173
+msgid "English"
+msgstr "Ingles"
+
+#: vsfWeb/settings.py:174
+msgid "Spanish"
+msgstr "Español"
+
+#~ msgid "News"
+#~ msgstr "Noticias"
+
+#~ msgid "Guides"
+#~ msgstr "Guías"
+
+#~ msgid "Evade The Blockade"
+#~ msgstr "Evade Los Bloqueos"
+
+#~ msgid "Blocked Domains"
+#~ msgstr "Dominios Bloqueados"
+
+#~ msgid "Speed Test"
+#~ msgstr "Probador de velocidad"
+
+#~ msgid "Community"
+#~ msgstr "Comunidad"
+
+#~ msgid "About Us"
+#~ msgstr "Sobre Nosotros"
+
+#~ msgid "Forum"
+#~ msgstr "Foro"
+
+#~ msgid "Report"
+#~ msgstr "Reportar"
+
+#~ msgid "ISP Plan"
+#~ msgstr "Plan del Proveedor"
+
+#~ msgid "Upload Speed"
+#~ msgstr "Velocidad de Carga"
+
+#~ msgid "Order By:"
+#~ msgstr "Ordenar Por:"
+
+#~ msgid "Tutorials"
+#~ msgstr "Tutoriales"
+
+#~ msgid "GitHub"
+#~ msgstr "GitHub"
+
+#~ msgid "Languages"
+#~ msgstr "Idiomas"

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+{% get_current_language as language_code %}
+
+
+
+<input type="hidden" id="hiddenID" value="" />
+<input type="hidden" id="hiddenTitle" value="" />
+<input type="hidden" id="category" value="{% trans 'Categories' %}" />
+<input type="hidden" id="isp" value="{% trans 'ISPs' %}" />
+<input type="hidden" id="hidden_url_web" value="{{VSF_URL_WEB}}">
+
+<div class="bodyContent">
+<div class="col-xs-6" id="summaryTableBorder">
+    <div class="container" id="sumtable">
+
+        <div class="row">
+
+
+            <table class="table table-hover text-nowrap">
+
+                <thead>
+
+                    <tr>
+
+                        <th id="tabletitle"></th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="tablebody">
+
+                </tbody>
+
+
+                <tfoot>
+                    <tr>
+                        <td>
+                            <button class="contextualButtonFixedSize"
+                                onclick="select('category')"
+                            >
+                                {% trans 'Category' %}</button>
+
+                            <button class="contextualButtonFixedSize" onclick="select('isp')"
+                            >
+                                {% trans 'ISP' %}</button>
+                                
+                            <div class="float-xs-right"
+                                style="margin-top: 10px; margin-bottom: 5px;">
+                                Download: <a id="download" href="#"> <i
+                                    class="fa fa-file-excel-o" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+</div>
+
+<script>
+    var url_style_list = "{% url 'StylingGuide:ListApi' %}"
+    var url_data_category = "{% url 'Summary:SummaryCategoryTableApi'  %}"
+    var url_data_isp = "{% url 'Summary:SummaryIspTableApi' %}"
+    var url_excel_category = "{% url 'Summary:ExcelCategoryList' %}"
+    var url_excel_isp = "{% url 'Summary:ExcelISPList' %}"
+    var url_web = $("#hidden_url_web").val();
+</script>
+
+<script src="{% static 'js/summary/table.js' %}"></script>
+
+{% endblock content %}

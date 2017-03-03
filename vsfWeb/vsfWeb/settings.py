@@ -9,8 +9,35 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
-
+from django.utils.translation import ugettext_lazy as _
+import local_settings
 import os
+
+
+import base64
+import json
+import urllib2
+# Setup access credentials
+
+CONSUMER_KEY = local_settings.CONSUMER_KEY
+CONSUMER_SECRET = local_settings.CONSUMER_SECRET
+
+bearer_token = "%s:%s" % (CONSUMER_KEY, CONSUMER_SECRET)
+
+bearer_token_64 = base64.b64encode(bearer_token)
+
+token_request = urllib2.Request("https://api.twitter.com/oauth2/token")
+token_request.add_header(
+    "Content-Type",
+    "application/x-www-form-urlencoded;charset=UTF-8")
+token_request.add_header("Authorization", "Basic %s" % bearer_token_64)
+token_request.data = "grant_type=client_credentials"
+
+token_response = urllib2.urlopen(token_request)
+token_contents = token_response.read()
+token_data = json.loads(token_contents)
+
+ACCESS_TOKEN = token_data["access_token"]
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,11 +49,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'dh96m6zsamw9#&%z758vm9(@j^!o@k(5(^&p8la2r(qy&^qmmy'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = local_settings.DEBUG
+SERVICES_TOKEN = local_settings.SERVICES_TOKEN
+
+URL_VSF_WEB = local_settings.URL_VSF_WEB
+URL_VSF = local_settings.URL_VSF
 
 ALLOWED_HOSTS = []
 
+# Cronjobs
+CRON_CLASSES = [
+    "vsfWeb.cron.ScreenshotCronjob",
+]
 
 # Application definition
 
@@ -37,20 +71,24 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_cron',
     'compressor',
-    'widget_tweaks'
+    'rest_framework',
+    'widget_tweaks',
 ]
 STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Middleware For Translating Pages For End User
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'vsfWeb.urls'
@@ -63,6 +101,7 @@ TEMPLATES = [
                  os.path.join(BASE_DIR, 'general/templates'),
                  os.path.join(BASE_DIR, 'provider/templates'),
                  os.path.join(BASE_DIR, 'summary/templates'),
+                 os.path.join(BASE_DIR, 'stylingGuide/templates'),
                  ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -70,6 +109,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'vsfWeb.context_processors.global_settings',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -95,21 +135,26 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.' +
+        'UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.' +
+        'MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.' +
+        'CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.' +
+        'NumericPasswordValidator',
     },
 ]
 
-STATICFILES_FINDERS = (  
+STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
 STATICFILES_DIRS = [
@@ -122,7 +167,12 @@ COMPRESS_PRECOMPILERS = (
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
+
+LANGUAGES = (
+    ('en', _('English')),
+    ('es', _('Spanish')),
+)
 
 TIME_ZONE = 'UTC'
 
@@ -138,3 +188,4 @@ USE_TZ = True
 COMPRESS_ROOT = 'commons/static'
 STATIC_ROOT = 'commons/static'
 STATIC_URL = '/commons/static/'
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)

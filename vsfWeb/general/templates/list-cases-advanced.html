@@ -1,0 +1,370 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<link rel="stylesheet" type="text/css"
+	href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
+
+<script type="text/javascript"
+	src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript"
+	src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+
+<!-- Global variables corresponding to the search fields from the URL parameters -->
+<input type="hidden" id="hidden_title" value="{{ title }}">
+<input type="hidden" id="hidden_category" value="{{ category }}">
+<input type="hidden" id="hidden_region" value="{{ region }}">
+<input type="hidden" id="hidden_site" value="{{ site }}">
+<input type="hidden" id="hidden_isp" value="{{ isp }}">
+<input type="hidden" id="hidden_label" value="">
+<input type="hidden" id="hidden_start_date"
+	value="{{ s_year }}-{{ s_month }}-{{ s_day }}">
+<input type="hidden" id="hidden_end_date"
+	value="{{ e_year }}-{{ e_month }}-{{ e_day }}">
+<input type="hidden" id="hidden_url_web" value="{{VSF_URL_WEB}}">
+<div class="container-fluid">
+
+
+	<div class="row">
+
+
+		<div class="bodyContent">
+			<!-- Search bar form -->
+			<form id="advanced_search">
+				{% csrf_token %}
+				<div class="col-xs-12">
+					<div class="col-xs-8 first ">
+
+						<div class="col-xs-9">
+							<input type="text" id="title" name="title" placeholder="Title">
+						</div>
+
+						<div id="reportrange" class="col-xs-2"
+							style="cursor: pointer; padding: 5px 10px;">
+							<span></span> <b class="caret"></b> <i
+								class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+						</div>
+
+						<div class="col-xs-1">
+							<input type="submit" value="" id="submit" />
+
+
+						</div>
+
+					</div>
+				</div>
+				<div class="col-xs-12 multipleChoices">
+
+					<select id="isp" data-placeholder="ISP" multiple="">
+				
+					</select> 
+					
+					<select id="category" data-placeholder="Category" multiple="">
+
+					</select> 
+					
+					<select id="region" data-placeholder="Region" multiple="">
+
+					</select> 
+					
+					<select id="site" data-placeholder="Site" multiple="">
+
+					</select>
+
+
+
+				</div>
+
+
+
+				<input type="hidden" id="start_date" class="datepicker"
+					name="start_date" placeholder="Start date"> 
+				<input
+					type="hidden" id="end_date" class="datepicker" name="end_date"
+					placeholder="End date">
+
+
+
+
+
+
+			</form>
+
+			<br>
+		</div>
+
+
+
+
+	</div>
+
+</div>
+
+<div class="container-fluid" style="height: 100vh; background: #DEDEDE">
+
+	<div class="bodyContent">
+
+		<div style="margin-bottom: 10px">
+
+
+			<!-- Search results -->
+			<div class="listCasesContainer">
+				<div class="col-xs-12 resumeResult">
+					<div id="resultados" class="col-xs-8 resultadosAdvanced"></div>
+					<div class="col-xs-2">
+						Download: <a id="download" href="#"><i
+							class="fa fa-file-excel-o" aria-hidden="true"></i></a>
+					</div>
+
+					<div class="col-xs-2 advancedSearchText">Vista avanzada</div>
+
+
+				</div>
+
+				<div class="col-xs-12 subtitleBar" style="background: transparent">
+					<div class="h4Style title" style="padding-left: 0px;">
+						<div class="col-xs-1" id="dateStartClick">Inicio</div>
+						<div class="col-xs-1" id="dateEndClick">Fin</div>
+						<div class="col-xs-3" id="nameClick">Caso</div>
+						<div class="col-xs-1" id="siteClick">Sitio</div>
+						<div class="col-xs-1" id="ispClick">ISP</div>
+						<div class="col-xs-1" id="categoryClick">Categoria</div>
+						<div class="col-xs-1" id="regionClick">Region</div>
+					</div>
+				</div>
+
+				<div class="listCasesAdvanced"></div>
+			</div>
+
+
+
+
+		</div>
+
+		<div class="changeStyling"></div>
+
+	</div>
+</div>
+
+ 
+<script type="text/javascript">
+// Load the the datepicker style
+$(function() {
+
+    var start = moment().subtract(29, 'days');
+    var end = moment();
+
+    function cb(start, end, label) {
+   
+        var start_date = $( "#hidden_start_date" ).val();
+        var end_date = $( "#hidden_end_date" ).val();
+
+        if(start_date == "--" & label == "" )
+        {
+            start_date = " ";
+        }
+        else if( label != "Custom Range" ) 
+        {
+            start_date = start_date.split( "-" );
+            start_date = start_date[2] + "/" + start_date[1] + "/" + start_date[0];
+        }
+        else
+        {
+            start_date = start.format('DD/MM/YYYY');
+        }
+        
+        if(end_date == "--" & label == ""  ){
+            end_date = " ";
+        }
+        else if( label != "Custom Range" ) 
+        {
+            end_date = end_date.split( "-" );
+            end_date = end_date[2] + "/" + end_date[1] + "/" + end_date[0];
+        }
+        else
+        {
+            end_date = end.format('DD/MM/YYYY');
+        }
+        
+        $("#start_date").val(start.format('YYYY-MM-DD'));
+        $("#end_date").val(end.format('YYYY-MM-DD'));
+        
+        if(label == "Custom Range"){
+            $('#reportrange span').html( start_date + ' - ' + end_date );
+            $('#hidden_label').val("Custom Range");
+        }
+                
+        else if(label != "")   
+        {
+            $('#reportrange span').html( label );
+            $('#hidden_label').val(label);
+        } 
+        else{
+             $('#reportrange span').html( start_date + ' - ' + end_date );
+             $('#hidden_label').val();
+        }
+             
+        
+        
+    
+    }
+
+    $('#reportrange').daterangepicker({
+        autoUpdateInput: false,
+        startDate: start,
+        endDate: end,
+        ranges: {
+           'Today': [moment(), moment()],
+           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+           'This Month': [moment().startOf('month'), moment().endOf('month')],
+           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        }
+    }, cb);
+    
+    var label = $('.daterangepicker .ranges li.active').text();
+    
+    $(".applyBtn .btn-success").click(function(){
+        label="Custom Range";
+    })
+    
+    cb(start, end, label );
+    
+ 
+});
+</script>
+
+
+
+	
+
+<script type="text/javascript">
+	
+	
+	
+	
+	
+	 var url_isp = "{% url 'General:ISPListApi' %}";
+	 
+	 var url_category = "{% url 'General:CategoryListApi' %}";
+	 
+	 var url_region = "{% url 'General:RegionListApi' %}";
+	 
+	 var url_site = "{% url 'General:SiteListApi' %}";
+	 
+	 var fail_service_img = "{% static 'img/icons/vsf_iconfailure_v101.svg' %}";
+ 
+</script>
+
+<script>
+   
+    // These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here 
+    // because of DJango configuration
+    var url_web = $("#hidden_url_web").val();
+    var url_data="{% url 'General:CaseListApi' %}"
+    var url_data_search="{% url 'General:CaseListApi' %}"
+    var url_data_list_empty="{% url 'General:CaseListEmptyAdvanced' %}"
+    var url_csv ="{% url 'General:ExcelCaseListEmptyAdvanced' %}"
+
+    function fillSelectors(selectContainer, url_data, values){
+    	
+    	$.ajax({
+    		url : url_data,
+    		method : "GET",
+    		dataType : 'json',
+    		contentType : 'application/json'
+    	})
+    	.done(
+    			function(data) {
+    	
+    				var temporal = "";
+    	
+    				// Forhttp://127.0.0.1:8000/general/advanced-list-cases/title=&category=&start_date=--&end_date=--&region=&site=Fancy&isp= each element in the JSON we
+    				// need to collect their values
+    				for (var i = 0; i < data.length; i++) {
+    					temporal = temporal.concat(data[i]);
+    				}
+    				
+    	
+    				var dataJson = JSON.parse(temporal);
+    				var $select = $(selectContainer);
+    				$.each( dataJson.results, function(key, value) { 
+    				// First Level
+    					
+    					if(selectContainer =="#region"){
+    						$.each( value, function(keyLevel, valueLevel) { 
+    							
+    							if(keyLevel == "name")
+    								$select.append('<option value="' + valueLevel + '">' + valueLevel + '</option>');
+    							
+    						});
+    					}
+    					else if(selectContainer =="#category"){
+    	
+    							
+							var element = value.category;
+							
+							$select.append('<option value="' + element.name + '">' +  element.display_name + '</option>');
+							
+    							
+    						
+    						}
+    						else{
+    	    						$.each( value, function(keyLevel, valueLevel) { 
+    	    							
+    	    							$select.append('<option value="' + valueLevel + '">' + valueLevel + '</option>');
+    	    							
+    	    						}
+    						);
+    					}
+    					
+    				
+    				});
+    				
+    				
+    				
+    				
+    				$select.chosen();
+    				
+    				if(values!=""){
+    					var str_array = values.split(',');
+        				
+    					for (var i = 0; i < str_array.length; i++) {
+    						str_array[i] = str_array[i].replace(/^\s*/, "");
+    					}
+						
+    					$select.val(str_array).trigger("chosen:updated");
+        				
+    				
+    				}
+    				else{
+    					$select.val("").trigger("chosen:updated");
+    				}
+    				
+    				$("#hidden_" + (selectContainer.split("#"))[1]).val(values);
+    		    	
+    				
+    				$select.change(function(){
+    			        var selectedValues = $(this).find('option:selected').map(function(){
+    			                                 return this.value;
+    			                             }).get();
+    
+    			        $("#hidden_" + (selectContainer.split("#"))[1]).val(selectedValues);
+    			    });
+    				
+    	}).fail(function(jqXHR, textStatus, errorThrown) {
+    		$('.multipleChoices').html("<div class='failedService'><img style='    background: gray;' src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load multiselection service</p></div>");
+    	});
+    	
+    }
+
+	
+    
+		
+</script>
+
+<script src="{% static 'js/general/list-cases-advanced.js' %}"></script>
+
+{% endblock %}

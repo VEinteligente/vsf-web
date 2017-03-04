@@ -134,7 +134,7 @@
 					</div>
 				</div>
 
-				<div class="listCases" style="margin-bottom: 5px"></div>
+				<div class="listCases" id="easyPaginate" style="margin-bottom: 5px"></div>
 			</div>
 
 
@@ -491,10 +491,9 @@ function fillSelectors(selectContainer, url_data, values){
         </div>
     </div>
 </div>
-
 </div>
-
 <script>
+
     var url_style_list = "{% url 'StylingGuide:ListApi' %}"
     var url_data_category = "{% url 'Summary:SummaryCategoryTableApi'  %}"
     var url_data_isp = "{% url 'Summary:SummaryIspTableApi' %}"
@@ -502,7 +501,7 @@ function fillSelectors(selectContainer, url_data, values){
     var url_excel_isp = "{% url 'Summary:ExcelISPList' %}"
     var url_web = $("#hidden_url_web").val();
 </script>
-
+	
 <script src="{% static 'js/summary/table.js' %}"></script>
 
 

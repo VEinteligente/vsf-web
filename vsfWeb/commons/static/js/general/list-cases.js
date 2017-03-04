@@ -5,6 +5,7 @@ var formSer = "";
 $(document)
 		.ready(
 				function() {
+					
 					// Datepickers format
 					$(".datepicker").datepicker({
 						dateFormat : 'yy-mm-dd'
@@ -12,7 +13,7 @@ $(document)
 
 					changeMultipleChoice([ "#category", "#isp", "#site",
 							"#region" ]);
-
+					
 					// Variables corresponding to the search fields from the URL
 					// parameters
 					var hidden_title = $("#hidden_title").val();
@@ -314,7 +315,7 @@ $(document)
 
 																												}
 																											}
-																											console.log(thirdLevelKey)
+																										
 
 																											if (thirdLevelKey == "category") {
 																														console.log("cat "+thirdLevelValue)
@@ -341,12 +342,14 @@ $(document)
 															});
 
 											$(".listCases").append(" <hr>");
+											pagination();
+											$(".current").trigger( "click" );
 
 										})
 								.fail(function(jqXHR, textStatus, errorThrown) {
 									$('.listCases').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 								});
-
+				
 					} else {
 
 						// Change the input of the search with the URL
@@ -431,15 +434,19 @@ $(document)
 						}
 
 						$("#advanced_search").submit();
-
+						pagination();
+						$(".current").trigger( "click" );
 					}
-
+					
+					
+					
+					
+					
+					
 				});
 
 // When click on search icon
-$("#advanced_search")
-		.submit(
-				function(e) {
+$("#advanced_search").submit(function(e) {
 
 					// Empty the search result to fill with new result
 					$(".listCases").empty();
@@ -685,6 +692,9 @@ $("#advanced_search")
 																				"Resultados de busqueda <strong>"
 																						+ value
 																						+ "</strong>");
+																
+
+																$('#countList').val(value);
 															}
 
 															// We need to access
@@ -959,13 +969,18 @@ $("#advanced_search")
 														});
 
 										$(".listCases").append(" <hr>");
+										
+										
+										
 
 									}).fail(function(jqXHR, textStatus, errorThrown) {
 										$('.listCases').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 									});
 
+					
 
 				});
+
 
 // Order by name of the case
 $("#nameClick").on('click', function() { // when you click the div
@@ -1134,6 +1149,7 @@ function sortDateDes(parent, child) {
 				$(".this ").removeClass("this");
 
 			});
+
 
 }
 

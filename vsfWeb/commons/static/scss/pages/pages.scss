@@ -328,7 +328,8 @@ tr{
     border-radius: 5px;
     padding: 0;
     margin-left: 10px;
-    
+    height: 580px;
+    overflow: auto;
     
     > div:first-child{
         border-bottom: 1px solid $grayButton;
@@ -357,6 +358,30 @@ tr{
         padding-left: 5px;
     }
 }
+
+
+#listRegion::-webkit-scrollbar {
+  background: white;
+  width: 15px; }
+
+#listRegion::-webkit-scrollbar-thumb {
+  background-image: url("/commons/static/img/icons/vsf_iconscrollbar_v102.svg");
+  background-repeat: no-repeat;
+  height: 50px !important;
+  background-position: center; }
+
+#listRegion::-webkit-scrollbar-button:start {
+  background-image: url("/commons/static/img/icons/vsf_iconarrow_v101.svg");
+  background-position: center; 
+  background-repeat: no-repeat;  
+}
+
+#listRegion::-webkit-scrollbar-button:end {
+  background-image: url("/commons/static/img/icons/vsf_iconarrowdown_v101_end.svg");
+  background-position: center; 
+  background-repeat: no-repeat;
+}
+
 
 #caseRegionListContainer{
     padding-left: 10px;
@@ -1234,6 +1259,11 @@ a{
 	z-index: 10500;
 	font-weight: bold;
 }
+
+#pagin li {
+  display: inline-block;
+}
+
 /* RESPONSIVE */
 
 
@@ -1261,7 +1291,8 @@ a{
 	    	-webkit-clip-path: inset(0px 0px 25% 0px);
 	    }
 	}
-	
+
+
   h1, h2, h3, h4, h5, h6 {
     page-break-after: avoid; // Prevent headings from being printed at the bottom of the page
   }

@@ -419,8 +419,9 @@ $(document)
 
 															});
 
-											$(".listCasesAdvanced").append(
-													" <hr>");
+											$(".listCasesAdvanced").append(" <hr>");
+											pagination();
+											$(".current").trigger( "click" );
 
 										})
 								.fail(function(jqXHR, textStatus, errorThrown) {
@@ -507,10 +508,12 @@ $(document)
 						}
 
 						$("#advanced_search").submit();
-						
-
+						pagination();
+						$(".current").trigger( "click" );
 					}
-
+					
+					
+					
 					 
 				});
 

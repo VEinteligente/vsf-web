@@ -135,12 +135,19 @@
 				</div>
 
 				<div class="listCasesAdvanced"></div>
+				
+				
 			</div>
 
 
 
 
 		</div>
+		
+		<br>
+		<div class="col-xs-12">
+			<ul id="pagin"></ul>
+		</div>	
 
 		<div class="changeStyling"></div>
 
@@ -366,5 +373,48 @@ $(function() {
 </script>
 
 <script src="{% static 'js/general/list-cases-advanced.js' %}"></script>
+<script>
 
+function pagination(){
+
+	//Pagination
+	pageSize = 10;
+	
+	elementCount = parseInt($('#resultados strong').text());
+	
+	pageCount = Math.ceil(elementCount / pageSize);
+
+	for (var i = 0; i < pageCount; i++) {
+	  if (i == 0)
+	    $("#pagin").append('<li><a class="current" href="#">' + (i + 1) + '</a></li>');
+	  else
+	    $("#pagin").append('<li><a href="#">' + (i + 1) + '</a></li>');
+	}
+
+
+	showPage = function(page) {
+		$(".listCases  .smallBar").hide();
+	
+	
+		$(".listCases .smallBar").each(function(n) {
+		  if (n >= pageSize * (page - 1) && n < pageSize * page)
+		    $(this).show();
+		  else 
+			 $(this).hide();
+		});
+	}
+	
+	
+	 
+
+	$("#pagin li a").click(function() {
+	  $("#pagin li a").removeClass("current");
+	  $(this).addClass("current");
+	  
+	  showPage(parseInt($(this).text()))
+	});
+
+	
+}
+</script>
 {% endblock %}

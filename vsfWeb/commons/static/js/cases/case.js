@@ -178,23 +178,8 @@ $(document)
 											// static/screenshots and has a name similar to "screen_case_#ID_0.png"
 											$("#caseImage").html('<img src="" class="img-fluid" style="width:100%">');
 											var png = png_commons + "_0.png";	
+											$(".img-fluid").attr("src", png);
 											
-											var xhr = new XMLHttpRequest();
-											
-											xhr.open('HEAD', png, true);
-											xhr.onreadystatechange = function(){
-											
-											if ( xhr.readyState == 4 ) {
-											    if ( xhr.status == 200 ) {
-													$(".img-fluid").attr("src", png);
-										
-											    } else {
-													$(".img-fluid").attr("src", png_default);
-													
-											    }
-											  }
-											};
-											xhr.send(null);
 											
 											$("#caseImage img").attr("src", png);
 											var image_meta = png;
@@ -204,8 +189,8 @@ $(document)
 											// static/screenshots and has a name similar to "screen_case_#ID_#DomainCount.png"
 											$("#caseImage").append('<div id="owl-demo" class="owl-carousel owl-theme"></div>');
 
-											var nRequest = new Array();
-											var png = new Array();
+										//var nRequest = new Array();
+											//var png = new Array();
 											for(var i = 0; i < domains_count; i++){
 												
 												
@@ -214,7 +199,7 @@ $(document)
 												$(".owl-carousel").append('<div class="item"><img src="" class="img-fluid"></div>');
 												var png = png_commons + "_" + i + ".png";
 												//	nRequest[i] = new XMLHttpRequest();
-													png[i] = png_commons + "_" + i + ".png";
+												//	png[i] = png_commons + "_" + i + ".png";
 
 													//nRequest[i].open("GET", png, true);
 												    //nRequest[i].onreadystatechange = function (oEvent) {
@@ -229,7 +214,7 @@ $(document)
 															$(".img-fluid").attr("src", png);
 															$(".img-fluid").removeClass('img-fluid');
 																if(i == 0){
-																	var image_meta = png[i];
+																	var image_meta = png;
 																}
 //												            } else {
 //												            	alert('img-fluid_' + i )

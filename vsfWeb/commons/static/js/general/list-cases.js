@@ -5,6 +5,7 @@ var formSer = "";
 $(document)
 		.ready(
 				function() {
+					
 					// Datepickers format
 					$(".datepicker").datepicker({
 						dateFormat : 'yy-mm-dd'
@@ -12,7 +13,7 @@ $(document)
 
 					changeMultipleChoice([ "#category", "#isp", "#site",
 							"#region" ]);
-
+					
 					// Variables corresponding to the search fields from the URL
 					// parameters
 					var hidden_title = $("#hidden_title").val();
@@ -105,7 +106,9 @@ $(document)
 																												$(
 																														".listCases")
 																														.append(
+
 																																"<div class='col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8; cursor:pointer;' onclick=goTo("+ thirdLevelValue +")>"																																		
+
 																																		+ "<div class='h5Style title search'>"
 																																		+ "<input type='hidden' class='id_case' value='"+ thirdLevelValue +"'>"		
 																																		+ "<div class='col-xs-2 date'></div>"
@@ -312,7 +315,7 @@ $(document)
 
 																												}
 																											}
-																											console.log(thirdLevelKey)
+																										
 
 																											if (thirdLevelKey == "category") {
 																														console.log("cat "+thirdLevelValue)
@@ -339,12 +342,14 @@ $(document)
 															});
 
 											$(".listCases").append(" <hr>");
+											pagination();
+											$(".current").trigger( "click" );
 
 										})
 								.fail(function(jqXHR, textStatus, errorThrown) {
 									$('.listCases').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 								});
-
+				
 					} else {
 
 						// Change the input of the search with the URL
@@ -429,15 +434,19 @@ $(document)
 						}
 
 						$("#advanced_search").submit();
-
+						pagination();
+						$(".current").trigger( "click" );
 					}
-
+					
+					
+					
+					
+					
+					
 				});
 
 // When click on search icon
-$("#advanced_search")
-		.submit(
-				function(e) {
+$("#advanced_search").submit(function(e) {
 
 					// Empty the search result to fill with new result
 					$(".listCases").empty();
@@ -683,6 +692,9 @@ $("#advanced_search")
 																				"Resultados de busqueda <strong>"
 																						+ value
 																						+ "</strong>");
+																
+
+																$('#countList').val(value);
 															}
 
 															// We need to access
@@ -711,7 +723,7 @@ $("#advanced_search")
 																											$(
 																													".listCases")
 																													.append(
-																															"<div class='col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8' onclick=goTo("+ thirdLevelValue +")>" 																																	
+																															"<div class='col-xs-12 smallBar clickable' style='border-bottom:1px solid #7C96E8' onclick=goTo("+ thirdLevelValue +")>" 																																	
 																																	+ "<div class='h5Style title search'>"
 																																	+ "<input type='hidden' class='id_case' value='"+ thirdLevelValue +"'>"		
 																																	+ "<div class='col-xs-2 date'></div>"
@@ -957,13 +969,18 @@ $("#advanced_search")
 														});
 
 										$(".listCases").append(" <hr>");
+										
+										
+										
 
 									}).fail(function(jqXHR, textStatus, errorThrown) {
 										$('.listCases').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 									});
 
+					
 
 				});
+
 
 // Order by name of the case
 $("#nameClick").on('click', function() { // when you click the div
@@ -1087,7 +1104,7 @@ function sortDateAsc(parent, child) {
 
 				$(".listCases")
 						.append(
-								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'  onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
+								"<div class='this col-xs-12 smallBar clickable' style='border-bottom:1px solid #7C96E8'  onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 	
 				$(".this ").removeClass("this ");
@@ -1127,11 +1144,12 @@ function sortDateDes(parent, child) {
 
 				$(".listCases")
 						.append(
-								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8'onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
+								"<div class='this col-xs-12 smallBar clickable' style='border-bottom:1px solid #7C96E8'onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this");
 
 			});
+
 
 }
 
@@ -1157,7 +1175,7 @@ function sortNameAsc(parent, child) {
 
 				$(".listCases")
 						.append(
-								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8' onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
+								"<div class='this col-xs-12 smallBar clickable' style='border-bottom:1px solid #7C96E8' onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this ");
 
@@ -1187,7 +1205,7 @@ function sortNameDes(parent, child) {
 
 				$(".listCases")
 						.append(
-								"<div class='this col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8' onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
+								"<div class='this col-xs-12 smallBar clickable' style='border-bottom:1px solid #7C96E8' onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this");
 

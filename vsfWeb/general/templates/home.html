@@ -9,7 +9,6 @@
 	<div class ="row bodyContent">
 	
 		<div class="col-xs-12" id="searchHome">
-
 <link rel="stylesheet" type="text/css"
 	href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 
@@ -29,6 +28,7 @@
 <input type="hidden" id="hidden_site" value="{{ site }}">
 <input type="hidden" id="hidden_isp" value="{{ isp }}">
 <input type="hidden" id="hidden_label" value="">
+
 <input type="hidden" id="hidden_start_date"
 	value="{{ s_year }}-{{ s_month }}-{{ s_day }}">
 <input type="hidden" id="hidden_end_date"
@@ -53,13 +53,14 @@
 							<input type="text" id="title" name="title" placeholder="Title">
 						</div>
 
-						<div id="reportrange" class="col-xs-2" style="padding-left:50px;">
+						<div id="reportrange" class="col-xs-2"
+							style=" cursor: pointer; padding: 5px 10px;">
 							<span></span> <b class="caret"></b> <i
 								class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
 						</div>
 
-						<div class="col-xs-1" >
-							<input class="searchIcon" type="submit" value="" id="submit" />
+						<div class="col-xs-1">
+							<input type="submit" value="" id="submit" />
 
 
 						</div>
@@ -134,7 +135,11 @@
 					</div>
 				</div>
 
-				<div class="listCases" id="easyPaginate" style="margin-bottom: 5px"></div>
+				<div class="listCases" style="margin-bottom: 5px"></div>
+				
+				<ul id="pagin">
+
+				</ul>
 			</div>
 
 
@@ -146,10 +151,13 @@
 
 <div class="col-xs-2 changeStyling"></div>
 
-</div>
+
+
 
 
 <script type="text/javascript">
+
+
 //Load the the datepicker style
 	$(function() {
 
@@ -229,9 +237,6 @@
 
 	});
 </script>
-<style>
-</style>
-
 
 
 
@@ -351,14 +356,57 @@ function fillSelectors(selectContainer, url_data, values){
 	var url_data_list_empty = "{% url 'General:CaseListEmpty' %}"
 </script>
 
+
+
 <script src="{% static 'js/general/list-cases.js' %}"></script>
-
-		
-		</div>
-
-	</div>
+<script>
 
 
+function pagination(){
+
+	//Pagination
+	pageSize = 10;
+	
+	elementCount = parseInt($('#resultados strong').text());
+	
+	pageCount = Math.ceil(elementCount / pageSize);
+
+	for (var i = 0; i < pageCount; i++) {
+	  if (i == 0)
+	    $("#pagin").append('<li><a class="current" href="#">' + (i + 1) + '</a></li>');
+	  else
+	    $("#pagin").append('<li><a href="#">' + (i + 1) + '</a></li>');
+	}
+
+
+	showPage = function(page) {
+		$(".listCases  .smallBar").hide();
+	
+	
+		$(".listCases .smallBar").each(function(n) {
+		  if (n >= pageSize * (page - 1) && n < pageSize * page)
+		    $(this).show();
+		  else 
+			 $(this).hide();
+		});
+	}
+	
+	
+	 
+
+	$("#pagin li a").click(function() {
+	  $("#pagin li a").removeClass("current");
+	  $(this).addClass("current");
+	  
+	  showPage(parseInt($(this).text()))
+	});
+
+	
+}
+</script>
+</div>
+</div>
+</div>
 <div class="container">
 
 	<div class ="row bodyContent">
@@ -392,12 +440,12 @@ function fillSelectors(selectContainer, url_data, values){
 		<div>
 			<div id="blockedSitesList"></div>
 
-			<button class="contextualButtonFixedSize" onclick="select('domains')"
+			<button class="contextualButtonFixedSize" onclick="selectBlockedSites('domains')"
 				style="margin-top: 10px; margin-bottom: 5px;">
 				{% trans 'Domains' %}
 			</button>
 
-			<button class="contextualButtonFixedSize" onclick="select('sites')"
+			<button class="contextualButtonFixedSize" onclick="selectBlockedSites('sites')"
 				style="margin-top: 10px; margin-bottom: 5px;">
 				{% trans 'Sites' %}
 			</button>

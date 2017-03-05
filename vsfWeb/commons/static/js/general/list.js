@@ -4,7 +4,7 @@
 $( document ).ready(function() {
         
         // url_data is the URL corresponding to the AJAX code
-        var url_data = null;
+        var url_data_aux = null;
         // show_result is the different key element name of the JSON array depending on the action selected by the user 
         var show_result = null;
         
@@ -12,14 +12,14 @@ $( document ).ready(function() {
         $("#count").html("0");
         
         // The default value of the blocked sites/domains list is "Sites"
-        select("sites");
+        selectBlockedSites("sites");
         
 });
 
 // Fnction select(option): Enables the option to use the same AJAX code for the sites or domains list. 
 // The input "option" corresponds to the type of list that we are going to show. Ex. "sites" or "domains"
 
-function select(option){
+function selectBlockedSites(option){
 	$('#hiddenID').val(0);  
         // When select function is invoked the list is emptied  
         $("#blockedSitesList").empty();
@@ -32,11 +32,11 @@ function select(option){
             
             $("#title").html(sites);
             $("#download").attr("href",url_excel_sites)
-            url_data=url_data_sites;
+            url_data_aux=url_data_sites;
             show_result = "name";
          // This AJAX call corresponds to the request of the JSON data from Pandora project API.
             $.ajax({
-                    url: url_data,
+                    url: url_data_aux,
                     method: "GET",
                     dataType: 'json',
                     contentType: 'application/json'
@@ -181,11 +181,11 @@ function select(option){
             var domain=$("#domains").val();            
             $("#title").html(domain);
             $("#download").attr("href",url_excel_domains)
-            url_data = url_data_domains;
+            url_data_aux = url_data_domains;
             show_result = "url";
          // This AJAX call corresponds to the request of the JSON data from Pandora project API.
             $.ajax({
-                    url: url_data,
+                    url: url_data_aux,
                     method: "GET",
                     dataType: 'json',
                     contentType: 'application/json'

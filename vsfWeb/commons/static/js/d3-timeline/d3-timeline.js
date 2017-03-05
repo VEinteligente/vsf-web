@@ -74,7 +74,7 @@ function gantt(){// vim: ts=2 sw=2
     var DISPLAY_TYPES = ["circle", "rect"];
     
     var hover = function (d,i) {  
-//    		console.log( dataTooltip[i] );
+//    	
     		var isp =  dataTooltip[i].isp;
     		var start =  dataTooltip[i].start_date;
     		var end =  dataTooltip[i].end_date;
@@ -1054,8 +1054,7 @@ $
 								
 								for(var j = 0; j < dataAll.length; j++){
 
-									console.log(dataAll)
-									console.log(dataLabel)
+									
 									
 									if(dataAll[j].label==dataLabel[i]) {
 							
@@ -1074,9 +1073,9 @@ $
 								
 								
 								element = { label: label_element ,times };
-								console.log(element);
+								
 								dataResult.push(element);
-								console.log(dataResult);
+								
 								
 							}
 			

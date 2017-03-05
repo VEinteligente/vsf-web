@@ -508,7 +508,8 @@ $(document)
 															
 															if ((dataUpdates.updates).length == 0){
 																
-																$('#updateListAjax').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>No updates</p></div>");
+																$('#updates').hide();
+																//$('#updateListAjax').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>No updates</p></div>");
 																
 															}
 															else{

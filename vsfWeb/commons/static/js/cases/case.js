@@ -506,7 +506,8 @@ $(document)
 															
 															if ((dataUpdates.updates).length == 0){
 																
-																$('#updateListAjax').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>No updates</p></div>");
+																$('#updates').hide();
+																//$('#updateListAjax').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>No updates</p></div>");
 																
 															}
 															else{
@@ -581,11 +582,9 @@ $(document)
 																			$("#updateListAjax .description").hide();
 																			$('#updateListAjax  .row').each(function(){
 																					var count = 0;
-																					console.log($(this))
 																					$(this).on('click', function() { // when you click
 																							// the div
-																						console.log($(this).find(".description"))
-																						console.log($(this).next(".description"))
+																						
 																						count++;
 																						// The count variable enables that the action when
 																						// second click is different

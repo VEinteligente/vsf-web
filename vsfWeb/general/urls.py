@@ -6,10 +6,11 @@ from views import (Dashboard, AboutUs, BlockedSitesApi, BlockedDomainsApi,
                    CaseList, SearchResultCVS, SearchResultFilterCVS,
                    searchTwitterApi, CaseListAdvanced,
                    CaseListApi, ISPListApi, CategoryListApi, RegionListApi,
-                   SiteListApi)
+                   SiteListApi, Home)
 
 
 urlpatterns = [
+
     url(r'^dashboard$', Dashboard.as_view(), name="Dashboard"),
     url(r'^about-us$', AboutUs.as_view(), name="AboutUs"),
     url(r'^blocked-sites-api$',
@@ -31,7 +32,7 @@ urlpatterns = [
     url(r'^category-list', CategoryListApi.as_view(), name="CategoryListApi"),
     url(r'^site-list', SiteListApi.as_view(), name="SiteListApi"),
     url(r'^region-list', RegionListApi.as_view(), name="RegionListApi"),
-    url(r'^map-Venezuela', MapVenezuela.as_view(), name="MapVenezuela"),
+    url(r'^map-Venezuela/$', MapVenezuela.as_view(), name="MapVenezuela"),
     url(r'^map-api', MapApi.as_view(), name="MapApi"),
     url(r'^map-excel/$', MapTableCVS, name="ExcelMap"),
     url(r'^list-cases/title=(?P<title>(\S|\W)*)&category=' + 

@@ -201,6 +201,7 @@ tr{
     border: 1px solid white;
     border-radius: 5px;
     margin: 10px;
+    height: 330px;
     padding: 0;
     
     > div:first-child{
@@ -1164,8 +1165,6 @@ a{
 .clickable{
 	cursor: pointer;
 }
-
-
 #subGraph2 .EventsMonth {
 	float: right;
 	height: 330px;

@@ -264,8 +264,7 @@ $(document)
 
 																												if (thirdLevelValue != null) {
 
-																													datethirdLevelValue = thirdLevelValue
-																															.split("T");
+																													datethirdLevelValue = thirdLevelValue.split("T");
 																													datethirdLevelValue = datethirdLevelValue[0]
 																															.split("-");
 																													date = datethirdLevelValue[2]
@@ -274,7 +273,7 @@ $(document)
 																															+ "/"
 																															+ datethirdLevelValue[0];
 																													$(
-																															".listCases:last-child")
+																															".listCases")
 																															.find(
 																																	".date")
 																															.append(
@@ -295,7 +294,7 @@ $(document)
 																												} else {
 
 																													$(
-																															".listCases:last-child")
+																															".listCases")
 																															.find(
 																																	".date")
 																															.append(

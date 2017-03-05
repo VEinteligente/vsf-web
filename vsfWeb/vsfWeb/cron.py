@@ -1,6 +1,9 @@
 import json
 import requests
 import settings
+import httplib
+
+import shutil
 
 from django_cron import CronJobBase, Schedule
 
@@ -9,7 +12,7 @@ from selenium import webdriver
 
 class ScreenshotCronjob(CronJobBase):
    # Time that the Cronjob will execute
-   RUN_EVERY_MIN = 1   # This with the crontab will execute once a week
+   RUN_EVERY_MIN = 1  # This with the crontab will execute once a week
 
    schedule = Schedule(run_every_mins=RUN_EVERY_MIN)
    code = ''
@@ -38,11 +41,35 @@ class ScreenshotCronjob(CronJobBase):
                # we set the size of the web browser
                driver.set_window_size(1024, 768)
                # we pass the url we need to gran the screenshot from
-               driver.get(domain['url'])
-               # screen shot in the static/screenshots folder of the project
-               driver.save_screenshot(
-                   "commons/static/screenshots/screen_case_" +
-                   str(id_case) +"_"+str(countDomain)+
-                   ".png"
-               )
+               
+               try:
+                   request = requests.head(domain['url'], timeout=100)
+                   ret = request.status_code
+               except requests.exceptions.Timeout:
+                   # Maybe set up for a retry, or continue in a retry loop
+                   ret = 404
+               except requests.exceptions.TooManyRedirects:
+                   # Tell the user their URL was bad and try a different one
+                   ret = 404
+               except requests.exceptions.RequestException as e:
+                   # catastrophic error. bail.
+                   ret = 404
+               
+               
+               
+               if ret == 404:                   
+                   shutil.copy2("commons/static/screenshots/vsf_socialmediadefault_v101.png", "commons/static/screenshots/screen_case_" + 
+                       str(id_case) + "_" + str(countDomain) + 
+                       ".png") 
+               else:                                      
+                   driver.get(domain['url'])
+                   # screen shot in the static/screenshots folder of the project
+                   driver.save_screenshot(
+                       "commons/static/screenshots/screen_case_" + 
+                       str(id_case) + "_" + str(countDomain) + 
+                       ".png"
+                       )
+               
+               
+               
                countDomain = countDomain + 1

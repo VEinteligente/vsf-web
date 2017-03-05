@@ -30,7 +30,7 @@ function selectBlockedSites(option){
             // This variable loads the translated string of the title corresponding to the "site" option 
             var sites=$("#sites").val();
             
-            $("#title").html(sites);
+            $("#titleBlocked").html(sites);
             $("#download").attr("href",url_excel_sites)
             url_data_aux=url_data_sites;
             show_result = "name";
@@ -179,7 +179,7 @@ function selectBlockedSites(option){
 
             // This variable loads the translated string of the title corresponding to the "domain" option
             var domain=$("#domains").val();            
-            $("#title").html(domain);
+            $("#titleBlocked").html(domain);
             $("#download").attr("href",url_excel_domains)
             url_data_aux = url_data_domains;
             show_result = "url";

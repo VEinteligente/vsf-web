@@ -203,55 +203,53 @@ $(document)
 											// For cases with multiple sites, a carrousel is loaded. The images are stored in 
 											// static/screenshots and has a name similar to "screen_case_#ID_#DomainCount.png"
 											$("#caseImage").append('<div id="owl-demo" class="owl-carousel owl-theme"></div>');
-											
+
+											var nRequest = new Array();
+											var png = new Array();
 											for(var i = 0; i < domains_count; i++){
 												
+												
+												//(function(i) {
+													
 												$(".owl-carousel").append('<div class="item"><img src="" class="img-fluid"></div>');
-												var png = png_commons + "_" + i + ".png";	
-												
-												var xhr = new XMLHttpRequest();
-												
-												xhr.open('HEAD', png, true);
-												xhr.onreadystatechange = function(){
-												
-												if ( xhr.readyState == 4 ) {
-												    if ( xhr.status == 200 ) {
-														$(".img-fluid").attr("src", png);
-														$(".img-fluid").removeClass('img-fluid');
-												    } else {
-														$(".img-fluid").attr("src", png_default);
-														$(".img-fluid").removeClass('img-fluid');
-												    }
-												  }
-												};
-												xhr.send(null);
-												
+												var png = png_commons + "_" + i + ".png";
+												//	nRequest[i] = new XMLHttpRequest();
+													png[i] = png_commons + "_" + i + ".png";
 
-												
-												if(i == 0){
-													var xhr = new XMLHttpRequest();
-													
-													xhr.open('HEAD', png, true);
-													xhr.onreadystatechange = function(){
-													
-													if ( xhr.readyState == 4 ) {
-													    if ( xhr.status == 200 ) {
+													//nRequest[i].open("GET", png, true);
+												    //nRequest[i].onreadystatechange = function (oEvent) {
+												    
+//												    	if (nRequest[i].readyState === 4) {
+//												            if (nRequest[i].status === 200) {
+//												            	
+//												            	alert('img-fluid_' + i )
+//												            	alert(png[i])
+//												            	console.log($('img-fluid_' + i ))
+//												            	
 															$(".img-fluid").attr("src", png);
 															$(".img-fluid").removeClass('img-fluid');
-															var image_meta = png;
-													    } else {
-															$(".img-fluid").attr("src", png_default);
-															$(".img-fluid").removeClass('img-fluid');
-															var image_meta = png_default;
-													    }
-													  }
-													};
-													xhr.send(null);
+																if(i == 0){
+																	var image_meta = png[i];
+																}
+//												            } else {
+//												            	alert('img-fluid_' + i )
+//												            	
+//												            	$('img-fluid_' + i ).attr("src", png_default);
+//																$('img-fluid_' + i ).removeClass('img-fluid_' + i );
+//																if(i == 0){
+//																	var image_meta = png_default;
+//																}
+//												            }
+												   //      }
+//												      };
+//												      nRequest[i].send(null);
 													
-													
-													
-													
-												}
+												 //})(i);
+																
+																
+												
+												
+												
 											}
 											
 											// Settings for the carrousel

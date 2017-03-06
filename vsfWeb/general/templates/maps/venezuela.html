@@ -7444,11 +7444,11 @@
 			</div>
 
 
-			<div class="col-xs-3" id="listRegion">
+			<div class="col-xs-4" id="listRegion">
 				<div class="col-xs-12 subtitleBar">
 
 					<div class="h4Style">
-						<span class="col-xs-1" id="count"></span> <span id="title">
+						<span class="col-xs-1" id="countMap"></span> <span id="title">
 						{% trans "Featured Cases" %}</span>
 					</div>
 
@@ -7473,7 +7473,7 @@
 	// These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here 
 	// because of DJango configuration
 	var fail_service_img = "{% static 'img/icons/vsf_iconfailure_v101.svg' %}";
-	var url_data = "{% url 'General:MapApi' %}"
+	var url_data_map = "{% url 'General:MapApi' %}"
 	var url_style_list = "{% url 'StylingGuide:ListApi' %}"
 	var url_map_excel = "{% url 'General:ExcelMap' %}"
 	var url_web = $("#hidden_url_web").val();

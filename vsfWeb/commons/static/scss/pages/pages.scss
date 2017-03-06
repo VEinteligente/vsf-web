@@ -234,7 +234,7 @@ tr{
     }
 }
 
-#count{
+#countBlocked{
     float: none;
     padding: 0;
     border: 1px solid red;
@@ -248,6 +248,19 @@ tr{
 
 }
 
+#countMap{
+    float: none;
+    padding: 0;
+    border: 1px solid red;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 10px;
+    display: inline;
+
+}
 .downloadBlockedSitesUrl{
     padding-right: 25px;
     padding-top: 10px;
@@ -323,12 +336,8 @@ tr{
     pointer-events: none; 
 }
   
-#listRegion{
-    background:white; 
-    border: 1px solid white;
+#listRegion{ 
     border-radius: 5px;
-    padding: 0;
-    margin-left: 10px;
     height: 580px;
     overflow: auto;
     

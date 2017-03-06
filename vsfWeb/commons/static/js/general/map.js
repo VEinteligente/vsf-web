@@ -20,7 +20,7 @@ var element_hoverSpace = "";
 var mouseX = null; // X coordinates of mouse
 var mouseY = null; // Y coordinates of mouse
 // count indicate the click number the user had used
-var count = 0;
+var count_map = 0;
 // The commands inside the $(document).ready are all the commands that will be
 // loaded
 // after the rest of the page is loaded.
@@ -65,7 +65,7 @@ $(document)
 
 						// Correspond to the number of elements in the JSON. Its
 						// default value is "0"
-						$("#count").html("0");
+						$("#countMap").html("0");
 
 						hoverEvents();
 					});
@@ -123,7 +123,7 @@ $(document)
 																						+ array_counter[i])
 																				.show();
 																		$(
-																				"#count")
+																				"#countMap")
 																				.html(
 																						array_total[i]);
 																	}
@@ -190,7 +190,7 @@ $(document)
 
 											// Reset the total of cases viewed
 											// in the page
-											$("#count").html("0");
+											$("#countMap").html("0");
 
 											// Show the tooltip
 											$('.informationPanel').show();
@@ -226,7 +226,7 @@ $(document)
 																".class"
 																		+ array_counter[i])
 																.show();
-														$("#count").html(
+														$("#countMap").html(
 																array_total[i]);
 
 													} else {
@@ -300,7 +300,7 @@ $(document)
 					// the total of cases and lists of cases per states.
 					$
 							.ajax({
-								url : url_data,
+								url : url_data_map,
 								method : "GET",
 								dataType : 'json',
 								contentType : 'application/json'
@@ -314,7 +314,6 @@ $(document)
 										for (var i = 0; i < data.length; i++)
 											temporal = temporal.concat(data[i]);
 										var dataJson = JSON.parse(temporal);
-console.log(dataJson)
 										$
 												.each(
 														dataJson,
@@ -461,7 +460,7 @@ console.log(dataJson)
 																										}
 																									});
 
-																					count = count + 1;
+																					count_map = count_map + 1;
 
 																				});
 															}
@@ -476,11 +475,11 @@ console.log(dataJson)
 					$('svg > g').on('click', function() { // when you click
 															// the div
 
-						count++;
+						count_map++;
 						// The count variable enables that the action when
 						// second click is different
 						// from the first click action
-						if (count % 2 != 0) {
+						if (count_map % 2 != 0) {
 							$("svg > g").each(function() {
 								$(this).removeClass('no-hover');
 							});

@@ -9,7 +9,7 @@ $( document ).ready(function() {
         var show_result = null;
         
         // Correspond to the number of elements in the JSON. Its default value is "0"
-        $("#count").html("0");
+        $("#countBlocked").html("0");
         
         // The default value of the blocked sites/domains list is "Sites"
         selectBlockedSites("sites");
@@ -55,7 +55,7 @@ function selectBlockedSites(option){
                         $.each(dataJson , function(key , value){ // First Level 
                             
                             if(key=="count"){     
-                                $("#count").html(value);
+                                $("#countBlocked").html(value);
                             }
                             
                             // We need to access this element to get each site/domain data
@@ -125,13 +125,13 @@ function selectBlockedSites(option){
                                                             $('#hiddenLinkID').val( "link"+$('#hiddenID').val() )
                                                             var parentID= $('#'+ $('#hiddenDomainLinkID').val()).parent(".subtitleBar");
                                                             var childID =$('#'+ $('#hiddenDomainLinkID').val());
-                                                            var count=0;
+                                                            var count_block=0;
                                                             
                                                             parentID.click(function(){
-                                                                count++;
+                                                                count_block++;
                                                                 //The count variable enables that the action when second click is different
                                                                 // from the first click action
-                                                                if(count % 2 != 0) {
+                                                                if(count_block % 2 != 0) {
                                                                     childID.show();
                                                                     parentID.css("background","#A0A0A0");
                                                                     childID.css("background","#808080");
@@ -204,7 +204,7 @@ function selectBlockedSites(option){
                         $.each(dataJson , function(key , value){ // First Level 
                             
                             if(key=="count"){     
-                                $("#count").html(value);
+                                $("#countBlocked").html(value);
                             }
                             
                             // We need to access this element to get each site/domain data
@@ -338,13 +338,13 @@ function selectBlockedSites(option){
                                                             
                                                             var parentID= $("#"+$('#hiddenID').val()).parent(".subtitleBar");
                                                             var childID =$("."+$('#hiddenLinkID').val());
-                                                            var count=0;
+                                                            var count_block=0;
                                                             
                                                             parentID.click(function(){
-                                                                count++;
+                                                                count_block++;
                                                                 //The count variable enables that the action when second click is different
                                                                 // from the first click action
-                                                                if(count % 2 != 0) {
+                                                                if(count_block % 2 != 0) {
                                                                     childID.show();
                                                                     parentID.css("background","#A0A0A0");
                                                                     childID.css("background","#808080");

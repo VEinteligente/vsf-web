@@ -11,3 +11,5 @@ local_settings.py
 /vsfWeb/commons/static/screenshots/screen_case_2_0.png
 /vsfWeb/commons/static/screenshots/screen_case_2_1.png
 /vsfWeb/ghostdriver.log
+
+vsfWeb/db\.sqlite3

@@ -60,18 +60,19 @@ function gantt(timelap){
 
 				var tickFormat = { format: d3.time.format("%d %b"),
 				          tickTime: d3.time.days,
-				          tickInterval: 3,
+				          tickInterval: 7,
 				          tickSize: 6,
 				          tickValues: null
 				        };
 				timelineStart = new Date(start.getFullYear(), start.getMonth(), 1);
+				timelineEnd = new Date(start.getFullYear(), start.getMonth(), 31);
 	}
 	 
 	else if(timelap == "Year"){
 				// If the number of days is smaller than a year then show the X axis 
 				// with the month name and year. The set the starting date
 				// of the Gantt as the first of January
-				if(diffDays < 365){
+				
 					var tickFormat = { format: d3.time.format("%b %Y"),
 					          tickTime: d3.time.months,
 					          tickInterval: 1,
@@ -80,7 +81,10 @@ function gantt(timelap){
 					        };
 					
 					timelineStart = new Date(start.getFullYear(), 0, 1);
-				}
+					timelineEnd = new Date(start.getFullYear(), 5, 31);
+					
+					
+				
 	}
 	
 	else{
@@ -998,7 +1002,7 @@ function adjustTextLabels(selection) {
 			        .attr('transform', 'translate(0,30)');
 	}
 	else{
-		var offset = 40;
+		var offset = 10;
 		var daysToPixels = (($('.axis .tick:nth-child(2) text')).position().left -
 				($('.axis .tick:nth-child(1) text')).position().left)/2+offset;
 				

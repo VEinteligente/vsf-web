@@ -367,7 +367,7 @@ function gantt(){// vim: ts=2 sw=2
             })
             .attr("transform", getPosition)
             .attr("points", getPoints)
-            .attr("x", getXPos)
+            .attr("x", getXPos)          
             .attr("y", getStackPosition)          
             .attr("height", itemHeight)
             .style("fill", function(d, i){
@@ -514,10 +514,24 @@ function gantt(){// vim: ts=2 sw=2
       function getPoints(d, i) {
     	  var x = getXPos(d, i);
     	  
+    	 
     	  var width = (d.ending_time - d.starting_time) * scaleFactor;
-          return width +",8 " + (width-8) + ",0 " + (width-8) +
-          ",0 " + (width-8) + ",0 8,0 8,0 0,8 8,16 8,16 " + (width-8) + 
-          ",16 " + (width-8) + ",16 " + (width-8) + ",16" 
+    	  // If the event start date is outside the graph
+			if(timelineStart.getTime() > d.starting_time){
+				 width = (d.ending_time - d.starting_time) * scaleFactor-(timelineStart.getTime() - d.starting_time) * scaleFactor;
+				  return width +",8 " + (width-8) + ",0 " + (width-8) +
+		          ",0 " + (width-8) + ",0 8,0 8,16 8,16 " + (width-8) + 
+		          ",16 " + (width-8) + ",16 " + (width-8) + ",16"
+			} 
+			else{
+				
+				
+				  return width +",8 " + (width-8) + ",0 " + (width-8) +
+		          ",0 " + (width-8) + ",0 8,0 8,0 0,8 8,16 8,16 " + (width-8) + 
+		          ",16 " + (width-8) + ",16 " + (width-8) + ",16"
+			}
+			
+         
           
 //          width + ",16 7,16 0 ,8 7, 0 " + width + ",0" ;
 //          550,8 542.001,0 542,0.001 542,0 8,0 8,0 0,8 8,16 8,16 542,16 542,15.999 542.001,16 
@@ -525,8 +539,18 @@ function gantt(){// vim: ts=2 sw=2
         }
       
       function getPosition(d, i) {
-    	  var x = getXPos(d, i);
-   
+    	  
+    	  
+    	  	if(timelineStart.getTime() > d.starting_time){
+    		  var x = margin.left-8;
+			} 
+			else{
+				
+				var x = getXPos(d, i);
+			}
+			
+        
+    	  
     	  if(count !=0 && i == 0 ){
     		  position ++;  
     	  }
@@ -963,12 +987,12 @@ $
 								var end_date = (new Date()).getTime();
 							}
 							
+								element = { label: ( isp + "-" + type + "-" + domain),times: 
+									[ {"color": colorSelect(type), "starting_time": start_date, "ending_time": end_date}]
+								};
 							
 							
-									
-							element = { label: ( isp + "-" + type + "-" + domain),times: 
-								[ {"color": colorSelect(type), "starting_time": start_date, "ending_time": end_date}]
-							};
+						
 							
 							dataAll[dataAll.length]=element;
 							

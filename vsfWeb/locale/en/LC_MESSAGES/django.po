@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-15 19:54+0000\n"
+"POT-Creation-Date: 2017-03-07 20:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,50 +17,95 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: cases/templates/one-element-case.html:7
+#: cases/templates/case-pdf.html:7 cases/templates/case.html:7
+#: commons/templates/pdf/case-pdf.html:7
 #, fuzzy
 #| msgid "Continue"
 msgid "Continua"
 msgstr "Continue"
 
-#: cases/templates/one-element-case.html:8
+#: cases/templates/case-pdf.html:8 cases/templates/case.html:8
+#: commons/templates/pdf/case-pdf.html:9
 msgid "Dominios"
 msgstr "Domains"
 
-#: cases/templates/one-element-case.html:9
+#: cases/templates/case-pdf.html:9 cases/templates/case.html:9
+#: commons/templates/pdf/case-pdf.html:11
 msgid "Sitios"
 msgstr "Sites"
 
-#: cases/templates/one-element-case.html:58
+#: cases/templates/case-pdf.html:51 cases/templates/case.html:55
+#: commons/templates/pdf/case-pdf.html:70
 #, fuzzy
 #| msgid "Category"
 msgid "Category: "
 msgstr "Category"
 
-#: cases/templates/one-element-case.html:105
-#: cases/templates/one-element-case.html:112
+#: cases/templates/case-pdf.html:56 cases/templates/case.html:145
+#: commons/templates/pdf/case-pdf.html:34
+msgid "Descripcion: "
+msgstr "Description:"
+
+#: cases/templates/case-pdf.html:92 cases/templates/case.html:100
+#: cases/templates/case.html:105
 #, fuzzy
 #| msgid "Download Speed"
 msgid "Download"
 msgstr "Download Speed"
 
-#: cases/templates/one-element-case.html:151
-msgid "Descripcion: "
-msgstr "Description:"
+#: cases/templates/case-pdf.html:117
+#, fuzzy
+#| msgid "Blocked Domains"
+msgid "List Domains: "
+msgstr "Blocked Domains"
 
-#: cases/templates/one-element-case.html:167
+#: cases/templates/case-pdf.html:144 cases/templates/case.html:161
 msgid "actualizaciones"
 msgstr "Updates:"
 
-#: cases/templates/one-element-case.html:197
+#: cases/templates/case-pdf.html:174 cases/templates/case.html:191
 msgid "Grafico"
 msgstr "Graphic"
 
-#: cases/templates/one-element-case.html:221
+#: cases/templates/case.html:322
 #, fuzzy
-#| msgid "Information"
-msgid "informacion"
-msgstr "Information"
+#| msgid "Measurement"
+msgid "Measurements"
+msgstr "Measurement"
+
+#: commons/templates/footer/footer.html:16
+#, fuzzy
+#| msgid "Home"
+msgid "Homepage"
+msgstr "Home"
+
+#: commons/templates/footer/footer.html:17
+msgid "Noticias"
+msgstr "News"
+
+#: commons/templates/footer/footer.html:18
+msgid "Guias"
+msgstr "Guides"
+
+#: commons/templates/footer/footer.html:28
+msgid "Sobre VE Sin Filtro"
+msgstr "About VE Sin Filtro"
+
+#: commons/templates/footer/footer.html:31
+msgid "VE Sin Filtro es un proyecto iniciado por VE inteligente junto con instituto"
+msgstr "VE Sin Filtro is a project  runned by VE inteligente in collaboration with institute"
+
+#: commons/templates/footer/footer.html:37
+msgid "by"
+msgstr "by"
+
+#: commons/templates/footer/footer.html:37
+msgid "Venezuela Sin Filtro"
+msgstr "Venezuela Sin Filtro"
+
+#: commons/templates/footer/footer.html:37
+msgid "All rights reserved"
+msgstr "All rights reserved"
 
 #: commons/templates/navbar/navbar.html:36
 msgid "Home"
@@ -99,26 +144,48 @@ msgid "Summary Table"
 msgstr "Summary Table"
 
 #: general/templates/blocked-sites_domains.html:14
+#: general/templates/home.html:7931
 msgid "Blocked Sites Strong"
 msgstr "Blocked <strong>Sites</strong>"
 
 #: general/templates/blocked-sites_domains.html:16
+#: general/templates/home.html:7933
 msgid "Blocked Domains Strong"
 msgstr "Blocked <strong>Domains</strong>"
 
-#: general/templates/blocked-sites_domains.html:36
+#: general/templates/blocked-sites_domains.html:48
+#: general/templates/home.html:7965
 #, fuzzy
 #| msgid "Blocked Domains"
 msgid "Domains"
 msgstr "Blocked Domains"
 
-#: general/templates/blocked-sites_domains.html:41
+#: general/templates/blocked-sites_domains.html:52
+#: general/templates/home.html:7969
 msgid "Sites"
 msgstr "Sites"
 
-#: general/templates/maps/venezuela.html:7451
+#: general/templates/home.html:7456 general/templates/maps/venezuela.html:7452
 msgid "Featured Cases"
 msgstr "Featured <strong>Cases</strong>"
+
+#: general/templates/home.html:8010 summary/templates/summary-table.html:11
+msgid "Categories"
+msgstr "Categories"
+
+#: general/templates/home.html:8011 summary/templates/summary-table.html:12
+msgid "ISPs"
+msgstr "ISPs"
+
+#: general/templates/home.html:8043 summary/templates/summary-table.html:45
+msgid "Category"
+msgstr "Category"
+
+#: general/templates/home.html:8047
+#: summary/templates/measurements-table.html:30
+#: summary/templates/summary-table.html:49
+msgid "ISP"
+msgstr "ISP"
 
 #: stylingGuide/templates/elements.html:12
 msgid "Buttons"
@@ -301,11 +368,6 @@ msgstr "State"
 msgid "City"
 msgstr "City"
 
-#: summary/templates/measurements-table.html:30
-#: summary/templates/summary-table.html:48
-msgid "ISP"
-msgstr "ISP"
-
 #: summary/templates/measurements-table.html:31
 msgid "Measurement"
 msgstr "Measurement"
@@ -314,18 +376,6 @@ msgstr "Measurement"
 msgid "Type"
 msgstr "Type"
 
-#: summary/templates/summary-table.html:11
-msgid "Categories"
-msgstr "Categories"
-
-#: summary/templates/summary-table.html:12
-msgid "ISPs"
-msgstr "ISPs"
-
-#: summary/templates/summary-table.html:44
-msgid "Category"
-msgstr "Category"
-
 #: vsfWeb/settings.py:173
 msgid "English"
 msgstr "English"
@@ -333,6 +383,11 @@ msgstr "English"
 #: vsfWeb/settings.py:174
 msgid "Spanish"
 msgstr "Spanish"
+
+#, fuzzy
+#~| msgid "Information"
+#~ msgid "informacion"
+#~ msgstr "Information"
 
 #~ msgid "News"
 #~ msgstr "News"

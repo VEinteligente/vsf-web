@@ -1,16 +1,47 @@
+// This value indicates the maximum Y values of a graph. If the value is 
+// over this value then a simplificated graph will be shown.
 var maxYValues = 15; 
+var Year = "Year";
+var Month = "Month";
+var Days = "Days";
 
-function gantt(){// vim: ts=2 sw=2
+function gantt(timelap){
 	
 	
+	// This function calls the gantt graph. Timelap indicates the unit of time
+	// of the X axis
+	
+	
+	$("#timeline1").html("<div class='row' style='float:right; " +
+			"margin-right:25px'><button onClick='gantt(Year)'" +
+			"class='contextualButtonFixedSize'>Year</button>" +
+			"<button onClick='gantt(Month)' class='contextualButtonFixedSize'>Month</button>" +
+			"<button onClick='gantt(Days)' class='contextualButtonFixedSize'>Days</button></div>");
+	
+	
+	
+	
+	
+	
+	// This value indicates the starting time of the Gantt
 	var timelineStart = (new Date($('#hiddenDate').val())).getTime();
+	// This value indicates the ending time of the Gantt
 	var timelineEnd = (new Date($('#hiddenDateEnd').val())).getTime();
+	
 	var dateStart = new Date($('#hiddenDate').val());
 	var start = (new Date($('#hiddenDateEnd').val()));
+	
+	// This value corresponds to the time between the start and ending time 
+	//of the Gantt
 	var timeDiff = Math.abs(timelineEnd- timelineStart);
+	// This value corresponds to the days between the start and ending time 
+	//of the Gantt
 	var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
 	
-	if(diffDays < 3){
+	
+	// If the number of days is smaller than 3 then show the X axis 
+	// with the day number and month name
+	if(timelap == "Days"){
 		
 			var tickFormat = { format: d3.time.format("%d %b"),
 			          tickTime: d3.time.days,
@@ -20,23 +51,13 @@ function gantt(){// vim: ts=2 sw=2
 			        };
 			
 			
-			
+			timelineStart = new Date(dateStart.setDate(start.getDate() - 7));
 		
 	}
-	else{
-		if(diffDays < 7) {
-			var tickFormat = { format: d3.time.format("%d %b"),
-			          tickTime: d3.time.days,
-			          tickInterval: 1,
-			          tickSize: 6,
-			          tickValues: null
-			        };
-			
-			
-			timelineStart = dateStart.setDate(start.getDate() - 7);
-		}
-		else{
-			if(diffDays < 31) {
+		
+	else if(timelap == "Month"){
+		
+
 				var tickFormat = { format: d3.time.format("%d %b"),
 				          tickTime: d3.time.days,
 				          tickInterval: 3,
@@ -44,8 +65,12 @@ function gantt(){// vim: ts=2 sw=2
 				          tickValues: null
 				        };
 				timelineStart = new Date(start.getFullYear(), start.getMonth(), 1);
-			}
-			else{
+	}
+	 
+	else if(timelap == "Year"){
+				// If the number of days is smaller than a year then show the X axis 
+				// with the month name and year. The set the starting date
+				// of the Gantt as the first of January
 				if(diffDays < 365){
 					var tickFormat = { format: d3.time.format("%b %Y"),
 					          tickTime: d3.time.months,
@@ -56,25 +81,104 @@ function gantt(){// vim: ts=2 sw=2
 					
 					timelineStart = new Date(start.getFullYear(), 0, 1);
 				}
-				else{
-					var tickFormat = { format: d3.time.format("%b %Y"),
-					          tickTime: d3.time.years,
-					          tickInterval: 1,
+	}
+	
+	else{
+
+		// If the number of days is smaller than 3 then show the X axis 
+		// with the day number and month name
+		if(diffDays < 3){
+			
+				var tickFormat = { format: d3.time.format("%d %b"),
+				          tickTime: d3.time.days,
+				          tickInterval: 1,
+				          tickSize: 6,
+				          tickValues: null
+				        };
+				
+				
+				
+			
+		}
+		else{
+
+			// If the number of days is smaller than 7 then show the X axis 
+			// with the day number and month name. The set the starting date
+			// of the Gantt a week before that date
+
+			if(diffDays < 7) {
+				var tickFormat = { format: d3.time.format("%d %b"),
+				          tickTime: d3.time.days,
+				          tickInterval: 1,
+				          tickSize: 6,
+				          tickValues: null
+				        };
+				
+				
+				timelineStart = dateStart.setDate(start.getDate() - 7);
+			}
+			
+
+			
+			else{
+				// If the number of days is smaller than 31 then show the X axis 
+				// with the day number and month name. The set the starting date
+				// of the Gantt as the first day of month
+				if(diffDays < 31) {
+					var tickFormat = { format: d3.time.format("%d %b"),
+					          tickTime: d3.time.days,
+					          tickInterval: 3,
 					          tickSize: 6,
 					          tickValues: null
 					        };
+					timelineStart = new Date(start.getFullYear(), start.getMonth(), 1);
+				}
+				else{
+					// If the number of days is smaller than a year then show the X axis 
+					// with the month name and year. The set the starting date
+					// of the Gantt as the first of January
+					if(diffDays < 365){
+						var tickFormat = { format: d3.time.format("%b %Y"),
+						          tickTime: d3.time.months,
+						          tickInterval: 1,
+						          tickSize: 6,
+						          tickValues: null
+						        };
+						
+						timelineStart = new Date(start.getFullYear(), 0, 1);
+					}
+					else{
+						
+						// If the number of days is higher than a year then show the X axis 
+						// with the month name and year. The set the starting date
+						// of the Gantt as the date of the first event
+						var tickFormat = { format: d3.time.format("%b %Y"),
+						          tickTime: d3.time.years,
+						          tickInterval: 1,
+						          tickSize: 6,
+						          tickValues: null
+						        };
+					}
 				}
 			}
 		}
+		
+		
+		
 	}
+	
+	
+		
+	
 	
 	
 (function () {
   d3.timeline = function() {
     var DISPLAY_TYPES = ["circle", "rect"];
     
+    // When hover over a element of the Gantt show tooltip
     var hover = function (d,i) {  
-//    	
+  	
     		var isp =  dataTooltip[i].isp;
     		var start =  dataTooltip[i].start_date;
     		var end =  dataTooltip[i].end_date;
@@ -117,12 +221,6 @@ function gantt(){// vim: ts=2 sw=2
         height = null,
         rowSeparatorsColor = null,
         backgroundColor = null,
-//        tickFormat = { format: d3.time.format("%a %d"),
-//		          tickTime: d3.time.days,
-//		          tickInterval: 1,
-//		          tickSize: 6,
-//		          tickValues: null
-//        },
         colorCycle = d3.scale.category20(),
         colorPropertyName = null,
         display = "rect",
@@ -152,6 +250,7 @@ function gantt(){// vim: ts=2 sw=2
         chartData = {}
       ;
 
+        
     var appendTimeAxis = function(g, xAxis, yPosition) {
 
       if(showAxisHeaderBackground){ appendAxisHeaderBackground(g, 0, 0); }
@@ -516,15 +615,17 @@ function gantt(){// vim: ts=2 sw=2
     	  
     	 
     	  var width = (d.ending_time - d.starting_time) * scaleFactor;
-    	  // If the event start date is outside the graph
+    	  // If the event start date is outside the graph then set the polygon 
+    	  // with left corner flat
 			if(timelineStart.getTime() > d.starting_time){
 				 width = (d.ending_time - d.starting_time) * scaleFactor-(timelineStart.getTime() - d.starting_time) * scaleFactor;
 				  return width +",8 " + (width-8) + ",0 " + (width-8) +
 		          ",0 " + (width-8) + ",0 8,0 8,16 8,16 " + (width-8) + 
 		          ",16 " + (width-8) + ",16 " + (width-8) + ",16"
 			} 
+			// If the event start date is inside the graph then set the polygon 
+	    	// with left corner sharp
 			else{
-				
 				
 				  return width +",8 " + (width-8) + ",0 " + (width-8) +
 		          ",0 " + (width-8) + ",0 8,0 8,0 0,8 8,16 8,16 " + (width-8) + 
@@ -532,15 +633,12 @@ function gantt(){// vim: ts=2 sw=2
 			}
 			
          
-          
-//          width + ",16 7,16 0 ,8 7, 0 " + width + ",0" ;
-//          550,8 542.001,0 542,0.001 542,0 8,0 8,0 0,8 8,16 8,16 542,16 542,15.999 542.001,16 
-//          550,16 7,16 0,8 7,0 550,0 
         }
       
       function getPosition(d, i) {
     	  
-    	  
+    	  	/// If the event start date is outside the graph then set the polygon 
+    	  	// position at the left side of graph
     	  	if(timelineStart.getTime() > d.starting_time){
     		  var x = margin.left-8;
 			} 
@@ -848,7 +946,8 @@ function gantt(){// vim: ts=2 sw=2
 })();
 
 function colorSelect(type){
-
+	// Depending on the type of event this function sets the colors
+	//of the polygons
 	switch(type) {
 	    case "bloqueo por DPI":
 	    	var color = "red";																				
@@ -887,7 +986,8 @@ function colorSelect(type){
 
 
 function adjustTextLabels(selection) {
-	
+	//This function sets the Y labels corresponding to the simplified
+	// or complete Gantt graph
 	if(diffDays < 31){
 		var offset = 10;
 		
@@ -914,7 +1014,6 @@ function adjustTextLabels(selection) {
 
 
 var timesGroup = [];
-//d3-timeline
 var dataResult = [];
 var dataLabel = [];
 var dataAll = [];
@@ -924,189 +1023,182 @@ var dataTooltip = [];
 
 // This AJAX call corresponds to the request of the JSON data from Pandora
 // project API.
-$
-		.ajax({
-			url : url_data,
-			method : "GET",
-			dataType : 'json',
-			contentType : 'application/json'
-		})
-		.done(
-				function(data) {
-		
-					var temporal = "";
+$.ajax({
+	url : url_data,
+	method : "GET",
+	dataType : 'json',
+	contentType : 'application/json'
+}).done(
+	function(data) {
+	
+		var temporal = "";
+		// For each element in the JSON we need to collect their
+		// values
+		for (var i = 0; i < data.length; i++)
+			temporal = temporal.concat(data[i]);
 
-					// For each element in the JSON we need to collect their
-					// values
-					for (var i = 0; i < data.length; i++)
-						temporal = temporal.concat(data[i]);
-
-					var dataJson = JSON.parse(temporal);
-				
-		
-					
-						$.each(dataJson.events, function(key, value) { // First Level
-							
-							dataTooltip[dataTooltip.length]= value;
-							
-							var isp = value.isp;
-							
-							var target = value.target;
-							
-							var domain = "";
-							
-							if(target.site != null){
-								domain = target.site 
-							}
-							else if(target.domain != null){
-								domain = target.domain 
-							}
-							else if(target.ip != null){
-								domain = target.ip 
-							}
-							
-							var type = value.type;
-				
-							var start_date = (new Date(value.start_date)).getTime();
-							
-							if( value.end_date != null ) {
-								var end_date = (new Date(value.end_date)).getTime();
-							}
-							else{
-								var end_date = (new Date()).getTime();
-							}
-							
-								element = { label: ( isp + "-" + type + "-" + domain),times: 
-									[ {"color": colorSelect(type), "starting_time": start_date, "ending_time": end_date}]
-								};
-							
-							
-						
-							
-							dataAll[dataAll.length]=element;
-							
-					
-							var exists = 0;
-							
-							for(var i = 0; i < dataLabel.length ; i++){
-								if(dataAll[i].label == (isp + "-" + type + "-" + domain)) {
-									exists = 1;
-								}
-							}
-							
-							if(exists != 1){
-								dataLabel[dataLabel.length]= (isp + "-" + type + "-" + domain)
-								
-							}
-						});
-						
-						if(dataLabel.length >  maxYValues){
-							
-								dataLabel = [];
-								dataAll = [];
-				
-								$.each(dataJson.events, function(key, value) { // First Level
-								
-									var isp = value.isp;
-									
-									var target = value.target;
-									
-									var domain = "";
-									
-									if(target.site != null){
-										domain = target.site 
-									}
-									else if(target.url != null){
-										domain = target.url 
-									}
-									else if(target.ip != null){
-										domain = target.ip 
-									}
-									
-									var type = value.type;
-						
-									var start_date = (new Date(value.start_date)).getTime();
-									
-									if( value.end_date != null ) {
-										var end_date = (new Date(value.end_date)).getTime();
-									}
-									else{
-										var end_date = (new Date()).getTime();
-									}
-									
-									
-									
-											
-									element = { label: ( isp + "-" + " " + "-" + domain),times: 
-										[ {"color": colorSelect(type), "starting_time": start_date, "ending_time": end_date}]
-									};
-									
-									dataAll[dataAll.length]=element;
-									
-									var exists = 0;
-									for(var i = 0; i < dataLabel.length ; i++){
-										if(dataAll[i].label == (isp + "-" + " " + "-" + domain)) {
-											exists = 1;
-										}
-									}
-									
-									if(exists != 1){
-										dataLabel[dataLabel.length]= (isp + "-" + " " + "-" + domain)
-										
-									}
-								});
-							
-							}
-												
-						
-							for(var i = 0; i < dataLabel.length ; i++){
-								var times_element = "";
-								var label_element = "";
-								var times = [];
-								var z = 0;
-								
-								for(var j = 0; j < dataAll.length; j++){
-
-									
-									
-									if(dataAll[j].label==dataLabel[i]) {
-							
-										times_element =  (dataAll[j].times)[0];
-										label_element =  (dataAll[j].label);
-										
-										times[z]= times_element;
-										z = z +1;
-										
-										
-									}
-									
-									
-								}
-								
-								
-								
-								element = { label: label_element ,times };
-								
-								dataResult.push(element);
-								
-								
-							}
+		var dataJson = JSON.parse(temporal);
 			
-						
-						
-				
-						var testData = dataResult
 					
-						var chart = d3.timeline().showTimeAxisTick().stack().beginning(timelineStart).ending(timelineEnd);
-;
+		$.each(dataJson.events, function(key, value) { // First Level
+			// Save the JSON to then use in the tooltip	
+			dataTooltip[dataTooltip.length]= value;
+						
+			var isp = value.isp;				
+			var target = value.target;
+			var domain = "";
+			
+			
+			// The domain or Y labels. If no site exists, then use the 
+			// URL. If no site name or URL exists use IP
+			if(target.site != null){
+				domain = target.site 
+			}
+			else if(target.url != null){
+				domain = target.url 
+			}
+			else if(target.ip != null){
+				domain = target.ip 
+			}
+							
+			var type = value.type;
+			
+			var start_date = (new Date(value.start_date)).getTime();
+							
+			if( value.end_date != null ) {
+				var end_date = (new Date(value.end_date)).getTime();
+			}
+			else{
+				var end_date = (new Date()).getTime();
+			}
+						
+			// This is an element of the Gantt (a polygon). The value will
+			// be used later on
+			element = { label: ( isp + "-" + type + "-" + domain),times: 
+						[ {"color": colorSelect(type), "starting_time": start_date, "ending_time": end_date}]
+			};
+							
+			dataAll[dataAll.length]=element;
+				
+			// The elements are stored together for a same ISP-TYPE-DOMAIN 
+			
+					
+			var exists = 0;
+				
+			for(var i = 0; i < dataLabel.length ; i++){
+				if(dataAll[i].label == (isp + "-" + type + "-" + domain)) {
+					exists = 1;
+				}
+			}
+							
+			if(exists != 1){
+				dataLabel[dataLabel.length]= (isp + "-" + type + "-" + domain)
+			}
+		});
+						
+		// If the maximum value of Y elements is smaller than the Y labels 
+		// elements then load the simplified Gantt (ISP-DOMAIN)
+		if(dataLabel.length >  maxYValues){
+							
+			dataLabel = [];
+			dataAll = [];
+			
+			$.each(dataJson.events, function(key, value) { // First Level
+						
+				var isp = value.isp;
+				var target = value.target;
+				var domain = "";
+				
+
+				// The domain or Y labels. If no site exists, then use the 
+				// URL. If no site name or URL exists use IP
+				if(target.site != null){
+					domain = target.site 
+				}
+				else if(target.url != null){
+					domain = target.url 
+				}
+				else if(target.ip != null){
+					domain = target.ip 
+				}
+								
+				var type = value.type;
+				
+				var start_date = (new Date(value.start_date)).getTime();
+									
+				if( value.end_date != null ) {
+					var end_date = (new Date(value.end_date)).getTime();
+				}
+				else{
+					var end_date = (new Date()).getTime();
+				}
+					
+				
+				element = { label: ( isp + "-" + " " + "-" + domain),times: 
+						[ {"color": colorSelect(type), "starting_time": start_date, "ending_time": end_date}]
+				};
+									
+				dataAll[dataAll.length]=element;
+				
+				// The elements are stored together for a same ISP-TYPE-DOMAIN 
+								
+				var exists = 0;
+				
+				for(var i = 0; i < dataLabel.length ; i++){
+					if(dataAll[i].label == (isp + "-" + " " + "-" + domain)) {
+						exists = 1;
+					}
+				}
+									
+				if(exists != 1){
+					dataLabel[dataLabel.length]= (isp + "-" + " " + "-" + domain)								
+				}
+			});
+		}
+												
+		// The elements must be stored in the same label (ISP-TYPE-DOMAIN), so
+		// all the times array of the elements with same label must be saved in
+		// a new array time with its corresponding label
+		for(var i = 0; i < dataLabel.length ; i++){
+			var times_element = "";
+			var label_element = "";
+			var times = [];
+			var z = 0;
+				
+			for(var j = 0; j < dataAll.length; j++){
+													
+				if(dataAll[j].label==dataLabel[i]) {
+						
+					times_element =  (dataAll[j].times)[0];
+					label_element =  (dataAll[j].label);
+					times[z]= times_element;
+					z = z +1;
+										
+										
+				}
+									
+									
+			}
+								
+								
+			element = { label: label_element ,times };
+			dataResult.push(element);
+								
+								
+		}
+			
+		var testData = dataResult;
+		// Save the chart in variable
+		var chart = d3.timeline().showTimeAxisTick().stack().beginning(timelineStart).ending(timelineEnd);
+
 
 						
-						var margin = {top: 35, right: 200, bottom: 20, left: 80},
-					    width = 1024 - (margin.left + margin.right);
-						height = 220 - (margin.top + margin.bottom);
+		var margin = {top: 35, right: 200, bottom: 20, left: 80},
+				    width = 1024 - (margin.left + margin.right);
+					height = 220 - (margin.top + margin.bottom);
 					    
 					    
-						var svg = d3.select("#timeline1")//container class to make it responsive
+		var svg = d3.select("#timeline1")//container class to make it responsive
 						.append("svg").attr("preserveAspectRatio", "xMinYMin meet")
 						.attr("width", width + (margin.left + margin.right)-24)
 						.attr("height", height )
@@ -1118,7 +1210,7 @@ $
 				
 
 	
-						svg.selectAll(".timeline-label")  // select all the text elements for the yaxis
+		svg.selectAll(".timeline-label")  // select all the text elements for the yaxis
 						          .html(function(d) {
 						        	  
 						        	  var labelStrong_first = (($(this).text())).split("-")[0];
@@ -1129,23 +1221,27 @@ $
 						        	  
 						        	  
 						        	  
-						        	  
+						        	  // Make first element bold
 						        	  $("#timeline1 svg > g:first-child").attr('transform','translate(330,0)');
 						        	  return ("<text stroke='#000000' style='text-transform: uppercase;'>" + labelStrong_first + "</text>" 
 						        			  + "<text transform='translate(120,0)'>" + labelStrong_second + ": "+ labelStrong_third +"</text>");
 						         });
 
-						$('.axis .tick ').each(function() {
+			$('.axis .tick ').each(function() {
+				// make rhombus for the X axis and set the label at the middle
 					
-					    $(this).html($(this).html()+ '<rect x="5" y="5" width="15" height="15" style="fill: #ccc" transform="rotate(45)" />');
-			         });
+				$(this).html($(this).html()+ '<rect x="5" y="5" width="15" height="15" style="fill: #ccc" transform="rotate(45)" />');
+			 });
+	
 	
 
-				}).fail(function(jqXHR, textStatus, errorThrown) {
+}).fail(function(jqXHR, textStatus, errorThrown) {
 					$('#timeline1').closest('.container-fluid').html("<div class='failedService'><img  src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 					
 					$('#twitterDiv').css('padding-right','0');
 				});
+
+
 }
 
 

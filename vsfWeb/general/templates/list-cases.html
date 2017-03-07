@@ -129,9 +129,10 @@
 
 				<div class="listCases" style="margin-bottom: 5px"></div>
 				
-				<ul id="pagin">
-
-				</ul>
+				<div class="row">
+					<span class="offset-xs-5" id="resultSummary"></span>
+					<ul id="pagin" class="offset-xs-1" ></ul>
+				</div>
 			</div>
 
 
@@ -353,7 +354,6 @@ function fillSelectors(selectContainer, url_data, values){
 <script src="{% static 'js/general/list-cases.js' %}"></script>
 <script>
 
-
 function pagination(){
 
 	//Pagination
@@ -365,21 +365,43 @@ function pagination(){
 
 	for (var i = 0; i < pageCount; i++) {
 	  if (i == 0)
-	    $("#pagin").append('<li><a class="current" href="#">' + (i + 1) + '</a></li>');
+	    $("#pagin").append('<li class="owl-theme"><a style="background: transparent" class=" owl-dots current" href="#" data-page="'+ (i + 1) + '">' + "<div class='owl-dot'><span></span></div>" + '</a></li>');
 	  else
-	    $("#pagin").append('<li><a href="#">' + (i + 1) + '</a></li>');
+	    $("#pagin").append('<li class="owl-theme"><a style="background: transparent" class=" owl-dots" href="#" data-page="'+ (i + 1) + '">' + "<div class='owl-dot'><span></span></div>" + '</a></li>');
 	}
-
+	
+	
 
 	showPage = function(page) {
+
+		if(pageSize < elementCount){
+			$("#resultSummary").html("Resultados " + (elementCount-pageSize*(pageCount-page)) + "-" + elementCount + " de " + elementCount)
+		}
+		else{
+			$("#resultSummary").html("Resultados 1-" + elementCount + " de " + elementCount)
+		}
+		
+		$(".owl-theme .owl-dot").removeClass('active');
 		$(".listCases  .smallBar").hide();
-	
+		
+		
+		$(".owl-theme .owl-dot").each(function(n){
+			 if (n == (page-1)){
+				  $(this).addClass('active');
+				  
+			  }
+		});
 	
 		$(".listCases .smallBar").each(function(n) {
-		  if (n >= pageSize * (page - 1) && n < pageSize * page)
-		    $(this).show();
-		  else 
-			 $(this).hide();
+		  if (n >= pageSize * (page - 1) && n < pageSize * page){
+			  $(this).show();
+			  
+		  }
+		    
+		  else {
+			  $(this).hide();
+		  }
+			 
 		});
 	}
 	
@@ -390,7 +412,7 @@ function pagination(){
 	  $("#pagin li a").removeClass("current");
 	  $(this).addClass("current");
 	  
-	  showPage(parseInt($(this).text()))
+	  showPage(parseInt($(this).data('page')))
 	});
 
 	

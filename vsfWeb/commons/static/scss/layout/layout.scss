@@ -177,3 +177,44 @@
     padding: 8px 16px;
   }
 }
+
+
+/***
+    *
+    *
+    FOOTER
+    +
+    *
+    *
+***/
+
+#vsf_footer {
+    padding-top: 70px;    
+    background-color: #dedede;
+}
+    
+.vsf_footer_background {
+    background: #ebebeb;
+    height: auto;
+}
+    
+.vsf_footer_map{
+    margin-top: -70px;
+}
+
+.vsf_footer_map img{
+    position: absolute;
+}
+    
+.vsf_footer_menu {
+    padding-top: 40px;
+    padding-bottom: 16px;
+    color: #4067e1;
+    text-transform: uppercase;
+}
+
+.vsf_footer_menu:hover{
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    color: #4067e1;
+}

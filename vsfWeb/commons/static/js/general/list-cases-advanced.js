@@ -1,18 +1,13 @@
 // formSer are the serialized form values
 var formSer = "";
 
-
-
 // The commands inside the $(document).ready are all the commands that will be
-// loaded
-// after the rest of the page is loaded.
-$(document)
-		.ready(
-				function() {
+// loaded after the rest of the page is loaded.
+$(document).ready(function() {
 					
-					// Datepickers format
-					$(".datepicker").datepicker({
-						dateFormat : 'yy-mm-dd'
+	// Datepickers format
+	$(".datepicker").datepicker({
+		dateFormat : 'yy-mm-dd'
 					}).val("");
 
 					changeMultipleChoice([ "#category", "#isp", "#site",
@@ -215,7 +210,7 @@ $(document)
 																											if (thirdLevelKey == "domains") {
 
 																												$.each( thirdLevelValue, function( fourthLevelKey, fourthLevelValue) {
-																													console.log(thirdLevelValue.length)
+																													
 																													if (thirdLevelValue.length < 2) {
 																										
 																														$(".listCasesAdvanced").find(".site").append(fourthLevelValue.site);
@@ -223,13 +218,27 @@ $(document)
 																													} else {
 																													
 																														for (var i = 0; i < thirdLevelValue.length; i++) {
+																															var target = "";
 																															
+																															if(thirdLevelValue[i].site != null){
+																																
+																																target = thirdLevelValue[i].site ;
+																															}
+																															else{
+																																
+																																if(thirdLevelValue[i].url != null){
+																																	target = thirdLevelValue[i].url ;
+																																}
+																																else{
+																																	target = thirdLevelValue[i].ip ;
+																																}
+																															}
 																															if (i == thirdLevelValue.length - 1) {
-																																console.log(thirdLevelValue[i])
-																																$(".listCasesAdvanced").find(".site").append(thirdLevelValue[i].site);
+																																
+																																$(".listCasesAdvanced").find(".site").append(target);
 																															} else {
-																																console.log((fourthLevelValue.site))
-																																$(".listCasesAdvanced").find(".site").append(thirdLevelValue[i].site + ", ");
+																																
+																																$(".listCasesAdvanced").find(".site").append(target + ", ");
 																															}
 
 																														}
@@ -278,6 +287,34 @@ $(document)
 																													}
 
 																												}
+																												
+																												var isp = $(".listCasesAdvanced").find(".isp").text();
+																												var ispArray = isp.split(", ");
+																												var ispItems = [];
+																												isp = "";
+																												
+																												
+																												for ( var i = 0 ; i < ispArray.length ; i++){
+																												
+																													if ($.inArray(ispArray[i],ispItems)==-1){
+																														ispItems[ispItems.length] = ispArray[i];
+																														if(i==0){
+																															isp = ispArray[i]	;
+																														}
+																														else{
+																															isp = isp + ", " + ispArray[i]	;
+																														}
+																														
+																													}
+																													
+																												}
+																												
+																												
+																													
+																													
+																												
+																												$(".listCasesAdvanced").find(".isp").html(isp);
+																												
 
 																												$(
 																														".listCasesAdvanced")
@@ -341,7 +378,7 @@ $(document)
 																															+ "/"
 																															+ datethirdLevelValue[0];
 																													$(
-																															".listCasesAdvanced:last-child")
+																															".listCasesAdvanced")
 																															.find(
 																																	".dateEnd")
 																															.append(
@@ -362,7 +399,7 @@ $(document)
 																												} else {
 
 																													$(
-																															".listCasesAdvanced:last-child")
+																															".listCasesAdvanced")
 																															.find(
 																																	".dateEnd")
 																															.append(
@@ -886,79 +923,64 @@ $("#advanced_search")
 
 																											if (thirdLevelValue.length < 2) {
 
-																												$(
-																														".listCasesAdvanced")
-																														.find(
-																																".isp")
-																														.append(
-																																thirdLevelValue);
+																												$(".listCasesAdvanced").find(".isp").append(thirdLevelValue);
 
 																											} else {
 																												for (var i = 0; i < thirdLevelValue.length; i++) {
 																													if (i == thirdLevelValue.length - 1) {
-																														$(
-																																".listCasesAdvanced")
-																																.find(
-																																		".isp")
-																																.append(
-																																		thirdLevelValue[i]);
+																														$(".listCasesAdvanced").find(".isp").append(thirdLevelValue[i]);
 																													} else {
-																														$(
-																																".listCasesAdvanced")
-																																.find(
-																																		".isp")
-																																.append(
-																																		thirdLevelValue[i]
-																																				+ ", ");
+																														$(".listCasesAdvanced").find(".isp").append(thirdLevelValue[i] + ", ");
 																													}
 
 																												}
 
 																											}
+																											var isp = $(".listCasesAdvanced").find(".isp").text();
+																											var ispArray = isp.split(", ");
+																											var ispItems = [];
+																											isp = "";
+																											
+																											
+																											for ( var i = 0 ; i < ispArray.length ; i++){
+																											
+																												if ($.inArray(ispArray[i],ispItems)==-1){
+																													ispItems[ispItems.length] = ispArray[i];
+																													if(i==0){
+																														isp = ispArray[i]	;
+																													}
+																													else{
+																														isp = isp + ", " + ispArray[i]	;
+																													}
+																													
+																												}
+																												
+																											}
+																											
+																											
+																												
+																												
+																											
+																											$(".listCasesAdvanced").find(".isp").html(isp);
+																											
 
-																											$(
-																													".listCasesAdvanced")
-																													.find(
-																															".isp")
-																													.addClass(
-																															"ispSort");
-																											$(
-																													".listCasesAdvanced")
-																													.find(
-																															".isp")
-																													.removeClass(
-																															"isp");
+																											
+																											$(".listCasesAdvanced").find(".isp").addClass("ispSort");
+																											$(".listCasesAdvanced").find(".isp").removeClass("isp");
 
 																										}
 
 																										if (thirdLevelKey == "description") {
 
-																											$(
-																													".listCasesAdvanced")
-																													.find(
-																															".name")
-																													.append(
-																															"<strong style='white-space: nowrap;overflow: hidden; text-overflow: ellipsis;'>"
-																																	+ thirdLevelValue
-																																	+ "</strong> <br>");
-																											$(
-																													".listCasesAdvanced")
-																													.find(
-																															".name")
-																													.addClass(
-																															"nameSort");
-																											$(
-																													".listCasesAdvanced")
-																													.find(
-																															".name")
-																													.removeClass(
-																															"name");
+																											$(".listCasesAdvanced").find(".name").append("<strong style='white-space: nowrap;overflow: hidden; text-overflow: ellipsis;'>" + thirdLevelValue + "</strong> <br>");
+																											$(".listCasesAdvanced").find(".name").addClass("nameSort");
+																											$(".listCasesAdvanced").find(".name").removeClass("name");
 																										}
 
 																										if (thirdLevelKey == "domains") {
 
 																											$.each( thirdLevelValue, function( fourthLevelKey, fourthLevelValue) {
-																												console.log(thirdLevelValue.length)
+																												
 																												if (thirdLevelValue.length < 2) {
 																									
 																													$(".listCasesAdvanced").find(".site").append(fourthLevelValue.site);
@@ -966,13 +988,27 @@ $("#advanced_search")
 																												} else {
 																												
 																													for (var i = 0; i < thirdLevelValue.length; i++) {
+																														var target = "";
 																														
+																														if(thirdLevelValue[i].site != null){
+																															
+																															target = thirdLevelValue[i].site ;
+																														}
+																														else{
+																															
+																															if(thirdLevelValue[i].url != null){
+																																target = thirdLevelValue[i].url ;
+																															}
+																															else{
+																																target = thirdLevelValue[i].ip ;
+																															}
+																														}
 																														if (i == thirdLevelValue.length - 1) {
-																															console.log(thirdLevelValue[i])
-																															$(".listCasesAdvanced").find(".site").append(thirdLevelValue[i].site);
+																															
+																															$(".listCasesAdvanced").find(".site").append(target);
 																														} else {
-																															console.log((fourthLevelValue.site))
-																															$(".listCasesAdvanced").find(".site").append(thirdLevelValue[i].site + ", ");
+																															
+																															$(".listCasesAdvanced").find(".site").append(target + ", ");
 																														}
 
 																													}
@@ -1033,7 +1069,7 @@ $("#advanced_search")
 																														+ "/"
 																														+ datethirdLevelValue[0];
 																												$(
-																														".listCasesAdvanced:last-child")
+																														".listCasesAdvanced")
 																														.find(
 																																".dateEnd")
 																														.append(
@@ -1052,7 +1088,7 @@ $("#advanced_search")
 																																"dateEnd");
 																											} else {
 																												$(
-																														".listCasesAdvanced:last-child")
+																														".listCasesAdvanced")
 																														.find(
 																																".dateEnd")
 																														.append(

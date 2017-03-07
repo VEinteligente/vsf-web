@@ -13,8 +13,11 @@ function gantt(timelap){
 	
 	
 	$("#timeline1").html("<div class='row' style='float:right; " +
-			"margin-right:25px'><button onClick='gantt(Year)'" +
-			"class='contextualButtonFixedSize'>Year</button>" +
+			"margin-right:25px'>" +
+			"<button onClick='gantt(Year (beginning))'" +
+				"class='contextualButton'>Year (beginning)</button>" +
+			"<button onClick='gantt(Year (last))'" +
+			"class='contextualButton'>Year (last)</button>" +
 			"<button onClick='gantt(Month)' class='contextualButtonFixedSize'>Month</button>" +
 			"<button onClick='gantt(Days)' class='contextualButtonFixedSize'>Days</button></div>");
 	
@@ -39,8 +42,7 @@ function gantt(timelap){
 	var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
 	
 	
-	// If the number of days is smaller than 3 then show the X axis 
-	// with the day number and month name
+	// If the timelap selected is Days show the last week
 	if(timelap == "Days"){
 		
 			var tickFormat = { format: d3.time.format("%d %b"),
@@ -57,7 +59,7 @@ function gantt(timelap){
 		
 	else if(timelap == "Month"){
 		
-
+		// If the timelap selected is Month show the whole month
 				var tickFormat = { format: d3.time.format("%d %b"),
 				          tickTime: d3.time.days,
 				          tickInterval: 7,
@@ -68,11 +70,9 @@ function gantt(timelap){
 				timelineEnd = new Date(start.getFullYear(), start.getMonth(), 31);
 	}
 	 
-	else if(timelap == "Year"){
-				// If the number of days is smaller than a year then show the X axis 
-				// with the month name and year. The set the starting date
-				// of the Gantt as the first of January
-				
+	else if(timelap == "Year (beginning)"){
+			// If the timelap selected is Days show the first 6 months
+			//of the year
 					var tickFormat = { format: d3.time.format("%b %Y"),
 					          tickTime: d3.time.months,
 					          tickInterval: 1,
@@ -86,7 +86,23 @@ function gantt(timelap){
 					
 				
 	}
-	
+	else if(timelap == "Year (last)"){
+		// If the timelap selected is Days show the first 6 months
+		//of the year
+				var tickFormat = { format: d3.time.format("%b %Y"),
+				          tickTime: d3.time.months,
+				          tickInterval: 1,
+				          tickSize: 6,
+				          tickValues: null
+				        };
+				
+				timelineStart = new Date(start.getFullYear(), 6, 1);
+				timelineEnd = new Date(start.getFullYear(), 11, 31);
+				
+				
+			
+}
+
 	else{
 
 		// If the number of days is smaller than 3 then show the X axis 

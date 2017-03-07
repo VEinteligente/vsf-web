@@ -919,18 +919,7 @@ var dataResult = [];
 var dataLabel = [];
 var dataAll = [];
 var dataTooltip = [];
-var testData = [
-                {label: "person a",  
-                	times: [
-                	        {"color":"red", "starting_time": 1355752800000, "ending_time": 1355759900000},
-                	       ]
-                },                
-                {label: "person b", class:"blockedPartial", times: [
-                  {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]},
-                {label: "person c", times: [
-                  {"color":"green", "starting_time": 1355761910000, "ending_time": 1355763910000},
-                  {"color":"black", "starting_time": 1355759910000, "ending_time": 1355761900000}]}
-                ];
+
 
 
 // This AJAX call corresponds to the request of the JSON data from Pandora
@@ -1119,7 +1108,7 @@ $
 					    
 						var svg = d3.select("#timeline1")//container class to make it responsive
 						.append("svg").attr("preserveAspectRatio", "xMinYMin meet")
-						.attr("width", width + (margin.left + margin.right))
+						.attr("width", width + (margin.left + margin.right)-24)
 						.attr("height", height )
 						   .attr("viewBox", "0 0 " + height + " "
 								 + ( width - 534 )  )

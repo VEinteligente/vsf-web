@@ -20,13 +20,12 @@ var element_hoverSpace = "";
 var mouseX = null; // X coordinates of mouse
 var mouseY = null; // Y coordinates of mouse
 // count indicate the click number the user had used
-var count = 0;
+var count_map = 0;
 // The commands inside the $(document).ready are all the commands that will be
 // loaded
 // after the rest of the page is loaded.
 
-$(document)
-		.ready(
+$(document).ready(
 				function() {
 
 					$("#download").attr("href", url_map_excel)
@@ -44,246 +43,131 @@ $(document)
 					// image) and add them to the arraySelectOptions
 					$(function() {
 
-						$("svg > g")
-								.each(
-										function() {
-											arraySelectOptions[element] = $(
-													this).attr('id').replace(
-													/([A-Z])/g, ' $1').trim();
-											$('#mapSelector')
-													.append(
-															'<option value="'
-																	+ arraySelectOptions[element]
-																	+ '">'
-																	+ arraySelectOptions[element]
-																	+ '</option>');
-											element = arraySelectOptions.length;
-										});
+						$("svg > g").each(
+										
+							function() {
+								arraySelectOptions[element] = $(this).attr('id').replace(/([A-Z])/g, ' $1').trim();
+								$('#mapSelector').append('<option value="' + arraySelectOptions[element] + '">' + arraySelectOptions[element] + '</option>');
+								element = arraySelectOptions.length;
+							});
 
-						// The tooltip is hidden by default
-						$('.informationPanel').hide();
-
-						// Correspond to the number of elements in the JSON. Its
-						// default value is "0"
-						$("#count").html("0");
-
-						hoverEvents();
+							// The tooltip is hidden by default
+							$('.informationPanel').hide();
+	
+							// Correspond to the number of elements in the JSON. Its
+							// default value is "0"
+							$("#countMap").html("0");
+	
+							hoverEvents();
 					});
 
 					// When the user changes the selected option in the "select"
 					// element
 					// the state will be hovered, the list of cases and the
 					// tooltip will be updated
-					$('select')
-							.on(
-									'change',
-									function(e) {
+					$('select').on( 'change', function(e) {
 											
-										var optionSelected = $(
-												"option:selected", this);
-										var valueSelected = this.value;
+							var optionSelected = $("option:selected", this);
+							var valueSelected = this.value;
 
-										$("select option")
-												.each(
-														function() {
-															if ($(this).text() == valueSelected) {
-														
-																$("#" + valueSelected.replace( /\s+/g, ''))
-																		.addClass(
-																				"hover");
-																
-																		
-																$(this)
-																		.attr(
-																				"selected",
-																				"selected");
-																$(
-																		'.informationPanelState')
-																		.html(
-																				valueSelected);
-																$(
-																		".informationPanelTotalCases")
-																		.html(
-																				"");
-																var element_hoverSpace = valueSelected
-																		.replace(
-																				/([A-Z])/g,
-																				' $1')
-																		.trim();
-
-																for (var i = 0; i < array_name.length; i++) {
-
-																	if (array_name[i] == valueSelected) {
-																		$(
-																				".informationPanelTotalCases")
-																				.html(
-																						array_total[i]);
-																		$(
-																				".class"
-																						+ array_counter[i])
-																				.show();
-																		$(
-																				"#count")
-																				.html(
-																						array_total[i]);
-																	}
-																}
-
-																if ($(
-																		'.informationPanelTotalCases')
-																		.is(
-																				':empty')) {
-																	$(
-																			".informationPanelTotalCases")
-																			.html(
-																					"0");
-																}
-
-																// If a state is
-																// selected the
-																// position of
-																// the tooltip
-																// will be fixed
-																$(
-																		'.informationPanel')
-																		.css(
-																				{
-																					top : $(
-																							"#mapSelector")
-																							.offset().top ,
-																					left : $(
-																							"#mapSelector")
-																							.offset().left 
-																				});
-
-																$(
-																		'.informationPanel')
-																		.show();
-															} else {
-																$(
-																		"#"
-																				+ ($(this)
-																						.text())
-																						.replace(
-																								/\s+/g,
-																								''))
-																		.removeClass(
-																				"hover");
-																$(this)
-																		.removeAttr(
-																				"selected");
-															}
-														});
-
-									});
-
-					// Function hoverEvents enables the hover options of the map
-					// and when a state is selected the tooltip, list of cases
-					// and
-					// selected option in select are updated
-					function hoverEvents() {
-
-						$('.map g')
-								.on(
-										'mouseover',
-										function(e) {
-
-											// Reset the total of cases viewed
-											// in the page
-											$("#count").html("0");
-
-											// Show the tooltip
-											$('.informationPanel').show();
-
-											var element_hover = $(this).attr(
-													'id');
-
-											if (element_hover != null) {
-												var element_hoverSpace = element_hover
-														.replace(/([A-Z])/g,
-																' $1').trim();
-
-												$(".informationPanelTotalCases")
-														.html("");
+							$("select option").each(
+									function() {
+										if ($(this).text() == valueSelected) {
+												$("#" + valueSelected.replace( /\s+/g, '')).addClass("hover");
+												$(this).attr("selected","selected");
+												$('.informationPanelState').html(valueSelected);
+												$(".informationPanelTotalCases").html("");
+												var element_hoverSpace = valueSelected.replace(/([A-Z])/g,' $1').trim();
 
 												for (var i = 0; i < array_name.length; i++) {
 
-													if ($(
-															'.informationPanelTotalCases')
-															.is(':empty')) {
-														$(
-																".informationPanelTotalCases")
-																.html("0");
-													}
-
-													if (array_name[i] == element_hoverSpace) {
-
-														$(
-																".informationPanelTotalCases")
-																.html(
-																		array_total[i]);
-														$(
-																".class"
-																		+ array_counter[i])
-																.show();
-														$("#count").html(
-																array_total[i]);
-
-													} else {
-														$(
-																".class"
-																		+ array_counter[i])
-																.hide();
-													}
-
+														if (array_name[i] == valueSelected) {
+																		$(".informationPanelTotalCases").html(array_total[i]);
+																		$(".class"+ array_counter[i]).show();
+																		$("#countMap").html(array_total[i]);
+														}
 												}
 
-												$('.informationPanelState')
-														.html(element_hover);
+												if ($('.informationPanelTotalCases').is(':empty')) {
+													$(".informationPanelTotalCases").html("0");
+												}
 
-												$("select option")
-														.each(
-																function() {
+												// If a state is selected the position of the tooltip will be fixed
+													$('.informationPanel').css(
+														{
+															top : $("#mapSelector").offset().top ,
+															left : $("#mapSelector").offset().left 
+														});
 
-																	if ($(this)
-																			.text() == element_hover
-																			.replace(
-																					/([A-Z])/g,
-																					' $1')
-																			.trim()) {
-																		$(
-																				"#"
-																						+ element_hover)
-																				.addClass(
-																						"hover");
-																		$(this)
-																				.attr(
-																						"selected",
-																						"selected");
-																		$(
-																				"select")
-																				.val(
-																						element_hover
-																								.replace(
-																										/([A-Z])/g,
-																										' $1')
-																								.trim())
-																				.change();
-																	}
+													$('.informationPanel').show();
+												} else {
+													$("#" + ($(this).text()).replace(/\s+/g,'')).removeClass("hover");
+													$(this).removeAttr("selected");
+												}
+									});
 
-																	else {
-																		$("#" + $(this).text().replace(/\s+/g,''))
-																				.removeClass(
-																						"hover");
-																		$(this)
-																				.removeAttr(
-																						"selected");
-																	}
-																});
+								});
 
-											}
+					// Function hoverEvents enables the hover options of the map
+					// and when a state is selected the tooltip, list of cases
+					// and selected option in select are updated
+					function hoverEvents() {
 
-										});
+						$('.map g').on('mouseover', function(e) {
+
+							// Reset the total of cases viewed in the page
+							$("#countMap").html("0");
+
+							// Show the tooltip
+							$('.informationPanel').show();
+
+							var element_hover = $(this).closest('g').attr('id');
+
+							if (element_hover != null) {
+								var element_hoverSpace = element_hover.replace(/([A-Z])/g, ' $1').trim();
+
+								$(".informationPanelTotalCases").html("");
+
+								for (var i = 0; i < array_name.length; i++) {
+
+									if ($('.informationPanelTotalCases').is(':empty')) {
+										$(".informationPanelTotalCases").html("0");
+									}
+
+									if (array_name[i] == element_hoverSpace) {
+
+										$(".informationPanelTotalCases").html(array_total[i]);
+										$(".class" + array_counter[i]).show();
+										$("#countMap").html(array_total[i]);
+										
+										$("select").val(element_hover.replace(/([A-Z])/g,' $1').trim()).change();
+
+									} else {
+										$(".class" + array_counter[i]) .hide();
+										
+										$("select").val(element_hover.replace(/([A-Z])/g,' $1').trim()).change();
+									}
+
+								}
+
+								$('.informationPanelState').html(element_hover);
+
+								$("select option").each(function() {
+									if ($(this).closest('g').text() == element_hover.replace(/([A-Z])/g, ' $1').trim()) {
+										$("#" + element_hover).addClass( "hover");
+										$(this).closest('g').attr("selected","selected");
+										$("select").val(element_hover.replace(/([A-Z])/g,' $1').trim()).change();
+									}
+	
+									else {
+										$("#" + $(this).text().replace(/\s+/g,'')).removeClass("hover");
+										$(this).removeAttr("selected");
+									}
+								});
+
+							}
+
+						});
 
 						$('.map g').on('mousemove', function(e) {
 							mouseX = e.pageX;
@@ -298,9 +182,8 @@ $(document)
 
 					// This AJAX call corresponds to the request of the HTML of
 					// the total of cases and lists of cases per states.
-					$
-							.ajax({
-								url : url_data,
+					$.ajax({
+								url : url_data_map,
 								method : "GET",
 								dataType : 'json',
 								contentType : 'application/json'
@@ -314,7 +197,6 @@ $(document)
 										for (var i = 0; i < data.length; i++)
 											temporal = temporal.concat(data[i]);
 										var dataJson = JSON.parse(temporal);
-console.log(dataJson)
 										$
 												.each(
 														dataJson,
@@ -461,7 +343,7 @@ console.log(dataJson)
 																										}
 																									});
 
-																					count = count + 1;
+																					count_map = count_map + 1;
 
 																				});
 															}
@@ -476,15 +358,15 @@ console.log(dataJson)
 					$('svg > g').on('click', function() { // when you click
 															// the div
 
-						count++;
+						count_map++;
 						// The count variable enables that the action when
 						// second click is different
 						// from the first click action
-						if (count % 2 != 0) {
+						if (count_map % 2 != 0) {
 							$("svg > g").each(function() {
 								$(this).removeClass('no-hover');
 							});
-
+						
 							hoverEvents();
 						} else {
 							$(this).removeClass('hover');
@@ -493,6 +375,7 @@ console.log(dataJson)
 
 							$('.map g').off('mouseover');
 							$('.map g').off('mousemove');
+						
 
 						}
 					});

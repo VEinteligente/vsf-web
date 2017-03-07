@@ -13,11 +13,8 @@ function gantt(timelap){
 	
 	
 	$("#timeline1").html("<div class='row' style='float:right; " +
-			"margin-right:25px'>" +
-			"<button onClick='gantt(Year (beginning))'" +
-				"class='contextualButton'>Year (beginning)</button>" +
-			"<button onClick='gantt(Year (last))'" +
-			"class='contextualButton'>Year (last)</button>" +
+			"margin-right:25px'><button onClick='gantt(Year)'" +
+			"class='contextualButtonFixedSize'>Year</button>" +
 			"<button onClick='gantt(Month)' class='contextualButtonFixedSize'>Month</button>" +
 			"<button onClick='gantt(Days)' class='contextualButtonFixedSize'>Days</button></div>");
 	
@@ -70,9 +67,8 @@ function gantt(timelap){
 				timelineEnd = new Date(start.getFullYear(), start.getMonth(), 31);
 	}
 	 
-	else if(timelap == "Year (beginning)"){
-			// If the timelap selected is Days show the first 6 months
-			//of the year
+	else if(timelap == "Year"){
+			// If the timelap selected is Days show the first 6 months of the year
 					var tickFormat = { format: d3.time.format("%b %Y"),
 					          tickTime: d3.time.months,
 					          tickInterval: 1,
@@ -86,23 +82,7 @@ function gantt(timelap){
 					
 				
 	}
-	else if(timelap == "Year (last)"){
-		// If the timelap selected is Days show the first 6 months
-		//of the year
-				var tickFormat = { format: d3.time.format("%b %Y"),
-				          tickTime: d3.time.months,
-				          tickInterval: 1,
-				          tickSize: 6,
-				          tickValues: null
-				        };
-				
-				timelineStart = new Date(start.getFullYear(), 6, 1);
-				timelineEnd = new Date(start.getFullYear(), 11, 31);
-				
-				
-			
-}
-
+	
 	else{
 
 		// If the number of days is smaller than 3 then show the X axis 

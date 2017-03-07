@@ -105,30 +105,46 @@ $(document)
 													+ (data.category).display_name
 													+ '</div><div class="right_cornerTag"></div></div>')
 
-												
+										var site_array = [];
+											
 											$.each(data.domains, function(index, result){
+												var site_name = result.site;
+												site_name = site_name.replace(" ","");
 												
-												//It can happen that the site is null but the probe reported a blocked or failing url, in that case
-												//we only show the url which triggered the probe
-												if(result.site == null){
+												if ($.inArray(site_name,site_array)==-1){
+													site_array.push(site_name);
+												
+													//It can happen that the site is null but the probe reported a blocked or failing url, in that case
+													//we only show the url which triggered the probe
+													if(site_name == null){
+														
+															$("#domainTableBody").append('<tr><td id="nameDomain" style="width:100%">'+result.url+'<a href="'+result.url+'"><i class="fa fa-external-link" style="float:right" aria-hidden="true"></i></a></td></tr>');
+													}
+														
+													//Site Name with a collapse div of the url that belongs to the site
+													else{
+	
+														$("#domainTableBody").append('<tr class="focus clickable" data-toggle="collapse" data-target="#data'+site_name+'"><td id="nameDomain">'+site_name+'</td><tr><td id="focusDomain" class="prueba" style="padding:0;"><div class="collapse" id="data'+site_name+'"><div></td></tr>');
+														
+	
+	
 													
-													$("#domainTableBody").append('<tr><td id="nameDomain" style="width:100%">'+result.url+'<a href="'+result.url+'"><i class="fa fa-external-link" style="float:right" aria-hidden="true"></i></a></td></tr>');
-												}
+													}
+	
+											     }
 												
-												//Site Name with a collapse div of the url that belongs to the site
-												else{
-
-													$("#domainTableBody").append('<tr class="focus clickable" data-toggle="collapse" data-target="#data'+result.site+'"><td id="nameDomain">'+result.site+'</td><tr><td id="focusDomain" class="prueba" style="padding:0;"><div class="collapse" id="data'+result.site+'"><div></td></tr>');
-												
-
-													$("#data"+result.site).append('<tr class="rowDomain"><td id="siteDomain" style="width:100%">'+result.url+'</td><td><a href="'+result.url+'"><i class="fa fa-external-link" aria-hidden="true"></i></a></td></tr>');
+	
 
 											
-
-												
-												}
+											});
 											
-											})
+											$.each(data.domains, function(index, result){
+												var site_name = result.site;
+												site_name = site_name.replace(" ","");
+												if(!(site_name == null)){
+												$("#data"+site_name).append('<tr class="rowDomain"><td id="siteDomain" style="width:100%">'+result.url+'</td><td><a href="'+result.url+'"><i class="fa fa-external-link" aria-hidden="true"></i></a></td></tr>');
+												}
+											});
 							});
 					
 					// First Ajax call to recieve the case data from server

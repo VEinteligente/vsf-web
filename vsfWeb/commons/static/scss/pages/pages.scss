@@ -327,6 +327,9 @@ tr{
 }
 // Maps
 
+.cursor{
+	cursor: pointer;
+}
 .mapContainer {
     padding: 24px 0px 24px; 
 
@@ -936,7 +939,8 @@ twitterwidget::shadow .TweetAuthor-name{display: block; margin-top: 7px;}
 
 .updates 
     {
-     .updateBar, .subtitleBar{
+    cursor: pointer;
+    .updateBar, .subtitleBar{
     	background-color: transparent;
     }
     #updateTitle{        

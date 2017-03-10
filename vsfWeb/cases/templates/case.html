@@ -101,9 +101,9 @@
 
 			</div>
 
-		<!-- 	<div class="col-xs-2 h4Style">
+		 	<div class="col-xs-2 h4Style">
 				<a id="downloadPdf" href="#"> {% trans 'Download' %} PDF </a>
-			</div> -->
+			</div> 
 
 			<div class="col-xs-8 downloadBar">
 				<a href="" id="shareFacebook" target="_blank"> <i
@@ -238,15 +238,69 @@
 					</div>
 
 
-					<!-- <div  class="watermark subGraphDivHover"
-						data-toggle="modal" data-target="#modal" data-tooltip
-						onclick="modal_content('#twitterDiv'); twitterSearch($('#twitterSearchTextContent .title').text());">
+					 <div  class="watermark subGraphDivHover"
+						data-toggle="modal" data-target="#twmodal">
 
 
-						<p>Click to open</p>
-					</div> -->
+						<p>{% trans 'Click to open' %}</p>
+					</div>
 				</div>
 			</div>
+
+			<div class="modal fade" id="twmodal" tabindex="-1" role="dialog"
+				aria-labelledby="modalSearchTextTitle" aria-hidden="true">
+				
+				<div class="modal-dialog" id="modal" role="document">
+				
+					<div class="modal-content">
+				
+						<div class="modal-header">
+				
+							<div class="modal-title h5style" id="modalSearchTextTitle"></div>
+				
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+				
+						</div>
+				
+						<div class="modal-body container-fluid col-xs-12"
+							id="modaltwtterDiv">
+
+							<div id="modaltwitterTweet"></div>
+				
+							<div id="modaltwitterSearchText">
+				
+								<div id="modaltwitterSearchTextTitle">
+				
+									<div class="h4Style title"></div>
+				
+								</div>
+				
+								<div id="modaltwitterSearchTextContent">
+				
+									<div class="title"></div>
+				
+								</div>
+				
+							</div>
+
+						</div>
+				
+						<div class="modal-footer">
+				
+							
+						</div>
+				
+					</div>
+				
+				</div>
+			
+			</div>
+
+
+
 
 			<!-- <div class="col-xs-3 offset-xs-1" id="subGraph2">
 				<div class="row ">
@@ -273,7 +327,7 @@
 
 			</div> 
 
-			<style>
+<style>
 .watermark {
 	background: rgba(230, 230, 230, 0.51);
 	width: 100%;
@@ -374,12 +428,7 @@
 
 </div>
 
-<div class="modal fade global-modal contentBoxTransparent"
-	style="color: black;">
-	<button type="button" class="close"
-		onclick="empty(); $('.global-modal').modal('hide'); ">X</button>
-	<div class="modal-dialog" role="document"></div>
-</div>
+
 
 <!-- <blockquote class="twitter-tweet" lang="en"><p>OKC-MEM prediction: Fourteen overtimes, 10 4-point plays, a Perkins 3-pointer, and Tony Allen kills a guy.</p>&mdash; Zach Lowe (@ZachLowe_NBA) <a href="https://twitter.com/ZachLowe_NBA/status/461995665887723520">May 1, 2014</a></blockquote> -->
 
@@ -397,10 +446,9 @@
         var domain = "{{ URL_VSF }}"
         var url_case = "{% url 'Cases:Case' pk=pk %}"
         var url_one_case = "{% url 'Cases:CaseApi' pk=pk %}"
-        var url_one_case_pdf = "{% url 'Cases:CasePdfEmpty' %}"
+        var url_one_case_pdf = "{% url 'Cases:CasePdf' pk=pk %}"
         var url_one_case_excel = "{% url 'Cases:ExcelCaseCVSEmpty' %}"
         var url_one_case_update = "{% url 'Cases:CaseUpdateApi' pk=pk %}"
-//		var url_pdf_prueba ="{% url 'Cases:PdfView' pk=pk %}"
         var language = '{{ language_code }}'
     
         //var png_commons = "{% static "" %}" +"screenshots/screen_case_"+pk+".png"

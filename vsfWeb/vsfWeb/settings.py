@@ -75,6 +75,7 @@ INSTALLED_APPS = [
     'compressor',
     'rest_framework',
     'widget_tweaks',
+    'easy_pdf',
 ]
 STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',

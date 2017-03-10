@@ -12,6 +12,11 @@ from rest_framework.response import Response
 from rest_framework.views import (APIView)
 
 
+from weasyprint import HTML
+from django.template.loader import get_template
+
+from easy_pdf.views import PDFTemplateView
+
 class Case(TemplateView):
     """This view renders the HTML containing information about one element case
     """
@@ -253,28 +258,24 @@ def CaseCVS(request, pk):
 
     return response
 
-# def CasePdf(request, pk):
+#def CasePdf(request, pk="1"):
     """This view makes the pdf file available with the download button
     in the case page"""
-
-
-def CasePdf(request, pk="1"):
-
-    pdf = pdfkit.from_url(
-        settings.URL_VSF_WEB +
-        '/cases/case-pdf-view/' + pk + '/',
-        False)
-    response = HttpResponse(pdf, content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="case_' + \
-        pk + '.pdf'
-
-    return response
-
-
-class PdfView (TemplateView):
-    template_name = 'case-pdf.html'
-
-
+ #   html_template = get_template('case-pdf.html')
+  #  pdf_file = HTML('http://dev.web.pandora.saturno.space/cases/case-pdf').write_pdf()
+   # response = HttpResponse(pdf_file, content_type='application/pdf')
+    #response['Content-Disposition'] = 'filename="home_page.pdf"'
+    #return response
+class CasePdf(PDFTemplateView):
+    template_name = "case-pdf.html"
+    
+    def get_context_data(self, **kwargs):
+        return super(CasePdf, self).get_context_data(
+        pagesize="A4",
+        title="Hi there!",
+        **kwargs
+        )
+    
 class SpeedTestCase(TemplateView):
     """This view renders the HTML containing information about speed test
     """

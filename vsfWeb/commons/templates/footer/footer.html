@@ -1,47 +1,47 @@
-{% load static %}
+
+{% load static %} 
+{% load i18n %} 
+{% get_current_language as language_code %}
+
+<div id="vsf_footer">
+	<div class="vsf_footer_background">
 
 
-    <div id="vsf_footer">
-        <div class="footer_bg">
-            
-            <div><div class="bg_container container">
-                <img class="col-6 vsf_footer_map" src="{% static "img/vsf_footer_map.svg" %}" alt="mapa poligonal" title="Venezuela Inteligente Mapa" style="position: absolute"></img>
-            </div></div>
-        </div>
-        <div class="vsf_footer_background">
-            <div class="container" style="padding-top:32px;"> 
-                <div class="row">
-                    <div class="col-md-6">
-                        <img src="{% static "img/vsf_venezuelainteligente.svg" %}" alt="logo de venezuela inteligente" title="Venezuela Inteligente Logo" height=50></img>
-                    </div>
-                    <a class="col-md-2 vsf_footer_menu" href="">Homepage</a>
-                    <a class="col-md-2 vsf_footer_menu" href="">Noticias</a>
-                    <a class="col-md-2 vsf_footer_menu" href="">Guias</a>
-                </div>
-                
-            
-                <div class="row">
-                    
-                    <div class="col-lg-2 col-sm-4"><img src="{% static "img/vsf_ips.png" %}" alt="IPYS Venezuela" title="Logo IPS" height="100" width="auto"></img></div>
-                    <div class="col-lg-2 col-sm-4" ></div>
-                    <div class="col-lg-2 col-sm-4" ></div>
-                    <div class="col-lg-6 col-md-12">
-                        <strong>
-                            Sobre VE Sin Filtro
-                        </strong>
-                        <p style="font-size:12px">
-                             VE Sin Filtro es un proyecto iniciado por VE inteligente junto con Instituto Prensa y Sociedad de Venezuela para el monitero del la censura en internet en Venezuela
-                        </p>
-                        <p>
-                        </p>
-                        <p>
-                            <img class="" src="{% static "img/CC-BY_icon.svg" %}" alt="Creative Commons: Licencia Atributiva" title="CC: BY" height=24></img>
-                            <strong>Venezuela Inteligente</strong> 
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
+
+		<div class="container"
+			style="padding-top: 32px; background: url(/commons/static/img/vsf_footer_map.svg); background-repeat: no-repeat; background-position-x: left;">
+			<div class="row">
+				<div class="col-md-6">
+					<img src="/commons/static/img/vsf_venezuelainteligente.svg"
+						alt="logo de venezuela inteligente"
+						title="Venezuela Inteligente Logo" height=50></img>
+				</div>
+				<a class="col-md-2 vsf_footer_menu" href="">{% trans 'Homepage' %}</a> 
+				<a class="col-md-2 vsf_footer_menu" href="">{% trans 'Noticias' %}</a> 
+				<a class="col-md-2 vsf_footer_menu" href="">{% trans 'Guias' %} </a>
+			</div>
+
+			<div class="row">
+
+				<div class="col-lg-2 col-sm-4">
+					<img src="/commons/static/img/vsf_ips.png" alt="IPYS Venezuela"
+						title="Logo IPS" height="100" width="auto">
+				</div>
+				<div class="col-lg-2 col-sm-4"></div>
+				<div class="col-lg-2 col-sm-4"></div>
+				<div class="col-lg-6 col-md-12">
+					<strong> {% trans 'Sobre VE Sin Filtro' %} </strong>
+					<p style="font-size: 12px">{% trans 'VE Sin Filtro es un proyecto iniciado por VE inteligente junto con instituto' %}</p>
+					<p></p>
+					<p>
+						<img class="" src="/commons/static/img/CC-BY_icon.svg"
+							alt="imagen SVG" title="imagen SVG" height="24"> {%trans 'by' %} <strong>{% trans 'Venezuela Sin Filtro' %}</strong>
+						2017.{% trans 'All rights reserved' %}.
+					</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>

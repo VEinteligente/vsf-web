@@ -16,7 +16,7 @@ function gantt(timelap){
 			"margin-right:25px'><button onClick='gantt(Year)'" +
 			"class='contextualButtonFixedSize'>Year</button>" +
 			"<button onClick='gantt(Month)' class='contextualButtonFixedSize'>Month</button>" +
-			"<button onClick='gantt(Days)' class='contextualButtonFixedSize'>Days</button></div>");
+			"</div>");
 	
 	
 	
@@ -29,7 +29,7 @@ function gantt(timelap){
 	var timelineEnd = (new Date($('#hiddenDateEnd').val())).getTime();
 	
 	var dateStart = new Date($('#hiddenDate').val());
-	var start = (new Date($('#hiddenDateEnd').val()));
+	var start = (new Date($('#hiddenDateStart').val()));
 	
 	// This value corresponds to the time between the start and ending time 
 	//of the Gantt
@@ -146,7 +146,7 @@ function gantt(timelap){
 						          tickValues: null
 						        };
 						
-						timelineStart = new Date(start.getFullYear(), 0, 1);
+						timelineStart = new Date(start.getFullYear(), start.getMonth()-1, 1);
 					}
 					else{
 						
@@ -180,38 +180,14 @@ function gantt(timelap){
     // When hover over a element of the Gantt show tooltip
     var hover = function (d,i) {  
   	
-    		var isp =  dataTooltip[i].isp;
-    		var start =  dataTooltip[i].start_date;
-    		var end =  dataTooltip[i].end_date;
-    		var target = dataTooltip[i].target; 
-    		var targetName = "";
-    		var url = target.url;
-    		
-    		var site = target.site; 
-    		var ip = target.ip; 
-			
-    		
-			if(site != null){
-				targetName = site;
-			}
-			else if(url != null){
-				targetName = url;
-				
-			}
-			else if(ip != null){
-				targetName = ip;
-				
-			}
-			
-			var type = dataTooltip[i].type;
-
-			
-    		$(".informationPanelState").html(isp + " - " +  type + " - " + targetName);
-    		
-    		$(".informationPanelTotalCases").html("Target: " + site + " " + url + " " + domain + "<br> Start date: " + start + " <br> End date: " + end );
     	},
-        mouseover = function () {},
-        mouseout = function () {},
+        mouseover = function (d,i) {  
+    		  	
+      
+    	},
+        mouseout = function () {
+      
+        },
         click = function () {},
         scroll = function () {},
         labelFunction = function(label) { return label; },
@@ -485,12 +461,15 @@ function gantt(timelap){
             })
             .on("mousemove", function (d, i) {
               hover(d, index, datum);
+ 
             })
             .on("mouseover", function (d, i) {
               mouseover(d, i, datum);
+              $(".informationPanel").show();
             })
             .on("mouseout", function (d, i) {
               mouseout(d, i, datum);
+              $(".informationPanel").hide();
             })
             .on("click", function (d, i) {
               click(d, index, datum);
@@ -1233,9 +1212,81 @@ $.ajax({
 					
 				$(this).html($(this).html()+ '<rect x="5" y="5" width="15" height="15" style="fill: #ccc" transform="rotate(45)" />');
 			 });
-	
+			
+			$("#timeline1").append('<div class="informationPanelGantt" ><div class="informationPanelState"></div><div class="informationPanelTotalCases"></div></div>')
 	
 
+
+			svg.selectAll("polygon").on("mouseover", function(d,i) {  
+    		  	
+        		var isp =  dataTooltip[i].isp;
+        		var start =  (dataTooltip[i].start_date).split("T")[0];
+        		
+        		
+        		var end =  dataTooltip[i].end_date;
+        		
+        		if( end == null) {
+        			end = "Continua"
+        		}
+        		else{
+        			end = end.split("T")[0];
+        		}
+        		var target = dataTooltip[i].target; 
+        		var targetName = "";
+        		var url = target.url;
+        		
+        		var site = target.site; 
+        		var ip = target.ip; 
+    			
+        		
+    			if(site != null){
+    				targetName = site;
+    			}
+    			else if(url != null){
+    				targetName = url;
+    				
+    			}
+    			else if(ip != null){
+    				targetName = ip;
+    				
+    			}
+    			
+    			var type = dataTooltip[i].type;
+
+    			
+        		$(".informationPanelState").html(isp + " - " +  type + " - " + targetName);
+        		
+        		$(".informationPanelTotalCases").html("<strong>Target </strong>: " + site + " " + url + " " + domain + "<br> <strong>Start date</strong>: " + start + " <br> <strong>End date</strong>: " + end );
+        		var div = $(".informationPanel");
+        		
+        		div.css("opacity", .9);  
+        		var coordinates = d3.mouse(this);
+        		mouseX = $(this)[0].getAttribute("x");
+				mouseY = parseInt( $(this)[0].getAttribute("y"))+ 60;
+
+				if(mouseX < 0 || mouseX < 280){
+					mouseX = 280;
+				}
+
+				$('.informationPanelGantt').css({
+					top : mouseY + "px",
+					left : mouseX + "px"
+				});
+
+				$('.informationPanelGantt').css("visibility","visible");
+	            })                  
+	        .on("mouseout", function(d) {       
+	        	var div = $(".informationPanel");
+        		
+	        	div.css("opacity", 0); 
+	        	$('.informationPanelGantt').css({
+					top : 0 + "px",
+					left : 0 + "px"
+				});
+	        	$('.informationPanelGantt').css("visibility","hidden");
+	        });
+			
+			
 }).fail(function(jqXHR, textStatus, errorThrown) {
 					$('#timeline1').closest('.container-fluid').html("<div class='failedService'><img  src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 					

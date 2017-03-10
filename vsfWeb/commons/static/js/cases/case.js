@@ -414,6 +414,7 @@ $(document)
 																	+ date.getFullYear());
 											
 											$('#hiddenDateEnd').val(new Date());
+											$('#hiddenDateStart').val(date);
 											
 										}
 										else{
@@ -437,6 +438,12 @@ $(document)
 													+ dateEnd.getDate()
 													+ "/"
 													+ dateEnd.getFullYear());
+											
+											$('#hiddenDateStart').val( month_number[date.getMonth()]
+											+ "/"
+											+ date.getDate()
+											+ "/"
+											+ date.getFullYear());
 									
 										}
 

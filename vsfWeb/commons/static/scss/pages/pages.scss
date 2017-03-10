@@ -400,6 +400,29 @@ tr{
     background: #ddd;
     pointer-events: none; 
 }
+
+.informationPanelGantt {
+    position: relative;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: .3rem;
+    outline: 0; 
+    width: 300px;
+    
+    .informationPanelState{
+    	font-size: 14px;
+    	color: #808080;
+    	font-weight: 400;
+    	padding: 8px 16px 8px 24px;
+    	margin: 0;
+    	text-transform: uppercase;
+    
+    }
+    
+
+}
   
 #listRegion{ 
     border-radius: 5px;
@@ -949,6 +972,8 @@ input#title{
     /* height: auto; */
     padding-top: 15px;
 }
+
+
 #caseImage{
     padding-left: 0;
     clip-path: inset(0px 1px 1px 0px );

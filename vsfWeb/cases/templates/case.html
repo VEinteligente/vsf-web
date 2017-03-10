@@ -9,6 +9,7 @@
 <input id="siteTrans" type="hidden" value="{% trans 'Sitios' %}">
 <input id="hiddenDate" type="hidden" value="">
 <input id="hiddenDateEnd" type="hidden" value="">
+<input id="hiddenDateStart" type="hidden" value="">
 <div style="background-color: #DEDEDE; margin-top: 25px;">
 
 	<div class="bodyContent">
@@ -199,14 +200,11 @@
 
 </div>
 
-	<div class="informationPanel" >
-						<div class="informationPanelState"></div>
-						<div class="informationPanelTotalCases"></div>
 
-	</div>
 <div class="container-fluid white-background">
 
 	<div class="bodyContent" style="margin-bottom: 10px">
+		
 		<div id="timeline1" class="svg-container"></div>
 	</div>
 </div>
@@ -246,34 +244,7 @@
 			</div>
 
 
-			<div class="modal fade global-modal contentBoxTransparent">
-				
-				
-				<div class="modal-content">
-				
-						<div class="modal-header">
-							<button type="button" class="close" onclick="empty(); $('.global-modal').modal('hide'); ">
-								<span aria-hidden="true">&times;</span>
-							</button>
-							<div class="modal-title h5style" id="modalSearchTextTitle"></div>
-				
-							
-				
-						</div>
-				
-						
-				
-						<div class="modal-footer">
-				
-							
-						</div>
-						
-
-				
-					</div>
-				
-				
-			</div>
+			
 			
 			
 
@@ -351,7 +322,7 @@
 		<div class="row">
 			<div class="col-xs-12 subtitleBar">
 
-				<h4 id="measurementsTitle" class="cardsTitle clickable">{% trans 'Measurements' %}</h4>
+				<h4 id="measurementsTitle" class="cardsTitle clickable">{% trans 'Ver mediciones' %}</h4>
 			</div>
 		</div>
 
@@ -404,6 +375,23 @@
 }
 </style>
 
+</div>
+
+
+
+<div class="modal fade global-modal contentBoxTransparent">			
+	<div class="modal-content">
+			<div class="modal-header">
+					<button type="button" class="close" onclick="empty(); $('.global-modal').modal('hide'); ">
+						<span aria-hidden="true">&times;</span>
+					</button>
+						
+					<div class="modal-title h5style" id="modalSearchTextTitle"></div>					
+			</div>
+				
+			<div class="modal-footer">
+			</div>
+	</div>			
 </div>
 
 

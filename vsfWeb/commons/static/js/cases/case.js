@@ -64,7 +64,7 @@ $(document)
 					
 					$("#download").attr("href", url_one_case_excel + "id=" + pk);
 
-//					$('#downloadPdf').attr("href", url_pdf_prueba);
+					$('#downloadPdf').attr("href", url_one_case_pdf);
 //					$('#SavePdf').attr("href", url_one_case_pdf);
 					$("#shareFacebook").attr("href", url_share_facebook);
 
@@ -631,3 +631,29 @@ $(document)
 					
 					
 				});
+
+//Function for the Twitter Modal
+
+$(document).on(
+		"click",
+		"#twmodalbutton",
+		function() {
+			//Here we gran the Json from de data-json field
+			var raw_json = $(this).data('json');
+
+			//Id from the measurement that goes in the title of the modal
+			var mid = $(this).data('id');
+
+			//Stringify for display the Json inside the modal
+			data_modal = JSON.stringify(raw_json);
+
+			//Sends the JSON file to the Modal
+			$("#measurementData").jJsonViewer(raw_json, {
+				expanded : true
+			});
+
+			//Sends the id to the title of the Modal
+			$("#measurementTitle").html(
+					'Measurement ID <span id="mModalID">'
+							+ mid + '</span>');
+		});

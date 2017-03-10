@@ -867,53 +867,88 @@ input#title{
 }
 
 
-#twitterTweet::-webkit-scrollbar-thumb{
+#twitterDiv #twitterTweet::-webkit-scrollbar-thumb{
   background-image: url("/commons/static/img/icons/vsf_iconscrollbar_v101.svg" );
   background-repeat: no-repeat;
   height: 150px;
   background-position: center;
   }
 
- #twitterTweet::-webkit-scrollbar-button:start{
+ #twitterDiv #twitterTweet::-webkit-scrollbar-button:start{
   height: 36px;
   background-image: url("/commons/static/img/icons/vsf_iconarrow_v101.svg?809b3d26489e");
   background-repeat: no-repeat;
   background-position: top 16px left 0;
   }
 
-#twitterTweet::-webkit-scrollbar-button:end{
+#twitterDiv #twitterTweet::-webkit-scrollbar-button:end{
   background-image: url("/commons/static/img/icons/vsf_iconarrowdown_v101_end.svg?809b3d26489e");
   background-position: center; 
   background-repeat: no-repeat;
 
 }
   
-twitterwidget::shadow .EmbeddedTweet{
+#twitterDiv twitterwidget::shadow .EmbeddedTweet{
 	border-radius: 8px;
 	
 }
 
-twitterwidget::shadow .Tweet-metadata, twitterwidget::shadow .Tweet-body, twitterwidget::shadow .Tweet-header{
+#twitterDiv twitterwidget::shadow .Tweet-metadata, twitterwidget::shadow .Tweet-body, twitterwidget::shadow .Tweet-header{
 	font-size: 12px;
 } 
-twitterwidget::shadow .EmbeddedTweet-tweet{
+#twitterDiv twitterwidget::shadow .EmbeddedTweet-tweet{
 	border: none !important;
 	
 }
-twitterwidget::shadow .EmbeddedTweet{
+#twitterDiv twitterwidget::shadow .EmbeddedTweet{
 	border: none !important;
 	
 }
 
      
-twitterwidget::shadow .Tweet-card,twitterwidget::shadow  .Tweet-actions,twitterwidget::shadow  .TweetAuthor-screenName,
-twitterwidget::shadow .Tweet-brand, twitterwidget::shadow  .MediaCard-media{
+#twitterDiv twitterwidget::shadow .Tweet-card,#twitterDiv twitterwidget::shadow  .Tweet-actions, #twitterDiv twitterwidget::shadow  .TweetAuthor-screenName,
+#twitterDiv twitterwidget::shadow .Tweet-brand, #twitterDiv twitterwidget::shadow  .MediaCard-media{
     	display:none;
 }
 
-twitterwidget::shadow .TweetAuthor-name{display: block; margin-top: 7px;}
+#twitterDiv twitterwidget::shadow .TweetAuthor-name{
+	display: block;
+	margin-top: 7px;
+}
 
+
+.global-modal {
+    position: fixed;
+    width: auto;
+    min-width: 500px;
+    top: 5%;
+    left: 10%;
+    right: 10%;
     
+    min-width: 500px; 
+      
+    .modal-footer{
+    	height: 550px;
+    	overflow: scroll;
+    }
+    
+    twitterwidget::shadow .EmbeddedTweet{
+    	max-width: 100%;
+    }
+    .twitter-tweet {
+    	width: auto !important;
+    }
+}
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.modal-header {
+    padding-left: 15px;
+    /* border-bottom: 1px solid #e5e5e5; */
+    /* height: auto; */
+    padding-top: 15px;
+}
 #caseImage{
     padding-left: 0;
     clip-path: inset(0px 1px 1px 0px );

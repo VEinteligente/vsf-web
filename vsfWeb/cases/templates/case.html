@@ -221,8 +221,7 @@
 
 		<div class="row subGraphDiv">
 			<div class="col-xs-3" id="subGraph1" data-toggle="modal"
-				data-target="#modal" data-tooltip
-				>
+				data-target="#modal" data-tooltip >
 				<div class="row">
 
 					<div class="container-fluid col-xs-12" id="twitterDiv">
@@ -238,8 +237,7 @@
 					</div>
 
 
-					 <div  class="watermark subGraphDivHover"
-						data-toggle="modal" data-target="#twmodal">
+					 <div  class="watermark subGraphDivHover" onClick="twitterSearchModal()">
 
 
 						<p>{% trans 'Click to open' %}</p>
@@ -247,57 +245,37 @@
 				</div>
 			</div>
 
-			<div class="modal fade" id="twmodal" tabindex="-1" role="dialog"
-				aria-labelledby="modalSearchTextTitle" aria-hidden="true">
+
+			<div class="modal fade global-modal contentBoxTransparent">
 				
-				<div class="modal-dialog" id="modal" role="document">
 				
-					<div class="modal-content">
+				<div class="modal-content">
 				
 						<div class="modal-header">
-				
-							<div class="modal-title h5style" id="modalSearchTextTitle"></div>
-				
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
+							<button type="button" class="close" onclick="empty(); $('.global-modal').modal('hide'); ">
 								<span aria-hidden="true">&times;</span>
 							</button>
+							<div class="modal-title h5style" id="modalSearchTextTitle"></div>
+				
+							
 				
 						</div>
 				
-						<div class="modal-body container-fluid col-xs-12"
-							id="modaltwtterDiv">
-
-							<div id="modaltwitterTweet"></div>
-				
-							<div id="modaltwitterSearchText">
-				
-								<div id="modaltwitterSearchTextTitle">
-				
-									<div class="h4Style title"></div>
-				
-								</div>
-				
-								<div id="modaltwitterSearchTextContent">
-				
-									<div class="title"></div>
-				
-								</div>
-				
-							</div>
-
-						</div>
+						
 				
 						<div class="modal-footer">
 				
 							
 						</div>
+						
+
 				
 					</div>
 				
-				</div>
-			
+				
 			</div>
+			
+			
 
 
 

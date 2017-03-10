@@ -54,8 +54,20 @@ function twitterSearch(searchWord) {
 
 
 
-$(document).ready(function twitterSearch(searchWord) {
-
+function twitterSearchModal() {
+	$(".modal-footer").css('background','white');
+	$(".modal-footer").css('padding','15px');
+	
+	$(".modal-footer").append('<div class="modal-body container-fluid col-xs-12"'
+			 + 'id="modaltwtterDiv"> <div id="modaltwitterTweet"></div>'
+			 + '<div id="modaltwitterSearchText"><div id="modaltwitterSearchTextTitle">'
+			 + '<div class="h4Style title"></div></div><div id="modaltwitterSearchTextContent">'
+			 + '<div class="title"></div></div></div></div>');
+	
+	var searchWord = $("#twitterSearchTextContent .title").text();
+	$("#modalSearchTextTitle").append('<div id="twitterSearchTextTitle"><div class="h4Style title">Resultados de Twitter: </div></div>')
+	$("#modalSearchTextTitle").append( searchWord );
+	
 	$.ajax({
 		url : url_data_twitter + "search_twitter=" + searchWord,
 		context : document.body,
@@ -63,7 +75,12 @@ $(document).ready(function twitterSearch(searchWord) {
 		function(response) {
 			var search_metadata = response.search_metadata;
 			var statuses = response.statuses;
+			
+			
 				if(statuses.length === 0){
+					$(".modal-footer").css('background','#dedede');
+					$(".modal-footer").css('padding','0');
+					
 					$('#modaltwitterDiv').css('padding-right','0');
 					$('#modaltwitterTweet').html("<div class='failedService' ><img  src='"+ fail_twitter_img + "' alt='service fail' /><br><p>No tweets found</p></div>");
 				}
@@ -86,24 +103,18 @@ $(document).ready(function twitterSearch(searchWord) {
 
 						}
 						// Load the component style from the tweet with the twitter API			
-						!function(d, s, id) {
-							var js, fjs = d.getElementsByTagName(s)[0];
-							
-							if (!d.getElementById(id)) {
-								js = d.createElement(s);
-								js.id = id;
-								js.src = "//platform.twitter.com/widgets.js";
-								fjs.parentNode.insertBefore(js, fjs);
-							}
-						}
-						(document, "script", "twitter-wjs"); 
+						twttr.widgets.load(); 
 					});
 				}
 				
 
 		}).fail(function(jqXHR, textStatus, errorThrown) {
+			$(".modal-footer").css('background','#dedede');
+			$(".modal-footer").css('padding','0');
 			$('#modaltwitterDiv').css('padding-right','0');
 			$('#modaltwitterTweet').html("<div class='failedService'><img  src='"+ fail_twitter_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 		});
+	
+	$('.global-modal').modal("show");
+}
 
-});

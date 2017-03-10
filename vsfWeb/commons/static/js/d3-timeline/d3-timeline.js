@@ -42,9 +42,10 @@ function gantt(timelap){
 	// If the timelap selected is Days show the last week
 	if(timelap == "Days"){
 		
+			var separation = diffDays/7 ;
 			var tickFormat = { format: d3.time.format("%d %b"),
 			          tickTime: d3.time.days,
-			          tickInterval: 1,
+			          tickInterval: separation,
 			          tickSize: 6,
 			          tickValues: null
 			        };

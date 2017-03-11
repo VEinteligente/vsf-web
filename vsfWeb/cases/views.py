@@ -10,31 +10,93 @@ from django.http import HttpResponse
 from django.views.generic import (TemplateView)
 from rest_framework.response import Response
 from rest_framework.views import (APIView)
+from django.views.generic.detail import DetailView
 
 
 class Case(TemplateView):
     """This view renders the HTML containing information about one element case
     """
     template_name = "case.html"
+    
+    
 
 
-class CaseApi(APIView):
+
+class CaseApi(TemplateView):
     """This view obtains the information of the one element case as json data
         from the API of the Pandora project
 
      Keyword arguments:
     pk -- Primary key of a case
     """
-
-    def get(self, request, pk="1", format=None):
-
+    template_name = "_case-detail.html"
+# 
+#     def get(self, request, pk="1", format=None):
+# 
+#         headers = {'Authorization': settings.SERVICES_TOKEN}
+#         snippet = requests.get(
+#             settings.URL_VSF +
+#             '/cases/api/detail/' +
+#             pk,
+#             headers=headers)
+#         
+#         
+#         return Response(snippet)
+    def get_context_data(self, **kwargs):
+        data = TemplateView.get_context_data(self, **kwargs)
         headers = {'Authorization': settings.SERVICES_TOKEN}
-        snippet = requests.get(
-            settings.URL_VSF +
-            '/cases/api/detail/' +
-            pk,
+        response = requests.get(
+            settings.URL_VSF + 
+            '/cases/api/detail/' + 
+            self.kwargs['pk'],
             headers=headers)
-        return Response(snippet)
+        response = response.json()
+        data["category"] = response["category"]
+        data["title"] = response["title_de"]
+        data["description"] = response["description_de"]
+        start_date = response["start_date"]
+        start_date = start_date.split('-')
+        start_date = start_date[2] + "/" + start_date[1] + "/" + start_date[0]
+        data['start_date'] = start_date
+        
+        # ISP
+        data["isp"] = response["isp"]
+        isps = response["isp"]
+        
+        
+        filtered_isps = []
+          
+        for isp in isps:
+            if not isp in  filtered_isps:               
+                    filtered_isps.append(isp)
+                    
+        data["filtered_isps"] = filtered_isps
+        
+        
+        # Domains
+        data["domains"] = response["domains"]
+        domains = response["domains"]
+        
+        
+        filtered_sites = []
+        filtered_null_sites = []
+
+        
+        for domain in domains:
+            if not domain["site"]:
+                filtered_null_sites.append( domain["url"]) 
+            else: 
+                if not domain["site"] in  filtered_sites:               
+                    filtered_sites.append(domain["site"])
+                    
+        data["filtered_sites"] = filtered_sites
+        data["filtered_null_sites"] = filtered_null_sites
+        
+        return data
+    
+   
+
+
 
 
 class CaseUpdateApi(APIView):
@@ -48,8 +110,8 @@ class CaseUpdateApi(APIView):
     def get(self, request, pk="1", format=None):
         headers = {'Authorization': settings.SERVICES_TOKEN}
         snippet = requests.get(
-            settings.URL_VSF +
-            '/cases/api/detail_update/' +
+            settings.URL_VSF + 
+            '/cases/api/detail_update/' + 
             pk,
             headers=headers)
         return Response(snippet)
@@ -69,7 +131,7 @@ class GanttEventsApi(APIView):
     def get(self, request, pk="1", format=None):
         headers = {'Authorization': settings.SERVICES_TOKEN}
         snippet = requests.get(
-            settings.URL_VSF +
+            settings.URL_VSF + 
             '/cases/api/gantt/' + pk,
             headers=headers)
         return Response(snippet)
@@ -83,7 +145,7 @@ class EventsMonth(APIView):
     def get(self, request, pk="1", format=None):
         headers = {'Authorization': settings.SERVICES_TOKEN}
         snippet = requests.get(
-            settings.URL_VSF +
+            settings.URL_VSF + 
             '/cases/api/events-month/' + pk,
             headers=headers)
         return Response(snippet)
@@ -96,8 +158,8 @@ def CaseCVS(request, pk):
     # Get the list of all the cases and load it as JSON
     headers = {'Authorization': settings.SERVICES_TOKEN}
     snippet = requests.get(
-        settings.URL_VSF +
-        '/cases/api/detail/' +
+        settings.URL_VSF + 
+        '/cases/api/detail/' + 
         pk,
         headers=headers)
     data = json.loads(snippet.text)
@@ -157,8 +219,8 @@ def CaseCVS(request, pk):
     # Get the list of all the events of the cases and load it as JSON
     headers = {'Authorization': settings.SERVICES_TOKEN}
     snippet = requests.get(
-        settings.URL_VSF +
-        '/cases/api/detail_event/' +
+        settings.URL_VSF + 
+        '/cases/api/detail_event/' + 
         pk,
         headers=headers)
     data_event = json.loads(snippet.text)
@@ -172,24 +234,24 @@ def CaseCVS(request, pk):
             print "Hello"
             print event["isp"]
             isp = event["isp"]
-            eventList = (eventList + "; Event: " + event["identification"] +
-                         ", Fecha inicio: " + event["start_date"] +
-                         ", Fecha fin: " + event["end_date"] + ", Target: " +
-                         event["target"]["site"] + event["target"]["url"] +
+            eventList = (eventList + "; Event: " + event["identification"] + 
+                         ", Fecha inicio: " + event["start_date"] + 
+                         ", Fecha fin: " + event["end_date"] + ", Target: " + 
+                         event["target"]["site"] + event["target"]["url"] + 
                          ", ISP: " + ispList)
         else:
             if event["end_date"] is None:
-                eventList = ("Event: " + event["identification"] +
-                             ", Fecha inicio: " + event["start_date"] +
-                             ", Fecha fin: " + "Continua" + ", Target: " +
-                             event["target"]["site"] + event["target"]["url"] +
+                eventList = ("Event: " + event["identification"] + 
+                             ", Fecha inicio: " + event["start_date"] + 
+                             ", Fecha fin: " + "Continua" + ", Target: " + 
+                             event["target"]["site"] + event["target"]["url"] + 
                              ", ISP: " + ispList)
             else:
-                eventList = ("Event: " + event["identification"] +
-                             ", Fecha inicio: " + event["start_date"] +
-                             ", Fecha fin: " + event["end_date"] +
-                             ", Target: " + event["target"]["site"] +
-                             event["target"]["url"] + ", ISP: " +
+                eventList = ("Event: " + event["identification"] + 
+                             ", Fecha inicio: " + event["start_date"] + 
+                             ", Fecha fin: " + event["end_date"] + 
+                             ", Target: " + event["target"]["site"] + 
+                             event["target"]["url"] + ", ISP: " + 
                              ispList)
 
         countEvent = countEvent + 1
@@ -197,8 +259,8 @@ def CaseCVS(request, pk):
     # Get the list of all the events of the cases and load it as JSON
     headers = {'Authorization': settings.SERVICES_TOKEN}
     snippet = requests.get(
-        settings.URL_VSF +
-        '/cases/api/detail_update/' +
+        settings.URL_VSF + 
+        '/cases/api/detail_update/' + 
         pk,
         headers=headers)
     data_update = json.loads(snippet.text)
@@ -208,13 +270,13 @@ def CaseCVS(request, pk):
     updateList = ""
     for update in updates:
         if countUpdate > 0:
-            updateList = (updateList + ";" + "Update: " + str(update["id"]) +
-                          ", Fecha: " + update["date"] + ", Titulo: " +
-                          update["title"] + ", Category: " +
+            updateList = (updateList + ";" + "Update: " + str(update["id"]) + 
+                          ", Fecha: " + update["date"] + ", Titulo: " + 
+                          update["title"] + ", Category: " + 
                           update["category"])
         else:
-            updateList = ("Update: " + str(update["id"]) + ", Fecha: " +
-                          update["date"] + ", Titulo: " + update["title"] +
+            updateList = ("Update: " + str(update["id"]) + ", Fecha: " + 
+                          update["date"] + ", Titulo: " + update["title"] + 
                           ", Category: " + update["category"])
 
         countUpdate = countUpdate + 1
@@ -261,7 +323,7 @@ def CaseCVS(request, pk):
 def CasePdf(request, pk="1"):
 
     pdf = pdfkit.from_url(
-        settings.URL_VSF_WEB +
+        settings.URL_VSF_WEB + 
         '/cases/case-pdf-view/' + pk + '/',
         False)
     response = HttpResponse(pdf, content_type='application/pdf')

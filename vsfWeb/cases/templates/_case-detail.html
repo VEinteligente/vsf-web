@@ -1,0 +1,274 @@
+{% load i18n %}
+
+
+{% load apptags %}
+
+<div style="background-color: #DEDEDE; margin-top: 25px;">
+
+	<div class="bodyContent">
+
+		<!-- Basic information of the case -->
+
+		<div class="container-fluid" id="title">
+			<div class="row">
+				<div class="col-xs-12 titleBar" style="margin-top: 15px">
+					<div class="h2Style title" id="titleAjax">{{ title }}</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="container-fluid"
+			style="padding-top: 10px; padding-bottom: 40px">
+			<div class="row">
+
+				<div class="col-xs-6" id="caseImage">
+				
+				{% if domains|length  == 1 %}
+						<img src="/commons/static/screenshots/screen_case_{{pk}}_0.png" class="img-fluid" style="width:100%">
+					{% else %}
+					
+						<div id="owl-demo" class="owl-carousel owl-theme">
+							{% for domain in domains %}
+								
+								<div class="item"><img src="/commons/static/screenshots/screen_case_{{pk}}_{{ forloop.counter0 }}.png"></div>
+								
+								
+							
+								
+							
+							{% endfor %}
+						</div>
+					{% endif %}
+				
+				</div>
+
+				<div class="col-xs-6" id="caseInfo">
+					<div class="row subtitleBar" id="dateBar">
+						<div class="container-fluid" id="caseDateBar">
+							<div class="col-xs-12 timelineBarContinue h4Style">
+								<div class="date col-xs-9" id="statusDateAjax">{{ start_date }}</div>
+								<div class="status col-xs-3" id="statusAjax"></div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="row">
+
+						<div class="container" id="caseDomainList">
+							<div>
+
+								<table class="table table-hover" id="tableDomain">
+
+									<thead>
+
+										<tr>
+
+											<th id="caseCategory" class="h4Style">
+												{% trans "Category: " %} &nbsp
+
+												<div class=" {{ category.name }}">
+													<div class="left_cornerTag"></div>
+													<div class="contentTag">{{ category.display_name }}</div>
+													<div class="right_cornerTag"></div>
+												</div>
+											</th>
+
+
+
+										</tr>
+
+
+									</thead>
+
+
+									<tbody id="domainTableBody">
+
+
+										{% for filtered_null_site in filtered_null_sites %}
+
+											<tr>
+												<td id="nameDomain" style="width:100%">
+													{{ filtered_null_site }}
+													<a href="{{ filtered_null_site }}">
+														<i class="fa fa-external-link" style="float:right" aria-hidden="true"></i>
+													</a>
+												</td>
+											</tr>
+											
+
+										{% endfor %}
+										
+										{% for filtered_site in filtered_sites %}
+										
+											<tr class="focus clickable" data-toggle="collapse" data-target="#data{{ filtered_site |spacify }}">
+												<td id="nameDomain">{{ filtered_site }}</td>
+											<tr>
+											
+											<td id="focusDomain" class="prueba" style="padding:0;">
+												<div class="collapse" id="data{{ filtered_site |spacify }}">
+													{% for domain in domains %}
+														{% if filtered_site ==  domain.site %}
+															{% if not domain.ip %}
+																<div class="rowDomain">
+																	<div class="col-xs-12" id="siteDomain" style="padding-bottom:.75rem; padding-right:.75rem; padding-top:.75rem;">
+																		
+																		<div class="col-xs-11">
+																			{{ domain.url }}
+																		</div>
+																		<div class="col-xs-1">
+																			<a href="{{ domain.url }}">
+																				<i class="fa fa-external-link" aria-hidden="true"></i>
+																			</a>
+																		</div>
+																		
+																	</div>
+																	
+																		
+																</div>
+																	
+															{% else %}
+																
+																
+															
+															
+																<div class="col-xs-11" class="rowDomain">
+																	<div id="siteDomain" >
+																		{{ domain.url }}
+																	</div>
+																	<div>
+																		{{ domain.ip }}
+																	</div>
+																	<div>
+																		<a href="{{ domain.url }}">
+																			<i class="fa fa-external-link" aria-hidden="true"></i>
+																		</a>
+																	</div>
+																</div>
+															{% endif %}
+																
+															
+															
+															
+														{% endif %}
+														
+													{% endfor %}
+												</div>
+												
+											</td>
+											
+											
+											
+											
+											
+								
+										{% endfor %}
+										
+										
+										
+									</tbody>
+
+
+								</table>
+
+							</div>
+						</div>
+					</div>
+
+					<div class="row toolbar" id="providerBar">
+
+						<div class="container-fluid" id="caseProvider">
+
+							<div class="col-xs-12" style="text-align: center;" id="ispAjax">
+								
+								{% for filtered_isp in filtered_isps %}
+									<button class="contextualButtonFixedSize">
+									{{ filtered_isp }}
+									</button>
+								
+								{% endfor %}
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+
+
+	<div class="container-fluid white-background padding-title">
+
+
+
+		<div class="bodyContent titleBarContent">
+			<div class="row">
+				<div class="col-xs-2 h4Style">
+					<a id="download" href="#"> {% trans 'Download' %} CVS </a>
+
+				</div>
+
+				<div class="col-xs-2 h4Style">
+					<a id="downloadPdf" href="#"> {% trans 'Download' %} PDF </a>
+				</div>
+
+				<div class="col-xs-8 downloadBar">
+					<a href="" id="shareFacebook" target="_blank"> <i
+						class="fa fa-facebook social" aria-hidden="true"></i>
+					</a> <a href="" id="shareTwitter" target="_blank"> <i
+						class="fa fa-twitter social" aria-hidden="true"></i>
+					</a> <a href="" id="shareReddit" target="_blank"> <i
+						class="fa fa-reddit social" aria-hidden="true"></i>
+					</a>
+
+				</div>
+
+				<!-- <div class="col-xs-2">
+					Measurements: 
+					<a href="" id="measurementsLink" target="_blank"> 
+						<i class="fa fa-database" aria-hidden="true"></i>
+	
+					</a> 
+	
+				</div> -->
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+	</div>
+
+	<div class="container-fluid white-background" id="caseDescription ">
+
+
+		<div class="bodyContent" id="caseDescriptionContent">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="h3Style">{% trans "Descripcion: " %}</div>
+					<p id="descriptionAjax">{{ description }}</p>
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>
+
+
+</div>
+
+
+
+
+
+
+

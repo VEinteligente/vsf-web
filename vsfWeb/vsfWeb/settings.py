@@ -112,6 +112,10 @@ TEMPLATES = [
                 'vsfWeb.context_processors.global_settings',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries': { # Adding this section should work around the issue.
+                'apptags' : 'vsfWeb.templatetags.apptags',#to add new tags module,
+                
+            },       
         },
     },
 ]

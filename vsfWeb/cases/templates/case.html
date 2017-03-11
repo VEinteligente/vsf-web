@@ -1,6 +1,7 @@
 {% extends "base.html" %} 
 {% load i18n %} 
 {% load static %} 
+
 {% block content %} 
 {% get_current_language as language_code %}
 
@@ -10,148 +11,9 @@
 <input id="hiddenDate" type="hidden" value="">
 <input id="hiddenDateEnd" type="hidden" value="">
 <input id="hiddenDateStart" type="hidden" value="">
-<div style="background-color: #DEDEDE; margin-top: 25px;">
 
-	<div class="bodyContent">
+<div id="basicCaseInformation"> </div>
 
-		<!-- Basic information of the case -->
-		<div class="container-fluid" id="title">
-			<div class="row">
-				<div class="col-xs-12 titleBar" style="margin-top: 15px">
-					<div class="h2Style title" id="titleAjax"></div>
-				</div>
-			</div>
-		</div>
-
-
-		<div class="container-fluid"
-			style="padding-top: 10px; padding-bottom: 40px">
-			<div class="row">
-
-				<div class="col-xs-6" id="caseImage"></div>
-
-				<div class="col-xs-6" id="caseInfo">
-					<div class="row subtitleBar" id="dateBar">
-						<div class="container-fluid" id="caseDateBar">
-							<div class="col-xs-12 timelineBarContinue h4Style">
-								<div class="date col-xs-9" id="statusDateAjax"></div>
-								<div class="status col-xs-3" id="statusAjax"></div>
-							</div>
-						</div>
-					</div>
-
-
-					<div class="row">
-
-						<div class="container" id="caseDomainList">
-							<div>
-
-								<table class="table table-hover" id="tableDomain">
-
-									<thead>
-
-										<tr>
-
-											<th id="caseCategory" class="h4Style">
-											{% trans "Category: "%}</th>
-
-										</tr>
-
-
-									</thead>
-
-
-									<tbody id="domainTableBody">
-
-									</tbody>
-
-
-								</table>
-
-							</div>
-						</div>
-					</div>
-
-					<div class="row toolbar" id="providerBar">
-
-						<div class="container-fluid" id="caseProvider">
-
-							<div class="col-xs-12" style="text-align: center;" id="ispAjax">
-
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</div>
-
-
-</div>
-
-<div class="container-fluid white-background padding-title">
-
-
-
-	<div class="bodyContent titleBarContent">
-		<div class="row">
-			<div class="col-xs-2 h4Style">
-				<a id="download" href="#"> {% trans 'Download' %} CVS </a>
-
-			</div>
-
-		 	<div class="col-xs-2 h4Style">
-				<a id="downloadPdf" href="#"> {% trans 'Download' %} PDF </a>
-			</div> 
-
-			<div class="col-xs-8 downloadBar">
-				<a href="" id="shareFacebook" target="_blank"> <i
-					class="fa fa-facebook social" aria-hidden="true"></i>
-				</a> <a href="" id="shareTwitter" target="_blank"> <i
-					class="fa fa-twitter social" aria-hidden="true"></i>
-				</a> <a href="" id="shareReddit" target="_blank"> <i
-					class="fa fa-reddit social" aria-hidden="true"></i>
-				</a>
-
-			</div>
-
-			<!-- <div class="col-xs-2">
-				Measurements: 
-				<a href="" id="measurementsLink" target="_blank"> 
-					<i class="fa fa-database" aria-hidden="true"></i>
-
-				</a> 
-
-			</div> -->
-
-
-
-		</div>
-
-
-
-	</div>
-
-
-</div>
-
-<div class="container-fluid white-background" id="caseDescription ">
-
-
-	<div class="bodyContent" id="caseDescriptionContent">
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="h3Style">{% trans "Descripcion: " %}</div>
-				<p id="descriptionAjax"></p>
-			</div>
-		</div>
-	</div>
-
-
-
-</div>
 
 
 <div class="container-fluid white-background" id="updates">
@@ -204,7 +66,7 @@
 <div class="container-fluid white-background">
 
 	<div class="bodyContent" style="margin-bottom: 10px">
-		
+
 		<div id="timeline1" class="svg-container"></div>
 	</div>
 </div>
@@ -213,13 +75,14 @@
 
 
 
-<div class="container-fluid" 	style="height: 100vh; {# background-color: #E6E6E6 #}">
+<div class="container-fluid"
+	style="height: 100vh; {# background-color: #E6E6E6#">
 
 	<div class="bodyContent">
 
 		<div class="row subGraphDiv">
 			<div class="col-xs-3" id="subGraph1" data-toggle="modal"
-				data-target="#modal" data-tooltip >
+				data-target="#modal" data-tooltip>
 				<div class="row">
 
 					<div class="container-fluid col-xs-12" id="twitterDiv">
@@ -235,7 +98,8 @@
 					</div>
 
 
-					 <div  class="watermark subGraphDivHover" onClick="twitterSearchModal()">
+					<div class="watermark subGraphDivHover"
+						onClick="twitterSearchModal()">
 
 
 						<p>{% trans 'Click to open' %}</p>
@@ -244,9 +108,9 @@
 			</div>
 
 
-			
-			
-			
+
+
+
 
 
 
@@ -272,11 +136,11 @@
 
 
 					</div>-->
-				</div>
+		</div>
 
-			</div> 
+	</div>
 
-<style>
+	<style>
 .watermark {
 	background: rgba(230, 230, 230, 0.51);
 	width: 100%;
@@ -302,7 +166,7 @@
 }
 </style>
 
-<!-- 			<div class="col-xs-3  offset-xs-1" id="subGraph3">
+	<!-- 			<div class="col-xs-3  offset-xs-1" id="subGraph3">
 				<div class="row">
 					<div class="container-fluid">SubGraph 3</div>
 
@@ -317,61 +181,62 @@
 
 		</div>
 	</div>-->
-	
+
 	<div class="bodyContent cards titleBarContent">
 		<div class="row">
 			<div class="col-xs-12 subtitleBar">
 
-				<h4 id="measurementsTitle" class="cardsTitle clickable">{% trans 'Ver mediciones' %}</h4>
+				<h4 id="measurementsTitle" class="cardsTitle clickable">{%
+					trans 'Ver mediciones' %}</h4>
 			</div>
 		</div>
 
 	</div>
-</div> 
+</div>
 
 <div class="container-fluid ">
 
-	
 
 
-<style>
+
+	<style>
 .tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
+	position: relative;
+	display: inline-block;
+	border-bottom: 1px dotted black;
 }
 
 .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 1s;
+	visibility: hidden;
+	width: 120px;
+	background-color: #555;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+	position: absolute;
+	z-index: 1;
+	bottom: 125%;
+	left: 50%;
+	margin-left: -60px;
+	opacity: 0;
+	transition: opacity 1s;
 }
 
 .tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: #555 transparent transparent transparent;
 }
 
 .tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
+	visibility: visible;
+	opacity: 1;
 }
 </style>
 
@@ -379,19 +244,19 @@
 
 
 
-<div class="modal fade global-modal contentBoxTransparent">			
+<div class="modal fade global-modal contentBoxTransparent">
 	<div class="modal-content">
-			<div class="modal-header">
-					<button type="button" class="close" onclick="empty(); $('.global-modal').modal('hide'); ">
-						<span aria-hidden="true">&times;</span>
-					</button>
-						
-					<div class="modal-title h5style" id="modalSearchTextTitle"></div>					
-			</div>
-				
-			<div class="modal-footer">
-			</div>
-	</div>			
+		<div class="modal-header">
+			<button type="button" class="close"
+				onclick="empty(); $('.global-modal').modal('hide'); ">
+				<span aria-hidden="true">&times;</span>
+			</button>
+
+			<div class="modal-title h5style" id="modalSearchTextTitle"></div>
+		</div>
+
+		<div class="modal-footer"></div>
+	</div>
 </div>
 
 

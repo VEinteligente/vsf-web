@@ -1127,7 +1127,14 @@ input#title{
 	width: 100%;
 
 }
-
+.rowDomain > div{
+	color: #fff;
+	background-color: #c9c9c9 ;
+	font-weight:400;
+	padding-bottom: .75rem;
+    padding-right: .75rem;
+    padding-top: .75rem;
+}
 .rowDomain{
 	color: #fff;
 	background-color: #c9c9c9 ;
@@ -1135,7 +1142,7 @@ input#title{
 	width: 100%;
 }
 
-.rowDomain:hover{
+.rowDomain > div:hover, .rowDomain:hover{
 	background-color:#ebebeb;
 	color: #808080;
 }

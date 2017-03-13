@@ -3,7 +3,7 @@
 var maxYValues = 15; 
 var Year = "Year";
 var Month = "Month";
-var Days = "Days";
+var All = "All";
 
 function gantt(timelap){
 	
@@ -16,6 +16,7 @@ function gantt(timelap){
 			"margin-right:25px'><button onClick='gantt(Year)'" +
 			"class='contextualButtonFixedSize'>Year</button>" +
 			"<button onClick='gantt(Month)' class='contextualButtonFixedSize'>Month</button>" +
+			"<button onClick='gantt(All)' class='contextualButtonFixedSize'>All</button>" +
 			"</div>");
 	
 	

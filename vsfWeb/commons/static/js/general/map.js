@@ -28,7 +28,7 @@ var count_map = 0;
 $(document).ready(
 				function() {
 
-					$("#download").attr("href", url_map_excel)
+					$("#downloadMap").attr("href", url_map_excel)
 					// This sections allows you to use a map of any country if
 					// you use a SVG image and loads the states in the select
 					// options.

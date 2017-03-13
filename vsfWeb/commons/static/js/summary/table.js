@@ -88,7 +88,7 @@ function select(option) {
 									.html(
 											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="countSummary"></span> &nbsp <strong>Casos</strong> Por Categoría');
 
-							$("#download").attr("href", url_excel_category)
+							$("#downloadSummary").attr("href", url_excel_category)
 							// In data.results we find the info we need for this
 							// section, it is an array of objects
 							$
@@ -292,7 +292,7 @@ function select(option) {
 									.append(
 											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="countSummary"></span> &nbsp <strong>Casos</strong> Por ISP');
 
-							$("#download").attr("href", url_excel_isp)
+							$("#downloadSummary").attr("href", url_excel_isp)
 							// In data.results we find the info for this
 							// section, it is an array of objects
 

@@ -1008,11 +1008,9 @@ function adjustTextLabels(selection) {
 
 function drawMiniGantts(data,i,label){
 	
-	
-	console.log(i)
-	console.log(data)
+
 	$(".subGraphDiv").append('<div class="col-xs-3 hoverOpen" id="subGraph'+ (i) + '" data-toggle="modal" data-target="#modal" data-tooltip >'
-			+'<div class="row"><div class="container-fluid col-xs-12" id="twitterDiv"><div id="twitterTweet"></div>'
+			+'<div class="row"><div class="container-fluid col-xs-12" id="twitterDiv"><div class="twitterTweet"></div>'
 			+ '<div id="twitterSearchText"><div id="twitterSearchTextTitle"><div class="h4Style title"></div>'
 			+'</div><div id="twitterSearchTextContent">Resultados de <span>'+ label +'</span><div class="title"></div></div></div></div>'
 			+ '<div  class="watermark subGraphDivHover" onClick="ganttModal(All,'+i+')"><p>Haga clic para abrir</p>'
@@ -1028,49 +1026,55 @@ function drawMiniGantts(data,i,label){
 	
 	
 	
+
+
+	
+	
 	var testData = data;
 	// Save the chart in variable
 	var chart = d3.timeline().showTimeAxisTick().stack();
 					
 	var margin = {top: 35, right: 200, bottom: 20, left: 80},
 			    width = 270 - (margin.left + margin.right);
-				height = 220 - (margin.top + margin.bottom);
+				height = 180 - (margin.top + margin.bottom);
 				    
 				    
-	var svg = d3.select("#subGraph"+ (i) + " .container-fluid " )// container class to make it responsive
+	var svg = d3.select("#subGraph"+ (i) + " .twitterTweet" )// container class to make it responsive
 					.append("svg").attr("preserveAspectRatio", "xMinYMin meet")	
 					
 					.attr("width", width + (margin.left + margin.right)-24)
 					.attr("height", height )
 					   .attr("viewBox", "0 0 " + height + " "
-							 + "200"  )
-					   // class to make it responsive
-					   .classed("svg-content-responsive", true)
+							 + "155"  )
+					   
 					  .datum(testData).call(chart).call(adjustTextLabels);     // adjusts
 																				// text
 																				// labels
 																				// on
 																	// the
-																				// axis
-			
 
+	$("#subGraph"+ (i) + " .twitterTweet ").append('<div>Bloque: <span  style="color:red">DPI</span>'
+			+ ', <span  style="color:green">DNS</span>, <span  style="color:blue">IP</span></div>');
+
+	$("#subGraph"+ (i) + " .twitterTweet ").append('<div style="color:yellow">Interceptacion de trafico</div>');
+	$("#subGraph"+ (i) + " .twitterTweet ").append('<div style="color:purple">Falla dns</div>');
+	$("#subGraph"+ (i) + " .twitterTweet ").append('<div style="color:gray">Velocidad de internet</div>');
+	$("#subGraph"+ (i) + " .twitterTweet ").append('<div style="color:black">Alteracion de trafico por intermediarios</div>');
+		  
+		  
+	$("#subGraph"+ (i) + " .twitterTweet ").css('font-size','13px');	    
+		    																			// axis
+			
+	svg.selectAll(".axis .tick text").html("")
 
 	svg.selectAll(".timeline-label")  // select all the text elements for the
 										// yaxis
 					          .html(function(d) {
 					        	  
-					        	  var labelStrong_first = (($(this).text())).split("-")[0];
-					        	 
-					        	  var labelStrong_second = (($(this).text())).split("-")[1];
-					        	  
-					        	  var labelStrong_third = (($(this).text())).split("-")[2];
-					        	  
-					        	  
 					        	  
 					        	  // Make first element bold
-					        	  $("#subGraph"+ i + "svg > g:first-child").attr('transform','translate(330,0)');
-					        	  return ("<text stroke='#000000' style='text-transform: uppercase;'>" + labelStrong_first + "</text>" 
-					        			  + "<text transform='translate(120,0)'>" +  labelStrong_third +"</text>");
+					        	  $("#subGraph"+ i + "svg > g:first-child").attr('transform','translate(0,0)');
+					        	  return ("");
 					         });
 
 		$('.axis .tick ').each(function() {
@@ -1253,11 +1257,12 @@ $.ajax({
 			});
 		}
 				
-		console.log(miniGantts)
+	
 		
 
 		for(var i = 0; i < miniGantts.length ; i++){
 			var miniGanttResult = [];
+			var miniGanttData = [];
 			
 			$.each(dataJson.events, function(key, value) {
 				var isp = value.isp;
@@ -1276,11 +1281,14 @@ $.ajax({
 				else if(target.ip != null){
 					domain = target.ip 
 				}
-								
-				var type = value.type;
+				var element = {};
 				
-			
 				if(domain==miniGantts[i]){
+					
+					var type = value.type;
+					
+			
+				
 					var start_date = (new Date(value.start_date)).getTime();
 					
 					if( value.end_date != null ) {
@@ -1298,43 +1306,56 @@ $.ajax({
 										
 					miniGanttData[miniGanttData.length]=element;
 					
-					var times_element = "";
-					var label_element = "";
-					var times = [];
-					var z = 0;
-						
-					for(var j = 0; j < miniGanttData.length; j++){
-						var nameCompare = (miniGanttData[j].label).split("-")[2]							
-						if(nameCompare==miniGantts[i]) {
-								
-							times_element =  (miniGanttData[j].times)[0];
-							label_element =  (miniGanttData[j].label);
-							times[z]= times_element;
-							z = z +1;
-												
-												
-						}
+					
+					
+					
+				}
+				
+					
+			});
+				
+				
+			console.log(i)
+			console.log(miniGanttData)
+			console.log(miniGantts[i])
+			
+			var times_element = "";
+			var element_miniGantt = "";
+			var label_element = "";
+			var times = [];
+			var z = 0;
+		
+		
+			
+					
+			for(var j = 0; j < miniGanttData.length; j++){
+				
+				var nameCompare = (miniGanttData[j].label).split("-")[2]	
+				
+					
+					if(nameCompare==miniGantts[i]) {
+						console.log(miniGanttData[j].label)
+						times_element =  (miniGanttData[j].times)[0];
+						label_element =  (miniGanttData[j].label);
+						times[z]= times_element;
+						z = z +1;
 											
 											
 					}
 										
 										
-					element = { label: label_element ,times };
-					miniGanttResult.push(element);
+			}
+									
+									
+			element_miniGantt = { label: label_element ,times };
+			miniGanttResult.push(element_miniGantt);
 					
-					
-					
-				}
-					
-					
-					
-				
-				
-				
-			});
 			console.log(miniGanttResult)
-			console.log(miniGantts[i])
-			drawMiniGantts(miniGanttResult, i, miniGantts[i]);
+			
+			
+			drawMiniGantts(miniGanttData, i, miniGantts[i]);
+				
+					
 			
 	
 		}
@@ -1352,7 +1373,7 @@ $.ajax({
 			var z = 0;
 				
 			for(var j = 0; j < dataAll.length; j++){
-													
+									  				
 				if(dataAll[j].label==dataLabel[i]) {
 						
 					times_element =  (dataAll[j].times)[0];

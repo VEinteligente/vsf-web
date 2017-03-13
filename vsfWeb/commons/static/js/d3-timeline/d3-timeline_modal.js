@@ -19,7 +19,7 @@ function ganttModal(timelap, i){
 			 + '<div class="h4Style title"></div></div><div id="modaltwitterSearchTextContent">'
 			 + '<div class="title"></div></div></div></div>');
 	
-	var searchWord = $("#subGraph"+ (i) +" span").text();
+	var searchWord = $("#subGraph"+ (i) +" #twitterSearchTextContent span").text();
 	
 	$("#modalSearchTextTitle").append('<div id="twitterSearchTextTitle"><div class="h4Style title">Resultados de: </div></div>')
 	$("#modalSearchTextTitle").append( searchWord );

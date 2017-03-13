@@ -1,29 +1,37 @@
 // This value indicates the maximum Y values of a graph. If the value is 
 // over this value then a simplificated graph will be shown.
-var maxYValues = 2; 
 var Year = "Year";
 var Month = "Month";
 var All = "All";
 
-function gantt(timelap){
+function ganttModal(timelap, i){
 	
 	
 	// This function calls the gantt graph. Timelap indicates the unit of time
 	// of the X axis
 	
+	$(".modal-footer").css('background','white');
+	$(".modal-footer").css('padding','15px');
 	
-	$("#timeline1").html("<div class='row' style='float:right; " +
-			"margin-right:25px'><button onClick='gantt(Year)'" +
-			"class='contextualButtonFixedSize'>Year</button>" +
-			"<button onClick='gantt(Month)' class='contextualButtonFixedSize'>Month</button>" +
-			"<button onClick='gantt(All)' class='contextualButtonFixedSize'>All</button>" +
-			"</div>");
+	$(".modal-footer").append('<div class="modal-body container-fluid col-xs-12"'
+			 + 'id="modaltwtterDiv"> <div id="modaltwitterTweet"></div>'
+			 + '<div id="modaltwitterSearchText"><div id="modaltwitterSearchTextTitle">'
+			 + '<div class="h4Style title"></div></div><div id="modaltwitterSearchTextContent">'
+			 + '<div class="title"></div></div></div></div>');
+	
+	var searchWord = $("#subGraph"+ (i) +" span").text();
+	
+	$("#modalSearchTextTitle").append('<div id="twitterSearchTextTitle"><div class="h4Style title">Resultados de: </div></div>')
+	$("#modalSearchTextTitle").append( searchWord );
 	
 	
-	
-	
-	
-	
+//	$("#modaltwitterTweet").html("<div class='row' style='float:right; " +
+//			"margin-right:25px'><button onClick='gantt(Year)'" +
+//			"class='contextualButtonFixedSize'>Year</button>" +
+//			"<button onClick='gantt(Month)' class='contextualButtonFixedSize'>Month</button>" +
+//			"<button onClick='gantt(All)' class='contextualButtonFixedSize'>All</button>" +
+//			"</div>");
+
 	// This value indicates the starting time of the Gantt
 	var timelineStart = (new Date($('#hiddenDate').val())).getTime();
 	// This value indicates the ending time of the Gantt
@@ -31,6 +39,7 @@ function gantt(timelap){
 	
 	var dateStart = new Date($('#hiddenDate').val());
 	var start = (new Date($('#hiddenDateStart').val()));
+	
 	// This value corresponds to the time between the start and ending time
 	// of the Gantt
 	var timeDiff = Math.abs(timelineEnd- timelineStart);
@@ -1006,85 +1015,6 @@ function adjustTextLabels(selection) {
 
 }
 
-function drawMiniGantts(data,i,label){
-	
-	
-	console.log(i)
-	console.log(data)
-	$(".subGraphDiv").append('<div class="col-xs-3 hoverOpen" id="subGraph'+ (i) + '" data-toggle="modal" data-target="#modal" data-tooltip >'
-			+'<div class="row"><div class="container-fluid col-xs-12" id="twitterDiv"><div id="twitterTweet"></div>'
-			+ '<div id="twitterSearchText"><div id="twitterSearchTextTitle"><div class="h4Style title"></div>'
-			+'</div><div id="twitterSearchTextContent">Resultados de <span>'+ label +'</span><div class="title"></div></div></div></div>'
-			+ '<div  class="watermark subGraphDivHover" onClick="ganttModal(All,'+i+')"><p>Haga clic para abrir</p>'
-			+ '</div></div>	</div>')
-
-	$('.subGraphDivHover').hide();
-	$("#subGraph"+ (i)).mouseover(function(){
-		$("#subGraph"+ (i)).find('.subGraphDivHover').show();
-}).mouseleave(function(){
-	$("#subGraph"+ (i)).find('.subGraphDivHover').hide();
-});
-	
-	
-	
-	
-	var testData = data;
-	// Save the chart in variable
-	var chart = d3.timeline().showTimeAxisTick().stack();
-					
-	var margin = {top: 35, right: 200, bottom: 20, left: 80},
-			    width = 270 - (margin.left + margin.right);
-				height = 220 - (margin.top + margin.bottom);
-				    
-				    
-	var svg = d3.select("#subGraph"+ (i) + " .container-fluid " )// container class to make it responsive
-					.append("svg").attr("preserveAspectRatio", "xMinYMin meet")	
-					
-					.attr("width", width + (margin.left + margin.right)-24)
-					.attr("height", height )
-					   .attr("viewBox", "0 0 " + height + " "
-							 + "200"  )
-					   // class to make it responsive
-					   .classed("svg-content-responsive", true)
-					  .datum(testData).call(chart).call(adjustTextLabels);     // adjusts
-																				// text
-																				// labels
-																				// on
-																	// the
-																				// axis
-			
-
-
-	svg.selectAll(".timeline-label")  // select all the text elements for the
-										// yaxis
-					          .html(function(d) {
-					        	  
-					        	  var labelStrong_first = (($(this).text())).split("-")[0];
-					        	 
-					        	  var labelStrong_second = (($(this).text())).split("-")[1];
-					        	  
-					        	  var labelStrong_third = (($(this).text())).split("-")[2];
-					        	  
-					        	  
-					        	  
-					        	  // Make first element bold
-					        	  $("#subGraph"+ i + "svg > g:first-child").attr('transform','translate(330,0)');
-					        	  return ("<text stroke='#000000' style='text-transform: uppercase;'>" + labelStrong_first + "</text>" 
-					        			  + "<text transform='translate(120,0)'>" +  labelStrong_third +"</text>");
-					         });
-
-		$('.axis .tick ').each(function() {
-			// make rhombus for the X axis and set the label at the middle
-				
-			$(this).html($(this).html()+ '<rect x="5" y="5" width="15" height="15" style="fill: #ccc" transform="rotate(45)" />');
-		 });
-		
-
-		svg.select("#subGraph" + (i) + "svg > g").attr('transform','translate(330,0)')		
-		
-		
-	
-}
 
 var timesGroup = [];
 var dataResult = [];
@@ -1134,213 +1064,51 @@ $.ajax({
 			else if(target.ip != null){
 				domain = target.ip 
 			}
-							
-			var type = value.type;
-			
-			var start_date = (new Date(value.start_date)).getTime();
-							
-			if( value.end_date != null ) {
-				var end_date = (new Date(value.end_date)).getTime();
-			}
-			else{
-				var end_date = (new Date()).getTime();
-			}
-						
-			// This is an element of the Gantt (a polygon). The value will
-			// be used later on
-			element = { label: ( isp + "-" + type + "-" + domain),times: 
-						[ {"color": colorSelect(type), "starting_time": start_date, "ending_time": end_date}]
-			};
-							
-			dataAll[dataAll.length]=element;
-				
-			// The elements are stored together for a same ISP-TYPE-DOMAIN
-			
 					
-			var exists = 0;
-				
-			for(var i = 0; i < dataLabel.length ; i++){
-				if(dataAll[i].label == (isp + "-" + type + "-" + domain)) {
-					exists = 1;
-				}
-			}
-							
-			if(exists != 1){
-				dataLabel[dataLabel.length]= (isp + "-" + type + "-" + domain)
-			}
-		});
-						
-		// If the maximum value of Y elements is smaller than the Y labels
-		// elements then load the simplified Gantt (ISP-DOMAIN)
-		if(dataLabel.length >  maxYValues){
-							
-			dataLabel = [];
-			dataAll = [];
 			
-			$.each(dataJson.events, function(key, value) { // First Level
-						
-				var isp = value.isp;
-				var target = value.target;
-				var domain = "";
-				
-
-				// The domain or Y labels. If no site exists, then use the
-				// URL. If no site name or URL exists use IP
-				if(target.site != null){
-					domain = target.site 
-				}
-				else if(target.url != null){
-					domain = target.url 
-				}
-				else if(target.ip != null){
-					domain = target.ip 
-				}
-								
+			
+			if ( searchWord == domain){
 				var type = value.type;
 				
+				
+				
 				var start_date = (new Date(value.start_date)).getTime();
-									
+								
 				if( value.end_date != null ) {
 					var end_date = (new Date(value.end_date)).getTime();
 				}
 				else{
 					var end_date = (new Date()).getTime();
 				}
-				
-				
-				
-				element = { label: ( isp + "-" + " " + "-" + domain),times: 
-						[ {"color": colorSelect(type), "starting_time": start_date, "ending_time": end_date}]
+							
+				// This is an element of the Gantt (a polygon). The value will
+				// be used later on
+				element = { label: ( isp + "-" + type + "-" + domain),times: 
+							[ {"color": colorSelect(type), "starting_time": start_date, "ending_time": end_date}]
 				};
-									
-				dataAll[dataAll.length]=element;
-		
-				
-				// The elements are stored together for a same ISP-TYPE-DOMAIN
 								
-				var exists = 0;
+				dataAll[dataAll.length]=element;
+					
+				// The elements are stored together for a same ISP-TYPE-DOMAIN
 				
+						
+				var exists = 0;
+					
 				for(var i = 0; i < dataLabel.length ; i++){
-					if(dataAll[i].label == (isp + "-" + " " + "-" + domain)) {
+					if(dataAll[i].label == (isp + "-" + type + "-" + domain)) {
 						exists = 1;
 					}
 				}
-									
+								
 				if(exists != 1){
-					dataLabel[dataLabel.length]= (isp + "-" + " " + "-" + domain)								
+					dataLabel[dataLabel.length]= (isp + "-" + type + "-" + domain)
 				}
 				
-				// MiniGantts
 				
-				var name =  domain ;
-				var existsMiniGantt = 0;
-				
-				for(var i = 0; i < miniGantts.length ; i++){
-					if(miniGantts[i] == name) {
-						existsMiniGantt = 1;
-												
-					}
+			}
 			
-				}
-									
-				if(existsMiniGantt != 1){
-					miniGantts[miniGantts.length] = name;	
-					
-				}
-				
-			
-				
-			});
-		}
-				
-		console.log(miniGantts)
-		
-
-		for(var i = 0; i < miniGantts.length ; i++){
-			var miniGanttResult = [];
-			
-			$.each(dataJson.events, function(key, value) {
-				var isp = value.isp;
-				var target = value.target;
-				var domain = "";
-				
-
-				// The domain or Y labels. If no site exists, then use the
-				// URL. If no site name or URL exists use IP
-				if(target.site != null){
-					domain = target.site 
-				}
-				else if(target.url != null){
-					domain = target.url 
-				}
-				else if(target.ip != null){
-					domain = target.ip 
-				}
-								
-				var type = value.type;
-				
-			
-				if(domain==miniGantts[i]){
-					var start_date = (new Date(value.start_date)).getTime();
-					
-					if( value.end_date != null ) {
-						var end_date = (new Date(value.end_date)).getTime();
-					}
-					else{
-						var end_date = (new Date()).getTime();
-					}
-					
-					
-					
-					element = { label: ( isp + "-" + type + "-" + domain),times: 
-							[ {"color": colorSelect(type), "starting_time": start_date, "ending_time": end_date}]
-					};
-										
-					miniGanttData[miniGanttData.length]=element;
-					
-					var times_element = "";
-					var label_element = "";
-					var times = [];
-					var z = 0;
+		});
 						
-					for(var j = 0; j < miniGanttData.length; j++){
-						var nameCompare = (miniGanttData[j].label).split("-")[2]							
-						if(nameCompare==miniGantts[i]) {
-								
-							times_element =  (miniGanttData[j].times)[0];
-							label_element =  (miniGanttData[j].label);
-							times[z]= times_element;
-							z = z +1;
-												
-												
-						}
-											
-											
-					}
-										
-										
-					element = { label: label_element ,times };
-					miniGanttResult.push(element);
-					
-					
-					
-				}
-					
-					
-					
-				
-				
-				
-			});
-			console.log(miniGanttResult)
-			console.log(miniGantts[i])
-			drawMiniGantts(miniGanttResult, i, miniGantts[i]);
-			
-	
-		}
-		
-		
-		
 		
 		// The elements must be stored in the same label (ISP-TYPE-DOMAIN), so
 		// all the times array of the elements with same label must be saved in
@@ -1375,7 +1143,7 @@ $.ajax({
 			
 		var testData = dataResult;
 		// Save the chart in variable
-		var chart = d3.timeline().showTimeAxisTick().stack().beginning(timelineStart).ending(timelineEnd);
+		var chart = d3.timeline().showTimeAxisTick().stack();
 
 
 						
@@ -1384,7 +1152,7 @@ $.ajax({
 					height = 220 - (margin.top + margin.bottom);
 					    
 					    
-		var svg = d3.select("#timeline1")// container class to make it
+		var svg = d3.select("#modaltwitterTweet")// container class to make it
 											// responsive
 						.append("svg").attr("preserveAspectRatio", "xMinYMin meet")
 						.attr("width", width + (margin.left + margin.right)-24)
@@ -1415,7 +1183,7 @@ $.ajax({
 						        	  
 						        	  
 						        	  // Make first element bold
-						        	  $("#timeline1 svg > g:first-child").attr('transform','translate(330,0)');
+						        	  $("#modaltwitterTweet svg > g:first-child").attr('transform','translate(330,0)');
 						        	  return ("<text stroke='#000000' style='text-transform: uppercase;'>" + labelStrong_first + "</text>" 
 						        			  + "<text transform='translate(120,0)'>" + labelStrong_second + ": "+ labelStrong_third +"</text>");
 						         });
@@ -1426,7 +1194,7 @@ $.ajax({
 				$(this).html($(this).html()+ '<rect x="5" y="5" width="15" height="15" style="fill: #ccc" transform="rotate(45)" />');
 			 });
 			
-			$("#timeline1").append('<div class="informationPanelGantt" ><div class="informationPanelState"></div><div class="informationPanelTotalCases"></div></div>')
+			$("#modaltwitterTweet").append('<div class="informationPanelGantt" ><div class="informationPanelState"></div><div class="informationPanelTotalCases"></div></div>')
 	
 
 
@@ -1467,11 +1235,11 @@ $.ajax({
     			var type = dataTooltip[i].type;
 
     			
-        		$(".informationPanelState").html(isp + " - " +  type + " - " + targetName);
-        		
-        		$(".informationPanelTotalCases").html("<strong>Target </strong>: " + site + " " + url + " " + domain + "<br> <strong>Start date</strong>: " + start + " <br> <strong>End date</strong>: " + end );
-        		var div = $(".informationPanel");
-        		
+//        		$(".informationPanelState").html(isp + " - " +  type + " - " + targetName);
+//        		
+//        		$(".informationPanelTotalCases").html("<strong>Target </strong>: " + site + " " + url + " " + domain + "<br> <strong>Start date</strong>: " + start + " <br> <strong>End date</strong>: " + end );
+//        		var div = $(".informationPanel");
+//        		
         		div.css("opacity", .9);  
         		var coordinates = d3.mouse(this);
         		mouseX = $(this)[0].getAttribute("x");
@@ -1501,15 +1269,13 @@ $.ajax({
 			
 			
 }).fail(function(jqXHR, textStatus, errorThrown) {
-					$('#timeline1').closest('.container-fluid').html("<div class='failedService'><img  src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
+					$('#modaltwitterTweet').closest('.container-fluid').html("<div class='failedService'><img  src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 					
 					$('#twitterDiv').css('padding-right','0');
 				});
 
 
+	$('.global-modal').modal("show");
 }
-
-
-
 
 

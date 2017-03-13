@@ -945,8 +945,8 @@ input#title{
     width: auto;
     min-width: 500px;
     top: 5%;
-    left: 35%;
-    right: 35%;
+    left: 30%;
+    right: 30%;
     
     min-width: 500px; 
       
@@ -1375,7 +1375,10 @@ a{
 	text-transform: uppercase;
 	fill: #ccc;
 }
-
+.subGraphDiv > div{
+  margin-left: 5%;
+  margin-bottom: 5%;
+}
 #updateListAjax .description {
 	font-size: 14px;
     color: #575757;

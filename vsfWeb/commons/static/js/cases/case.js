@@ -472,7 +472,7 @@ $(document)
 											
 										}
 										else{
-											$('#twitterDiv').hide();
+											$('#subGraph1').remove();
 											
 //
 //											$('#twitterDiv').css('padding-right','0');

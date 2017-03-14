@@ -1097,7 +1097,7 @@ var dataAll = [];
 var dataTooltip = [];
 var miniGantts = [];
 var miniGanttData = [];
-
+var miniGanttsLabel = [];
 
 // This AJAX call corresponds to the request of the JSON data from Pandora
 // project API.
@@ -1237,11 +1237,17 @@ $.ajax({
 				// MiniGantts
 				
 				var name =  domain ;
+				var miniLabel =isp + "-" + type + "-" + domain;
 				var existsMiniGantt = 0;
+				var existsMiniGanttLabel = 0;
 				
 				for(var i = 0; i < miniGantts.length ; i++){
 					if(miniGantts[i] == name) {
 						existsMiniGantt = 1;
+												
+					}
+					if(miniGanttsLabel[i] == miniLabel) {
+						existsMiniGanttLabel = 1;
 												
 					}
 			
@@ -1251,7 +1257,10 @@ $.ajax({
 					miniGantts[miniGantts.length] = name;	
 					
 				}
-				
+				if(existsMiniGanttLabel != 1){
+					miniGanttsLabel[miniGanttsLabel.length] = miniLabel;	
+					
+				}
 			
 				
 			});
@@ -1313,53 +1322,68 @@ $.ajax({
 				
 					
 			});
-				
-				
-			console.log(i)
-			console.log(miniGanttData)
-			console.log(miniGantts[i])
-			
-			var times_element = "";
-			var element_miniGantt = "";
-			var label_element = "";
-			var times = [];
-			var z = 0;
-		
-		
-			
-					
-			for(var j = 0; j < miniGanttData.length; j++){
-				
-				var nameCompare = (miniGanttData[j].label).split("-")[2]	
-				
-					
-					if(nameCompare==miniGantts[i]) {
-						console.log(miniGanttData[j].label)
-						times_element =  (miniGanttData[j].times)[0];
-						label_element =  (miniGanttData[j].label);
-						times[z]= times_element;
-						z = z +1;
-											
-											
-					}
-										
-										
-			}
-									
-									
-			element_miniGantt = { label: label_element ,times };
-			miniGanttResult.push(element_miniGantt);
-					
-			console.log(miniGanttResult)
-			
-			
-			drawMiniGantts(miniGanttData, i, miniGantts[i]);
-				
-					
-			
 	
-		}
+			console.log(miniGanttData)
+			console.log(miniGanttsLabel)
+			for(var k = 0; k < miniGanttsLabel.length ; k++){
+				var times_element = "";
+				var element_miniGantt = "";
+				var label_element = "";
+				var times = [];
+				var z = 0;
+			
 		
+			
+				for(var j= 0; j < miniGanttData.length ; j++){
+					var nameCompare = ((miniGanttData[j].label));
+					
+					if(nameCompare==miniGanttsLabel[k]) {
+			
+							times_element =  (miniGanttData[j].times)[0];
+							label_element =  (miniGanttData[j].label);
+							times[z]= times_element;
+							z = z +1;
+												
+												
+					}
+											
+					
+					
+					
+				}
+					
+				
+					if(label_element !=""){
+						
+						element_miniGantt = { label: label_element ,times };
+						miniGanttResult.push(element_miniGantt);
+						
+					}
+					
+				
+					
+					
+					
+				
+				
+				
+				//drawMiniGantts(miniGanttResult, i, miniGantts[i]);
+				
+//				if(miniGantts[i]==((label_element).split("-"))[2]){
+//					
+//					drawMiniGantts(miniGanttResult, i, miniGantts[i]);
+//				}
+//			
+			
+						
+				
+		
+			}
+
+			console.log(miniGanttData)
+			console.log(miniGanttResult)	
+			drawMiniGantts(miniGanttResult, i, miniGantts[i]);
+		}
 		
 		
 		

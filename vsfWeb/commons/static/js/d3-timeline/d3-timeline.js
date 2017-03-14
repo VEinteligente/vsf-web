@@ -4,6 +4,7 @@ var maxYValues = 2;
 var Year = "Year";
 var Month = "Month";
 var All = "All";
+var collapse = 0;
 
 function gantt(timelap){
 	
@@ -52,6 +53,8 @@ function gantt(timelap){
 			
 			
 			timelineStart = new Date(dateStart.setDate(start.getDate() - 7));
+			timelineEnd = new Date();
+		
 		
 	}
 		
@@ -65,7 +68,8 @@ function gantt(timelap){
 				          tickValues: null
 				        };
 				timelineStart = new Date(start.getFullYear(), start.getMonth(), 1);
-				timelineEnd = new Date(start.getFullYear(), start.getMonth(), 31);
+				timelineEnd = new Date();
+				
 	}
 	 
 	else if(timelap == "Year"){
@@ -78,8 +82,9 @@ function gantt(timelap){
 					          tickValues: null
 					        };
 					
+					
 					timelineStart = new Date(start.getFullYear(), 0, 1);
-					timelineEnd = new Date(start.getFullYear(), 5, 31);
+					timelineEnd = new Date();
 					
 					
 				
@@ -98,7 +103,7 @@ function gantt(timelap){
 				          tickValues: null
 				        };
 				
-				
+				timelineEnd = new Date();
 				
 			
 		}
@@ -118,6 +123,7 @@ function gantt(timelap){
 				
 				
 				timelineStart = dateStart.setDate(start.getDate() - 7);
+				timelineEnd = new Date();
 			}
 			
 
@@ -134,6 +140,7 @@ function gantt(timelap){
 					          tickValues: null
 					        };
 					timelineStart = new Date(start.getFullYear(), start.getMonth(), 1);
+					timelineEnd = new Date();
 				}
 				else{
 					// If the number of days is smaller than a year then show
@@ -149,6 +156,7 @@ function gantt(timelap){
 						        };
 						
 						timelineStart = new Date(start.getFullYear(), start.getMonth()-1, 1);
+						timelineEnd = new Date();
 					}
 					else{
 						
@@ -163,6 +171,7 @@ function gantt(timelap){
 						          tickSize: 6,
 						          tickValues: null
 						        };
+						timelineEnd = new Date();
 					}
 				}
 			}
@@ -617,6 +626,12 @@ function gantt(timelap){
 		          ",0 " + (width-8) + ",0 8,0 8,16 8,16 " + (width-8) + 
 		          ",16 " + (width-8) + ",16 " + (width-8) + ",16"
 			} 
+			else if(timelineEnd.getTime() < d.ending_time){
+				 //width = (d.ending_time - d.starting_time) * scaleFactor-(timelineStart.getTime() - d.starting_time) * scaleFactor;
+				 return (width-8) +",8 " + (width-8) + ",0 " + (width-8) +
+		          ",0 " + (width-8) + ",0 8,0 8,0 0,8 8,16 8,16 " + (width-8) + 
+		          ",16 " + (width-8) + ",16 " + (width-8) + ",16"
+			} 
 			// If the event start date is inside the graph then set the polygon
 	    	// with left corner sharp
 			else{
@@ -1006,13 +1021,13 @@ function adjustTextLabels(selection) {
 
 }
 
-function drawMiniGantts(data,i,label){
+function drawMiniGantts(data,i,label,timelineEnd){
 	
 
 	$(".subGraphDiv").append('<div class="col-xs-3 hoverOpen" id="subGraph'+ (i) + '" data-toggle="modal" data-target="#modal" data-tooltip >'
 			+'<div class="row"><div class="container-fluid col-xs-12" id="twitterDiv"><div class="twitterTweet"></div>'
-			+ '<div id="twitterSearchText"><div id="twitterSearchTextTitle"><div class="h4Style title"></div>'
-			+'</div><div id="twitterSearchTextContent">Resultados de <span>'+ label +'</span><div class="title"></div></div></div></div>'
+			+ '<div class="twitterSearchText"><div class="twitterSearchTextTitle"><div class="h4Style title"></div>'
+			+'</div><div class="twitterSearchTextContent">Resultados de <span>'+ label +'</span><div class="title"></div></div></div></div>'
 			+ '<div  class="watermark subGraphDivHover" onClick="ganttModal(All,'+i+')"><p>Haga clic para abrir</p>'
 			+ '</div></div>	</div>')
 
@@ -1032,8 +1047,10 @@ function drawMiniGantts(data,i,label){
 	
 	var testData = data;
 	// Save the chart in variable
-	var chart = d3.timeline().showTimeAxisTick().stack();
-					
+	var chart = d3.timeline().showTimeAxisTick().stack().ending(timelineEnd);
+	
+	
+	
 	var margin = {top: 35, right: 200, bottom: 20, left: 80},
 			    width = 270 - (margin.left + margin.right);
 				height = 180 - (margin.top + margin.bottom);
@@ -1063,7 +1080,10 @@ function drawMiniGantts(data,i,label){
 		  
 		  
 	$("#subGraph"+ (i) + " .twitterTweet ").css('font-size','13px');	    
-		    																			// axis
+	$("#subGraph"+ (i) + " .twitterTweet ").css('padding-left','8px');
+	$("#subGraph"+ (i) + " .twitterSearchTextContent ").css('padding-left','8px');
+	
+	// axis
 			
 	svg.selectAll(".axis .tick text").html("")
 
@@ -1177,7 +1197,7 @@ $.ajax({
 		// If the maximum value of Y elements is smaller than the Y labels
 		// elements then load the simplified Gantt (ISP-DOMAIN)
 		if(dataLabel.length >  maxYValues){
-							
+			collapse = 1;			
 			dataLabel = [];
 			dataAll = [];
 			
@@ -1380,9 +1400,10 @@ $.ajax({
 		
 			}
 
-			console.log(miniGanttData)
-			console.log(miniGanttResult)	
-			drawMiniGantts(miniGanttResult, i, miniGantts[i]);
+			if(timelap !="Month" && timelap !="Year" && timelap !="All"){
+				drawMiniGantts(miniGanttResult, i, miniGantts[i],new Date());
+			}
+			
 		}
 		
 		
@@ -1461,8 +1482,16 @@ $.ajax({
 						        	  
 						        	  // Make first element bold
 						        	  $("#timeline1 svg > g:first-child").attr('transform','translate(330,0)');
-						        	  return ("<text stroke='#000000' style='text-transform: uppercase;'>" + labelStrong_first + "</text>" 
-						        			  + "<text transform='translate(120,0)'>" + labelStrong_second + ": "+ labelStrong_third +"</text>");
+						        	  if(collapse==0){
+						        		  return ("<text stroke='#000000' style='text-transform: uppercase;'>" + labelStrong_first + "</text>" 
+							        			  + "<text transform='translate(120,0)'>" + labelStrong_second + ": "+ labelStrong_third +"</text>");
+						        	  }
+						        	  else{
+						        		  return ("<text stroke='#000000' style='text-transform: uppercase;'>" + labelStrong_first + "</text>" 
+							        			  + "<text transform='translate(120,0)'> "+ labelStrong_third +"</text>");
+						        	  }
+						        	 
+						        	
 						         });
 
 			$('.axis .tick ').each(function() {
@@ -1473,7 +1502,8 @@ $.ajax({
 			
 			$("#timeline1").append('<div class="informationPanelGantt" ><div class="informationPanelState"></div><div class="informationPanelTotalCases"></div></div>')
 	
-
+			$(".informationPanelGantt").css('visibility','hidden');
+					
 
 			svg.selectAll("polygon").on("mouseover", function(d,i) {  
     		  	

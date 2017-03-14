@@ -19,7 +19,7 @@ function ganttModal(timelap, i){
 			 + '<div class="h4Style title"></div></div><div id="modaltwitterSearchTextContent">'
 			 + '<div class="title"></div></div></div></div>');
 	
-	var searchWord = $("#subGraph"+ (i) +" #twitterSearchTextContent span").text();
+	var searchWord = $("#subGraph"+ (i) +" .twitterSearchTextContent span").text();
 	
 	$("#modalSearchTextTitle").append('<div id="twitterSearchTextTitle"><div class="h4Style title">Resultados de: </div></div>')
 	$("#modalSearchTextTitle").append( searchWord );
@@ -61,6 +61,9 @@ function ganttModal(timelap, i){
 			
 			
 			timelineStart = new Date(dateStart.setDate(start.getDate() - 7));
+			timelineEnd = new Date();
+			
+			$(".informationPanelGantt").css('visibility','hidden');
 		
 	}
 		
@@ -74,7 +77,8 @@ function ganttModal(timelap, i){
 				          tickValues: null
 				        };
 				timelineStart = new Date(start.getFullYear(), start.getMonth(), 1);
-				timelineEnd = new Date(start.getFullYear(), start.getMonth(), 31);
+				timelineEnd = new Date();
+				$(".informationPanelGantt").css('visibility','hidden');
 	}
 	 
 	else if(timelap == "Year"){
@@ -90,7 +94,7 @@ function ganttModal(timelap, i){
 					timelineStart = new Date(start.getFullYear(), 0, 1);
 					timelineEnd = new Date(start.getFullYear(), 5, 31);
 					
-					
+					$(".informationPanelGantt").css('visibility','hidden');
 				
 	}
 	
@@ -1143,7 +1147,7 @@ $.ajax({
 			
 		var testData = dataResult;
 		// Save the chart in variable
-		var chart = d3.timeline().showTimeAxisTick().stack();
+		var chart = d3.timeline().showTimeAxisTick().stack().ending((new Date()).getTime());
 
 
 						
@@ -1185,7 +1189,7 @@ $.ajax({
 						        	  // Make first element bold
 						        	  $("#modaltwitterTweet svg > g:first-child").attr('transform','translate(330,0)');
 						        	  return ("<text stroke='#000000' style='text-transform: uppercase;'>" + labelStrong_first + "</text>" 
-						        			  + "<text transform='translate(120,0)'>" + labelStrong_second + ": "+ labelStrong_third +"</text>");
+						        			  + "<text transform='translate(120,0)'>" + labelStrong_second  +"</text>");
 						         });
 
 			$('.axis .tick ').each(function() {
@@ -1194,7 +1198,7 @@ $.ajax({
 				$(this).html($(this).html()+ '<rect x="5" y="5" width="15" height="15" style="fill: #ccc" transform="rotate(45)" />');
 			 });
 			
-			$("#modaltwitterTweet").append('<div class="informationPanelGantt" ><div class="informationPanelState"></div><div class="informationPanelTotalCases"></div></div>')
+			//$("#modaltwitterTweet").append('<div class="informationPanelGantt" ><div class="informationPanelState"></div><div class="informationPanelTotalCases"></div></div>')
 	
 
 

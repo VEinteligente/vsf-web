@@ -856,11 +856,11 @@ input#title{
     
     }
 }
-#twitterSearchText{
+#twitterSearchText, .twitterSearchText{
     height: 229px; 
     margin-bottom: 8px;
     
-    #twitterSearchTextContent{
+    #twitterSearchTextContent, .twitterSearchTextContent{
         background: white;
         padding:0;
         .title{
@@ -870,7 +870,7 @@ input#title{
         }
     }
 
-    #twitterSearchTextTitle{
+    #twitterSearchTextTitle, .twitterSearchTextTitle{
         padding:0;
         height: 36px;
         background: white;
@@ -945,8 +945,8 @@ input#title{
     width: auto;
     min-width: 500px;
     top: 5%;
-    left: 30%;
-    right: 30%;
+    left: 20%;
+    right: 20%;
     
     min-width: 500px; 
       

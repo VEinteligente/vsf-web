@@ -56,12 +56,20 @@ $(document).ready(
 
 															// Site that has
 															// been measured
-															site = value.target.site;
+															if (value.target.site == null){
+																site ="null";
+															}else{
 
+																site = value.target.site;
+															}
 															// url from the
 															// measurement
-															m_url = value.target.url;
+															if (value.target.url == null){
+																m_url ="null";
+															}else{
 
+																m_url = value.target.url;
+															}
 															// Json from the row
 															// that is inserted
 															// in the table
@@ -79,28 +87,53 @@ $(document).ready(
 																				// of
 																				// the
 																				// measurement
-																				country = value.probe.country;
+																				if (value.probe.country == null){
+																					country ="null";
+																				}else{
+																					country = value.probe.country;
+																					
+																				}
 																				// city
 																				// of
 																				// the
 																				// measurement
-																				city = value.probe.city;
+																				
+																				if (value.probe.city == null){
+																					city ="null";
+																				}else{
+																					city = value.probe.city;
+																				}
 																				// state
 																				// or
 																				// region
 																				// of
 																				// the
 																				// measurement
-																				state = value.probe.region;
+																				if (value.probe.region == null){
+																					state ="null";
+																				}else{
+
+																					state = value.probe.region;
+																				}
 																				// isp
 																				// of
 																				// the
 																				// measurement
-																				isp = value.probe.isp;
+																				if (value.probe.isp == null){
+																					isp ="null";
+																				}else{
+
+																					isp = value.probe.isp;
+																				}
 																				// type
 																				// of
 																				// measurement
-																				type = value.type_med;
+																				
+																				if (value.type_med == null){
+																					type ="null";
+																				}else{
+																					type = value.type_med;
+																				}
 																				// data
 																				// has
 																				// the
@@ -119,7 +152,6 @@ $(document).ready(
 																				// needed
 																				var date = new Date(
 																						value.date);
-
 																				// We
 																				// pass
 																				// the

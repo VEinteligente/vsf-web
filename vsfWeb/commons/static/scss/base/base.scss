@@ -20,6 +20,7 @@ $md_fontSize: 18px;
 $sm_fontSize: 14px;
 $xs_fontSize: 12px;
 
+
 //Font Weights
 $large_fontWeight: 700;
 $medium_fontWeight: 400;
@@ -51,9 +52,20 @@ $lightGrayButton: #CCCCCC;
 $primary_fontFamily: Roboto;
 
 //Padding
+$xxxs_padding: 2px;
+$xxs_padding: 4px;
+$xs_padding: 5px;
 $sm_padding: 8px;
+$sm_small_padding: 10px;
+$sm_medium_padding: 14px;
+$sm_big_padding: 15px;
 $md_padding: 16px;
+$md_small_padding: 18px;
+$md_medium_padding: 20px;
 $lg_padding: 24px;
+$lg_big_padding: 35px;
+
+
 
 //Buttons
 $buttonHeightSize: 28px;
@@ -83,8 +95,6 @@ header{
 }
 body {
     height: 100%;
-
-    
     font-family: $primary_fontFamily, sans-serif;
     background-color: #dedede;   
 	padding-top: 128px;
@@ -97,7 +107,7 @@ body {
 	background: #f2f2f2;
 	height: 45px;
 	padding-left: 35px;
-	padding: 10px 20px 10px 35px;
+	padding: $sm_small_padding $md_medium_padding $sm_small_padding $lg_big_padding;
 	text-transform: uppercase; 
 	margin-bottom: 20px !important;
 }
@@ -107,8 +117,8 @@ body {
 }
 
 .padding-title{
-	padding-bottom: 15px;
-	padding-top: 15px;
+	padding-bottom: $sm_big_padding;
+	padding-top: $sm_big_padding;
 }
 
 
@@ -620,7 +630,7 @@ button {
     background: white;
     padding:0;
     .title{
-        padding: 8px $md_padding 8px $lg_padding;
+        padding: $sm_padding $md_padding $sm_padding $lg_padding;
 
         margin: 0;
     }
@@ -687,7 +697,7 @@ button {
         .date{
             font-weight: bold;
             padding:0px;
-            padding-left:5px;         
+            padding-left: $xs_padding;         
         }
         .status{
             text-align: right;
@@ -741,8 +751,8 @@ button {
 }
 
 .updateBar{
-    padding-top: 14px;
-    padding-bottom: 14px;
+    padding-top: $sm_medium_padding;
+    padding-bottom: $sm_medium_padding;
     background-color: $lightGray;
     display: flex;
     align-items: center;
@@ -781,7 +791,7 @@ button {
         a {
             color: $darkGray;
             text-decoration: none;
-            padding-left: 10px;
+            padding-left: $sm_small_padding;
             
             i {
                 font-size: $md_fontSize;

@@ -18,14 +18,14 @@
 #blocktitle{
   font-weight: 700;
   color:#575757 ;
-  padding-left:16px;
+  padding-left: $md_padding;
 }
 
 #blocktable{
 border-radius: 8px;
 overflow: auto;
 height: 330px;
-padding: 0px 16px 0px;  
+padding: 0px $md_padding 0px;  
 }
 
 #blocktable::-webkit-scrollbar {
@@ -53,18 +53,18 @@ padding: 0px 16px 0px;
 #rowTitleDataBlocked{
  width: 100%;
  color: #fff;
- padding-left:16px;
+ padding-left:$md_padding;
 }
 
 #BlockName{
  text-transform: capitalize;
- padding-left: 16px;
+ padding-left: $md_padding;
  height: 40px;
  }
 //Summary Category & ISP Table
 
 #summaryTableBorder{
-    padding:1px;
+    padding: 1px;
     border-radius:8px;
     background-color: #fff;
         margin-top: 15px;
@@ -97,7 +97,7 @@ font-weight:700;
 border-radius: 8px;
 overflow: auto;
 height: 330px;
-padding: 0px 16px 0px;  
+padding: 0px $md_padding 0px;  
 }
 
 #sumtable::-webkit-scrollbar {
@@ -124,7 +124,7 @@ padding: 0px 16px 0px;
   
 #rowName{
  text-transform: capitalize;
- padding-left: 16px;
+ padding-left: $md_padding;
  height: 40px;
  }
 
@@ -134,14 +134,14 @@ padding: 0px 16px 0px;
  white-space: nowrap;
  overflow: hidden;
  text-overflow: ellipsis;  
- padding-left:16px;
+ padding-left: $md_padding;
  width: 100%;
 }
 
 #rowTitleDataIsp{
  width: 100%;
  color: #fff;
- padding-left:16px;
+ padding-left: $md_padding;
 }
 
 .marginPage{
@@ -230,9 +230,9 @@ tr{
 }
 
 #mRow{
-    padding-top:8px;
-    padding-bottom:8px;
-    padding-left:15px;
+    padding-top: $sm_padding;
+    padding-bottom: $sm_padding;
+    padding-left: $sm_big_padding;
 }
 
 #mRow:hover{
@@ -285,7 +285,7 @@ tr{
     div{
         border-bottom: 2px solid $grayButton;
         padding: 0;
-        padding-top: 5px;
+        padding-top: $xs_padding;
         
         span{
             padding: 0;
@@ -314,15 +314,15 @@ tr{
     background: red;
     color: white;
     border-radius: 50%;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: $xs_padding;
+    padding-right: $xs_padding;
     margin-left: 10px;
     display: inline;
 
 }
 .downloadBlockedSitesUrl{
     padding-right: 25px;
-    padding-top: 10px;
+    padding-top: $sm_small_padding;
     
 }
 // Maps
@@ -331,7 +331,7 @@ tr{
 	cursor: pointer;
 }
 .mapContainer {
-    padding: 24px 0px 24px; 
+    padding: $lg_padding 0px $lg_padding; 
 
     
     > div:first-child{
@@ -395,7 +395,7 @@ tr{
     height: auto;
     border: black 1px solid;
     border-radius: 5px;
-    padding: 8px;
+    padding: $sm_padding;
     font: 10px sans-serif;
     background: #ddd;
     pointer-events: none; 
@@ -415,7 +415,7 @@ tr{
     	font-size: 14px;
     	color: #808080;
     	font-weight: 400;
-    	padding: 8px 16px 8px 24px;
+    	padding: $sm_padding $md_padding $sm_padding $lg_padding;
     	margin: 0;
     	text-transform: uppercase;
     
@@ -432,8 +432,8 @@ tr{
         border-bottom: 1px solid $grayButton;
         color: black;
         text-transform: uppercase; 
-        padding-top: 5px;
-        border-radius: 8px 8px 0px 0px; 
+        padding-top: $xs_padding;
+        border-radius: $sm_padding $sm_padding 0px 0px; 
         
         h4{
             display: inline;
@@ -442,7 +442,7 @@ tr{
         }
     }
     .subtitleBar{
-        padding: 0px 5px 0px 5px;
+        padding: 0px 5px 0px $xs_padding;
     }
     .subtitleBar > span {
         padding: 0;
@@ -453,7 +453,7 @@ tr{
     }
 
     .title{
-        padding-left: 5px;
+        padding-left: $xs_padding;
     }
 }
 
@@ -466,7 +466,7 @@ tr{
   height: 545px;
   overflow: auto;
   background: white;
-  border-radius: 0px 0px 8px 8px;
+  border-radius: 0px 0px $sm_padding $sm_padding;
 }
 
 #caseregionList::-webkit-scrollbar {
@@ -493,8 +493,8 @@ tr{
 
 
 #caseRegionListContainer{
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: $sm_small_padding;
+    padding-right: $sm_small_padding;
 }
 
 // Advanced search page
@@ -524,7 +524,7 @@ input#title{
 
 }
 .chosen-container-multi .chosen-choices li.search-choice{
-    padding: 6px 20px 6px 6px;
+    padding: 6px $md_medium_padding 6px 6px;
     border: none;
 }
 
@@ -591,7 +591,7 @@ input#title{
   content: "";
   height:80%;
   width:2px;
-        background: #DEDEDE;
+  background: #DEDEDE;
   position: absolute;
   top:0;
   right:-2px;
@@ -603,7 +603,7 @@ input#title{
   content: "";
   height:80%;
   width:2px;
-      background: #DEDEDE;
+  background: #DEDEDE;
   position: absolute;
   top:0;
   left:-2px;
@@ -628,8 +628,8 @@ input#title{
 }
 
 .categorySort{
-        margin-left: 15px;
-        margin-right: 15px;
+        margin-left: $sm_big_padding;
+        margin-right: $sm_big_padding;
        
 }
 
@@ -647,29 +647,26 @@ input#title{
         margin-left: 0px;
         margin-right: 0px;
         padding: 0 ;
-        padding-top: 8px;
-        //padding-bottom: 16px
+        padding-top: $sm_padding;
     }
     .dateSort{
         margin-left: 0px;
         margin-right: 0px;
         padding: 0 ;
-        //padding-top: 12px;
-        //padding-bottom: 12px
     }
 
     .categorySort{
         margin-left: 0px;
         margin-right: 0px;
-        padding: 0 ;
-        padding-top:5px;
+        padding: 0;
+        padding-top: $xs_padding;
     }
 }
 
 #reportrange{
 	cursor: pointer; 
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: $xs_padding;
+	padding-bottom: $xs_padding;
 }
 
 .searchIcon{
@@ -680,7 +677,7 @@ input#title{
 #dateStartClick, #dateEndClick, #dateClick, #nameClick, #siteClick, #ispClick, #categoryClick, #regionClick{
     padding-left: 0px;
     padding-top: 0px;
-        padding-bottom: 12px;
+    padding-bottom: 12px;
 
     padding-right: 0;
     margin-left: 15px;
@@ -698,10 +695,10 @@ input#title{
     padding-left: 0px;
     padding-top: 0px;
     padding-right: 0;
-        margin-left: 0px;
+    margin-left: 0px;
     margin-right: 0px;
-    padding-bottom: 14px;
-    padding-top: 10px;
+    padding-bottom: $sm_medium_padding;
+    padding-top: $sm_small_padding;
     &:hover{
     cursor: pointer;}
 }}
@@ -741,7 +738,7 @@ input#title{
 
 .selectOrderAdvanced{
     border-bottom: 3px solid #333333;
-    padding-bottom: 8px !important;
+    padding-bottom: $sm_padding !important;
     font-weight: 700;
     color: #333333;
 }
@@ -796,8 +793,8 @@ input#title{
 #modalButton{
     height: 28px;
     width: auto !important;
-    padding-left:16px;
-    padding-right:16px;
+    padding-left: $md_padding;
+    padding-right: $md_padding;
     font-size: 12px;
     font-weight: 400;
     text-transform: uppercase;
@@ -805,8 +802,8 @@ input#title{
 
 #measurementFooter{
     height: 40px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: $xs_padding;
+    padding-bottom: $xs_padding;
 }
 
 #measurementTitle{
@@ -823,7 +820,6 @@ input#title{
     margin-bottom: 0 !important;
     padding: 0;
     width: 100%;
-   // height: 100%;
 }
 
 // One element case
@@ -837,7 +833,7 @@ input#title{
     float:right;
     height: 330px;   
     padding: 0px; 
-    padding-right: 10px;
+    padding-right: $sm_small_padding;
 
     border-radius: 8px;
     background-color: white;
@@ -967,10 +963,10 @@ input#title{
     overflow-y: hidden;
 }
 .modal-header {
-    padding-left: 15px;
+    padding-left: $sm_big_padding;
     /* border-bottom: 1px solid #e5e5e5; */
     /* height: auto; */
-    padding-top: 15px;
+    padding-top: $sm_big_padding;
 }
 
 
@@ -1052,7 +1048,7 @@ input#title{
 }
 
 .subGraphDiv{
-    padding-top: 15px;
+    padding-top: $sm_big_padding;
     
     margin-left: 15px;
     
@@ -1109,8 +1105,8 @@ input#title{
 }
 
 .owl-dot {
-	padding-top: 8px;
-    padding-bottom: 8px;
+	padding-top: $sm_padding;
+    padding-bottom: $sm_padding;
 }
 
 .owl-dots {
@@ -1176,9 +1172,9 @@ input#title{
 
 
 #dateBar{
-	padding-top:8px;
-	padding-left:10px;
-	padding-right:8px;
+	padding-top: $sm_padding;
+	padding-left: $sm_small_padding;
+	padding-right: $sm_padding;
 	margin-bottom: 8px;
 }
 
@@ -1192,7 +1188,7 @@ input#title{
 }
 
 #caseCategory{
-	padding-left:16px;
+	padding-left: $md_padding;
 	border-top: 0;
 }
 
@@ -1208,13 +1204,13 @@ input#title{
 #nameDomain{
 	color: #333333;
 	font-weight:700;
-	padding-left: 16px;
+	padding-left: $md_padding;
 	border-top:0;
 	border-bottom:0;
 }
 
 #siteDomain{
-	padding-left:16px;
+	padding-left: $md_padding;
 }
 
 
@@ -1289,7 +1285,7 @@ input#title{
   mix-blend-mode: darken;
 }
 .social{
-	padding: 0px 8px;
+	padding: 0px $sm_padding;
 }
 a{
 	color: #4067e1;
@@ -1385,7 +1381,7 @@ a{
     font-weight: 400;
     background-color: #dedede;
     padding-left: 15%;
-    padding-bottom: 8px;
+    padding-bottom: $sm_padding;
 }
 
 #updateListAjax .updateBar:hover {
@@ -1418,7 +1414,7 @@ a{
 .searchHome{
     text-align: center;
     color: #7c96e8;
-    padding: 12px 16px 8px 24px !important;
+    padding: 12px $md_padding $sm_padding $lg_padding !important;
     
     a {
    	 	text-transform: none !important;
@@ -1426,7 +1422,7 @@ a{
 }
 }
 #blockedHome{
-	padding-top : 5px;
+	padding-top : $xs_padding;
 }
 
 #searchHome{
@@ -1439,7 +1435,7 @@ a{
 
 #pagin{
     float: right;
-    padding-right: 15px;
+    padding-right: $sm_big_padding;
 
 }
 
@@ -1487,11 +1483,29 @@ a{
 
 
 @media #{$xs_only} {
+	.svg-container {
+ 
+		&::-webkit-scrollbar-thumb:horizontal {
+	 	 	background-image: url("/commons/static/img/icons/VSF_IconScrollBar_543.svg");
+	  		background-repeat: no-repeat;
+	  		height: 50px !important;
+	  		background-position: center; 
+		}	
 
+	}
 }
 
 @media #{$sm_only} {
+	.svg-container {
+ 
+		&::-webkit-scrollbar-thumb:horizontal {
+	 	 	background-image: url("/commons/static/img/icons/VSF_IconScrollBar_766.svg");
+	  		background-repeat: no-repeat;
+	  		height: 50px !important;
+	  		background-position: center; 
+		}	
 
+	}
 }
 
 @media #{$sm_down} {
@@ -1499,7 +1513,16 @@ a{
 }
 
 @media #{$md_only} {
+ 	.svg-container {
  
+		&::-webkit-scrollbar-thumb:horizontal {
+	 	 	background-image: url("/commons/static/img/icons/VSF_IconScrollBar_900.svg");
+	  		background-repeat: no-repeat;
+	  		height: 50px !important;
+	  		background-position: center; 
+		}	
+
+	}
 }
 
 @media #{$md_down} {
@@ -1515,5 +1538,16 @@ a{
 }
 
 @media #{$xl_only} {
+
+	.svg-container {
+ 
+		&::-webkit-scrollbar-thumb:horizontal {
+	 	 	background-image: url("/commons/static/img/icons/VSF_IconScrollBar_1024.svg");
+	  		background-repeat: no-repeat;
+	  		height: 50px !important;
+	  		background-position: center; 
+		}	
+
+	}
       
 }

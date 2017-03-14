@@ -21,7 +21,7 @@
 .navbar_big {
   background-color: #1f1f1f;
   height: 88px;
-  padding: 18px 0px 0px;
+  padding:  0px 0px;
 }
 
 .navbar-brand_big img{
@@ -46,13 +46,13 @@
 }
 
 .navbar_search {
-  padding-left: 14px;
-  padding-right: 14px;
+  padding-left: $sm_medium_padding;
+  padding-right: $sm_medium_padding;
 }
 
 .navbar-toggleable-md .navbar-nav .nav-link {
-  padding-right: 14px; 
-  padding-left: 14px;
+  padding-right: $sm_medium_padding; 
+  padding-left: $sm_medium_padding;
 }
 
 .nav-link {
@@ -73,7 +73,7 @@
   border-bottom: 1px solid #fff;
   border-radius: 0px;
   padding-bottom: 8px;
-  padding: 2px 0px 2px 0px;
+  padding: $xxxs_padding 0px $xxxs_padding 0px;
   font-size: 15px;
   font-weight: 400;
   text-transform: uppercase;
@@ -103,7 +103,7 @@
 }
 
 .btn_iconsearch {
-  padding: 0px 0px 5px 5px;
+  padding: 0px 0px $xs_padding $xs_padding;
   height: 24px;
 }
 
@@ -113,9 +113,9 @@
 
 .icontranslate {
   width: 56px;
-  padding-left:5px;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-left:$xs_padding;
+  padding-top: $sm_padding;
+  padding-bottom: $sm_padding;
   color: #fff;
 
 }
@@ -165,7 +165,7 @@
 
   .navbar-brand_hide {
     display: block;
-    padding-left: 16px;
+    padding-left: $md_padding;
   }
 
   .navbar_big {
@@ -174,7 +174,7 @@
 
   .navbar_search {
     background: #333333;
-    padding: 8px 16px;
+    padding: $sm_padding $md_padding;
   }
 }
 
@@ -211,7 +211,7 @@ footer{
     
 .vsf_footer_menu {
     padding-top: 40px;
-    padding-bottom: 16px;
+    padding-bottom: $md_padding;
     color: #4067e1;
     text-transform: uppercase;
 }

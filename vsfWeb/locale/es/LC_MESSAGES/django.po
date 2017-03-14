@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-07 20:42+0000\n"
+"POT-Creation-Date: 2017-03-14 18:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,8 +20,6 @@ msgstr ""
 
 #: cases/templates/case-pdf.html:7 cases/templates/case.html:7
 #: commons/templates/pdf/case-pdf.html:7
-#, fuzzy
-#| msgid "Continue"
 msgid "Continua"
 msgstr "Continua"
 
@@ -37,8 +35,6 @@ msgstr "Sitios"
 
 #: cases/templates/case-pdf.html:51 cases/templates/case.html:55
 #: commons/templates/pdf/case-pdf.html:70
-#, fuzzy
-#| msgid "Category"
 msgid "Category: "
 msgstr "Categorias"
 
@@ -49,14 +45,10 @@ msgstr "Descripcion: "
 
 #: cases/templates/case-pdf.html:92 cases/templates/case.html:100
 #: cases/templates/case.html:105
-#, fuzzy
-#| msgid "Download Speed"
 msgid "Download"
-msgstr "Velocidad de Descarga"
+msgstr "Descarga"
 
 #: cases/templates/case-pdf.html:117
-#, fuzzy
-#| msgid "Blocked Domains"
 msgid "List Domains: "
 msgstr "Dominios Bloqueados"
 
@@ -68,43 +60,45 @@ msgstr "actualizaciones"
 msgid "Grafico"
 msgstr "Grafico"
 
-#: cases/templates/case.html:322
-#, fuzzy
-#| msgid "Measurement"
-msgid "Measurements"
-msgstr "Medicion"
+#: cases/templates/case.html:245
+msgid "Click to open"
+msgstr "Haz click para abrir"
 
-#: commons/templates/footer/footer.html:16
-#, fuzzy
-#| msgid "Home"
+#: cases/templates/case.html:376
+msgid "Measurements"
+msgstr "Mediciones"
+
+#: commons/templates/footer/footer.html:19
 msgid "Homepage"
 msgstr "Inicio"
 
-#: commons/templates/footer/footer.html:17
+#: commons/templates/footer/footer.html:20
 msgid "Noticias"
 msgstr "Noticias"
 
-#: commons/templates/footer/footer.html:18
+#: commons/templates/footer/footer.html:21
 msgid "Guias"
 msgstr "Guias"
 
-#: commons/templates/footer/footer.html:28
+#: commons/templates/footer/footer.html:33
 msgid "Sobre VE Sin Filtro"
 msgstr "Sobre VE Sin Filtro"
 
-#: commons/templates/footer/footer.html:31
-msgid "VE Sin Filtro es un proyecto iniciado por VE inteligente junto con instituto"
-msgstr "VE Sin Filtro es un proyecto iniciado por VE inteligente junto con instituto"
+#: commons/templates/footer/footer.html:34
+msgid ""
+"VE Sin Filtro es un proyecto iniciado por VE inteligente junto con instituto"
+msgstr ""
+"VE Sin Filtro es un proyecto iniciado por VE inteligente junto con instituto"
 
-#: commons/templates/footer/footer.html:37
+#: commons/templates/footer/footer.html:38
 msgid "by"
 msgstr "por"
 
-#: commons/templates/footer/footer.html:37
+#: commons/templates/footer/footer.html:38
 msgid "Venezuela Sin Filtro"
 msgstr "Venezuela Sin Filtro"
 
-#: commons/templates/footer/footer.html:37
+#: commons/templates/footer/footer.html:39
 msgid "All rights reserved"
 msgstr "Todos los derechos reservados"
 
@@ -117,10 +111,8 @@ msgid "Cases"
 msgstr "Casos"
 
 #: commons/templates/navbar/navbar.html:44
-#, fuzzy
-#| msgid "Featured Cases"
 msgid "Search Case"
-msgstr "<strong>Casos</strong> Destacados"
+msgstr "Busqueda de Casos"
 
 #: commons/templates/navbar/navbar.html:48
 msgid "Advanced Search Case "
@@ -131,10 +123,8 @@ msgid "Summary"
 msgstr "Resumen"
 
 #: commons/templates/navbar/navbar.html:64
-#, fuzzy
-#| msgid "Blocked URLs"
 msgid "Blocked List"
-msgstr "URL's Bloqueados"
+msgstr "Sitios Bloqueados"
 
 #: commons/templates/navbar/navbar.html:68
 msgid "Map of Cases"
@@ -144,49 +134,78 @@ msgstr "Mapa de Casos"
 msgid "Summary Table"
 msgstr "Tabla Resumen"
 
+#: general/templates/home.html:7930
 #: general/templates/blocked-sites_domains.html:14
-#: general/templates/home.html:7931
-msgid "Blocked Sites Strong"
-msgstr "<strong>Sitios</strong> Bloqueados"
+msgid "Blocked Sites"
+msgstr "Sitios Bloquedos"
 
 #: general/templates/blocked-sites_domains.html:16
-#: general/templates/home.html:7933
-msgid "Blocked Domains Strong"
-msgstr "<strong>Dominios</strong> Bloqueados"
-
-#: general/templates/blocked-sites_domains.html:48
-#: general/templates/home.html:7965
-#, fuzzy
-#| msgid "Blocked Domains"
-msgid "Domains"
+#: general/templates/home.html:7931
+msgid "Blocked Domains"
 msgstr "Dominios Bloqueados"
 
+#: general/templates/blocked-sites_domains.html:48
+#: general/templates/home.html:7962
+msgid "Domains"
+msgstr "Dominios"
+
 #: general/templates/blocked-sites_domains.html:52
-#: general/templates/home.html:7969
+#: general/templates/home.html:7966
 msgid "Sites"
 msgstr "Sitios"
 
-#: general/templates/home.html:7456 general/templates/maps/venezuela.html:7452
+#: general/templates/home.html:7457 general/templates/maps/venezuela.html:7452
 msgid "Featured Cases"
-msgstr "<strong>Casos</strong> Destacados"
+msgstr "Casos Destacados"
 
-#: general/templates/home.html:8010 summary/templates/summary-table.html:11
+#: general/templates/home.html:8006 summary/templates/summary-table.html:11
 msgid "Categories"
 msgstr "Categorias"
 
-#: general/templates/home.html:8011 summary/templates/summary-table.html:12
+#: general/templates/home.html:8007 summary/templates/summary-table.html:12
 msgid "ISPs"
 msgstr "Proveedores"
 
-#: general/templates/home.html:8043 summary/templates/summary-table.html:45
+#: general/templates/home.html:8038 general/templates/list-cases.html:71
+#: summary/templates/summary-table.html:45
 msgid "Category"
 msgstr "Categorias"
 
-#: general/templates/home.html:8047
+#: general/templates/home.html:8041 general/templates/list-cases.html:68
+#: general/templates/list-cases.html:128
 #: summary/templates/measurements-table.html:30
 #: summary/templates/summary-table.html:49
 msgid "ISP"
 msgstr "Proveedor"
+
+#: general/templates/list-cases.html:49
+msgid "Title"
+msgstr "Titulo"
+
+#: general/templates/list-cases.html:74 general/templates/list-cases.html:130
+msgid "Region"
+msgstr "Region"
+
+#: general/templates/list-cases.html:77
+#: summary/templates/measurements-table.html:24
+msgid "Site"
+msgstr "Sitios"
+
+#: general/templates/list-cases.html:125
+msgid "Fecha"
+msgstr "Fecha"
+
+#: general/templates/list-cases.html:126
+msgid "Caso"
+msgstr "Caso"
+
+#: general/templates/list-cases.html:127
+msgid "Sitio"
+msgstr "Sitios"
+
+#: general/templates/list-cases.html:129
+msgid "Categoria"
+msgstr "Categorias"
 
 #: stylingGuide/templates/elements.html:12
 msgid "Buttons"
@@ -208,8 +227,6 @@ msgid "Continue"
 msgstr "Continua"
 
 #: stylingGuide/templates/elements.html:54
-#, fuzzy
-#| msgid "Information"
 msgid "Interception"
 msgstr "Intercepcion"
 
@@ -250,8 +267,6 @@ msgid "Title bar"
 msgstr "Barra de título"
 
 #: stylingGuide/templates/elements.html:168
-#, fuzzy
-#| msgid "Small bar"
 msgid "Small bars"
 msgstr "Barra pequeña"
 
@@ -338,16 +353,8 @@ msgid "Style"
 msgstr "Estilo"
 
 #: summary/templates/measurements-table.html:13
-#, fuzzy
-#| msgid "Download Speed"
 msgid "Download:"
-msgstr "Velocidad de Descarga"
-
-#: summary/templates/measurements-table.html:24
-#, fuzzy
-#| msgid "Sites"
-msgid "Site"
-msgstr "Sitios"
+msgstr "Descarga"
 
 #: summary/templates/measurements-table.html:25
 msgid "URL"
@@ -377,15 +384,17 @@ msgstr "Medicion"
 msgid "Type"
 msgstr "Tipo"
 
-#: vsfWeb/settings.py:173
+#: vsfWeb/settings.py:174
 msgid "English"
 msgstr "Ingles"
 
-#: vsfWeb/settings.py:174
+#: vsfWeb/settings.py:175
 msgid "Spanish"
 msgstr "Español"
 
-#, fuzzy
+#~ msgid "presente"
+#~ msgstr "presente"
+
 #~| msgid "Information"
 #~ msgid "informacion"
 #~ msgstr "Información"
@@ -398,9 +407,6 @@ msgstr "Español"
 
 #~ msgid "Evade The Blockade"
 #~ msgstr "Evade Los Bloqueos"
-
-#~ msgid "Blocked Domains"
-#~ msgstr "Dominios Bloqueados"
 
 #~ msgid "Speed Test"
 #~ msgstr "Probador de velocidad"

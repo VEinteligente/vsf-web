@@ -1,66 +1,3 @@
-//Blocked List
-#focusBlocked{
-    color: #fff;
-    background-color: #adadad ;
-    font-weight:700;
-}
-#blockedTableBorder{
-    padding:1px;
-    border-radius:8px;
-    background-color: #fff;
-}
-#countBlocked{
- background-color: #ff2114 ;
- font-size: 90%;
- font-weight:700;
-}
-
-#blocktitle{
-  font-weight: 700;
-  color:#575757 ;
-  padding-left:16px;
-}
-
-#blocktable{
-border-radius: 8px;
-overflow: auto;
-height: 330px;
-padding: 0px 16px 0px;  
-}
-
-#blocktable::-webkit-scrollbar {
-  background: white;
-  width: 15px; }
-
-#blocktable::-webkit-scrollbar-thumb {
-  background-image: url("/commons/static/img/icons/vsf_iconscrollbar_v101.svg");
-  background-repeat: no-repeat;
-  height: 150px;
-  background-position: center; }
-
-#blocktable::-webkit-scrollbar-button:start {
-  background-image: url("/commons/static/img/icons/vsf_iconarrow_v101.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-#blocktable::-webkit-scrollbar-button:end {
-  background-image: url("/commons/static/img/icons/vsf_iconarrowdown_v101_end.svg");
-  background-position: center; 
-  background-repeat: no-repeat;
-}
-
-#rowTitleDataBlocked{
- width: 100%;
- color: #fff;
- padding-left:16px;
-}
-
-#BlockName{
- text-transform: capitalize;
- padding-left: 16px;
- height: 40px;
- }
 //Summary Category & ISP Table
 
 #summaryTableBorder{
@@ -74,6 +11,7 @@ padding: 0px 16px 0px;
  background-color: #ff2114 ;
  font-size: 90%;
  font-weight:700;
+ line-height:15px;
 }
 
 .table .table-hover tbody tr:hover td, .table tbody tr:hover th {
@@ -184,6 +122,74 @@ tr{
  background-color: #fff;
  color: #ababab ;
 }
+
+//Blocked List
+#focusBlocked{
+    color: #fff;
+    background-color: #adadad ;
+    font-weight:700;
+}
+#blockedTableBorder{
+    padding:1px;
+    border-radius:8px;
+    background-color: #fff;
+}
+
+#countBlocked{
+ background-color: #ff2114 ;
+ font-size: 90%;
+ font-weight:700;
+ line-height:15px;
+}
+
+#blocktitle{
+  font-weight: normal;
+  color:#575757 ;
+  padding-left:16px;
+}
+
+#blocktable{
+border-radius: 8px;
+overflow: auto;
+height: 330px;
+padding: 0px 16px 0px;  
+}
+
+#blocktable::-webkit-scrollbar {
+  background: white;
+  width: 15px; }
+
+#blocktable::-webkit-scrollbar-thumb {
+  background-image: url("/commons/static/img/icons/vsf_iconscrollbar_v101.svg");
+  background-repeat: no-repeat;
+  height: 150px;
+  background-position: center; }
+
+#blocktable::-webkit-scrollbar-button:start {
+  background-image: url("/commons/static/img/icons/vsf_iconarrow_v101.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#blocktable::-webkit-scrollbar-button:end {
+  background-image: url("/commons/static/img/icons/vsf_iconarrowdown_v101_end.svg");
+  background-position: center; 
+  background-repeat: no-repeat;
+}
+
+#rowTitleDataBlocked{
+ width: 100%;
+ color: #fff;
+ padding-left:16px;
+}
+
+#BlockName{
+ text-transform: capitalize;
+ padding-left: 16px;
+ height: 40px;
+ }
+
+
 
 //Measurement Table
 
@@ -297,15 +303,6 @@ tr{
     }
 }
 
-#countBlocked{
-    float: none;
-    border: 1px solid red;
-    background: red;
-    color: white;
-    border-radius: 50%;
-    display: inline;
-
-}
 
 #countMap{
     float: none;

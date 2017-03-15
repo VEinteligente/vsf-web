@@ -7922,64 +7922,69 @@ function pagination(){
 
 		<div class="col-xs-4" id="blockedHome">
 
-			<input type="hidden" id="hiddenID" value="" /> <input type="hidden"
-				id="hiddenLinkID" value="" /> <input type="hidden"
-				id="hiddenDomainID" value="" /> <input type="hidden"
-				id="hiddenDomainLinkID" value="" /> <input type="hidden"
-				id="countNumber" value="" /> <input type="hidden" id="sites"
-				value="{% trans 'Blocked Sites Strong' %}" /> <input type="hidden"
-				id="domains" value="{% trans 'Blocked Domains Strong' %}" />
+			<input type="hidden" id="hiddenID" value="" />
+<input type="hidden" id="hiddenLinkID" value="" />
+<input type="hidden" id="hiddenDomainID" value="" />
+<input type="hidden" id="hiddenDomainLinkID" value="" />
+<input type="hidden" id="countNumber" value="" />
 
-			<div class="bodyContent">
-				<div class="col-xs-12" id="blockedTableBorder">
-					<div class="container" id="blocktable">
+<input type="hidden" id="sites"
+	value="{% trans 'Blocked Sites' %}" />
+<input type="hidden" id="domains"
+	value="{% trans 'Blocked Domains' %}" />
 
-						<div class="row">
+<div class="bodyContent">
+<div class="col-xs-12" id="blockedTableBorder">
+    <div class="container" id="blocktable">
 
-
-							<table class="table table-hover text-nowrap">
-
-								<thead>
-
-									<tr>
-
-										<th id="blocktitle"></th>
-
-									</tr>
-
-								</thead>
-
-								<tbody id="blockbody">
-
-								</tbody>
+        <div class="row">
 
 
-								<tfoot>
-									<tr>
-										<td>
-											<button class="contextualButtonFixedSize"
-												onclick="selectBlocked('Domains')">
-												{% trans 'Domains' %}</button>
+            <table class="table table-hover text-nowrap">
 
-											<button class="contextualButtonFixedSize"
-												onclick="selectBlocked('Sites')">
-												{% trans 'Sites' %}</button>
+                <thead>
 
-											<div class="float-xs-right" style="padding-top: 1px">
-												Download: <a id="download" href="#"> <i
-													class="fa fa-file-excel-o" aria-hidden="true"></i>
-												</a>
-											</div>
-										</td>
-									</tr>
-								</tfoot>
-							</table>
+                    <tr>
 
-						</div>
-					</div>
-				</div>
+                        <th id="blocktitle"></th>
 
-			</div>
+                    </tr>
+
+                </thead>
+
+                <tbody id="blockbody">
+
+                </tbody>
+
+
+                <tfoot>
+                    <tr>
+                        <td>
+                            <button class="contextualButtonFixedSize"
+                                onclick="selectBlocked('Domains')"
+                            >
+                                {% trans 'Domains' %}</button>
+
+                            <button class="contextualButtonFixedSize" onclick="selectBlocked('Sites')"
+                            >
+                                {% trans 'Sites' %}</button>
+                                
+                            <div class="float-xs-right" style="padding-top:1px"
+                                >
+                                Download: <a id="download" href="#"> <i
+                                    class="fa fa-file-excel-o" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+</div>
 
 
 			<script>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-14 18:35+0000\n"
+"POT-Creation-Date: 2017-03-15 16:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -134,23 +134,21 @@ msgstr "Mapa de Casos"
 msgid "Summary Table"
 msgstr "Tabla Resumen"
 
-#: general/templates/home.html:7930
 #: general/templates/blocked-sites_domains.html:14
 msgid "Blocked Sites"
-msgstr "Sitios Bloquedos"
+msgstr "<strong>Sitios</strong> Bloquedos"
 
 #: general/templates/blocked-sites_domains.html:16
-#: general/templates/home.html:7931
 msgid "Blocked Domains"
-msgstr "Dominios Bloqueados"
+msgstr "<strong>Dominios</strong> Bloqueados"
 
-#: general/templates/blocked-sites_domains.html:48
-#: general/templates/home.html:7962
+#: general/templates/blocked-sites_domains.html:49
+#: general/templates/home.html:7934 general/templates/home.html:7968
 msgid "Domains"
 msgstr "Dominios"
 
-#: general/templates/blocked-sites_domains.html:52
-#: general/templates/home.html:7966
+#: general/templates/blocked-sites_domains.html:53
+#: general/templates/home.html:7932 general/templates/home.html:7972
 msgid "Sites"
 msgstr "Sitios"
 
@@ -158,20 +156,24 @@ msgstr "Sitios"
 msgid "Featured Cases"
 msgstr "Casos Destacados"
 
-#: general/templates/home.html:8006 summary/templates/summary-table.html:11
+#: general/templates/home.html:7936 stylingGuide/templates/elements.html:89
+msgid "Blocked"
+msgstr "Bloqueado"
+
+#: general/templates/home.html:8013 summary/templates/summary-table.html:11
 msgid "Categories"
 msgstr "Categorias"
 
-#: general/templates/home.html:8007 summary/templates/summary-table.html:12
+#: general/templates/home.html:8014 summary/templates/summary-table.html:12
 msgid "ISPs"
 msgstr "Proveedores"
 
-#: general/templates/home.html:8038 general/templates/list-cases.html:71
+#: general/templates/home.html:8045 general/templates/list-cases.html:71
 #: summary/templates/summary-table.html:45
 msgid "Category"
 msgstr "Categorias"
 
-#: general/templates/home.html:8041 general/templates/list-cases.html:68
+#: general/templates/home.html:8048 general/templates/list-cases.html:68
 #: general/templates/list-cases.html:128
 #: summary/templates/measurements-table.html:30
 #: summary/templates/summary-table.html:49
@@ -245,10 +247,6 @@ msgstr "DoS"
 #: stylingGuide/templates/elements.html:82
 msgid "Fail"
 msgstr "Falla"
-
-#: stylingGuide/templates/elements.html:89
-msgid "Blocked"
-msgstr "Bloqueado"
 
 #: stylingGuide/templates/elements.html:101
 msgid "Contextual buttons (static)"

@@ -25,7 +25,7 @@ $(document).ready(function() {
 // Ex. "Category" or "ISP"
 
 function selectBlocked(option) {
-
+	var language = $('#language').val();
 	// When select function is invoked the list is emptied
 	$("#blockbody").empty();
 
@@ -83,11 +83,14 @@ function selectBlocked(option) {
 
 							// Pill with total number of cases in red and the
 							// title of the option
-
+							
+							//Translation IF for title of the table
+							
 							$("#blocktitle")
-									.html(
-											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="countBlocked"></span> &nbsp'+domainsT);
+							.html(
+									'<span class="tag tag-default tag-pill float-xs-left pill-size" id="countBlocked"></span> &nbsp'+domainsT);
 
+							
 							$("#download").attr("href", url_excel_domains)
 							// In data.results we find the info we need for this
 							// section, it is an array of objects
@@ -121,10 +124,11 @@ function selectBlocked(option) {
 
 							// Pill with total number of cases in red and the
 							// title of the option
-							$("#blocktitle")
-									.append(
-											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="countBlocked"></span> &nbsp'+sitesT);
 
+							$("#blocktitle")
+							.html(
+									'<span class="tag tag-default tag-pill float-xs-left pill-size" id="countBlocked"></span> &nbsp'+sitesT);
+							
 							$("#download").attr("href", url_excel_sites)
 							// In data.results we find the info for this
 							// section, it is an array of objects

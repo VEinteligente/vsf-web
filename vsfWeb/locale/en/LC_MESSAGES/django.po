@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-14 18:12+0000\n"
+"POT-Creation-Date: 2017-03-15 16:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,6 @@ msgstr ""
 
 #: cases/templates/case-pdf.html:7 cases/templates/case.html:7
 #: commons/templates/pdf/case-pdf.html:7
-#| msgid "Continue"
 msgid "Continua"
 msgstr "Continue"
 
@@ -35,7 +34,6 @@ msgstr "Sites"
 
 #: cases/templates/case-pdf.html:51 cases/templates/case.html:55
 #: commons/templates/pdf/case-pdf.html:70
-#| msgid "Category"
 msgid "Category: "
 msgstr "Category"
 
@@ -46,14 +44,12 @@ msgstr "Description:"
 
 #: cases/templates/case-pdf.html:92 cases/templates/case.html:100
 #: cases/templates/case.html:105
-#| msgid "Download Speed"
 msgid "Download"
 msgstr "Download Speed"
 
 #: cases/templates/case-pdf.html:117
-#| msgid "Blocked Domains"
 msgid "List Domains: "
-msgstr "Blocked Domains"
+msgstr "List Domains: "
 
 #: cases/templates/case-pdf.html:144 cases/templates/case.html:161
 msgid "actualizaciones"
@@ -68,12 +64,10 @@ msgid "Click to open"
 msgstr "Click to Open"
 
 #: cases/templates/case.html:376
-#| msgid "Measurement"
 msgid "Measurements"
 msgstr "Measurement"
 
 #: commons/templates/footer/footer.html:19
-#| msgid "Home"
 msgid "Homepage"
 msgstr "Home"
 
@@ -141,23 +135,20 @@ msgid "Summary Table"
 msgstr "Summary Table"
 
 #: general/templates/blocked-sites_domains.html:14
-#: general/templates/home.html:7930
-#| msgid "Blocked List"
 msgid "Blocked Sites"
-msgstr "Blocked Sites"
+msgstr "Blocked <Strong>Sites</strong>"
 
 #: general/templates/blocked-sites_domains.html:16
-#: general/templates/home.html:7931
 msgid "Blocked Domains"
-msgstr ""
+msgstr "Blocked <strong>Domains</strong>"
 
-#: general/templates/blocked-sites_domains.html:48
-#: general/templates/home.html:7962
+#: general/templates/blocked-sites_domains.html:49
+#: general/templates/home.html:7934 general/templates/home.html:7968
 msgid "Domains"
 msgstr "Domains"
 
-#: general/templates/blocked-sites_domains.html:52
-#: general/templates/home.html:7966
+#: general/templates/blocked-sites_domains.html:53
+#: general/templates/home.html:7932 general/templates/home.html:7972
 msgid "Sites"
 msgstr "Sites"
 
@@ -165,20 +156,24 @@ msgstr "Sites"
 msgid "Featured Cases"
 msgstr "Featured Cases"
 
-#: general/templates/home.html:8006 summary/templates/summary-table.html:11
+#: general/templates/home.html:7936 stylingGuide/templates/elements.html:89
+msgid "Blocked"
+msgstr "Blocked"
+
+#: general/templates/home.html:8013 summary/templates/summary-table.html:11
 msgid "Categories"
 msgstr "Categories"
 
-#: general/templates/home.html:8007 summary/templates/summary-table.html:12
+#: general/templates/home.html:8014 summary/templates/summary-table.html:12
 msgid "ISPs"
 msgstr "ISPs"
 
-#: general/templates/home.html:8038 general/templates/list-cases.html:71
+#: general/templates/home.html:8045 general/templates/list-cases.html:71
 #: summary/templates/summary-table.html:45
 msgid "Category"
 msgstr "Category"
 
-#: general/templates/home.html:8041 general/templates/list-cases.html:68
+#: general/templates/home.html:8048 general/templates/list-cases.html:68
 #: general/templates/list-cases.html:128
 #: summary/templates/measurements-table.html:30
 #: summary/templates/summary-table.html:49
@@ -252,10 +247,6 @@ msgstr "DoS"
 #: stylingGuide/templates/elements.html:82
 msgid "Fail"
 msgstr "Fail"
-
-#: stylingGuide/templates/elements.html:89
-msgid "Blocked"
-msgstr "Blocked"
 
 #: stylingGuide/templates/elements.html:101
 msgid "Contextual buttons (static)"

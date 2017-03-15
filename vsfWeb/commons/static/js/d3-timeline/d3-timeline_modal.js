@@ -14,7 +14,7 @@ function ganttModal(timelap, i){
 	$(".modal-footer").css('padding','15px');
 	
 	$(".modal-footer").append('<div class="modal-body container-fluid col-xs-12"'
-			 + 'id="modaltwtterDiv"> <div id="modaltwitterTweet"></div>'
+			 + 'id="modaltwitterDiv"> <div id="modaltwitterTweet"></div>'
 			 + '<div id="modaltwitterSearchText"><div id="modaltwitterSearchTextTitle">'
 			 + '<div class="h4Style title"></div></div><div id="modaltwitterSearchTextContent">'
 			 + '<div class="title"></div></div></div></div>');

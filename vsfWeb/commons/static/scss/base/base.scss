@@ -41,12 +41,22 @@ $bb_gray_fontColor: #666666;
 //Colors
 $gray_fontColor: #575757;
 $darkGray: #808080;
+$darkerGray: #333333;
+$focusGray: #adadad;
+$navbarGray: #1f1f1f;
+$navbarColorLink: #c9c9c9;
 $gray: #A0A0A0;
 $lightGray: #EBEBEB;
-
+$lighterGray: #DEDEDE;
+$lightestGray: #f2f2f2;
 $darkGrayButton: #ABABAB;
 $grayButton: #E8E8E8;
 $lightGrayButton: #CCCCCC;
+$gray_background: #d1d1d1;
+$counterRedCircle:  #ff2114 ;
+
+$borderRadiusDefault: 8px;
+$borderDefault: 5px;
 
 //Font Family
 $primary_fontFamily: Roboto;
@@ -90,39 +100,40 @@ $fail_color: #ebe70e;
 $dos_color: #bd2126;
 $interception_color: #ebe70e;
 
-header{
-	margin-bottom: 50px
+
+header {
+	margin-bottom: 50px;
 }
+
 body {
     height: 100%;
     font-family: $primary_fontFamily, sans-serif;
-    background-color: #dedede;   
+    background-color: $lighterGray;   
 	padding-top: 128px;
- 
 }
 
-.titleBarContent{
+.titleBarContent {
 	border-radius: 8px;
 	box-shadow: 0 12px 18px -12px rgba(0, 0, 0, 0.27), 0 3px 21px 0px rgba(0, 0, 0, 0.12), 0 6px 12px -6px rgba(0, 0, 0, 0.12);
-	background: #f2f2f2;
+	background: $lightestGray;
 	height: 45px;
-	padding-left: 35px;
+	padding-left: $lg_big_padding;
 	padding: $sm_small_padding $md_medium_padding $sm_small_padding $lg_big_padding;
 	text-transform: uppercase; 
 	margin-bottom: 20px !important;
 }
 
-.white-background{
+.white-background {
 	background: white;
 }
 
-.padding-title{
+.padding-title {
 	padding-bottom: $sm_big_padding;
 	padding-top: $sm_big_padding;
 }
 
 
-.failedService{
+.failedService {
     text-align: center;
 }
 
@@ -173,7 +184,6 @@ p {
     font-size: $sm_fontSize;
     color: $wb_gray_fontColor;
     font-weight: $medium_fontWeight;
-    
 }
 
 //Inverted Styles
@@ -224,11 +234,11 @@ ih5 {
 ip {
     font-size: $sm_fontSize;
     color: $bb_gray_fontColor;
-    font-weight: light;
-    
+    font-weight: light;  
 }
 
 //Action Button
+
 button {
     padding-left: $md_padding;
     padding-right: $md_padding;
@@ -243,13 +253,13 @@ button {
     
     &:hover {
         font-weight: regular;
-        background-color: #ebebeb;
+        background-color: $lightGray;
         color:$wb_lightGray_fontColor;
     }
     
     &:active {
         font-weight: medium;
-        background-color: #d1d1d1;
+        background-color: $gray_background;
         outline: none;
         font-weight: $large_fontWeight;
         color: white; 
@@ -261,20 +271,20 @@ button {
 }
 
 //Static Button
+
 .contextualButtonFixedSize {
     width: $contextualButtonWidthSize !important;
     height: $contextualButtonHeightSize;
     border: 1px solid $lightGray;
     outline: none;
     background-color: $contextualButtonColor;
-    border-radius: 8px;
+    border-radius: $borderRadiusDefault;
     padding:0;
     
     &:hover {
         border:none;
         font-weight: regular;
         background-color: $lightGray;  
-             
     }
     
     &:active {
@@ -293,11 +303,12 @@ button {
 }
 
 //Contextual Button
-.contextualButton{
+
+.contextualButton {
     border: 1px solid $lightGray;
     outline: none;
     background-color: $contextualButtonColor;
-    border-radius: 8px;
+    border-radius: $borderRadiusDefault;
     padding-left: $sm_padding;
     padding-right: $sm_padding;
     
@@ -323,13 +334,16 @@ button {
 }
 
 //Continue Tag
-.continue_tag{
+
+.continue_tag {
     display: inline-block;
+   
     .left_cornerTag{
-        border-bottom: 5px solid $green_tag;
-        border-left: 5px solid transparent;
+        border-bottom: $borderDefault solid $green_tag;
+        border-left: $borderDefault solid transparent;
     }
-    .right_cornerTag{
+    
+    .right_cornerTag {
         border-bottom: 5px solid $green_tag;
         border-right: 5px solid transparent;
         /** Flip vertically **/
@@ -339,24 +353,26 @@ button {
         -ms-transform: scale(1, -1);
         transform: scale(1, -1);
     }
-    .contentTag{
+    
+    .contentTag {
         background: $green_tag;
         line-height: 1.00;
         padding: 0px $md_padding;
         color: $contentColorTag;
     }
-
 }
 
 //status_positive
-.positive_tag{
+.positive_tag {
     display: inline-block;
     float: right;
-    .left_cornerTag{
-        border-bottom: 5px solid $green_tag;
-        border-left: 5px solid transparent;
+    
+    .left_cornerTag {
+        border-bottom: $borderDefault solid $green_tag;
+        border-left: $borderDefault solid transparent;
     }
-    .right_cornerTag{
+    
+    .right_cornerTag { 
         border-bottom: 5px solid $green_tag;
         border-right: 5px solid transparent;
         /** Flip vertically **/
@@ -366,27 +382,28 @@ button {
         -ms-transform: scale(1, -1);
         transform: scale(1, -1);
     }
-    .contentTag{
+    
+    .contentTag {
         background: $green_tag;
         line-height: 1.00;
         padding: 0px $md_padding;
         color:$contentColorTag;
     }
-
 }
 
-
 //status_info
-.info_tag{
+.info_tag {
     display: inline-block;
     float: right;
-    .left_cornerTag{
-        border-bottom: 5px solid $blue_tag;
-        border-left: 5px solid transparent;
+    
+    .left_cornerTag {
+        border-bottom: $borderDefault solid $blue_tag;
+        border-left: $borderDefault solid transparent;
     }
-    .right_cornerTag{
-        border-bottom: 5px solid $blue_tag;
-        border-right: 5px solid transparent;
+    
+    .right_cornerTag {
+        border-bottom: $borderDefault solid $blue_tag;
+        border-right: $borderDefault solid transparent;
         /** Flip vertically **/
         -moz-transform: scale(1, -1);
         -webkit-transform: scale(1, -1);
@@ -394,26 +411,28 @@ button {
         -ms-transform: scale(1, -1);
         transform: scale(1, -1);
     }
-    .contentTag{
+    
+    .contentTag {
         background: $blue_tag;
         line-height: 1.00;
         padding: 0px $md_padding;
         color:$contentColorTag;
     }
-
 }
 
 //status_grave
-.grave_tag{
+.grave_tag {
     display: inline-block;
     float: right;
-    .left_cornerTag{
-        border-bottom: 5px solid $red_tag;
-        border-left: 5px solid transparent;
+    
+    .left_cornerTag {
+        border-bottom: $borderDefault solid $red_tag;
+        border-left: $borderDefault solid transparent;
     }
-    .right_cornerTag{
-        border-bottom: 5px solid $red_tag;
-        border-right: 5px solid transparent;
+    
+    .right_cornerTag {
+        border-bottom: $borderDefault solid $red_tag;
+        border-right: $borderDefault solid transparent;
         /** Flip vertically **/
         -moz-transform: scale(1, -1);
         -webkit-transform: scale(1, -1);
@@ -421,7 +440,7 @@ button {
         -ms-transform: scale(1, -1);
         transform: scale(1, -1);
     }
-    .contentTag{
+    .contentTag {
         background: $red_tag;
         line-height: 1.00;
         padding: 0px $md_padding;
@@ -431,15 +450,17 @@ button {
 }
 
 //blocked Tag
-.blocked_tag{
+.blocked_tag {
     display: inline-block;
-    .left_cornerTag{
-        border-bottom: 5px solid $red_tag;
-        border-left: 5px solid transparent;
+    
+    .left_cornerTag {
+        border-bottom: $borderDefault solid $red_tag;
+        border-left: $borderDefault solid transparent;
     }
-    .right_cornerTag{
-        border-bottom: 5px solid $red_tag;
-        border-right: 5px solid transparent;
+    
+    .right_cornerTag {
+        border-bottom: $borderDefault solid $red_tag;
+        border-right: $borderDefault solid transparent;
         /** Flip vertically **/
         -moz-transform: scale(1, -1);
         -webkit-transform: scale(1, -1);
@@ -447,25 +468,27 @@ button {
         -ms-transform: scale(1, -1);
         transform: scale(1, -1);
     }
-    .contentTag{
+    
+    .contentTag {
         background: $red_tag;
         line-height: 1.00;
         padding: 0px $md_padding;
         color:$contentColorTag;
     }
-
 }
 
 //Disconnected Tag
-.disconnected_tag{
+.disconnected_tag {
     display: inline-block;
+    
     .left_cornerTag{
-        border-bottom: 5px solid $disconnected_color;
-        border-left: 5px solid transparent;
+        border-bottom: $borderDefault solid $disconnected_color;
+        border-left: $borderDefault solid transparent;
     }
-    .right_cornerTag{
-        border-bottom: 5px solid $disconnected_color;
-        border-right: 5px solid transparent;
+    
+    .right_cornerTag {
+        border-bottom: $borderDefault solid $disconnected_color;
+        border-right: $borderDefault solid transparent;
         /** Flip vertically **/
         -moz-transform: scale(1, -1);
         -webkit-transform: scale(1, -1);
@@ -473,25 +496,27 @@ button {
         -ms-transform: scale(1, -1);
         transform: scale(1, -1);
     }
-    .contentTag{
+    
+    .contentTag {
         background: $disconnected_color;
         line-height: 1.00;
         padding: 0px $md_padding;
         color:$contentColorTag;
     }
-
 }
 
 //Slowdown Tag
-.slowdown_tag{
+.slowdown_tag {
     display: inline-block;
-    .left_cornerTag{
-        border-bottom: 5px solid $slowdown_color;
-        border-left: 5px solid transparent;
+    
+    .left_cornerTag {
+        border-bottom: $borderDefault solid $slowdown_color;
+        border-left: $borderDefault solid transparent;
     }
-    .right_cornerTag{
-        border-bottom: 5px solid $slowdown_color;
-        border-right: 5px solid transparent;
+    
+    .right_cornerTag {
+        border-bottom: $borderDefault solid $slowdown_color;
+        border-right: $borderDefault solid transparent;
         /** Flip vertically **/
         -moz-transform: scale(1, -1);
         -webkit-transform: scale(1, -1);
@@ -499,25 +524,27 @@ button {
         -ms-transform: scale(1, -1);
         transform: scale(1, -1);
     }
-    .contentTag{
+    
+    .contentTag {
         background: $slowdown_color;
         line-height: 1.00;
         padding: 0px $md_padding;
         color:$contentColorTag;
     }
-
 }
 
-//Connected Tad
-.connected_tag{
+//Connected Tag
+.connected_tag {
     display: inline-block;
-    .left_cornerTag{
-        border-bottom: 5px solid $connected_color;
-        border-left: 5px solid transparent;
+    
+    .left_cornerTag {
+        border-bottom: $borderDefault solid $connected_color;
+        border-left: $borderDefault solid transparent;
     }
-    .right_cornerTag{
-        border-bottom: 5px solid $connected_color;
-        border-right: 5px solid transparent;
+    
+    .right_cornerTag {
+        border-bottom: $borderDefault solid $connected_color;
+        border-right: $borderDefault solid transparent;
         /** Flip vertically **/
         -moz-transform: scale(1, -1);
         -webkit-transform: scale(1, -1);
@@ -525,25 +552,27 @@ button {
         -ms-transform: scale(1, -1);
         transform: scale(1, -1);
     }
-    .contentTag{
+    
+    .contentTag {
         background: $connected_color;
         line-height: 1.00;
         padding: 0px $md_padding;
         color:$contentColorTag;
     }
-
 }
 
 //Fail Tag
-.fail_tag{
+.fail_tag {
     display: inline-block;
-    .left_cornerTag{
-        border-bottom: 5px solid $fail_color;
-        border-left: 5px solid transparent;
+    
+    .left_cornerTag {
+        border-bottom: $borderDefault solid $fail_color;
+        border-left: $borderDefault solid transparent;
     }
-    .right_cornerTag{
-        border-bottom: 5px solid $fail_color;
-        border-right: 5px solid transparent;
+    
+    .right_cornerTag {
+        border-bottom: $borderDefault solid $fail_color;
+        border-right: $borderDefault solid transparent;
         /** Flip vertically **/
         -moz-transform: scale(1, -1);
         -webkit-transform: scale(1, -1);
@@ -551,25 +580,27 @@ button {
         -ms-transform: scale(1, -1);
         transform: scale(1, -1);
     }
-    .contentTag{
+    
+    .contentTag {
         background: $fail_color;
         line-height: 1.00;
         padding: 0px $md_padding;
         color:$contentColorTag;
     }
-
 }
 
 //DOS Tag
-.dos_tag{
+.dos_tag {
     display: inline-block;
-    .left_cornerTag{
-        border-bottom: 5px solid $dos_color;
-        border-left: 5px solid transparent;
+    
+    .left_cornerTag {
+        border-bottom: $borderDefault solid $dos_color;
+        border-left: $borderDefault solid transparent;
     }
-    .right_cornerTag{
-        border-bottom: 5px solid $dos_color;
-        border-right: 5px solid transparent;
+    
+    .right_cornerTag {
+        border-bottom: $borderDefault solid $dos_color;
+        border-right: $borderDefault solid transparent;
         /** Flip vertically **/
         -moz-transform: scale(1, -1);
         -webkit-transform: scale(1, -1);
@@ -577,25 +608,27 @@ button {
         -ms-transform: scale(1, -1);
         transform: scale(1, -1);
     }
-    .contentTag{
+    
+    .contentTag {
         background: $dos_color;
         line-height: 1.00;
         padding: 0px $md_padding;
         color:$contentColorTag;
     }
-
 }
 
 //Interception Tag
-.interception_tag{
+.interception_tag {
     display: inline-block;
-    .left_cornerTag{
-        border-bottom: 5px solid $interception_color;
-        border-left: 5px solid transparent;
+    
+    .left_cornerTag {
+        border-bottom: $borderDefault solid $interception_color;
+        border-left: $borderDefault solid transparent;
     }
-    .right_cornerTag{
-        border-bottom: 5px solid $interception_color;
-        border-right: 5px solid transparent;
+    
+    .right_cornerTag {
+        border-bottom: $borderDefault solid $interception_color;
+        border-right: $borderDefault solid transparent;
         /** Flip vertically **/
         -moz-transform: scale(1, -1);
         -webkit-transform: scale(1, -1);
@@ -603,73 +636,71 @@ button {
         -ms-transform: scale(1, -1);
         transform: scale(1, -1);
     }
-    .contentTag{
+    
+    .contentTag {
         background: $interception_color;
         line-height: 1.00;
         padding: 0px $md_padding;
         color:$contentColorTag;
     }
-
 }
 
 
 /* Bars */
-
 .titleBar{
-    //border: 2px solid $lightGray;
     padding: $md_padding $md_padding $sm_padding $lg_padding;
-    border-radius: 8px;
+    border-radius: $borderRadiusDefault;
     background: white;
-    .date{
+    
+    .date {
         text-align: right;      
         padding-top: $sm_padding;  
     }
 }
 
-.smallBar{
+.smallBar {
     background: white;
     padding:0;
+    
     .title{
         padding: $sm_padding $md_padding $sm_padding $lg_padding;
-
         margin: 0;
     }
-    
 }
 
-.subtitleBar{
+.subtitleBar {
     padding:0;
     height: 36px;
-    border-radius: 8px;
+    border-radius: $borderRadiusDefault;
     background: white;
-    .title{
+    
+    .title {
         padding: $sm_padding $md_padding $sm_padding $lg_padding;
         margin: 0;
         text-transform: uppercase;
-    }
-    
+    }  
 }
 
-.timelineBarContinue{
+.timelineBarContinue {
     color: white;
     height: 20px;
     padding: 0;
     width: 105%; 
-    
     background-color: $green-tag;
        
-        .date{
+        .date {
             font-weight: bold;
             padding:0px;
-            padding-left:5px;         
+            padding-left: $xs_padding;         
         }
-        .status{
+        
+        .status {
             text-align: right;
             padding:0;
-            padding-right:16px;
+            padding-right: $md_padding;
         }
     
-        &:after{
+        &:after {
             right: 100%;
             top: 50%;
             border: solid transparent;
@@ -682,7 +713,6 @@ button {
             border-width: 10px;
             margin-top: -10px;
         }
-    
 }
 
 .timelineBarClosed{
@@ -691,21 +721,21 @@ button {
     padding: 0;
     width:100%;
     font-weight: bold;
-    
     background-color: $red-tag;
        
-        .date{
+        .date {
             font-weight: bold;
             padding:0px;
             padding-left: $xs_padding;         
         }
-        .status{
+        
+        .status {
             text-align: right;
             padding:0;
-            padding-right:4px;
+            padding-right: $xxs_padding;
         }
     
-        &:after{
+        &:after {
             right: 100%;
             top: 50%;
             border: solid transparent;
@@ -728,7 +758,7 @@ button {
 		    width: 0;
 		    position: absolute;
 		    border-color: transparent;
-		    border-right-color: #FF2115;
+		    border-right-color: $blocked_color;
             border-width: 10px;
             margin-top: -10px;
      		-moz-transform: scaleX(-1);
@@ -738,9 +768,7 @@ button {
 	        filter: FlipH;
 	        -ms-filter: "FlipH";
     }
-    
 }
-
 
 .toolbar {
     border: 2px solid $gray;
@@ -750,28 +778,26 @@ button {
     padding: 0px;
 }
 
-.updateBar{
+.updateBar {
     padding-top: $sm_medium_padding;
     padding-bottom: $sm_medium_padding;
     background-color: $lightGray;
     display: flex;
     align-items: center;
     
-    .content{
+    .content {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         font-size: $sm_fontSize;
         color: $gray_fontColor;
         font-weight: $medium_fontWeight;
-        
     }
 
-    .dateYear{
+    .dateYear {
         font-size: $xs_fontSize;
         color: $wb_lightGray_fontColor;
-        font-weight:  $medium_fontWeight;
-        
+        font-weight:  $medium_fontWeight; 
     }
 
     .symbolBlocked {
@@ -785,7 +811,7 @@ button {
          transform: rotate(45deg);
     }
 
-    .share{
+    .share {
         text-align: right;
         
         a {
@@ -795,13 +821,10 @@ button {
             
             i {
                 font-size: $md_fontSize;
-            }
-            
+            }   
         }
     }
-
 }
-
 
 
 /* RESPONSIVE */

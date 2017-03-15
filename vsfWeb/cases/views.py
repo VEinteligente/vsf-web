@@ -253,28 +253,8 @@ def CaseCVS(request, pk):
 
     return response
 
-# def CasePdf(request, pk):
-    """This view makes the pdf file available with the download button
-    in the case page"""
 
-
-def CasePdf(request, pk="1"):
-
-    pdf = pdfkit.from_url(
-        settings.URL_VSF_WEB +
-        '/cases/case-pdf-view/' + pk + '/',
-        False)
-    response = HttpResponse(pdf, content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="case_' + \
-        pk + '.pdf'
-
-    return response
-
-
-class PdfView (TemplateView):
-    template_name = 'case-pdf.html'
-
-
+    
 class SpeedTestCase(TemplateView):
     """This view renders the HTML containing information about speed test
     """

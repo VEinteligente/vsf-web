@@ -35,7 +35,7 @@ function selectBlocked(option) {
 
 		// This variable loads the translated string of the title corresponding
 		// to the "site" option
-		var domains = $("#domains").val();
+		var domainsT = $("#domains").val();
 
 		$("#blockedheader").html("Domains");
 
@@ -44,7 +44,7 @@ function selectBlocked(option) {
 	} else {
 		// This variable loads the translated string of the title corresponding
 		// to the "domain" option
-		var isps = $("#sites").val();
+		var sitesT = $("#sites").val();
 		$("#blockedheader").html("Sites");
 
 		url_data = url_data_sites;
@@ -86,7 +86,7 @@ function selectBlocked(option) {
 
 							$("#blocktitle")
 									.html(
-											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="countBlocked"></span> &nbsp Blocked <strong>Domains</strong>');
+											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="countBlocked"></span> &nbsp'+domainsT);
 
 							$("#download").attr("href", url_excel_domains)
 							// In data.results we find the info we need for this
@@ -123,7 +123,7 @@ function selectBlocked(option) {
 							// title of the option
 							$("#blocktitle")
 									.append(
-											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="countBlocked"></span> &nbsp Blocked <strong>Sites</strong>');
+											'<span class="tag tag-default tag-pill float-xs-left pill-size" id="countBlocked"></span> &nbsp'+sitesT);
 
 							$("#download").attr("href", url_excel_sites)
 							// In data.results we find the info for this

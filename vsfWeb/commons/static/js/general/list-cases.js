@@ -155,7 +155,7 @@ $(document)
 
 																											}
 
-																											if (thirdLevelKey == "description") {
+																											if (thirdLevelKey == "title") {
 
 																												$(
 																														".listCases")
@@ -816,7 +816,7 @@ $("#advanced_search").submit(function(e) {
 																															"isp");
 																										}
 
-																										if (thirdLevelKey == "description") {
+																										if (thirdLevelKey == "title") {
 
 																											$(
 																													".listCases")

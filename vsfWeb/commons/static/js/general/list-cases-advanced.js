@@ -182,7 +182,7 @@ $(document).ready(function() {
 
 																											}
 
-																											if (thirdLevelKey == "description") {
+																											if (thirdLevelKey == "title") {
 
 																												$(
 																														".listCasesAdvanced")
@@ -970,7 +970,7 @@ $("#advanced_search")
 
 																										}
 
-																										if (thirdLevelKey == "description") {
+																										if (thirdLevelKey == "title") {
 
 																											$(".listCasesAdvanced").find(".name").append("<strong style='white-space: nowrap;overflow: hidden; text-overflow: ellipsis;'>" + thirdLevelValue + "</strong> <br>");
 																											$(".listCasesAdvanced").find(".name").addClass("nameSort");

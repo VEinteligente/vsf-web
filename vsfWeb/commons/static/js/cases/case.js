@@ -111,7 +111,6 @@ $(document)
 											$.each(data.domains, function(index, result){
 												var site_name = result.site;
 												
-												
 												if ($.inArray(site_name,site_array)==-1){
 													site_array.push(site_name);
 												
@@ -124,7 +123,7 @@ $(document)
 														
 													//Site Name with a collapse div of the url that belongs to the site
 													else{
-	
+														site_name = site_name.replace(" ","");
 														$("#domainTableBody").append('<tr class="focus clickable" data-toggle="collapse" data-target="#data'+site_name+'"><td id="nameDomain">'+site_name+'</td><tr><td id="focusDomain" class="prueba" style="padding:0;"><div class="collapse" id="data'+site_name+'"><div></td></tr>');
 														
 	
@@ -141,7 +140,11 @@ $(document)
 											
 											$.each(data.domains, function(index, result){
 												var site_name = result.site;
+<<<<<<< HEAD
 												
+=======
+
+>>>>>>> origin/Bugs
 												if(!(site_name == null)){
 													site_name = site_name.replace(" ","");
 													if(result.ip == null){

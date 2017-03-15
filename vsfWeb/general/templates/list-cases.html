@@ -1,6 +1,10 @@
-{% extends "base.html" %} 
-{% load static %} 
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
 {% block content %}
+{% get_current_language as language_code %}
+
+
 <link rel="stylesheet" type="text/css"
 	href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 
@@ -42,7 +46,7 @@
 					<div class="col-xs-8 first ">
 
 						<div class="col-xs-9">
-							<input type="text" id="title" name="title" placeholder="Title">
+							<input type="text" id="title" name="title" placeholder="{% trans 'Title' %}">
 						</div>
 
 						<div id="reportrange" class="col-xs-2"
@@ -61,16 +65,16 @@
 				</div>
 				<div class="col-xs-12 multipleChoices">
 
-					<select id="isp" data-placeholder="ISP" multiple="">			
+					<select id="isp" data-placeholder="{% trans 'ISP' %}" multiple="">			
 					</select> 
 					
-					<select id="category" data-placeholder="Category" multiple="">
+					<select id="category" data-placeholder="{% trans 'Category' %}" multiple="">
 					</select> 
 					
-					<select id="region" data-placeholder="Region" multiple="">
+					<select id="region" data-placeholder="{% trans 'Region' %}" multiple="">
 					</select>
 					
-					<select id="site" data-placeholder="Site" multiple="">
+					<select id="site" data-placeholder="{% trans 'Site' %}" multiple="">
 					</select>
 
 
@@ -118,12 +122,12 @@
 
 				<div class="col-xs-12 subtitleBar" style="margin-bottom: 5px">
 					<div class="h4Style title search">
-						<div class="col-xs-2" id="dateClick">Fecha</div>
-						<div class="col-xs-2" id="nameClick">Caso</div>
-						<div class="col-xs-2" id="siteClick">Sitio</div>
-						<div class="col-xs-2" id="ispClick">ISP</div>
-						<div class="col-xs-2" id="categoryClick">Categoria</div>
-						<div class="col-xs-2" id="regionClick">Region</div>
+						<div class="col-xs-2" id="dateClick">{% trans 'Fecha' %}</div>
+						<div class="col-xs-2" id="nameClick">{% trans 'Caso' %}</div>
+						<div class="col-xs-2" id="siteClick">{% trans 'Sitio' %}</div>
+						<div class="col-xs-2" id="ispClick">{% trans 'ISP' %}</div>
+						<div class="col-xs-2" id="categoryClick">{% trans 'Categoria' %}</div>
+						<div class="col-xs-2" id="regionClick">{% trans 'Region' %}</div>
 					</div>
 				</div>
 

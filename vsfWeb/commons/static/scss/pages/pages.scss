@@ -1,7 +1,7 @@
 //Blocked List
 
 #focusBlocked {
-    color: #ffff;
+    color: #fff;
     background-color: $focusGray;
     font-weight: 700;
 }
@@ -9,7 +9,7 @@
 #blockedTableBorder {
     padding: 1px;
     border-radius: $borderRadiusDefault;
-    background-color: #ffff;
+    background-color: #fff;
 }
 
 #countBlocked {
@@ -57,7 +57,7 @@
 
 #rowTitleDataBlocked {
  width: 100%;
- color: #ffff;
+ color: #fff;
  padding-left:$md_padding;
 }
 
@@ -83,12 +83,12 @@
 }
 
 .table .table-hover tbody tr:hover td, .table tbody tr:hover th {
-	color: #ffff;
+	color: #fff;
 	background-color: $lightGray;
 }
 
 .table .table-hover tbody tr:active td, .table tbody tr:active th {
-	color: #ffff;
+	color: #fff;
 	background-color: $gray_background;
 	font-weight:700;
 }
@@ -137,7 +137,7 @@
 }
 
 #rowTitleDataCategory {
- color: #ffff;
+ color: #fff;
  max-width:50px;
  white-space: nowrap;
  overflow: hidden;
@@ -148,7 +148,7 @@
 
 #rowTitleDataIsp {
  width: 100%;
- color: #ffff;
+ color: #fff;
  padding-left: $md_padding;
 }
 
@@ -157,7 +157,7 @@
 }
 
 #focusSummary {
-    color: #ffff;
+    color: #fff;
     background-color: $focusGray;
     font-weight:700;
 }
@@ -188,7 +188,7 @@ tr {
 	background-color: $focusGray;
 	
 	&:active {
-		background-color: #ffff;
+		background-color: #fff;
 		color: $focusGray ;
 	}
 }
@@ -410,7 +410,7 @@ tr {
 
 .informationPanelGantt {
     position: relative;
-    background-color: #ffff;
+    background-color: #fff;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
     border: 1px solid rgba(0,0,0,.2);
@@ -1154,14 +1154,14 @@ input#title {
 }
 
 #rowDomain {
-	color: #ffff;
+	color: #fff;
 	background-color: $focusGray ;
 	font-weight: 400;
 	width: 100%;
 }
 
 .rowDomain {
-	color: #ffff;
+	color: #fff;
 	background-color: $navbarColorLink ;
 	font-weight:400;
 	width: 100%;
@@ -1180,7 +1180,7 @@ input#title {
     padding-right: 0px;
     margin-bottom: 8px;
     border-radius: $borderRadiusDefault;
-    background: #ffff;
+    background: #fff;
 }
 
 
@@ -1231,7 +1231,7 @@ input#title {
 
 #tableDomain {
 	border-radius: $borderRadiusDefault;
-	background-color: #ffff;
+	background-color: #fff;
 }
 
 #domainTableTile {

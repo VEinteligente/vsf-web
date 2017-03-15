@@ -65,7 +65,7 @@
   
   a {
   	&:hover{
-  		color: #ffff;
+  		color: #fff;
   	}
   }
   
@@ -87,7 +87,7 @@
   
   &:focus {
   	background: none;
-	color: #ffff;
+	color: #fff;
   }
 } 
 
@@ -98,7 +98,7 @@
 .btn-secondary {
   background: transparent;
   border: none;
-  border-bottom: 1px solid #ffff;
+  border-bottom: 1px solid #fff;
   border-radius: 0px;
   
   &:hover{
@@ -121,7 +121,7 @@
   padding-left:$xs_padding;
   padding-top: $sm_padding;
   padding-bottom: $sm_padding;
-  color: #ffff;
+  color: #fff;
 
 }
 
@@ -139,7 +139,7 @@
 }
 .dropdown-item:hover {
 	background-color: $navbarColorLink;
-	color: #ffff;
+	color: #fff;
 }
 
 #imageTranslate {

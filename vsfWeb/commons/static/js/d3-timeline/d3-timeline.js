@@ -1,6 +1,6 @@
 // This value indicates the maximum Y values of a graph. If the value is 
 // over this value then a simplificated graph will be shown. 
-var maxYValues = 2; 
+var maxYValues = 15; 
 
 // These values indicate the diferent options for the X axis 
 var Year = "Year";
@@ -58,14 +58,15 @@ function gantt(timelap){
 	}
 		
 	else if(timelap == "Month"){
-		
+
 		// If the timelap selected is Month show the whole month
-				var tickFormat = { format: d3.time.format("%d %b"),
-				          tickTime: d3.time.days,
-				          tickInterval: 7,
+				var tickFormat = { format: d3.time.format("%b %Y"),
+				          tickTime: d3.time.month,
+				          tickInterval: 12,
 				          tickSize: 6,
 				          tickValues: null
 				        };
+				start_timelap = new Date();
 				timelineStart = new Date(start.getFullYear(), start.getMonth(), 1);
 				timelineEnd = new Date();
 				
@@ -74,14 +75,14 @@ function gantt(timelap){
 	else if(timelap == "Year"){
 			// If the timelap selected is Days show the first 6 months of the
 			// year
-					var tickFormat = { format: d3.time.format("%b %Y"),
-					          tickTime: d3.time.months,
+					var tickFormat = { format: d3.time.format("%Y"),
+					          tickTime: d3.time.year,
 					          tickInterval: 1,
 					          tickSize: 6,
 					          tickValues: null
 					        };
 					
-					
+					start_timelap = new Date();
 					timelineStart = new Date(start.getFullYear(), 0, 1);
 					timelineEnd = new Date();
 					
@@ -483,12 +484,12 @@ function gantt(timelap){
             .on("mouseover", function (d, i) {
               // This loads the function and tooltip
               mouseover(d, i, datum);
-              $(".informationPanel").show();
+              $(".informationPanelGantt").show();
             })
             .on("mouseout", function (d, i) {
               // This loads the function and hides tooltip
               mouseout(d, i, datum);
-              $(".informationPanel").hide();
+              $(".informationPanelGantt").hide();
             })
             .on("click", function (d, i) {
               click(d, index, datum);
@@ -996,20 +997,27 @@ function adjustTextLabels(selection) {
 	// or complete Gantt graph
 	if(diffDays < 31){
 		var offset = 10;
-		
-		var daysToPixels = (($('.axis .tick:nth-child(2) text')).position().left -
-				($('.axis .tick:nth-child(1) text')).position().left)/2+offset;
+//		
+//		var daysToPixels = (($('.axis .tick:nth-child(2) text')).position().left -
+//				($('.axis .tick:nth-child(1) text')).position().left)/2+offset;
 				
 			    selection.selectAll('.axis .tick text')
 			        .attr('transform', 'translate(0,30)');
 	}
-	else{
+	else {
 		var offset = 10;
-		var daysToPixels = (($('.axis .tick:nth-child(2) text')).position().left -
-				($('.axis .tick:nth-child(1) text')).position().left)/2+offset;
-				
-			    selection.selectAll('.axis .tick text')
-			        .attr('transform', 'translate(' + daysToPixels + ',0)');
+		
+		if(($('.axis .tick:nth-child(2) text')).length ){
+			var daysToPixels = (($('.axis .tick:nth-child(2) text')).position().left -
+					($('.axis .tick:nth-child(1) text')).position().left)/2+offset;
+					
+				    selection.selectAll('.axis .tick text')
+				        .attr('transform', 'translate(' + daysToPixels + ',0)');
+		}else{
+			selection.selectAll('.axis .tick text')
+	        .attr('transform', 'translate(0,30)');
+		}
+		
 	}
 	
 	
@@ -1524,7 +1532,7 @@ $.ajax({
         		$(".informationPanelState").html(isp + " - " +  type + " - " + targetName);
         		
         		$(".informationPanelTotalCases").html("<strong>Target </strong>: " + site + " " + url + " " + domain + "<br> <strong>Start date</strong>: " + start + " <br> <strong>End date</strong>: " + end );
-        		var div = $(".informationPanel");
+        		var div = $(".informationPanelGantt");
         		
         		div.css("opacity", .9);  
         		var coordinates = d3.mouse(this);
@@ -1533,6 +1541,10 @@ $.ajax({
 
 				if(mouseX < 0 || mouseX < 280){
 					mouseX = 280;
+				}
+				
+				if(mouseX > 700){
+					mouseX = 500;
 				}
 
 				$('.informationPanelGantt').css({
@@ -1543,7 +1555,7 @@ $.ajax({
 				$('.informationPanelGantt').css("visibility","visible");
 	            })                  
 	        .on("mouseout", function(d) {       
-	        	var div = $(".informationPanel");
+	        	var div = $(".informationPanelGantt");
         		
 	        	div.css("opacity", 0); 
 	        	$('.informationPanelGantt').css({

@@ -1,16 +1,12 @@
 $('.subGraphDivHover').hide();
 
-$('#subGraph1').mouseover(function(){
-	$('#subGraph1 .subGraphDivHover').show();
+$('#subGraphTwitter').mouseover(function(){
+	$('#subGraphTwitter .subGraphDivHover').show();
 }).mouseleave(function(){
-	$('#subGraph1 .subGraphDivHover').hide();
+	$('#subGraphTwitter .subGraphDivHover').hide();
 });
 
-$('#subGraph2').mouseover(function(){
-	$('#subGraph2 .subGraphDivHover').show();
-}).mouseleave(function(){
-	$('#subGraph2 .subGraphDivHover').hide();
-});
+
 
 function modal_content(element_content){
 		

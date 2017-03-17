@@ -5,7 +5,7 @@ var formSer = "";
 $(document)
 		.ready(
 				function() {
-					
+
 					// Datepickers format
 					$(".datepicker").datepicker({
 						dateFormat : 'yy-mm-dd'
@@ -13,7 +13,7 @@ $(document)
 
 					changeMultipleChoice([ "#category", "#isp", "#site",
 							"#region" ]);
-					
+
 					// Variables corresponding to the search fields from the URL
 					// parameters
 					var hidden_title = $("#hidden_title").val();
@@ -41,18 +41,21 @@ $(document)
 							+ hidden_start_date + hidden_end_date;
 
 					if (hidden.length == 0) {
-						fillSelectors("#isp", url_isp,"");
-					    fillSelectors("#category", url_category,"");
-					    fillSelectors("#region", url_region,"");
-					    fillSelectors("#site", url_site,"");
+						fillSelectors("#isp", url_isp, "");
+						fillSelectors("#category", url_category, "");
+						fillSelectors("#region", url_region, "");
+						fillSelectors("#site", url_site, "");
 						// This AJAX call corresponds to the request of the JSON
 						// data from Pandora project API.
-						$.ajax({
-							url : url_data,
-							method : "GET",
-							dataType : 'json',
-							contentType : 'application/json'
-						}).done(
+						$
+								.ajax({
+									url : url_data,
+									method : "GET",
+									dataType : 'json',
+									async: false,
+									contentType : 'application/json'
+								})
+								.done(
 										function(data) {
 											var temporal = "";
 											// For each element in the JSON we
@@ -107,10 +110,14 @@ $(document)
 																														".listCases")
 																														.append(
 
-																																"<div class='col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8; cursor:pointer;' onclick=goTo("+ thirdLevelValue +")>"																																		
+																																"<div class='col-xs-12 smallBar' style='border-bottom:1px solid #7C96E8; cursor:pointer;' onclick=goTo("
+																																		+ thirdLevelValue
+																																		+ ")>"
 
 																																		+ "<div class='h5Style title search'>"
-																																		+ "<input type='hidden' class='id_case' value='"+ thirdLevelValue +"'>"		
+																																		+ "<input type='hidden' class='id_case' value='"
+																																		+ thirdLevelValue
+																																		+ "'>"
 																																		+ "<div class='col-xs-2 date'></div>"
 																																		+ "<div class='col-xs-2 name' style='display: flex;'></div>"
 																																		+ "<div class='col-xs-2 site'></div>"
@@ -120,7 +127,14 @@ $(document)
 																																		+ "</div>     </div>");
 
 																											}
-																											// Select all the possible values of the multiselect
+																											// Select
+																											// all
+																											// the
+																											// possible
+																											// values
+																											// of
+																											// the
+																											// multiselect
 
 																											if (thirdLevelKey == "region") {
 
@@ -182,24 +196,47 @@ $(document)
 
 																											if (thirdLevelKey == "domains") {
 
-																												$.each( thirdLevelValue, function( fourthLevelKey, fourthLevelValue) {
-																													
-																													if (thirdLevelValue.length < 2) {
-																										
-																														$(".listCases").find(".site").append(fourthLevelValue.site);
+																												$
+																														.each(
+																																thirdLevelValue,
+																																function(
+																																		fourthLevelKey,
+																																		fourthLevelValue) {
 
-																													} else {
-																													
-																														
-																																$(".listCases").find(".site").html("Varios");
-																															
+																																	if (thirdLevelValue.length < 2) {
 
-																													}				
-																													
-//																													$(".listCasesAdvanced").find(".site").append(fourthLevelValue.site);
-																																	
-																																	$(".listCases").find(".site").addClass("siteSort");
-																																	$(".listCases").find(".site").removeClass("site");
+																																		$(
+																																				".listCases")
+																																				.find(
+																																						".site")
+																																				.append(
+																																						fourthLevelValue.site);
+
+																																	} else {
+
+																																		$(
+																																				".listCases")
+																																				.find(
+																																						".site")
+																																				.html(
+																																						"Varios");
+
+																																	}
+
+																																	// $(".listCasesAdvanced").find(".site").append(fourthLevelValue.site);
+
+																																	$(
+																																			".listCases")
+																																			.find(
+																																					".site")
+																																			.addClass(
+																																					"siteSort");
+																																	$(
+																																			".listCases")
+																																			.find(
+																																					".site")
+																																			.removeClass(
+																																					"site");
 
 																																});
 
@@ -264,7 +301,8 @@ $(document)
 
 																												if (thirdLevelValue != null) {
 
-																													datethirdLevelValue = thirdLevelValue.split("T");
+																													datethirdLevelValue = thirdLevelValue
+																															.split("T");
 																													datethirdLevelValue = datethirdLevelValue[0]
 																															.split("-");
 																													date = datethirdLevelValue[2]
@@ -314,23 +352,22 @@ $(document)
 
 																												}
 																											}
-																										
 
 																											if (thirdLevelKey == "category") {
-																														console.log("cat "+thirdLevelValue)
+
 																												CategoryTag(thirdLevelValue);
 																												$(
-																												".listCases")
-																												.find(
-																														".category")
-																												.addClass(
-																														"categorySort");
-																										$(
-																												".listCases")
-																												.find(
-																														".category")
-																												.removeClass(
-																														"category");
+																														".listCases")
+																														.find(
+																																".category")
+																														.addClass(
+																																"categorySort");
+																												$(
+																														".listCases")
+																														.find(
+																																".category")
+																														.removeClass(
+																																"category");
 																											}
 
 																										});
@@ -342,22 +379,26 @@ $(document)
 
 											$(".listCases").append(" <hr>");
 											pagination();
-											$(".current").trigger( "click" );
+											$(".current").trigger("click");
 
 										})
-								.fail(function(jqXHR, textStatus, errorThrown) {
-									$('.listCases').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
-								});
-				
+								.fail(
+										function(jqXHR, textStatus, errorThrown) {
+											$('.listCases')
+													.html(
+															"<div class='failedService'><img src='"
+																	+ fail_service_img
+																	+ "' alt='service fail' /><br><p>Failed to load service</p></div>");
+										});
+
 					} else {
 
 						// Change the input of the search with the URL
 						// parameters if they exist and submit the form
 
-
 						// Change the input of the search with the URL
 						// parameters if they exist and submit the form
-						
+
 						if (hidden_title.length == 0) {
 							$("#title").val("");
 						} else {
@@ -366,57 +407,44 @@ $(document)
 
 						if (hidden_category.length == 0) {
 							$("#category").val("");
-							
-							
-						    fillSelectors("#category", url_category,"");
-						   
+
+							fillSelectors("#category", url_category, "");
+
 						} else {
-							
-							
-							
-						    fillSelectors("#category", url_category,hidden_category);
-						    
-							
-							 
+
+							fillSelectors("#category", url_category,
+									hidden_category);
+
 						}
 
 						if (hidden_isp.length == 0) {
 							$("#isp").val("");
-							fillSelectors("#isp", url_isp,"");
-						    
+							fillSelectors("#isp", url_isp, "");
+
 						} else {
 
-							
-							
-							
-							fillSelectors("#isp", url_isp,hidden_isp);
-						   
-							
-							 
-							 
+							fillSelectors("#isp", url_isp, hidden_isp);
 
 						}
 
 						if (hidden_site.length == 0) {
 							$("#site").val("");
-							
-						    fillSelectors("#site", url_site,"");
+
+							fillSelectors("#site", url_site, "");
 						} else {
-							
-						    fillSelectors("#site", url_site,hidden_site);
+
+							fillSelectors("#site", url_site, hidden_site);
 
 						}
 
 						if (hidden_region.length == 0) {
 							$("#region").val("");
-						
-						    fillSelectors("#region", url_region,"");
-				
+
+							fillSelectors("#region", url_region, "");
+
 						} else {
-						
-						
-						    fillSelectors("#region", url_region,hidden_region);
-						    
+
+							fillSelectors("#region", url_region, hidden_region);
 
 						}
 
@@ -433,27 +461,22 @@ $(document)
 						}
 
 						$("#advanced_search").submit();
-						pagination();
-						$(".current").trigger( "click" );
+						
 					}
-					
-					
-					
-					
-					
-					
+
 				});
 
 // When click on search icon
-$("#advanced_search").submit(function(e) {
+$("#advanced_search")
+		.submit(
+				function(e) {
 
 					// Empty the search result to fill with new result
 					$(".listCases").empty();
 
 					// Serialize the form
 					formSer = $("#advanced_search").serializeObject();
-					
-					
+
 					if (($("#region").chosen().val()).length === 0) {
 
 						formSer.region = $("#hidden_region").val();
@@ -466,7 +489,8 @@ $("#advanced_search").submit(function(e) {
 							formSer.region = $("#region").chosen().val()[0];
 
 						} else {
-							formSer.region = $("#region").chosen().val()[0] + ", ";
+							formSer.region = $("#region").chosen().val()[0]
+									+ ", ";
 							for (var i = 1; i < ($("#region").chosen().val()).length; i++) {
 
 								if (i == ($("#region").chosen().val()).length - 1)
@@ -474,14 +498,14 @@ $("#advanced_search").submit(function(e) {
 											+ $("#region").chosen().val()[i];
 								else
 									formSer.region = formSer.region
-											+ $("#region").chosen().val()[i] + ", ";
+											+ $("#region").chosen().val()[i]
+											+ ", ";
 
 							}
 
 						}
 
 					}
-				
 
 					if (($("#category").chosen().val()).length === 0) {
 
@@ -495,7 +519,8 @@ $("#advanced_search").submit(function(e) {
 							formSer.category = $("#category").chosen().val()[0];
 
 						} else {
-							formSer.category = $("#category").chosen().val()[0] + ", ";
+							formSer.category = $("#category").chosen().val()[0]
+									+ ", ";
 							for (var i = 1; i < ($("#category").chosen().val()).length; i++) {
 
 								if (i == ($("#category").chosen().val()).length - 1)
@@ -503,14 +528,14 @@ $("#advanced_search").submit(function(e) {
 											+ $("#category").chosen().val()[i];
 								else
 									formSer.category = formSer.category
-											+ $("#category").chosen().val()[i] + ", ";
+											+ $("#category").chosen().val()[i]
+											+ ", ";
 
 							}
 
 						}
 
 					}
-					
 
 					if (($("#isp").chosen().val()).length === 0) {
 
@@ -532,23 +557,20 @@ $("#advanced_search").submit(function(e) {
 											+ $("#isp").chosen().val()[i];
 								else
 									formSer.isp = formSer.isp
-											+ $("#isp").chosen().val()[i] + ", ";
+											+ $("#isp").chosen().val()[i]
+											+ ", ";
 
 							}
 
 						}
 
 					}
-					
 
-        
 					if (($("#site").chosen().val()).length === 0) {
-						
-						
+
 						formSer.site = $("#hidden_site").val();
-						
+
 						$("#hidden_site").val("")
-						 
 
 					} else {
 
@@ -565,7 +587,8 @@ $("#advanced_search").submit(function(e) {
 											+ $("#site").chosen().val()[i];
 								else
 									formSer.site = formSer.site
-											+ $("#site").chosen().val()[i] + ", ";
+											+ $("#site").chosen().val()[i]
+											+ ", ";
 
 							}
 							$("#hidden_site").val(formSer.site)
@@ -585,6 +608,7 @@ $("#advanced_search").submit(function(e) {
 								url : url_data_search,
 								dataType : 'json',
 								method : 'POST',
+								async: false,
 								data : JSON.stringify(formSer),
 								contentType : 'application/json'
 							})
@@ -678,22 +702,21 @@ $("#advanced_search").submit(function(e) {
 
 										var dataJson = JSON.parse(temporal);
 
-										$
-												.each(
+										$.each(
 														dataJson,
 														function(key, value) { // First
 															// Level
 
 															if (key == "count") {
 
-																$("#resultados")
-																		.html(
+																$("#resultados").html(
 																				"Resultados de busqueda <strong>"
 																						+ value
 																						+ "</strong>");
-																
 
-																$('#countList').val(value);
+																$('#countList')
+																		.val(
+																				value);
 															}
 
 															// We need to access
@@ -717,14 +740,19 @@ $("#advanced_search").submit(function(e) {
 																											thirdLevelKey,
 																											thirdLevelValue) { // Third
 																										// Level
+																										
 
 																										if (thirdLevelKey == "id") {
 																											$(
 																													".listCases")
 																													.append(
-																															"<div class='col-xs-12 smallBar clickable' style='border-bottom:1px solid #7C96E8' onclick=goTo("+ thirdLevelValue +")>" 																																	
+																															"<div class='col-xs-12 smallBar clickable' style='border-bottom:1px solid #7C96E8' onclick=goTo("
+																																	+ thirdLevelValue
+																																	+ ")>"
 																																	+ "<div class='h5Style title search'>"
-																																	+ "<input type='hidden' class='id_case' value='"+ thirdLevelValue +"'>"		
+																																	+ "<input type='hidden' class='id_case' value='"
+																																	+ thirdLevelValue
+																																	+ "'>"
 																																	+ "<div class='col-xs-2 date'></div>"
 																																	+ "<div class='col-xs-2 name' style='display: flex;'></div>"
 																																	+ "<div class='col-xs-2 site'></div>"
@@ -849,23 +877,41 @@ $("#advanced_search").submit(function(e) {
 																																	fourthLevelValue) {
 
 																																if (thirdLevelValue.length < 2) {
-																																	
-																																	$(".listCases").find(".site").append(fourthLevelValue.site);
+
+																																	$(
+																																			".listCases")
+																																			.find(
+																																					".site")
+																																			.append(
+																																					fourthLevelValue.site);
 
 																																} else {
-																																
-																																	
-																																			$(".listCases").find(".site").html("Varios");
-																																		
 
-																																}				
-																																
-//																																$(".listCasesAdvanced").find(".site").append(fourthLevelValue.site);
-																																				
-																																				$(".listCases").find(".site").addClass("siteSort");
-																																				$(".listCases").find(".site").removeClass("site");
+																																	$(
+																																			".listCases")
+																																			.find(
+																																					".site")
+																																			.html(
+																																					"Varios");
 
-																																			});
+																																}
+
+																																// $(".listCasesAdvanced").find(".site").append(fourthLevelValue.site);
+
+																																$(
+																																		".listCases")
+																																		.find(
+																																				".site")
+																																		.addClass(
+																																				"siteSort");
+																																$(
+																																		".listCases")
+																																		.find(
+																																				".site")
+																																		.removeClass(
+																																				"site");
+
+																															});
 																										}
 
 																										if (thirdLevelKey == "start_date") {
@@ -949,17 +995,17 @@ $("#advanced_search").submit(function(e) {
 																										if (thirdLevelKey == "category") {
 																											CategoryTag(thirdLevelValue);
 																											$(
-																											".listCases")
-																											.find(
-																													".category")
-																											.addClass(
-																													"categorySort");
-																									$(
-																											".listCases")
-																											.find(
-																													".category")
-																											.removeClass(
-																													"category");
+																													".listCases")
+																													.find(
+																															".category")
+																													.addClass(
+																															"categorySort");
+																											$(
+																													".listCases")
+																													.find(
+																															".category")
+																													.removeClass(
+																															"category");
 
 																										}
 																									});
@@ -968,18 +1014,20 @@ $("#advanced_search").submit(function(e) {
 														});
 
 										$(".listCases").append(" <hr>");
-										
-										
-										
 
-									}).fail(function(jqXHR, textStatus, errorThrown) {
-										$('.listCases').html("<div class='failedService'><img src='"+ fail_service_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
+									})
+							.fail(
+									function(jqXHR, textStatus, errorThrown) {
+										$('.listCases')
+												.html(
+														"<div class='failedService'><img src='"
+																+ fail_service_img
+																+ "' alt='service fail' /><br><p>Failed to load service</p></div>");
 									});
 
-					
-
+					pagination();
+					$(".current").trigger("click");
 				});
-
 
 // Order by name of the case
 $("#nameClick").on('click', function() { // when you click the div
@@ -996,7 +1044,7 @@ $("#nameClick").on('click', function() { // when you click the div
 
 });
 
-//Order by isp of the case
+// Order by isp of the case
 $("#ispClick").on('click', function() { // when you click the div
 
 	if ($("#ispClick").hasClass("desc")) {
@@ -1011,7 +1059,7 @@ $("#ispClick").on('click', function() { // when you click the div
 
 });
 
-//Order by site of the case
+// Order by site of the case
 $("#siteClick").on('click', function() { // when you click the div
 
 	if ($("#siteClick").hasClass("desc")) {
@@ -1026,7 +1074,7 @@ $("#siteClick").on('click', function() { // when you click the div
 
 });
 
-//Order by region of the case
+// Order by region of the case
 $("#regionClick").on('click', function() { // when you click the div
 
 	if ($("#regionClick").hasClass("desc")) {
@@ -1042,7 +1090,7 @@ $("#regionClick").on('click', function() { // when you click the div
 
 });
 
-//Order by category of the case
+// Order by category of the case
 $("#categoryClick").on('click', function() { // when you click the div
 
 	if ($("#categoryClick").hasClass("desc")) {
@@ -1057,7 +1105,7 @@ $("#categoryClick").on('click', function() { // when you click the div
 
 });
 
-//Order by date of the case
+// Order by date of the case
 $("#dateClick").on('click', function() { // when you click the div
 
 	if ($("#dateClick").hasClass("desc")) {
@@ -1072,7 +1120,7 @@ $("#dateClick").on('click', function() { // when you click the div
 
 });
 
-//Ordering the list by date of the case in ascending order
+// Ordering the list by date of the case in ascending order
 function sortDateAsc(parent, child) {
 
 	clearSelectedOrder();
@@ -1103,16 +1151,18 @@ function sortDateAsc(parent, child) {
 
 				$(".listCases")
 						.append(
-								"<div class='this col-xs-12 smallBar clickable' style='border-bottom:1px solid #7C96E8'  onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
+								"<div class='this col-xs-12 smallBar clickable' style='border-bottom:1px solid #7C96E8'  onclick=goTo("
+										+ $(this).find(".id_case").val()
+										+ ")><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
-	
+
 				$(".this ").removeClass("this ");
 
 			});
 
 }
 
-//Ordering the list by date of the case in ascending order
+// Ordering the list by date of the case in ascending order
 function sortDateDes(parent, child) {
 
 	clearSelectedOrder();
@@ -1143,16 +1193,17 @@ function sortDateDes(parent, child) {
 
 				$(".listCases")
 						.append(
-								"<div class='this col-xs-12 smallBar clickable' style='border-bottom:1px solid #7C96E8'onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
+								"<div class='this col-xs-12 smallBar clickable' style='border-bottom:1px solid #7C96E8'onclick=goTo("
+										+ $(this).find(".id_case").val()
+										+ ")><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this");
 
 			});
 
-
 }
 
-//Ordering the list by name of the case in ascending order
+// Ordering the list by name of the case in ascending order
 function sortNameAsc(parent, child) {
 
 	clearSelectedOrder();
@@ -1174,7 +1225,9 @@ function sortNameAsc(parent, child) {
 
 				$(".listCases")
 						.append(
-								"<div class='this col-xs-12 smallBar clickable' style='border-bottom:1px solid #7C96E8' onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
+								"<div class='this col-xs-12 smallBar clickable' style='border-bottom:1px solid #7C96E8' onclick=goTo("
+										+ $(this).find(".id_case").val()
+										+ ")><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this ");
 
@@ -1182,7 +1235,7 @@ function sortNameAsc(parent, child) {
 
 }
 
-//Ordering the list by name of the case in ascending order
+// Ordering the list by name of the case in ascending order
 function sortNameDes(parent, child) {
 
 	clearSelectedOrder();
@@ -1204,7 +1257,9 @@ function sortNameDes(parent, child) {
 
 				$(".listCases")
 						.append(
-								"<div class='this col-xs-12 smallBar clickable' style='border-bottom:1px solid #7C96E8' onclick=goTo("+ $(this).find(".id_case").val() +")><div class='h5Style title'></div></div>");
+								"<div class='this col-xs-12 smallBar clickable' style='border-bottom:1px solid #7C96E8' onclick=goTo("
+										+ $(this).find(".id_case").val()
+										+ ")><div class='h5Style title'></div></div>");
 				$(".this ").html($(this));
 				$(".this ").removeClass("this");
 
@@ -1212,7 +1267,7 @@ function sortNameDes(parent, child) {
 
 }
 
-//Clear selection order
+// Clear selection order
 function clearSelectedOrder() {
 
 	$("#dateClick").removeClass("selectOrder");
@@ -1268,71 +1323,91 @@ function fillChosenValues(values, id) {
 
 }
 
+function CategoryTag(thirdLevelValue) {
 
+	switch (thirdLevelValue.name) {
 
-function CategoryTag(thirdLevelValue){
-	
-	switch(thirdLevelValue.name) {
+	case "blocked_tag":
+		$(".listCases")
+				.find(".category")
+				.append(
+						' <div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+								+ thirdLevelValue.display_name
+								+ '</div><div class="right_cornerTag"></div></div>');
+		break;
+	case "continue_tag":
+		$(".listCases")
+				.find(".category")
+				.append(
+						' <div class="continue_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+								+ thirdLevelValue.display_name
+								+ '</div><div class="right_cornerTag"></div></div>');
 
-    case "blocked_tag":
-    	$(".listCases").find(".category")
-		.append(' <div class="blocked_tag"><div class="left_cornerTag"></div><div class="contentTag">'
-				+ thirdLevelValue.display_name + '</div><div class="right_cornerTag"></div></div>');																								
-        break;
-    case "continue_tag":
-    	$(".listCases").find(".category")
-		.append(' <div class="continue_tag"><div class="left_cornerTag"></div><div class="contentTag">'
-				+ thirdLevelValue.display_name + '</div><div class="right_cornerTag"></div></div>');
+		break;
 
-        break;
-    
-    case "interception_tag":
-    	$(".listCases").find(".category")
-		.append(' <div class="interception_tag"><div class="left_cornerTag"></div><div class="contentTag">'
-				+ thirdLevelValue.display_name + '</div><div class="right_cornerTag"></div></div>');
+	case "interception_tag":
+		$(".listCases")
+				.find(".category")
+				.append(
+						' <div class="interception_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+								+ thirdLevelValue.display_name
+								+ '</div><div class="right_cornerTag"></div></div>');
 
-        break;
-    
-    case "disconnected_tag":
-    	$(".listCases").find(".category")
-		.append(' <div class="disconnected_tag"><div class="left_cornerTag"></div><div class="contentTag">'
-				+ thirdLevelValue.display_name + '</div><div class="right_cornerTag"></div></div>');
+		break;
 
-        break;
-        
-    case "slowdown_tag":
-    	$(".listCases").find(".category")
-		.append(' <div class="slowdown_tag"><div class="left_cornerTag"></div><div class="contentTag">'
-				+ thirdLevelValue.display_name + '</div><div class="right_cornerTag"></div></div>');
+	case "disconnected_tag":
+		$(".listCases")
+				.find(".category")
+				.append(
+						' <div class="disconnected_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+								+ thirdLevelValue.display_name
+								+ '</div><div class="right_cornerTag"></div></div>');
 
-        break;
-        
-    case "dos_tag":
-    	$(".listCases").find(".category")
-		.append(' <div class="dos_tag"><div class="left_cornerTag"></div><div class="contentTag">'
-				+ thirdLevelValue.display_name + '</div><div class="right_cornerTag"></div></div>');
+		break;
 
-        break;
-    
-    case "fail_tag":
-    	$(".listCases").find(".category")
-		.append(' <div class="fail_tag"><div class="left_cornerTag"></div><div class="contentTag">'
-				+ thirdLevelValue.display_name + '</div><div class="right_cornerTag"></div></div>');
+	case "slowdown_tag":
+		$(".listCases")
+				.find(".category")
+				.append(
+						' <div class="slowdown_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+								+ thirdLevelValue.display_name
+								+ '</div><div class="right_cornerTag"></div></div>');
 
-        break; 
-        
-    default:
-    	$(".listCases").find(".category")
-		.append(' <div class=""><div class="left_cornerTag"></div><div class="contentTag">'
-				+ thirdLevelValue.display_name + '</div><div class="right_cornerTag"></div></div>');
+		break;
 
-        break;
+	case "dos_tag":
+		$(".listCases")
+				.find(".category")
+				.append(
+						' <div class="dos_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+								+ thirdLevelValue.display_name
+								+ '</div><div class="right_cornerTag"></div></div>');
+
+		break;
+
+	case "fail_tag":
+		$(".listCases")
+				.find(".category")
+				.append(
+						' <div class="fail_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+								+ thirdLevelValue.display_name
+								+ '</div><div class="right_cornerTag"></div></div>');
+
+		break;
+
+	default:
+		$(".listCases").find(".category").append(
+				' <div class=""><div class="left_cornerTag"></div><div class="contentTag">'
+						+ thirdLevelValue.display_name
+						+ '</div><div class="right_cornerTag"></div></div>');
+
+		break;
 	}
-	
+
 }
 
-function goTo(id){
-	
-	window.location.href = url_web+"/cases/case/"+id;
-	
+function goTo(id) {
+
+	window.location.href = url_web + "/cases/case/" + id;
+
 }

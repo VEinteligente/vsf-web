@@ -359,12 +359,12 @@ function fillSelectors(selectContainer, url_data, values){
 <script>
 
 function pagination(){
-
+	$("#pagin").html("");
 	//Pagination
 	pageSize = 10;
 	
 	elementCount = parseInt($('#resultados strong').text());
-	
+
 	pageCount = Math.ceil(elementCount / pageSize);
 
 	for (var i = 0; i < pageCount; i++) {

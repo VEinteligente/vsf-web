@@ -453,17 +453,17 @@ $(document)
 												var until = new Date();
 												var today =  until.getFullYear()+ "-"+ until.getMonth() + "-"+ until.getDate();
 												var since = date.getFullYear()+ "-"+ date.getMonth() + "-"+ date.getDate();
-												twitter_search = twitter_search + " " +  since
+												twitter_search = twitter_search + " since:" +  since
 												twitterSearch(encodeURIComponent(twitter_search));
 											}
 											else{
 												var until = dateEnd.getFullYear()+ "-"+ dateEnd.getMonth()+ "-"+ dateEnd.getDate();
 												var since = date.getFullYear()+ "-"+ date.getMonth() + "-"+ date.getDate();
-												twitter_search = twitter_search + " " + until  + " " +  since
+												twitter_search = twitter_search + " until:" + until  + " since:" +  since
 												twitterSearch(encodeURIComponent(twitter_search));
 											}
 											
-											
+											$("#hidden_twitterSearch").val(twitter_search);
 										}
 										else{
 											$('#subGraph1').remove();

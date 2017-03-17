@@ -1,5 +1,7 @@
 function twitterSearch(searchWord) {
-
+	console.log(searchWord)
+	
+	console.log(searchWord)
 	$.ajax({
 		url : url_data_twitter + "search_twitter=" + searchWord,
 		context : document.body,
@@ -63,10 +65,10 @@ function twitterSearchModal() {
 			 + '<div id="modaltwitterSearchText"><div id="modaltwitterSearchTextTitle">'
 			 + '<div class="h4Style title"></div></div><div id="modaltwitterSearchTextContent">'
 			 + '<div class="title"></div></div></div></div>');
-	
-	var searchWord = $("#twitterSearchTextContent .title").text();
+	var searchWord = $("#hidden_twitterSearch").val();
+	var searchWordText = $("#twitterSearchTextContent .title").text();
 	$("#modalSearchTextTitle").append('<div id="twitterSearchTextTitle"><div class="h4Style title">Resultados de Twitter: </div></div>')
-	$("#modalSearchTextTitle").append( searchWord );
+	$("#modalSearchTextTitle").append( searchWordText );
 	
 	$.ajax({
 		url : url_data_twitter + "search_twitter=" + searchWord,
@@ -102,8 +104,11 @@ function twitterSearchModal() {
 														+ result.text + '</p> </a></blockquote>');
 
 						}
-						// Load the component style from the tweet with the twitter API			
-						twttr.widgets.load(); 
+						 if (typeof (twttr) != 'undefined') {
+					            twttr.widgets.load();
+					        } else {
+					            $.getScript('http://platform.twitter.com/widgets.js');
+					        }
 					});
 				}
 				

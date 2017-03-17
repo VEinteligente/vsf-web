@@ -58,6 +58,7 @@ $(document).ready(function() {
 									url : url_data,
 									method : "GET",
 									dataType : 'json',
+									async: false,
 									contentType : 'application/json'
 								})
 								.done(
@@ -212,7 +213,7 @@ $(document).ready(function() {
 																												$.each( thirdLevelValue, function( fourthLevelKey, fourthLevelValue) {
 																													
 																													if (thirdLevelValue.length < 2) {
-																										
+																														async: false,											
 																														$(".listCasesAdvanced").find(".site").append(fourthLevelValue.site);
 
 																													} else {
@@ -698,6 +699,7 @@ $("#advanced_search")
 								url : url_data_search,
 								dataType : 'json',
 								method : 'POST',
+								async: false,
 								data : JSON.stringify(formSer),
 								contentType : 'application/json'
 							})
@@ -1138,6 +1140,8 @@ $("#advanced_search")
 														});
 
 										$(".listCasesAdvanced").append(" <hr>");
+										pagination();
+										$(".current").trigger("click");
 
 									}).fail(
 									function(jqXHR, textStatus, errorThrown) {

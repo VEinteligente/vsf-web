@@ -1,10 +1,15 @@
 // This value indicates the maximum Y values of a graph. If the value is 
-// over this value then a simplificated graph will be shown.
+// over this value then a simplificated graph will be shown. 
 var maxYValues = 2; 
+
+// These values indicate the diferent options for the X axis 
 var Year = "Year";
 var Month = "Month";
 var All = "All";
+
+// This value indicates if the Gantt has been collapsed
 var collapse = 0;
+
 
 function gantt(timelap){
 	
@@ -12,18 +17,12 @@ function gantt(timelap){
 	// This function calls the gantt graph. Timelap indicates the unit of time
 	// of the X axis
 	
-	
 	$("#timeline1").html("<div class='row' style='float:right; " +
 			"margin-right:25px'><button onClick='gantt(Year)'" +
 			"class='contextualButtonFixedSize'>Year</button>" +
 			"<button onClick='gantt(Month)' class='contextualButtonFixedSize'>Month</button>" +
 			"<button onClick='gantt(All)' class='contextualButtonFixedSize'>All</button>" +
 			"</div>");
-	
-	
-	
-	
-	
 	
 	// This value indicates the starting time of the Gantt
 	var timelineStart = (new Date($('#hiddenDate').val())).getTime();
@@ -183,8 +182,8 @@ function gantt(timelap){
 	
 	
 		
-	
-	
+// These section loads the d3 chart characteristics and options. The option 
+// "rect" is a polygon. 
 	
 (function () {
   d3.timeline = function() {
@@ -367,18 +366,13 @@ function gantt(timelap){
           d.forEach(function (datum, index) {
             datum.times.forEach(function (time, j) {
               if(index === 0 && j === 0){
-                originTime = time.starting_time;               // Store the
-																// timestamp
-																// that will
-																// serve as
-																// origin
-                time.starting_time = 0;                        // Set the
-																// origin
-                time.ending_time = time.ending_time - originTime;     // Store
-																		// the
-																		// relative
-																		// time
-																		// (millis)
+                originTime = time.starting_time;               
+                
+                // Store the timestamp that will serve as origin
+                time.starting_time = 0;                        
+                // Set the origin
+                time.ending_time = time.ending_time - originTime;     
+                // Store the relative time (millis)
               }else{
                 time.starting_time = time.starting_time - originTime;
                 time.ending_time = time.ending_time - originTime;
@@ -487,10 +481,12 @@ function gantt(timelap){
  
             })
             .on("mouseover", function (d, i) {
+              // This loads the function and tooltip
               mouseover(d, i, datum);
               $(".informationPanel").show();
             })
             .on("mouseout", function (d, i) {
+              // This loads the function and hides tooltip
               mouseout(d, i, datum);
               $(".informationPanel").hide();
             })
@@ -1022,7 +1018,7 @@ function adjustTextLabels(selection) {
 }
 
 function drawMiniGantts(data,i,label,timelineEnd){
-	
+	// This function loads the miniGantts cards if the Gantt has been collapsed 
 
 	$(".subGraphDiv").append('<div class="col-xs-3 hoverOpen" id="subGraph'+ (i) + '" data-toggle="modal" data-target="#modal" data-tooltip >'
 			+'<div class="row"><div class="container-fluid col-xs-12" id="twitterDiv"><div class="twitterTweet"></div>'
@@ -1031,18 +1027,15 @@ function drawMiniGantts(data,i,label,timelineEnd){
 			+ '<div  class="watermark subGraphDivHover" onClick="ganttModal(All,'+i+')"><p>Haga clic para abrir</p>'
 			+ '</div></div>	</div>')
 
+			// Loads the watermark "click to open" to each corresponding card.
 	$('.subGraphDivHover').hide();
+	
 	$("#subGraph"+ (i)).mouseover(function(){
-		$("#subGraph"+ (i)).find('.subGraphDivHover').show();
-}).mouseleave(function(){
-	$("#subGraph"+ (i)).find('.subGraphDivHover').hide();
-});
+		$("#subGraph"+ (i)).find('.subGraphDivHover').show();	
+	}).mouseleave(function(){
+		$("#subGraph"+ (i)).find('.subGraphDivHover').hide();
+	});
 	
-	
-	
-	
-
-
 	
 	
 	var testData = data;
@@ -1254,8 +1247,10 @@ $.ajax({
 					dataLabel[dataLabel.length]= (isp + "-" + " " + "-" + domain)								
 				}
 				
-				// MiniGantts
-				
+				// MiniGantts data 
+				// This sections saves the miniGantts cards for each corresponding
+				// case. The logic is similar to the one from the whole gantt
+				// but saves the values separately.
 				var name =  domain ;
 				var miniLabel =isp + "-" + type + "-" + domain;
 				var existsMiniGantt = 0;
@@ -1343,8 +1338,7 @@ $.ajax({
 					
 			});
 	
-			console.log(miniGanttData)
-			console.log(miniGanttsLabel)
+
 			for(var k = 0; k < miniGanttsLabel.length ; k++){
 				var times_element = "";
 				var element_miniGantt = "";
@@ -1379,27 +1373,12 @@ $.ajax({
 						miniGanttResult.push(element_miniGantt);
 						
 					}
-					
-				
-					
-					
-					
-				
-				
-				
-				//drawMiniGantts(miniGanttResult, i, miniGantts[i]);
-				
-//				if(miniGantts[i]==((label_element).split("-"))[2]){
-//					
-//					drawMiniGantts(miniGanttResult, i, miniGantts[i]);
-//				}
-//			
-			
-						
+		
 				
 		
 			}
-
+			// Once all the data is loaded, call the function drawMiniGantts 
+			// to draw the card gantt 
 			if(timelap !="Month" && timelap !="Year" && timelap !="All"){
 				drawMiniGantts(miniGanttResult, i, miniGantts[i],new Date());
 			}

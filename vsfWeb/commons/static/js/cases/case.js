@@ -65,7 +65,7 @@ $(document)
 					
 					$("#download").attr("href", url_one_case_excel + "id=" + pk);
 
-					$('#downloadPdf').attr("href", url_one_case_pdf);
+					//$('#downloadPdf').attr("href", url_one_case_pdf);
 //					$('#SavePdf').attr("href", url_one_case_pdf);
 					$("#shareFacebook").attr("href", url_share_facebook);
 
@@ -140,11 +140,6 @@ $(document)
 											
 											$.each(data.domains, function(index, result){
 												var site_name = result.site;
-<<<<<<< HEAD
-												
-=======
-
->>>>>>> origin/Bugs
 												if(!(site_name == null)){
 													site_name = site_name.replace(" ","");
 													if(result.ip == null){

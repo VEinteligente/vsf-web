@@ -310,11 +310,16 @@
         var url_data_twitter ="{% url 'General:SearchTwitterApiEmpty' %}"
         var fail_service_img = "{% static 'img/icons/vsf_iconfailure_v101.svg' %}";
         var fail_twitter_img = "{% static 'img/icons/vsf_icontwitterfailure_v101.svg' %}";
-        var url_data_measurements ="{% url 'Summary:MeasurementsTable' pk=pk %}"
-        
-        
-        
-        
+        var url_data_measurements ="{% url 'Summary:MeasurementsTable' pk=pk %}";
+        var BLOCKED_DPI = "{{ BLOCKED_DPI }}";
+        var BLOCKED_DNS = "{{ BLOCKED_DNS }}";
+        var BLOCKED_IP = "{{ BLOCKED_IP }}";
+        var TRAFFIC_INTERCEPTION = "{{ TRAFFIC_INTERCEPTION }}";
+        var FAILURE_DNS = "{{ FAILURE_DNS }}";
+        var INTERNET_SPEED = "{{ INTERNET_SPEED }}";
+        var TRAFFIC_ALTERATION = "{{ TRAFFIC_ALTERATION }}";
+        var OTHERS = "{{ OTHERS }}";
+   
 </script>
 <script src="{% static 'js/d3-timeline/d3-timeline.js' %}"></script>
 <script src="{% static 'js/d3-timeline/d3-timeline_modal.js' %}"></script>

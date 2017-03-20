@@ -958,34 +958,34 @@ function colorSelect(type){
 	// of the polygons
 	switch(type) {
 	    case "bloqueo por DPI":
-	    	var color = "red";																				
+	    	var color = BLOCKED_DPI;																				
 	        break;
 	    case "bloqueo por DNS":
-	    	var color = "green";
+	    	var color = BLOCKED_DNS;
 	        break;
 	    
 	    case "bloqueo por IP":
-	    	var color = "blue";
+	    	var color = BLOCKED_IP;
 	        break;
 	    
 	    case "Interceptacion de trafico":
-	    	var color = "yellow";
+	    	var color = TRAFFIC_INTERCEPTION;
 	        break;
 	        
 	    case "falla de dns":
-	    	var color = "purple";
+	    	var color = FAILURE_DNS;
 	        break;
 	        
 	    case "Velocidad de internet":
-	    	var color = "gray";
+	    	var color = INTERNET_SPEED;
 	        break;
 	    
 	    case "alteracion de trafico por intermediarios":
-	    	 var color = "black";
+	    	 var color = TRAFFIC_ALTERATION;
 	        break; 
 	        
 	    default:
-	    	var color = "white"; 
+	    	var color = OTHERS; 
 	        break;
 	}
 	

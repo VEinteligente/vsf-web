@@ -957,34 +957,34 @@ function colorSelect(type){
 	// of the polygons
 	switch(type) {
 	    case "bloqueo por DPI":
-	    	var color = "red";																				
+	    	var color = BLOCKED_DPI;																				
 	        break;
 	    case "bloqueo por DNS":
-	    	var color = "green";
+	    	var color = BLOCKED_DNS;
 	        break;
 	    
 	    case "bloqueo por IP":
-	    	var color = "blue";
+	    	var color = BLOCKED_IP;
 	        break;
 	    
 	    case "Interceptacion de trafico":
-	    	var color = "yellow";
+	    	var color = TRAFFIC_INTERCEPTION;
 	        break;
 	        
 	    case "falla de dns":
-	    	var color = "purple";
+	    	var color = FAILURE_DNS;
 	        break;
 	        
 	    case "Velocidad de internet":
-	    	var color = "gray";
+	    	var color = INTERNET_SPEED;
 	        break;
 	    
 	    case "alteracion de trafico por intermediarios":
-	    	 var color = "black";
+	    	 var color = TRAFFIC_ALTERATION;
 	        break; 
 	        
 	    default:
-	    	var color = "white"; 
+	    	var color = OTHERS; 
 	        break;
 	}
 	
@@ -1030,8 +1030,8 @@ function drawMiniGantts(data,i,label,timelineEnd){
 
 	$(".subGraphDiv").append('<div class="col-xs-3 hoverOpen" id="subGraph'+ (i) + '" data-toggle="modal" data-target="#modal" data-tooltip >'
 			+'<div class="row"><div class="container-fluid col-xs-12" id="twitterDiv"><div class="twitterTweet"></div>'
-			+ '<div class="twitterSearchText"><div class="twitterSearchTextTitle"><div class="h4Style title"></div>'
-			+'</div><div class="twitterSearchTextContent">Resultados de <span>'+ label +'</span><div class="title"></div></div></div></div>'
+			+ '<div class="twitterSearchText">'
+			+'<div class="twitterSearchTextContent">Resultados de <span>'+ label +'</span><div class="title"></div></div></div></div>'
 			+ '<div  class="watermark subGraphDivHover" onClick="ganttModal(All,'+i+')"><p>Haga clic para abrir</p>'
 			+ '</div></div>	</div>')
 
@@ -1071,13 +1071,13 @@ function drawMiniGantts(data,i,label,timelineEnd){
 																				// on
 																	// the
 
-	$("#subGraph"+ (i) + " .twitterTweet ").append('<div>Bloque: <span  style="color:red">DPI</span>'
-			+ ', <span  style="color:green">DNS</span>, <span  style="color:blue">IP</span></div>');
+	$("#subGraph"+ (i) + " .twitterTweet ").append('<div>Bloque: <span class="rhombus" style="background-color: ' + BLOCKED_DPI  + '"> </span><span>DPI</span>'
+			+ ', <span class="rhombus" style="background-color: ' + BLOCKED_DNS  + '"> </span><span>DNS</span>, <span class="rhombus" style="background-color: ' + BLOCKED_IP  + '"> </span><span>IP</span></div>');
 
-	$("#subGraph"+ (i) + " .twitterTweet ").append('<div style="color:yellow">Interceptacion de trafico</div>');
-	$("#subGraph"+ (i) + " .twitterTweet ").append('<div style="color:purple">Falla dns</div>');
-	$("#subGraph"+ (i) + " .twitterTweet ").append('<div style="color:gray">Velocidad de internet</div>');
-	$("#subGraph"+ (i) + " .twitterTweet ").append('<div style="color:black">Alteracion de trafico por intermediarios</div>');
+	$("#subGraph"+ (i) + " .twitterTweet ").append('<div><span class="rhombus" style="background-color: ' + TRAFFIC_INTERCEPTION  + '"> </span>Interceptacion de trafico</div>');
+	$("#subGraph"+ (i) + " .twitterTweet ").append('<div><span class="rhombus" style="background-color: ' + FAILURE_DNS  + '"> </span>Falla dns</div>');
+	$("#subGraph"+ (i) + " .twitterTweet ").append('<div><span class="rhombus" style="background-color: ' + INTERNET_SPEED  + '"> </span>Velocidad de internet</div>');
+	$("#subGraph"+ (i) + " .twitterTweet ").append('<div><span class="rhombus" style="background-color: ' + TRAFFIC_ALTERATION  + '"> </span>Alteracion de trafico por intermediarios</div>');
 		  
 		  
 	$("#subGraph"+ (i) + " .twitterTweet ").css('font-size','13px');	    

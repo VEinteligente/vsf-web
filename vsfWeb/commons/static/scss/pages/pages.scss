@@ -602,6 +602,7 @@ input#title {
 .downloadBar {
 	font-size: 1.2em;
 	text-align: right;
+	float: right;
 }
 
 
@@ -1488,6 +1489,16 @@ a {
     padding-right: $sm_big_padding;
 }
 
+.rhombus{
+    background: red;
+    display: inline-block;
+    transform: rotate(45deg);
+    margin: 10px 0px 0px 1px;
+    width: 8px;
+    height: 8px;
+    padding-left: 2px;
+
+}
 /* RESPONSIVE */
 
 

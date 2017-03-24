@@ -157,7 +157,7 @@ $(document).ready(
 																			// as
 																			// needed
 																			}
-																		}
+																		)}
 																			var date = new Date(
 																						value.date);
 																				// We

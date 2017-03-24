@@ -113,7 +113,7 @@ $(document)
 													//It can happen that the site is null but the probe reported a blocked or failing url, in that case
 													//we only show the url which triggered the probe
 													if(site_name == null){
-															site_name = site_name.replace(" ","");
+															
 															$("#domainTableBody").append('<tr><td id="nameDomain" style="width:100%">'+result.url+'<a href="'+result.url+'"><i class="fa fa-external-link" style="float:right" aria-hidden="true"></i></a></td></tr>');
 													}
 														

@@ -155,7 +155,7 @@ function gantt(timelap){
 						          tickValues: null
 						        };
 						
-						timelineStart = new Date(start.getFullYear(), start.getMonth()-1, 1);
+						timelineStart = new Date(start.getFullYear(), start.getMonth(), 1);
 						timelineEnd = new Date();
 					}
 					else{
@@ -171,7 +171,10 @@ function gantt(timelap){
 						          tickSize: 6,
 						          tickValues: null
 						        };
+						
+						timelineStart = new Date(start.getFullYear(), start.getMonth(),  start.getDate());
 						timelineEnd = new Date();
+						
 					}
 				}
 			}

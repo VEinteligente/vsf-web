@@ -21,7 +21,7 @@ msgstr ""
 #: commons/templates/pdf/case-pdf.html:7
 #| msgid "Continue"
 msgid "Continua"
-msgstr "Continue"
+msgstr "Ongoing"
 
 #: cases/templates/case-pdf.html:8 cases/templates/case.html:8
 #: commons/templates/pdf/case-pdf.html:9

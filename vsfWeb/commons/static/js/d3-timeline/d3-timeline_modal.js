@@ -1244,31 +1244,31 @@ $.ajax({
 //        		$(".informationPanelTotalCases").html("<strong>Target </strong>: " + site + " " + url + " " + domain + "<br> <strong>Start date</strong>: " + start + " <br> <strong>End date</strong>: " + end );
 //        		var div = $(".informationPanel");
 //        		
-        		div.css("opacity", .9);  
-        		var coordinates = d3.mouse(this);
-        		mouseX = $(this)[0].getAttribute("x");
-				mouseY = parseInt( $(this)[0].getAttribute("y"))+ 60;
-
-				if(mouseX < 0 || mouseX < 280){
-					mouseX = 280;
-				}
-
-				$('.informationPanelGantt').css({
-					top : mouseY + "px",
-					left : mouseX + "px"
-				});
-
-				$('.informationPanelGantt').css("visibility","visible");
-	            })                  
-	        .on("mouseout", function(d) {       
-	        	var div = $(".informationPanel");
-        		
-	        	div.css("opacity", 0); 
-	        	$('.informationPanelGantt').css({
-					top : 0 + "px",
-					left : 0 + "px"
-				});
-	        	$('.informationPanelGantt').css("visibility","hidden");
+//        		div.css("opacity", .9);  
+//        		var coordinates = d3.mouse(this);
+//        		mouseX = $(this)[0].getAttribute("x");
+//				mouseY = parseInt( $(this)[0].getAttribute("y"))+ 60;
+//
+//				if(mouseX < 0 || mouseX < 280){
+//					mouseX = 280;
+//				}
+//
+//				$('.informationPanelGantt').css({
+//					top : mouseY + "px",
+//					left : mouseX + "px"
+//				});
+//
+//				$('.informationPanelGantt').css("visibility","visible");
+//	            })                  
+//	        .on("mouseout", function(d) {       
+//	        	var div = $(".informationPanel");
+//        		
+//	        	div.css("opacity", 0); 
+//	        	$('.informationPanelGantt').css({
+//					top : 0 + "px",
+//					left : 0 + "px"
+//				});
+//	        	$('.informationPanelGantt').css("visibility","hidden");
 	        });
 			
 			

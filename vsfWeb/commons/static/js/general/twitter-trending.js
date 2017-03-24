@@ -10,8 +10,7 @@ function twitterSearch(searchWord) {
 			var search_metadata = response.search_metadata;
 			var statuses = response.statuses;
 				if(statuses.length === 0){
-					$('#twitterDiv').css('padding-right','0');
-					$('#twitterTweet').html("<div class='failedService' ><img  src='"+ fail_twitter_img + "' alt='service fail' /><br><p>No tweets found</p></div>");
+					$('#subGraphTwitter').remove();
 				}
 				else{
 					$.each(statuses,function(index, result) {

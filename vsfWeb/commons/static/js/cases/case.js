@@ -139,7 +139,7 @@ $(document)
 												if(!(site_name == null)){
 													site_name = site_name.replace(" ","");
 													if(result.ip == null){
-														$("#data"+site_name).append('<tr class="rowDomain"><td id="siteDomain" style="width:100%">'+result.url+'</td><td><a href="'+result.url+'"><i class="fa fa-external-link" aria-hidden="true"></i></a></td></tr>');
+														$("#data"+site_name).append('<tr class="rowDomain"><td id="siteDomain" style="width:100%">'+result.url+'</td><td></td><td><a href="'+result.url+'"><i class="fa fa-external-link" aria-hidden="true"></i></a></td></tr>');
 
 													}
 													else{
@@ -451,15 +451,48 @@ $(document)
 											if (dataJson.end_date == null) {
 												
 												var until = new Date();
-												var today =  until.getFullYear()+ "-"+ until.getMonth() + "-"+ until.getDate();
-												var since = date.getFullYear()+ "-"+ date.getMonth() + "-"+ date.getDate();
+												if( (until.getMonth()+1) < 10){
+													var until_month =  "0" + (until.getMonth()+1);
+												}
+												else{
+													var until_month =  (until.getMonth()+1);
+												}	
+												
+												var today =  until.getFullYear()+ "-"+ until_month + "-"+ until.getDate();
+												
+												if( ( date.getMonth()+1) < 10){
+													var since_month =  "0" + (date.getMonth()+1);
+												}
+												else{
+													var since_month =  (date.getMonth()+1);
+												}	
+												
+												var since = date.getFullYear()+ "-"+ since_month + "-"+ date.getDate();
 												twitter_search = twitter_search + " since:" +  since
 												twitterSearch(encodeURIComponent(twitter_search));
 											}
 											else{
 												var until = dateEnd.getFullYear()+ "-"+ dateEnd.getMonth()+ "-"+ dateEnd.getDate();
+												if( (dateEnd.getMonth()+1) < 10){
+													var until_month =  "0" + (dateEnd.getMonth()+1);
+												}
+												else{
+													var until_month =  (dateEnd.getMonth()+1);
+												}
+												
 												var since = date.getFullYear()+ "-"+ date.getMonth() + "-"+ date.getDate();
-												twitter_search = twitter_search + " until:" + until  + " since:" +  since
+												
+												if( ( date.getMonth()+1) < 10){
+													var since_month =  "0" + (date.getMonth()+1);
+												}
+												else{
+													var since_month =  (date.getMonth()+1);
+												}	
+												until = dateEnd.getFullYear()+ "-"+  until_month + "-"+ dateEnd.getDate();
+												since = date.getFullYear()+ "-"+ since_month + "-"+ date.getDate();
+												
+												
+												twitter_search = twitter_search + " until:" + until  + " since:" +  since;
 												twitterSearch(encodeURIComponent(twitter_search));
 											}
 											

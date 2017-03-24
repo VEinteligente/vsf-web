@@ -19,9 +19,9 @@ function gantt(timelap){
 	
 	$("#timeline1").html("<div class='row' style='float:right; " +
 			"margin-right:25px'><button onClick='gantt(Year)'" +
-			"class='contextualButtonFixedSize'>Year</button>" +
-			"<button onClick='gantt(Month)' class='contextualButtonFixedSize'>Month</button>" +
-			"<button onClick='gantt(All)' class='contextualButtonFixedSize'>All</button>" +
+			"class='contextualButtonFixedSize'>Año</button>" +
+			"<button onClick='gantt(Month)' class='contextualButtonFixedSize'>Mes</button>" +
+			"<button onClick='gantt(All)' class='contextualButtonFixedSize'>Todo</button>" +
 			"</div>");
 	
 	// This value indicates the starting time of the Gantt
@@ -104,7 +104,7 @@ function gantt(timelap){
 				        };
 				
 				timelineEnd = new Date();
-				
+				timelineStart = new Date(dateStart.setDate(start.getDate() - 3));
 			
 		}
 		else{

@@ -1032,6 +1032,7 @@ input#title {
     .img-fluid {
     	clip-path: inset(0px 0px 25% 0px);
     	-webkit-clip-path: inset(0px 0px 25% 0px);
+    	clip-path: url(#myClip);
     }
 }
 

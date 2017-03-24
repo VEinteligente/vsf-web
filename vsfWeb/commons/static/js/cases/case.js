@@ -199,6 +199,13 @@ $(document)
 											$("#caseImage").html('<img src="" class="img-fluid" style="width:100%">');
 											var png = png_commons + "_0.png";	
 											$(".img-fluid").attr("src", png);
+											var width_clip_path = $('#caseImage').width();
+											$("#caseImage").append('<svg width="0" height="0">'
+											 + '<defs><clipPath id="myClip">'
+													+ '<rect x="0" y="0" width="'+width_clip_path+'" height="268" />'
+											      + '</clipPath>  </defs> </svg>'
+											      
+											    )
 											
 											
 											$("#caseImage img").attr("src", png);

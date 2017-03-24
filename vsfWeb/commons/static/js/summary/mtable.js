@@ -15,6 +15,7 @@ $(document).ready(
 					var raw_data = null;
 					var data_modal = null;
 					var raw_json = null;
+					var date = null;
 
 					// id count for displyaing the correct .json
 					idcount = 0;
@@ -75,83 +76,92 @@ $(document).ready(
 															// in the table
 															raw_data = JSON
 																	.stringify(value.flags[idcount]);
-
-															$
-																	.each(
-																			value.flags,
-																			function(
-																					index,
-																					value) {
-
-																				// country
-																				// of
-																				// the
-																				// measurement
-																				if (value.probe.country == null){
-																					country ="null";
-																				}else{
-																					country = value.probe.country;
-																					
-																				}
-																				// city
-																				// of
-																				// the
-																				// measurement
+															
+															if (value.flags==null){
+																country = "null";
+																city ="null";
+																state ="null";
+																isp="null";
+																type="null";
+															}else {
+																$
+																.each(
+																		value.flags,
+																		function(
+																				index,
+																				value) {
+																			date = new Date(
+																					value.date);
+																			// country
+																			// of
+																			// the
+																			// measurement
+																			if (value.probe.country == null){
+																				country ="null";
+																			}else{
+																				country = value.probe.country;
 																				
-																				if (value.probe.city == null){
-																					city ="null";
-																				}else{
-																					city = value.probe.city;
-																				}
-																				// state
-																				// or
-																				// region
-																				// of
-																				// the
-																				// measurement
-																				if (value.probe.region == null){
-																					state ="null";
-																				}else{
+																			}
+																			// city
+																			// of
+																			// the
+																			// measurement
+																			
+																			if (value.probe.city == null){
+																				city ="null";
+																			}else{
+																				city = value.probe.city;
+																			}
+																			// state
+																			// or
+																			// region
+																			// of
+																			// the
+																			// measurement
+																			if (value.probe.region == null){
+																				state ="null";
+																			}else{
 
-																					state = value.probe.region;
-																				}
-																				// isp
-																				// of
-																				// the
-																				// measurement
-																				if (value.probe.isp == null){
-																					isp ="null";
-																				}else{
+																				state = value.probe.region;
+																			}
+																			// isp
+																			// of
+																			// the
+																			// measurement
+																			if (value.probe.isp == null){
+																				isp ="null";
+																			}else{
 
-																					isp = value.probe.isp;
-																				}
-																				// type
-																				// of
-																				// measurement
-																				
-																				if (value.type_med == null){
-																					type ="null";
-																				}else{
-																					type = value.type_med;
-																				}
-																				// data
-																				// has
-																				// the
-																				// json
-																				// date
-																				// in
-																				// format
-																				// so
-																				// we
-																				// can
-																				// grab
-																				// day,month
-																				// or
-																				// year
-																				// as
-																				// needed
-																				var date = new Date(
-																						value.date);
+																				isp = value.probe.isp;
+																			}
+																			// type
+																			// of
+																			// measurement
+																			
+																			if (value.type_med == null){
+																				type ="null";
+																			}else{
+																				type = value.type_med;
+																			}
+																			// data
+																			// has
+																			// the
+																			// json
+																			// date
+																			// in
+																			// format
+																			// so
+																			// we
+																			// can
+																			// grab
+																			// day,month
+																			// or
+																			// year
+																			// as
+																			// needed
+																			});
+																		}
+																			
 																				// We
 																				// pass
 																				// the
@@ -201,7 +211,6 @@ $(document).ready(
 
 																			})
 
-														})
 
 									}).fail(function(jqXHR, textStatus, errorThrown) {
 
@@ -234,4 +243,7 @@ $(document).ready(
 												+ mid + '</span>');
 							});
 
+					
+					var height_bodyContent = $(".marginPage").height()+50;
+					$(".marginPage").closest(".bodyContent").height(height_bodyContent+ 'px' )
 				});

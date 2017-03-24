@@ -234,4 +234,7 @@ $(document).ready(
 												+ mid + '</span>');
 							});
 
+					
+					var height_bodyContent = $(".marginPage").height()+50;
+					$(".marginPage").closest(".bodyContent").height(height_bodyContent+ 'px' )
 				});

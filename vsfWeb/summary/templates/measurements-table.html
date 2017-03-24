@@ -7,44 +7,44 @@
 
 <link rel="stylesheet" href="{% static 'css/jjsonviewer.css' %}">
 <div class="bodyContent">
-<div class="col-xs-11 marginPage">
-	<div class="row">
-		<div class="col-xs-2">
-			{% trans 'Download:' %} <a id="download" href="#"> <i
-				class="fa fa-file-excel-o" aria-hidden="true"></i>
-			</a>
-		</div>
-	</div>
-	<div class="container-fluid" id="mTable">
-
+	<div class="col-xs-11 marginPage">
 		<div class="row">
-
-			<div class="col-xs-11" id="headerDiv">
-
-				<div class="col-xs-2 mheader">{% trans 'Site' %}</div>
-				<div class="col-xs-2 mheader">{% trans 'URL' %}</div>
-				<div class="col-xs-1 mheader">{% trans 'Date' %}</div>
-				<div class="col-xs-1 mheader">{% trans 'Country' %}</div>
-				<div class="col-xs-1 mheader">{% trans 'State'%}</div>
-				<div class="col-xs-1 mheader">{% trans 'City' %}</div>
-				<div class="col-xs-1 mheader">{% trans 'ISP' %}</div>
-				<div class="col-xs-1 mheader">{% trans 'Measurement' %}</div>
-				<div class="col-xs-1 mheader">{% trans 'Type' %}</div>
-
+			<div class="col-xs-2">
+				{% trans 'Download:' %} <a id="download" href="#"> <i
+					class="fa fa-file-excel-o" aria-hidden="true"></i>
+				</a>
 			</div>
-
 		</div>
-
-		<div class="row" id="measurementHeaderRow"></div>
-
-		<div class="row">
-
-			<div class="col-xs-11" id="dataTableM"></div>
-
+		<div class="container-fluid" id="mTable">
+	
+			<div class="row">
+	
+				<div class="col-xs-11" id="headerDiv">
+	
+					<div class="col-xs-2 mheader">{% trans 'Site' %}</div>
+					<div class="col-xs-2 mheader">{% trans 'URL' %}</div>
+					<div class="col-xs-1 mheader">{% trans 'Date' %}</div>
+					<div class="col-xs-1 mheader">{% trans 'Country' %}</div>
+					<div class="col-xs-1 mheader">{% trans 'State'%}</div>
+					<div class="col-xs-1 mheader">{% trans 'City' %}</div>
+					<div class="col-xs-1 mheader">{% trans 'ISP' %}</div>
+					<div class="col-xs-1 mheader">{% trans 'Measurement' %}</div>
+					<div class="col-xs-1 mheader">{% trans 'Type' %}</div>
+	
+				</div>
+	
+			</div>
+	
+			<div class="row" id="measurementHeaderRow"></div>
+	
+			<div class="row">
+	
+				<div class="col-xs-11" id="dataTableM"></div>
+	
+			</div>
+	
 		</div>
-
 	</div>
-</div>
 </div>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog"

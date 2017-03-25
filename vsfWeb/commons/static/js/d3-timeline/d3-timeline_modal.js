@@ -170,7 +170,7 @@ function ganttModal(timelap, i){
 						// with the month name and year. The set the starting
 						// date
 						// of the Gantt as the date of the first event
-						var tickFormat = { format: d3.time.format("%b %Y"),
+						var tickFormat = { format: d3.time.format("%Y"),
 						          tickTime: d3.time.years,
 						          tickInterval: 1,
 						          tickSize: 6,
@@ -996,24 +996,25 @@ function colorSelect(type){
 function adjustTextLabels(selection) {
 	// This function sets the Y labels corresponding to the simplified
 	// or complete Gantt graph
-	if(diffDays < 31){
-		var offset = 10;
-		
-		var daysToPixels = (($('.axis .tick:nth-child(2) text')).position().left -
-				($('.axis .tick:nth-child(1) text')).position().left)/2+offset;
-				
-			    selection.selectAll('.axis .tick text')
-			        .attr('transform', 'translate(0,30)');
-	}
-	else{
-		var offset = 10;
-		var daysToPixels = (($('.axis .tick:nth-child(2) text')).position().left -
-				($('.axis .tick:nth-child(1) text')).position().left)/2+offset;
-				
-			    selection.selectAll('.axis .tick text')
-			        .attr('transform', 'translate(' + daysToPixels + ',0)');
-	}
-	
+//	if(diffDays < 31){
+//		var offset = 10;
+//		
+//		var daysToPixels = (($('.axis .tick:nth-child(2) text')).position().left -
+//				($('.axis .tick:nth-child(1) text')).position().left)/2+offset;
+//				
+//			    selection.selectAll('.axis .tick text')
+//			        .attr('transform', 'translate(0,30)');
+//	}
+//	else{
+//		var offset = 10;
+//		var daysToPixels = (($('.axis .tick:nth-child(2) text')).position().left -
+//				($('.axis .tick:nth-child(1) text')).position().left)/2+offset;
+//				
+//			    selection.selectAll('.axis .tick text')
+//			        .attr('transform', 'translate(' + daysToPixels + ',0)');
+//	}
+	  selection.selectAll('.axis .tick text')
+      .attr('transform', 'translate(0,30)');
 	
    
 
@@ -1161,8 +1162,8 @@ $.ajax({
 						.append("svg").attr("preserveAspectRatio", "xMinYMin meet")
 						.attr("width", width + (margin.left + margin.right)-24)
 						.attr("height", height )
-						   .attr("viewBox", "0 0 " + height + " "
-								 + ( width - 534 )  )
+						   .attr("viewBox", "0 0 " +( width - 534 ) + " "
+									 +   (height+100) )
 						   // class to make it responsive
 						   .classed("svg-content-responsive", true)
 						  .datum(testData).call(chart).call(adjustTextLabels);     // adjusts

@@ -83,6 +83,7 @@ $(document).ready(
 																state ="null";
 																isp="null";
 																type="null";
+																date="null";
 															}else {
 																$
 																.each(
@@ -90,8 +91,15 @@ $(document).ready(
 																		function(
 																				index,
 																				value) {
-																			date = new Date(
-																					value.date);
+																			if (value.date == null){
+																				date ="null";
+																			}else{
+
+																				date = new Date(
+																						value.date);
+																				
+																			}
+																			
 																			// country
 																			// of
 																			// the
@@ -225,9 +233,9 @@ $(document).ready(
 							function() {
 								//Here we gran the Json from de data-json field
 								var raw_json = $(this).data('json');
-
+								
 								//Id from the measurement that goes in the title of the modal
-								var mid = $(this).data('id');
+								var mid = raw_json.id;
 
 								//Stringify for display the Json inside the modal
 								data_modal = JSON.stringify(raw_json);

@@ -466,3 +466,12 @@ msgstr "Spanish"
 
 #~ msgid "Languages"
 #~ msgstr "Languages"
+
+#~ msgid "Search Results"
+#~ msgstr "Search results of"
+
+#~ msgid "Results"
+#~ msgstr "Results"
+
+#~ msgid "of"
+#~ msgstr "of"

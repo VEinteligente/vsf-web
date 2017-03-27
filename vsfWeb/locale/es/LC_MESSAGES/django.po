@@ -457,3 +457,13 @@ msgstr "Español"
 
 #~ msgid "Languages"
 #~ msgstr "Idiomas"
+
+#~ msgid "Search Results"
+#~ msgstr "Search results of"
+
+#~ msgid "Results"
+#~ msgstr "Results"
+
+#~ msgid "of"
+#~ msgstr "of"
+

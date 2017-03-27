@@ -3,6 +3,9 @@
 {% load static %} 
 {% block content %} 
 {% get_current_language as language_code %}
+<input type="hidden" id="hidden_search_results_string" value="{% trans 'Search Results' %}">
+<input type="hidden" id="hidden_result_string" value="{% trans 'Results' %}">
+<input type="hidden" id="hidden_of" value="{% trans 'of' %}">
 
 <!--This container is for the map of cases, just like the map-venezuela.html-->
 <div class="container">
@@ -7640,7 +7643,7 @@
 
 
 			<script type="text/javascript">
-
+			var hidden_results_string = $("#hidden_search_results_string").val();
 
 //Load the the datepicker style
 	$(function() {
@@ -7865,11 +7868,14 @@ function pagination(){
 	
 
 	showPage = function(page) {
+		
+		var string_result = $("hidden_result_string").val();
+		var string_of = $("hidden_of").val();
 		if(pageSize < elementCount){
-			$("#resultSummary").html("Resultados " + (elementCount-pageSize*(pageCount-page)) + "-" + elementCount + " de " + elementCount)
+			$("#resultSummary").html(string_result + " " + (elementCount-pageSize*(pageCount-page)) + "-" + elementCount + " " + string_of + " " + elementCount)
 		}
 		else{
-			$("#resultSummary").html("Resultados 1-" + elementCount + " de " + elementCount)
+			$("#resultSummary").html(string_result + " " + "1-" + elementCount + " " + string_of + " " + elementCount)
 		}
 				
 		

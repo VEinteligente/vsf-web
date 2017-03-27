@@ -29,9 +29,19 @@ $(document)
 				function() {
 
 					// Global Variables
-					var month_names = [ "Enero", "Febrero", "Marzo", "Abril",
-							"Mayo", "Junio", "Julio", "Agosto", "Septiembre",
-							"Octubre", "Noviembre", "Diciembre" ];
+					console.log(language)
+					if(language=="es"){
+						var month_names = [ "Enero", "Febrero", "Marzo", "Abril",
+											"Mayo", "Junio", "Julio", "Agosto", "Septiembre",
+											"Octubre", "Noviembre", "Diciembre" ];
+									
+					}
+					else if(language=="en"){
+						var month_names = [ "January", "February", "March", "April",
+											"May", "June", "July", "August", "September",
+											"October", "November", "December" ];
+									
+					}
 					
 				
 

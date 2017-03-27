@@ -468,11 +468,11 @@ msgstr "Spanish"
 #~ msgstr "Languages"
 
 
-#~ msgid "Search Results"
-#~ msgstr "Search results of"
+msgid "Search Results"
+msgstr "Search results of"
 
-#~ msgid "Results"
-#~ msgstr "Results"
+msgid "Results"
+msgstr "Results"
 
-#~ msgid "of"
-#~ msgstr "of"
+msgid "of"
+msgstr "of"

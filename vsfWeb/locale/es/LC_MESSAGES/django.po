@@ -459,12 +459,12 @@ msgstr "Español"
 #~ msgstr "Idiomas"
 
 
-#~ msgid "Search Results"
-#~ msgstr "Resultados de busqueda de"
+msgid "Search Results"
+msgstr "Resultados de busqueda de"
 
-#~ msgid "Results"
-#~ msgstr "Resultados"
+msgid "Results"
+msgstr "Resultados"
 
-#~ msgid "of"
-#~ msgstr "de"
+msgid "of"
+msgstr "de"
 

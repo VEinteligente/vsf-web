@@ -6,7 +6,43 @@ var All = "All";
 
 function ganttModal(timelap, i){
 	
-	
+if(language=="es"){
+		
+		var Formatters = d3.locale({
+			  "decimal": ",",
+			  "thousands": ".",
+			  "grouping": [3],
+			  "currency": ["BsF.", ""],
+			  "dateTime": "%a %b %e %X %Y",
+			  "date": "%d.%m.%Y",
+			  "time": "%H:%M:%S",
+			  "periods": ["AM", "PM"],
+			  "days": ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+			  "shortDays": ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+			  "months": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+			  "shortMonths": ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
+			});
+
+			
+
+	}else if(language=="en"){
+		var Formatters = d3.locale({
+			  "decimal": ",",
+			  "thousands": ".",
+			  "grouping": [3],
+			  "currency": ["$", ""],
+			  "dateTime": "%a %b %e %X %Y",
+			  "date": "%d.%m.%Y",
+			  "time": "%H:%M:%S",
+			  "periods": ["AM", "PM"],
+			  "days": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+			  "shortDays": ["Su", "Mo", "Tu", "We", "Thu", "Fri", "Sa"],
+			  "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ],
+			  "shortMonths": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+			});
+
+			
+	}
 	// This function calls the gantt graph. Timelap indicates the unit of time
 	// of the X axis
 	
@@ -52,7 +88,7 @@ function ganttModal(timelap, i){
 	if(timelap == "Days"){
 		
 			var separation = diffDays/7 ;
-			var tickFormat = { format: d3.time.format("%d %b"),
+			var tickFormat = { format: Formatters.timeFormat("%d %b"),
 			          tickTime: d3.time.days,
 			          tickInterval: separation,
 			          tickSize: 6,
@@ -69,7 +105,7 @@ function ganttModal(timelap, i){
 	else if(timelap == "Month"){
 		
 		// If the timelap selected is Month show the whole month
-				var tickFormat = { format: d3.time.format("%d %b"),
+				var tickFormat = { format: Formatters.timeFormat("%d %b"),
 				          tickTime: d3.time.days,
 				          tickInterval: 7,
 				          tickSize: 6,
@@ -84,7 +120,7 @@ function ganttModal(timelap, i){
 	else if(timelap == "Year"){
 			// If the timelap selected is Days show the first 6 months of the
 			// year
-					var tickFormat = { format: d3.time.format("%b %Y"),
+					var tickFormat = { format: Formatters.timeFormat("%b %Y"),
 					          tickTime: d3.time.months,
 					          tickInterval: 1,
 					          tickSize: 6,
@@ -105,7 +141,7 @@ function ganttModal(timelap, i){
 		// with the day number and month name
 		if(diffDays < 3){
 			
-				var tickFormat = { format: d3.time.format("%d %b"),
+				var tickFormat = { format: Formatters.timeFormat("%d %b"),
 				          tickTime: d3.time.days,
 				          tickInterval: 1,
 				          tickSize: 6,
@@ -124,7 +160,7 @@ function ganttModal(timelap, i){
 			// of the Gantt a week before that date
 
 			if(diffDays < 7) {
-				var tickFormat = { format: d3.time.format("%d %b"),
+				var tickFormat = { format: Formatters.timeFormat("%d %b"),
 				          tickTime: d3.time.days,
 				          tickInterval: 1,
 				          tickSize: 6,
@@ -143,7 +179,7 @@ function ganttModal(timelap, i){
 				// with the day number and month name. The set the starting date
 				// of the Gantt as the first day of month
 				if(diffDays < 31) {
-					var tickFormat = { format: d3.time.format("%d %b"),
+					var tickFormat = { format: Formatters.timeFormat("%d %b"),
 					          tickTime: d3.time.days,
 					          tickInterval: 3,
 					          tickSize: 6,
@@ -158,7 +194,7 @@ function ganttModal(timelap, i){
 					// with the month name and year. The set the starting date
 					// of the Gantt as the first of January
 					if(diffDays < 365){
-						var tickFormat = { format: d3.time.format("%b %Y"),
+						var tickFormat = { format: Formatters.timeFormat("%b %Y"),
 						          tickTime: d3.time.months,
 						          tickInterval: 1,
 						          tickSize: 6,
@@ -175,7 +211,7 @@ function ganttModal(timelap, i){
 						// with the month name and year. The set the starting
 						// date
 						// of the Gantt as the date of the first event
-						var tickFormat = { format: d3.time.format("%Y"),
+						var tickFormat = { format: Formatters.timeFormat("%Y"),
 						          tickTime: d3.time.years,
 						          tickInterval: 1,
 						          tickSize: 6,

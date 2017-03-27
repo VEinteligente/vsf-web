@@ -29,7 +29,7 @@ $(document)
 				function() {
 
 					// Global Variables
-					console.log(language)
+					
 					if(language=="es"){
 						var month_names = [ "Enero", "Febrero", "Marzo", "Abril",
 											"Mayo", "Junio", "Julio", "Agosto", "Septiembre",

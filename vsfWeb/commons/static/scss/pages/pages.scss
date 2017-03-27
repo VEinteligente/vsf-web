@@ -1408,21 +1408,27 @@ a {
 }
 
 
-#timeline1 path.domain {
-	fill: transparent;
-    stroke: #ccc;
-    stroke-dasharray: 10;
+#modaltwitterTweet, #timeline1 {
+  	path.domain{
+		fill: transparent;
+    	stroke: #ccc;
+    	stroke-dasharray: 10;
+    }
 }
 
-#timeline1 .axis .tick line {
-	fill: transparent;
-    stroke: #ccc;
-    stroke-dasharray: 0;
+#modaltwitterTweet, #timeline1  {
+	.axis .tick line{
+		fill: transparent;
+    	stroke: #ccc;
+   		stroke-dasharray: 0;
+    }
 }
 
-#timeline1 .axis .tick text {
-	text-transform: uppercase;
-	fill: #ccc;
+#modaltwitterTweet, #timeline1 {
+	.axis .tick text{ 
+		text-transform: uppercase;
+		fill: #ccc;
+	}
 }
 
 .subGraphDiv > div {

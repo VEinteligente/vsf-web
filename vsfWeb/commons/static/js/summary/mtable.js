@@ -83,7 +83,7 @@ $(document).ready(
 																state ="null";
 																isp="null";
 																type="null";
-																date="null";
+																date ="null";
 															}else {
 																$
 																.each(
@@ -100,48 +100,59 @@ $(document).ready(
 																				
 																			}
 																			
-																			// country
-																			// of
-																			// the
-																			// measurement
-																			if (value.probe.country == null){
+																			
+																			if (value.probe == null){
 																				country ="null";
+																				city ="null";
+																				state ="null";
+																				isp="null";
+
 																			}else{
+																				// country
+																				// of
+																				// the
+																				// measurement
+																				if (value.probe.country == null){
+																					country = "null";
+																				}else {
+																					country = value.probe.country;
+																				}
+																				// city
+																				// of
+																				// the
+																				// measurement
+																				
+																				if (value.probe.city == null){
+																					city ="null";
+																				}else{
+																					city = value.probe.city;
+																				}
+																				// state
+																				// or
+																				// region
+																				// of
+																				// the
+																				// measurement
+																				if (value.probe.region == null){
+																					state ="null";
+																				}else{
+
+																					state = value.probe.region;
+																				}
+																				// isp
+																				// of
+																				// the
+																				// measurement
+																				if (value.probe.isp == null){
+																					isp ="null";
+																				}else{
+
+																					isp = value.probe.isp;
+																				}
 																				country = value.probe.country;
 																				
 																			}
-																			// city
-																			// of
-																			// the
-																			// measurement
-																			
-																			if (value.probe.city == null){
-																				city ="null";
-																			}else{
-																				city = value.probe.city;
-																			}
-																			// state
-																			// or
-																			// region
-																			// of
-																			// the
-																			// measurement
-																			if (value.probe.region == null){
-																				state ="null";
-																			}else{
-
-																				state = value.probe.region;
-																			}
-																			// isp
-																			// of
-																			// the
-																			// measurement
-																			if (value.probe.isp == null){
-																				isp ="null";
-																			}else{
-
-																				isp = value.probe.isp;
-																			}
+																		
 																			// type
 																			// of
 																			// measurement

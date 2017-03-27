@@ -818,7 +818,7 @@ $("#advanced_search")
 
 										$("#resultados")
 										.html(
-												"Resultados de busqueda <strong>"
+												hidden_results_string + "<strong>"
 												+ value
 												+ "</strong>");
 									}

@@ -58,7 +58,7 @@ console.log(dataJson)
 															// Site that has
 															// been measured
 															if (value.target.site == null){
-																site ="null";
+																site ="N.A.";
 															}else{
 
 																site = value.target.site;
@@ -66,7 +66,7 @@ console.log(dataJson)
 															// url from the
 															// measurement
 															if (value.target.url == null){
-																m_url ="null";
+																m_url ="N.A.";
 															}else{
 
 																m_url = value.target.url;
@@ -78,12 +78,12 @@ console.log(dataJson)
 																	.stringify(value.flags[idcount]);
 															
 															if ((value.flags).length == 0){
-																country = "null";
-																city ="null";
-																state ="null";
-																isp="null";
-																type="null";
-																date ="null";
+																country = "N.A.";
+																city ="N.A.";
+																state ="N.A.";
+																isp="N.A.";
+																type="N.A.";
+																date ="N.A.";
 															}else {
 																$
 																.each(
@@ -91,21 +91,19 @@ console.log(dataJson)
 																		function(
 																				index,
 																				value) {
-																			if (value.date == null){
-																				date ="null";
-																			}else{
+																			
 
 																				date = new Date(
 																						value.date);
 																				
-																			}
+																			
 																			
 																			
 																			if (value.probe == null){
-																				country ="null";
-																				city ="null";
-																				state ="null";
-																				isp="null";
+																				country ="N.A.";
+																				city ="N.A.";
+																				state ="N.A.";
+																				isp="N.A.";
 
 																			}else{
 																				// country
@@ -113,7 +111,7 @@ console.log(dataJson)
 																				// the
 																				// measurement
 																				if (value.probe.country == null){
-																					country = "null";
+																					country = "N.A.";
 																				}else {
 																					country = value.probe.country;
 																				}
@@ -123,7 +121,7 @@ console.log(dataJson)
 																				// measurement
 																				
 																				if (value.probe.city == null){
-																					city ="null";
+																					city ="N.A.";
 																				}else{
 																					city = value.probe.city;
 																				}
@@ -134,7 +132,7 @@ console.log(dataJson)
 																				// the
 																				// measurement
 																				if (value.probe.region == null){
-																					state ="null";
+																					state ="N.A.";
 																				}else{
 
 																					state = value.probe.region;
@@ -144,7 +142,7 @@ console.log(dataJson)
 																				// the
 																				// measurement
 																				if (value.probe.isp == null){
-																					isp ="null";
+																					isp ="N.A.";
 																				}else{
 
 																					isp = value.probe.isp;
@@ -158,7 +156,7 @@ console.log(dataJson)
 																			// measurement
 																			
 																			if (value.type_med == null){
-																				type ="null";
+																				type ="N.A.";
 																			}else{
 																				type = value.type_med;
 																			}
@@ -197,32 +195,8 @@ console.log(dataJson)
 																				// the
 																				// modal
 																			
-																				if (date == null){
-																					$(
-																					"#dataTableM")
-																					.append(
-																							'<div class="row" id="mRow"><div class="col-xs-2 mData" id="mDataSite">'
-																									+ site
-																									+ '</div><div class="col-xs-2 mData">'
-																									+ m_url
-																									+ '</div><div class="col-xs-1 mData" id="mDataDate">'
-																									+ date
-																									+ '</div><div class="col-xs-1 mData" id="mDataCountry">'
-																									+ country
-																									+ '</div><div class="col-xs-1 mData" id="mDataRegion">'
-																									+ state
-																									+ '</div><div class="col-xs-1 mData" id="mDataCity">'
-																									+ city
-																									+ '</div><div class="col-xs-1 mData" id="mDataIsp">'
-																									+ isp
-																									+ '</div><div class="col-xs-1 mData" id="mDataJson"><a data-id="'
-																									+ value.id
-																									+ '" data-json=\''
-																									+ raw_data
-																									+ '\' id="modalbutton" data-toggle="modal" data-target="#myModal">.Json</a></div><div class="col-xs-1 mData" id="mDataType">'
-																									+ type
-																									+ '</div></div>');
-																				}else{
+																				console.log(date)
+																				console.log(date.getDate())
 																					$(
 																					"#dataTableM")
 																					.append(
@@ -252,7 +226,7 @@ console.log(dataJson)
 																									+ '\' id="modalbutton" data-toggle="modal" data-target="#myModal">.Json</a></div><div class="col-xs-1 mData" id="mDataType">'
 																									+ type
 																									+ '</div></div>');
-																				}
+																				
 																				idcount = idcount + 1;
 
 																			})

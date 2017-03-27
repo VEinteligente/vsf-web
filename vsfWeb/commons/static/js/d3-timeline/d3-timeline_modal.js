@@ -62,7 +62,6 @@ function ganttModal(timelap, i){
 			
 			timelineStart = new Date(dateStart.setDate(start.getDate() - 7));
 			timelineEnd = new Date();
-			
 			$(".informationPanelGantt").css('visibility','hidden');
 		
 	}
@@ -76,6 +75,7 @@ function ganttModal(timelap, i){
 				          tickSize: 6,
 				          tickValues: null
 				        };
+				start_timelap = new Date();
 				timelineStart = new Date(start.getFullYear(), start.getMonth(), 1);
 				timelineEnd = new Date();
 				$(".informationPanelGantt").css('visibility','hidden');
@@ -91,8 +91,9 @@ function ganttModal(timelap, i){
 					          tickValues: null
 					        };
 					
+					start_timelap = new Date();
 					timelineStart = new Date(start.getFullYear(), 0, 1);
-					timelineEnd = new Date(start.getFullYear(), 5, 31);
+					timelineEnd = new Date();
 					
 					$(".informationPanelGantt").css('visibility','hidden');
 				
@@ -110,7 +111,8 @@ function ganttModal(timelap, i){
 				          tickSize: 6,
 				          tickValues: null
 				        };
-				
+				timelineEnd = new Date();
+				timelineStart = new Date(dateStart.setDate(start.getDate() - 3));
 				
 				
 			
@@ -131,6 +133,7 @@ function ganttModal(timelap, i){
 				
 				
 				timelineStart = dateStart.setDate(start.getDate() - 7);
+				timelineEnd = new Date();
 			}
 			
 
@@ -147,6 +150,7 @@ function ganttModal(timelap, i){
 					          tickValues: null
 					        };
 					timelineStart = new Date(start.getFullYear(), start.getMonth(), 1);
+					timelineEnd = new Date();
 				}
 				else{
 					// If the number of days is smaller than a year then show
@@ -161,7 +165,8 @@ function ganttModal(timelap, i){
 						          tickValues: null
 						        };
 						
-						timelineStart = new Date(start.getFullYear(), start.getMonth()-1, 1);
+						timelineStart = new Date(start.getFullYear(), start.getMonth(), 1);
+						timelineEnd = new Date();
 					}
 					else{
 						
@@ -176,6 +181,9 @@ function ganttModal(timelap, i){
 						          tickSize: 6,
 						          tickValues: null
 						        };
+						
+						timelineStart = new Date(start.getFullYear(), start.getMonth(),  start.getDate());
+						timelineEnd = new Date();
 					}
 				}
 			}

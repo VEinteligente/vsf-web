@@ -1,6 +1,6 @@
 // This value indicates the maximum Y values of a graph. If the value is 
 // over this value then a simplificated graph will be shown. 
-var maxYValues = 1; 
+var maxYValues = 15; 
 
 // These values indicate the diferent options for the X axis 
 var Year = "Year";

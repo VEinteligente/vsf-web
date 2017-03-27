@@ -609,7 +609,9 @@ input#title {
 
 .dateStartSort, .dateEndSort, .nameSort, .siteSort, .ispSort, .regionSort {
     margin-left: 15px;
-    margin-right: 15px; 
+    margin-right: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis; 
 }
 
 .categorySort{

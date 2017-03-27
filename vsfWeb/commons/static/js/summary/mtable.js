@@ -264,7 +264,7 @@ $(document).ready(
 
 								});
 						var height = idcount*34  + 228;
-						$(".bodyContent").css("height", height + "px");
+						$("#mTable").closest(".bodyContent").css("height", height + "px");
 
 
 					}).fail(function(jqXHR, textStatus, errorThrown) {

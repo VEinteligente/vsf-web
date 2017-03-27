@@ -77,7 +77,7 @@ $(document)
 											$(
 											"#resultados")
 											.html(
-													 hidden_result_string + " <strong>"
+													hidden_results_string + " <strong>"
 													+ value
 													+ "</strong>");
 										}

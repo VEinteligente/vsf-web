@@ -459,7 +459,7 @@ msgstr "Español"
 #~ msgstr "Idiomas"
 
 #~ msgid "Search Results"
-#~ msgstr "Resultados de búsqueda de"
+#~ msgstr "Resultados de busqueda de"
 
 #~ msgid "Results"
 #~ msgstr "Resultados"

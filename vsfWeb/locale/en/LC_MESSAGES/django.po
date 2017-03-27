@@ -405,6 +405,20 @@ msgstr "English"
 msgid "Spanish"
 msgstr "Spanish"
 
+
+msgid "Search Results"
+msgstr "Search results of"
+
+msgid "Results"
+msgstr "Results"
+
+msgid "of"
+msgstr "of"
+
+msgid "See more"
+msgstr "See more"
+
+
 #~| msgid "Measurement"
 #~ msgid "Measurements"
 #~ msgstr "Measurements"
@@ -467,12 +481,3 @@ msgstr "Spanish"
 #~ msgid "Languages"
 #~ msgstr "Languages"
 
-
-msgid "Search Results"
-msgstr "Search results of"
-
-msgid "Results"
-msgstr "Results"
-
-msgid "of"
-msgstr "of"

@@ -6,6 +6,7 @@
 <input type="hidden" id="hidden_search_results_string" value="{% trans 'Search Results' %}">
 <input type="hidden" id="hidden_result_string" value="{% trans 'Results' %}">
 <input type="hidden" id="hidden_of" value="{% trans 'of' %}">
+<input type="hidden" id="hidden_seeMore" value="{% trans 'See more' %}">
 
 <!--This container is for the map of cases, just like the map-venezuela.html-->
 <div class="container">
@@ -7623,7 +7624,7 @@
 
 							<div class="col-xs-12 subtitleBar" style="margin-bottom: 5px">
 								<div class="h4Style title searchHome">
-									<a class="col-xs-12" href="{{ URL_VSF_WEB }}/general/list-cases">Ver más</a>								
+									<a class="col-xs-12 seeMore" href="{{ URL_VSF_WEB }}/general/list-cases"></a>								
 								</div>
 							</div>
 
@@ -7644,7 +7645,9 @@
 
 			<script type="text/javascript">
 			var hidden_results_string = $("#hidden_search_results_string").val();
-
+			$(".seeMore").html($("#hidden_seeMore").val());
+			
+			
 //Load the the datepicker style
 	$(function() {
 

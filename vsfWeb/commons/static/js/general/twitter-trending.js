@@ -116,7 +116,18 @@ function twitterSearchModal() {
 			$('#modaltwitterDiv').css('padding-right','0');
 			$('#modaltwitterTweet').html("<div class='failedService'><img  src='"+ fail_twitter_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 		});
-	
+		var browser = navigator.userAgent.search("Firefox");
+		if (browser  > -1) { 
+			$(".global-modal").css("max-width", "520px");
+			$(".global-modal").css("margin", "auto");
+		}
+        
+	   
+	    	  
+	       
+	       
+	    
+		
 	$('.global-modal').modal("show");
 }
 

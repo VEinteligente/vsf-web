@@ -194,8 +194,8 @@ $(document)
 										// format to use javascript methods
 										var date = new Date(dataJson.start_date);
 										var dateEnd = new Date(dataJson.end_date);
-										var title = dataJson.title_de;
-										var description = dataJson.description_de;
+										var title = dataJson.title;
+										var description = dataJson.description;
 										var twitter_search = dataJson.twitter_search;
 										var domains_count = (dataJson.domains).length;
 										
@@ -392,19 +392,32 @@ $(document)
 										
 										// If website langues is not de main one, find the title
 										// and description according to the language in var:language
-										if (language != "en"){
-											var titleLanguage= "title_"+language;
-											var descriptionLanguage = "description_"+language;
-											$('#titleAjax').html(dataJson[titleLanguage]);
-											$('#descriptionAjax').html(dataJson[descriptionLanguage]);
+										if (language != "es"){
 											
+											console.log(language);
+											
+											var titleLanguage= "title_de";
+											var descriptionLanguage = "description_de";
+											
+											console.log(titleLanguage);
+											console.log(descriptionLanguage);
 											// if the translated field is empty on Json use the main
 											// language of the website and highlight it
-											if (dataJson[titleLanguage] == null){
-												$('#titleAjax').html("<strong>"+title+"</strong>");
+											if (dataJson.titleLanguage == null){
+
+												$('#titleAjax').addClass('noTranslation');
+												$('#titleAjax').html(dataJson.title);
+												
+											}else{
+												$('#titleAjax').html(dataJson.titleLanguage);
 											}
-											if (dataJson[descriptionLanguage] == null){
-												$('#titleAjax').html("<strong>"+description+"</strong>");
+											if (dataJson.descriptionLanguage == null){
+												
+												$('#descriptionAjax').addClass('noTranslation');
+												$('#titleAjax').html(dataJson.description);
+											}else{
+												$('#descriptionAjax').html(dataJson.descriptionLanguage);
+												
 											}
 											
 										} 
@@ -585,7 +598,7 @@ $(document)
 																					value.date)
 																			var update_title = value.title;
 																			var update_text = value.text_de;
-																			if (language!= "en"){
+																			if (language!= "es"){
 																				var textLanguage = "text_"+language;
 																				update_text = value[textLanguage];
 																			}

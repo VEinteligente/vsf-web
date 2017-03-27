@@ -93,8 +93,7 @@ console.log(dataJson)
 																				value) {
 																			
 
-																				date = new Date(
-																						value.date);
+																				
 																				
 																			
 																			
@@ -110,6 +109,9 @@ console.log(dataJson)
 																				// of
 																				// the
 																				// measurement
+																				
+																				var date = new Date(
+																						value.date);
 																				if (value.probe.country == null){
 																					country = "N.A.";
 																				}else {

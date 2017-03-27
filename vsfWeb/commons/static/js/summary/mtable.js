@@ -197,7 +197,7 @@ $(document).ready(
 									// the
 									// modal
 									if(date=="N.A."){
-										console.log(date)
+									
 								
 										$(
 												"#dataTableM")
@@ -226,8 +226,7 @@ $(document).ready(
 										
 									}
 									else{
-										console.log(date)
-										console.log(date.getDate())
+										
 										$(
 												"#dataTableM")
 												.append(
@@ -263,7 +262,9 @@ $(document).ready(
 
 									idcount = idcount + 1;
 
-								})
+								});
+						var height = idcount*34  + 228;
+						$(".bodyContent").css("height", height + "px");
 
 
 					}).fail(function(jqXHR, textStatus, errorThrown) {

@@ -45,7 +45,7 @@ $(document).ready(
 										for (var i = 0; i < data.length; i++)
 											temporal = temporal.concat(data[i]);
 										var dataJson = JSON.parse(temporal);
-
+console.log(dataJson)
 										// for each result in the .json
 										// {count,next,previous,results}
 										// data.results =

@@ -1,7 +1,5 @@
 function twitterSearch(searchWord) {
-	console.log(searchWord)
-	
-	console.log(searchWord)
+
 	$.ajax({
 		url : url_data_twitter + "search_twitter=" + searchWord,
 		context : document.body,

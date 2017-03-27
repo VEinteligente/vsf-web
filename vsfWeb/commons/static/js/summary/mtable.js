@@ -77,7 +77,7 @@ console.log(dataJson)
 															raw_data = JSON
 																	.stringify(value.flags[idcount]);
 															
-															if (value.flags==null){
+															if ((value.flags).length == 0){
 																country = "null";
 																city ="null";
 																state ="null";
@@ -197,35 +197,62 @@ console.log(dataJson)
 																				// the
 																				// modal
 																			
-																				$(
-																						"#dataTableM")
-																						.append(
-																								'<div class="row" id="mRow"><div class="col-xs-2 mData" id="mDataSite">'
-																										+ site
-																										+ '</div><div class="col-xs-2 mData">'
-																										+ m_url
-																										+ '</div><div class="col-xs-1 mData" id="mDataDate">'
-																										+ date.getDate()
-																										+ '/'
-																										+ month_number[date.getMonth()]
-																										+ '/'
-																										+ date
-																												.getFullYear()
-																										+ '</div><div class="col-xs-1 mData" id="mDataCountry">'
-																										+ country
-																										+ '</div><div class="col-xs-1 mData" id="mDataRegion">'
-																										+ state
-																										+ '</div><div class="col-xs-1 mData" id="mDataCity">'
-																										+ city
-																										+ '</div><div class="col-xs-1 mData" id="mDataIsp">'
-																										+ isp
-																										+ '</div><div class="col-xs-1 mData" id="mDataJson"><a data-id="'
-																										+ value.id
-																										+ '" data-json=\''
-																										+ raw_data
-																										+ '\' id="modalbutton" data-toggle="modal" data-target="#myModal">.Json</a></div><div class="col-xs-1 mData" id="mDataType">'
-																										+ type
-																										+ '</div></div>');
+																				if (date == null){
+																					$(
+																					"#dataTableM")
+																					.append(
+																							'<div class="row" id="mRow"><div class="col-xs-2 mData" id="mDataSite">'
+																									+ site
+																									+ '</div><div class="col-xs-2 mData">'
+																									+ m_url
+																									+ '</div><div class="col-xs-1 mData" id="mDataDate">'
+																									+ date
+																									+ '</div><div class="col-xs-1 mData" id="mDataCountry">'
+																									+ country
+																									+ '</div><div class="col-xs-1 mData" id="mDataRegion">'
+																									+ state
+																									+ '</div><div class="col-xs-1 mData" id="mDataCity">'
+																									+ city
+																									+ '</div><div class="col-xs-1 mData" id="mDataIsp">'
+																									+ isp
+																									+ '</div><div class="col-xs-1 mData" id="mDataJson"><a data-id="'
+																									+ value.id
+																									+ '" data-json=\''
+																									+ raw_data
+																									+ '\' id="modalbutton" data-toggle="modal" data-target="#myModal">.Json</a></div><div class="col-xs-1 mData" id="mDataType">'
+																									+ type
+																									+ '</div></div>');
+																				}else{
+																					$(
+																					"#dataTableM")
+																					.append(
+																							'<div class="row" id="mRow"><div class="col-xs-2 mData" id="mDataSite">'
+																									+ site
+																									+ '</div><div class="col-xs-2 mData">'
+																									+ m_url
+																									+ '</div><div class="col-xs-1 mData" id="mDataDate">'
+																									+ date.getDate()
+																									+ '/'
+																									+ month_number[date.getMonth()]
+																									+ '/'
+																									+ date
+																											.getFullYear()
+																									+ '</div><div class="col-xs-1 mData" id="mDataCountry">'
+																									+ country
+																									+ '</div><div class="col-xs-1 mData" id="mDataRegion">'
+																									+ state
+																									+ '</div><div class="col-xs-1 mData" id="mDataCity">'
+																									+ city
+																									+ '</div><div class="col-xs-1 mData" id="mDataIsp">'
+																									+ isp
+																									+ '</div><div class="col-xs-1 mData" id="mDataJson"><a data-id="'
+																									+ value.id
+																									+ '" data-json=\''
+																									+ raw_data
+																									+ '\' id="modalbutton" data-toggle="modal" data-target="#myModal">.Json</a></div><div class="col-xs-1 mData" id="mDataType">'
+																									+ type
+																									+ '</div></div>');
+																				}
 																				idcount = idcount + 1;
 
 																			})

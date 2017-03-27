@@ -77,7 +77,7 @@ $(document).ready(
 															raw_data = JSON
 																	.stringify(value.flags[idcount]);
 															
-															if (value.flags==null){
+															if ((value.flags).length == 0){
 																country = "null";
 																city ="null";
 																state ="null";

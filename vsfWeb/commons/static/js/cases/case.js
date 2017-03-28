@@ -394,13 +394,10 @@ $(document)
 										// and description according to the language in var:language
 										if (language != "es"){
 											
-											console.log(language);
 											
 											var titleLanguage= "title_de";
 											var descriptionLanguage = "description_de";
 											
-											console.log(titleLanguage);
-											console.log(descriptionLanguage);
 											// if the translated field is empty on Json use the main
 											// language of the website and highlight it
 											if (dataJson.titleLanguage == null){
@@ -414,7 +411,7 @@ $(document)
 											if (dataJson.descriptionLanguage == null){
 												
 												$('#descriptionAjax').addClass('noTranslation');
-												$('#titleAjax').html(dataJson.description);
+												$('#descriptionAjax').html(dataJson.description);
 											}else{
 												$('#descriptionAjax').html(dataJson.descriptionLanguage);
 												
@@ -597,15 +594,49 @@ $(document)
 																			var update_date = new Date(
 																					value.date)
 																			var update_title = value.title;
-																			var update_text = value.text_de;
-																			if (language!= "es"){
-																				var textLanguage = "text_"+language;
-																				update_text = value[textLanguage];
-																			}
+																			var aux_title = value.title;
+																			var update_text = value.text;
+																			var aux_text = value.text;
+																			
 																			var update_category = value.category;
-
-																			if (update_category == "grave") {
-																				$(
+																			
+																			
+																			
+																			if (language != "es"){
+																				
+																				update_text = value.text_de;
+																				
+																				update_title = value.title_de;
+																				
+																				
+																				
+																				if ((!update_text && !update_title)){
+																					
+																																																												
+																					if (update_category == "grave") {
+																						$(
+																								'#updateListAjax')
+																								.append(
+																										'<div class="row"><div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
+																												+ update_date
+																														.getDate()
+																												+ " "
+																												+ month_names[update_date
+																														.getMonth()]
+																												+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
+																												+ update_date
+																														.getFullYear()
+																												+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked"></div></div></div><div class="col-xs-10 content noTranslation" id="updateTitle" style="padding-left: 0;">'
+																												+ aux_title + '</div></div>' + '<div class="col-xs-12 description noTranslation" id="updateText">' + aux_text + '<br><div class="grave_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																												+ update_category + '</div><div class="right_cornerTag"></div></div></div></div>');
+																						
+																		
+																						
+																						
+																						
+																						
+																					} else if (update_category == "info") {
+																						$(
 																						'#updateListAjax')
 																						.append(
 																								'<div class="row"><div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
@@ -617,43 +648,285 @@ $(document)
 																										+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
 																										+ update_date
 																												.getFullYear()
-																										+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked"></div></div></div><div class="col-xs-10 content" style="padding-left: 0;">'
-																										+ update_title + '</div></div>' + '<div class="col-xs-12 description">' + update_text + '<br><div class="grave_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																										+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked" style="background: cyan"></div></div></div><div class="col-xs-10 content noTranslation" id="updateTitle" style="padding-left: 0;">'
+																										+ aux_title + '</div></div>' + '<div class="col-xs-12 description noTranslation" id="updateText">' + aux_text + '<br><div class="info_tag"><div class="left_cornerTag"></div><div class="contentTag">'
 																										+ update_category + '</div><div class="right_cornerTag"></div></div></div></div>');
-																			} else if (update_category == "info") {
-																				$(
-																				'#updateListAjax')
-																				.append(
-																						'<div class="row"><div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
-																								+ update_date
-																										.getDate()
-																								+ " "
-																								+ month_names[update_date
-																										.getMonth()]
-																								+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
-																								+ update_date
-																										.getFullYear()
-																								+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked" style="background: cyan"></div></div></div><div class="col-xs-10 content" style="padding-left: 0;">'
-																								+ update_title + '</div></div>' + '<div class="col-xs-12 description">' + update_text + '<br><div class="info_tag"><div class="left_cornerTag"></div><div class="contentTag">'
-																								+ update_category + '</div><div class="right_cornerTag"></div></div></div></div>');
-																			} else {
-																				$(
-																				'#updateListAjax')
-																				.append(
-																						'<div class="row"><div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
-																								+ update_date
-																										.getDate()
-																								+ " "
-																								+ month_names[update_date
-																										.getMonth()]
-																								+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
-																								+ update_date
-																										.getFullYear()
-																								+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked" style="background: #8cc63f"></div></div></div><div class="col-xs-10 content" style="padding-left: 0;">'
-																								+ update_title + '</div></div>' + '<div class="col-xs-12 description">' + update_text + '<br><div class="positive_tag"><div class="left_cornerTag"></div><div class="contentTag">'
-																								+ update_category + '</div><div class="right_cornerTag"></div></div></div></div>');
-																			}
+																																					
+																						
+																					} else {
+																						$(
+																						'#updateListAjax')
+																						.append(
+																								'<div class="row"><div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
+																										+ update_date
+																												.getDate()
+																										+ " "
+																										+ month_names[update_date
+																												.getMonth()]
+																										+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
+																										+ update_date
+																												.getFullYear()
+																										+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked" style="background: #8cc63f"></div></div></div><div class="col-xs-10 content noTranslation" id="updateTitle" style="padding-left: 0;">'
+																										+ aux_title + '</div></div>' + '<div class="col-xs-12 description noTranslation" id="updateText">' + aux_text + '<br><div class="positive_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																										+ update_category + '</div><div class="right_cornerTag"></div></div></div></div>');
+																			
+																					}
+																					
+																					
+																					
+																				}else if( !update_text && (update_title != null)){
+																					
+																				
+																					
+																					if (update_category == "grave") {
+																						$(
+																								'#updateListAjax')
+																								.append(
+																										'<div class="row"><div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
+																												+ update_date
+																														.getDate()
+																												+ " "
+																												+ month_names[update_date
+																														.getMonth()]
+																												+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
+																												+ update_date
+																														.getFullYear()
+																												+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked"></div></div></div><div class="col-xs-10 content noTranslation" id="updateTitle" style="padding-left: 0;">'
+																												+ aux_title + '</div></div>' + '<div class="col-xs-12 description " id="updateText">' + update_text + '<br><div class="grave_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																												+ update_category + '</div><div class="right_cornerTag"></div></div></div></div>');
+																						
 																		
+																						
+																						
+																						
+																						
+																					} else if (update_category == "info") {
+																						$(
+																						'#updateListAjax')
+																						.append(
+																								'<div class="row"><div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
+																										+ update_date
+																												.getDate()
+																										+ " "
+																										+ month_names[update_date
+																												.getMonth()]
+																										+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
+																										+ update_date
+																												.getFullYear()
+																										+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked" style="background: cyan"></div></div></div><div class="col-xs-10 content noTranslation" id="updateTitle" style="padding-left: 0;">'
+																										+ aux_title + '</div></div>' + '<div class="col-xs-12 description " id="updateText">' + update_text + '<br><div class="info_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																										+ update_category + '</div><div class="right_cornerTag"></div></div></div></div>');
+																																					
+																						
+																					} else {
+																						$(
+																						'#updateListAjax')
+																						.append(
+																								'<div class="row"><div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
+																										+ update_date
+																												.getDate()
+																										+ " "
+																										+ month_names[update_date
+																												.getMonth()]
+																										+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
+																										+ update_date
+																												.getFullYear()
+																										+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked" style="background: #8cc63f"></div></div></div><div class="col-xs-10 content noTranslation" id="updateTitle" style="padding-left: 0;">'
+																										+ aux_title + '</div></div>' + '<div class="col-xs-12 description " id="updateText">' + update_text + '<br><div class="positive_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																										+ update_category + '</div><div class="right_cornerTag"></div></div></div></div>');
+																			
+																					}
+																					
+																					
+																				}else if((update_text != null) && (!update_title)){
+																					
+																					
+																					
+																					if (update_category == "grave") {
+																						$(
+																								'#updateListAjax')
+																								.append(
+																										'<div class="row"><div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
+																												+ update_date
+																														.getDate()
+																												+ " "
+																												+ month_names[update_date
+																														.getMonth()]
+																												+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
+																												+ update_date
+																														.getFullYear()
+																												+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked"></div></div></div><div class="col-xs-10 content" id="updateTitle" style="padding-left: 0;">'
+																												+ update_title + '</div></div>' + '<div class="col-xs-12 description noTranslation" id="updateText">' + aux_text + '<br><div class="grave_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																												+ update_category + '</div><div class="right_cornerTag"></div></div></div></div>');
+																						
+																		
+																						
+																						
+																						
+																						
+																					} else if (update_category == "info") {
+																						$(
+																						'#updateListAjax')
+																						.append(
+																								'<div class="row"><div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
+																										+ update_date
+																												.getDate()
+																										+ " "
+																										+ month_names[update_date
+																												.getMonth()]
+																										+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
+																										+ update_date
+																												.getFullYear()
+																										+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked" style="background: cyan"></div></div></div><div class="col-xs-10 content" id="updateTitle" style="padding-left: 0;">'
+																										+ update_title + '</div></div>' + '<div class="col-xs-12 description noTranslation" id="updateText">' + aux_text + '<br><div class="info_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																										+ update_category + '</div><div class="right_cornerTag"></div></div></div></div>');
+																																					
+																						
+																					} else {
+																						$(
+																						'#updateListAjax')
+																						.append(
+																								'<div class="row"><div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
+																										+ update_date
+																												.getDate()
+																										+ " "
+																										+ month_names[update_date
+																												.getMonth()]
+																										+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
+																										+ update_date
+																												.getFullYear()
+																										+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked" style="background: #8cc63f"></div></div></div><div class="col-xs-10 content" id="updateTitle" style="padding-left: 0;">'
+																										+ update_title + '</div></div>' + '<div class="col-xs-12 description noTranslation" id="updateText">' + aux_text + '<br><div class="positive_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																										+ update_category + '</div><div class="right_cornerTag"></div></div></div></div>');
+																			
+																					}
+																					
+																				}else if((update_text != null) && (update_title != null)){
+																					
+																					if (update_category == "grave") {
+																						$(
+																								'#updateListAjax')
+																								.append(
+																										'<div class="row"><div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
+																												+ update_date
+																														.getDate()
+																												+ " "
+																												+ month_names[update_date
+																														.getMonth()]
+																												+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
+																												+ update_date
+																														.getFullYear()
+																												+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked"></div></div></div><div class="col-xs-10 content" id="updateTitle" style="padding-left: 0;">'
+																												+ update_title + '</div></div>' + '<div class="col-xs-12 description" id="updateText">' + update_text + '<br><div class="grave_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																												+ update_category + '</div><div class="right_cornerTag"></div></div></div></div>');
+																						
+																		
+																						
+																						
+																						
+																						
+																					} else if (update_category == "info") {
+																						$(
+																						'#updateListAjax')
+																						.append(
+																								'<div class="row"><div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
+																										+ update_date
+																												.getDate()
+																										+ " "
+																										+ month_names[update_date
+																												.getMonth()]
+																										+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
+																										+ update_date
+																												.getFullYear()
+																										+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked" style="background: cyan"></div></div></div><div class="col-xs-10 content " id="updateTitle" style="padding-left: 0;">'
+																										+ update_title + '</div></div>' + '<div class="col-xs-12 description" id="updateText">' + update_text + '<br><div class="info_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																										+ update_category + '</div><div class="right_cornerTag"></div></div></div></div>');
+																																					
+																						
+																					} else {
+																						$(
+																						'#updateListAjax')
+																						.append(
+																								'<div class="row"><div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
+																										+ update_date
+																												.getDate()
+																										+ " "
+																										+ month_names[update_date
+																												.getMonth()]
+																										+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
+																										+ update_date
+																												.getFullYear()
+																										+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked" style="background: #8cc63f"></div></div></div><div class="col-xs-10 content " id="updateTitle" style="padding-left: 0;">'
+																										+ update_title + '</div></div>' + '<div class="col-xs-12 description" id="updateText">' + update_text + '<br><div class="positive_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																										+ update_category + '</div><div class="right_cornerTag"></div></div></div></div>');
+																			
+																					}
+																					
+																				}
+																				
+																			}else{
+																				if (update_category == "grave") {
+																					$(
+																							'#updateListAjax')
+																							.append(
+																									'<div class="row"><div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
+																											+ update_date
+																													.getDate()
+																											+ " "
+																											+ month_names[update_date
+																													.getMonth()]
+																											+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
+																											+ update_date
+																													.getFullYear()
+																											+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked"></div></div></div><div class="col-xs-10 content" id="updateTitle" style="padding-left: 0;">'
+																											+ update_title + '</div></div>' + '<div class="col-xs-12 description" id="updateText">' + update_text + '<br><div class="grave_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																											+ update_category + '</div><div class="right_cornerTag"></div></div></div></div>');
+																					
+																	
+																					
+																					
+																					
+																					
+																				} else if (update_category == "info") {
+																					$(
+																					'#updateListAjax')
+																					.append(
+																							'<div class="row"><div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
+																									+ update_date
+																											.getDate()
+																									+ " "
+																									+ month_names[update_date
+																											.getMonth()]
+																									+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
+																									+ update_date
+																											.getFullYear()
+																									+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked" style="background: cyan"></div></div></div><div class="col-xs-10 content" id="updateTitle" style="padding-left: 0;">'
+																									+ update_title + '</div></div>' + '<div class="col-xs-12 description" id="updateText">' + update_text + '<br><div class="info_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																									+ update_category + '</div><div class="right_cornerTag"></div></div></div></div>');
+																																				
+																					
+																				} else {
+																					$(
+																					'#updateListAjax')
+																					.append(
+																							'<div class="row"><div class="col-xs-12 updateBar"><div class="col-xs-2" ><div class="col-xs-7" ><div class="col-xs-12 dateDayMonth headline" id="dateDayMonthEventAjax">'
+																									+ update_date
+																											.getDate()
+																									+ " "
+																									+ month_names[update_date
+																											.getMonth()]
+																									+ '</div><div class="col-xs-12 dateYear" id="dateYearEventAjax">'
+																									+ update_date
+																											.getFullYear()
+																									+ '</div></div><div class="col-xs-2" style="padding-left: 0; margin-top:15px;"><div class="symbolBlocked" style="background: #8cc63f"></div></div></div><div class="col-xs-10 content" id="updateTitle" style="padding-left: 0;">'
+																									+ update_title + '</div></div>' + '<div class="col-xs-12 description" id="updateText">' + update_text + '<br><div class="positive_tag"><div class="left_cornerTag"></div><div class="contentTag">'
+																									+ update_category + '</div><div class="right_cornerTag"></div></div></div></div>');
+																		
+																				}}
+																			
+																			
+																			
+																																						
 																			$("#updateListAjax .description").hide();
 																			$('#updateListAjax  .row').each(function(){
 																					var count = 0;

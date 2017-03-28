@@ -68,7 +68,6 @@ $(document).ready(
 									if (value.target.url == null){
 										m_url ="N.A.";
 									}else{
-
 										m_url = value.target.url;
 									}
 									// Json from the row
@@ -83,7 +82,7 @@ $(document).ready(
 										state ="N.A.";
 										isp="N.A.";
 										type="N.A.";
-										date ="N.A.";
+										
 									}else {
 										$
 										.each(
@@ -93,10 +92,15 @@ $(document).ready(
 														value) {
 
 
+													if (value.date == null){
+														date = "N.A."
+													} else{
 
-													var date = new Date(
-															value.date);
-
+														var date = new Date(
+																value.date);
+	
+													}
+													
 
 
 
@@ -196,7 +200,8 @@ $(document).ready(
 									// in
 									// the
 									// modal
-									if(date=="N.A."){
+									
+									if(date="N.A."){
 									
 								
 										$(

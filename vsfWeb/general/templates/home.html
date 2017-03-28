@@ -7441,7 +7441,7 @@
 
 								<select id="mapSelector"></select>
 								<div style="margin-top: 10px; margin-bottom: 5px; color: white">
-									Download: <a id="downloadMap" class="downloadMap" href="#"> <i
+									{% trans 'Download:' %} <a id="downloadMap" class="downloadMap" href="#"> <i
 										class="fa fa-file-excel-o" aria-hidden="true"></i>
 									</a>
 								</div>
@@ -7937,8 +7937,8 @@ function pagination(){
 				id="hiddenDomainID" value="" /> <input type="hidden"
 				id="hiddenDomainLinkID" value="" /> <input type="hidden"
 				id="countNumber" value="" /> <input type="hidden" id="sites"
-				value="{% trans 'Blocked Sites Strong' %}" /> <input type="hidden"
-				id="domains" value="{% trans 'Blocked Domains Strong' %}" />
+				value="{% trans 'Blocked Sites' %}" /> <input type="hidden"
+				id="domains" value="{% trans 'Blocked Domains' %}" />
 
 			<div class="bodyContent">
 				<div class="col-xs-12" id="blockedTableBorder">
@@ -7976,7 +7976,7 @@ function pagination(){
 												{% trans 'Sites' %}</button>
 
 											<div class="float-xs-right" style="padding-top: 1px">
-												Download: <a id="download" href="#"> <i
+												{% trans 'Download' %}: <a id="download" href="#"> <i
 													class="fa fa-file-excel-o" aria-hidden="true"></i>
 												</a>
 											</div>
@@ -8051,7 +8051,7 @@ function pagination(){
 												onclick="select('isp')">{% trans 'ISP' %}</button>
 
 											<div class="float-xs-right" style="paddng-top: 1px">
-												Download: <a id="downloadSummary" href="#"> <i
+												{% trans 'Download:' %} <a id="downloadSummary" href="#"> <i
 													class="fa fa-file-excel-o" aria-hidden="true"></i>
 												</a>
 											</div>

@@ -368,7 +368,7 @@ msgstr "Estilo"
 
 #: summary/templates/measurements-table.html:13
 msgid "Download:"
-msgstr "Descarga"
+msgstr "Descargar"
 
 #: summary/templates/measurements-table.html:25
 msgid "URL"

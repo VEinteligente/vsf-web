@@ -16,6 +16,7 @@ $(document).ready(
 			var data_modal = null;
 			var raw_json = null;
 			var date = null;
+			var mid = null;
 
 			// id count for displyaing the correct .json
 			idcount = 0;
@@ -45,7 +46,6 @@ $(document).ready(
 						for (var i = 0; i < data.length; i++)
 							temporal = temporal.concat(data[i]);
 						var dataJson = JSON.parse(temporal);
-						console.log(dataJson)
 						// for each result in the .json
 						// {count,next,previous,results}
 						// data.results =
@@ -54,7 +54,6 @@ $(document).ready(
 						.each(
 								dataJson.events,
 								function(index, value) {
-
 									// Site that has
 									// been measured
 									if (value.target.site == null){
@@ -74,7 +73,8 @@ $(document).ready(
 									// that is inserted
 									// in the table
 									raw_data = JSON
-									.stringify(value.flags[idcount]);
+									.stringify(value);
+									console.log(value);
 
 									if ((value.flags).length == 0){
 										country = "N.A.";
@@ -283,15 +283,15 @@ $(document).ready(
 					"click",
 					"#modalbutton",
 					function() {
-						//Here we gran the Json from de data-json field
+						
+						//Here we grab the Json from de data-json field
 						var raw_json = $(this).data('json');
 
 						//Id from the measurement that goes in the title of the modal
-						var mid = raw_json.id;
-
+						
+						var mid = $(this).data('id');
 						//Stringify for display the Json inside the modal
 						data_modal = JSON.stringify(raw_json);
-
 						//Sends the JSON file to the Modal
 						$("#measurementData").jJsonViewer(raw_json, {
 							expanded : true
@@ -299,8 +299,7 @@ $(document).ready(
 
 						//Sends the id to the title of the Modal
 						$("#measurementTitle").html(
-								'Measurement ID <span id="mModalID">'
-								+ mid + '</span>');
+								'Measurement');
 					});
 
 

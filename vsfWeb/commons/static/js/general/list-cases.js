@@ -710,7 +710,7 @@ $("#advanced_search")
 									if (key == "count") {
 
 										$("#resultados").html(hidden_results_string + 
-												"<strong>"
+												" <strong>"
 												+ value
 												+ "</strong>");
 

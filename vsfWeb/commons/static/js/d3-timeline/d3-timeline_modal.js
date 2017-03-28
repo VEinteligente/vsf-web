@@ -1323,6 +1323,10 @@ $.ajax({
 					$('#twitterDiv').css('padding-right','0');
 				});
 
+	$(".global-modal").css("max-width", "100%");
+	$(".global-modal").css("left", "20%");
+	$(".global-modal").css("right", "20%");
+	
 
 	$('.global-modal').modal("show");
 }

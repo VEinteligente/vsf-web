@@ -406,6 +406,19 @@ msgstr "Ingles"
 msgid "Spanish"
 msgstr "Español"
 
+msgid "Search Results"
+msgstr "Resultados de búsqueda de"
+
+msgid "Results"
+msgstr "Resultados"
+
+msgid "of"
+msgstr "de"
+
+
+msgid "See more"
+msgstr "Ver más"
+
 #~ msgid "Measurements"
 #~ msgstr "Mediciones"
 
@@ -457,14 +470,3 @@ msgstr "Español"
 
 #~ msgid "Languages"
 #~ msgstr "Idiomas"
-
-
-msgid "Search Results"
-msgstr "Resultados de busqueda de"
-
-msgid "Results"
-msgstr "Resultados"
-
-msgid "of"
-msgstr "de"
-

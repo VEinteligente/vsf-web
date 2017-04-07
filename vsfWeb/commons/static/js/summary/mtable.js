@@ -24,7 +24,6 @@ $(document).ready(
 			// Variables to display in modal
 			var site = null;
 			var m_url = null;
-			var country = null;
 			var state = null;
 			var city = null;
 			var isp = null;
@@ -50,17 +49,28 @@ $(document).ready(
 						// {count,next,previous,results}
 						// data.results =
 						// [{id,probe{region,country,plan{name,isp,upload,download,comment},identification,city,isp},target{site,url,ip},medicion,date,isp,ip,flag,type_med,event}]
+						console.log(dataJson);
 						$
 						.each(
 								dataJson.events,
 								function(index, value) {
 									// Site that has
 									// been measured
+									if (value.isp == null){
+										isp ="N.A.";
+									}else{
+
+										isp = value.isp;
+									}
 									if (value.target.site == null){
 										site ="N.A.";
 									}else{
 
 										site = value.target.site;
+										var date = new Date(
+												value.start_date);
+										console.log(date);
+
 									}
 									// url from the
 									// measurement
@@ -68,6 +78,16 @@ $(document).ready(
 										m_url ="N.A.";
 									}else{
 										m_url = value.target.url;
+									}
+									
+									// type
+									// of
+									// measurement
+
+									if (value.type == null){
+										type ="N.A.";
+									}else{
+										type = value.type;
 									}
 									// Json from the row
 									// that is inserted
@@ -77,12 +97,8 @@ $(document).ready(
 									console.log(value);
 
 									if ((value.flags).length == 0){
-										country = "N.A.";
 										city ="N.A.";
 										state ="N.A.";
-										isp="N.A.";
-										type="N.A.";
-										
 									}else {
 										$
 										.each(
@@ -90,22 +106,11 @@ $(document).ready(
 												function(
 														index,
 														value) {
-
-
-													if (value.date == null){
-														date = "N.A."
-													} else{
-
-														var date = new Date(
-																value.date);
-	
-													}
 													
 
 
 
 													if (value.probe == null){
-														country ="N.A.";
 														city ="N.A.";
 														state ="N.A.";
 														isp="N.A.";
@@ -116,11 +121,6 @@ $(document).ready(
 														// the
 														// measurement
 
-														if (value.probe.country == null){
-															country = "N.A.";
-														}else {
-															country = value.probe.country;
-														}
 														// city
 														// of
 														// the
@@ -143,29 +143,10 @@ $(document).ready(
 
 															state = value.probe.region;
 														}
-														// isp
-														// of
-														// the
-														// measurement
-														if (value.probe.isp == null){
-															isp ="N.A.";
-														}else{
 
-															isp = value.probe.isp;
-														}
-														country = value.probe.country;
-
+														
 													}
 
-													// type
-													// of
-													// measurement
-
-													if (value.type_med == null){
-														type ="N.A.";
-													}else{
-														type = value.type_med;
-													}
 													// data
 													// has
 													// the
@@ -201,43 +182,13 @@ $(document).ready(
 									// the
 									// modal
 									
-									if(date="N.A."){
-									
-								
+														
 										$(
 												"#dataTableM")
 												.append(
 														'<div class="row" id="mRow"><div class="col-xs-2 mData" id="mDataSite">'
 														+ site
-														+ '</div><div class="col-xs-2 mData">'
-														+ m_url
-														+ '</div><div class="col-xs-1 mData" id="mDataDate">'
-														+ date
-														+ '</div><div class="col-xs-1 mData" id="mDataCountry">'
-														+ country
-														+ '</div><div class="col-xs-1 mData" id="mDataRegion">'
-														+ state
-														+ '</div><div class="col-xs-1 mData" id="mDataCity">'
-														+ city
-														+ '</div><div class="col-xs-1 mData" id="mDataIsp">'
-														+ isp
-														+ '</div><div class="col-xs-1 mData" id="mDataJson"><a data-id="'
-														+ value.id
-														+ '" data-json=\''
-														+ raw_data
-														+ '\' id="modalbutton" data-toggle="modal" data-target="#myModal">.Json</a></div><div class="col-xs-1 mData" id="mDataType">'
-														+ type
-														+ '</div></div>');
-										
-									}
-									else{
-										
-										$(
-												"#dataTableM")
-												.append(
-														'<div class="row" id="mRow"><div class="col-xs-2 mData" id="mDataSite">'
-														+ site
-														+ '</div><div class="col-xs-2 mData">'
+														+ '</div><div class="col-xs-3 mData">'
 														+ m_url
 														+ '</div><div class="col-xs-1 mData" id="mDataDate">'
 														+ date.getDate()
@@ -246,8 +197,6 @@ $(document).ready(
 														+ '/'
 														+ date
 														.getFullYear()
-														+ '</div><div class="col-xs-1 mData" id="mDataCountry">'
-														+ country
 														+ '</div><div class="col-xs-1 mData" id="mDataRegion">'
 														+ state
 														+ '</div><div class="col-xs-1 mData" id="mDataCity">'
@@ -258,10 +207,10 @@ $(document).ready(
 														+ value.id
 														+ '" data-json=\''
 														+ raw_data
-														+ '\' id="modalbutton" data-toggle="modal" data-target="#myModal">.Json</a></div><div class="col-xs-1 mData" id="mDataType">'
+														+ '\' id="modalbutton" data-toggle="modal" data-target="#myModal">.Json</a></div><div class="col-xs-2 mData" id="mDataType">'
 														+ type
 														+ '</div></div>');
-									}
+									
 
 									
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-27 10:54-0400\n"
+"POT-Creation-Date: 2017-04-06 12:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,6 +42,7 @@ msgid "Descripcion: "
 msgstr "Description:"
 
 #: cases/templates/case-pdf.html:92 cases/templates/case.html:104
+#: general/templates/home.html:7979
 msgid "Download"
 msgstr "Download"
 
@@ -58,7 +59,6 @@ msgid "Grafico"
 msgstr "Graphic"
 
 #: cases/templates/case.html:59
-#| msgid "Category: "
 msgid "Categoría:"
 msgstr "Category:"
 
@@ -138,85 +138,107 @@ msgid "Summary Table"
 msgstr "Summary Table"
 
 #: general/templates/blocked-sites_domains.html:14
+#: general/templates/home.html:7940
 msgid "Blocked Sites"
 msgstr "Blocked Sites"
 
 #: general/templates/blocked-sites_domains.html:16
+#: general/templates/home.html:7941
 msgid "Blocked Domains"
 msgstr "Blocked Domains"
 
 #: general/templates/blocked-sites_domains.html:48
-#: general/templates/home.html:7963
+#: general/templates/home.html:7972
 msgid "Domains"
 msgstr "Domains"
 
 #: general/templates/blocked-sites_domains.html:52
-#: general/templates/home.html:7967
+#: general/templates/home.html:7976
 msgid "Sites"
 msgstr "Sites"
 
-#: general/templates/home.html:7457 general/templates/maps/venezuela.html:7452
+#: general/templates/blocked-sites_domains.html:56
+#: general/templates/home.html:7444 general/templates/home.html:8054
+#: general/templates/list-cases-advanced.html:126
+#: summary/templates/measurements-table.html:13
+#: summary/templates/summary-table.html:53
+msgid "Download:"
+msgstr "Download"
+
+#: general/templates/home.html:6 general/templates/list-cases-advanced.html:31
+#: general/templates/list-cases.html:33
+msgid "Search Results"
+msgstr "Search results of"
+
+#: general/templates/home.html:7 general/templates/list-cases-advanced.html:32
+#: general/templates/list-cases.html:34
+msgid "Results"
+msgstr "Results"
+
+#: general/templates/home.html:8 general/templates/list-cases-advanced.html:33
+#: general/templates/list-cases.html:35
+msgid "of"
+msgstr "of"
+
+#: general/templates/home.html:9
+msgid "See more"
+msgstr "See more"
+
+#: general/templates/home.html:7461 general/templates/maps/venezuela.html:7452
 msgid "Featured Cases"
 msgstr "Featured Cases"
 
-#: general/templates/home.html:7931
-#, fuzzy
-#| msgid "Blocked Sites"
-msgid "Blocked Sites Strong"
-msgstr "Blocked Sites"
-
-#: general/templates/home.html:7932
-#, fuzzy
-#| msgid "Blocked Domains"
-msgid "Blocked Domains Strong"
-msgstr "Blocked Domains"
-
-#: general/templates/home.html:8007 summary/templates/summary-table.html:11
+#: general/templates/home.html:8016 summary/templates/summary-table.html:11
 msgid "Categories"
 msgstr "Categories"
 
-#: general/templates/home.html:8008 summary/templates/summary-table.html:12
+#: general/templates/home.html:8017 summary/templates/summary-table.html:12
 msgid "ISPs"
 msgstr "ISPs"
 
-#: general/templates/home.html:8039 general/templates/list-cases.html:71
-#: summary/templates/summary-table.html:45
+#: general/templates/home.html:8048
+#: general/templates/list-cases-advanced.html:73
+#: general/templates/list-cases.html:74 summary/templates/summary-table.html:45
 msgid "Category"
 msgstr "Category"
 
-#: general/templates/home.html:8042 general/templates/list-cases.html:68
-#: general/templates/list-cases.html:128
-#: summary/templates/measurements-table.html:30
+#: general/templates/home.html:8051
+#: general/templates/list-cases-advanced.html:69
+#: general/templates/list-cases.html:71 general/templates/list-cases.html:131
+#: summary/templates/measurements-table.html:29
 #: summary/templates/summary-table.html:49
 msgid "ISP"
 msgstr "ISP"
 
-#: general/templates/list-cases.html:49
+#: general/templates/list-cases-advanced.html:50
+#: general/templates/list-cases.html:52
 msgid "Title"
 msgstr "Title bar"
 
-#: general/templates/list-cases.html:74 general/templates/list-cases.html:130
+#: general/templates/list-cases-advanced.html:77
+#: general/templates/list-cases.html:77 general/templates/list-cases.html:133
 msgid "Region"
 msgstr "Region"
 
-#: general/templates/list-cases.html:77
+#: general/templates/list-cases-advanced.html:81
+#: general/templates/list-cases.html:80
 #: summary/templates/measurements-table.html:24
 msgid "Site"
 msgstr "Sites"
 
-#: general/templates/list-cases.html:125
+#: general/templates/list-cases.html:128
 msgid "Fecha"
 msgstr "Date"
 
-#: general/templates/list-cases.html:126
+#: general/templates/list-cases.html:129
 msgid "Caso"
 msgstr "Case"
 
-#: general/templates/list-cases.html:127
+#: general/templates/list-cases.html:130
 msgid "Sitio"
 msgstr "Sites"
 
-#: general/templates/list-cases.html:129
+#: general/templates/list-cases.html:132
 msgid "Categoria"
 msgstr "Categories"
 
@@ -365,10 +387,6 @@ msgstr "Color"
 msgid "Style"
 msgstr "Style"
 
-#: summary/templates/measurements-table.html:13
-msgid "Download:"
-msgstr "Download"
-
 #: summary/templates/measurements-table.html:25
 msgid "URL"
 msgstr "URL"
@@ -378,22 +396,18 @@ msgid "Date"
 msgstr "Date"
 
 #: summary/templates/measurements-table.html:27
-msgid "Country"
-msgstr "Country"
-
-#: summary/templates/measurements-table.html:28
 msgid "State"
 msgstr "State"
 
-#: summary/templates/measurements-table.html:29
+#: summary/templates/measurements-table.html:28
 msgid "City"
 msgstr "City"
 
-#: summary/templates/measurements-table.html:31
+#: summary/templates/measurements-table.html:30
 msgid "Measurement"
 msgstr "Measurement"
 
-#: summary/templates/measurements-table.html:32
+#: summary/templates/measurements-table.html:31
 msgid "Type"
 msgstr "Type"
 
@@ -405,19 +419,18 @@ msgstr "English"
 msgid "Spanish"
 msgstr "Spanish"
 
+#, fuzzy
+#~| msgid "Blocked Sites"
+#~ msgid "Blocked Sites Strong"
+#~ msgstr "Blocked Sites"
 
-msgid "Search Results"
-msgstr "Search results of"
+#, fuzzy
+#~| msgid "Blocked Domains"
+#~ msgid "Blocked Domains Strong"
+#~ msgstr "Blocked Domains"
 
-msgid "Results"
-msgstr "Results"
-
-msgid "of"
-msgstr "of"
-
-msgid "See more"
-msgstr "See more"
-
+#~ msgid "Country"
+#~ msgstr "Country"
 
 #~| msgid "Measurement"
 #~ msgid "Measurements"
@@ -480,4 +493,3 @@ msgstr "See more"
 
 #~ msgid "Languages"
 #~ msgstr "Languages"
-

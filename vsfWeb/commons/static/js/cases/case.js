@@ -6,7 +6,10 @@ $('#subGraphTwitter').mouseover(function(){
 	$('#subGraphTwitter .subGraphDivHover').hide();
 });
 
-
+function errorImg(){
+	this.onerror=null;
+	this.src=png_default;
+}
 
 function modal_content(element_content){
 		
@@ -206,9 +209,12 @@ $(document)
 										if(domains_count == 1){
 											// For cases with one site, a simple image is loaded. The image is stored in 
 											// static/screenshots and has a name similar to "screen_case_#ID_0.png"
-											$("#caseImage").html('<img src="" class="img-fluid" style="width:100%">');
+											$("#caseImage").html('<img class="img-fluid" style="width:100%">');
 											var png = png_commons + "_0.png";	
 											$(".img-fluid").attr("src", png);
+											$('.img-fluid').on('error', function(){
+										        $(this).attr('src', png_default);
+											});
 											var width_clip_path = $('#caseImage').width();
 											$("#caseImage").append('<svg width="0" height="0">'
 											 + '<defs><clipPath id="myClip">'
@@ -233,7 +239,6 @@ $(document)
 												
 												//(function(i) {
 													
-												$(".owl-carousel").append('<div class="item"><img src="" class="img-fluid"></div>');
 												var png = png_commons + "_" + i + ".png";
 												//	nRequest[i] = new XMLHttpRequest();
 												//	png[i] = png_commons + "_" + i + ".png";
@@ -248,7 +253,14 @@ $(document)
 //												            	alert(png[i])
 //												            	console.log($('img-fluid_' + i ))
 //												            	
-															$(".img-fluid").attr("src", png);
+															//$(".img-fluid").attr("src", png);
+															
+															$(".owl-carousel").append('<div class="item"><img src="'+png+'"  class="img-fluid"></div>');
+															
+															//$(".img-fluid").attr("onerror",errorImg());
+															$('.img-fluid').on('error', function(){
+														        $(this).attr('src', png_default);
+															});
 															$(".img-fluid").removeClass('img-fluid');
 																if(i == 0){
 																	var image_meta = png;

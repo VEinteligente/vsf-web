@@ -5,6 +5,9 @@ import httplib
 
 import shutil
 
+import StringIO
+from PIL import Image
+
 from django_cron import CronJobBase, Schedule
 
 from selenium import webdriver
@@ -35,7 +38,7 @@ class ScreenshotCronjob(CronJobBase):
            
            countDomain = 0
            for domain in results["domains"]:
-               
+
                # we call the webdriver to use Phantom JS
                driver = webdriver.PhantomJS()
                # we set the size of the web browser
@@ -57,18 +60,28 @@ class ScreenshotCronjob(CronJobBase):
                
                
                
-               if ret == 404:                   
-                   shutil.copy2("commons/static/screenshots/vsf_socialmediadefault_v101.png", "commons/static/screenshots/screen_case_" + 
-                       str(id_case) + "_" + str(countDomain) + 
-                       ".png") 
-               else:                                      
+               if ret != 404:                                              
                    driver.get(domain['url'])
                    # screen shot in the static/screenshots folder of the project
+                     
+                   
                    driver.save_screenshot(
                        "commons/static/screenshots/screen_case_" + 
                        str(id_case) + "_" + str(countDomain) + 
                        ".png"
                        )
+      
+                   screen = driver.get_screenshot_as_png()
+                   
+                  # Crop image
+                   box = (0, 0, 1024, 550)
+                   im = Image.open(StringIO.StringIO(screen))
+          
+                   region = im.crop(box)
+                  
+                   region.save("commons/static/screenshots/crop_screen_case_" + 
+                       str(id_case) + "_" + str(countDomain) + 
+                       ".png", 'PNG', optimize=True, quality=95)
                
                
                

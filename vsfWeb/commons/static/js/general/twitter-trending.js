@@ -45,8 +45,9 @@ function twitterSearch(searchWord) {
 				
 
 		}).fail(function(jqXHR, textStatus, errorThrown) {
-			$('#twitterDiv').css('padding-right','0');
-			$('#twitterTweet').html("<div class='failedService'><img  src='"+ fail_twitter_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
+			$('#subGraphTwitter').remove();
+			//$('#twitterDiv').css('padding-right','0');
+			//$('#twitterTweet').html("<div class='failedService'><img  src='"+ fail_twitter_img + "' alt='service fail' /><br><p>Failed to load service</p></div>");
 		});
 
 }

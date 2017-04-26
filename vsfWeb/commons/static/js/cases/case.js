@@ -538,7 +538,7 @@ $(document)
 											$("#hidden_twitterSearch").val(twitter_search);
 										}
 										else{
-											$('#subGraph1').remove();
+											$('#subGraphTwitter').remove();
 											
 //
 //											$('#twitterDiv').css('padding-right','0');

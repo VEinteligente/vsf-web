@@ -1112,13 +1112,13 @@ function drawMiniGantts(data,i,label,timelineEnd){
 																				// on
 																	// the
 
-	$("#subGraph"+ (i) + " .twitterTweet ").append('<div>Bloque: <span class="rhombus" style="background-color: ' + BLOCKED_DPI  + '"> </span><span>DPI</span>'
-			+ ', <span class="rhombus" style="background-color: ' + BLOCKED_DNS  + '"> </span><span>DNS</span>, <span class="rhombus" style="background-color: ' + BLOCKED_IP  + '"> </span><span>IP</span></div>');
+	$("#subGraph"+ (i) + " .twitterTweet ").append('<div>Bloqueo: <span class="rhombus" style="background-color: ' + BLOCKED_DPI  + '"> </span><span> DPI</span>'
+			+ ', <span class="rhombus" style="background-color: ' + BLOCKED_DNS  + '"> </span><span> DNS</span>, <span class="rhombus" style="background-color: ' + BLOCKED_IP  + '"> </span><span> IP</span></div>');
 
-	$("#subGraph"+ (i) + " .twitterTweet ").append('<div><span class="rhombus" style="background-color: ' + TRAFFIC_INTERCEPTION  + '"> </span>Interceptacion de trafico</div>');
-	$("#subGraph"+ (i) + " .twitterTweet ").append('<div><span class="rhombus" style="background-color: ' + FAILURE_DNS  + '"> </span>Falla dns</div>');
-	$("#subGraph"+ (i) + " .twitterTweet ").append('<div><span class="rhombus" style="background-color: ' + INTERNET_SPEED  + '"> </span>Velocidad de internet</div>');
-	$("#subGraph"+ (i) + " .twitterTweet ").append('<div><span class="rhombus" style="background-color: ' + TRAFFIC_ALTERATION  + '"> </span>Alteracion de trafico por intermediarios</div>');
+	$("#subGraph"+ (i) + " .twitterTweet ").append('<div><span class="rhombus" style="background-color: ' + TRAFFIC_INTERCEPTION  + '"> </span> Interceptacion de trafico</div>');
+	$("#subGraph"+ (i) + " .twitterTweet ").append('<div><span class="rhombus" style="background-color: ' + FAILURE_DNS  + '"> </span> Falla dns</div>');
+	$("#subGraph"+ (i) + " .twitterTweet ").append('<div><span class="rhombus" style="background-color: ' + INTERNET_SPEED  + '"> </span> Velocidad de internet</div>');
+	$("#subGraph"+ (i) + " .twitterTweet ").append('<div><span class="rhombus" style="background-color: ' + TRAFFIC_ALTERATION  + '"> </span> Alteracion de trafico por intermediarios</div>');
 		  
 		  
 	$("#subGraph"+ (i) + " .twitterTweet ").css('font-size','13px');	    

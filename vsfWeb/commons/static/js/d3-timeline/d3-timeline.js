@@ -1,6 +1,6 @@
 // This value indicates the maximum Y values of a graph. If the value is 
 // over this value then a simplificated graph will be shown. 
-var maxYValues = 2; 
+var maxYValues = 12; 
 
 // These values indicate the diferent options for the X axis 
 var Year = "Year";
@@ -1472,17 +1472,17 @@ $.ajax({
 		var chart = d3.timeline().showTimeAxisTick().stack().beginning(timelineStart).ending(timelineEnd);
 
 
-						
+		var heightDynamic = (320/10)*dataLabel.length;
 		var margin = {top: 35, right: 200, bottom: 20, left: 80},
 				    width = 1024 - (margin.left + margin.right);
-					height = 320 - (margin.top + margin.bottom);
+					height = heightDynamic - (margin.top + margin.bottom);
 					    
 					    
 		var svg = d3.select("#timeline1")// container class to make it
 											// responsive
 						.append("svg").attr("preserveAspectRatio", "xMinYMin meet")
 						.attr("width", width + (margin.left + margin.right)-24)
-						.attr("height", height )
+						.attr("height", heightDynamic )
 						   .attr("viewBox", "0 0 " + ( width - 534 ) + " "
 								 +   (height+100))
 						   // class to make it responsive

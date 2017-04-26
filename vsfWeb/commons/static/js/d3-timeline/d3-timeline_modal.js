@@ -1195,10 +1195,10 @@ $.ajax({
 		var chart = d3.timeline().showTimeAxisTick().stack().ending((new Date()).getTime());
 
 
-						
+		var heightDynamic = (320/10)*dataLabel.length;				
 		var margin = {top: 35, right: 200, bottom: 20, left: 80},
 				    width = 1024 - (margin.left + margin.right);
-					height = 220 - (margin.top + margin.bottom);
+					height = heightDynamic - (margin.top + margin.bottom);
 					    
 					    
 		var svg = d3.select("#modaltwitterTweet")// container class to make it

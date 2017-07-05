@@ -4,12 +4,12 @@
 *.pyc
 local_settings.py
 .pyc
-/vsfWeb/general/admin.pyc
-/vsfWeb/general/models.pyc
+/general/admin.pyc
+/general/models.pyc
 /.settings/org.eclipse.core.resources.prefs
-/vsfWeb/commons/static/screenshots/screen_case_1_0.png
-/vsfWeb/commons/static/screenshots/screen_case_2_0.png
-/vsfWeb/commons/static/screenshots/screen_case_2_1.png
-/vsfWeb/ghostdriver.log
+/commons/static/screenshots/screen_case_1_0.png
+/commons/static/screenshots/screen_case_2_0.png
+/commons/static/screenshots/screen_case_2_1.png
+/ghostdriver.log
 
-vsfWeb/db\.sqlite3
+/db\.sqlite3

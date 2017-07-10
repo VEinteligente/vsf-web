@@ -11,6 +11,16 @@ from django.views.generic import (TemplateView)
 from rest_framework.response import Response
 from rest_framework.views import (APIView)
 
+from django.views import generic
+from .forms import SearchCaseForm
+
+
+class ListCases(generic.FormView):
+    form_class = SearchCaseForm
+    template_name = 'case-list.html'
+
+    # -------------------------------------------------
+
 
 class Case(TemplateView):
     """This view renders the HTML containing information about one element case

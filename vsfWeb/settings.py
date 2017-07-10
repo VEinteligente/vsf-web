@@ -82,6 +82,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_cron',
+    'bootstrap3',
     'compressor',
     'rest_framework',
     'widget_tweaks',

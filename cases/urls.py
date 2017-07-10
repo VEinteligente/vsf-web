@@ -8,7 +8,9 @@ from views import (
     GanttEvents,
     GanttEventsApi,
     SpeedTestCase,
-    EventsMonth)
+    EventsMonth,
+    ListCases
+)
 
 
 urlpatterns = [
@@ -31,4 +33,6 @@ urlpatterns = [
         EventsMonth.as_view(),
         name="monthEventsApi"),
     url(r'^speed-test-case$', SpeedTestCase.as_view(), name="SpeedTestCase"),
+
+    url(r'^list$', ListCases.as_view(), name="CasesList"),
 ]

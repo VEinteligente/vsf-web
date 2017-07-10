@@ -1,11 +1,9 @@
 .sass-cache/
 *.css.map
-/vsfWeb/commons/static/CACHE/*
+/commons/static/CACHE/*
 *.pyc
 local_settings.py
 .pyc
-/general/admin.pyc
-/general/models.pyc
 /.settings/org.eclipse.core.resources.prefs
 /commons/static/screenshots/screen_case_1_0.png
 /commons/static/screenshots/screen_case_2_0.png

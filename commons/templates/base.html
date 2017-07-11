@@ -12,13 +12,14 @@
 
 <body>
 
-	<header> {% include "navbar/navbar.html" %} </header>
+	<header>
+        {% include "navbar/navbar.html" %}
+        {% block extra-style %}
+        {% endblock %}
+    </header>
 
 	{% block content %} 
 	{% endblock content %}
-
-
-
 
 	<footer> {% include "footer/footer.html" %} </footer>
     {% block extra-js %}

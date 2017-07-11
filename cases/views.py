@@ -16,10 +16,167 @@ from .forms import SearchCaseForm
 
 
 class ListCases(generic.FormView):
+    headers = {'Authorization': settings.SERVICES_TOKEN}
     form_class = SearchCaseForm
     template_name = 'case-list.html'
+    cases = []
 
-    # -------------------------------------------------
+    def get_regions(self):
+        url = settings.URL_VSF + '/cases/api/region/'
+        all_regions = False
+        regions = []
+        clean_regions = []
+
+        while not all_regions:
+            snippet = requests.get(
+                url,
+                headers=self.headers)
+            snippet = snippet.json()
+            regions = regions + snippet['results']
+
+            if not snippet['next']:
+                all_regions = True
+            else:
+                url = snippet['next']
+
+        for region in regions:
+            clean_regions.append((str(region['name']) + '-' + str(region['country']), region['name']))
+
+        return clean_regions
+
+    def get_isp(self):
+        url = settings.URL_VSF + '/events/api/isp/'
+        all_isp = False
+        isp = []
+        clean_isp = []
+
+        while not all_isp:
+            snippet = requests.get(
+                url,
+                headers=self.headers)
+            snippet = snippet.json()
+            isp = isp + snippet['results']
+
+            if not snippet['next']:
+                all_isp = True
+            else:
+                url = snippet['next']
+
+        for isps in isp:
+            clean_isp.append((isps['name'], isps['name']))
+
+        return clean_isp
+
+    def get_site(self):
+        url = settings.URL_VSF + '/events/api/site/'
+        all_site = False
+        sites = []
+        clean_sites = []
+
+        while not all_site:
+            snippet = requests.get(
+                url,
+                headers=self.headers)
+            snippet = snippet.json()
+            sites = sites + snippet['results']
+
+            if not snippet['next']:
+                all_site = True
+            else:
+                url = snippet['next']
+
+        for site in sites:
+            clean_sites.append((site['name'], site['name']))
+
+        return clean_sites
+
+    def get_categories(self):
+        url = settings.URL_VSF + '/events/api/categories/'
+        all_categories = False
+        categories = []
+        clean_categories = []
+
+        while not all_categories:
+            snippet = requests.get(
+                url,
+                headers=self.headers)
+            snippet = snippet.json()
+            categories = categories + snippet['results']
+
+            if not snippet['next']:
+                all_categories = True
+            else:
+                url = snippet['next']
+
+        for category in categories:
+            clean_categories.append((category['name'], category['name']))
+
+        return clean_categories
+
+    def get_form(self, form_class=None):
+        """
+        Returns an instance of the form to be used in this view.
+        """
+        selects_data = {
+            'regions': self.get_regions(),
+            'isp': self.get_isp(),
+            'site': self.get_site(),
+            'category': self.get_categories()
+        }
+
+        if form_class is None:
+            form_class = self.get_form_class()
+
+        return form_class(selects_data=selects_data, **self.get_form_kwargs())
+
+    def form_valid(self, form):
+        """
+        If the form is valid, redirect to the supplied URL.
+        """
+        if not form.cleaned_data['start_date']:
+            form.cleaned_data['start_date'] = ''
+        if not form.cleaned_data['end_date']:
+            form.cleaned_data['end_date'] = ''
+        search_data = {
+            'start_date': str(form.cleaned_data['start_date']),
+            'end_date': str(form.cleaned_data['end_date'])
+        }
+
+        return self.render_to_response(self.get_context_data(search_data=search_data))
+
+    def get_context_data(self, **kwargs):
+        """
+        Insert the form into the context dict.
+        """
+        all_cases = False
+        cases = []
+        url = settings.URL_VSF + '/cases/api/list-case-filter/'
+        if 'search_data' in kwargs:
+            all_cases = False
+            cases = []
+            url = url + \
+                  '?start_date=' + kwargs['search_data']['start_date'] + \
+                  '&end_date=' + kwargs['search_data']['end_date']
+
+        while not all_cases:
+            snippet = requests.get(
+                url,
+                headers=self.headers)
+            snippet = snippet.json()
+            cases = cases + snippet['results']
+
+            if not snippet['next']:
+                all_cases = True
+            else:
+                url = snippet['next']
+
+        kwargs['cases'] = cases
+
+        if 'form' not in kwargs:
+            kwargs['form'] = self.get_form()
+        return super(ListCases, self).get_context_data(**kwargs)
+
+# -------------------------------------------------
 
 
 class Case(TemplateView):

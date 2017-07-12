@@ -91,7 +91,7 @@ class ListCases(generic.FormView):
         return clean_sites
 
     def get_categories(self):
-        url = settings.URL_VSF + '/events/api/categories/'
+        url = settings.URL_VSF + '/cases/api/list/category/'
         all_categories = False
         categories = []
         clean_categories = []
@@ -109,7 +109,7 @@ class ListCases(generic.FormView):
                 url = snippet['next']
 
         for category in categories:
-            clean_categories.append((category['name'], category['name']))
+            clean_categories.append((category['category']['name'], category['category']['name']))
 
         return clean_categories
 
@@ -120,8 +120,8 @@ class ListCases(generic.FormView):
         selects_data = {
             'regions': self.get_regions(),
             'isp': self.get_isp(),
-            'site': self.get_site(),
-            'category': self.get_categories()
+            'sites': self.get_site(),
+            'categories': self.get_categories()
         }
 
         if form_class is None:
@@ -133,14 +133,48 @@ class ListCases(generic.FormView):
         """
         If the form is valid, redirect to the supplied URL.
         """
-        if not form.cleaned_data['start_date']:
-            form.cleaned_data['start_date'] = ''
-        if not form.cleaned_data['end_date']:
-            form.cleaned_data['end_date'] = ''
-        search_data = {
-            'start_date': str(form.cleaned_data['start_date']),
-            'end_date': str(form.cleaned_data['end_date'])
-        }
+        search_data = []
+
+        if form.cleaned_data['start_date']:
+            search_data.append('start_date=' + str(form.cleaned_data['start_date']))
+        if form.cleaned_data['end_date']:
+            search_data.append('end_date=' + str(form.cleaned_data['end_date']))
+
+        if form.cleaned_data['isp']:
+            isps = 'isp='
+            for isp in form.cleaned_data['isp']:
+                if isp not in isps:
+                    isps += isp + ','
+            search_data.append(isps[:-1])
+
+        if form.cleaned_data['categories']:
+            categories = 'category='
+            for category in form.cleaned_data['categories']:
+                if category not in categories:
+                    categories += category + ','
+            search_data.append(categories[:-1])
+
+        if form.cleaned_data['regions']:
+            states = 'region='
+            countries = 'country='
+            for region in form.cleaned_data['regions']:
+                region = region.split('-')
+
+                if region[0] not in states:
+                    states += region[0] + ','
+
+                if region[1] not in countries:
+                    countries += region[1] + ','
+
+            search_data.append(countries[:-1])
+            search_data.append(states[:-1])
+
+        if form.cleaned_data['sites']:
+            sites = 'site='
+            for site in form.cleaned_data['sites']:
+                if site not in sites:
+                    sites += site + ','
+            search_data.append(sites[:-1])
 
         return self.render_to_response(self.get_context_data(search_data=search_data))
 
@@ -152,11 +186,10 @@ class ListCases(generic.FormView):
         cases = []
         url = settings.URL_VSF + '/cases/api/list-case-filter/'
         if 'search_data' in kwargs:
-            all_cases = False
-            cases = []
-            url = url + \
-                  '?start_date=' + kwargs['search_data']['start_date'] + \
-                  '&end_date=' + kwargs['search_data']['end_date']
+            url += '?'
+            for value in kwargs['search_data']:
+                url += value + '&'
+            url = url[:-1]
 
         while not all_cases:
             snippet = requests.get(

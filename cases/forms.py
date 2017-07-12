@@ -11,12 +11,12 @@ class SearchCaseForm(forms.Form):
         widget=widgets.SelectMultiple(attrs={'class': 'select2'}),
         required=False
     )
-    category = forms.MultipleChoiceField(
+    categories = forms.MultipleChoiceField(
         choices=(),
         widget=widgets.SelectMultiple(attrs={'class': 'select2'}),
         required=False
     )
-    region = forms.MultipleChoiceField(
+    regions = forms.MultipleChoiceField(
         choices=(),
         widget=widgets.SelectMultiple(attrs={'class': 'select2'}),
         required=False
@@ -31,6 +31,6 @@ class SearchCaseForm(forms.Form):
         super(SearchCaseForm, self).__init__(*args, **kwargs)
 
         self.fields['isp'].choices = selects_data['isp']
-        self.fields['region'].choices = selects_data['regions']
-        self.fields['category'].choices = selects_data['category']
-        self.fields['sites'].choices = selects_data['site']
+        self.fields['regions'].choices = selects_data['regions']
+        self.fields['categories'].choices = selects_data['categories']
+        self.fields['sites'].choices = selects_data['sites']

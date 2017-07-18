@@ -68,7 +68,7 @@ class ListCases(generic.FormView):
         return clean_isp
 
     def get_site(self):
-        url = settings.URL_VSF + '/events/api/site/'
+        url = settings.URL_VSF + '/events/api/sites/'
         all_site = False
         sites = []
         clean_sites = []
@@ -77,6 +77,7 @@ class ListCases(generic.FormView):
             snippet = requests.get(
                 url,
                 headers=self.headers)
+            print snippet
             snippet = snippet.json()
             sites = sites + snippet['results']
 

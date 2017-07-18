@@ -7478,21 +7478,18 @@
 		</div>
 
 		<script>
-				// These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here 
-				// because of DJango configuration
-				var fail_service_img = "{% static 'img/icons/vsf_iconfailure_v101.svg' %}";
-				var url_data_map = "{% url 'General:MapApi' %}"
-				var url_style_list = "{% url 'StylingGuide:ListApi' %}"
-				var url_map_excel = "{% url 'General:ExcelMap' %}"
-				var url_web = $("#hidden_url_web").val();
-			</script>
+            // These variables are the URLs used for the AJAX calls in the list.js file. They need to be specified here
+            // because of DJango configuration
+            var fail_service_img = "{% static 'img/icons/vsf_iconfailure_v101.svg' %}";
+            var url_data_map = "{% url 'General:MapApi' %}"
+            var url_style_list = "{% url 'StylingGuide:ListApi' %}"
+            var url_map_excel = "{% url 'General:ExcelMap' %}"
+            var url_web = $("#hidden_url_web").val();
+        </script>
 
 		<script src="{% static 'js/general/map.js' %}"></script>
 
-
 	</div>
-
-
 
 </div>
 
@@ -7529,9 +7526,7 @@
 
 			<div class="container-fluid" style="visibility: hidden">
 
-
 				<div class="row">
-
 
 					<div class="bodyContent">
 						<!-- Search bar form -->
@@ -7552,43 +7547,30 @@
 
 									<div class="col-xs-1">
 										<input type="submit" value="" id="submit" />
-
-
 									</div>
 
 								</div>
 							</div>
 							<div class="col-xs-12 multipleChoices">
-
 								<select id="isp" data-placeholder="ISP" multiple="">
-								</select> <select id="category" data-placeholder="Category" multiple="">
-								</select> <select id="region" data-placeholder="Region" multiple="">
-								</select> <select id="site" data-placeholder="Site" multiple="">
 								</select>
-
-
-
+                                <select id="category" data-placeholder="Category" multiple="">
+								</select>
+                                <select id="region" data-placeholder="Region" multiple="">
+								</select>
+                                <select id="site" data-placeholder="Site" multiple="">
+								</select>
 							</div>
 
-
-
 							<input type="hidden" id="start_date" class="datepicker"
-								name="start_date" placeholder="Start date"> <input
+								name="start_date" placeholder="Start date">
+                            <input
 								type="hidden" id="end_date" class="datepicker" name="end_date"
 								placeholder="End date">
-
-
-
-
-
-
 						</form>
 
 						<br>
 					</div>
-
-
-
 
 				</div>
 
@@ -7604,7 +7586,6 @@
 
 						<!-- Search results -->
 						<div class="listCasesContainer">
-
 							<div class="col-xs-12 resumeResult">
 								<div id="resultados"></div>
 							</div>
@@ -7624,24 +7605,17 @@
 
 							<div class="col-xs-12 subtitleBar" style="margin-bottom: 5px">
 								<div class="h4Style title searchHome">
-									<a class="col-xs-12 seeMore" href="{{ URL_VSF_WEB }}/general/list-cases"></a>								
+									<a class="col-xs-12 seeMore" href="{{ URL_VSF_WEB }}/general/list-cases"></a>
 								</div>
 							</div>
 
 						</div>
-
-
-
 
 					</div>
 				</div>
 			</div>
 
 			<div class="col-xs-2 changeStyling"></div>
-
-
-
-
 
 			<script type="text/javascript">
 			var hidden_results_string = $("#hidden_search_results_string").val();

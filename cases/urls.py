@@ -34,5 +34,5 @@ urlpatterns = [
         name="monthEventsApi"),
     url(r'^speed-test-case$', SpeedTestCase.as_view(), name="SpeedTestCase"),
 
-    url(r'^list$', ListCases.as_view(), name="CasesList"),
+    url(r'^list/$', ListCases.as_view(), name="CasesList"),
 ]

@@ -105,29 +105,70 @@ $(document)
 										// For each element in the JSON we need to collect their
 										// values
 										for (var i = 0; i < dataJson.length; i++)
-											temporal = temporal.concat(dataJson[i]);
-
+											temporal = temporal.concat(dataJson[i]); // !!!AA: case category
 										var data = JSON.parse(temporal);
 											$('#footerCaseInfo').append(data);
 											$("#caseCategory").append('&nbsp <div class="'
-													+ (data.category).name
+													+ (data.category)
 													+ '"><div class="left_cornerTag"></div><div class="contentTag">'
-													+ (data.category).display_name
+													+ (data.category)
 													+ '</div><div class="right_cornerTag"></div></div>')
 
-										var site_array = [];
+										var site_array = []; // !!!AA: site list
 											
 											$.each(data.domains, function(index, result){
-												var site_name = result.site;
-												
-												if ($.inArray(site_name,site_array)==-1){
-													site_array.push(site_name);
+												site_name = result.site;
+//                                                 console.log(result);
+												if ($.inArray(result,site_array)==-1){ 
+													site_array.push(result);
 												
 													//It can happen that the site is null but the probe reported a blocked or failing url, in that case
 													//we only show the url which triggered the probe
-													if(site_name == null){
-															
-															$("#domainTableBody").append('<tr><td id="nameDomain" style="width:100%">'+result.url+'<a href="'+result.url+'"><i class="fa fa-external-link" style="float:right" aria-hidden="true"></i></a></td></tr>');
+													if(result.site == null){    //check if target not part of site
+    											
+    											
+    											// old test code, must be removed, not best way to handle cases		
+/*
+													    if(result.domain){
+    													    var target_content = result.domain;
+    													    var target_href = result.domain;
+    													    
+													    }
+													    else if (result.url){
+    													    var target_content = result.url;    											
+    													    var target_href = result.url;    											
+													    }
+													    else if (result.ip){
+    													    var target_content = result.ip;    											
+    													    var target_href = result.ip;    													   
+    												    }
+													    
+                                                        $("#domainTableBody").append('<tr><td id="nameDomain" style="width:100%">'+target_content+'<a href="'+target_href+'"><i class="fa fa-external-link" style="float:right" aria-hidden="true"></i></a></td></tr>');
+*/
+                                                    
+                                                    
+                                                    
+                                                        switch (result.type){   // checks te type of target
+    													    case "domain":
+            													    var target_content = result.domain;
+            													    var target_href = result.domain;
+            													    break;
+
+    													    case "url":
+            													    var target_content = result.url;    											
+            													    var target_href = result.url;    											
+                                                                    break;
+
+                                                            case "ip":
+            													    var target_content = result.ip;    											
+            													    var target_href = "#";    													   
+            													    break;
+            												default:  //if other type of teget
+            													    console.log("Error: unrecoognized type of target o missing type.\n"+result);
+    													}
+    												    if (target_content){
+                                                            $("#domainTableBody").append('<tr><td id="nameDomain" style="width:100%">'+target_content+'<a href="'+target_href+'"><i class="fa fa-external-link" style="float:right" aria-hidden="true"></i></a></td></tr>');
+    												    }
 													}
 														
 													//Site Name with a collapse div of the url that belongs to the site
@@ -377,13 +418,18 @@ $(document)
 												+ "/" + date.getDate()
 										+ "/" + date.getFullYear());
 										
-										$.each(dataJson.isp, function(
+										$.each(dataJson.isp, function( 
 												secondLevelKey,
-												secondLevelValue) {
+												secondLevelValue)  {
+											$.each(secondLevelValue, function( 
+												thirdLevelKey,
+												thirdLevelValue)  {
+											isp_list.push(thirdLevelValue);
 											
-											isp_list.push(secondLevelValue);
-											
+										    })
 										})
+										
+                                        // console.log(isp_list)
 										
 										$.each(isp_list, function(i, el){
 										 
@@ -391,6 +437,7 @@ $(document)
 										
 										});
 										
+											// !!!AA: Aqui es donde esta lo del ISP
 										$.each(isp_list_aux, function(index,value){
 											$('#ispAjax').append(
 													'<button class="contextualButtonFixedSize">'

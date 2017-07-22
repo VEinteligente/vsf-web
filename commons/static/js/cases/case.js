@@ -125,28 +125,6 @@ $(document)
 													//It can happen that the site is null but the probe reported a blocked or failing url, in that case
 													//we only show the url which triggered the probe
 													if(result.site == null){    //check if target not part of site
-    											
-    											
-    											// old test code, must be removed, not best way to handle cases		
-/*
-													    if(result.domain){
-    													    var target_content = result.domain;
-    													    var target_href = result.domain;
-    													    
-													    }
-													    else if (result.url){
-    													    var target_content = result.url;    											
-    													    var target_href = result.url;    											
-													    }
-													    else if (result.ip){
-    													    var target_content = result.ip;    											
-    													    var target_href = result.ip;    													   
-    												    }
-													    
-                                                        $("#domainTableBody").append('<tr><td id="nameDomain" style="width:100%">'+target_content+'<a href="'+target_href+'"><i class="fa fa-external-link" style="float:right" aria-hidden="true"></i></a></td></tr>');
-*/
-                                                    
-                                                    
                                                     
                                                         switch (result.type){   // checks te type of target
     													    case "domain":

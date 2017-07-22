@@ -117,8 +117,10 @@ $(document)
 										var site_array = []; // !!!AA: site list
 											
 											$.each(data.domains, function(index, result){
-												site_name = result.site;
 //                                                 console.log(result);
+                                                
+                                                // check if this target object ahs already been considered, if so, it will be ignored
+                                                // FIXME: change if logic so that repeated case is not repeated
 												if ($.inArray(result,site_array)==-1){ 
 													site_array.push(result);
 												
@@ -151,34 +153,62 @@ $(document)
 														
 													//Site Name with a collapse div of the url that belongs to the site
 													else{
-														site_name = site_name.replace(" ","");
-														$("#domainTableBody").append('<tr class="focus clickable" data-toggle="collapse" data-target="#data'+site_name+'"><td id="nameDomain">'+site_name+'</td><tr><td id="focusDomain" class="prueba" style="padding:0;"><div class="collapse" id="data'+site_name+'"><div></td></tr>');
-														
-	
-	
-													
+														site_short_name = result.site.name.replace(" ","");
+														$("#domainTableBody").append(' \
+														    <tr class="focus clickable" data-toggle="collapse" data-target="#data'+site_short_name+'"> \
+														        <td id="nameDomain">'+result.site.name+'</td><tr><td id="focusDomain" class="prueba" style="padding:0;"> \
+														            <div class="collapse" id="data'+site_short_name+'"><div> \
+                                                                </td> \
+                                                            </tr> \
+                                                        ');
 													}
 	
 											     }
 												
-	
 
 											
 											});
-											
+											// this will check again (in a difrent loop - why?) and add al targets to their site
+											// TODO intetgrat e with other loop better
 											$.each(data.domains, function(index, result){
-												var site_name = result.site;
-												if(!(site_name == null)){
-													site_name = site_name.replace(" ","");
-													if(result.ip == null){
-														$("#data"+site_name).append('<tr class="rowDomain"><td id="siteDomain" style="width:100%">'+result.url+'</td><td></td><td><a href="'+result.url+'"><i class="fa fa-external-link" aria-hidden="true"></i></a></td></tr>');
+												if(!(result.site == null)){
+													site_short_name = result.site.name.replace(" ","");
+                                                        console.log(result.site.name)
+                                                        console.log(result.type)
 
-													}
-													else{
-														$("#data"+site_name).append('<tr class="rowDomain"><td id="siteDomain" style="width:100%">'+result.url+'</td><td>'+result.ip+'</td><td><a href="'+result.url+'"><i class="fa fa-external-link" aria-hidden="true"></i></a></td></tr>');
+                                                        switch (result.type) {   // checks te type of target
+    													    case "domain":
+            													    var target_content = result.domain;
+            													    var target_href = 'http://'+result.domain;
+            													    break;
 
-													}
+    													    case "url":
+            													    var target_content = result.url;    											
+            													    var target_href = result.url;    											
+                                                                    break;
 
+                                                            case "ip":
+            													    var target_content = result.ip;    											
+                                                                    if (result.url) {
+                													    var target_href = result.url;  
+                								                    }
+                								                    else if (result.domain) {    											
+                													    var target_href = 'http://'+result.domain;
+                                                                    }
+                                                                    else {
+                													    var target_href = "#";    													   
+                                                                    }
+            													    break;
+            												default:  //if other type of target
+            													    console.log("Error: unrecoognized type of target o missing type.\n"+result);
+    													}
+    													console.log(target_content)
+    												    if (target_content) {
+        												    console.log("adding child"+result.site.name+" > "+target_content);
+                                                            $("#data"+site_short_name).append('<tr class="rowDomain"><td id="siteDomain" style="width:100%">'+target_content+'</td><td></td><td><a href="'+target_href+'"><i class="fa fa-external-link" aria-hidden="true"></i></a></td></tr>');
+                                                            //old string for reference on stules for multple data varibales
+    														// $("#data"+site_short_name).append('<tr class="rowDomain"><td id="siteDomain" style="width:100%">'+result.url+'</td><td>'+result.ip+'</td><td><a href="'+result.url+'"><i class="fa fa-external-link" aria-hidden="true"></i></a></td></tr>');
+    												    }
 												}
 											});
 							});

@@ -3,6 +3,41 @@
 var Year = "Year";
 var Month = "Month";
 var All = "All";
+/*
+// Take funtion to 
+// TODO: make funtion load from d3-timeline.js
+// TODO: !!! use eventLabel function
+function eventLabel(target){
+    // Returns the expected label for an event of given target
+    // Consitency is *critical* for correct representation of timeline chart
+    console.log("target for eventLabel:"+target);
+    var label ="";
+    if(target.site != null){
+    		label = target.site.name;
+    	}
+	else{
+        switch (target.type){   // checks te type of target
+            case "ip":
+                if(target.ip != null){
+				    label = target.ip;
+                }
+            case  "url":
+                if(target.url != null){
+    				label = target.url;
+    			}        			
+            case "domain":
+                if(target.domain != null){
+    				label = target.domain ;
+    			}
+    			break        			
+            default:  //if other type of teget
+                console.log("Error: unrecoognized type of target o missing type.\n"+result);
+        }
+    }
+    console.log(label);
+    return label;
+}
+*/
 
 function ganttModal(timelap, i){
 	

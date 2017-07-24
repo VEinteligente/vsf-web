@@ -10,6 +10,37 @@ var All = "All";
 // This value indicates if the Gantt has been collapsed
 var collapse = 0;
 
+function eventLabel(target){
+    // Returns the expected label for an event of given target
+    // Consitency is *critical* for correct representation of timeline chart
+    console.log("target for eventLabel:"+target);
+    var label ="";
+    if(target.site != null){
+    		label = target.site.name;
+    	}
+	else{
+        switch (target.type){   // checks te type of target
+            case "ip":
+                if(target.ip != null){
+				    label = target.ip;
+                }
+            case  "url":
+                if(target.url != null){
+    				label = target.url;
+    			}        			
+            case "domain":
+                if(target.domain != null){
+    				label = target.domain ;
+    			}
+    			break        			
+            default:  //if other type of teget
+                console.log("Error: unrecoognized type of target o missing type.\n"+result);
+        }
+    }
+    console.log(label);
+    return label;
+}
+
 function gantt(timelap){
 
 	if(language=="es"){
@@ -1191,15 +1222,9 @@ $.ajax({
 			
 			// The domain or Y labels. If no site exists, then use the
 			// URL. If no site name or URL exists use IP
-			if(target.site != null){
-				domain = target.site 
-			}
-			else if(target.url != null){
-				domain = target.url 
-			}
-			else if(target.ip != null){
-				domain = target.ip 
-			}
+			// in this exontext domain means the target
+            domain = eventLabel(target);
+            
 							
 			var type = value.type;
 			
@@ -1247,20 +1272,7 @@ $.ajax({
 						
 				var isp = value.isp;
 				var target = value.target;
-				var domain = "";
-				
-
-				// The domain or Y labels. If no site exists, then use the
-				// URL. If no site name or URL exists use IP
-				if(target.site != null){
-					domain = target.site 
-				}
-				else if(target.url != null){
-					domain = target.url 
-				}
-				else if(target.ip != null){
-					domain = target.ip 
-				}
+				var domain = eventLabel(target);
 								
 				var type = value.type;
 				
@@ -1340,20 +1352,8 @@ $.ajax({
 			$.each(dataJson.events, function(key, value) {
 				var isp = value.isp;
 				var target = value.target;
-				var domain = "";
+				var domain = eventLabel(target);
 				
-
-				// The domain or Y labels. If no site exists, then use the
-				// URL. If no site name or URL exists use IP
-				if(target.site != null){
-					domain = target.site 
-				}
-				else if(target.url != null){
-					domain = target.url 
-				}
-				else if(target.ip != null){
-					domain = target.ip 
-				}
 				var element = {};
 				
 				if(domain==miniGantts[i]){

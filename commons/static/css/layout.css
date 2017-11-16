@@ -1,7 +1,11 @@
 * {
   margin: 0;
   padding: 0; }
+.beta-label{
+    color: rgb(68, 112, 186);
+    font-style: italic;
 
+}
 .navbar {
   padding: 0px 0px;
   height: 110 px; }

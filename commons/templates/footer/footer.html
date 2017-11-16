@@ -1,6 +1,6 @@
 
-{% load static %} 
-{% load i18n %} 
+{% load static %}
+{% load i18n %}
 {% get_current_language as language_code %}
 
 <div id="vsf_footer">
@@ -12,22 +12,31 @@
 			style="padding-top: 32px; background: url(/commons/static/img/vsf_footer_map.svg); background-repeat: no-repeat; background-position-x: left;">
 			<div class="row">
 				<div class="col-md-6">
-					<img src="/commons/static/img/vsf_venezuelainteligente.svg"
-						alt="logo de venezuela inteligente"
-						title="Venezuela Inteligente Logo" height=50></img>
+					<a href="#">
+						<img src="/commons/static/img/vsf_venezuelainteligente.svg"
+						alt="logo de VE Inteligente"
+						title="Logo VE Inteligente" height=50>
+					</a>
 				</div>
-				<a class="col-md-2 vsf_footer_menu" href="">{% trans 'Homepage' %}</a> 
-				<a class="col-md-2 vsf_footer_menu" href="">{% trans 'Noticias' %}</a> 
+				<a class="col-md-2 vsf_footer_menu" href="">{% trans 'Homepage' %}</a>
+				<a class="col-md-2 vsf_footer_menu" href="">{% trans 'Noticias' %}</a>
 				<a class="col-md-2 vsf_footer_menu" href="">{% trans 'Guias' %} </a>
 			</div>
 
 			<div class="row">
 
 				<div class="col-lg-2 col-sm-4">
-					<img src="/commons/static/img/vsf_ips.png" alt="IPYS Venezuela"
+					<a href="http://veinteligente.org" class="footer-logo" target="_blank">
+						<img src="/commons/static/img/vsf_ips.png" alt="IPYS Venezuela"
 						title="Logo IPS" height="100" width="auto">
+					</a>
 				</div>
-				<div class="col-lg-2 col-sm-4"></div>
+				<div class="col-lg-2 col-sm-4">
+					<a href="https://ooni.torproject.org" target="_blank" class="footer-logo">
+						<img src="/commons/static/img/ooni_logo_sm.png" alt="ooni logo"
+						title="Logo IPS" height="100" width="auto">
+					</a>
+				</div>
 				<div class="col-lg-2 col-sm-4"></div>
 				<div class="col-lg-6 col-md-12">
 					<strong> {% trans 'Sobre VE Sin Filtro' %} </strong>

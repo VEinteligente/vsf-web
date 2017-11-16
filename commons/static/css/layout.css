@@ -161,3 +161,9 @@
   font-weight: 700 !important;
   text-decoration: none !important;
   color: #4067e1; }
+
+.footer-logo{
+    padding: 10px;
+    display: inline-block;
+    width: auto;
+}
